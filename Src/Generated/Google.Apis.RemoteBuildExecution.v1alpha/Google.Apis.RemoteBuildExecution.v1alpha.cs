@@ -18,17 +18,16 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
         public const string Version = "v1alpha";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public RemoteBuildExecutionService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public RemoteBuildExecutionService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public RemoteBuildExecutionService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public RemoteBuildExecutionService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Projects = new ProjectsResource(this);
         }
@@ -80,12 +79,11 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
         public virtual ProjectsResource Projects { get; }
     }
 
-    ///<summary>A base abstract class for RemoteBuildExecution requests.</summary>
+    /// <summary>A base abstract class for RemoteBuildExecution requests.</summary>
     public abstract class RemoteBuildExecutionBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new RemoteBuildExecutionBaseServiceRequest instance.</summary>
-        protected RemoteBuildExecutionBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new RemoteBuildExecutionBaseServiceRequest instance.</summary>
+        protected RemoteBuildExecutionBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -165,105 +163,94 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -339,8 +326,7 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                 public class CreateRequest : RemoteBuildExecutionBaseServiceRequest<Google.Apis.RemoteBuildExecution.v1alpha.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.RemoteBuildExecution.v1alpha.Data.GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest body, string parent)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.RemoteBuildExecution.v1alpha.Data.GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -357,16 +343,16 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.RemoteBuildExecution.v1alpha.Data.GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1alpha/{+parent}/workerpools";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -374,15 +360,14 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/instances/[^/]+$",
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/instances/[^/]+$",
+                        });
                     }
 
                 }
@@ -403,8 +388,7 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                 public class DeleteRequest : RemoteBuildExecutionBaseServiceRequest<Google.Apis.RemoteBuildExecution.v1alpha.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -417,13 +401,13 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1alpha/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -431,15 +415,14 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/instances/[^/]+/workerpools/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/instances/[^/]+/workerpools/[^/]+$",
+                        });
                     }
 
                 }
@@ -456,8 +439,7 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                 public class GetRequest : RemoteBuildExecutionBaseServiceRequest<Google.Apis.RemoteBuildExecution.v1alpha.Data.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -470,13 +452,13 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1alpha/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -484,15 +466,14 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/instances/[^/]+/workerpools/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/instances/[^/]+/workerpools/[^/]+$",
+                        });
                     }
 
                 }
@@ -509,8 +490,7 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                 public class ListRequest : RemoteBuildExecutionBaseServiceRequest<Google.Apis.RemoteBuildExecution.v1alpha.Data.GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -538,13 +518,13 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                     public virtual string Filter { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1alpha/{+parent}/workerpools";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -552,24 +532,22 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/instances/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/instances/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -592,8 +570,7 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                 public class PatchRequest : RemoteBuildExecutionBaseServiceRequest<Google.Apis.RemoteBuildExecution.v1alpha.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.RemoteBuildExecution.v1alpha.Data.GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest body, string name)
-                        : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.RemoteBuildExecution.v1alpha.Data.GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -611,16 +588,16 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.RemoteBuildExecution.v1alpha.Data.GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "patch";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PATCH";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1alpha/{+name}";
 
                     /// <summary>Initializes Patch parameter list.</summary>
@@ -628,15 +605,14 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/instances/[^/]+/workerpools/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/instances/[^/]+/workerpools/[^/]+$",
+                        });
                     }
 
                 }
@@ -659,8 +635,7 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
             public class CreateRequest : RemoteBuildExecutionBaseServiceRequest<Google.Apis.RemoteBuildExecution.v1alpha.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.RemoteBuildExecution.v1alpha.Data.GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest body, string parent)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.RemoteBuildExecution.v1alpha.Data.GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -677,16 +652,16 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.RemoteBuildExecution.v1alpha.Data.GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1alpha/{+parent}/instances";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -694,15 +669,14 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
                 }
 
             }
@@ -723,8 +697,7 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
             public class DeleteRequest : RemoteBuildExecutionBaseServiceRequest<Google.Apis.RemoteBuildExecution.v1alpha.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -737,13 +710,13 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1alpha/{+name}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -751,15 +724,14 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/instances/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/instances/[^/]+$",
+                    });
                 }
 
             }
@@ -776,8 +748,7 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
             public class GetRequest : RemoteBuildExecutionBaseServiceRequest<Google.Apis.RemoteBuildExecution.v1alpha.Data.GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -790,13 +761,13 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1alpha/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -804,15 +775,14 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/instances/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/instances/[^/]+$",
+                    });
                 }
 
             }
@@ -828,8 +798,7 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
             public class ListRequest : RemoteBuildExecutionBaseServiceRequest<Google.Apis.RemoteBuildExecution.v1alpha.Data.GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                 {
                     Parent = parent;
                     InitParameters();
@@ -841,13 +810,13 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                 public virtual string Parent { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1alpha/{+parent}/instances";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -855,15 +824,14 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
                 }
 
             }
@@ -884,8 +852,7 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
             public class PatchRequest : RemoteBuildExecutionBaseServiceRequest<Google.Apis.RemoteBuildExecution.v1alpha.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.RemoteBuildExecution.v1alpha.Data.GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance body, string name)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.RemoteBuildExecution.v1alpha.Data.GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -921,16 +888,16 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.RemoteBuildExecution.v1alpha.Data.GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1alpha/{+name}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -938,42 +905,38 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/instances/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "loggingEnabled", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "loggingEnabled",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "name1", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name1",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/instances/[^/]+$",
+                    });
+                    RequestParameters.Add("loggingEnabled", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "loggingEnabled",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("name1", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name1",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1010,8 +973,7 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
             public class GetRequest : RemoteBuildExecutionBaseServiceRequest<Google.Apis.RemoteBuildExecution.v1alpha.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -1023,13 +985,13 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1alpha/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1037,15 +999,14 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/operations/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/operations/[^/]+$",
+                    });
                 }
 
             }

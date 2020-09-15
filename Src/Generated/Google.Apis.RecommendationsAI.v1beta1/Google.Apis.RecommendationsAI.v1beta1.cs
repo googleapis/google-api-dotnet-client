@@ -18,17 +18,16 @@ namespace Google.Apis.RecommendationsAI.v1beta1
         public const string Version = "v1beta1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public RecommendationsAIService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public RecommendationsAIService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public RecommendationsAIService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public RecommendationsAIService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Projects = new ProjectsResource(this);
         }
@@ -80,12 +79,11 @@ namespace Google.Apis.RecommendationsAI.v1beta1
         public virtual ProjectsResource Projects { get; }
     }
 
-    ///<summary>A base abstract class for RecommendationsAI requests.</summary>
+    /// <summary>A base abstract class for RecommendationsAI requests.</summary>
     public abstract class RecommendationsAIBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new RecommendationsAIBaseServiceRequest instance.</summary>
-        protected RecommendationsAIBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new RecommendationsAIBaseServiceRequest instance.</summary>
+        protected RecommendationsAIBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -165,105 +163,94 @@ namespace Google.Apis.RecommendationsAI.v1beta1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -355,8 +342,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     public class CreateRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1CatalogItem>
                     {
                         /// <summary>Constructs a new Create request.</summary>
-                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1CatalogItem body, string parent)
-                            : base(service)
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1CatalogItem body, string parent) : base(service)
                         {
                             Parent = parent;
                             Body = body;
@@ -373,16 +359,16 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1CatalogItem Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "create";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1beta1/{+parent}/catalogItems";
 
                         /// <summary>Initializes Create parameter list.</summary>
@@ -390,15 +376,14 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
+                            });
                         }
 
                     }
@@ -415,8 +400,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     public class DeleteRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleProtobufEmpty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
-                        public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                            : base(service)
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                         {
                             Name = name;
                             InitParameters();
@@ -429,13 +413,13 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         public virtual string Name { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "delete";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "DELETE";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1beta1/{+name}";
 
                         /// <summary>Initializes Delete parameter list.</summary>
@@ -443,15 +427,14 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/catalogItems/.*$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/catalogItems/.*$",
+                            });
                         }
 
                     }
@@ -468,8 +451,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     public class GetRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1CatalogItem>
                     {
                         /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string name)
-                            : base(service)
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                         {
                             Name = name;
                             InitParameters();
@@ -482,13 +464,13 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         public virtual string Name { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1beta1/{+name}";
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -496,15 +478,14 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/catalogItems/.*$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/catalogItems/.*$",
+                            });
                         }
 
                     }
@@ -529,8 +510,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     public class ImportRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Import request.</summary>
-                        public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest body, string parent)
-                            : base(service)
+                        public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest body, string parent) : base(service)
                         {
                             Parent = parent;
                             Body = body;
@@ -548,16 +528,16 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "import";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1beta1/{+parent}/catalogItems:import";
 
                         /// <summary>Initializes Import parameter list.</summary>
@@ -565,15 +545,14 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
+                            });
                         }
 
                     }
@@ -590,8 +569,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     public class ListRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                         {
                             Parent = parent;
                             InitParameters();
@@ -617,13 +595,13 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         public virtual string PageToken { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1beta1/{+parent}/catalogItems";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -631,42 +609,38 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "filter", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filter",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -686,8 +660,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     public class PatchRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1CatalogItem>
                     {
                         /// <summary>Constructs a new Patch request.</summary>
-                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1CatalogItem body, string name)
-                            : base(service)
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1CatalogItem body, string name) : base(service)
                         {
                             Name = name;
                             Body = body;
@@ -709,16 +682,16 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1CatalogItem Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "patch";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "PATCH";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1beta1/{+name}";
 
                         /// <summary>Initializes Patch parameter list.</summary>
@@ -726,24 +699,22 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/catalogItems/.*$",
-                                });
-                            RequestParameters.Add(
-                                "updateMask", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "updateMask",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/catalogItems/.*$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -802,8 +773,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         public class GetRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleLongrunningOperation>
                         {
                             /// <summary>Constructs a new Get request.</summary>
-                            public GetRequest(Google.Apis.Services.IClientService service, string name)
-                                : base(service)
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                             {
                                 Name = name;
                                 InitParameters();
@@ -815,13 +785,13 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                             public virtual string Name { get; private set; }
 
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "get";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "GET";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1beta1/{+name}";
 
                             /// <summary>Initializes Get parameter list.</summary>
@@ -829,15 +799,14 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "name", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "name",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/eventStores/[^/]+/operations/[^/]+$",
-                                    });
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/eventStores/[^/]+/operations/[^/]+$",
+                                });
                             }
 
                         }
@@ -865,8 +834,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         public class ListRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleLongrunningListOperationsResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
-                            public ListRequest(Google.Apis.Services.IClientService service, string name)
-                                : base(service)
+                            public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                             {
                                 Name = name;
                                 InitParameters();
@@ -890,13 +858,13 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                             public virtual string PageToken { get; set; }
 
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "list";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "GET";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1beta1/{+name}/operations";
 
                             /// <summary>Initializes List parameter list.</summary>
@@ -904,42 +872,38 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "name", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "name",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/eventStores/[^/]+$",
-                                    });
-                                RequestParameters.Add(
-                                    "filter", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "filter",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "pageSize", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageSize",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "pageToken", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageToken",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/eventStores/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
                             }
 
                         }
@@ -992,8 +956,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         public class PredictRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1PredictResponse>
                         {
                             /// <summary>Constructs a new Predict request.</summary>
-                            public PredictRequest(Google.Apis.Services.IClientService service, Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1PredictRequest body, string name)
-                                : base(service)
+                            public PredictRequest(Google.Apis.Services.IClientService service, Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1PredictRequest body, string name) : base(service)
                             {
                                 Name = name;
                                 Body = body;
@@ -1026,16 +989,16 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                             /// <summary>Gets or sets the body of this request.</summary>
                             Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1PredictRequest Body { get; set; }
 
-                            ///<summary>Returns the body of the request.</summary>
+                            /// <summary>Returns the body of the request.</summary>
                             protected override object GetBody() => Body;
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "predict";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "POST";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1beta1/{+name}:predict";
 
                             /// <summary>Initializes Predict parameter list.</summary>
@@ -1043,15 +1006,14 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "name", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "name",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/eventStores/[^/]+/placements/[^/]+$",
-                                    });
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/eventStores/[^/]+/placements/[^/]+$",
+                                });
                             }
 
                         }
@@ -1088,8 +1050,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         public class CreateRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration>
                         {
                             /// <summary>Constructs a new Create request.</summary>
-                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest body, string parent)
-                                : base(service)
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest body, string parent) : base(service)
                             {
                                 Parent = parent;
                                 Body = body;
@@ -1106,16 +1067,16 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                             /// <summary>Gets or sets the body of this request.</summary>
                             Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest Body { get; set; }
 
-                            ///<summary>Returns the body of the request.</summary>
+                            /// <summary>Returns the body of the request.</summary>
                             protected override object GetBody() => Body;
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "create";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "POST";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1beta1/{+parent}/predictionApiKeyRegistrations";
 
                             /// <summary>Initializes Create parameter list.</summary>
@@ -1123,15 +1084,14 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "parent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "parent",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/eventStores/[^/]+$",
-                                    });
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/eventStores/[^/]+$",
+                                });
                             }
 
                         }
@@ -1148,8 +1108,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         public class DeleteRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleProtobufEmpty>
                         {
                             /// <summary>Constructs a new Delete request.</summary>
-                            public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                                : base(service)
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                             {
                                 Name = name;
                                 InitParameters();
@@ -1163,13 +1122,13 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                             public virtual string Name { get; private set; }
 
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "delete";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "DELETE";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1beta1/{+name}";
 
                             /// <summary>Initializes Delete parameter list.</summary>
@@ -1177,15 +1136,14 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "name", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "name",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/eventStores/[^/]+/predictionApiKeyRegistrations/[^/]+$",
-                                    });
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/eventStores/[^/]+/predictionApiKeyRegistrations/[^/]+$",
+                                });
                             }
 
                         }
@@ -1202,8 +1160,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         public class ListRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
-                            public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                                : base(service)
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                             {
                                 Parent = parent;
                                 InitParameters();
@@ -1226,13 +1183,13 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                             public virtual string PageToken { get; set; }
 
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "list";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "GET";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1beta1/{+parent}/predictionApiKeyRegistrations";
 
                             /// <summary>Initializes List parameter list.</summary>
@@ -1240,33 +1197,30 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "parent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "parent",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/eventStores/[^/]+$",
-                                    });
-                                RequestParameters.Add(
-                                    "pageSize", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageSize",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "pageToken", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageToken",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/eventStores/[^/]+$",
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
                             }
 
                         }
@@ -1306,8 +1260,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         public class CollectRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleApiHttpBody>
                         {
                             /// <summary>Constructs a new Collect request.</summary>
-                            public CollectRequest(Google.Apis.Services.IClientService service, string parent)
-                                : base(service)
+                            public CollectRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                             {
                                 Parent = parent;
                                 InitParameters();
@@ -1337,13 +1290,13 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                             public virtual string UserEvent { get; set; }
 
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "collect";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "GET";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1beta1/{+parent}/userEvents:collect";
 
                             /// <summary>Initializes Collect parameter list.</summary>
@@ -1351,42 +1304,38 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "parent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "parent",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/eventStores/[^/]+$",
-                                    });
-                                RequestParameters.Add(
-                                    "ets", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "ets",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "uri", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "uri",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "userEvent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "userEvent",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/eventStores/[^/]+$",
+                                });
+                                RequestParameters.Add("ets", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "ets",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("uri", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "uri",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("userEvent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "userEvent",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
                             }
 
                         }
@@ -1410,8 +1359,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         public class ImportRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleLongrunningOperation>
                         {
                             /// <summary>Constructs a new Import request.</summary>
-                            public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest body, string parent)
-                                : base(service)
+                            public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest body, string parent) : base(service)
                             {
                                 Parent = parent;
                                 Body = body;
@@ -1428,16 +1376,16 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                             /// <summary>Gets or sets the body of this request.</summary>
                             Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest Body { get; set; }
 
-                            ///<summary>Returns the body of the request.</summary>
+                            /// <summary>Returns the body of the request.</summary>
                             protected override object GetBody() => Body;
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "import";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "POST";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1beta1/{+parent}/userEvents:import";
 
                             /// <summary>Initializes Import parameter list.</summary>
@@ -1445,15 +1393,14 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "parent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "parent",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/eventStores/[^/]+$",
-                                    });
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/eventStores/[^/]+$",
+                                });
                             }
 
                         }
@@ -1480,8 +1427,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         public class ListRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1ListUserEventsResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
-                            public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                                : base(service)
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                             {
                                 Parent = parent;
                                 InitParameters();
@@ -1523,13 +1469,13 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                             public virtual string PageToken { get; set; }
 
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "list";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "GET";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1beta1/{+parent}/userEvents";
 
                             /// <summary>Initializes List parameter list.</summary>
@@ -1537,42 +1483,38 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "parent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "parent",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/eventStores/[^/]+$",
-                                    });
-                                RequestParameters.Add(
-                                    "filter", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "filter",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "pageSize", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageSize",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "pageToken", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageToken",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/eventStores/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
                             }
 
                         }
@@ -1594,8 +1536,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         public class PurgeRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleLongrunningOperation>
                         {
                             /// <summary>Constructs a new Purge request.</summary>
-                            public PurgeRequest(Google.Apis.Services.IClientService service, Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest body, string parent)
-                                : base(service)
+                            public PurgeRequest(Google.Apis.Services.IClientService service, Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest body, string parent) : base(service)
                             {
                                 Parent = parent;
                                 Body = body;
@@ -1613,16 +1554,16 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                             /// <summary>Gets or sets the body of this request.</summary>
                             Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest Body { get; set; }
 
-                            ///<summary>Returns the body of the request.</summary>
+                            /// <summary>Returns the body of the request.</summary>
                             protected override object GetBody() => Body;
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "purge";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "POST";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1beta1/{+parent}/userEvents:purge";
 
                             /// <summary>Initializes Purge parameter list.</summary>
@@ -1630,15 +1571,14 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "parent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "parent",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/eventStores/[^/]+$",
-                                    });
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/eventStores/[^/]+$",
+                                });
                             }
 
                         }
@@ -1666,8 +1606,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         public class RejoinRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleLongrunningOperation>
                         {
                             /// <summary>Constructs a new Rejoin request.</summary>
-                            public RejoinRequest(Google.Apis.Services.IClientService service, Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest body, string parent)
-                                : base(service)
+                            public RejoinRequest(Google.Apis.Services.IClientService service, Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest body, string parent) : base(service)
                             {
                                 Parent = parent;
                                 Body = body;
@@ -1684,16 +1623,16 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                             /// <summary>Gets or sets the body of this request.</summary>
                             Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest Body { get; set; }
 
-                            ///<summary>Returns the body of the request.</summary>
+                            /// <summary>Returns the body of the request.</summary>
                             protected override object GetBody() => Body;
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "rejoin";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "POST";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1beta1/{+parent}/userEvents:rejoin";
 
                             /// <summary>Initializes Rejoin parameter list.</summary>
@@ -1701,15 +1640,14 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "parent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "parent",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/eventStores/[^/]+$",
-                                    });
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/eventStores/[^/]+$",
+                                });
                             }
 
                         }
@@ -1727,8 +1665,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         public class WriteRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1UserEvent>
                         {
                             /// <summary>Constructs a new Write request.</summary>
-                            public WriteRequest(Google.Apis.Services.IClientService service, Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1UserEvent body, string parent)
-                                : base(service)
+                            public WriteRequest(Google.Apis.Services.IClientService service, Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1UserEvent body, string parent) : base(service)
                             {
                                 Parent = parent;
                                 Body = body;
@@ -1745,16 +1682,16 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                             /// <summary>Gets or sets the body of this request.</summary>
                             Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1UserEvent Body { get; set; }
 
-                            ///<summary>Returns the body of the request.</summary>
+                            /// <summary>Returns the body of the request.</summary>
                             protected override object GetBody() => Body;
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "write";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "POST";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1beta1/{+parent}/userEvents:write";
 
                             /// <summary>Initializes Write parameter list.</summary>
@@ -1762,15 +1699,14 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "parent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "parent",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/eventStores/[^/]+$",
-                                    });
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/eventStores/[^/]+$",
+                                });
                             }
 
                         }
@@ -1808,8 +1744,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     public class GetRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string name)
-                            : base(service)
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                         {
                             Name = name;
                             InitParameters();
@@ -1821,13 +1756,13 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         public virtual string Name { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1beta1/{+name}";
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -1835,15 +1770,14 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/operations/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/operations/[^/]+$",
+                            });
                         }
 
                     }
@@ -1871,8 +1805,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     public class ListRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleLongrunningListOperationsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string name)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                         {
                             Name = name;
                             InitParameters();
@@ -1896,13 +1829,13 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         public virtual string PageToken { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1beta1/{+name}/operations";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -1910,42 +1843,38 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "filter", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filter",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -1962,8 +1891,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                 public class ListRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1ListCatalogsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -1985,13 +1913,13 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1beta1/{+parent}/catalogs";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -1999,33 +1927,30 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2042,8 +1967,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                 public class PatchRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1Catalog>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1Catalog body, string name)
-                        : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1Catalog body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -2065,16 +1989,16 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1Catalog Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "patch";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PATCH";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1beta1/{+name}";
 
                     /// <summary>Initializes Patch parameter list.</summary>
@@ -2082,24 +2006,22 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "updateMask",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }

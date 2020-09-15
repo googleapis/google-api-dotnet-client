@@ -18,17 +18,16 @@ namespace Google.Apis.Docs.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public DocsService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public DocsService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public DocsService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public DocsService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Documents = new DocumentsResource(this);
         }
@@ -106,12 +105,11 @@ namespace Google.Apis.Docs.v1
         public virtual DocumentsResource Documents { get; }
     }
 
-    ///<summary>A base abstract class for Docs requests.</summary>
+    /// <summary>A base abstract class for Docs requests.</summary>
     public abstract class DocsBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new DocsBaseServiceRequest instance.</summary>
-        protected DocsBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new DocsBaseServiceRequest instance.</summary>
+        protected DocsBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -191,105 +189,94 @@ namespace Google.Apis.Docs.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -339,8 +326,7 @@ namespace Google.Apis.Docs.v1
         public class BatchUpdateRequest : DocsBaseServiceRequest<Google.Apis.Docs.v1.Data.BatchUpdateDocumentResponse>
         {
             /// <summary>Constructs a new BatchUpdate request.</summary>
-            public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Docs.v1.Data.BatchUpdateDocumentRequest body, string documentId)
-                : base(service)
+            public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Docs.v1.Data.BatchUpdateDocumentRequest body, string documentId) : base(service)
             {
                 DocumentId = documentId;
                 Body = body;
@@ -356,16 +342,16 @@ namespace Google.Apis.Docs.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Docs.v1.Data.BatchUpdateDocumentRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "batchUpdate";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/documents/{documentId}:batchUpdate";
 
             /// <summary>Initializes BatchUpdate parameter list.</summary>
@@ -373,15 +359,14 @@ namespace Google.Apis.Docs.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "documentId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "documentId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("documentId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "documentId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -399,8 +384,7 @@ namespace Google.Apis.Docs.v1
         public class CreateRequest : DocsBaseServiceRequest<Google.Apis.Docs.v1.Data.Document>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Docs.v1.Data.Document body)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Docs.v1.Data.Document body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -411,16 +395,16 @@ namespace Google.Apis.Docs.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Docs.v1.Data.Document Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/documents";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -443,8 +427,7 @@ namespace Google.Apis.Docs.v1
         public class GetRequest : DocsBaseServiceRequest<Google.Apis.Docs.v1.Data.Document>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string documentId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string documentId) : base(service)
             {
                 DocumentId = documentId;
                 InitParameters();
@@ -488,13 +471,13 @@ namespace Google.Apis.Docs.v1
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/documents/{documentId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -502,24 +485,22 @@ namespace Google.Apis.Docs.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "documentId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "documentId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "suggestionsViewMode", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "suggestionsViewMode",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("documentId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "documentId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("suggestionsViewMode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "suggestionsViewMode",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

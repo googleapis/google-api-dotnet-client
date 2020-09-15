@@ -18,17 +18,16 @@ namespace Google.Apis.SemanticTile.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public SemanticTileService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public SemanticTileService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public SemanticTileService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public SemanticTileService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Featuretiles = new FeaturetilesResource(this);
             Terraintiles = new TerraintilesResource(this);
@@ -70,12 +69,11 @@ namespace Google.Apis.SemanticTile.v1
         public virtual TerraintilesResource Terraintiles { get; }
     }
 
-    ///<summary>A base abstract class for SemanticTile requests.</summary>
+    /// <summary>A base abstract class for SemanticTile requests.</summary>
     public abstract class SemanticTileBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new SemanticTileBaseServiceRequest instance.</summary>
-        protected SemanticTileBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new SemanticTileBaseServiceRequest instance.</summary>
+        protected SemanticTileBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -155,105 +153,94 @@ namespace Google.Apis.SemanticTile.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -286,8 +273,7 @@ namespace Google.Apis.SemanticTile.v1
         public class GetRequest : SemanticTileBaseServiceRequest<Google.Apis.SemanticTile.v1.Data.FeatureTile>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string name)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
             {
                 Name = name;
                 InitParameters();
@@ -416,13 +402,13 @@ namespace Google.Apis.SemanticTile.v1
             public virtual string RegionCode { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+name}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -430,159 +416,142 @@ namespace Google.Apis.SemanticTile.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^featuretiles/[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "clientInfo.apiClient", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientInfo.apiClient",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clientInfo.applicationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientInfo.applicationId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clientInfo.applicationVersion", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientInfo.applicationVersion",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clientInfo.deviceModel", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientInfo.deviceModel",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clientInfo.operatingSystem", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientInfo.operatingSystem",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clientInfo.platform", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientInfo.platform",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clientInfo.userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientInfo.userId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clientTileVersionId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientTileVersionId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "enableDetailedHighwayTypes", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enableDetailedHighwayTypes",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "enableFeatureNames", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enableFeatureNames",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "enableModeledVolumes", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enableModeledVolumes",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "enablePoliticalFeatures", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enablePoliticalFeatures",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "enablePrivateRoads", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enablePrivateRoads",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "enableUnclippedBuildings", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enableUnclippedBuildings",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "languageCode", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "languageCode",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "regionCode", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "regionCode",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^featuretiles/[^/]+$",
+                });
+                RequestParameters.Add("clientInfo.apiClient", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientInfo.apiClient",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientInfo.applicationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientInfo.applicationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientInfo.applicationVersion", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientInfo.applicationVersion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientInfo.deviceModel", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientInfo.deviceModel",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientInfo.operatingSystem", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientInfo.operatingSystem",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientInfo.platform", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientInfo.platform",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientInfo.userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientInfo.userId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientTileVersionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientTileVersionId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("enableDetailedHighwayTypes", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enableDetailedHighwayTypes",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("enableFeatureNames", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enableFeatureNames",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("enableModeledVolumes", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enableModeledVolumes",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("enablePoliticalFeatures", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enablePoliticalFeatures",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("enablePrivateRoads", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enablePrivateRoads",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("enableUnclippedBuildings", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enableUnclippedBuildings",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "languageCode",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("regionCode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "regionCode",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -617,8 +586,7 @@ namespace Google.Apis.SemanticTile.v1
         public class GetRequest : SemanticTileBaseServiceRequest<Google.Apis.SemanticTile.v1.Data.TerrainTile>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string name)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
             {
                 Name = name;
                 InitParameters();
@@ -736,13 +704,13 @@ namespace Google.Apis.SemanticTile.v1
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+name}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -750,114 +718,102 @@ namespace Google.Apis.SemanticTile.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^terraintiles/[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "altitudePrecisionCentimeters", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "altitudePrecisionCentimeters",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clientInfo.apiClient", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientInfo.apiClient",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clientInfo.applicationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientInfo.applicationId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clientInfo.applicationVersion", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientInfo.applicationVersion",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clientInfo.deviceModel", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientInfo.deviceModel",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clientInfo.operatingSystem", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientInfo.operatingSystem",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clientInfo.platform", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientInfo.platform",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clientInfo.userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clientInfo.userId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxElevationResolutionCells", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxElevationResolutionCells",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "minElevationResolutionCells", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "minElevationResolutionCells",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "terrainFormats", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "terrainFormats",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^terraintiles/[^/]+$",
+                });
+                RequestParameters.Add("altitudePrecisionCentimeters", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "altitudePrecisionCentimeters",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientInfo.apiClient", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientInfo.apiClient",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientInfo.applicationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientInfo.applicationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientInfo.applicationVersion", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientInfo.applicationVersion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientInfo.deviceModel", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientInfo.deviceModel",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientInfo.operatingSystem", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientInfo.operatingSystem",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientInfo.platform", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientInfo.platform",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clientInfo.userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clientInfo.userId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxElevationResolutionCells", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxElevationResolutionCells",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("minElevationResolutionCells", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "minElevationResolutionCells",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("terrainFormats", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "terrainFormats",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

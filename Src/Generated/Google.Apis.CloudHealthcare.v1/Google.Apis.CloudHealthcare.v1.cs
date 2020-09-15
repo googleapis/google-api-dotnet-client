@@ -18,17 +18,16 @@ namespace Google.Apis.CloudHealthcare.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public CloudHealthcareService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public CloudHealthcareService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public CloudHealthcareService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public CloudHealthcareService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Projects = new ProjectsResource(this);
         }
@@ -80,12 +79,11 @@ namespace Google.Apis.CloudHealthcare.v1
         public virtual ProjectsResource Projects { get; }
     }
 
-    ///<summary>A base abstract class for CloudHealthcare requests.</summary>
+    /// <summary>A base abstract class for CloudHealthcare requests.</summary>
     public abstract class CloudHealthcareBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new CloudHealthcareBaseServiceRequest instance.</summary>
-        protected CloudHealthcareBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new CloudHealthcareBaseServiceRequest instance.</summary>
+        protected CloudHealthcareBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -165,105 +163,94 @@ namespace Google.Apis.CloudHealthcare.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -450,8 +437,7 @@ namespace Google.Apis.CloudHealthcare.v1
                                     public class RetrieveFramesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                                     {
                                         /// <summary>Constructs a new RetrieveFrames request.</summary>
-                                        public RetrieveFramesRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath)
-                                            : base(service)
+                                        public RetrieveFramesRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath) : base(service)
                                         {
                                             Parent = parent;
                                             DicomWebPath = dicomWebPath;
@@ -472,13 +458,13 @@ namespace Google.Apis.CloudHealthcare.v1
                                         public virtual string DicomWebPath { get; private set; }
 
 
-                                        ///<summary>Gets the method name.</summary>
+                                        /// <summary>Gets the method name.</summary>
                                         public override string MethodName => "retrieveFrames";
 
-                                        ///<summary>Gets the HTTP method.</summary>
+                                        /// <summary>Gets the HTTP method.</summary>
                                         public override string HttpMethod => "GET";
 
-                                        ///<summary>Gets the REST path.</summary>
+                                        /// <summary>Gets the REST path.</summary>
                                         public override string RestPath => "v1/{+parent}/dicomWeb/{+dicomWebPath}";
 
                                         /// <summary>Initializes RetrieveFrames parameter list.</summary>
@@ -486,24 +472,22 @@ namespace Google.Apis.CloudHealthcare.v1
                                         {
                                             base.InitParameters();
 
-                                            RequestParameters.Add(
-                                                "parent", new Google.Apis.Discovery.Parameter
-                                                {
-                                                    Name = "parent",
-                                                    IsRequired = true,
-                                                    ParameterType = "path",
-                                                    DefaultValue = null,
-                                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
-                                                });
-                                            RequestParameters.Add(
-                                                "dicomWebPath", new Google.Apis.Discovery.Parameter
-                                                {
-                                                    Name = "dicomWebPath",
-                                                    IsRequired = true,
-                                                    ParameterType = "path",
-                                                    DefaultValue = null,
-                                                    Pattern = @"^studies/[^/]+/series/[^/]+/instances/[^/]+/frames/[^/]+$",
-                                                });
+                                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                            {
+                                                Name = "parent",
+                                                IsRequired = true,
+                                                ParameterType = "path",
+                                                DefaultValue = null,
+                                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                                            });
+                                            RequestParameters.Add("dicomWebPath", new Google.Apis.Discovery.Parameter
+                                            {
+                                                Name = "dicomWebPath",
+                                                IsRequired = true,
+                                                ParameterType = "path",
+                                                DefaultValue = null,
+                                                Pattern = @"^studies/[^/]+/series/[^/]+/instances/[^/]+/frames/[^/]+$",
+                                            });
                                         }
 
                                     }
@@ -541,8 +525,7 @@ namespace Google.Apis.CloudHealthcare.v1
                                     public class RetrieveRenderedRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                                     {
                                         /// <summary>Constructs a new RetrieveRendered request.</summary>
-                                        public RetrieveRenderedRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath)
-                                            : base(service)
+                                        public RetrieveRenderedRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath) : base(service)
                                         {
                                             Parent = parent;
                                             DicomWebPath = dicomWebPath;
@@ -563,13 +546,13 @@ namespace Google.Apis.CloudHealthcare.v1
                                         public virtual string DicomWebPath { get; private set; }
 
 
-                                        ///<summary>Gets the method name.</summary>
+                                        /// <summary>Gets the method name.</summary>
                                         public override string MethodName => "retrieveRendered";
 
-                                        ///<summary>Gets the HTTP method.</summary>
+                                        /// <summary>Gets the HTTP method.</summary>
                                         public override string HttpMethod => "GET";
 
-                                        ///<summary>Gets the REST path.</summary>
+                                        /// <summary>Gets the REST path.</summary>
                                         public override string RestPath => "v1/{+parent}/dicomWeb/{+dicomWebPath}";
 
                                         /// <summary>Initializes RetrieveRendered parameter list.</summary>
@@ -577,24 +560,22 @@ namespace Google.Apis.CloudHealthcare.v1
                                         {
                                             base.InitParameters();
 
-                                            RequestParameters.Add(
-                                                "parent", new Google.Apis.Discovery.Parameter
-                                                {
-                                                    Name = "parent",
-                                                    IsRequired = true,
-                                                    ParameterType = "path",
-                                                    DefaultValue = null,
-                                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
-                                                });
-                                            RequestParameters.Add(
-                                                "dicomWebPath", new Google.Apis.Discovery.Parameter
-                                                {
-                                                    Name = "dicomWebPath",
-                                                    IsRequired = true,
-                                                    ParameterType = "path",
-                                                    DefaultValue = null,
-                                                    Pattern = @"^studies/[^/]+/series/[^/]+/instances/[^/]+/frames/[^/]+/rendered$",
-                                                });
+                                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                            {
+                                                Name = "parent",
+                                                IsRequired = true,
+                                                ParameterType = "path",
+                                                DefaultValue = null,
+                                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                                            });
+                                            RequestParameters.Add("dicomWebPath", new Google.Apis.Discovery.Parameter
+                                            {
+                                                Name = "dicomWebPath",
+                                                IsRequired = true,
+                                                ParameterType = "path",
+                                                DefaultValue = null,
+                                                Pattern = @"^studies/[^/]+/series/[^/]+/instances/[^/]+/frames/[^/]+/rendered$",
+                                            });
                                         }
 
                                     }
@@ -627,8 +608,7 @@ namespace Google.Apis.CloudHealthcare.v1
                                 public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Empty>
                                 {
                                     /// <summary>Constructs a new Delete request.</summary>
-                                    public DeleteRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath)
-                                        : base(service)
+                                    public DeleteRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath) : base(service)
                                     {
                                         Parent = parent;
                                         DicomWebPath = dicomWebPath;
@@ -648,13 +628,13 @@ namespace Google.Apis.CloudHealthcare.v1
                                     public virtual string DicomWebPath { get; private set; }
 
 
-                                    ///<summary>Gets the method name.</summary>
+                                    /// <summary>Gets the method name.</summary>
                                     public override string MethodName => "delete";
 
-                                    ///<summary>Gets the HTTP method.</summary>
+                                    /// <summary>Gets the HTTP method.</summary>
                                     public override string HttpMethod => "DELETE";
 
-                                    ///<summary>Gets the REST path.</summary>
+                                    /// <summary>Gets the REST path.</summary>
                                     public override string RestPath => "v1/{+parent}/dicomWeb/{+dicomWebPath}";
 
                                     /// <summary>Initializes Delete parameter list.</summary>
@@ -662,24 +642,22 @@ namespace Google.Apis.CloudHealthcare.v1
                                     {
                                         base.InitParameters();
 
-                                        RequestParameters.Add(
-                                            "parent", new Google.Apis.Discovery.Parameter
-                                            {
-                                                Name = "parent",
-                                                IsRequired = true,
-                                                ParameterType = "path",
-                                                DefaultValue = null,
-                                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
-                                            });
-                                        RequestParameters.Add(
-                                            "dicomWebPath", new Google.Apis.Discovery.Parameter
-                                            {
-                                                Name = "dicomWebPath",
-                                                IsRequired = true,
-                                                ParameterType = "path",
-                                                DefaultValue = null,
-                                                Pattern = @"^studies/[^/]+/series/[^/]+/instances/[^/]+$",
-                                            });
+                                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "parent",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                                        });
+                                        RequestParameters.Add("dicomWebPath", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "dicomWebPath",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^studies/[^/]+/series/[^/]+/instances/[^/]+$",
+                                        });
                                     }
 
                                 }
@@ -717,8 +695,7 @@ namespace Google.Apis.CloudHealthcare.v1
                                 public class RetrieveInstanceRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                                 {
                                     /// <summary>Constructs a new RetrieveInstance request.</summary>
-                                    public RetrieveInstanceRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath)
-                                        : base(service)
+                                    public RetrieveInstanceRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath) : base(service)
                                     {
                                         Parent = parent;
                                         DicomWebPath = dicomWebPath;
@@ -738,13 +715,13 @@ namespace Google.Apis.CloudHealthcare.v1
                                     public virtual string DicomWebPath { get; private set; }
 
 
-                                    ///<summary>Gets the method name.</summary>
+                                    /// <summary>Gets the method name.</summary>
                                     public override string MethodName => "retrieveInstance";
 
-                                    ///<summary>Gets the HTTP method.</summary>
+                                    /// <summary>Gets the HTTP method.</summary>
                                     public override string HttpMethod => "GET";
 
-                                    ///<summary>Gets the REST path.</summary>
+                                    /// <summary>Gets the REST path.</summary>
                                     public override string RestPath => "v1/{+parent}/dicomWeb/{+dicomWebPath}";
 
                                     /// <summary>Initializes RetrieveInstance parameter list.</summary>
@@ -752,24 +729,22 @@ namespace Google.Apis.CloudHealthcare.v1
                                     {
                                         base.InitParameters();
 
-                                        RequestParameters.Add(
-                                            "parent", new Google.Apis.Discovery.Parameter
-                                            {
-                                                Name = "parent",
-                                                IsRequired = true,
-                                                ParameterType = "path",
-                                                DefaultValue = null,
-                                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
-                                            });
-                                        RequestParameters.Add(
-                                            "dicomWebPath", new Google.Apis.Discovery.Parameter
-                                            {
-                                                Name = "dicomWebPath",
-                                                IsRequired = true,
-                                                ParameterType = "path",
-                                                DefaultValue = null,
-                                                Pattern = @"^studies/[^/]+/series/[^/]+/instances/[^/]+$",
-                                            });
+                                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "parent",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                                        });
+                                        RequestParameters.Add("dicomWebPath", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "dicomWebPath",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^studies/[^/]+/series/[^/]+/instances/[^/]+$",
+                                        });
                                     }
 
                                 }
@@ -807,8 +782,7 @@ namespace Google.Apis.CloudHealthcare.v1
                                 public class RetrieveMetadataRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                                 {
                                     /// <summary>Constructs a new RetrieveMetadata request.</summary>
-                                    public RetrieveMetadataRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath)
-                                        : base(service)
+                                    public RetrieveMetadataRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath) : base(service)
                                     {
                                         Parent = parent;
                                         DicomWebPath = dicomWebPath;
@@ -829,13 +803,13 @@ namespace Google.Apis.CloudHealthcare.v1
                                     public virtual string DicomWebPath { get; private set; }
 
 
-                                    ///<summary>Gets the method name.</summary>
+                                    /// <summary>Gets the method name.</summary>
                                     public override string MethodName => "retrieveMetadata";
 
-                                    ///<summary>Gets the HTTP method.</summary>
+                                    /// <summary>Gets the HTTP method.</summary>
                                     public override string HttpMethod => "GET";
 
-                                    ///<summary>Gets the REST path.</summary>
+                                    /// <summary>Gets the REST path.</summary>
                                     public override string RestPath => "v1/{+parent}/dicomWeb/{+dicomWebPath}";
 
                                     /// <summary>Initializes RetrieveMetadata parameter list.</summary>
@@ -843,24 +817,22 @@ namespace Google.Apis.CloudHealthcare.v1
                                     {
                                         base.InitParameters();
 
-                                        RequestParameters.Add(
-                                            "parent", new Google.Apis.Discovery.Parameter
-                                            {
-                                                Name = "parent",
-                                                IsRequired = true,
-                                                ParameterType = "path",
-                                                DefaultValue = null,
-                                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
-                                            });
-                                        RequestParameters.Add(
-                                            "dicomWebPath", new Google.Apis.Discovery.Parameter
-                                            {
-                                                Name = "dicomWebPath",
-                                                IsRequired = true,
-                                                ParameterType = "path",
-                                                DefaultValue = null,
-                                                Pattern = @"^studies/[^/]+/series/[^/]+/instances/[^/]+/metadata$",
-                                            });
+                                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "parent",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                                        });
+                                        RequestParameters.Add("dicomWebPath", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "dicomWebPath",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^studies/[^/]+/series/[^/]+/instances/[^/]+/metadata$",
+                                        });
                                     }
 
                                 }
@@ -898,8 +870,7 @@ namespace Google.Apis.CloudHealthcare.v1
                                 public class RetrieveRenderedRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                                 {
                                     /// <summary>Constructs a new RetrieveRendered request.</summary>
-                                    public RetrieveRenderedRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath)
-                                        : base(service)
+                                    public RetrieveRenderedRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath) : base(service)
                                     {
                                         Parent = parent;
                                         DicomWebPath = dicomWebPath;
@@ -920,13 +891,13 @@ namespace Google.Apis.CloudHealthcare.v1
                                     public virtual string DicomWebPath { get; private set; }
 
 
-                                    ///<summary>Gets the method name.</summary>
+                                    /// <summary>Gets the method name.</summary>
                                     public override string MethodName => "retrieveRendered";
 
-                                    ///<summary>Gets the HTTP method.</summary>
+                                    /// <summary>Gets the HTTP method.</summary>
                                     public override string HttpMethod => "GET";
 
-                                    ///<summary>Gets the REST path.</summary>
+                                    /// <summary>Gets the REST path.</summary>
                                     public override string RestPath => "v1/{+parent}/dicomWeb/{+dicomWebPath}";
 
                                     /// <summary>Initializes RetrieveRendered parameter list.</summary>
@@ -934,24 +905,22 @@ namespace Google.Apis.CloudHealthcare.v1
                                     {
                                         base.InitParameters();
 
-                                        RequestParameters.Add(
-                                            "parent", new Google.Apis.Discovery.Parameter
-                                            {
-                                                Name = "parent",
-                                                IsRequired = true,
-                                                ParameterType = "path",
-                                                DefaultValue = null,
-                                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
-                                            });
-                                        RequestParameters.Add(
-                                            "dicomWebPath", new Google.Apis.Discovery.Parameter
-                                            {
-                                                Name = "dicomWebPath",
-                                                IsRequired = true,
-                                                ParameterType = "path",
-                                                DefaultValue = null,
-                                                Pattern = @"^studies/[^/]+/series/[^/]+/instances/[^/]+/rendered$",
-                                            });
+                                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "parent",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                                        });
+                                        RequestParameters.Add("dicomWebPath", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "dicomWebPath",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^studies/[^/]+/series/[^/]+/instances/[^/]+/rendered$",
+                                        });
                                     }
 
                                 }
@@ -986,8 +955,7 @@ namespace Google.Apis.CloudHealthcare.v1
                             public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Operation>
                             {
                                 /// <summary>Constructs a new Delete request.</summary>
-                                public DeleteRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath)
-                                    : base(service)
+                                public DeleteRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath) : base(service)
                                 {
                                     Parent = parent;
                                     DicomWebPath = dicomWebPath;
@@ -1007,13 +975,13 @@ namespace Google.Apis.CloudHealthcare.v1
                                 public virtual string DicomWebPath { get; private set; }
 
 
-                                ///<summary>Gets the method name.</summary>
+                                /// <summary>Gets the method name.</summary>
                                 public override string MethodName => "delete";
 
-                                ///<summary>Gets the HTTP method.</summary>
+                                /// <summary>Gets the HTTP method.</summary>
                                 public override string HttpMethod => "DELETE";
 
-                                ///<summary>Gets the REST path.</summary>
+                                /// <summary>Gets the REST path.</summary>
                                 public override string RestPath => "v1/{+parent}/dicomWeb/{+dicomWebPath}";
 
                                 /// <summary>Initializes Delete parameter list.</summary>
@@ -1021,24 +989,22 @@ namespace Google.Apis.CloudHealthcare.v1
                                 {
                                     base.InitParameters();
 
-                                    RequestParameters.Add(
-                                        "parent", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "parent",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
-                                        });
-                                    RequestParameters.Add(
-                                        "dicomWebPath", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "dicomWebPath",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = @"^studies/[^/]+/series/[^/]+$",
-                                        });
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                                    });
+                                    RequestParameters.Add("dicomWebPath", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "dicomWebPath",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^studies/[^/]+/series/[^/]+$",
+                                    });
                                 }
 
                             }
@@ -1074,8 +1040,7 @@ namespace Google.Apis.CloudHealthcare.v1
                             public class RetrieveMetadataRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                             {
                                 /// <summary>Constructs a new RetrieveMetadata request.</summary>
-                                public RetrieveMetadataRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath)
-                                    : base(service)
+                                public RetrieveMetadataRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath) : base(service)
                                 {
                                     Parent = parent;
                                     DicomWebPath = dicomWebPath;
@@ -1095,13 +1060,13 @@ namespace Google.Apis.CloudHealthcare.v1
                                 public virtual string DicomWebPath { get; private set; }
 
 
-                                ///<summary>Gets the method name.</summary>
+                                /// <summary>Gets the method name.</summary>
                                 public override string MethodName => "retrieveMetadata";
 
-                                ///<summary>Gets the HTTP method.</summary>
+                                /// <summary>Gets the HTTP method.</summary>
                                 public override string HttpMethod => "GET";
 
-                                ///<summary>Gets the REST path.</summary>
+                                /// <summary>Gets the REST path.</summary>
                                 public override string RestPath => "v1/{+parent}/dicomWeb/{+dicomWebPath}";
 
                                 /// <summary>Initializes RetrieveMetadata parameter list.</summary>
@@ -1109,24 +1074,22 @@ namespace Google.Apis.CloudHealthcare.v1
                                 {
                                     base.InitParameters();
 
-                                    RequestParameters.Add(
-                                        "parent", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "parent",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
-                                        });
-                                    RequestParameters.Add(
-                                        "dicomWebPath", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "dicomWebPath",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = @"^studies/[^/]+/series/[^/]+/metadata$",
-                                        });
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                                    });
+                                    RequestParameters.Add("dicomWebPath", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "dicomWebPath",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^studies/[^/]+/series/[^/]+/metadata$",
+                                    });
                                 }
 
                             }
@@ -1160,8 +1123,7 @@ namespace Google.Apis.CloudHealthcare.v1
                             public class RetrieveSeriesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                             {
                                 /// <summary>Constructs a new RetrieveSeries request.</summary>
-                                public RetrieveSeriesRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath)
-                                    : base(service)
+                                public RetrieveSeriesRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath) : base(service)
                                 {
                                     Parent = parent;
                                     DicomWebPath = dicomWebPath;
@@ -1181,13 +1143,13 @@ namespace Google.Apis.CloudHealthcare.v1
                                 public virtual string DicomWebPath { get; private set; }
 
 
-                                ///<summary>Gets the method name.</summary>
+                                /// <summary>Gets the method name.</summary>
                                 public override string MethodName => "retrieveSeries";
 
-                                ///<summary>Gets the HTTP method.</summary>
+                                /// <summary>Gets the HTTP method.</summary>
                                 public override string HttpMethod => "GET";
 
-                                ///<summary>Gets the REST path.</summary>
+                                /// <summary>Gets the REST path.</summary>
                                 public override string RestPath => "v1/{+parent}/dicomWeb/{+dicomWebPath}";
 
                                 /// <summary>Initializes RetrieveSeries parameter list.</summary>
@@ -1195,24 +1157,22 @@ namespace Google.Apis.CloudHealthcare.v1
                                 {
                                     base.InitParameters();
 
-                                    RequestParameters.Add(
-                                        "parent", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "parent",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
-                                        });
-                                    RequestParameters.Add(
-                                        "dicomWebPath", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "dicomWebPath",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = @"^studies/[^/]+/series/[^/]+$",
-                                        });
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                                    });
+                                    RequestParameters.Add("dicomWebPath", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "dicomWebPath",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^studies/[^/]+/series/[^/]+$",
+                                    });
                                 }
 
                             }
@@ -1248,8 +1208,7 @@ namespace Google.Apis.CloudHealthcare.v1
                             public class SearchForInstancesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                             {
                                 /// <summary>Constructs a new SearchForInstances request.</summary>
-                                public SearchForInstancesRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath)
-                                    : base(service)
+                                public SearchForInstancesRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath) : base(service)
                                 {
                                     Parent = parent;
                                     DicomWebPath = dicomWebPath;
@@ -1270,13 +1229,13 @@ namespace Google.Apis.CloudHealthcare.v1
                                 public virtual string DicomWebPath { get; private set; }
 
 
-                                ///<summary>Gets the method name.</summary>
+                                /// <summary>Gets the method name.</summary>
                                 public override string MethodName => "searchForInstances";
 
-                                ///<summary>Gets the HTTP method.</summary>
+                                /// <summary>Gets the HTTP method.</summary>
                                 public override string HttpMethod => "GET";
 
-                                ///<summary>Gets the REST path.</summary>
+                                /// <summary>Gets the REST path.</summary>
                                 public override string RestPath => "v1/{+parent}/dicomWeb/{+dicomWebPath}";
 
                                 /// <summary>Initializes SearchForInstances parameter list.</summary>
@@ -1284,24 +1243,22 @@ namespace Google.Apis.CloudHealthcare.v1
                                 {
                                     base.InitParameters();
 
-                                    RequestParameters.Add(
-                                        "parent", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "parent",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
-                                        });
-                                    RequestParameters.Add(
-                                        "dicomWebPath", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "dicomWebPath",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = @"^studies/[^/]+/series/[^/]+/instances$",
-                                        });
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                                    });
+                                    RequestParameters.Add("dicomWebPath", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "dicomWebPath",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^studies/[^/]+/series/[^/]+/instances$",
+                                    });
                                 }
 
                             }
@@ -1334,8 +1291,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Operation>
                         {
                             /// <summary>Constructs a new Delete request.</summary>
-                            public DeleteRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath)
-                                : base(service)
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath) : base(service)
                             {
                                 Parent = parent;
                                 DicomWebPath = dicomWebPath;
@@ -1353,13 +1309,13 @@ namespace Google.Apis.CloudHealthcare.v1
                             public virtual string DicomWebPath { get; private set; }
 
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "delete";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "DELETE";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1/{+parent}/dicomWeb/{+dicomWebPath}";
 
                             /// <summary>Initializes Delete parameter list.</summary>
@@ -1367,24 +1323,22 @@ namespace Google.Apis.CloudHealthcare.v1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "parent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "parent",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
-                                    });
-                                RequestParameters.Add(
-                                    "dicomWebPath", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "dicomWebPath",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^studies/[^/]+$",
-                                    });
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                                });
+                                RequestParameters.Add("dicomWebPath", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "dicomWebPath",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^studies/[^/]+$",
+                                });
                             }
 
                         }
@@ -1418,8 +1372,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         public class RetrieveMetadataRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new RetrieveMetadata request.</summary>
-                            public RetrieveMetadataRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath)
-                                : base(service)
+                            public RetrieveMetadataRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath) : base(service)
                             {
                                 Parent = parent;
                                 DicomWebPath = dicomWebPath;
@@ -1439,13 +1392,13 @@ namespace Google.Apis.CloudHealthcare.v1
                             public virtual string DicomWebPath { get; private set; }
 
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "retrieveMetadata";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "GET";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1/{+parent}/dicomWeb/{+dicomWebPath}";
 
                             /// <summary>Initializes RetrieveMetadata parameter list.</summary>
@@ -1453,24 +1406,22 @@ namespace Google.Apis.CloudHealthcare.v1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "parent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "parent",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
-                                    });
-                                RequestParameters.Add(
-                                    "dicomWebPath", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "dicomWebPath",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^studies/[^/]+/metadata$",
-                                    });
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                                });
+                                RequestParameters.Add("dicomWebPath", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "dicomWebPath",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^studies/[^/]+/metadata$",
+                                });
                             }
 
                         }
@@ -1504,8 +1455,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         public class RetrieveStudyRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new RetrieveStudy request.</summary>
-                            public RetrieveStudyRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath)
-                                : base(service)
+                            public RetrieveStudyRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath) : base(service)
                             {
                                 Parent = parent;
                                 DicomWebPath = dicomWebPath;
@@ -1525,13 +1475,13 @@ namespace Google.Apis.CloudHealthcare.v1
                             public virtual string DicomWebPath { get; private set; }
 
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "retrieveStudy";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "GET";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1/{+parent}/dicomWeb/{+dicomWebPath}";
 
                             /// <summary>Initializes RetrieveStudy parameter list.</summary>
@@ -1539,24 +1489,22 @@ namespace Google.Apis.CloudHealthcare.v1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "parent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "parent",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
-                                    });
-                                RequestParameters.Add(
-                                    "dicomWebPath", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "dicomWebPath",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^studies/[^/]+$",
-                                    });
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                                });
+                                RequestParameters.Add("dicomWebPath", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "dicomWebPath",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^studies/[^/]+$",
+                                });
                             }
 
                         }
@@ -1590,8 +1538,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         public class SearchForInstancesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new SearchForInstances request.</summary>
-                            public SearchForInstancesRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath)
-                                : base(service)
+                            public SearchForInstancesRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath) : base(service)
                             {
                                 Parent = parent;
                                 DicomWebPath = dicomWebPath;
@@ -1612,13 +1559,13 @@ namespace Google.Apis.CloudHealthcare.v1
                             public virtual string DicomWebPath { get; private set; }
 
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "searchForInstances";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "GET";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1/{+parent}/dicomWeb/{+dicomWebPath}";
 
                             /// <summary>Initializes SearchForInstances parameter list.</summary>
@@ -1626,24 +1573,22 @@ namespace Google.Apis.CloudHealthcare.v1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "parent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "parent",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
-                                    });
-                                RequestParameters.Add(
-                                    "dicomWebPath", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "dicomWebPath",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^studies/[^/]+/instances$",
-                                    });
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                                });
+                                RequestParameters.Add("dicomWebPath", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "dicomWebPath",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^studies/[^/]+/instances$",
+                                });
                             }
 
                         }
@@ -1677,8 +1622,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         public class SearchForSeriesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new SearchForSeries request.</summary>
-                            public SearchForSeriesRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath)
-                                : base(service)
+                            public SearchForSeriesRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath) : base(service)
                             {
                                 Parent = parent;
                                 DicomWebPath = dicomWebPath;
@@ -1698,13 +1642,13 @@ namespace Google.Apis.CloudHealthcare.v1
                             public virtual string DicomWebPath { get; private set; }
 
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "searchForSeries";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "GET";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1/{+parent}/dicomWeb/{+dicomWebPath}";
 
                             /// <summary>Initializes SearchForSeries parameter list.</summary>
@@ -1712,24 +1656,22 @@ namespace Google.Apis.CloudHealthcare.v1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "parent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "parent",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
-                                    });
-                                RequestParameters.Add(
-                                    "dicomWebPath", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "dicomWebPath",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^studies/[^/]+/series$",
-                                    });
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                                });
+                                RequestParameters.Add("dicomWebPath", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "dicomWebPath",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^studies/[^/]+/series$",
+                                });
                             }
 
                         }
@@ -1764,8 +1706,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         public class StoreInstancesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new StoreInstances request.</summary>
-                            public StoreInstancesRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.HttpBody body, string parent, string dicomWebPath)
-                                : base(service)
+                            public StoreInstancesRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.HttpBody body, string parent, string dicomWebPath) : base(service)
                             {
                                 Parent = parent;
                                 DicomWebPath = dicomWebPath;
@@ -1789,16 +1730,16 @@ namespace Google.Apis.CloudHealthcare.v1
                             /// <summary>Gets or sets the body of this request.</summary>
                             Google.Apis.CloudHealthcare.v1.Data.HttpBody Body { get; set; }
 
-                            ///<summary>Returns the body of the request.</summary>
+                            /// <summary>Returns the body of the request.</summary>
                             protected override object GetBody() => Body;
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "storeInstances";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "POST";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1/{+parent}/dicomWeb/{+dicomWebPath}";
 
                             /// <summary>Initializes StoreInstances parameter list.</summary>
@@ -1806,24 +1747,22 @@ namespace Google.Apis.CloudHealthcare.v1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "parent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "parent",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
-                                    });
-                                RequestParameters.Add(
-                                    "dicomWebPath", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "dicomWebPath",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^studies/[^/]+$",
-                                    });
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                                });
+                                RequestParameters.Add("dicomWebPath", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "dicomWebPath",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^studies/[^/]+$",
+                                });
                             }
 
                         }
@@ -1841,8 +1780,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class CreateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.DicomStore>
                     {
                         /// <summary>Constructs a new Create request.</summary>
-                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.DicomStore body, string parent)
-                            : base(service)
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.DicomStore body, string parent) : base(service)
                         {
                             Parent = parent;
                             Body = body;
@@ -1863,16 +1801,16 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudHealthcare.v1.Data.DicomStore Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "create";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+parent}/dicomStores";
 
                         /// <summary>Initializes Create parameter list.</summary>
@@ -1880,24 +1818,22 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "dicomStoreId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "dicomStoreId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
+                            });
+                            RequestParameters.Add("dicomStoreId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "dicomStoreId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -1927,8 +1863,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class DeidentifyRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Operation>
                     {
                         /// <summary>Constructs a new Deidentify request.</summary>
-                        public DeidentifyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.DeidentifyDicomStoreRequest body, string sourceStore)
-                            : base(service)
+                        public DeidentifyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.DeidentifyDicomStoreRequest body, string sourceStore) : base(service)
                         {
                             SourceStore = sourceStore;
                             Body = body;
@@ -1945,16 +1880,16 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudHealthcare.v1.Data.DeidentifyDicomStoreRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "deidentify";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+sourceStore}:deidentify";
 
                         /// <summary>Initializes Deidentify parameter list.</summary>
@@ -1962,15 +1897,14 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "sourceStore", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "sourceStore",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
-                                });
+                            RequestParameters.Add("sourceStore", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "sourceStore",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                            });
                         }
 
                     }
@@ -1988,8 +1922,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Empty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
-                        public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                            : base(service)
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                         {
                             Name = name;
                             InitParameters();
@@ -2001,13 +1934,13 @@ namespace Google.Apis.CloudHealthcare.v1
                         public virtual string Name { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "delete";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "DELETE";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}";
 
                         /// <summary>Initializes Delete parameter list.</summary>
@@ -2015,15 +1948,14 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                            });
                         }
 
                     }
@@ -2045,8 +1977,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class ExportRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Operation>
                     {
                         /// <summary>Constructs a new Export request.</summary>
-                        public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.ExportDicomDataRequest body, string name)
-                            : base(service)
+                        public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.ExportDicomDataRequest body, string name) : base(service)
                         {
                             Name = name;
                             Body = body;
@@ -2064,16 +1995,16 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudHealthcare.v1.Data.ExportDicomDataRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "export";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}:export";
 
                         /// <summary>Initializes Export parameter list.</summary>
@@ -2081,15 +2012,14 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                            });
                         }
 
                     }
@@ -2105,8 +2035,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class GetRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.DicomStore>
                     {
                         /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string name)
-                            : base(service)
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                         {
                             Name = name;
                             InitParameters();
@@ -2118,13 +2047,13 @@ namespace Google.Apis.CloudHealthcare.v1
                         public virtual string Name { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}";
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -2132,15 +2061,14 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                            });
                         }
 
                     }
@@ -2159,8 +2087,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class GetIamPolicyRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Policy>
                     {
                         /// <summary>Constructs a new GetIamPolicy request.</summary>
-                        public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource)
-                            : base(service)
+                        public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
                         {
                             Resource = resource;
                             InitParameters();
@@ -2182,13 +2109,13 @@ namespace Google.Apis.CloudHealthcare.v1
                         public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "getIamPolicy";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+resource}:getIamPolicy";
 
                         /// <summary>Initializes GetIamPolicy parameter list.</summary>
@@ -2196,24 +2123,22 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "resource", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "resource",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "options.requestedPolicyVersion",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                            });
+                            RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "options.requestedPolicyVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -2235,8 +2160,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class ImportRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Operation>
                     {
                         /// <summary>Constructs a new Import request.</summary>
-                        public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.ImportDicomDataRequest body, string name)
-                            : base(service)
+                        public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.ImportDicomDataRequest body, string name) : base(service)
                         {
                             Name = name;
                             Body = body;
@@ -2254,16 +2178,16 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudHealthcare.v1.Data.ImportDicomDataRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "import";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}:import";
 
                         /// <summary>Initializes Import parameter list.</summary>
@@ -2271,15 +2195,14 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                            });
                         }
 
                     }
@@ -2295,8 +2218,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class ListRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.ListDicomStoresResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                         {
                             Parent = parent;
                             InitParameters();
@@ -2324,13 +2246,13 @@ namespace Google.Apis.CloudHealthcare.v1
                         public virtual string PageToken { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+parent}/dicomStores";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -2338,42 +2260,38 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "filter", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filter",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -2391,8 +2309,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class PatchRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.DicomStore>
                     {
                         /// <summary>Constructs a new Patch request.</summary>
-                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.DicomStore body, string name)
-                            : base(service)
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.DicomStore body, string name) : base(service)
                         {
                             Name = name;
                             Body = body;
@@ -2415,16 +2332,16 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudHealthcare.v1.Data.DicomStore Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "patch";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "PATCH";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}";
 
                         /// <summary>Initializes Patch parameter list.</summary>
@@ -2432,24 +2349,22 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "updateMask", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "updateMask",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -2481,8 +2396,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class SearchForInstancesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                     {
                         /// <summary>Constructs a new SearchForInstances request.</summary>
-                        public SearchForInstancesRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath)
-                            : base(service)
+                        public SearchForInstancesRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath) : base(service)
                         {
                             Parent = parent;
                             DicomWebPath = dicomWebPath;
@@ -2501,13 +2415,13 @@ namespace Google.Apis.CloudHealthcare.v1
                         public virtual string DicomWebPath { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "searchForInstances";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+parent}/dicomWeb/{+dicomWebPath}";
 
                         /// <summary>Initializes SearchForInstances parameter list.</summary>
@@ -2515,24 +2429,22 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "dicomWebPath", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "dicomWebPath",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^instances$",
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                            });
+                            RequestParameters.Add("dicomWebPath", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "dicomWebPath",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^instances$",
+                            });
                         }
 
                     }
@@ -2564,8 +2476,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class SearchForSeriesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                     {
                         /// <summary>Constructs a new SearchForSeries request.</summary>
-                        public SearchForSeriesRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath)
-                            : base(service)
+                        public SearchForSeriesRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath) : base(service)
                         {
                             Parent = parent;
                             DicomWebPath = dicomWebPath;
@@ -2584,13 +2495,13 @@ namespace Google.Apis.CloudHealthcare.v1
                         public virtual string DicomWebPath { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "searchForSeries";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+parent}/dicomWeb/{+dicomWebPath}";
 
                         /// <summary>Initializes SearchForSeries parameter list.</summary>
@@ -2598,24 +2509,22 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "dicomWebPath", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "dicomWebPath",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^series$",
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                            });
+                            RequestParameters.Add("dicomWebPath", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "dicomWebPath",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^series$",
+                            });
                         }
 
                     }
@@ -2646,8 +2555,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class SearchForStudiesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                     {
                         /// <summary>Constructs a new SearchForStudies request.</summary>
-                        public SearchForStudiesRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath)
-                            : base(service)
+                        public SearchForStudiesRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath) : base(service)
                         {
                             Parent = parent;
                             DicomWebPath = dicomWebPath;
@@ -2666,13 +2574,13 @@ namespace Google.Apis.CloudHealthcare.v1
                         public virtual string DicomWebPath { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "searchForStudies";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+parent}/dicomWeb/{+dicomWebPath}";
 
                         /// <summary>Initializes SearchForStudies parameter list.</summary>
@@ -2680,24 +2588,22 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "dicomWebPath", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "dicomWebPath",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^studies$",
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                            });
+                            RequestParameters.Add("dicomWebPath", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "dicomWebPath",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^studies$",
+                            });
                         }
 
                     }
@@ -2717,8 +2623,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class SetIamPolicyRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Policy>
                     {
                         /// <summary>Constructs a new SetIamPolicy request.</summary>
-                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.SetIamPolicyRequest body, string resource)
-                            : base(service)
+                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
                         {
                             Resource = resource;
                             Body = body;
@@ -2735,16 +2640,16 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudHealthcare.v1.Data.SetIamPolicyRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "setIamPolicy";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+resource}:setIamPolicy";
 
                         /// <summary>Initializes SetIamPolicy parameter list.</summary>
@@ -2752,15 +2657,14 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "resource", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "resource",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
-                                });
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                            });
                         }
 
                     }
@@ -2795,8 +2699,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class StoreInstancesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                     {
                         /// <summary>Constructs a new StoreInstances request.</summary>
-                        public StoreInstancesRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.HttpBody body, string parent, string dicomWebPath)
-                            : base(service)
+                        public StoreInstancesRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.HttpBody body, string parent, string dicomWebPath) : base(service)
                         {
                             Parent = parent;
                             DicomWebPath = dicomWebPath;
@@ -2819,16 +2722,16 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudHealthcare.v1.Data.HttpBody Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "storeInstances";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+parent}/dicomWeb/{+dicomWebPath}";
 
                         /// <summary>Initializes StoreInstances parameter list.</summary>
@@ -2836,24 +2739,22 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "dicomWebPath", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "dicomWebPath",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^studies$",
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                            });
+                            RequestParameters.Add("dicomWebPath", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "dicomWebPath",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^studies$",
+                            });
                         }
 
                     }
@@ -2877,8 +2778,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class TestIamPermissionsRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.TestIamPermissionsResponse>
                     {
                         /// <summary>Constructs a new TestIamPermissions request.</summary>
-                        public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.TestIamPermissionsRequest body, string resource)
-                            : base(service)
+                        public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
                         {
                             Resource = resource;
                             Body = body;
@@ -2895,16 +2795,16 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudHealthcare.v1.Data.TestIamPermissionsRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "testIamPermissions";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+resource}:testIamPermissions";
 
                         /// <summary>Initializes TestIamPermissions parameter list.</summary>
@@ -2912,15 +2812,14 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "resource", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "resource",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
-                                });
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                            });
                         }
 
                     }
@@ -3010,8 +2909,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         public class PatientEverythingRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new PatientEverything request.</summary>
-                            public PatientEverythingRequest(Google.Apis.Services.IClientService service, string name)
-                                : base(service)
+                            public PatientEverythingRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                             {
                                 Name = name;
                                 InitParameters();
@@ -3057,13 +2955,13 @@ namespace Google.Apis.CloudHealthcare.v1
                             public virtual string Start { get; set; }
 
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "Patient-everything";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "GET";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1/{+name}/$everything";
 
                             /// <summary>Initializes PatientEverything parameter list.</summary>
@@ -3071,69 +2969,62 @@ namespace Google.Apis.CloudHealthcare.v1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "name", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "name",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/Patient/[^/]+$",
-                                    });
-                                RequestParameters.Add(
-                                    "_count", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "_count",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "_page_token", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "_page_token",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "_since", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "_since",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "_type", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "_type",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "end", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "end",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "start", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "start",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/Patient/[^/]+$",
+                                });
+                                RequestParameters.Add("_count", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "_count",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("_page_token", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "_page_token",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("_since", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "_since",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("_type", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "_type",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("end", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "end",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("start", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "start",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
                             }
 
                         }
@@ -3159,8 +3050,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         public class ResourcePurgeRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Empty>
                         {
                             /// <summary>Constructs a new ResourcePurge request.</summary>
-                            public ResourcePurgeRequest(Google.Apis.Services.IClientService service, string name)
-                                : base(service)
+                            public ResourcePurgeRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                             {
                                 Name = name;
                                 InitParameters();
@@ -3172,13 +3062,13 @@ namespace Google.Apis.CloudHealthcare.v1
                             public virtual string Name { get; private set; }
 
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "Resource-purge";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "DELETE";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1/{+name}/$purge";
 
                             /// <summary>Initializes ResourcePurge parameter list.</summary>
@@ -3186,15 +3076,14 @@ namespace Google.Apis.CloudHealthcare.v1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "name", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "name",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/[^/]+/[^/]+$",
-                                    });
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/[^/]+/[^/]+$",
+                                });
                             }
 
                         }
@@ -3232,8 +3121,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         public class CapabilitiesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new Capabilities request.</summary>
-                            public CapabilitiesRequest(Google.Apis.Services.IClientService service, string name)
-                                : base(service)
+                            public CapabilitiesRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                             {
                                 Name = name;
                                 InitParameters();
@@ -3245,13 +3133,13 @@ namespace Google.Apis.CloudHealthcare.v1
                             public virtual string Name { get; private set; }
 
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "capabilities";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "GET";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1/{+name}/fhir/metadata";
 
                             /// <summary>Initializes Capabilities parameter list.</summary>
@@ -3259,15 +3147,14 @@ namespace Google.Apis.CloudHealthcare.v1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "name", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "name",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
-                                    });
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                                });
                             }
 
                         }
@@ -3314,8 +3201,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         public class CreateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new Create request.</summary>
-                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.HttpBody body, string parent, string type)
-                                : base(service)
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.HttpBody body, string parent, string type) : base(service)
                             {
                                 Parent = parent;
                                 Type = type;
@@ -3341,16 +3227,16 @@ namespace Google.Apis.CloudHealthcare.v1
                             /// <summary>Gets or sets the body of this request.</summary>
                             Google.Apis.CloudHealthcare.v1.Data.HttpBody Body { get; set; }
 
-                            ///<summary>Returns the body of the request.</summary>
+                            /// <summary>Returns the body of the request.</summary>
                             protected override object GetBody() => Body;
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "create";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "POST";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1/{+parent}/fhir/{+type}";
 
                             /// <summary>Initializes Create parameter list.</summary>
@@ -3358,24 +3244,22 @@ namespace Google.Apis.CloudHealthcare.v1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "parent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "parent",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
-                                    });
-                                RequestParameters.Add(
-                                    "type", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "type",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^[^/]+$",
-                                    });
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                                });
+                                RequestParameters.Add("type", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "type",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^[^/]+$",
+                                });
                             }
 
                         }
@@ -3407,8 +3291,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new Delete request.</summary>
-                            public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                                : base(service)
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                             {
                                 Name = name;
                                 InitParameters();
@@ -3420,13 +3303,13 @@ namespace Google.Apis.CloudHealthcare.v1
                             public virtual string Name { get; private set; }
 
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "delete";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "DELETE";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1/{+name}";
 
                             /// <summary>Initializes Delete parameter list.</summary>
@@ -3434,15 +3317,14 @@ namespace Google.Apis.CloudHealthcare.v1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "name", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "name",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/[^/]+/[^/]+$",
-                                    });
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/[^/]+/[^/]+$",
+                                });
                             }
 
                         }
@@ -3505,8 +3387,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         public class ExecuteBundleRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new ExecuteBundle request.</summary>
-                            public ExecuteBundleRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.HttpBody body, string parent)
-                                : base(service)
+                            public ExecuteBundleRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.HttpBody body, string parent) : base(service)
                             {
                                 Parent = parent;
                                 Body = body;
@@ -3522,16 +3403,16 @@ namespace Google.Apis.CloudHealthcare.v1
                             /// <summary>Gets or sets the body of this request.</summary>
                             Google.Apis.CloudHealthcare.v1.Data.HttpBody Body { get; set; }
 
-                            ///<summary>Returns the body of the request.</summary>
+                            /// <summary>Returns the body of the request.</summary>
                             protected override object GetBody() => Body;
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "executeBundle";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "POST";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1/{+parent}/fhir";
 
                             /// <summary>Initializes ExecuteBundle parameter list.</summary>
@@ -3539,15 +3420,14 @@ namespace Google.Apis.CloudHealthcare.v1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "parent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "parent",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
-                                    });
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                                });
                             }
 
                         }
@@ -3585,8 +3465,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         public class HistoryRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new History request.</summary>
-                            public HistoryRequest(Google.Apis.Services.IClientService service, string name)
-                                : base(service)
+                            public HistoryRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                             {
                                 Name = name;
                                 InitParameters();
@@ -3625,13 +3504,13 @@ namespace Google.Apis.CloudHealthcare.v1
                             public virtual string Since { get; set; }
 
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "history";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "GET";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1/{+name}/_history";
 
                             /// <summary>Initializes History parameter list.</summary>
@@ -3639,51 +3518,46 @@ namespace Google.Apis.CloudHealthcare.v1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "name", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "name",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/[^/]+/[^/]+$",
-                                    });
-                                RequestParameters.Add(
-                                    "_at", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "_at",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "_count", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "_count",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "_page_token", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "_page_token",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "_since", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "_since",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/[^/]+/[^/]+$",
+                                });
+                                RequestParameters.Add("_at", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "_at",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("_count", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "_count",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("_page_token", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "_page_token",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("_since", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "_since",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
                             }
 
                         }
@@ -3724,8 +3598,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         public class PatchRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new Patch request.</summary>
-                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.HttpBody body, string name)
-                                : base(service)
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.HttpBody body, string name) : base(service)
                             {
                                 Name = name;
                                 Body = body;
@@ -3741,16 +3614,16 @@ namespace Google.Apis.CloudHealthcare.v1
                             /// <summary>Gets or sets the body of this request.</summary>
                             Google.Apis.CloudHealthcare.v1.Data.HttpBody Body { get; set; }
 
-                            ///<summary>Returns the body of the request.</summary>
+                            /// <summary>Returns the body of the request.</summary>
                             protected override object GetBody() => Body;
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "patch";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "PATCH";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1/{+name}";
 
                             /// <summary>Initializes Patch parameter list.</summary>
@@ -3758,15 +3631,14 @@ namespace Google.Apis.CloudHealthcare.v1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "name", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "name",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/[^/]+/[^/]+$",
-                                    });
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/[^/]+/[^/]+$",
+                                });
                             }
 
                         }
@@ -3810,8 +3682,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         public class ReadRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new Read request.</summary>
-                            public ReadRequest(Google.Apis.Services.IClientService service, string name)
-                                : base(service)
+                            public ReadRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                             {
                                 Name = name;
                                 InitParameters();
@@ -3823,13 +3694,13 @@ namespace Google.Apis.CloudHealthcare.v1
                             public virtual string Name { get; private set; }
 
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "read";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "GET";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1/{+name}";
 
                             /// <summary>Initializes Read parameter list.</summary>
@@ -3837,15 +3708,14 @@ namespace Google.Apis.CloudHealthcare.v1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "name", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "name",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/[^/]+/[^/]+$",
-                                    });
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/[^/]+/[^/]+$",
+                                });
                             }
 
                         }
@@ -3934,8 +3804,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         public class SearchRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new Search request.</summary>
-                            public SearchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.SearchResourcesRequest body, string parent)
-                                : base(service)
+                            public SearchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.SearchResourcesRequest body, string parent) : base(service)
                             {
                                 Parent = parent;
                                 Body = body;
@@ -3951,16 +3820,16 @@ namespace Google.Apis.CloudHealthcare.v1
                             /// <summary>Gets or sets the body of this request.</summary>
                             Google.Apis.CloudHealthcare.v1.Data.SearchResourcesRequest Body { get; set; }
 
-                            ///<summary>Returns the body of the request.</summary>
+                            /// <summary>Returns the body of the request.</summary>
                             protected override object GetBody() => Body;
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "search";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "POST";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1/{+parent}/fhir/_search";
 
                             /// <summary>Initializes Search parameter list.</summary>
@@ -3968,15 +3837,14 @@ namespace Google.Apis.CloudHealthcare.v1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "parent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "parent",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
-                                    });
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                                });
                             }
 
                         }
@@ -4019,8 +3887,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         public class UpdateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new Update request.</summary>
-                            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.HttpBody body, string name)
-                                : base(service)
+                            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.HttpBody body, string name) : base(service)
                             {
                                 Name = name;
                                 Body = body;
@@ -4036,16 +3903,16 @@ namespace Google.Apis.CloudHealthcare.v1
                             /// <summary>Gets or sets the body of this request.</summary>
                             Google.Apis.CloudHealthcare.v1.Data.HttpBody Body { get; set; }
 
-                            ///<summary>Returns the body of the request.</summary>
+                            /// <summary>Returns the body of the request.</summary>
                             protected override object GetBody() => Body;
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "update";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "PUT";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1/{+name}";
 
                             /// <summary>Initializes Update parameter list.</summary>
@@ -4053,15 +3920,14 @@ namespace Google.Apis.CloudHealthcare.v1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "name", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "name",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/[^/]+/[^/]+$",
-                                    });
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/[^/]+/[^/]+$",
+                                });
                             }
 
                         }
@@ -4097,8 +3963,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         public class VreadRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                         {
                             /// <summary>Constructs a new Vread request.</summary>
-                            public VreadRequest(Google.Apis.Services.IClientService service, string name)
-                                : base(service)
+                            public VreadRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                             {
                                 Name = name;
                                 InitParameters();
@@ -4110,13 +3975,13 @@ namespace Google.Apis.CloudHealthcare.v1
                             public virtual string Name { get; private set; }
 
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "vread";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "GET";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1/{+name}";
 
                             /// <summary>Initializes Vread parameter list.</summary>
@@ -4124,15 +3989,14 @@ namespace Google.Apis.CloudHealthcare.v1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "name", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "name",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/[^/]+/[^/]+/_history/[^/]+$",
-                                    });
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/[^/]+/[^/]+/_history/[^/]+$",
+                                });
                             }
 
                         }
@@ -4150,8 +4014,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class CreateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.FhirStore>
                     {
                         /// <summary>Constructs a new Create request.</summary>
-                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.FhirStore body, string parent)
-                            : base(service)
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.FhirStore body, string parent) : base(service)
                         {
                             Parent = parent;
                             Body = body;
@@ -4172,16 +4035,16 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudHealthcare.v1.Data.FhirStore Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "create";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+parent}/fhirStores";
 
                         /// <summary>Initializes Create parameter list.</summary>
@@ -4189,24 +4052,22 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "fhirStoreId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "fhirStoreId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
+                            });
+                            RequestParameters.Add("fhirStoreId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "fhirStoreId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -4230,8 +4091,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class DeidentifyRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Operation>
                     {
                         /// <summary>Constructs a new Deidentify request.</summary>
-                        public DeidentifyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.DeidentifyFhirStoreRequest body, string sourceStore)
-                            : base(service)
+                        public DeidentifyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.DeidentifyFhirStoreRequest body, string sourceStore) : base(service)
                         {
                             SourceStore = sourceStore;
                             Body = body;
@@ -4248,16 +4108,16 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudHealthcare.v1.Data.DeidentifyFhirStoreRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "deidentify";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+sourceStore}:deidentify";
 
                         /// <summary>Initializes Deidentify parameter list.</summary>
@@ -4265,15 +4125,14 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "sourceStore", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "sourceStore",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
-                                });
+                            RequestParameters.Add("sourceStore", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "sourceStore",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                            });
                         }
 
                     }
@@ -4289,8 +4148,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Empty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
-                        public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                            : base(service)
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                         {
                             Name = name;
                             InitParameters();
@@ -4302,13 +4160,13 @@ namespace Google.Apis.CloudHealthcare.v1
                         public virtual string Name { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "delete";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "DELETE";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}";
 
                         /// <summary>Initializes Delete parameter list.</summary>
@@ -4316,15 +4174,14 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                            });
                         }
 
                     }
@@ -4352,8 +4209,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class ExportRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Operation>
                     {
                         /// <summary>Constructs a new Export request.</summary>
-                        public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.ExportResourcesRequest body, string name)
-                            : base(service)
+                        public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.ExportResourcesRequest body, string name) : base(service)
                         {
                             Name = name;
                             Body = body;
@@ -4371,16 +4227,16 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudHealthcare.v1.Data.ExportResourcesRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "export";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}:export";
 
                         /// <summary>Initializes Export parameter list.</summary>
@@ -4388,15 +4244,14 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                            });
                         }
 
                     }
@@ -4412,8 +4267,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class GetRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.FhirStore>
                     {
                         /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string name)
-                            : base(service)
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                         {
                             Name = name;
                             InitParameters();
@@ -4425,13 +4279,13 @@ namespace Google.Apis.CloudHealthcare.v1
                         public virtual string Name { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}";
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -4439,15 +4293,14 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                            });
                         }
 
                     }
@@ -4466,8 +4319,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class GetIamPolicyRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Policy>
                     {
                         /// <summary>Constructs a new GetIamPolicy request.</summary>
-                        public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource)
-                            : base(service)
+                        public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
                         {
                             Resource = resource;
                             InitParameters();
@@ -4489,13 +4341,13 @@ namespace Google.Apis.CloudHealthcare.v1
                         public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "getIamPolicy";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+resource}:getIamPolicy";
 
                         /// <summary>Initializes GetIamPolicy parameter list.</summary>
@@ -4503,24 +4355,22 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "resource", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "resource",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "options.requestedPolicyVersion",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                            });
+                            RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "options.requestedPolicyVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -4614,8 +4464,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class ImportRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Operation>
                     {
                         /// <summary>Constructs a new Import request.</summary>
-                        public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.ImportResourcesRequest body, string name)
-                            : base(service)
+                        public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.ImportResourcesRequest body, string name) : base(service)
                         {
                             Name = name;
                             Body = body;
@@ -4633,16 +4482,16 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudHealthcare.v1.Data.ImportResourcesRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "import";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}:import";
 
                         /// <summary>Initializes Import parameter list.</summary>
@@ -4650,15 +4499,14 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                            });
                         }
 
                     }
@@ -4674,8 +4522,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class ListRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.ListFhirStoresResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                         {
                             Parent = parent;
                             InitParameters();
@@ -4703,13 +4550,13 @@ namespace Google.Apis.CloudHealthcare.v1
                         public virtual string PageToken { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+parent}/fhirStores";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -4717,42 +4564,38 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "filter", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filter",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -4770,8 +4613,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class PatchRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.FhirStore>
                     {
                         /// <summary>Constructs a new Patch request.</summary>
-                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.FhirStore body, string name)
-                            : base(service)
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.FhirStore body, string name) : base(service)
                         {
                             Name = name;
                             Body = body;
@@ -4794,16 +4636,16 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudHealthcare.v1.Data.FhirStore Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "patch";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "PATCH";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}";
 
                         /// <summary>Initializes Patch parameter list.</summary>
@@ -4811,24 +4653,22 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "updateMask", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "updateMask",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -4848,8 +4688,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class SetIamPolicyRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Policy>
                     {
                         /// <summary>Constructs a new SetIamPolicy request.</summary>
-                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.SetIamPolicyRequest body, string resource)
-                            : base(service)
+                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
                         {
                             Resource = resource;
                             Body = body;
@@ -4866,16 +4705,16 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudHealthcare.v1.Data.SetIamPolicyRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "setIamPolicy";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+resource}:setIamPolicy";
 
                         /// <summary>Initializes SetIamPolicy parameter list.</summary>
@@ -4883,15 +4722,14 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "resource", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "resource",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
-                                });
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                            });
                         }
 
                     }
@@ -4915,8 +4753,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class TestIamPermissionsRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.TestIamPermissionsResponse>
                     {
                         /// <summary>Constructs a new TestIamPermissions request.</summary>
-                        public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.TestIamPermissionsRequest body, string resource)
-                            : base(service)
+                        public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
                         {
                             Resource = resource;
                             Body = body;
@@ -4933,16 +4770,16 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudHealthcare.v1.Data.TestIamPermissionsRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "testIamPermissions";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+resource}:testIamPermissions";
 
                         /// <summary>Initializes TestIamPermissions parameter list.</summary>
@@ -4950,15 +4787,14 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "resource", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "resource",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
-                                });
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                            });
                         }
 
                     }
@@ -5021,8 +4857,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         public class CreateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Message>
                         {
                             /// <summary>Constructs a new Create request.</summary>
-                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.CreateMessageRequest body, string parent)
-                                : base(service)
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.CreateMessageRequest body, string parent) : base(service)
                             {
                                 Parent = parent;
                                 Body = body;
@@ -5038,16 +4873,16 @@ namespace Google.Apis.CloudHealthcare.v1
                             /// <summary>Gets or sets the body of this request.</summary>
                             Google.Apis.CloudHealthcare.v1.Data.CreateMessageRequest Body { get; set; }
 
-                            ///<summary>Returns the body of the request.</summary>
+                            /// <summary>Returns the body of the request.</summary>
                             protected override object GetBody() => Body;
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "create";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "POST";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1/{+parent}/messages";
 
                             /// <summary>Initializes Create parameter list.</summary>
@@ -5055,15 +4890,14 @@ namespace Google.Apis.CloudHealthcare.v1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "parent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "parent",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$",
-                                    });
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$",
+                                });
                             }
 
                         }
@@ -5079,8 +4913,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Empty>
                         {
                             /// <summary>Constructs a new Delete request.</summary>
-                            public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                                : base(service)
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                             {
                                 Name = name;
                                 InitParameters();
@@ -5092,13 +4925,13 @@ namespace Google.Apis.CloudHealthcare.v1
                             public virtual string Name { get; private set; }
 
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "delete";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "DELETE";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1/{+name}";
 
                             /// <summary>Initializes Delete parameter list.</summary>
@@ -5106,15 +4939,14 @@ namespace Google.Apis.CloudHealthcare.v1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "name", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "name",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+/messages/[^/]+$",
-                                    });
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+/messages/[^/]+$",
+                                });
                             }
 
                         }
@@ -5130,8 +4962,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         public class GetRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Message>
                         {
                             /// <summary>Constructs a new Get request.</summary>
-                            public GetRequest(Google.Apis.Services.IClientService service, string name)
-                                : base(service)
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                             {
                                 Name = name;
                                 InitParameters();
@@ -5171,13 +5002,13 @@ namespace Google.Apis.CloudHealthcare.v1
                             }
 
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "get";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "GET";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1/{+name}";
 
                             /// <summary>Initializes Get parameter list.</summary>
@@ -5185,24 +5016,22 @@ namespace Google.Apis.CloudHealthcare.v1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "name", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "name",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+/messages/[^/]+$",
-                                    });
-                                RequestParameters.Add(
-                                    "view", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "view",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+/messages/[^/]+$",
+                                });
+                                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "view",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
                             }
 
                         }
@@ -5233,8 +5062,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         public class IngestRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.IngestMessageResponse>
                         {
                             /// <summary>Constructs a new Ingest request.</summary>
-                            public IngestRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.IngestMessageRequest body, string parent)
-                                : base(service)
+                            public IngestRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.IngestMessageRequest body, string parent) : base(service)
                             {
                                 Parent = parent;
                                 Body = body;
@@ -5250,16 +5078,16 @@ namespace Google.Apis.CloudHealthcare.v1
                             /// <summary>Gets or sets the body of this request.</summary>
                             Google.Apis.CloudHealthcare.v1.Data.IngestMessageRequest Body { get; set; }
 
-                            ///<summary>Returns the body of the request.</summary>
+                            /// <summary>Returns the body of the request.</summary>
                             protected override object GetBody() => Body;
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "ingest";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "POST";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1/{+parent}/messages:ingest";
 
                             /// <summary>Initializes Ingest parameter list.</summary>
@@ -5267,15 +5095,14 @@ namespace Google.Apis.CloudHealthcare.v1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "parent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "parent",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$",
-                                    });
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$",
+                                });
                             }
 
                         }
@@ -5295,8 +5122,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         public class ListRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.ListMessagesResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
-                            public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                                : base(service)
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                             {
                                 Parent = parent;
                                 InitParameters();
@@ -5374,13 +5200,13 @@ namespace Google.Apis.CloudHealthcare.v1
                             }
 
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "list";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "GET";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1/{+parent}/messages";
 
                             /// <summary>Initializes List parameter list.</summary>
@@ -5388,60 +5214,54 @@ namespace Google.Apis.CloudHealthcare.v1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "parent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "parent",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$",
-                                    });
-                                RequestParameters.Add(
-                                    "filter", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "filter",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "orderBy", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "orderBy",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "pageSize", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageSize",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "pageToken", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageToken",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "view", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "view",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "orderBy",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "view",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
                             }
 
                         }
@@ -5466,8 +5286,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         public class PatchRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Message>
                         {
                             /// <summary>Constructs a new Patch request.</summary>
-                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.Message body, string name)
-                                : base(service)
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.Message body, string name) : base(service)
                             {
                                 Name = name;
                                 Body = body;
@@ -5491,16 +5310,16 @@ namespace Google.Apis.CloudHealthcare.v1
                             /// <summary>Gets or sets the body of this request.</summary>
                             Google.Apis.CloudHealthcare.v1.Data.Message Body { get; set; }
 
-                            ///<summary>Returns the body of the request.</summary>
+                            /// <summary>Returns the body of the request.</summary>
                             protected override object GetBody() => Body;
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "patch";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "PATCH";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v1/{+name}";
 
                             /// <summary>Initializes Patch parameter list.</summary>
@@ -5508,24 +5327,22 @@ namespace Google.Apis.CloudHealthcare.v1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "name", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "name",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+/messages/[^/]+$",
-                                    });
-                                RequestParameters.Add(
-                                    "updateMask", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "updateMask",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+/messages/[^/]+$",
+                                });
+                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
                             }
 
                         }
@@ -5543,8 +5360,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class CreateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Hl7V2Store>
                     {
                         /// <summary>Constructs a new Create request.</summary>
-                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.Hl7V2Store body, string parent)
-                            : base(service)
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.Hl7V2Store body, string parent) : base(service)
                         {
                             Parent = parent;
                             Body = body;
@@ -5565,16 +5381,16 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudHealthcare.v1.Data.Hl7V2Store Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "create";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+parent}/hl7V2Stores";
 
                         /// <summary>Initializes Create parameter list.</summary>
@@ -5582,24 +5398,22 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "hl7V2StoreId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "hl7V2StoreId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
+                            });
+                            RequestParameters.Add("hl7V2StoreId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "hl7V2StoreId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -5615,8 +5429,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Empty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
-                        public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                            : base(service)
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                         {
                             Name = name;
                             InitParameters();
@@ -5628,13 +5441,13 @@ namespace Google.Apis.CloudHealthcare.v1
                         public virtual string Name { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "delete";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "DELETE";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}";
 
                         /// <summary>Initializes Delete parameter list.</summary>
@@ -5642,15 +5455,14 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$",
+                            });
                         }
 
                     }
@@ -5666,8 +5478,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class GetRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Hl7V2Store>
                     {
                         /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string name)
-                            : base(service)
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                         {
                             Name = name;
                             InitParameters();
@@ -5679,13 +5490,13 @@ namespace Google.Apis.CloudHealthcare.v1
                         public virtual string Name { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}";
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -5693,15 +5504,14 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$",
+                            });
                         }
 
                     }
@@ -5720,8 +5530,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class GetIamPolicyRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Policy>
                     {
                         /// <summary>Constructs a new GetIamPolicy request.</summary>
-                        public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource)
-                            : base(service)
+                        public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
                         {
                             Resource = resource;
                             InitParameters();
@@ -5743,13 +5552,13 @@ namespace Google.Apis.CloudHealthcare.v1
                         public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "getIamPolicy";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+resource}:getIamPolicy";
 
                         /// <summary>Initializes GetIamPolicy parameter list.</summary>
@@ -5757,24 +5566,22 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "resource", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "resource",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "options.requestedPolicyVersion",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$",
+                            });
+                            RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "options.requestedPolicyVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -5790,8 +5597,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class ListRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.ListHl7V2StoresResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                         {
                             Parent = parent;
                             InitParameters();
@@ -5819,13 +5625,13 @@ namespace Google.Apis.CloudHealthcare.v1
                         public virtual string PageToken { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+parent}/hl7V2Stores";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -5833,42 +5639,38 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "filter", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filter",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -5886,8 +5688,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class PatchRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Hl7V2Store>
                     {
                         /// <summary>Constructs a new Patch request.</summary>
-                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.Hl7V2Store body, string name)
-                            : base(service)
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.Hl7V2Store body, string name) : base(service)
                         {
                             Name = name;
                             Body = body;
@@ -5910,16 +5711,16 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudHealthcare.v1.Data.Hl7V2Store Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "patch";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "PATCH";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}";
 
                         /// <summary>Initializes Patch parameter list.</summary>
@@ -5927,24 +5728,22 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "updateMask", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "updateMask",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -5964,8 +5763,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class SetIamPolicyRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Policy>
                     {
                         /// <summary>Constructs a new SetIamPolicy request.</summary>
-                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.SetIamPolicyRequest body, string resource)
-                            : base(service)
+                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
                         {
                             Resource = resource;
                             Body = body;
@@ -5982,16 +5780,16 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudHealthcare.v1.Data.SetIamPolicyRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "setIamPolicy";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+resource}:setIamPolicy";
 
                         /// <summary>Initializes SetIamPolicy parameter list.</summary>
@@ -5999,15 +5797,14 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "resource", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "resource",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$",
-                                });
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$",
+                            });
                         }
 
                     }
@@ -6031,8 +5828,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class TestIamPermissionsRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.TestIamPermissionsResponse>
                     {
                         /// <summary>Constructs a new TestIamPermissions request.</summary>
-                        public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.TestIamPermissionsRequest body, string resource)
-                            : base(service)
+                        public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
                         {
                             Resource = resource;
                             Body = body;
@@ -6049,16 +5845,16 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudHealthcare.v1.Data.TestIamPermissionsRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "testIamPermissions";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+resource}:testIamPermissions";
 
                         /// <summary>Initializes TestIamPermissions parameter list.</summary>
@@ -6066,15 +5862,14 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "resource", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "resource",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$",
-                                });
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$",
+                            });
                         }
 
                     }
@@ -6122,8 +5917,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class CancelRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Empty>
                     {
                         /// <summary>Constructs a new Cancel request.</summary>
-                        public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.CancelOperationRequest body, string name)
-                            : base(service)
+                        public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.CancelOperationRequest body, string name) : base(service)
                         {
                             Name = name;
                             Body = body;
@@ -6139,16 +5933,16 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudHealthcare.v1.Data.CancelOperationRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "cancel";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}:cancel";
 
                         /// <summary>Initializes Cancel parameter list.</summary>
@@ -6156,15 +5950,14 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/operations/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/operations/[^/]+$",
+                            });
                         }
 
                     }
@@ -6182,8 +5975,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class GetRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Operation>
                     {
                         /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string name)
-                            : base(service)
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                         {
                             Name = name;
                             InitParameters();
@@ -6195,13 +5987,13 @@ namespace Google.Apis.CloudHealthcare.v1
                         public virtual string Name { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}";
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -6209,15 +6001,14 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/operations/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/operations/[^/]+$",
+                            });
                         }
 
                     }
@@ -6245,8 +6036,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     public class ListRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.ListOperationsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string name)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                         {
                             Name = name;
                             InitParameters();
@@ -6270,13 +6060,13 @@ namespace Google.Apis.CloudHealthcare.v1
                         public virtual string PageToken { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}/operations";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -6284,42 +6074,38 @@ namespace Google.Apis.CloudHealthcare.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "filter", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filter",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -6344,8 +6130,7 @@ namespace Google.Apis.CloudHealthcare.v1
                 public class CreateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.Dataset body, string parent)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.Dataset body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -6367,16 +6152,16 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudHealthcare.v1.Data.Dataset Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/datasets";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -6384,24 +6169,22 @@ namespace Google.Apis.CloudHealthcare.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "datasetId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "datasetId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("datasetId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "datasetId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -6431,8 +6214,7 @@ namespace Google.Apis.CloudHealthcare.v1
                 public class DeidentifyRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Deidentify request.</summary>
-                    public DeidentifyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.DeidentifyDatasetRequest body, string sourceDataset)
-                        : base(service)
+                    public DeidentifyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.DeidentifyDatasetRequest body, string sourceDataset) : base(service)
                     {
                         SourceDataset = sourceDataset;
                         Body = body;
@@ -6449,16 +6231,16 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudHealthcare.v1.Data.DeidentifyDatasetRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "deidentify";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+sourceDataset}:deidentify";
 
                     /// <summary>Initializes Deidentify parameter list.</summary>
@@ -6466,15 +6248,14 @@ namespace Google.Apis.CloudHealthcare.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "sourceDataset", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "sourceDataset",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
-                            });
+                        RequestParameters.Add("sourceDataset", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "sourceDataset",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
+                        });
                     }
 
                 }
@@ -6493,8 +6274,7 @@ namespace Google.Apis.CloudHealthcare.v1
                 public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -6507,13 +6287,13 @@ namespace Google.Apis.CloudHealthcare.v1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -6521,15 +6301,14 @@ namespace Google.Apis.CloudHealthcare.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
+                        });
                     }
 
                 }
@@ -6546,8 +6325,7 @@ namespace Google.Apis.CloudHealthcare.v1
                 public class GetRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Dataset>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -6560,13 +6338,13 @@ namespace Google.Apis.CloudHealthcare.v1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -6574,15 +6352,14 @@ namespace Google.Apis.CloudHealthcare.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
+                        });
                     }
 
                 }
@@ -6601,8 +6378,7 @@ namespace Google.Apis.CloudHealthcare.v1
                 public class GetIamPolicyRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new GetIamPolicy request.</summary>
-                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource)
-                        : base(service)
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
                     {
                         Resource = resource;
                         InitParameters();
@@ -6624,13 +6400,13 @@ namespace Google.Apis.CloudHealthcare.v1
                     public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "getIamPolicy";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+resource}:getIamPolicy";
 
                     /// <summary>Initializes GetIamPolicy parameter list.</summary>
@@ -6638,24 +6414,22 @@ namespace Google.Apis.CloudHealthcare.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "options.requestedPolicyVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
+                        });
+                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -6672,8 +6446,7 @@ namespace Google.Apis.CloudHealthcare.v1
                 public class ListRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.ListDatasetsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -6695,13 +6468,13 @@ namespace Google.Apis.CloudHealthcare.v1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/datasets";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -6709,33 +6482,30 @@ namespace Google.Apis.CloudHealthcare.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -6753,8 +6523,7 @@ namespace Google.Apis.CloudHealthcare.v1
                 public class PatchRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Dataset>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.Dataset body, string name)
-                        : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.Dataset body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -6777,16 +6546,16 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudHealthcare.v1.Data.Dataset Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "patch";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PATCH";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Patch parameter list.</summary>
@@ -6794,24 +6563,22 @@ namespace Google.Apis.CloudHealthcare.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "updateMask",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -6831,8 +6598,7 @@ namespace Google.Apis.CloudHealthcare.v1
                 public class SetIamPolicyRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
-                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.SetIamPolicyRequest body, string resource)
-                        : base(service)
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -6849,16 +6615,16 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudHealthcare.v1.Data.SetIamPolicyRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "setIamPolicy";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+resource}:setIamPolicy";
 
                     /// <summary>Initializes SetIamPolicy parameter list.</summary>
@@ -6866,15 +6632,14 @@ namespace Google.Apis.CloudHealthcare.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
+                        });
                     }
 
                 }
@@ -6898,8 +6663,7 @@ namespace Google.Apis.CloudHealthcare.v1
                 public class TestIamPermissionsRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.TestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>
-                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.TestIamPermissionsRequest body, string resource)
-                        : base(service)
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -6916,16 +6680,16 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudHealthcare.v1.Data.TestIamPermissionsRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "testIamPermissions";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+resource}:testIamPermissions";
 
                     /// <summary>Initializes TestIamPermissions parameter list.</summary>
@@ -6933,15 +6697,14 @@ namespace Google.Apis.CloudHealthcare.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
-                            });
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
+                        });
                     }
 
                 }
@@ -6958,8 +6721,7 @@ namespace Google.Apis.CloudHealthcare.v1
             public class GetRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Location>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -6971,13 +6733,13 @@ namespace Google.Apis.CloudHealthcare.v1
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -6985,15 +6747,14 @@ namespace Google.Apis.CloudHealthcare.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
                 }
 
             }
@@ -7009,8 +6770,7 @@ namespace Google.Apis.CloudHealthcare.v1
             public class ListRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -7034,13 +6794,13 @@ namespace Google.Apis.CloudHealthcare.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}/locations";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -7048,42 +6808,38 @@ namespace Google.Apis.CloudHealthcare.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }

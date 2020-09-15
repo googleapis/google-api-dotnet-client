@@ -18,17 +18,16 @@ namespace Google.Apis.Blogger.v3
         public const string Version = "v3";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public BloggerService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public BloggerService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public BloggerService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public BloggerService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             BlogUserInfos = new BlogUserInfosResource(this);
             Blogs = new BlogsResource(this);
@@ -114,12 +113,11 @@ namespace Google.Apis.Blogger.v3
         public virtual UsersResource Users { get; }
     }
 
-    ///<summary>A base abstract class for Blogger requests.</summary>
+    /// <summary>A base abstract class for Blogger requests.</summary>
     public abstract class BloggerBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new BloggerBaseServiceRequest instance.</summary>
-        protected BloggerBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new BloggerBaseServiceRequest instance.</summary>
+        protected BloggerBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -199,105 +197,94 @@ namespace Google.Apis.Blogger.v3
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -329,8 +316,7 @@ namespace Google.Apis.Blogger.v3
         public class GetRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.BlogUserInfo>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string userId, string blogId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string userId, string blogId) : base(service)
             {
                 UserId = userId;
                 BlogId = blogId;
@@ -351,13 +337,13 @@ namespace Google.Apis.Blogger.v3
             public virtual System.Nullable<long> MaxPosts { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/users/{userId}/blogs/{blogId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -365,33 +351,30 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxPosts", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxPosts",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxPosts", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxPosts",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -424,8 +407,7 @@ namespace Google.Apis.Blogger.v3
         public class GetRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.Blog>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string blogId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string blogId) : base(service)
             {
                 BlogId = blogId;
                 InitParameters();
@@ -458,13 +440,13 @@ namespace Google.Apis.Blogger.v3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/blogs/{blogId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -472,33 +454,30 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxPosts", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxPosts",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxPosts", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxPosts",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "view",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -514,8 +493,7 @@ namespace Google.Apis.Blogger.v3
         public class GetByUrlRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.Blog>
         {
             /// <summary>Constructs a new GetByUrl request.</summary>
-            public GetByUrlRequest(Google.Apis.Services.IClientService service, string url)
-                : base(service)
+            public GetByUrlRequest(Google.Apis.Services.IClientService service, string url) : base(service)
             {
                 Url = url;
                 InitParameters();
@@ -544,13 +522,13 @@ namespace Google.Apis.Blogger.v3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getByUrl";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/blogs/byurl";
 
             /// <summary>Initializes GetByUrl parameter list.</summary>
@@ -558,24 +536,22 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "url", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "url",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("url", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "url",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "view",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -591,8 +567,7 @@ namespace Google.Apis.Blogger.v3
         public class ListByUserRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.BlogList>
         {
             /// <summary>Constructs a new ListByUser request.</summary>
-            public ListByUserRequest(Google.Apis.Services.IClientService service, string userId)
-                : base(service)
+            public ListByUserRequest(Google.Apis.Services.IClientService service, string userId) : base(service)
             {
                 UserId = userId;
                 InitParameters();
@@ -655,13 +630,13 @@ namespace Google.Apis.Blogger.v3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "listByUser";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/users/{userId}/blogs";
 
             /// <summary>Initializes ListByUser parameter list.</summary>
@@ -669,51 +644,46 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "fetchUserInfo", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fetchUserInfo",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "role", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "role",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "status", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "status",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("fetchUserInfo", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fetchUserInfo",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("role", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "role",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("status", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "status",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "view",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -748,8 +718,7 @@ namespace Google.Apis.Blogger.v3
         public class ApproveRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.Comment>
         {
             /// <summary>Constructs a new Approve request.</summary>
-            public ApproveRequest(Google.Apis.Services.IClientService service, string blogId, string postId, string commentId)
-                : base(service)
+            public ApproveRequest(Google.Apis.Services.IClientService service, string blogId, string postId, string commentId) : base(service)
             {
                 BlogId = blogId;
                 PostId = postId;
@@ -771,13 +740,13 @@ namespace Google.Apis.Blogger.v3
             public virtual string CommentId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "approve";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/approve";
 
             /// <summary>Initializes Approve parameter list.</summary>
@@ -785,33 +754,30 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "postId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "postId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "commentId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "commentId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("postId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "postId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("commentId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "commentId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -829,8 +795,7 @@ namespace Google.Apis.Blogger.v3
         public class DeleteRequest : BloggerBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string blogId, string postId, string commentId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string blogId, string postId, string commentId) : base(service)
             {
                 BlogId = blogId;
                 PostId = postId;
@@ -852,13 +817,13 @@ namespace Google.Apis.Blogger.v3
             public virtual string CommentId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -866,33 +831,30 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "postId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "postId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "commentId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "commentId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("postId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "postId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("commentId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "commentId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -910,8 +872,7 @@ namespace Google.Apis.Blogger.v3
         public class GetRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.Comment>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string blogId, string postId, string commentId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string blogId, string postId, string commentId) : base(service)
             {
                 BlogId = blogId;
                 PostId = postId;
@@ -950,13 +911,13 @@ namespace Google.Apis.Blogger.v3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -964,42 +925,38 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "postId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "postId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "commentId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "commentId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("postId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "postId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("commentId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "commentId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "view",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1016,8 +973,7 @@ namespace Google.Apis.Blogger.v3
         public class ListRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.CommentList>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string blogId, string postId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string blogId, string postId) : base(service)
             {
                 BlogId = blogId;
                 PostId = postId;
@@ -1088,13 +1044,13 @@ namespace Google.Apis.Blogger.v3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/blogs/{blogId}/posts/{postId}/comments";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1102,87 +1058,78 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "postId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "postId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "endDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "endDate",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "fetchBodies", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fetchBodies",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "startDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "startDate",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "status", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "status",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("postId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "postId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("endDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "endDate",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("fetchBodies", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fetchBodies",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("startDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "startDate",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("status", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "status",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "view",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1198,8 +1145,7 @@ namespace Google.Apis.Blogger.v3
         public class ListByBlogRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.CommentList>
         {
             /// <summary>Constructs a new ListByBlog request.</summary>
-            public ListByBlogRequest(Google.Apis.Services.IClientService service, string blogId)
-                : base(service)
+            public ListByBlogRequest(Google.Apis.Services.IClientService service, string blogId) : base(service)
             {
                 BlogId = blogId;
                 InitParameters();
@@ -1248,13 +1194,13 @@ namespace Google.Apis.Blogger.v3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "listByBlog";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/blogs/{blogId}/comments";
 
             /// <summary>Initializes ListByBlog parameter list.</summary>
@@ -1262,69 +1208,62 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "endDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "endDate",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "fetchBodies", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fetchBodies",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "startDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "startDate",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "status", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "status",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("endDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "endDate",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("fetchBodies", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fetchBodies",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("startDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "startDate",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("status", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "status",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1342,8 +1281,7 @@ namespace Google.Apis.Blogger.v3
         public class MarkAsSpamRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.Comment>
         {
             /// <summary>Constructs a new MarkAsSpam request.</summary>
-            public MarkAsSpamRequest(Google.Apis.Services.IClientService service, string blogId, string postId, string commentId)
-                : base(service)
+            public MarkAsSpamRequest(Google.Apis.Services.IClientService service, string blogId, string postId, string commentId) : base(service)
             {
                 BlogId = blogId;
                 PostId = postId;
@@ -1365,13 +1303,13 @@ namespace Google.Apis.Blogger.v3
             public virtual string CommentId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "markAsSpam";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/spam";
 
             /// <summary>Initializes MarkAsSpam parameter list.</summary>
@@ -1379,33 +1317,30 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "postId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "postId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "commentId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "commentId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("postId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "postId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("commentId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "commentId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1423,8 +1358,7 @@ namespace Google.Apis.Blogger.v3
         public class RemoveContentRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.Comment>
         {
             /// <summary>Constructs a new RemoveContent request.</summary>
-            public RemoveContentRequest(Google.Apis.Services.IClientService service, string blogId, string postId, string commentId)
-                : base(service)
+            public RemoveContentRequest(Google.Apis.Services.IClientService service, string blogId, string postId, string commentId) : base(service)
             {
                 BlogId = blogId;
                 PostId = postId;
@@ -1446,13 +1380,13 @@ namespace Google.Apis.Blogger.v3
             public virtual string CommentId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "removeContent";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/removecontent";
 
             /// <summary>Initializes RemoveContent parameter list.</summary>
@@ -1460,33 +1394,30 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "postId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "postId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "commentId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "commentId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("postId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "postId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("commentId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "commentId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1519,8 +1450,7 @@ namespace Google.Apis.Blogger.v3
         public class GetRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.Pageviews>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string blogId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string blogId) : base(service)
             {
                 BlogId = blogId;
                 InitParameters();
@@ -1547,13 +1477,13 @@ namespace Google.Apis.Blogger.v3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/blogs/{blogId}/pageviews";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1561,24 +1491,22 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "range", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "range",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("range", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "range",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1612,8 +1540,7 @@ namespace Google.Apis.Blogger.v3
         public class DeleteRequest : BloggerBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string blogId, string pageId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string blogId, string pageId) : base(service)
             {
                 BlogId = blogId;
                 PageId = pageId;
@@ -1630,13 +1557,13 @@ namespace Google.Apis.Blogger.v3
             public virtual string PageId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/blogs/{blogId}/pages/{pageId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -1644,24 +1571,22 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1678,8 +1603,7 @@ namespace Google.Apis.Blogger.v3
         public class GetRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.Page>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string blogId, string pageId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string blogId, string pageId) : base(service)
             {
                 BlogId = blogId;
                 PageId = pageId;
@@ -1713,13 +1637,13 @@ namespace Google.Apis.Blogger.v3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/blogs/{blogId}/pages/{pageId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1727,33 +1651,30 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "view",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1770,8 +1691,7 @@ namespace Google.Apis.Blogger.v3
         public class InsertRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.Page>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Blogger.v3.Data.Page body, string blogId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Blogger.v3.Data.Page body, string blogId) : base(service)
             {
                 BlogId = blogId;
                 Body = body;
@@ -1791,16 +1711,16 @@ namespace Google.Apis.Blogger.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Blogger.v3.Data.Page Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/blogs/{blogId}/pages";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -1808,24 +1728,22 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "isDraft", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "isDraft",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("isDraft", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "isDraft",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1841,8 +1759,7 @@ namespace Google.Apis.Blogger.v3
         public class ListRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.PageList>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string blogId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string blogId) : base(service)
             {
                 BlogId = blogId;
                 InitParameters();
@@ -1896,13 +1813,13 @@ namespace Google.Apis.Blogger.v3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/blogs/{blogId}/pages";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1910,60 +1827,54 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "fetchBodies", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fetchBodies",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "status", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "status",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("fetchBodies", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fetchBodies",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("status", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "status",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "view",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1981,8 +1892,7 @@ namespace Google.Apis.Blogger.v3
         public class PatchRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.Page>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Blogger.v3.Data.Page body, string blogId, string pageId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Blogger.v3.Data.Page body, string blogId, string pageId) : base(service)
             {
                 BlogId = blogId;
                 PageId = pageId;
@@ -2011,16 +1921,16 @@ namespace Google.Apis.Blogger.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Blogger.v3.Data.Page Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/blogs/{blogId}/pages/{pageId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -2028,42 +1938,38 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "publish", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "publish",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "revert", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "revert",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("publish", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "publish",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("revert", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "revert",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2080,8 +1986,7 @@ namespace Google.Apis.Blogger.v3
         public class PublishRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.Page>
         {
             /// <summary>Constructs a new Publish request.</summary>
-            public PublishRequest(Google.Apis.Services.IClientService service, string blogId, string pageId)
-                : base(service)
+            public PublishRequest(Google.Apis.Services.IClientService service, string blogId, string pageId) : base(service)
             {
                 BlogId = blogId;
                 PageId = pageId;
@@ -2098,13 +2003,13 @@ namespace Google.Apis.Blogger.v3
             public virtual string PageId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "publish";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/blogs/{blogId}/pages/{pageId}/publish";
 
             /// <summary>Initializes Publish parameter list.</summary>
@@ -2112,24 +2017,22 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2146,8 +2049,7 @@ namespace Google.Apis.Blogger.v3
         public class RevertRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.Page>
         {
             /// <summary>Constructs a new Revert request.</summary>
-            public RevertRequest(Google.Apis.Services.IClientService service, string blogId, string pageId)
-                : base(service)
+            public RevertRequest(Google.Apis.Services.IClientService service, string blogId, string pageId) : base(service)
             {
                 BlogId = blogId;
                 PageId = pageId;
@@ -2164,13 +2066,13 @@ namespace Google.Apis.Blogger.v3
             public virtual string PageId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "revert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/blogs/{blogId}/pages/{pageId}/revert";
 
             /// <summary>Initializes Revert parameter list.</summary>
@@ -2178,24 +2080,22 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2213,8 +2113,7 @@ namespace Google.Apis.Blogger.v3
         public class UpdateRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.Page>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Blogger.v3.Data.Page body, string blogId, string pageId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Blogger.v3.Data.Page body, string blogId, string pageId) : base(service)
             {
                 BlogId = blogId;
                 PageId = pageId;
@@ -2243,16 +2142,16 @@ namespace Google.Apis.Blogger.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Blogger.v3.Data.Page Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/blogs/{blogId}/pages/{pageId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -2260,42 +2159,38 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "publish", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "publish",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "revert", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "revert",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("publish", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "publish",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("revert", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "revert",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2330,8 +2225,7 @@ namespace Google.Apis.Blogger.v3
         public class GetRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.PostUserInfo>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string userId, string blogId, string postId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string userId, string blogId, string postId) : base(service)
             {
                 UserId = userId;
                 BlogId = blogId;
@@ -2357,13 +2251,13 @@ namespace Google.Apis.Blogger.v3
             public virtual System.Nullable<long> MaxComments { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/users/{userId}/blogs/{blogId}/posts/{postId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -2371,42 +2265,38 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "postId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "postId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxComments", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxComments",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("postId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "postId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxComments", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxComments",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2423,8 +2313,7 @@ namespace Google.Apis.Blogger.v3
         public class ListRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.PostUserInfosList>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string userId, string blogId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string userId, string blogId) : base(service)
             {
                 UserId = userId;
                 BlogId = blogId;
@@ -2512,13 +2401,13 @@ namespace Google.Apis.Blogger.v3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/users/{userId}/blogs/{blogId}/posts";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2526,105 +2415,94 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "endDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "endDate",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "fetchBodies", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fetchBodies",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "labels", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "labels",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "PUBLISHED",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "startDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "startDate",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "status", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "status",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("endDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "endDate",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("fetchBodies", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fetchBodies",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("labels", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "labels",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "PUBLISHED",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("startDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "startDate",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("status", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "status",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "view",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2658,8 +2536,7 @@ namespace Google.Apis.Blogger.v3
         public class DeleteRequest : BloggerBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string blogId, string postId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string blogId, string postId) : base(service)
             {
                 BlogId = blogId;
                 PostId = postId;
@@ -2676,13 +2553,13 @@ namespace Google.Apis.Blogger.v3
             public virtual string PostId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/blogs/{blogId}/posts/{postId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -2690,24 +2567,22 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "postId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "postId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("postId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "postId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2724,8 +2599,7 @@ namespace Google.Apis.Blogger.v3
         public class GetRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.Post>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string blogId, string postId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string blogId, string postId) : base(service)
             {
                 BlogId = blogId;
                 PostId = postId;
@@ -2771,13 +2645,13 @@ namespace Google.Apis.Blogger.v3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/blogs/{blogId}/posts/{postId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -2785,60 +2659,54 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "postId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "postId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "fetchBody", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fetchBody",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "true",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "fetchImages", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fetchImages",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxComments", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxComments",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("postId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "postId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("fetchBody", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fetchBody",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "true",
+                    Pattern = null,
+                });
+                RequestParameters.Add("fetchImages", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fetchImages",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxComments", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxComments",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "view",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2855,8 +2723,7 @@ namespace Google.Apis.Blogger.v3
         public class GetByPathRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.Post>
         {
             /// <summary>Constructs a new GetByPath request.</summary>
-            public GetByPathRequest(Google.Apis.Services.IClientService service, string blogId, string path)
-                : base(service)
+            public GetByPathRequest(Google.Apis.Services.IClientService service, string blogId, string path) : base(service)
             {
                 BlogId = blogId;
                 Path = path;
@@ -2894,13 +2761,13 @@ namespace Google.Apis.Blogger.v3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getByPath";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/blogs/{blogId}/posts/bypath";
 
             /// <summary>Initializes GetByPath parameter list.</summary>
@@ -2908,42 +2775,38 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "path", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "path",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxComments", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxComments",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("path", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "path",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxComments", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxComments",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "view",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2960,8 +2823,7 @@ namespace Google.Apis.Blogger.v3
         public class InsertRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.Post>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Blogger.v3.Data.Post body, string blogId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Blogger.v3.Data.Post body, string blogId) : base(service)
             {
                 BlogId = blogId;
                 Body = body;
@@ -2989,16 +2851,16 @@ namespace Google.Apis.Blogger.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Blogger.v3.Data.Post Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/blogs/{blogId}/posts";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -3006,42 +2868,38 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "fetchBody", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fetchBody",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "true",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "fetchImages", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fetchImages",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "isDraft", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "isDraft",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("fetchBody", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fetchBody",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "true",
+                    Pattern = null,
+                });
+                RequestParameters.Add("fetchImages", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fetchImages",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("isDraft", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "isDraft",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3057,8 +2915,7 @@ namespace Google.Apis.Blogger.v3
         public class ListRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.PostList>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string blogId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string blogId) : base(service)
             {
                 BlogId = blogId;
                 InitParameters();
@@ -3145,13 +3002,13 @@ namespace Google.Apis.Blogger.v3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/blogs/{blogId}/posts";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -3159,105 +3016,94 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "endDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "endDate",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "fetchBodies", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fetchBodies",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "true",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "fetchImages", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fetchImages",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "labels", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "labels",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "PUBLISHED",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "startDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "startDate",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "status", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "status",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("endDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "endDate",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("fetchBodies", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fetchBodies",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "true",
+                    Pattern = null,
+                });
+                RequestParameters.Add("fetchImages", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fetchImages",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("labels", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "labels",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "PUBLISHED",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("startDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "startDate",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("status", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "status",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "view",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3275,8 +3121,7 @@ namespace Google.Apis.Blogger.v3
         public class PatchRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.Post>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Blogger.v3.Data.Post body, string blogId, string postId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Blogger.v3.Data.Post body, string blogId, string postId) : base(service)
             {
                 BlogId = blogId;
                 PostId = postId;
@@ -3317,16 +3162,16 @@ namespace Google.Apis.Blogger.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Blogger.v3.Data.Post Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/blogs/{blogId}/posts/{postId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -3334,69 +3179,62 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "postId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "postId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "fetchBody", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fetchBody",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "true",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "fetchImages", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fetchImages",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxComments", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxComments",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "publish", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "publish",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "revert", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "revert",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("postId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "postId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("fetchBody", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fetchBody",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "true",
+                    Pattern = null,
+                });
+                RequestParameters.Add("fetchImages", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fetchImages",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxComments", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxComments",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("publish", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "publish",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("revert", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "revert",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3413,8 +3251,7 @@ namespace Google.Apis.Blogger.v3
         public class PublishRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.Post>
         {
             /// <summary>Constructs a new Publish request.</summary>
-            public PublishRequest(Google.Apis.Services.IClientService service, string blogId, string postId)
-                : base(service)
+            public PublishRequest(Google.Apis.Services.IClientService service, string blogId, string postId) : base(service)
             {
                 BlogId = blogId;
                 PostId = postId;
@@ -3435,13 +3272,13 @@ namespace Google.Apis.Blogger.v3
             public virtual string PublishDate { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "publish";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/blogs/{blogId}/posts/{postId}/publish";
 
             /// <summary>Initializes Publish parameter list.</summary>
@@ -3449,33 +3286,30 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "postId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "postId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "publishDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "publishDate",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("postId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "postId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("publishDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "publishDate",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3492,8 +3326,7 @@ namespace Google.Apis.Blogger.v3
         public class RevertRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.Post>
         {
             /// <summary>Constructs a new Revert request.</summary>
-            public RevertRequest(Google.Apis.Services.IClientService service, string blogId, string postId)
-                : base(service)
+            public RevertRequest(Google.Apis.Services.IClientService service, string blogId, string postId) : base(service)
             {
                 BlogId = blogId;
                 PostId = postId;
@@ -3510,13 +3343,13 @@ namespace Google.Apis.Blogger.v3
             public virtual string PostId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "revert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/blogs/{blogId}/posts/{postId}/revert";
 
             /// <summary>Initializes Revert parameter list.</summary>
@@ -3524,24 +3357,22 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "postId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "postId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("postId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "postId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3558,8 +3389,7 @@ namespace Google.Apis.Blogger.v3
         public class SearchRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.PostList>
         {
             /// <summary>Constructs a new Search request.</summary>
-            public SearchRequest(Google.Apis.Services.IClientService service, string blogId, string q)
-                : base(service)
+            public SearchRequest(Google.Apis.Services.IClientService service, string blogId, string q) : base(service)
             {
                 BlogId = blogId;
                 Q = q;
@@ -3595,13 +3425,13 @@ namespace Google.Apis.Blogger.v3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "search";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/blogs/{blogId}/posts/search";
 
             /// <summary>Initializes Search parameter list.</summary>
@@ -3609,42 +3439,38 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "q", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "q",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "fetchBodies", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fetchBodies",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "true",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "PUBLISHED",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("q", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "q",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("fetchBodies", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fetchBodies",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "true",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "PUBLISHED",
+                    Pattern = null,
+                });
             }
 
         }
@@ -3662,8 +3488,7 @@ namespace Google.Apis.Blogger.v3
         public class UpdateRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.Post>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Blogger.v3.Data.Post body, string blogId, string postId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Blogger.v3.Data.Post body, string blogId, string postId) : base(service)
             {
                 BlogId = blogId;
                 PostId = postId;
@@ -3704,16 +3529,16 @@ namespace Google.Apis.Blogger.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Blogger.v3.Data.Post Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/blogs/{blogId}/posts/{postId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -3721,69 +3546,62 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "blogId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "blogId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "postId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "postId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "fetchBody", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fetchBody",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "true",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "fetchImages", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fetchImages",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxComments", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxComments",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "publish", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "publish",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "revert", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "revert",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blogId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("postId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "postId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("fetchBody", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fetchBody",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "true",
+                    Pattern = null,
+                });
+                RequestParameters.Add("fetchImages", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fetchImages",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxComments", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxComments",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("publish", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "publish",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("revert", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "revert",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3816,8 +3634,7 @@ namespace Google.Apis.Blogger.v3
         public class GetRequest : BloggerBaseServiceRequest<Google.Apis.Blogger.v3.Data.User>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string userId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string userId) : base(service)
             {
                 UserId = userId;
                 InitParameters();
@@ -3829,13 +3646,13 @@ namespace Google.Apis.Blogger.v3
             public virtual string UserId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v3/users/{userId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -3843,15 +3660,14 @@ namespace Google.Apis.Blogger.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

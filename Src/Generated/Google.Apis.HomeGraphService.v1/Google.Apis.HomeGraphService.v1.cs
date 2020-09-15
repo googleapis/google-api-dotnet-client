@@ -18,17 +18,16 @@ namespace Google.Apis.HomeGraphService.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public HomeGraphServiceService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public HomeGraphServiceService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public HomeGraphServiceService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public HomeGraphServiceService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             AgentUsers = new AgentUsersResource(this);
             Devices = new DevicesResource(this);
@@ -84,12 +83,11 @@ namespace Google.Apis.HomeGraphService.v1
         public virtual DevicesResource Devices { get; }
     }
 
-    ///<summary>A base abstract class for HomeGraphService requests.</summary>
+    /// <summary>A base abstract class for HomeGraphService requests.</summary>
     public abstract class HomeGraphServiceBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new HomeGraphServiceBaseServiceRequest instance.</summary>
-        protected HomeGraphServiceBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new HomeGraphServiceBaseServiceRequest instance.</summary>
+        protected HomeGraphServiceBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -169,105 +167,94 @@ namespace Google.Apis.HomeGraphService.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -306,8 +293,7 @@ namespace Google.Apis.HomeGraphService.v1
         public class DeleteRequest : HomeGraphServiceBaseServiceRequest<Google.Apis.HomeGraphService.v1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string agentUserId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string agentUserId) : base(service)
             {
                 AgentUserId = agentUserId;
                 InitParameters();
@@ -323,13 +309,13 @@ namespace Google.Apis.HomeGraphService.v1
             public virtual string RequestId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+agentUserId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -337,24 +323,22 @@ namespace Google.Apis.HomeGraphService.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "agentUserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "agentUserId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^agentUsers/.*$",
-                    });
-                RequestParameters.Add(
-                    "requestId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("agentUserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "agentUserId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^agentUsers/.*$",
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -391,8 +375,7 @@ namespace Google.Apis.HomeGraphService.v1
         public class QueryRequest : HomeGraphServiceBaseServiceRequest<Google.Apis.HomeGraphService.v1.Data.QueryResponse>
         {
             /// <summary>Constructs a new Query request.</summary>
-            public QueryRequest(Google.Apis.Services.IClientService service, Google.Apis.HomeGraphService.v1.Data.QueryRequest body)
-                : base(service)
+            public QueryRequest(Google.Apis.Services.IClientService service, Google.Apis.HomeGraphService.v1.Data.QueryRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -403,16 +386,16 @@ namespace Google.Apis.HomeGraphService.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.HomeGraphService.v1.Data.QueryRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "query";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/devices:query";
 
             /// <summary>Initializes Query parameter list.</summary>
@@ -449,8 +432,7 @@ namespace Google.Apis.HomeGraphService.v1
         public class ReportStateAndNotificationRequest : HomeGraphServiceBaseServiceRequest<Google.Apis.HomeGraphService.v1.Data.ReportStateAndNotificationResponse>
         {
             /// <summary>Constructs a new ReportStateAndNotification request.</summary>
-            public ReportStateAndNotificationRequest(Google.Apis.Services.IClientService service, Google.Apis.HomeGraphService.v1.Data.ReportStateAndNotificationRequest body)
-                : base(service)
+            public ReportStateAndNotificationRequest(Google.Apis.Services.IClientService service, Google.Apis.HomeGraphService.v1.Data.ReportStateAndNotificationRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -461,16 +443,16 @@ namespace Google.Apis.HomeGraphService.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.HomeGraphService.v1.Data.ReportStateAndNotificationRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "reportStateAndNotification";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/devices:reportStateAndNotification";
 
             /// <summary>Initializes ReportStateAndNotification parameter list.</summary>
@@ -501,8 +483,7 @@ namespace Google.Apis.HomeGraphService.v1
         public class RequestSyncRequest : HomeGraphServiceBaseServiceRequest<Google.Apis.HomeGraphService.v1.Data.RequestSyncDevicesResponse>
         {
             /// <summary>Constructs a new RequestSync request.</summary>
-            public RequestSyncRequest(Google.Apis.Services.IClientService service, Google.Apis.HomeGraphService.v1.Data.RequestSyncDevicesRequest body)
-                : base(service)
+            public RequestSyncRequest(Google.Apis.Services.IClientService service, Google.Apis.HomeGraphService.v1.Data.RequestSyncDevicesRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -513,16 +494,16 @@ namespace Google.Apis.HomeGraphService.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.HomeGraphService.v1.Data.RequestSyncDevicesRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "requestSync";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/devices:requestSync";
 
             /// <summary>Initializes RequestSync parameter list.</summary>
@@ -549,8 +530,7 @@ namespace Google.Apis.HomeGraphService.v1
         public class SyncRequest : HomeGraphServiceBaseServiceRequest<Google.Apis.HomeGraphService.v1.Data.SyncResponse>
         {
             /// <summary>Constructs a new Sync request.</summary>
-            public SyncRequest(Google.Apis.Services.IClientService service, Google.Apis.HomeGraphService.v1.Data.SyncRequest body)
-                : base(service)
+            public SyncRequest(Google.Apis.Services.IClientService service, Google.Apis.HomeGraphService.v1.Data.SyncRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -561,16 +541,16 @@ namespace Google.Apis.HomeGraphService.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.HomeGraphService.v1.Data.SyncRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "sync";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/devices:sync";
 
             /// <summary>Initializes Sync parameter list.</summary>

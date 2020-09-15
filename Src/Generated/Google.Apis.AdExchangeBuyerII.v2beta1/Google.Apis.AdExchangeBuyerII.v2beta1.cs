@@ -18,17 +18,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
         public const string Version = "v2beta1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public AdExchangeBuyerIIService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public AdExchangeBuyerIIService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public AdExchangeBuyerIIService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public AdExchangeBuyerIIService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Accounts = new AccountsResource(this);
             Bidders = new BiddersResource(this);
@@ -84,12 +83,11 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
         public virtual BiddersResource Bidders { get; }
     }
 
-    ///<summary>A base abstract class for AdExchangeBuyerII requests.</summary>
+    /// <summary>A base abstract class for AdExchangeBuyerII requests.</summary>
     public abstract class AdExchangeBuyerIIBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new AdExchangeBuyerIIBaseServiceRequest instance.</summary>
-        protected AdExchangeBuyerIIBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new AdExchangeBuyerIIBaseServiceRequest instance.</summary>
+        protected AdExchangeBuyerIIBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -169,105 +167,94 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -348,8 +335,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public class CreateRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ClientUserInvitation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.ClientUserInvitation body, long accountId, long clientAccountId)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.ClientUserInvitation body, long accountId, long clientAccountId) : base(service)
                     {
                         AccountId = accountId;
                         ClientAccountId = clientAccountId;
@@ -371,16 +357,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.AdExchangeBuyerII.v2beta1.Data.ClientUserInvitation Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -388,24 +374,22 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clientAccountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clientAccountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clientAccountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clientAccountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -426,8 +410,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public class GetRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ClientUserInvitation>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, long accountId, long clientAccountId, long invitationId)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, long accountId, long clientAccountId, long invitationId) : base(service)
                     {
                         AccountId = accountId;
                         ClientAccountId = clientAccountId;
@@ -450,13 +433,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     public virtual long InvitationId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations/{invitationId}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -464,33 +447,30 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clientAccountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clientAccountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "invitationId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "invitationId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clientAccountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clientAccountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("invitationId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "invitationId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -510,8 +490,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListClientUserInvitationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, long accountId, string clientAccountId)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, long accountId, string clientAccountId) : base(service)
                     {
                         AccountId = accountId;
                         ClientAccountId = clientAccountId;
@@ -541,13 +520,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -555,42 +534,38 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clientAccountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clientAccountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clientAccountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clientAccountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -630,8 +605,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public class GetRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ClientUser>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, long accountId, long clientAccountId, long userId)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, long accountId, long clientAccountId, long userId) : base(service)
                     {
                         AccountId = accountId;
                         ClientAccountId = clientAccountId;
@@ -654,13 +628,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     public virtual long UserId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2beta1/accounts/{accountId}/clients/{clientAccountId}/users/{userId}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -668,33 +642,30 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clientAccountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clientAccountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "userId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "userId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clientAccountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clientAccountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -714,8 +685,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListClientUsersResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, long accountId, string clientAccountId)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, long accountId, string clientAccountId) : base(service)
                     {
                         AccountId = accountId;
                         ClientAccountId = clientAccountId;
@@ -746,13 +716,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2beta1/accounts/{accountId}/clients/{clientAccountId}/users";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -760,42 +730,38 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clientAccountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clientAccountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clientAccountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clientAccountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -817,8 +783,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public class UpdateRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ClientUser>
                 {
                     /// <summary>Constructs a new Update request.</summary>
-                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.ClientUser body, long accountId, long clientAccountId, long userId)
-                        : base(service)
+                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.ClientUser body, long accountId, long clientAccountId, long userId) : base(service)
                     {
                         AccountId = accountId;
                         ClientAccountId = clientAccountId;
@@ -845,16 +810,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.AdExchangeBuyerII.v2beta1.Data.ClientUser Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "update";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PUT";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2beta1/accounts/{accountId}/clients/{clientAccountId}/users/{userId}";
 
                     /// <summary>Initializes Update parameter list.</summary>
@@ -862,33 +827,30 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clientAccountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clientAccountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "userId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "userId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clientAccountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clientAccountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -907,8 +869,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             public class CreateRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Client>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.Client body, long accountId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.Client body, long accountId) : base(service)
                 {
                     AccountId = accountId;
                     Body = body;
@@ -925,16 +886,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AdExchangeBuyerII.v2beta1.Data.Client Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2beta1/accounts/{accountId}/clients";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -942,15 +903,14 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -968,8 +928,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             public class GetRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Client>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, long accountId, long clientAccountId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, long accountId, long clientAccountId) : base(service)
                 {
                     AccountId = accountId;
                     ClientAccountId = clientAccountId;
@@ -986,13 +945,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public virtual long ClientAccountId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2beta1/accounts/{accountId}/clients/{clientAccountId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1000,24 +959,22 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "clientAccountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "clientAccountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("clientAccountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "clientAccountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1033,8 +990,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListClientsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, long accountId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, long accountId) : base(service)
                 {
                     AccountId = accountId;
                     InitParameters();
@@ -1062,13 +1018,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public virtual string PartnerClientId { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2beta1/accounts/{accountId}/clients";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1076,42 +1032,38 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "partnerClientId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "partnerClientId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("partnerClientId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "partnerClientId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1131,8 +1083,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             public class UpdateRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Client>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.Client body, long accountId, long clientAccountId)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.Client body, long accountId, long clientAccountId) : base(service)
                 {
                     AccountId = accountId;
                     ClientAccountId = clientAccountId;
@@ -1154,16 +1105,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AdExchangeBuyerII.v2beta1.Data.Client Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2beta1/accounts/{accountId}/clients/{clientAccountId}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -1171,24 +1122,22 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "clientAccountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "clientAccountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("clientAccountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "clientAccountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1245,8 +1194,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public class AddRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Empty>
                 {
                     /// <summary>Constructs a new Add request.</summary>
-                    public AddRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.AddDealAssociationRequest body, string accountId, string creativeId)
-                        : base(service)
+                    public AddRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.AddDealAssociationRequest body, string accountId, string creativeId) : base(service)
                     {
                         AccountId = accountId;
                         CreativeId = creativeId;
@@ -1267,16 +1215,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.AdExchangeBuyerII.v2beta1.Data.AddDealAssociationRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "add";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations:add";
 
                     /// <summary>Initializes Add parameter list.</summary>
@@ -1284,24 +1232,22 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "creativeId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "creativeId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("creativeId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "creativeId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1320,8 +1266,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListDealAssociationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string accountId, string creativeId)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string accountId, string creativeId) : base(service)
                     {
                         AccountId = accountId;
                         CreativeId = creativeId;
@@ -1360,13 +1305,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     public virtual string Query { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -1374,51 +1319,46 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "creativeId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "creativeId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "query", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "query",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("creativeId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "creativeId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("query", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "query",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1437,8 +1377,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public class RemoveRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Empty>
                 {
                     /// <summary>Constructs a new Remove request.</summary>
-                    public RemoveRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.RemoveDealAssociationRequest body, string accountId, string creativeId)
-                        : base(service)
+                    public RemoveRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.RemoveDealAssociationRequest body, string accountId, string creativeId) : base(service)
                     {
                         AccountId = accountId;
                         CreativeId = creativeId;
@@ -1459,16 +1398,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.AdExchangeBuyerII.v2beta1.Data.RemoveDealAssociationRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "remove";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations:remove";
 
                     /// <summary>Initializes Remove parameter list.</summary>
@@ -1476,24 +1415,22 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "creativeId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "creativeId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("creativeId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "creativeId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1512,8 +1449,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             public class CreateRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Creative>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.Creative body, string accountId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.Creative body, string accountId) : base(service)
                 {
                     AccountId = accountId;
                     Body = body;
@@ -1551,16 +1487,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AdExchangeBuyerII.v2beta1.Data.Creative Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2beta1/accounts/{accountId}/creatives";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -1568,24 +1504,22 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "duplicateIdMode", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "duplicateIdMode",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("duplicateIdMode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "duplicateIdMode",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1603,8 +1537,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             public class GetRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Creative>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string creativeId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string creativeId) : base(service)
                 {
                     AccountId = accountId;
                     CreativeId = creativeId;
@@ -1621,13 +1554,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public virtual string CreativeId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2beta1/accounts/{accountId}/creatives/{creativeId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1635,24 +1568,22 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "creativeId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "creativeId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("creativeId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "creativeId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1669,8 +1600,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListCreativesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId) : base(service)
                 {
                     AccountId = accountId;
                     InitParameters();
@@ -1705,13 +1635,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public virtual string Query { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2beta1/accounts/{accountId}/creatives";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1719,42 +1649,38 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "query", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "query",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("query", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "query",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1776,8 +1702,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             public class StopWatchingRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Empty>
             {
                 /// <summary>Constructs a new StopWatching request.</summary>
-                public StopWatchingRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.StopWatchingCreativeRequest body, string accountId, string creativeId)
-                    : base(service)
+                public StopWatchingRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.StopWatchingCreativeRequest body, string accountId, string creativeId) : base(service)
                 {
                     AccountId = accountId;
                     CreativeId = creativeId;
@@ -1799,16 +1724,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AdExchangeBuyerII.v2beta1.Data.StopWatchingCreativeRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "stopWatching";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2beta1/accounts/{accountId}/creatives/{creativeId}:stopWatching";
 
                 /// <summary>Initializes StopWatching parameter list.</summary>
@@ -1816,24 +1741,22 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "creativeId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "creativeId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("creativeId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "creativeId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1853,8 +1776,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             public class UpdateRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Creative>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.Creative body, string accountId, string creativeId)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.Creative body, string accountId, string creativeId) : base(service)
                 {
                     AccountId = accountId;
                     CreativeId = creativeId;
@@ -1877,16 +1799,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AdExchangeBuyerII.v2beta1.Data.Creative Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2beta1/accounts/{accountId}/creatives/{creativeId}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -1894,24 +1816,22 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "creativeId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "creativeId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("creativeId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "creativeId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1934,8 +1854,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             public class WatchRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Empty>
             {
                 /// <summary>Constructs a new Watch request.</summary>
-                public WatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.WatchCreativeRequest body, string accountId, string creativeId)
-                    : base(service)
+                public WatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.WatchCreativeRequest body, string accountId, string creativeId) : base(service)
                 {
                     AccountId = accountId;
                     CreativeId = creativeId;
@@ -1958,16 +1877,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AdExchangeBuyerII.v2beta1.Data.WatchCreativeRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "watch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2beta1/accounts/{accountId}/creatives/{creativeId}:watch";
 
                 /// <summary>Initializes Watch parameter list.</summary>
@@ -1975,24 +1894,22 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "creativeId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "creativeId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("creativeId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "creativeId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2029,8 +1946,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListProposalsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId) : base(service)
                 {
                     AccountId = accountId;
                     InitParameters();
@@ -2078,13 +1994,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2beta1/accounts/{accountId}/finalizedProposals";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -2092,51 +2008,46 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filterSyntax", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filterSyntax",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filterSyntax", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filterSyntax",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2173,8 +2084,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             public class GetRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Product>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string productId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string productId) : base(service)
                 {
                     AccountId = accountId;
                     ProductId = productId;
@@ -2191,13 +2101,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public virtual string ProductId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2beta1/accounts/{accountId}/products/{productId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -2205,24 +2115,22 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "productId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "productId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "productId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2240,8 +2148,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListProductsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId) : base(service)
                 {
                     AccountId = accountId;
                     InitParameters();
@@ -2268,13 +2175,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2beta1/accounts/{accountId}/products";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -2282,42 +2189,38 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2359,8 +2262,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             public class AcceptRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal>
             {
                 /// <summary>Constructs a new Accept request.</summary>
-                public AcceptRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.AcceptProposalRequest body, string accountId, string proposalId)
-                    : base(service)
+                public AcceptRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.AcceptProposalRequest body, string accountId, string proposalId) : base(service)
                 {
                     AccountId = accountId;
                     ProposalId = proposalId;
@@ -2381,16 +2283,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AdExchangeBuyerII.v2beta1.Data.AcceptProposalRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "accept";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2beta1/accounts/{accountId}/proposals/{proposalId}:accept";
 
                 /// <summary>Initializes Accept parameter list.</summary>
@@ -2398,24 +2300,22 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "proposalId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "proposalId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("proposalId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "proposalId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2436,8 +2336,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             public class AddNoteRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Note>
             {
                 /// <summary>Constructs a new AddNote request.</summary>
-                public AddNoteRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.AddNoteRequest body, string accountId, string proposalId)
-                    : base(service)
+                public AddNoteRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.AddNoteRequest body, string accountId, string proposalId) : base(service)
                 {
                     AccountId = accountId;
                     ProposalId = proposalId;
@@ -2458,16 +2357,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AdExchangeBuyerII.v2beta1.Data.AddNoteRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "addNote";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2beta1/accounts/{accountId}/proposals/{proposalId}:addNote";
 
                 /// <summary>Initializes AddNote parameter list.</summary>
@@ -2475,24 +2374,22 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "proposalId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "proposalId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("proposalId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "proposalId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2513,8 +2410,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             public class CancelNegotiationRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal>
             {
                 /// <summary>Constructs a new CancelNegotiation request.</summary>
-                public CancelNegotiationRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.CancelNegotiationRequest body, string accountId, string proposalId)
-                    : base(service)
+                public CancelNegotiationRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.CancelNegotiationRequest body, string accountId, string proposalId) : base(service)
                 {
                     AccountId = accountId;
                     ProposalId = proposalId;
@@ -2535,16 +2431,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AdExchangeBuyerII.v2beta1.Data.CancelNegotiationRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "cancelNegotiation";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2beta1/accounts/{accountId}/proposals/{proposalId}:cancelNegotiation";
 
                 /// <summary>Initializes CancelNegotiation parameter list.</summary>
@@ -2552,24 +2448,22 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "proposalId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "proposalId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("proposalId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "proposalId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2596,8 +2490,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             public class CompleteSetupRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal>
             {
                 /// <summary>Constructs a new CompleteSetup request.</summary>
-                public CompleteSetupRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.CompleteSetupRequest body, string accountId, string proposalId)
-                    : base(service)
+                public CompleteSetupRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.CompleteSetupRequest body, string accountId, string proposalId) : base(service)
                 {
                     AccountId = accountId;
                     ProposalId = proposalId;
@@ -2618,16 +2511,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AdExchangeBuyerII.v2beta1.Data.CompleteSetupRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "completeSetup";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2beta1/accounts/{accountId}/proposals/{proposalId}:completeSetup";
 
                 /// <summary>Initializes CompleteSetup parameter list.</summary>
@@ -2635,24 +2528,22 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "proposalId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "proposalId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("proposalId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "proposalId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2671,8 +2562,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             public class CreateRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal body, string accountId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal body, string accountId) : base(service)
                 {
                     AccountId = accountId;
                     Body = body;
@@ -2688,16 +2578,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2beta1/accounts/{accountId}/proposals";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -2705,15 +2595,14 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2731,8 +2620,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             public class GetRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string proposalId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string proposalId) : base(service)
                 {
                     AccountId = accountId;
                     ProposalId = proposalId;
@@ -2749,13 +2637,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public virtual string ProposalId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2beta1/accounts/{accountId}/proposals/{proposalId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -2763,24 +2651,22 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "proposalId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "proposalId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("proposalId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "proposalId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2804,8 +2690,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListProposalsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId) : base(service)
                 {
                     AccountId = accountId;
                     InitParameters();
@@ -2853,13 +2738,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2beta1/accounts/{accountId}/proposals";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -2867,51 +2752,46 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filterSyntax", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filterSyntax",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filterSyntax", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filterSyntax",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2936,8 +2816,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             public class PauseRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal>
             {
                 /// <summary>Constructs a new Pause request.</summary>
-                public PauseRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.PauseProposalRequest body, string accountId, string proposalId)
-                    : base(service)
+                public PauseRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.PauseProposalRequest body, string accountId, string proposalId) : base(service)
                 {
                     AccountId = accountId;
                     ProposalId = proposalId;
@@ -2958,16 +2837,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AdExchangeBuyerII.v2beta1.Data.PauseProposalRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "pause";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2beta1/accounts/{accountId}/proposals/{proposalId}:pause";
 
                 /// <summary>Initializes Pause parameter list.</summary>
@@ -2975,24 +2854,22 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "proposalId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "proposalId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("proposalId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "proposalId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3019,8 +2896,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             public class ResumeRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal>
             {
                 /// <summary>Constructs a new Resume request.</summary>
-                public ResumeRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.ResumeProposalRequest body, string accountId, string proposalId)
-                    : base(service)
+                public ResumeRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.ResumeProposalRequest body, string accountId, string proposalId) : base(service)
                 {
                     AccountId = accountId;
                     ProposalId = proposalId;
@@ -3041,16 +2917,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AdExchangeBuyerII.v2beta1.Data.ResumeProposalRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "resume";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2beta1/accounts/{accountId}/proposals/{proposalId}:resume";
 
                 /// <summary>Initializes Resume parameter list.</summary>
@@ -3058,24 +2934,22 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "proposalId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "proposalId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("proposalId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "proposalId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3106,8 +2980,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             public class UpdateRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal body, string accountId, string proposalId)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal body, string accountId, string proposalId) : base(service)
                 {
                     AccountId = accountId;
                     ProposalId = proposalId;
@@ -3128,16 +3001,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2beta1/accounts/{accountId}/proposals/{proposalId}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -3145,24 +3018,22 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "proposalId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "proposalId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("proposalId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "proposalId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3199,8 +3070,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             public class GetRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.PublisherProfile>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string publisherProfileId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string publisherProfileId) : base(service)
                 {
                     AccountId = accountId;
                     PublisherProfileId = publisherProfileId;
@@ -3217,13 +3087,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public virtual string PublisherProfileId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2beta1/accounts/{accountId}/publisherProfiles/{publisherProfileId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -3231,24 +3101,22 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "publisherProfileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "publisherProfileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("publisherProfileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "publisherProfileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3264,8 +3132,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListPublisherProfilesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId) : base(service)
                 {
                     AccountId = accountId;
                     InitParameters();
@@ -3285,13 +3152,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2beta1/accounts/{accountId}/publisherProfiles";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -3299,33 +3166,30 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3427,8 +3291,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListBidMetricsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string filterSetName)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string filterSetName) : base(service)
                         {
                             FilterSetName = filterSetName;
                             InitParameters();
@@ -3456,13 +3319,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         public virtual string PageToken { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v2beta1/{+filterSetName}/bidMetrics";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -3470,33 +3333,30 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "filterSetName", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filterSetName",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filterSetName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -3536,8 +3396,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListBidResponseErrorsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string filterSetName)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string filterSetName) : base(service)
                         {
                             FilterSetName = filterSetName;
                             InitParameters();
@@ -3565,13 +3424,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         public virtual string PageToken { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v2beta1/{+filterSetName}/bidResponseErrors";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -3579,33 +3438,30 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "filterSetName", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filterSetName",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filterSetName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -3645,8 +3501,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListBidResponsesWithoutBidsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string filterSetName)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string filterSetName) : base(service)
                         {
                             FilterSetName = filterSetName;
                             InitParameters();
@@ -3674,13 +3529,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         public virtual string PageToken { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v2beta1/{+filterSetName}/bidResponsesWithoutBids";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -3688,33 +3543,30 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "filterSetName", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filterSetName",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filterSetName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -3754,8 +3606,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListFilteredBidRequestsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string filterSetName)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string filterSetName) : base(service)
                         {
                             FilterSetName = filterSetName;
                             InitParameters();
@@ -3783,13 +3634,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         public virtual string PageToken { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v2beta1/{+filterSetName}/filteredBidRequests";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -3797,33 +3648,30 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "filterSetName", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filterSetName",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filterSetName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -3887,8 +3735,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListCreativeStatusBreakdownByCreativeResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
-                            public ListRequest(Google.Apis.Services.IClientService service, string filterSetName, int creativeStatusId)
-                                : base(service)
+                            public ListRequest(Google.Apis.Services.IClientService service, string filterSetName, int creativeStatusId) : base(service)
                             {
                                 FilterSetName = filterSetName;
                                 CreativeStatusId = creativeStatusId;
@@ -3923,13 +3770,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             public virtual string PageToken { get; set; }
 
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "list";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "GET";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives";
 
                             /// <summary>Initializes List parameter list.</summary>
@@ -3937,42 +3784,38 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "filterSetName", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "filterSetName",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
-                                    });
-                                RequestParameters.Add(
-                                    "creativeStatusId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "creativeStatusId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "pageSize", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageSize",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "pageToken", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageToken",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
+                                RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filterSetName",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
+                                });
+                                RequestParameters.Add("creativeStatusId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "creativeStatusId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
                             }
 
                         }
@@ -4016,8 +3859,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListCreativeStatusBreakdownByDetailResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
-                            public ListRequest(Google.Apis.Services.IClientService service, string filterSetName, int creativeStatusId)
-                                : base(service)
+                            public ListRequest(Google.Apis.Services.IClientService service, string filterSetName, int creativeStatusId) : base(service)
                             {
                                 FilterSetName = filterSetName;
                                 CreativeStatusId = creativeStatusId;
@@ -4053,13 +3895,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             public virtual string PageToken { get; set; }
 
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "list";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "GET";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details";
 
                             /// <summary>Initializes List parameter list.</summary>
@@ -4067,42 +3909,38 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "filterSetName", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "filterSetName",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
-                                    });
-                                RequestParameters.Add(
-                                    "creativeStatusId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "creativeStatusId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "pageSize", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageSize",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "pageToken", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageToken",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
+                                RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filterSetName",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
+                                });
+                                RequestParameters.Add("creativeStatusId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "creativeStatusId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
                             }
 
                         }
@@ -4124,8 +3962,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListFilteredBidsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string filterSetName)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string filterSetName) : base(service)
                         {
                             FilterSetName = filterSetName;
                             InitParameters();
@@ -4153,13 +3990,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         public virtual string PageToken { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v2beta1/{+filterSetName}/filteredBids";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -4167,33 +4004,30 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "filterSetName", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filterSetName",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filterSetName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -4231,8 +4065,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListImpressionMetricsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string filterSetName)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string filterSetName) : base(service)
                         {
                             FilterSetName = filterSetName;
                             InitParameters();
@@ -4260,13 +4093,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         public virtual string PageToken { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v2beta1/{+filterSetName}/impressionMetrics";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -4274,33 +4107,30 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "filterSetName", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filterSetName",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filterSetName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -4340,8 +4170,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListLosingBidsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string filterSetName)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string filterSetName) : base(service)
                         {
                             FilterSetName = filterSetName;
                             InitParameters();
@@ -4369,13 +4198,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         public virtual string PageToken { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v2beta1/{+filterSetName}/losingBids";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -4383,33 +4212,30 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "filterSetName", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filterSetName",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filterSetName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -4449,8 +4275,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListNonBillableWinningBidsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string filterSetName)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string filterSetName) : base(service)
                         {
                             FilterSetName = filterSetName;
                             InitParameters();
@@ -4478,13 +4303,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         public virtual string PageToken { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v2beta1/{+filterSetName}/nonBillableWinningBids";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -4492,33 +4317,30 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "filterSetName", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filterSetName",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filterSetName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -4539,8 +4361,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public class CreateRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.FilterSet>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.FilterSet body, string ownerName)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.FilterSet body, string ownerName) : base(service)
                     {
                         OwnerName = ownerName;
                         Body = body;
@@ -4566,16 +4387,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.AdExchangeBuyerII.v2beta1.Data.FilterSet Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2beta1/{+ownerName}/filterSets";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -4583,24 +4404,22 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "ownerName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "ownerName",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^bidders/[^/]+/accounts/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "isTransient", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "isTransient",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("ownerName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "ownerName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^bidders/[^/]+/accounts/[^/]+$",
+                        });
+                        RequestParameters.Add("isTransient", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "isTransient",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4619,8 +4438,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public class DeleteRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -4636,13 +4454,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2beta1/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -4650,15 +4468,14 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
+                        });
                     }
 
                 }
@@ -4677,8 +4494,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public class GetRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.FilterSet>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -4694,13 +4510,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2beta1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -4708,15 +4524,14 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
+                        });
                     }
 
                 }
@@ -4735,8 +4550,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListFilterSetsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string ownerName)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string ownerName) : base(service)
                     {
                         OwnerName = ownerName;
                         InitParameters();
@@ -4763,13 +4577,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2beta1/{+ownerName}/filterSets";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -4777,33 +4591,30 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "ownerName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "ownerName",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^bidders/[^/]+/accounts/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("ownerName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "ownerName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^bidders/[^/]+/accounts/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4868,8 +4679,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListBidMetricsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string filterSetName)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string filterSetName) : base(service)
                     {
                         FilterSetName = filterSetName;
                         InitParameters();
@@ -4896,13 +4706,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2beta1/{+filterSetName}/bidMetrics";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -4910,33 +4720,30 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "filterSetName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filterSetName",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSetName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4976,8 +4783,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListBidResponseErrorsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string filterSetName)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string filterSetName) : base(service)
                     {
                         FilterSetName = filterSetName;
                         InitParameters();
@@ -5004,13 +4810,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2beta1/{+filterSetName}/bidResponseErrors";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -5018,33 +4824,30 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "filterSetName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filterSetName",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSetName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -5084,8 +4887,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListBidResponsesWithoutBidsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string filterSetName)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string filterSetName) : base(service)
                     {
                         FilterSetName = filterSetName;
                         InitParameters();
@@ -5112,13 +4914,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2beta1/{+filterSetName}/bidResponsesWithoutBids";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -5126,33 +4928,30 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "filterSetName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filterSetName",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSetName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -5192,8 +4991,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListFilteredBidRequestsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string filterSetName)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string filterSetName) : base(service)
                     {
                         FilterSetName = filterSetName;
                         InitParameters();
@@ -5220,13 +5018,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2beta1/{+filterSetName}/filteredBidRequests";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -5234,33 +5032,30 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "filterSetName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filterSetName",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSetName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -5324,8 +5119,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListCreativeStatusBreakdownByCreativeResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string filterSetName, int creativeStatusId)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string filterSetName, int creativeStatusId) : base(service)
                         {
                             FilterSetName = filterSetName;
                             CreativeStatusId = creativeStatusId;
@@ -5360,13 +5154,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         public virtual string PageToken { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -5374,42 +5168,38 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "filterSetName", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filterSetName",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "creativeStatusId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "creativeStatusId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filterSetName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
+                            });
+                            RequestParameters.Add("creativeStatusId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "creativeStatusId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -5453,8 +5243,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListCreativeStatusBreakdownByDetailResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string filterSetName, int creativeStatusId)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string filterSetName, int creativeStatusId) : base(service)
                         {
                             FilterSetName = filterSetName;
                             CreativeStatusId = creativeStatusId;
@@ -5490,13 +5279,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         public virtual string PageToken { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -5504,42 +5293,38 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "filterSetName", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filterSetName",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "creativeStatusId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "creativeStatusId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filterSetName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
+                            });
+                            RequestParameters.Add("creativeStatusId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "creativeStatusId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -5561,8 +5346,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListFilteredBidsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string filterSetName)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string filterSetName) : base(service)
                     {
                         FilterSetName = filterSetName;
                         InitParameters();
@@ -5589,13 +5373,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2beta1/{+filterSetName}/filteredBids";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -5603,33 +5387,30 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "filterSetName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filterSetName",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSetName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -5667,8 +5448,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListImpressionMetricsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string filterSetName)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string filterSetName) : base(service)
                     {
                         FilterSetName = filterSetName;
                         InitParameters();
@@ -5695,13 +5475,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2beta1/{+filterSetName}/impressionMetrics";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -5709,33 +5489,30 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "filterSetName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filterSetName",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSetName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -5775,8 +5552,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListLosingBidsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string filterSetName)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string filterSetName) : base(service)
                     {
                         FilterSetName = filterSetName;
                         InitParameters();
@@ -5803,13 +5579,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2beta1/{+filterSetName}/losingBids";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -5817,33 +5593,30 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "filterSetName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filterSetName",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSetName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -5883,8 +5656,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListNonBillableWinningBidsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string filterSetName)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string filterSetName) : base(service)
                     {
                         FilterSetName = filterSetName;
                         InitParameters();
@@ -5911,13 +5683,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v2beta1/{+filterSetName}/nonBillableWinningBids";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -5925,33 +5697,30 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "filterSetName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filterSetName",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("filterSetName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSetName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -5972,8 +5741,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             public class CreateRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.FilterSet>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.FilterSet body, string ownerName)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.FilterSet body, string ownerName) : base(service)
                 {
                     OwnerName = ownerName;
                     Body = body;
@@ -5998,16 +5766,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AdExchangeBuyerII.v2beta1.Data.FilterSet Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2beta1/{+ownerName}/filterSets";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -6015,24 +5783,22 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "ownerName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "ownerName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^bidders/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "isTransient", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "isTransient",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("ownerName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "ownerName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^bidders/[^/]+$",
+                    });
+                    RequestParameters.Add("isTransient", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "isTransient",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -6051,8 +5817,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             public class DeleteRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -6068,13 +5833,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2beta1/{+name}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -6082,15 +5847,14 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
+                    });
                 }
 
             }
@@ -6109,8 +5873,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             public class GetRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.FilterSet>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -6126,13 +5889,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2beta1/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -6140,15 +5903,14 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
+                    });
                 }
 
             }
@@ -6167,8 +5929,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListFilterSetsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string ownerName)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string ownerName) : base(service)
                 {
                     OwnerName = ownerName;
                     InitParameters();
@@ -6194,13 +5955,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v2beta1/{+ownerName}/filterSets";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -6208,33 +5969,30 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "ownerName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "ownerName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^bidders/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("ownerName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "ownerName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^bidders/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }

@@ -18,17 +18,16 @@ namespace Google.Apis.IAMCredentials.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public IAMCredentialsService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public IAMCredentialsService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public IAMCredentialsService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public IAMCredentialsService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Projects = new ProjectsResource(this);
         }
@@ -80,12 +79,11 @@ namespace Google.Apis.IAMCredentials.v1
         public virtual ProjectsResource Projects { get; }
     }
 
-    ///<summary>A base abstract class for IAMCredentials requests.</summary>
+    /// <summary>A base abstract class for IAMCredentials requests.</summary>
     public abstract class IAMCredentialsBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new IAMCredentialsBaseServiceRequest instance.</summary>
-        protected IAMCredentialsBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new IAMCredentialsBaseServiceRequest instance.</summary>
+        protected IAMCredentialsBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -165,105 +163,94 @@ namespace Google.Apis.IAMCredentials.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -316,8 +303,7 @@ namespace Google.Apis.IAMCredentials.v1
             public class GenerateAccessTokenRequest : IAMCredentialsBaseServiceRequest<Google.Apis.IAMCredentials.v1.Data.GenerateAccessTokenResponse>
             {
                 /// <summary>Constructs a new GenerateAccessToken request.</summary>
-                public GenerateAccessTokenRequest(Google.Apis.Services.IClientService service, Google.Apis.IAMCredentials.v1.Data.GenerateAccessTokenRequest body, string name)
-                    : base(service)
+                public GenerateAccessTokenRequest(Google.Apis.Services.IClientService service, Google.Apis.IAMCredentials.v1.Data.GenerateAccessTokenRequest body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -335,16 +321,16 @@ namespace Google.Apis.IAMCredentials.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.IAMCredentials.v1.Data.GenerateAccessTokenRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "generateAccessToken";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}:generateAccessToken";
 
                 /// <summary>Initializes GenerateAccessToken parameter list.</summary>
@@ -352,15 +338,14 @@ namespace Google.Apis.IAMCredentials.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+$",
+                    });
                 }
 
             }
@@ -379,8 +364,7 @@ namespace Google.Apis.IAMCredentials.v1
             public class GenerateIdTokenRequest : IAMCredentialsBaseServiceRequest<Google.Apis.IAMCredentials.v1.Data.GenerateIdTokenResponse>
             {
                 /// <summary>Constructs a new GenerateIdToken request.</summary>
-                public GenerateIdTokenRequest(Google.Apis.Services.IClientService service, Google.Apis.IAMCredentials.v1.Data.GenerateIdTokenRequest body, string name)
-                    : base(service)
+                public GenerateIdTokenRequest(Google.Apis.Services.IClientService service, Google.Apis.IAMCredentials.v1.Data.GenerateIdTokenRequest body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -398,16 +382,16 @@ namespace Google.Apis.IAMCredentials.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.IAMCredentials.v1.Data.GenerateIdTokenRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "generateIdToken";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}:generateIdToken";
 
                 /// <summary>Initializes GenerateIdToken parameter list.</summary>
@@ -415,15 +399,14 @@ namespace Google.Apis.IAMCredentials.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+$",
+                    });
                 }
 
             }
@@ -442,8 +425,7 @@ namespace Google.Apis.IAMCredentials.v1
             public class SignBlobRequest : IAMCredentialsBaseServiceRequest<Google.Apis.IAMCredentials.v1.Data.SignBlobResponse>
             {
                 /// <summary>Constructs a new SignBlob request.</summary>
-                public SignBlobRequest(Google.Apis.Services.IClientService service, Google.Apis.IAMCredentials.v1.Data.SignBlobRequest body, string name)
-                    : base(service)
+                public SignBlobRequest(Google.Apis.Services.IClientService service, Google.Apis.IAMCredentials.v1.Data.SignBlobRequest body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -461,16 +443,16 @@ namespace Google.Apis.IAMCredentials.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.IAMCredentials.v1.Data.SignBlobRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "signBlob";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}:signBlob";
 
                 /// <summary>Initializes SignBlob parameter list.</summary>
@@ -478,15 +460,14 @@ namespace Google.Apis.IAMCredentials.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+$",
+                    });
                 }
 
             }
@@ -505,8 +486,7 @@ namespace Google.Apis.IAMCredentials.v1
             public class SignJwtRequest : IAMCredentialsBaseServiceRequest<Google.Apis.IAMCredentials.v1.Data.SignJwtResponse>
             {
                 /// <summary>Constructs a new SignJwt request.</summary>
-                public SignJwtRequest(Google.Apis.Services.IClientService service, Google.Apis.IAMCredentials.v1.Data.SignJwtRequest body, string name)
-                    : base(service)
+                public SignJwtRequest(Google.Apis.Services.IClientService service, Google.Apis.IAMCredentials.v1.Data.SignJwtRequest body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -524,16 +504,16 @@ namespace Google.Apis.IAMCredentials.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.IAMCredentials.v1.Data.SignJwtRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "signJwt";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}:signJwt";
 
                 /// <summary>Initializes SignJwt parameter list.</summary>
@@ -541,15 +521,14 @@ namespace Google.Apis.IAMCredentials.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+$",
+                    });
                 }
 
             }

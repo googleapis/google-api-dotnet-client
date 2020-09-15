@@ -18,17 +18,16 @@ namespace Google.Apis.Firestore.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public FirestoreService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public FirestoreService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public FirestoreService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public FirestoreService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Projects = new ProjectsResource(this);
         }
@@ -86,12 +85,11 @@ namespace Google.Apis.Firestore.v1
         public virtual ProjectsResource Projects { get; }
     }
 
-    ///<summary>A base abstract class for Firestore requests.</summary>
+    /// <summary>A base abstract class for Firestore requests.</summary>
     public abstract class FirestoreBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new FirestoreBaseServiceRequest instance.</summary>
-        protected FirestoreBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new FirestoreBaseServiceRequest instance.</summary>
+        protected FirestoreBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -171,105 +169,94 @@ namespace Google.Apis.Firestore.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -362,8 +349,7 @@ namespace Google.Apis.Firestore.v1
                     public class GetRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1Field>
                     {
                         /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string name)
-                            : base(service)
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                         {
                             Name = name;
                             InitParameters();
@@ -376,13 +362,13 @@ namespace Google.Apis.Firestore.v1
                         public virtual string Name { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}";
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -390,15 +376,14 @@ namespace Google.Apis.Firestore.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/fields/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/fields/[^/]+$",
+                            });
                         }
 
                     }
@@ -421,8 +406,7 @@ namespace Google.Apis.Firestore.v1
                     public class ListRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ListFieldsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                         {
                             Parent = parent;
                             InitParameters();
@@ -451,13 +435,13 @@ namespace Google.Apis.Firestore.v1
                         public virtual string PageToken { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+parent}/fields";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -465,42 +449,38 @@ namespace Google.Apis.Firestore.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "filter", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filter",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -542,8 +522,7 @@ namespace Google.Apis.Firestore.v1
                     public class PatchRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Patch request.</summary>
-                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1Field body, string name)
-                            : base(service)
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1Field body, string name) : base(service)
                         {
                             Name = name;
                             Body = body;
@@ -578,16 +557,16 @@ namespace Google.Apis.Firestore.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1Field Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "patch";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "PATCH";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}";
 
                         /// <summary>Initializes Patch parameter list.</summary>
@@ -595,24 +574,22 @@ namespace Google.Apis.Firestore.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/fields/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "updateMask", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "updateMask",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/fields/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -653,8 +630,7 @@ namespace Google.Apis.Firestore.v1
                     public class CreateRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Create request.</summary>
-                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1Index body, string parent)
-                            : base(service)
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1Index body, string parent) : base(service)
                         {
                             Parent = parent;
                             Body = body;
@@ -671,16 +647,16 @@ namespace Google.Apis.Firestore.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1Index Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "create";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+parent}/indexes";
 
                         /// <summary>Initializes Create parameter list.</summary>
@@ -688,15 +664,14 @@ namespace Google.Apis.Firestore.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$",
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$",
+                            });
                         }
 
                     }
@@ -713,8 +688,7 @@ namespace Google.Apis.Firestore.v1
                     public class DeleteRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.Empty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
-                        public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                            : base(service)
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                         {
                             Name = name;
                             InitParameters();
@@ -727,13 +701,13 @@ namespace Google.Apis.Firestore.v1
                         public virtual string Name { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "delete";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "DELETE";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}";
 
                         /// <summary>Initializes Delete parameter list.</summary>
@@ -741,15 +715,14 @@ namespace Google.Apis.Firestore.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/indexes/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/indexes/[^/]+$",
+                            });
                         }
 
                     }
@@ -766,8 +739,7 @@ namespace Google.Apis.Firestore.v1
                     public class GetRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1Index>
                     {
                         /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string name)
-                            : base(service)
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                         {
                             Name = name;
                             InitParameters();
@@ -780,13 +752,13 @@ namespace Google.Apis.Firestore.v1
                         public virtual string Name { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+name}";
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -794,15 +766,14 @@ namespace Google.Apis.Firestore.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/indexes/[^/]+$",
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/indexes/[^/]+$",
+                            });
                         }
 
                     }
@@ -819,8 +790,7 @@ namespace Google.Apis.Firestore.v1
                     public class ListRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ListIndexesResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                         {
                             Parent = parent;
                             InitParameters();
@@ -846,13 +816,13 @@ namespace Google.Apis.Firestore.v1
                         public virtual string PageToken { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/{+parent}/indexes";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -860,42 +830,38 @@ namespace Google.Apis.Firestore.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "filter", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filter",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -935,8 +901,7 @@ namespace Google.Apis.Firestore.v1
                 public class BatchGetRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.BatchGetDocumentsResponse>
                 {
                     /// <summary>Constructs a new BatchGet request.</summary>
-                    public BatchGetRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.BatchGetDocumentsRequest body, string database)
-                        : base(service)
+                    public BatchGetRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.BatchGetDocumentsRequest body, string database) : base(service)
                     {
                         Database = database;
                         Body = body;
@@ -953,16 +918,16 @@ namespace Google.Apis.Firestore.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Firestore.v1.Data.BatchGetDocumentsRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "batchGet";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+database}/documents:batchGet";
 
                     /// <summary>Initializes BatchGet parameter list.</summary>
@@ -970,15 +935,14 @@ namespace Google.Apis.Firestore.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "database", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "database",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/databases/[^/]+$",
-                            });
+                        RequestParameters.Add("database", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "database",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                        });
                     }
 
                 }
@@ -1004,8 +968,7 @@ namespace Google.Apis.Firestore.v1
                 public class BatchWriteRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.BatchWriteResponse>
                 {
                     /// <summary>Constructs a new BatchWrite request.</summary>
-                    public BatchWriteRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.BatchWriteRequest body, string database)
-                        : base(service)
+                    public BatchWriteRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.BatchWriteRequest body, string database) : base(service)
                     {
                         Database = database;
                         Body = body;
@@ -1022,16 +985,16 @@ namespace Google.Apis.Firestore.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Firestore.v1.Data.BatchWriteRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "batchWrite";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+database}/documents:batchWrite";
 
                     /// <summary>Initializes BatchWrite parameter list.</summary>
@@ -1039,15 +1002,14 @@ namespace Google.Apis.Firestore.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "database", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "database",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/databases/[^/]+$",
-                            });
+                        RequestParameters.Add("database", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "database",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                        });
                     }
 
                 }
@@ -1065,8 +1027,7 @@ namespace Google.Apis.Firestore.v1
                 public class BeginTransactionRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.BeginTransactionResponse>
                 {
                     /// <summary>Constructs a new BeginTransaction request.</summary>
-                    public BeginTransactionRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.BeginTransactionRequest body, string database)
-                        : base(service)
+                    public BeginTransactionRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.BeginTransactionRequest body, string database) : base(service)
                     {
                         Database = database;
                         Body = body;
@@ -1083,16 +1044,16 @@ namespace Google.Apis.Firestore.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Firestore.v1.Data.BeginTransactionRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "beginTransaction";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+database}/documents:beginTransaction";
 
                     /// <summary>Initializes BeginTransaction parameter list.</summary>
@@ -1100,15 +1061,14 @@ namespace Google.Apis.Firestore.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "database", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "database",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/databases/[^/]+$",
-                            });
+                        RequestParameters.Add("database", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "database",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                        });
                     }
 
                 }
@@ -1126,8 +1086,7 @@ namespace Google.Apis.Firestore.v1
                 public class CommitRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.CommitResponse>
                 {
                     /// <summary>Constructs a new Commit request.</summary>
-                    public CommitRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.CommitRequest body, string database)
-                        : base(service)
+                    public CommitRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.CommitRequest body, string database) : base(service)
                     {
                         Database = database;
                         Body = body;
@@ -1144,16 +1103,16 @@ namespace Google.Apis.Firestore.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Firestore.v1.Data.CommitRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "commit";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+database}/documents:commit";
 
                     /// <summary>Initializes Commit parameter list.</summary>
@@ -1161,15 +1120,14 @@ namespace Google.Apis.Firestore.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "database", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "database",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/databases/[^/]+$",
-                            });
+                        RequestParameters.Add("database", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "database",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                        });
                     }
 
                 }
@@ -1191,8 +1149,7 @@ namespace Google.Apis.Firestore.v1
                 public class CreateDocumentRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.Document>
                 {
                     /// <summary>Constructs a new CreateDocument request.</summary>
-                    public CreateDocumentRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.Document body, string parent, string collectionId)
-                        : base(service)
+                    public CreateDocumentRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.Document body, string parent, string collectionId) : base(service)
                     {
                         Parent = parent;
                         CollectionId = collectionId;
@@ -1226,16 +1183,16 @@ namespace Google.Apis.Firestore.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Firestore.v1.Data.Document Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "createDocument";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/{collectionId}";
 
                     /// <summary>Initializes CreateDocument parameter list.</summary>
@@ -1243,42 +1200,38 @@ namespace Google.Apis.Firestore.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/databases/[^/]+/documents/.*$",
-                            });
-                        RequestParameters.Add(
-                            "collectionId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "collectionId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "documentId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "documentId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "mask.fieldPaths", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "mask.fieldPaths",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+/documents/.*$",
+                        });
+                        RequestParameters.Add("collectionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "collectionId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("documentId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "documentId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("mask.fieldPaths", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "mask.fieldPaths",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1295,8 +1248,7 @@ namespace Google.Apis.Firestore.v1
                 public class DeleteRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -1319,13 +1271,13 @@ namespace Google.Apis.Firestore.v1
                     public virtual object CurrentDocumentUpdateTime { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -1333,33 +1285,30 @@ namespace Google.Apis.Firestore.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
-                            });
-                        RequestParameters.Add(
-                            "currentDocument.exists", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "currentDocument.exists",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "currentDocument.updateTime", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "currentDocument.updateTime",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
+                        });
+                        RequestParameters.Add("currentDocument.exists", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "currentDocument.exists",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("currentDocument.updateTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "currentDocument.updateTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1376,8 +1325,7 @@ namespace Google.Apis.Firestore.v1
                 public class GetRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.Document>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -1404,13 +1352,13 @@ namespace Google.Apis.Firestore.v1
                     public virtual string Transaction { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -1418,42 +1366,38 @@ namespace Google.Apis.Firestore.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
-                            });
-                        RequestParameters.Add(
-                            "mask.fieldPaths", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "mask.fieldPaths",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "readTime", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "readTime",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "transaction", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "transaction",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
+                        });
+                        RequestParameters.Add("mask.fieldPaths", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "mask.fieldPaths",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("readTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "readTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("transaction", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "transaction",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1475,8 +1419,7 @@ namespace Google.Apis.Firestore.v1
                 public class ListRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.ListDocumentsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent, string collectionId)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent, string collectionId) : base(service)
                     {
                         Parent = parent;
                         CollectionId = collectionId;
@@ -1531,13 +1474,13 @@ namespace Google.Apis.Firestore.v1
                     public virtual string Transaction { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/{collectionId}";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -1545,87 +1488,78 @@ namespace Google.Apis.Firestore.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
-                            });
-                        RequestParameters.Add(
-                            "collectionId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "collectionId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "mask.fieldPaths", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "mask.fieldPaths",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "orderBy", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "orderBy",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "readTime", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "readTime",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "showMissing", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "showMissing",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "transaction", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "transaction",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
+                        });
+                        RequestParameters.Add("collectionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "collectionId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("mask.fieldPaths", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "mask.fieldPaths",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("readTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "readTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("showMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "showMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("transaction", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "transaction",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1644,8 +1578,7 @@ namespace Google.Apis.Firestore.v1
                 public class ListCollectionIdsRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.ListCollectionIdsResponse>
                 {
                     /// <summary>Constructs a new ListCollectionIds request.</summary>
-                    public ListCollectionIdsRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.ListCollectionIdsRequest body, string parent)
-                        : base(service)
+                    public ListCollectionIdsRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.ListCollectionIdsRequest body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -1663,16 +1596,16 @@ namespace Google.Apis.Firestore.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Firestore.v1.Data.ListCollectionIdsRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "listCollectionIds";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}:listCollectionIds";
 
                     /// <summary>Initializes ListCollectionIds parameter list.</summary>
@@ -1680,15 +1613,14 @@ namespace Google.Apis.Firestore.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
+                        });
                     }
 
                 }
@@ -1706,8 +1638,7 @@ namespace Google.Apis.Firestore.v1
                 public class ListenRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.ListenResponse>
                 {
                     /// <summary>Constructs a new Listen request.</summary>
-                    public ListenRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.ListenRequest body, string database)
-                        : base(service)
+                    public ListenRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.ListenRequest body, string database) : base(service)
                     {
                         Database = database;
                         Body = body;
@@ -1724,16 +1655,16 @@ namespace Google.Apis.Firestore.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Firestore.v1.Data.ListenRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "listen";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+database}/documents:listen";
 
                     /// <summary>Initializes Listen parameter list.</summary>
@@ -1741,15 +1672,14 @@ namespace Google.Apis.Firestore.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "database", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "database",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/databases/[^/]+$",
-                            });
+                        RequestParameters.Add("database", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "database",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                        });
                     }
 
                 }
@@ -1772,8 +1702,7 @@ namespace Google.Apis.Firestore.v1
                 public class PartitionQueryRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.PartitionQueryResponse>
                 {
                     /// <summary>Constructs a new PartitionQuery request.</summary>
-                    public PartitionQueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.PartitionQueryRequest body, string parent)
-                        : base(service)
+                    public PartitionQueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.PartitionQueryRequest body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -1791,16 +1720,16 @@ namespace Google.Apis.Firestore.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Firestore.v1.Data.PartitionQueryRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "partitionQuery";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}:partitionQuery";
 
                     /// <summary>Initializes PartitionQuery parameter list.</summary>
@@ -1808,15 +1737,14 @@ namespace Google.Apis.Firestore.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
+                        });
                     }
 
                 }
@@ -1834,8 +1762,7 @@ namespace Google.Apis.Firestore.v1
                 public class PatchRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.Document>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.Document body, string name)
-                        : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.Document body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1872,16 +1799,16 @@ namespace Google.Apis.Firestore.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Firestore.v1.Data.Document Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "patch";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PATCH";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Patch parameter list.</summary>
@@ -1889,51 +1816,46 @@ namespace Google.Apis.Firestore.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
-                            });
-                        RequestParameters.Add(
-                            "currentDocument.exists", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "currentDocument.exists",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "currentDocument.updateTime", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "currentDocument.updateTime",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "mask.fieldPaths", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "mask.fieldPaths",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "updateMask.fieldPaths", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "updateMask.fieldPaths",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
+                        });
+                        RequestParameters.Add("currentDocument.exists", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "currentDocument.exists",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("currentDocument.updateTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "currentDocument.updateTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("mask.fieldPaths", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "mask.fieldPaths",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask.fieldPaths", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask.fieldPaths",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1951,8 +1873,7 @@ namespace Google.Apis.Firestore.v1
                 public class RollbackRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Rollback request.</summary>
-                    public RollbackRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.RollbackRequest body, string database)
-                        : base(service)
+                    public RollbackRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.RollbackRequest body, string database) : base(service)
                     {
                         Database = database;
                         Body = body;
@@ -1969,16 +1890,16 @@ namespace Google.Apis.Firestore.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Firestore.v1.Data.RollbackRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "rollback";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+database}/documents:rollback";
 
                     /// <summary>Initializes Rollback parameter list.</summary>
@@ -1986,15 +1907,14 @@ namespace Google.Apis.Firestore.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "database", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "database",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/databases/[^/]+$",
-                            });
+                        RequestParameters.Add("database", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "database",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                        });
                     }
 
                 }
@@ -2015,8 +1935,7 @@ namespace Google.Apis.Firestore.v1
                 public class RunQueryRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.RunQueryResponse>
                 {
                     /// <summary>Constructs a new RunQuery request.</summary>
-                    public RunQueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.RunQueryRequest body, string parent)
-                        : base(service)
+                    public RunQueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.RunQueryRequest body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -2036,16 +1955,16 @@ namespace Google.Apis.Firestore.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Firestore.v1.Data.RunQueryRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "runQuery";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}:runQuery";
 
                     /// <summary>Initializes RunQuery parameter list.</summary>
@@ -2053,15 +1972,14 @@ namespace Google.Apis.Firestore.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
+                        });
                     }
 
                 }
@@ -2079,8 +1997,7 @@ namespace Google.Apis.Firestore.v1
                 public class WriteRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.WriteResponse>
                 {
                     /// <summary>Constructs a new Write request.</summary>
-                    public WriteRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.WriteRequest body, string database)
-                        : base(service)
+                    public WriteRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.WriteRequest body, string database) : base(service)
                     {
                         Database = database;
                         Body = body;
@@ -2098,16 +2015,16 @@ namespace Google.Apis.Firestore.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Firestore.v1.Data.WriteRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "write";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+database}/documents:write";
 
                     /// <summary>Initializes Write parameter list.</summary>
@@ -2115,15 +2032,14 @@ namespace Google.Apis.Firestore.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "database", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "database",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/databases/[^/]+$",
-                            });
+                        RequestParameters.Add("database", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "database",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                        });
                     }
 
                 }
@@ -2171,8 +2087,7 @@ namespace Google.Apis.Firestore.v1
                 public class CancelRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Cancel request.</summary>
-                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.GoogleLongrunningCancelOperationRequest body, string name)
-                        : base(service)
+                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.GoogleLongrunningCancelOperationRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -2188,16 +2103,16 @@ namespace Google.Apis.Firestore.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Firestore.v1.Data.GoogleLongrunningCancelOperationRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "cancel";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}:cancel";
 
                     /// <summary>Initializes Cancel parameter list.</summary>
@@ -2205,15 +2120,14 @@ namespace Google.Apis.Firestore.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/databases/[^/]+/operations/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+/operations/[^/]+$",
+                        });
                     }
 
                 }
@@ -2233,8 +2147,7 @@ namespace Google.Apis.Firestore.v1
                 public class DeleteRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -2246,13 +2159,13 @@ namespace Google.Apis.Firestore.v1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -2260,15 +2173,14 @@ namespace Google.Apis.Firestore.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/databases/[^/]+/operations/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+/operations/[^/]+$",
+                        });
                     }
 
                 }
@@ -2286,8 +2198,7 @@ namespace Google.Apis.Firestore.v1
                 public class GetRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -2299,13 +2210,13 @@ namespace Google.Apis.Firestore.v1
                     public virtual string Name { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -2313,15 +2224,14 @@ namespace Google.Apis.Firestore.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/databases/[^/]+/operations/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+/operations/[^/]+$",
+                        });
                     }
 
                 }
@@ -2349,8 +2259,7 @@ namespace Google.Apis.Firestore.v1
                 public class ListRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleLongrunningListOperationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -2374,13 +2283,13 @@ namespace Google.Apis.Firestore.v1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}/operations";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -2388,42 +2297,38 @@ namespace Google.Apis.Firestore.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/databases/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2452,8 +2357,7 @@ namespace Google.Apis.Firestore.v1
             public class ExportDocumentsRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new ExportDocuments request.</summary>
-                public ExportDocumentsRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ExportDocumentsRequest body, string name)
-                    : base(service)
+                public ExportDocumentsRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ExportDocumentsRequest body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -2470,16 +2374,16 @@ namespace Google.Apis.Firestore.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ExportDocumentsRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "exportDocuments";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}:exportDocuments";
 
                 /// <summary>Initializes ExportDocuments parameter list.</summary>
@@ -2487,15 +2391,14 @@ namespace Google.Apis.Firestore.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/databases/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                    });
                 }
 
             }
@@ -2519,8 +2422,7 @@ namespace Google.Apis.Firestore.v1
             public class ImportDocumentsRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new ImportDocuments request.</summary>
-                public ImportDocumentsRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ImportDocumentsRequest body, string name)
-                    : base(service)
+                public ImportDocumentsRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ImportDocumentsRequest body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -2537,16 +2439,16 @@ namespace Google.Apis.Firestore.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ImportDocumentsRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "importDocuments";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}:importDocuments";
 
                 /// <summary>Initializes ImportDocuments parameter list.</summary>
@@ -2554,15 +2456,14 @@ namespace Google.Apis.Firestore.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/databases/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                    });
                 }
 
             }
@@ -2597,8 +2498,7 @@ namespace Google.Apis.Firestore.v1
             public class GetRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.Location>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -2610,13 +2510,13 @@ namespace Google.Apis.Firestore.v1
                 public virtual string Name { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -2624,15 +2524,14 @@ namespace Google.Apis.Firestore.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
                 }
 
             }
@@ -2648,8 +2547,7 @@ namespace Google.Apis.Firestore.v1
             public class ListRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -2673,13 +2571,13 @@ namespace Google.Apis.Firestore.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}/locations";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -2687,42 +2585,38 @@ namespace Google.Apis.Firestore.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }

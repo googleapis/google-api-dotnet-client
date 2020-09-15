@@ -18,17 +18,16 @@ namespace Google.Apis.Slides.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public SlidesService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public SlidesService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public SlidesService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public SlidesService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Presentations = new PresentationsResource(this);
         }
@@ -118,12 +117,11 @@ namespace Google.Apis.Slides.v1
         public virtual PresentationsResource Presentations { get; }
     }
 
-    ///<summary>A base abstract class for Slides requests.</summary>
+    /// <summary>A base abstract class for Slides requests.</summary>
     public abstract class SlidesBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new SlidesBaseServiceRequest instance.</summary>
-        protected SlidesBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new SlidesBaseServiceRequest instance.</summary>
+        protected SlidesBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -203,105 +201,94 @@ namespace Google.Apis.Slides.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -353,8 +340,7 @@ namespace Google.Apis.Slides.v1
             public class GetRequest : SlidesBaseServiceRequest<Google.Apis.Slides.v1.Data.Page>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string presentationId, string pageObjectId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string presentationId, string pageObjectId) : base(service)
                 {
                     PresentationId = presentationId;
                     PageObjectId = pageObjectId;
@@ -371,13 +357,13 @@ namespace Google.Apis.Slides.v1
                 public virtual string PageObjectId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/presentations/{presentationId}/pages/{pageObjectId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -385,24 +371,22 @@ namespace Google.Apis.Slides.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "presentationId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "presentationId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageObjectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageObjectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("presentationId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "presentationId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageObjectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageObjectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -424,8 +408,7 @@ namespace Google.Apis.Slides.v1
             public class GetThumbnailRequest : SlidesBaseServiceRequest<Google.Apis.Slides.v1.Data.Thumbnail>
             {
                 /// <summary>Constructs a new GetThumbnail request.</summary>
-                public GetThumbnailRequest(Google.Apis.Services.IClientService service, string presentationId, string pageObjectId)
-                    : base(service)
+                public GetThumbnailRequest(Google.Apis.Services.IClientService service, string presentationId, string pageObjectId) : base(service)
                 {
                     PresentationId = presentationId;
                     PageObjectId = pageObjectId;
@@ -480,13 +463,13 @@ namespace Google.Apis.Slides.v1
                 }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getThumbnail";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/presentations/{presentationId}/pages/{pageObjectId}/thumbnail";
 
                 /// <summary>Initializes GetThumbnail parameter list.</summary>
@@ -494,42 +477,38 @@ namespace Google.Apis.Slides.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "presentationId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "presentationId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageObjectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageObjectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "thumbnailProperties.mimeType", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "thumbnailProperties.mimeType",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "thumbnailProperties.thumbnailSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "thumbnailProperties.thumbnailSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("presentationId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "presentationId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageObjectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageObjectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("thumbnailProperties.mimeType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "thumbnailProperties.mimeType",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("thumbnailProperties.thumbnailSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "thumbnailProperties.thumbnailSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -565,8 +544,7 @@ namespace Google.Apis.Slides.v1
         public class BatchUpdateRequest : SlidesBaseServiceRequest<Google.Apis.Slides.v1.Data.BatchUpdatePresentationResponse>
         {
             /// <summary>Constructs a new BatchUpdate request.</summary>
-            public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Slides.v1.Data.BatchUpdatePresentationRequest body, string presentationId)
-                : base(service)
+            public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Slides.v1.Data.BatchUpdatePresentationRequest body, string presentationId) : base(service)
             {
                 PresentationId = presentationId;
                 Body = body;
@@ -582,16 +560,16 @@ namespace Google.Apis.Slides.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Slides.v1.Data.BatchUpdatePresentationRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "batchUpdate";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/presentations/{presentationId}:batchUpdate";
 
             /// <summary>Initializes BatchUpdate parameter list.</summary>
@@ -599,15 +577,14 @@ namespace Google.Apis.Slides.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "presentationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "presentationId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("presentationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "presentationId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -627,8 +604,7 @@ namespace Google.Apis.Slides.v1
         public class CreateRequest : SlidesBaseServiceRequest<Google.Apis.Slides.v1.Data.Presentation>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Slides.v1.Data.Presentation body)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Slides.v1.Data.Presentation body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -639,16 +615,16 @@ namespace Google.Apis.Slides.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Slides.v1.Data.Presentation Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/presentations";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -671,8 +647,7 @@ namespace Google.Apis.Slides.v1
         public class GetRequest : SlidesBaseServiceRequest<Google.Apis.Slides.v1.Data.Presentation>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string presentationId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string presentationId) : base(service)
             {
                 PresentationId = presentationId;
                 InitParameters();
@@ -684,13 +659,13 @@ namespace Google.Apis.Slides.v1
             public virtual string PresentationId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/presentations/{+presentationId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -698,15 +673,14 @@ namespace Google.Apis.Slides.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "presentationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "presentationId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
+                RequestParameters.Add("presentationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "presentationId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
             }
 
         }

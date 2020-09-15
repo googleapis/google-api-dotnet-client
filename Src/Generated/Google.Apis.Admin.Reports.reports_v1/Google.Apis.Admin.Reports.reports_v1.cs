@@ -18,17 +18,16 @@ namespace Google.Apis.Admin.Reports.reports_v1
         public const string Version = "reports_v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public ReportsService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public ReportsService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public ReportsService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public ReportsService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Activities = new ActivitiesResource(this);
             Channels = new ChannelsResource(this);
@@ -102,12 +101,11 @@ namespace Google.Apis.Admin.Reports.reports_v1
         public virtual UserUsageReportResource UserUsageReport { get; }
     }
 
-    ///<summary>A base abstract class for Reports requests.</summary>
+    /// <summary>A base abstract class for Reports requests.</summary>
     public abstract class ReportsBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new ReportsBaseServiceRequest instance.</summary>
-        protected ReportsBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new ReportsBaseServiceRequest instance.</summary>
+        protected ReportsBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -187,105 +185,94 @@ namespace Google.Apis.Admin.Reports.reports_v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -326,8 +313,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
         public class ListRequest : ReportsBaseServiceRequest<Google.Apis.Admin.Reports.reports_v1.Data.Activities>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string userKey, ListRequest.ApplicationNameEnum applicationName)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string userKey, ListRequest.ApplicationNameEnum applicationName) : base(service)
             {
                 UserKey = userKey;
                 ApplicationName = applicationName;
@@ -514,13 +500,13 @@ namespace Google.Apis.Admin.Reports.reports_v1
             public virtual string StartTime { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "admin/reports/v1/activity/users/{userKey}/applications/{applicationName}";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -528,105 +514,94 @@ namespace Google.Apis.Admin.Reports.reports_v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "userKey", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userKey",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "applicationName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "applicationName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)|(user_accounts)|(access_transparency)|(groups_enterprise)|(gcp)|(context_aware_access)|(data_studio)|(chrome)",
-                    });
-                RequestParameters.Add(
-                    "actorIpAddress", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "actorIpAddress",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = @"C.+",
-                    });
-                RequestParameters.Add(
-                    "endTime", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "endTime",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = @"(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|([-+])(\d\d):(\d\d))",
-                    });
-                RequestParameters.Add(
-                    "eventName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "eventName",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filters", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filters",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = @"(.+[<,<=,==,>=,>,<>].+,)*(.+[<,<=,==,>=,>,<>].+)",
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orgUnitID", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orgUnitID",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = @"(id:[a-z0-9]+)",
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "startTime", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "startTime",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = @"(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|([-+])(\d\d):(\d\d))",
-                    });
+                RequestParameters.Add("userKey", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userKey",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("applicationName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "applicationName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)|(user_accounts)|(access_transparency)|(groups_enterprise)|(gcp)|(context_aware_access)|(data_studio)|(chrome)",
+                });
+                RequestParameters.Add("actorIpAddress", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "actorIpAddress",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"C.+",
+                });
+                RequestParameters.Add("endTime", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "endTime",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|([-+])(\d\d):(\d\d))",
+                });
+                RequestParameters.Add("eventName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "eventName",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("filters", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filters",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"(.+[<,<=,==,>=,>,<>].+,)*(.+[<,<=,==,>=,>,<>].+)",
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orgUnitID", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orgUnitID",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"(id:[a-z0-9]+)",
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("startTime", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "startTime",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|([-+])(\d\d):(\d\d))",
+                });
             }
 
         }
@@ -649,8 +624,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
         public class WatchRequest : ReportsBaseServiceRequest<Google.Apis.Admin.Reports.reports_v1.Data.Channel>
         {
             /// <summary>Constructs a new Watch request.</summary>
-            public WatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Reports.reports_v1.Data.Channel body, string userKey, WatchRequest.ApplicationNameEnum applicationName)
-                : base(service)
+            public WatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Reports.reports_v1.Data.Channel body, string userKey, WatchRequest.ApplicationNameEnum applicationName) : base(service)
             {
                 UserKey = userKey;
                 ApplicationName = applicationName;
@@ -841,16 +815,16 @@ namespace Google.Apis.Admin.Reports.reports_v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Admin.Reports.reports_v1.Data.Channel Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "watch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "admin/reports/v1/activity/users/{userKey}/applications/{applicationName}/watch";
 
             /// <summary>Initializes Watch parameter list.</summary>
@@ -858,105 +832,94 @@ namespace Google.Apis.Admin.Reports.reports_v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "userKey", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userKey",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "applicationName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "applicationName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)|(user_accounts)|(access_transparency)|(groups_enterprise)|(gcp)|(context_aware_access)|(data_studio)|(chrome)",
-                    });
-                RequestParameters.Add(
-                    "actorIpAddress", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "actorIpAddress",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = @"C.+",
-                    });
-                RequestParameters.Add(
-                    "endTime", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "endTime",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = @"(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|([-+])(\d\d):(\d\d))",
-                    });
-                RequestParameters.Add(
-                    "eventName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "eventName",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filters", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filters",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = @"(.+[<,<=,==,>=,>,<>].+,)*(.+[<,<=,==,>=,>,<>].+)",
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orgUnitID", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orgUnitID",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = @"(id:[a-z0-9]+)",
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "startTime", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "startTime",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = @"(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|([-+])(\d\d):(\d\d))",
-                    });
+                RequestParameters.Add("userKey", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userKey",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("applicationName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "applicationName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)|(user_accounts)|(access_transparency)|(groups_enterprise)|(gcp)|(context_aware_access)|(data_studio)|(chrome)",
+                });
+                RequestParameters.Add("actorIpAddress", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "actorIpAddress",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"C.+",
+                });
+                RequestParameters.Add("endTime", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "endTime",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|([-+])(\d\d):(\d\d))",
+                });
+                RequestParameters.Add("eventName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "eventName",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("filters", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filters",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"(.+[<,<=,==,>=,>,<>].+,)*(.+[<,<=,==,>=,>,<>].+)",
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orgUnitID", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orgUnitID",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"(id:[a-z0-9]+)",
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("startTime", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "startTime",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|([-+])(\d\d):(\d\d))",
+                });
             }
 
         }
@@ -989,8 +952,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
         public class StopRequest : ReportsBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Stop request.</summary>
-            public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Reports.reports_v1.Data.Channel body)
-                : base(service)
+            public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Reports.reports_v1.Data.Channel body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -1001,16 +963,16 @@ namespace Google.Apis.Admin.Reports.reports_v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Admin.Reports.reports_v1.Data.Channel Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "stop";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "admin/reports_v1/channels/stop";
 
             /// <summary>Initializes Stop parameter list.</summary>
@@ -1055,8 +1017,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
         public class GetRequest : ReportsBaseServiceRequest<Google.Apis.Admin.Reports.reports_v1.Data.UsageReports>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string date)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string date) : base(service)
             {
                 Date = date;
                 InitParameters();
@@ -1092,13 +1053,13 @@ namespace Google.Apis.Admin.Reports.reports_v1
             public virtual string Parameters { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "admin/reports/v1/usage/dates/{date}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1106,42 +1067,38 @@ namespace Google.Apis.Admin.Reports.reports_v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "date", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "date",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(\d){4}-(\d){2}-(\d){2}",
-                    });
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = @"C.+",
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "parameters", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parameters",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = @"(((accounts)|(app_maker)|(apps_scripts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)|(meet)):[^,]+,)*(((accounts)|(app_maker)|(apps_scripts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)|(meet)):[^,]+)",
-                    });
+                RequestParameters.Add("date", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "date",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(\d){4}-(\d){2}-(\d){2}",
+                });
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"C.+",
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("parameters", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parameters",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"(((accounts)|(app_maker)|(apps_scripts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)|(meet)):[^,]+,)*(((accounts)|(app_maker)|(apps_scripts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)|(meet)):[^,]+)",
+                });
             }
 
         }
@@ -1183,8 +1140,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
         public class GetRequest : ReportsBaseServiceRequest<Google.Apis.Admin.Reports.reports_v1.Data.UsageReports>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, GetRequest.EntityTypeEnum entityType, GetRequest.EntityKeyEnum entityKey, string date)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, GetRequest.EntityTypeEnum entityType, GetRequest.EntityKeyEnum entityKey, string date) : base(service)
             {
                 EntityType = entityType;
                 EntityKey = entityKey;
@@ -1274,13 +1230,13 @@ namespace Google.Apis.Admin.Reports.reports_v1
             public virtual string Parameters { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "admin/reports/v1/usage/{entityType}/{entityKey}/dates/{date}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1288,78 +1244,70 @@ namespace Google.Apis.Admin.Reports.reports_v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "entityType", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "entityType",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(gplus_communities)",
-                    });
-                RequestParameters.Add(
-                    "entityKey", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "entityKey",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "date", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "date",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(\d){4}-(\d){2}-(\d){2}",
-                    });
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = @"C.+",
-                    });
-                RequestParameters.Add(
-                    "filters", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filters",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = @"(((gplus)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+,)*(((gplus)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+)",
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "parameters", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parameters",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = @"(((gplus)):[^,]+,)*(((gplus)):[^,]+)",
-                    });
+                RequestParameters.Add("entityType", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "entityType",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(gplus_communities)",
+                });
+                RequestParameters.Add("entityKey", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "entityKey",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("date", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "date",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(\d){4}-(\d){2}-(\d){2}",
+                });
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"C.+",
+                });
+                RequestParameters.Add("filters", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filters",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"(((gplus)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+,)*(((gplus)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+)",
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("parameters", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parameters",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"(((gplus)):[^,]+,)*(((gplus)):[^,]+)",
+                });
             }
 
         }
@@ -1400,8 +1348,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
         public class GetRequest : ReportsBaseServiceRequest<Google.Apis.Admin.Reports.reports_v1.Data.UsageReports>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string userKey, string date)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string userKey, string date) : base(service)
             {
                 UserKey = userKey;
                 Date = date;
@@ -1471,13 +1418,13 @@ namespace Google.Apis.Admin.Reports.reports_v1
             public virtual string Parameters { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "admin/reports/v1/usage/users/{userKey}/dates/{date}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1485,78 +1432,70 @@ namespace Google.Apis.Admin.Reports.reports_v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "userKey", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userKey",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "date", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "date",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(\d){4}-(\d){2}-(\d){2}",
-                    });
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = @"C.+",
-                    });
-                RequestParameters.Add(
-                    "filters", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filters",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = @"(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+,)*(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+)",
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orgUnitID", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orgUnitID",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = @"(id:[a-z0-9]+)",
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "parameters", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parameters",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = @"(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+,)*(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+)",
-                    });
+                RequestParameters.Add("userKey", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userKey",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("date", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "date",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(\d){4}-(\d){2}-(\d){2}",
+                });
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"C.+",
+                });
+                RequestParameters.Add("filters", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filters",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+,)*(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+)",
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orgUnitID", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orgUnitID",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"(id:[a-z0-9]+)",
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("parameters", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parameters",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+,)*(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+)",
+                });
             }
 
         }

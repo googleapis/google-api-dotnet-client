@@ -18,17 +18,16 @@ namespace Google.Apis.GamesManagement.v1management
         public const string Version = "v1management";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public GamesManagementService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public GamesManagementService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public GamesManagementService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public GamesManagementService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Achievements = new AchievementsResource(this);
             Applications = new ApplicationsResource(this);
@@ -96,12 +95,11 @@ namespace Google.Apis.GamesManagement.v1management
         public virtual ScoresResource Scores { get; }
     }
 
-    ///<summary>A base abstract class for GamesManagement requests.</summary>
+    /// <summary>A base abstract class for GamesManagement requests.</summary>
     public abstract class GamesManagementBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new GamesManagementBaseServiceRequest instance.</summary>
-        protected GamesManagementBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new GamesManagementBaseServiceRequest instance.</summary>
+        protected GamesManagementBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -181,105 +179,94 @@ namespace Google.Apis.GamesManagement.v1management
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -312,8 +299,7 @@ namespace Google.Apis.GamesManagement.v1management
         public class ResetRequest : GamesManagementBaseServiceRequest<Google.Apis.GamesManagement.v1management.Data.AchievementResetResponse>
         {
             /// <summary>Constructs a new Reset request.</summary>
-            public ResetRequest(Google.Apis.Services.IClientService service, string achievementId)
-                : base(service)
+            public ResetRequest(Google.Apis.Services.IClientService service, string achievementId) : base(service)
             {
                 AchievementId = achievementId;
                 InitParameters();
@@ -325,13 +311,13 @@ namespace Google.Apis.GamesManagement.v1management
             public virtual string AchievementId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "reset";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1management/achievements/{achievementId}/reset";
 
             /// <summary>Initializes Reset parameter list.</summary>
@@ -339,15 +325,14 @@ namespace Google.Apis.GamesManagement.v1management
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "achievementId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "achievementId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("achievementId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "achievementId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -364,21 +349,20 @@ namespace Google.Apis.GamesManagement.v1management
         public class ResetAllRequest : GamesManagementBaseServiceRequest<Google.Apis.GamesManagement.v1management.Data.AchievementResetAllResponse>
         {
             /// <summary>Constructs a new ResetAll request.</summary>
-            public ResetAllRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ResetAllRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
 
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "resetAll";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1management/achievements/reset";
 
             /// <summary>Initializes ResetAll parameter list.</summary>
@@ -402,21 +386,20 @@ namespace Google.Apis.GamesManagement.v1management
         public class ResetAllForAllPlayersRequest : GamesManagementBaseServiceRequest<string>
         {
             /// <summary>Constructs a new ResetAllForAllPlayers request.</summary>
-            public ResetAllForAllPlayersRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ResetAllForAllPlayersRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
 
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "resetAllForAllPlayers";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1management/achievements/resetAllForAllPlayers";
 
             /// <summary>Initializes ResetAllForAllPlayers parameter list.</summary>
@@ -441,8 +424,7 @@ namespace Google.Apis.GamesManagement.v1management
         public class ResetForAllPlayersRequest : GamesManagementBaseServiceRequest<string>
         {
             /// <summary>Constructs a new ResetForAllPlayers request.</summary>
-            public ResetForAllPlayersRequest(Google.Apis.Services.IClientService service, string achievementId)
-                : base(service)
+            public ResetForAllPlayersRequest(Google.Apis.Services.IClientService service, string achievementId) : base(service)
             {
                 AchievementId = achievementId;
                 InitParameters();
@@ -454,13 +436,13 @@ namespace Google.Apis.GamesManagement.v1management
             public virtual string AchievementId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "resetForAllPlayers";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1management/achievements/{achievementId}/resetForAllPlayers";
 
             /// <summary>Initializes ResetForAllPlayers parameter list.</summary>
@@ -468,15 +450,14 @@ namespace Google.Apis.GamesManagement.v1management
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "achievementId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "achievementId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("achievementId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "achievementId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -494,8 +475,7 @@ namespace Google.Apis.GamesManagement.v1management
         public class ResetMultipleForAllPlayersRequest : GamesManagementBaseServiceRequest<string>
         {
             /// <summary>Constructs a new ResetMultipleForAllPlayers request.</summary>
-            public ResetMultipleForAllPlayersRequest(Google.Apis.Services.IClientService service, Google.Apis.GamesManagement.v1management.Data.AchievementResetMultipleForAllRequest body)
-                : base(service)
+            public ResetMultipleForAllPlayersRequest(Google.Apis.Services.IClientService service, Google.Apis.GamesManagement.v1management.Data.AchievementResetMultipleForAllRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -506,16 +486,16 @@ namespace Google.Apis.GamesManagement.v1management
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.GamesManagement.v1management.Data.AchievementResetMultipleForAllRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "resetMultipleForAllPlayers";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1management/achievements/resetMultipleForAllPlayers";
 
             /// <summary>Initializes ResetMultipleForAllPlayers parameter list.</summary>
@@ -557,8 +537,7 @@ namespace Google.Apis.GamesManagement.v1management
         public class ListHiddenRequest : GamesManagementBaseServiceRequest<Google.Apis.GamesManagement.v1management.Data.HiddenPlayerList>
         {
             /// <summary>Constructs a new ListHidden request.</summary>
-            public ListHiddenRequest(Google.Apis.Services.IClientService service, string applicationId)
-                : base(service)
+            public ListHiddenRequest(Google.Apis.Services.IClientService service, string applicationId) : base(service)
             {
                 ApplicationId = applicationId;
                 InitParameters();
@@ -580,13 +559,13 @@ namespace Google.Apis.GamesManagement.v1management
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "listHidden";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1management/applications/{applicationId}/players/hidden";
 
             /// <summary>Initializes ListHidden parameter list.</summary>
@@ -594,33 +573,30 @@ namespace Google.Apis.GamesManagement.v1management
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "applicationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "applicationId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("applicationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "applicationId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -655,8 +631,7 @@ namespace Google.Apis.GamesManagement.v1management
         public class ResetRequest : GamesManagementBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Reset request.</summary>
-            public ResetRequest(Google.Apis.Services.IClientService service, string eventId)
-                : base(service)
+            public ResetRequest(Google.Apis.Services.IClientService service, string eventId) : base(service)
             {
                 EventId = eventId;
                 InitParameters();
@@ -668,13 +643,13 @@ namespace Google.Apis.GamesManagement.v1management
             public virtual string EventId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "reset";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1management/events/{eventId}/reset";
 
             /// <summary>Initializes Reset parameter list.</summary>
@@ -682,15 +657,14 @@ namespace Google.Apis.GamesManagement.v1management
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "eventId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "eventId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("eventId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "eventId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -707,21 +681,20 @@ namespace Google.Apis.GamesManagement.v1management
         public class ResetAllRequest : GamesManagementBaseServiceRequest<string>
         {
             /// <summary>Constructs a new ResetAll request.</summary>
-            public ResetAllRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ResetAllRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
 
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "resetAll";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1management/events/reset";
 
             /// <summary>Initializes ResetAll parameter list.</summary>
@@ -745,21 +718,20 @@ namespace Google.Apis.GamesManagement.v1management
         public class ResetAllForAllPlayersRequest : GamesManagementBaseServiceRequest<string>
         {
             /// <summary>Constructs a new ResetAllForAllPlayers request.</summary>
-            public ResetAllForAllPlayersRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ResetAllForAllPlayersRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
 
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "resetAllForAllPlayers";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1management/events/resetAllForAllPlayers";
 
             /// <summary>Initializes ResetAllForAllPlayers parameter list.</summary>
@@ -784,8 +756,7 @@ namespace Google.Apis.GamesManagement.v1management
         public class ResetForAllPlayersRequest : GamesManagementBaseServiceRequest<string>
         {
             /// <summary>Constructs a new ResetForAllPlayers request.</summary>
-            public ResetForAllPlayersRequest(Google.Apis.Services.IClientService service, string eventId)
-                : base(service)
+            public ResetForAllPlayersRequest(Google.Apis.Services.IClientService service, string eventId) : base(service)
             {
                 EventId = eventId;
                 InitParameters();
@@ -797,13 +768,13 @@ namespace Google.Apis.GamesManagement.v1management
             public virtual string EventId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "resetForAllPlayers";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1management/events/{eventId}/resetForAllPlayers";
 
             /// <summary>Initializes ResetForAllPlayers parameter list.</summary>
@@ -811,15 +782,14 @@ namespace Google.Apis.GamesManagement.v1management
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "eventId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "eventId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("eventId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "eventId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -837,8 +807,7 @@ namespace Google.Apis.GamesManagement.v1management
         public class ResetMultipleForAllPlayersRequest : GamesManagementBaseServiceRequest<string>
         {
             /// <summary>Constructs a new ResetMultipleForAllPlayers request.</summary>
-            public ResetMultipleForAllPlayersRequest(Google.Apis.Services.IClientService service, Google.Apis.GamesManagement.v1management.Data.EventsResetMultipleForAllRequest body)
-                : base(service)
+            public ResetMultipleForAllPlayersRequest(Google.Apis.Services.IClientService service, Google.Apis.GamesManagement.v1management.Data.EventsResetMultipleForAllRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -849,16 +818,16 @@ namespace Google.Apis.GamesManagement.v1management
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.GamesManagement.v1management.Data.EventsResetMultipleForAllRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "resetMultipleForAllPlayers";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1management/events/resetMultipleForAllPlayers";
 
             /// <summary>Initializes ResetMultipleForAllPlayers parameter list.</summary>
@@ -902,8 +871,7 @@ namespace Google.Apis.GamesManagement.v1management
         public class HideRequest : GamesManagementBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Hide request.</summary>
-            public HideRequest(Google.Apis.Services.IClientService service, string applicationId, string playerId)
-                : base(service)
+            public HideRequest(Google.Apis.Services.IClientService service, string applicationId, string playerId) : base(service)
             {
                 ApplicationId = applicationId;
                 PlayerId = playerId;
@@ -920,13 +888,13 @@ namespace Google.Apis.GamesManagement.v1management
             public virtual string PlayerId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "hide";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1management/applications/{applicationId}/players/hidden/{playerId}";
 
             /// <summary>Initializes Hide parameter list.</summary>
@@ -934,24 +902,22 @@ namespace Google.Apis.GamesManagement.v1management
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "applicationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "applicationId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "playerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "playerId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("applicationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "applicationId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("playerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "playerId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -971,8 +937,7 @@ namespace Google.Apis.GamesManagement.v1management
         public class UnhideRequest : GamesManagementBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Unhide request.</summary>
-            public UnhideRequest(Google.Apis.Services.IClientService service, string applicationId, string playerId)
-                : base(service)
+            public UnhideRequest(Google.Apis.Services.IClientService service, string applicationId, string playerId) : base(service)
             {
                 ApplicationId = applicationId;
                 PlayerId = playerId;
@@ -989,13 +954,13 @@ namespace Google.Apis.GamesManagement.v1management
             public virtual string PlayerId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "unhide";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1management/applications/{applicationId}/players/hidden/{playerId}";
 
             /// <summary>Initializes Unhide parameter list.</summary>
@@ -1003,24 +968,22 @@ namespace Google.Apis.GamesManagement.v1management
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "applicationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "applicationId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "playerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "playerId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("applicationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "applicationId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("playerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "playerId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1055,8 +1018,7 @@ namespace Google.Apis.GamesManagement.v1management
         public class ResetRequest : GamesManagementBaseServiceRequest<Google.Apis.GamesManagement.v1management.Data.PlayerScoreResetResponse>
         {
             /// <summary>Constructs a new Reset request.</summary>
-            public ResetRequest(Google.Apis.Services.IClientService service, string leaderboardId)
-                : base(service)
+            public ResetRequest(Google.Apis.Services.IClientService service, string leaderboardId) : base(service)
             {
                 LeaderboardId = leaderboardId;
                 InitParameters();
@@ -1068,13 +1030,13 @@ namespace Google.Apis.GamesManagement.v1management
             public virtual string LeaderboardId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "reset";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1management/leaderboards/{leaderboardId}/scores/reset";
 
             /// <summary>Initializes Reset parameter list.</summary>
@@ -1082,15 +1044,14 @@ namespace Google.Apis.GamesManagement.v1management
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "leaderboardId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "leaderboardId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("leaderboardId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "leaderboardId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1107,21 +1068,20 @@ namespace Google.Apis.GamesManagement.v1management
         public class ResetAllRequest : GamesManagementBaseServiceRequest<Google.Apis.GamesManagement.v1management.Data.PlayerScoreResetAllResponse>
         {
             /// <summary>Constructs a new ResetAll request.</summary>
-            public ResetAllRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ResetAllRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
 
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "resetAll";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1management/scores/reset";
 
             /// <summary>Initializes ResetAll parameter list.</summary>
@@ -1145,21 +1105,20 @@ namespace Google.Apis.GamesManagement.v1management
         public class ResetAllForAllPlayersRequest : GamesManagementBaseServiceRequest<string>
         {
             /// <summary>Constructs a new ResetAllForAllPlayers request.</summary>
-            public ResetAllForAllPlayersRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ResetAllForAllPlayersRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
 
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "resetAllForAllPlayers";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1management/scores/resetAllForAllPlayers";
 
             /// <summary>Initializes ResetAllForAllPlayers parameter list.</summary>
@@ -1184,8 +1143,7 @@ namespace Google.Apis.GamesManagement.v1management
         public class ResetForAllPlayersRequest : GamesManagementBaseServiceRequest<string>
         {
             /// <summary>Constructs a new ResetForAllPlayers request.</summary>
-            public ResetForAllPlayersRequest(Google.Apis.Services.IClientService service, string leaderboardId)
-                : base(service)
+            public ResetForAllPlayersRequest(Google.Apis.Services.IClientService service, string leaderboardId) : base(service)
             {
                 LeaderboardId = leaderboardId;
                 InitParameters();
@@ -1197,13 +1155,13 @@ namespace Google.Apis.GamesManagement.v1management
             public virtual string LeaderboardId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "resetForAllPlayers";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1management/leaderboards/{leaderboardId}/scores/resetForAllPlayers";
 
             /// <summary>Initializes ResetForAllPlayers parameter list.</summary>
@@ -1211,15 +1169,14 @@ namespace Google.Apis.GamesManagement.v1management
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "leaderboardId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "leaderboardId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("leaderboardId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "leaderboardId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1237,8 +1194,7 @@ namespace Google.Apis.GamesManagement.v1management
         public class ResetMultipleForAllPlayersRequest : GamesManagementBaseServiceRequest<string>
         {
             /// <summary>Constructs a new ResetMultipleForAllPlayers request.</summary>
-            public ResetMultipleForAllPlayersRequest(Google.Apis.Services.IClientService service, Google.Apis.GamesManagement.v1management.Data.ScoresResetMultipleForAllRequest body)
-                : base(service)
+            public ResetMultipleForAllPlayersRequest(Google.Apis.Services.IClientService service, Google.Apis.GamesManagement.v1management.Data.ScoresResetMultipleForAllRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -1249,16 +1205,16 @@ namespace Google.Apis.GamesManagement.v1management
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.GamesManagement.v1management.Data.ScoresResetMultipleForAllRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "resetMultipleForAllPlayers";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "games/v1management/scores/resetMultipleForAllPlayers";
 
             /// <summary>Initializes ResetMultipleForAllPlayers parameter list.</summary>

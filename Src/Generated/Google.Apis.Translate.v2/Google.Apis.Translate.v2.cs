@@ -18,17 +18,16 @@ namespace Google.Apis.Translate.v2
         public const string Version = "v2";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public TranslateService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public TranslateService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public TranslateService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public TranslateService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Detections = new DetectionsResource(this);
             Languages = new LanguagesResource(this);
@@ -94,12 +93,11 @@ namespace Google.Apis.Translate.v2
         public virtual TranslationsResource Translations { get; }
     }
 
-    ///<summary>A base abstract class for Translate requests.</summary>
+    /// <summary>A base abstract class for Translate requests.</summary>
     public abstract class TranslateBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new TranslateBaseServiceRequest instance.</summary>
-        protected TranslateBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new TranslateBaseServiceRequest instance.</summary>
+        protected TranslateBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -187,123 +185,110 @@ namespace Google.Apis.Translate.v2
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "bearer_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "bearer_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "pp", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "pp",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("bearer_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "bearer_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("pp", new Google.Apis.Discovery.Parameter
+            {
+                Name = "pp",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -334,8 +319,7 @@ namespace Google.Apis.Translate.v2
         public class DetectRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v2.Data.DetectionsListResponse>
         {
             /// <summary>Constructs a new Detect request.</summary>
-            public DetectRequest(Google.Apis.Services.IClientService service, Google.Apis.Translate.v2.Data.DetectLanguageRequest body)
-                : base(service)
+            public DetectRequest(Google.Apis.Services.IClientService service, Google.Apis.Translate.v2.Data.DetectLanguageRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -346,16 +330,16 @@ namespace Google.Apis.Translate.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Translate.v2.Data.DetectLanguageRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "detect";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/detect";
 
             /// <summary>Initializes Detect parameter list.</summary>
@@ -379,8 +363,7 @@ namespace Google.Apis.Translate.v2
         public class ListRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v2.Data.DetectionsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, Google.Apis.Util.Repeatable<string> q)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, Google.Apis.Util.Repeatable<string> q) : base(service)
             {
                 Q = q;
                 InitParameters();
@@ -393,13 +376,13 @@ namespace Google.Apis.Translate.v2
             public virtual Google.Apis.Util.Repeatable<string> Q { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/detect";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -407,15 +390,14 @@ namespace Google.Apis.Translate.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "q", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "q",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("q", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "q",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -447,8 +429,7 @@ namespace Google.Apis.Translate.v2
         public class ListRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v2.Data.LanguagesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -463,13 +444,13 @@ namespace Google.Apis.Translate.v2
             public virtual string Target { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/languages";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -477,24 +458,22 @@ namespace Google.Apis.Translate.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "model", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "model",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "target", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "target",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("model", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "model",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("target", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "target",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -530,8 +509,7 @@ namespace Google.Apis.Translate.v2
         public class ListRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v2.Data.TranslationsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, Google.Apis.Util.Repeatable<string> q, string target)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, Google.Apis.Util.Repeatable<string> q, string target) : base(service)
             {
                 Q = q;
                 Target = target;
@@ -582,13 +560,13 @@ namespace Google.Apis.Translate.v2
             public virtual string Source { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -596,60 +574,54 @@ namespace Google.Apis.Translate.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "q", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "q",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "target", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "target",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "cid", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "cid",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "format", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "format",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "model", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "model",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "source", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "source",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("q", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "q",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("target", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "target",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("cid", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "cid",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("format", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "format",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("model", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "model",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "source",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -665,8 +637,7 @@ namespace Google.Apis.Translate.v2
         public class TranslateRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v2.Data.TranslationsListResponse>
         {
             /// <summary>Constructs a new Translate request.</summary>
-            public TranslateRequest(Google.Apis.Services.IClientService service, Google.Apis.Translate.v2.Data.TranslateTextRequest body)
-                : base(service)
+            public TranslateRequest(Google.Apis.Services.IClientService service, Google.Apis.Translate.v2.Data.TranslateTextRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -677,16 +648,16 @@ namespace Google.Apis.Translate.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Translate.v2.Data.TranslateTextRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "translate";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2";
 
             /// <summary>Initializes Translate parameter list.</summary>

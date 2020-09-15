@@ -18,17 +18,16 @@ namespace Google.Apis.Customsearch.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public CustomsearchService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public CustomsearchService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public CustomsearchService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public CustomsearchService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Cse = new CseResource(this);
         }
@@ -66,12 +65,11 @@ namespace Google.Apis.Customsearch.v1
         public virtual CseResource Cse { get; }
     }
 
-    ///<summary>A base abstract class for Customsearch requests.</summary>
+    /// <summary>A base abstract class for Customsearch requests.</summary>
     public abstract class CustomsearchBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new CustomsearchBaseServiceRequest instance.</summary>
-        protected CustomsearchBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new CustomsearchBaseServiceRequest instance.</summary>
+        protected CustomsearchBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -151,105 +149,94 @@ namespace Google.Apis.Customsearch.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -300,8 +287,7 @@ namespace Google.Apis.Customsearch.v1
             public class ListRequest : CustomsearchBaseServiceRequest<Google.Apis.Customsearch.v1.Data.Search>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service) : base(service)
                 {
                     InitParameters();
                 }
@@ -671,13 +657,13 @@ namespace Google.Apis.Customsearch.v1
                 public virtual System.Nullable<long> Start { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "customsearch/v1/siterestrict";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -685,285 +671,254 @@ namespace Google.Apis.Customsearch.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "c2coff", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "c2coff",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "cr", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "cr",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "cx", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "cx",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "dateRestrict", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "dateRestrict",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "exactTerms", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "exactTerms",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "excludeTerms", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "excludeTerms",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "fileType", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "fileType",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "gl", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "gl",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "googlehost", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "googlehost",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "highRange", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "highRange",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "hl", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "hl",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "hq", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "hq",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "imgColorType", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "imgColorType",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "imgDominantColor", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "imgDominantColor",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "imgSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "imgSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "imgType", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "imgType",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "linkSite", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "linkSite",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "lowRange", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "lowRange",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "lr", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "lr",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "num", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "num",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "orTerms", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orTerms",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "q", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "q",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "relatedSite", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "relatedSite",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "rights", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "rights",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "safe", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "safe",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "searchType", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "searchType",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "siteSearch", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "siteSearch",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "siteSearchFilter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "siteSearchFilter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "sort", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sort",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "start", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "start",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("c2coff", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "c2coff",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("cr", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "cr",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("cx", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "cx",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("dateRestrict", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dateRestrict",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("exactTerms", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "exactTerms",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("excludeTerms", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "excludeTerms",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("fileType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fileType",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("gl", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "gl",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("googlehost", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "googlehost",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("highRange", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "highRange",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("hl", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "hl",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("hq", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "hq",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("imgColorType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "imgColorType",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("imgDominantColor", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "imgDominantColor",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("imgSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "imgSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("imgType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "imgType",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("linkSite", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "linkSite",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("lowRange", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "lowRange",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("lr", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "lr",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("num", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "num",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orTerms", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orTerms",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("q", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "q",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("relatedSite", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "relatedSite",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("rights", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "rights",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("safe", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "safe",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("searchType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "searchType",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("siteSearch", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "siteSearch",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("siteSearchFilter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "siteSearchFilter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("sort", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sort",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("start", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "start",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -981,8 +936,7 @@ namespace Google.Apis.Customsearch.v1
         public class ListRequest : CustomsearchBaseServiceRequest<Google.Apis.Customsearch.v1.Data.Search>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -1349,13 +1303,13 @@ namespace Google.Apis.Customsearch.v1
             public virtual System.Nullable<long> Start { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "customsearch/v1";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1363,285 +1317,254 @@ namespace Google.Apis.Customsearch.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "c2coff", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "c2coff",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "cr", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "cr",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "cx", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "cx",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "dateRestrict", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "dateRestrict",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "exactTerms", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "exactTerms",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "excludeTerms", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "excludeTerms",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "fileType", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fileType",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "gl", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "gl",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "googlehost", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "googlehost",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "highRange", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "highRange",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "hl", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "hl",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "hq", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "hq",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "imgColorType", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "imgColorType",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "imgDominantColor", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "imgDominantColor",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "imgSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "imgSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "imgType", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "imgType",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "linkSite", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "linkSite",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "lowRange", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "lowRange",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "lr", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "lr",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "num", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "num",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orTerms", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orTerms",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "q", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "q",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "relatedSite", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "relatedSite",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "rights", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "rights",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "safe", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "safe",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchType", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchType",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "siteSearch", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "siteSearch",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "siteSearchFilter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "siteSearchFilter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sort", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sort",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "start", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "start",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("c2coff", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "c2coff",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("cr", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "cr",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("cx", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "cx",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("dateRestrict", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dateRestrict",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("exactTerms", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "exactTerms",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("excludeTerms", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "excludeTerms",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("fileType", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("gl", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "gl",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("googlehost", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "googlehost",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("highRange", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "highRange",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("hl", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "hl",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("hq", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "hq",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("imgColorType", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "imgColorType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("imgDominantColor", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "imgDominantColor",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("imgSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "imgSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("imgType", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "imgType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("linkSite", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "linkSite",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("lowRange", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "lowRange",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("lr", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "lr",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("num", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "num",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orTerms", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orTerms",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("q", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "q",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("relatedSite", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "relatedSite",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("rights", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "rights",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("safe", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "safe",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("searchType", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "searchType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("siteSearch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "siteSearch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("siteSearchFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "siteSearchFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sort", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sort",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("start", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "start",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

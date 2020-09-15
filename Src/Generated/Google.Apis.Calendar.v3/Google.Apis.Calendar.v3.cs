@@ -18,17 +18,16 @@ namespace Google.Apis.Calendar.v3
         public const string Version = "v3";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public CalendarService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public CalendarService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public CalendarService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public CalendarService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Acl = new AclResource(this);
             CalendarList = new CalendarListResource(this);
@@ -134,12 +133,11 @@ namespace Google.Apis.Calendar.v3
         public virtual SettingsResource Settings { get; }
     }
 
-    ///<summary>A base abstract class for Calendar requests.</summary>
+    /// <summary>A base abstract class for Calendar requests.</summary>
     public abstract class CalendarBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new CalendarBaseServiceRequest instance.</summary>
-        protected CalendarBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new CalendarBaseServiceRequest instance.</summary>
+        protected CalendarBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -186,69 +184,62 @@ namespace Google.Apis.Calendar.v3
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "userIp", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "userIp",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("userIp", new Google.Apis.Discovery.Parameter
+            {
+                Name = "userIp",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -282,8 +273,7 @@ namespace Google.Apis.Calendar.v3
         public class DeleteRequest : CalendarBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string calendarId, string ruleId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string calendarId, string ruleId) : base(service)
             {
                 CalendarId = calendarId;
                 RuleId = ruleId;
@@ -301,13 +291,13 @@ namespace Google.Apis.Calendar.v3
             public virtual string RuleId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "calendars/{calendarId}/acl/{ruleId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -315,24 +305,22 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "calendarId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "calendarId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ruleId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ruleId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("calendarId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "calendarId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ruleId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ruleId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -351,8 +339,7 @@ namespace Google.Apis.Calendar.v3
         public class GetRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.AclRule>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string calendarId, string ruleId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string calendarId, string ruleId) : base(service)
             {
                 CalendarId = calendarId;
                 RuleId = ruleId;
@@ -370,13 +357,13 @@ namespace Google.Apis.Calendar.v3
             public virtual string RuleId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "calendars/{calendarId}/acl/{ruleId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -384,24 +371,22 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "calendarId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "calendarId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ruleId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ruleId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("calendarId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "calendarId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ruleId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ruleId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -419,8 +404,7 @@ namespace Google.Apis.Calendar.v3
         public class InsertRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.AclRule>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.AclRule body, string calendarId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.AclRule body, string calendarId) : base(service)
             {
                 CalendarId = calendarId;
                 Body = body;
@@ -442,16 +426,16 @@ namespace Google.Apis.Calendar.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Calendar.v3.Data.AclRule Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "calendars/{calendarId}/acl";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -459,24 +443,22 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "calendarId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "calendarId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sendNotifications", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sendNotifications",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("calendarId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "calendarId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sendNotifications", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sendNotifications",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -493,8 +475,7 @@ namespace Google.Apis.Calendar.v3
         public class ListRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.Acl>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string calendarId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string calendarId) : base(service)
             {
                 CalendarId = calendarId;
                 InitParameters();
@@ -532,13 +513,13 @@ namespace Google.Apis.Calendar.v3
             public virtual string SyncToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "calendars/{calendarId}/acl";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -546,51 +527,46 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "calendarId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "calendarId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "showDeleted", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "showDeleted",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "syncToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "syncToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("calendarId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "calendarId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "showDeleted",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("syncToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "syncToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -610,8 +586,7 @@ namespace Google.Apis.Calendar.v3
         public class PatchRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.AclRule>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.AclRule body, string calendarId, string ruleId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.AclRule body, string calendarId, string ruleId) : base(service)
             {
                 CalendarId = calendarId;
                 RuleId = ruleId;
@@ -638,16 +613,16 @@ namespace Google.Apis.Calendar.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Calendar.v3.Data.AclRule Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "calendars/{calendarId}/acl/{ruleId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -655,33 +630,30 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "calendarId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "calendarId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ruleId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ruleId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sendNotifications", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sendNotifications",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("calendarId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "calendarId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ruleId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ruleId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sendNotifications", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sendNotifications",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -701,8 +673,7 @@ namespace Google.Apis.Calendar.v3
         public class UpdateRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.AclRule>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.AclRule body, string calendarId, string ruleId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.AclRule body, string calendarId, string ruleId) : base(service)
             {
                 CalendarId = calendarId;
                 RuleId = ruleId;
@@ -729,16 +700,16 @@ namespace Google.Apis.Calendar.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Calendar.v3.Data.AclRule Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "calendars/{calendarId}/acl/{ruleId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -746,33 +717,30 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "calendarId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "calendarId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ruleId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ruleId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sendNotifications", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sendNotifications",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("calendarId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "calendarId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ruleId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ruleId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sendNotifications", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sendNotifications",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -790,8 +758,7 @@ namespace Google.Apis.Calendar.v3
         public class WatchRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.Channel>
         {
             /// <summary>Constructs a new Watch request.</summary>
-            public WatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.Channel body, string calendarId)
-                : base(service)
+            public WatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.Channel body, string calendarId) : base(service)
             {
                 CalendarId = calendarId;
                 Body = body;
@@ -833,16 +800,16 @@ namespace Google.Apis.Calendar.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Calendar.v3.Data.Channel Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "watch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "calendars/{calendarId}/acl/watch";
 
             /// <summary>Initializes Watch parameter list.</summary>
@@ -850,51 +817,46 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "calendarId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "calendarId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "showDeleted", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "showDeleted",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "syncToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "syncToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("calendarId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "calendarId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "showDeleted",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("syncToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "syncToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -928,8 +890,7 @@ namespace Google.Apis.Calendar.v3
         public class DeleteRequest : CalendarBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string calendarId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string calendarId) : base(service)
             {
                 CalendarId = calendarId;
                 InitParameters();
@@ -942,13 +903,13 @@ namespace Google.Apis.Calendar.v3
             public virtual string CalendarId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "users/me/calendarList/{calendarId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -956,15 +917,14 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "calendarId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "calendarId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("calendarId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "calendarId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -981,8 +941,7 @@ namespace Google.Apis.Calendar.v3
         public class GetRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.CalendarListEntry>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string calendarId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string calendarId) : base(service)
             {
                 CalendarId = calendarId;
                 InitParameters();
@@ -995,13 +954,13 @@ namespace Google.Apis.Calendar.v3
             public virtual string CalendarId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "users/me/calendarList/{calendarId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1009,15 +968,14 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "calendarId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "calendarId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("calendarId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "calendarId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1033,8 +991,7 @@ namespace Google.Apis.Calendar.v3
         public class InsertRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.CalendarListEntry>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.CalendarListEntry body)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.CalendarListEntry body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -1051,16 +1008,16 @@ namespace Google.Apis.Calendar.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Calendar.v3.Data.CalendarListEntry Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "users/me/calendarList";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -1068,15 +1025,14 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "colorRgbFormat", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "colorRgbFormat",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("colorRgbFormat", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "colorRgbFormat",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1091,8 +1047,7 @@ namespace Google.Apis.Calendar.v3
         public class ListRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.CalendarList>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -1152,13 +1107,13 @@ namespace Google.Apis.Calendar.v3
             public virtual string SyncToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "users/me/calendarList";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1166,60 +1121,54 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "minAccessRole", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "minAccessRole",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "showDeleted", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "showDeleted",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "showHidden", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "showHidden",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "syncToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "syncToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("minAccessRole", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "minAccessRole",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "showDeleted",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("showHidden", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "showHidden",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("syncToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "syncToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1239,8 +1188,7 @@ namespace Google.Apis.Calendar.v3
         public class PatchRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.CalendarListEntry>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.CalendarListEntry body, string calendarId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.CalendarListEntry body, string calendarId) : base(service)
             {
                 CalendarId = calendarId;
                 Body = body;
@@ -1263,16 +1211,16 @@ namespace Google.Apis.Calendar.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Calendar.v3.Data.CalendarListEntry Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "users/me/calendarList/{calendarId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -1280,24 +1228,22 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "calendarId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "calendarId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "colorRgbFormat", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "colorRgbFormat",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("calendarId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "calendarId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("colorRgbFormat", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "colorRgbFormat",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1315,8 +1261,7 @@ namespace Google.Apis.Calendar.v3
         public class UpdateRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.CalendarListEntry>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.CalendarListEntry body, string calendarId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.CalendarListEntry body, string calendarId) : base(service)
             {
                 CalendarId = calendarId;
                 Body = body;
@@ -1339,16 +1284,16 @@ namespace Google.Apis.Calendar.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Calendar.v3.Data.CalendarListEntry Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "users/me/calendarList/{calendarId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -1356,24 +1301,22 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "calendarId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "calendarId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "colorRgbFormat", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "colorRgbFormat",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("calendarId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "calendarId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("colorRgbFormat", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "colorRgbFormat",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1389,8 +1332,7 @@ namespace Google.Apis.Calendar.v3
         public class WatchRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.Channel>
         {
             /// <summary>Constructs a new Watch request.</summary>
-            public WatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.Channel body)
-                : base(service)
+            public WatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.Channel body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -1454,16 +1396,16 @@ namespace Google.Apis.Calendar.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Calendar.v3.Data.Channel Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "watch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "users/me/calendarList/watch";
 
             /// <summary>Initializes Watch parameter list.</summary>
@@ -1471,60 +1413,54 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "minAccessRole", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "minAccessRole",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "showDeleted", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "showDeleted",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "showHidden", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "showHidden",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "syncToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "syncToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("minAccessRole", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "minAccessRole",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "showDeleted",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("showHidden", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "showHidden",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("syncToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "syncToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1560,8 +1496,7 @@ namespace Google.Apis.Calendar.v3
         public class ClearRequest : CalendarBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Clear request.</summary>
-            public ClearRequest(Google.Apis.Services.IClientService service, string calendarId)
-                : base(service)
+            public ClearRequest(Google.Apis.Services.IClientService service, string calendarId) : base(service)
             {
                 CalendarId = calendarId;
                 InitParameters();
@@ -1574,13 +1509,13 @@ namespace Google.Apis.Calendar.v3
             public virtual string CalendarId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "clear";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "calendars/{calendarId}/clear";
 
             /// <summary>Initializes Clear parameter list.</summary>
@@ -1588,15 +1523,14 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "calendarId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "calendarId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("calendarId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "calendarId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1615,8 +1549,7 @@ namespace Google.Apis.Calendar.v3
         public class DeleteRequest : CalendarBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string calendarId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string calendarId) : base(service)
             {
                 CalendarId = calendarId;
                 InitParameters();
@@ -1629,13 +1562,13 @@ namespace Google.Apis.Calendar.v3
             public virtual string CalendarId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "calendars/{calendarId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -1643,15 +1576,14 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "calendarId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "calendarId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("calendarId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "calendarId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1668,8 +1600,7 @@ namespace Google.Apis.Calendar.v3
         public class GetRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.Calendar>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string calendarId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string calendarId) : base(service)
             {
                 CalendarId = calendarId;
                 InitParameters();
@@ -1682,13 +1613,13 @@ namespace Google.Apis.Calendar.v3
             public virtual string CalendarId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "calendars/{calendarId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1696,15 +1627,14 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "calendarId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "calendarId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("calendarId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "calendarId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1720,8 +1650,7 @@ namespace Google.Apis.Calendar.v3
         public class InsertRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.Calendar>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.Calendar body)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.Calendar body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -1732,16 +1661,16 @@ namespace Google.Apis.Calendar.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Calendar.v3.Data.Calendar Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "calendars";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -1766,8 +1695,7 @@ namespace Google.Apis.Calendar.v3
         public class PatchRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.Calendar>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.Calendar body, string calendarId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.Calendar body, string calendarId) : base(service)
             {
                 CalendarId = calendarId;
                 Body = body;
@@ -1784,16 +1712,16 @@ namespace Google.Apis.Calendar.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Calendar.v3.Data.Calendar Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "calendars/{calendarId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -1801,15 +1729,14 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "calendarId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "calendarId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("calendarId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "calendarId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1827,8 +1754,7 @@ namespace Google.Apis.Calendar.v3
         public class UpdateRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.Calendar>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.Calendar body, string calendarId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.Calendar body, string calendarId) : base(service)
             {
                 CalendarId = calendarId;
                 Body = body;
@@ -1845,16 +1771,16 @@ namespace Google.Apis.Calendar.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Calendar.v3.Data.Calendar Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "calendars/{calendarId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -1862,15 +1788,14 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "calendarId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "calendarId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("calendarId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "calendarId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1903,8 +1828,7 @@ namespace Google.Apis.Calendar.v3
         public class StopRequest : CalendarBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Stop request.</summary>
-            public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.Channel body)
-                : base(service)
+            public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.Channel body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -1915,16 +1839,16 @@ namespace Google.Apis.Calendar.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Calendar.v3.Data.Channel Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "stop";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "channels/stop";
 
             /// <summary>Initializes Stop parameter list.</summary>
@@ -1963,21 +1887,20 @@ namespace Google.Apis.Calendar.v3
         public class GetRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.Colors>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
 
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "colors";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -2020,8 +1943,7 @@ namespace Google.Apis.Calendar.v3
         public class DeleteRequest : CalendarBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string calendarId, string eventId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string calendarId, string eventId) : base(service)
             {
                 CalendarId = calendarId;
                 EventId = eventId;
@@ -2065,13 +1987,13 @@ namespace Google.Apis.Calendar.v3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "calendars/{calendarId}/events/{eventId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -2079,42 +2001,38 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "calendarId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "calendarId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "eventId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "eventId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sendNotifications", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sendNotifications",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sendUpdates", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sendUpdates",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("calendarId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "calendarId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("eventId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "eventId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sendNotifications", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sendNotifications",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sendUpdates", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sendUpdates",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2133,8 +2051,7 @@ namespace Google.Apis.Calendar.v3
         public class GetRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.Event>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string calendarId, string eventId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string calendarId, string eventId) : base(service)
             {
                 CalendarId = calendarId;
                 EventId = eventId;
@@ -2168,13 +2085,13 @@ namespace Google.Apis.Calendar.v3
             public virtual string TimeZone { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "calendars/{calendarId}/events/{eventId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -2182,51 +2099,46 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "calendarId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "calendarId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "eventId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "eventId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "alwaysIncludeEmail", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "alwaysIncludeEmail",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxAttendees", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxAttendees",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "timeZone", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "timeZone",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("calendarId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "calendarId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("eventId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "eventId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("alwaysIncludeEmail", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "alwaysIncludeEmail",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxAttendees", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxAttendees",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("timeZone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "timeZone",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2246,8 +2158,7 @@ namespace Google.Apis.Calendar.v3
         public class ImportRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.Event>
         {
             /// <summary>Constructs a new Import request.</summary>
-            public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.Event body, string calendarId)
-                : base(service)
+            public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.Event body, string calendarId) : base(service)
             {
                 CalendarId = calendarId;
                 Body = body;
@@ -2276,16 +2187,16 @@ namespace Google.Apis.Calendar.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Calendar.v3.Data.Event Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "import";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "calendars/{calendarId}/events/import";
 
             /// <summary>Initializes Import parameter list.</summary>
@@ -2293,33 +2204,30 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "calendarId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "calendarId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "conferenceDataVersion", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "conferenceDataVersion",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsAttachments", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsAttachments",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("calendarId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "calendarId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("conferenceDataVersion", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "conferenceDataVersion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsAttachments", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsAttachments",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2337,8 +2245,7 @@ namespace Google.Apis.Calendar.v3
         public class InsertRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.Event>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.Event body, string calendarId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.Event body, string calendarId) : base(service)
             {
                 CalendarId = calendarId;
                 Body = body;
@@ -2400,16 +2307,16 @@ namespace Google.Apis.Calendar.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Calendar.v3.Data.Event Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "calendars/{calendarId}/events";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -2417,60 +2324,54 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "calendarId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "calendarId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "conferenceDataVersion", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "conferenceDataVersion",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxAttendees", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxAttendees",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sendNotifications", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sendNotifications",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sendUpdates", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sendUpdates",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsAttachments", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsAttachments",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("calendarId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "calendarId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("conferenceDataVersion", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "conferenceDataVersion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxAttendees", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxAttendees",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sendNotifications", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sendNotifications",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sendUpdates", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sendUpdates",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsAttachments", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsAttachments",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2489,8 +2390,7 @@ namespace Google.Apis.Calendar.v3
         public class InstancesRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.Events>
         {
             /// <summary>Constructs a new Instances request.</summary>
-            public InstancesRequest(Google.Apis.Services.IClientService service, string calendarId, string eventId)
-                : base(service)
+            public InstancesRequest(Google.Apis.Services.IClientService service, string calendarId, string eventId) : base(service)
             {
                 CalendarId = calendarId;
                 EventId = eventId;
@@ -2553,13 +2453,13 @@ namespace Google.Apis.Calendar.v3
             public virtual string TimeZone { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "instances";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "calendars/{calendarId}/events/{eventId}/instances";
 
             /// <summary>Initializes Instances parameter list.</summary>
@@ -2567,105 +2467,94 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "calendarId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "calendarId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "eventId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "eventId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "alwaysIncludeEmail", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "alwaysIncludeEmail",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxAttendees", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxAttendees",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "originalStart", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "originalStart",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "showDeleted", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "showDeleted",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "timeMax", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "timeMax",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "timeMin", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "timeMin",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "timeZone", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "timeZone",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("calendarId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "calendarId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("eventId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "eventId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("alwaysIncludeEmail", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "alwaysIncludeEmail",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxAttendees", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxAttendees",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("originalStart", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "originalStart",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "showDeleted",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("timeMax", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "timeMax",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("timeMin", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "timeMin",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("timeZone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "timeZone",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2682,8 +2571,7 @@ namespace Google.Apis.Calendar.v3
         public class ListRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.Events>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string calendarId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string calendarId) : base(service)
             {
                 CalendarId = calendarId;
                 InitParameters();
@@ -2813,13 +2701,13 @@ namespace Google.Apis.Calendar.v3
             public virtual System.Nullable<System.DateTime> UpdatedMin { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "calendars/{calendarId}/events";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2827,168 +2715,150 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "calendarId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "calendarId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "alwaysIncludeEmail", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "alwaysIncludeEmail",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "iCalUID", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "iCalUID",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxAttendees", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxAttendees",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "250",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "privateExtendedProperty", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "privateExtendedProperty",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "q", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "q",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sharedExtendedProperty", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sharedExtendedProperty",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "showDeleted", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "showDeleted",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "showHiddenInvitations", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "showHiddenInvitations",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "singleEvents", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "singleEvents",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "syncToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "syncToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "timeMax", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "timeMax",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "timeMin", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "timeMin",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "timeZone", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "timeZone",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "updatedMin", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "updatedMin",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("calendarId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "calendarId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("alwaysIncludeEmail", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "alwaysIncludeEmail",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("iCalUID", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "iCalUID",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxAttendees", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxAttendees",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "250",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("privateExtendedProperty", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "privateExtendedProperty",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("q", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "q",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sharedExtendedProperty", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sharedExtendedProperty",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "showDeleted",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("showHiddenInvitations", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "showHiddenInvitations",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("singleEvents", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "singleEvents",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("syncToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "syncToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("timeMax", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "timeMax",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("timeMin", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "timeMin",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("timeZone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "timeZone",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("updatedMin", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updatedMin",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3008,8 +2878,7 @@ namespace Google.Apis.Calendar.v3
         public class MoveRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.Event>
         {
             /// <summary>Constructs a new Move request.</summary>
-            public MoveRequest(Google.Apis.Services.IClientService service, string calendarId, string eventId, string destination)
-                : base(service)
+            public MoveRequest(Google.Apis.Services.IClientService service, string calendarId, string eventId, string destination) : base(service)
             {
                 CalendarId = calendarId;
                 EventId = eventId;
@@ -3057,13 +2926,13 @@ namespace Google.Apis.Calendar.v3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "move";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "calendars/{calendarId}/events/{eventId}/move";
 
             /// <summary>Initializes Move parameter list.</summary>
@@ -3071,51 +2940,46 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "calendarId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "calendarId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "eventId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "eventId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "destination", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "destination",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sendNotifications", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sendNotifications",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sendUpdates", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sendUpdates",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("calendarId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "calendarId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("eventId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "eventId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("destination", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "destination",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sendNotifications", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sendNotifications",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sendUpdates", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sendUpdates",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3135,8 +2999,7 @@ namespace Google.Apis.Calendar.v3
         public class PatchRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.Event>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.Event body, string calendarId, string eventId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.Event body, string calendarId, string eventId) : base(service)
             {
                 CalendarId = calendarId;
                 EventId = eventId;
@@ -3209,16 +3072,16 @@ namespace Google.Apis.Calendar.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Calendar.v3.Data.Event Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "calendars/{calendarId}/events/{eventId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -3226,78 +3089,70 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "calendarId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "calendarId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "eventId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "eventId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "alwaysIncludeEmail", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "alwaysIncludeEmail",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "conferenceDataVersion", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "conferenceDataVersion",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxAttendees", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxAttendees",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sendNotifications", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sendNotifications",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sendUpdates", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sendUpdates",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsAttachments", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsAttachments",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("calendarId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "calendarId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("eventId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "eventId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("alwaysIncludeEmail", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "alwaysIncludeEmail",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("conferenceDataVersion", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "conferenceDataVersion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxAttendees", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxAttendees",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sendNotifications", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sendNotifications",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sendUpdates", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sendUpdates",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsAttachments", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsAttachments",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3316,8 +3171,7 @@ namespace Google.Apis.Calendar.v3
         public class QuickAddRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.Event>
         {
             /// <summary>Constructs a new QuickAdd request.</summary>
-            public QuickAddRequest(Google.Apis.Services.IClientService service, string calendarId, string text)
-                : base(service)
+            public QuickAddRequest(Google.Apis.Services.IClientService service, string calendarId, string text) : base(service)
             {
                 CalendarId = calendarId;
                 Text = text;
@@ -3361,13 +3215,13 @@ namespace Google.Apis.Calendar.v3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "quickAdd";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "calendars/{calendarId}/events/quickAdd";
 
             /// <summary>Initializes QuickAdd parameter list.</summary>
@@ -3375,42 +3229,38 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "calendarId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "calendarId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "text", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "text",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sendNotifications", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sendNotifications",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sendUpdates", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sendUpdates",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("calendarId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "calendarId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("text", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "text",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sendNotifications", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sendNotifications",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sendUpdates", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sendUpdates",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3430,8 +3280,7 @@ namespace Google.Apis.Calendar.v3
         public class UpdateRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.Event>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.Event body, string calendarId, string eventId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.Event body, string calendarId, string eventId) : base(service)
             {
                 CalendarId = calendarId;
                 EventId = eventId;
@@ -3504,16 +3353,16 @@ namespace Google.Apis.Calendar.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Calendar.v3.Data.Event Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "calendars/{calendarId}/events/{eventId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -3521,78 +3370,70 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "calendarId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "calendarId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "eventId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "eventId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "alwaysIncludeEmail", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "alwaysIncludeEmail",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "conferenceDataVersion", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "conferenceDataVersion",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxAttendees", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxAttendees",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sendNotifications", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sendNotifications",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sendUpdates", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sendUpdates",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsAttachments", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsAttachments",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("calendarId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "calendarId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("eventId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "eventId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("alwaysIncludeEmail", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "alwaysIncludeEmail",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("conferenceDataVersion", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "conferenceDataVersion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxAttendees", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxAttendees",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sendNotifications", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sendNotifications",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sendUpdates", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sendUpdates",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsAttachments", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsAttachments",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3610,8 +3451,7 @@ namespace Google.Apis.Calendar.v3
         public class WatchRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.Channel>
         {
             /// <summary>Constructs a new Watch request.</summary>
-            public WatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.Channel body, string calendarId)
-                : base(service)
+            public WatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.Channel body, string calendarId) : base(service)
             {
                 CalendarId = calendarId;
                 Body = body;
@@ -3745,16 +3585,16 @@ namespace Google.Apis.Calendar.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Calendar.v3.Data.Channel Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "watch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "calendars/{calendarId}/events/watch";
 
             /// <summary>Initializes Watch parameter list.</summary>
@@ -3762,168 +3602,150 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "calendarId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "calendarId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "alwaysIncludeEmail", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "alwaysIncludeEmail",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "iCalUID", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "iCalUID",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxAttendees", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxAttendees",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "250",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "privateExtendedProperty", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "privateExtendedProperty",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "q", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "q",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sharedExtendedProperty", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sharedExtendedProperty",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "showDeleted", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "showDeleted",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "showHiddenInvitations", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "showHiddenInvitations",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "singleEvents", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "singleEvents",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "syncToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "syncToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "timeMax", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "timeMax",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "timeMin", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "timeMin",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "timeZone", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "timeZone",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "updatedMin", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "updatedMin",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("calendarId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "calendarId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("alwaysIncludeEmail", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "alwaysIncludeEmail",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("iCalUID", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "iCalUID",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxAttendees", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxAttendees",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "250",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("privateExtendedProperty", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "privateExtendedProperty",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("q", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "q",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sharedExtendedProperty", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sharedExtendedProperty",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "showDeleted",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("showHiddenInvitations", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "showHiddenInvitations",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("singleEvents", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "singleEvents",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("syncToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "syncToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("timeMax", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "timeMax",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("timeMin", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "timeMin",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("timeZone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "timeZone",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("updatedMin", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updatedMin",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3956,8 +3778,7 @@ namespace Google.Apis.Calendar.v3
         public class QueryRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.FreeBusyResponse>
         {
             /// <summary>Constructs a new Query request.</summary>
-            public QueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.FreeBusyRequest body)
-                : base(service)
+            public QueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.FreeBusyRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -3968,16 +3789,16 @@ namespace Google.Apis.Calendar.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Calendar.v3.Data.FreeBusyRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "query";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "freeBusy";
 
             /// <summary>Initializes Query parameter list.</summary>
@@ -4017,8 +3838,7 @@ namespace Google.Apis.Calendar.v3
         public class GetRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.Setting>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string setting)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string setting) : base(service)
             {
                 Setting = setting;
                 InitParameters();
@@ -4030,13 +3850,13 @@ namespace Google.Apis.Calendar.v3
             public virtual string Setting { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "users/me/settings/{setting}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -4044,15 +3864,14 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "setting", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "setting",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("setting", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "setting",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4067,8 +3886,7 @@ namespace Google.Apis.Calendar.v3
         public class ListRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.Settings>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -4092,13 +3910,13 @@ namespace Google.Apis.Calendar.v3
             public virtual string SyncToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "users/me/settings";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -4106,33 +3924,30 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "syncToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "syncToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("syncToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "syncToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4148,8 +3963,7 @@ namespace Google.Apis.Calendar.v3
         public class WatchRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.Channel>
         {
             /// <summary>Constructs a new Watch request.</summary>
-            public WatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.Channel body)
-                : base(service)
+            public WatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Calendar.v3.Data.Channel body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -4177,16 +3991,16 @@ namespace Google.Apis.Calendar.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Calendar.v3.Data.Channel Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "watch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "users/me/settings/watch";
 
             /// <summary>Initializes Watch parameter list.</summary>
@@ -4194,33 +4008,30 @@ namespace Google.Apis.Calendar.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "syncToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "syncToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("syncToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "syncToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

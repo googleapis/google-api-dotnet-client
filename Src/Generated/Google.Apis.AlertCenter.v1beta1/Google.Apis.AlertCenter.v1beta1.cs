@@ -18,17 +18,16 @@ namespace Google.Apis.AlertCenter.v1beta1
         public const string Version = "v1beta1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public AlertCenterService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public AlertCenterService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public AlertCenterService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public AlertCenterService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Alerts = new AlertsResource(this);
             V1beta1 = new V1beta1Resource(this);
@@ -84,12 +83,11 @@ namespace Google.Apis.AlertCenter.v1beta1
         public virtual V1beta1Resource V1beta1 { get; }
     }
 
-    ///<summary>A base abstract class for AlertCenter requests.</summary>
+    /// <summary>A base abstract class for AlertCenter requests.</summary>
     public abstract class AlertCenterBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new AlertCenterBaseServiceRequest instance.</summary>
-        protected AlertCenterBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new AlertCenterBaseServiceRequest instance.</summary>
+        protected AlertCenterBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -169,105 +167,94 @@ namespace Google.Apis.AlertCenter.v1beta1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -322,8 +309,7 @@ namespace Google.Apis.AlertCenter.v1beta1
             public class CreateRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.AlertFeedback>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AlertCenter.v1beta1.Data.AlertFeedback body, string alertId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AlertCenter.v1beta1.Data.AlertFeedback body, string alertId) : base(service)
                 {
                     AlertId = alertId;
                     Body = body;
@@ -344,16 +330,16 @@ namespace Google.Apis.AlertCenter.v1beta1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AlertCenter.v1beta1.Data.AlertFeedback Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta1/alerts/{alertId}/feedback";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -361,24 +347,22 @@ namespace Google.Apis.AlertCenter.v1beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "alertId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "alertId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "customerId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "customerId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("alertId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "alertId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -397,8 +381,7 @@ namespace Google.Apis.AlertCenter.v1beta1
             public class ListRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.ListAlertFeedbackResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string alertId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string alertId) : base(service)
                 {
                     AlertId = alertId;
                     InitParameters();
@@ -422,13 +405,13 @@ namespace Google.Apis.AlertCenter.v1beta1
                 public virtual string Filter { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta1/alerts/{alertId}/feedback";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -436,33 +419,30 @@ namespace Google.Apis.AlertCenter.v1beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "alertId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "alertId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "customerId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "customerId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("alertId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "alertId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -479,8 +459,7 @@ namespace Google.Apis.AlertCenter.v1beta1
         public class BatchDeleteRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.BatchDeleteAlertsResponse>
         {
             /// <summary>Constructs a new BatchDelete request.</summary>
-            public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.AlertCenter.v1beta1.Data.BatchDeleteAlertsRequest body)
-                : base(service)
+            public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.AlertCenter.v1beta1.Data.BatchDeleteAlertsRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -491,16 +470,16 @@ namespace Google.Apis.AlertCenter.v1beta1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AlertCenter.v1beta1.Data.BatchDeleteAlertsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "batchDelete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1beta1/alerts:batchDelete";
 
             /// <summary>Initializes BatchDelete parameter list.</summary>
@@ -523,8 +502,7 @@ namespace Google.Apis.AlertCenter.v1beta1
         public class BatchUndeleteRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.BatchUndeleteAlertsResponse>
         {
             /// <summary>Constructs a new BatchUndelete request.</summary>
-            public BatchUndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.AlertCenter.v1beta1.Data.BatchUndeleteAlertsRequest body)
-                : base(service)
+            public BatchUndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.AlertCenter.v1beta1.Data.BatchUndeleteAlertsRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -535,16 +513,16 @@ namespace Google.Apis.AlertCenter.v1beta1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AlertCenter.v1beta1.Data.BatchUndeleteAlertsRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "batchUndelete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1beta1/alerts:batchUndelete";
 
             /// <summary>Initializes BatchUndelete parameter list.</summary>
@@ -573,8 +551,7 @@ namespace Google.Apis.AlertCenter.v1beta1
         public class DeleteRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string alertId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string alertId) : base(service)
             {
                 AlertId = alertId;
                 InitParameters();
@@ -591,13 +568,13 @@ namespace Google.Apis.AlertCenter.v1beta1
             public virtual string CustomerId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1beta1/alerts/{alertId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -605,24 +582,22 @@ namespace Google.Apis.AlertCenter.v1beta1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "alertId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "alertId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("alertId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "alertId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -640,8 +615,7 @@ namespace Google.Apis.AlertCenter.v1beta1
         public class GetRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.Alert>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string alertId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string alertId) : base(service)
             {
                 AlertId = alertId;
                 InitParameters();
@@ -658,13 +632,13 @@ namespace Google.Apis.AlertCenter.v1beta1
             public virtual string CustomerId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1beta1/alerts/{alertId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -672,24 +646,22 @@ namespace Google.Apis.AlertCenter.v1beta1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "alertId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "alertId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("alertId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "alertId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -707,8 +679,7 @@ namespace Google.Apis.AlertCenter.v1beta1
         public class GetMetadataRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.AlertMetadata>
         {
             /// <summary>Constructs a new GetMetadata request.</summary>
-            public GetMetadataRequest(Google.Apis.Services.IClientService service, string alertId)
-                : base(service)
+            public GetMetadataRequest(Google.Apis.Services.IClientService service, string alertId) : base(service)
             {
                 AlertId = alertId;
                 InitParameters();
@@ -725,13 +696,13 @@ namespace Google.Apis.AlertCenter.v1beta1
             public virtual string CustomerId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getMetadata";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1beta1/alerts/{alertId}/metadata";
 
             /// <summary>Initializes GetMetadata parameter list.</summary>
@@ -739,24 +710,22 @@ namespace Google.Apis.AlertCenter.v1beta1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "alertId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "alertId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("alertId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "alertId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -771,8 +740,7 @@ namespace Google.Apis.AlertCenter.v1beta1
         public class ListRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.ListAlertsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -808,13 +776,13 @@ namespace Google.Apis.AlertCenter.v1beta1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1beta1/alerts";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -822,51 +790,46 @@ namespace Google.Apis.AlertCenter.v1beta1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -889,8 +852,7 @@ namespace Google.Apis.AlertCenter.v1beta1
         public class UndeleteRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.Alert>
         {
             /// <summary>Constructs a new Undelete request.</summary>
-            public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.AlertCenter.v1beta1.Data.UndeleteAlertRequest body, string alertId)
-                : base(service)
+            public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.AlertCenter.v1beta1.Data.UndeleteAlertRequest body, string alertId) : base(service)
             {
                 AlertId = alertId;
                 Body = body;
@@ -906,16 +868,16 @@ namespace Google.Apis.AlertCenter.v1beta1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AlertCenter.v1beta1.Data.UndeleteAlertRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "undelete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1beta1/alerts/{alertId}:undelete";
 
             /// <summary>Initializes Undelete parameter list.</summary>
@@ -923,15 +885,14 @@ namespace Google.Apis.AlertCenter.v1beta1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "alertId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "alertId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("alertId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "alertId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -963,8 +924,7 @@ namespace Google.Apis.AlertCenter.v1beta1
         public class GetSettingsRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.Settings>
         {
             /// <summary>Constructs a new GetSettings request.</summary>
-            public GetSettingsRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public GetSettingsRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -976,13 +936,13 @@ namespace Google.Apis.AlertCenter.v1beta1
             public virtual string CustomerId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getSettings";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1beta1/settings";
 
             /// <summary>Initializes GetSettings parameter list.</summary>
@@ -990,15 +950,14 @@ namespace Google.Apis.AlertCenter.v1beta1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1014,8 +973,7 @@ namespace Google.Apis.AlertCenter.v1beta1
         public class UpdateSettingsRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.Settings>
         {
             /// <summary>Constructs a new UpdateSettings request.</summary>
-            public UpdateSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.AlertCenter.v1beta1.Data.Settings body)
-                : base(service)
+            public UpdateSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.AlertCenter.v1beta1.Data.Settings body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -1031,16 +989,16 @@ namespace Google.Apis.AlertCenter.v1beta1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AlertCenter.v1beta1.Data.Settings Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "updateSettings";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1beta1/settings";
 
             /// <summary>Initializes UpdateSettings parameter list.</summary>
@@ -1048,15 +1006,14 @@ namespace Google.Apis.AlertCenter.v1beta1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

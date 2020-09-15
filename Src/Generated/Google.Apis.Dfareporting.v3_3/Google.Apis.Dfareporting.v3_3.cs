@@ -18,17 +18,16 @@ namespace Google.Apis.Dfareporting.v3_3
         public const string Version = "v3.3";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public DfareportingService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public DfareportingService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public DfareportingService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public DfareportingService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             AccountActiveAdSummaries = new AccountActiveAdSummariesResource(this);
             AccountPermissionGroups = new AccountPermissionGroupsResource(this);
@@ -328,12 +327,11 @@ namespace Google.Apis.Dfareporting.v3_3
         public virtual VideoFormatsResource VideoFormats { get; }
     }
 
-    ///<summary>A base abstract class for Dfareporting requests.</summary>
+    /// <summary>A base abstract class for Dfareporting requests.</summary>
     public abstract class DfareportingBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new DfareportingBaseServiceRequest instance.</summary>
-        protected DfareportingBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new DfareportingBaseServiceRequest instance.</summary>
+        protected DfareportingBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -413,105 +411,94 @@ namespace Google.Apis.Dfareporting.v3_3
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -544,8 +531,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.AccountActiveAdSummary>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long summaryAccountId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long summaryAccountId) : base(service)
             {
                 ProfileId = profileId;
                 SummaryAccountId = summaryAccountId;
@@ -562,13 +548,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long SummaryAccountId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/accountActiveAdSummaries/{summaryAccountId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -576,24 +562,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "summaryAccountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "summaryAccountId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("summaryAccountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "summaryAccountId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -628,8 +612,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.AccountPermissionGroup>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -646,13 +629,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/accountPermissionGroups/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -660,24 +643,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -693,8 +674,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.AccountPermissionGroupsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -706,13 +686,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long ProfileId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/accountPermissionGroups";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -720,15 +700,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -763,8 +742,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.AccountPermission>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -781,13 +759,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/accountPermissions/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -795,24 +773,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -828,8 +804,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.AccountPermissionsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -841,13 +816,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long ProfileId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/accountPermissions";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -855,15 +830,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -898,8 +872,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.AccountUserProfile>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -916,13 +889,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/accountUserProfiles/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -930,24 +903,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -964,8 +935,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.AccountUserProfile>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.AccountUserProfile body, long profileId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.AccountUserProfile body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -981,16 +951,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.AccountUserProfile Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/accountUserProfiles";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -998,15 +968,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1024,8 +993,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.AccountUserProfilesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -1095,13 +1063,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual System.Nullable<long> UserRoleId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/accountUserProfiles";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1109,96 +1077,86 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "active", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "active",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "subaccountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "subaccountId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userRoleId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userRoleId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("active", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "active",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "searchString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
+                RequestParameters.Add("subaccountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "subaccountId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userRoleId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userRoleId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1215,8 +1173,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.AccountUserProfile>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.AccountUserProfile body, long profileId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.AccountUserProfile body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -1236,16 +1193,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.AccountUserProfile Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/accountUserProfiles";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -1253,24 +1210,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1287,8 +1242,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.AccountUserProfile>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.AccountUserProfile body, long profileId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.AccountUserProfile body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -1304,16 +1258,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.AccountUserProfile Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/accountUserProfiles";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -1321,15 +1275,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1364,8 +1317,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Account>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -1382,13 +1334,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/accounts/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1396,24 +1348,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1429,8 +1379,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.AccountsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -1493,13 +1442,13 @@ namespace Google.Apis.Dfareporting.v3_3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/accounts";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1507,78 +1456,70 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "active", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "active",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("active", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "active",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "searchString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
             }
 
         }
@@ -1595,8 +1536,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Account>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Account body, long profileId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Account body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -1616,16 +1556,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.Account Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/accounts";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -1633,24 +1573,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1667,8 +1605,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Account>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Account body, long profileId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Account body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -1684,16 +1621,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.Account Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/accounts";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -1701,15 +1638,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1744,8 +1680,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Ad>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -1762,13 +1697,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/ads/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1776,24 +1711,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1810,8 +1743,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Ad>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Ad body, long profileId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Ad body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -1827,16 +1759,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.Ad Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/ads";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -1844,15 +1776,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1868,8 +1799,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.AdsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -2034,13 +1964,13 @@ namespace Google.Apis.Dfareporting.v3_3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/ads";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2048,222 +1978,198 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "active", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "active",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "archived", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "archived",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "audienceSegmentIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "audienceSegmentIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "campaignIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "campaignIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "compatibility", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "compatibility",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "creativeIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "creativeIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "creativeOptimizationConfigurationIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "creativeOptimizationConfigurationIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "dynamicClickTracker", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "dynamicClickTracker",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "landingPageIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "landingPageIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "overriddenEventTagId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "overriddenEventTagId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "placementIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "placementIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "remarketingListIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "remarketingListIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sizeIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sizeIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sslCompliant", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sslCompliant",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sslRequired", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sslRequired",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "type", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "type",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("active", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "active",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("archived", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "archived",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("audienceSegmentIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "audienceSegmentIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("campaignIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "campaignIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("compatibility", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "compatibility",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("creativeIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "creativeIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("creativeOptimizationConfigurationIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "creativeOptimizationConfigurationIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("dynamicClickTracker", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dynamicClickTracker",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("landingPageIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "landingPageIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("overriddenEventTagId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "overriddenEventTagId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("placementIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "placementIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("remarketingListIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "remarketingListIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "searchString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sizeIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sizeIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sslCompliant", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sslCompliant",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sslRequired", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sslRequired",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("type", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "type",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2280,8 +2186,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Ad>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Ad body, long profileId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Ad body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -2301,16 +2206,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.Ad Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/ads";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -2318,24 +2223,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2352,8 +2255,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Ad>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Ad body, long profileId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Ad body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -2369,16 +2271,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.Ad Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/ads";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -2386,15 +2288,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2429,8 +2330,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class DeleteRequest : DfareportingBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -2447,13 +2347,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/advertiserGroups/{id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -2461,24 +2361,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2496,8 +2394,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.AdvertiserGroup>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -2514,13 +2411,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/advertiserGroups/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -2528,24 +2425,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2562,8 +2457,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.AdvertiserGroup>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.AdvertiserGroup body, long profileId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.AdvertiserGroup body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -2579,16 +2473,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.AdvertiserGroup Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/advertiserGroups";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -2596,15 +2490,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2620,8 +2513,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.AdvertiserGroupsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -2679,13 +2571,13 @@ namespace Google.Apis.Dfareporting.v3_3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/advertiserGroups";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2693,69 +2585,62 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "searchString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
             }
 
         }
@@ -2772,8 +2657,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.AdvertiserGroup>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.AdvertiserGroup body, long profileId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.AdvertiserGroup body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -2793,16 +2677,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.AdvertiserGroup Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/advertiserGroups";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -2810,24 +2694,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2844,8 +2726,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.AdvertiserGroup>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.AdvertiserGroup body, long profileId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.AdvertiserGroup body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -2861,16 +2742,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.AdvertiserGroup Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/advertiserGroups";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -2878,15 +2759,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2921,8 +2801,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.LandingPage>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -2939,13 +2818,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/advertiserLandingPages/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -2953,24 +2832,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2987,8 +2864,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.LandingPage>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.LandingPage body, long profileId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.LandingPage body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -3004,16 +2880,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.LandingPage Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/advertiserLandingPages";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -3021,15 +2897,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3045,8 +2920,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.AdvertiserLandingPagesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -3121,13 +2995,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual System.Nullable<long> SubaccountId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/advertiserLandingPages";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -3135,105 +3009,94 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "advertiserIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "archived", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "archived",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "campaignIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "campaignIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "subaccountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "subaccountId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("advertiserIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("archived", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "archived",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("campaignIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "campaignIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "searchString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
+                RequestParameters.Add("subaccountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "subaccountId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3250,8 +3113,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.LandingPage>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.LandingPage body, long profileId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.LandingPage body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -3271,16 +3133,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.LandingPage Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/advertiserLandingPages";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -3288,24 +3150,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3322,8 +3182,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.LandingPage>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.LandingPage body, long profileId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.LandingPage body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -3339,16 +3198,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.LandingPage Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/advertiserLandingPages";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -3356,15 +3215,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3399,8 +3257,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Advertiser>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -3417,13 +3274,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/advertisers/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -3431,24 +3288,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3465,8 +3320,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Advertiser>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Advertiser body, long profileId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Advertiser body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -3482,16 +3336,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.Advertiser Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/advertisers";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -3499,15 +3353,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3523,8 +3376,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.AdvertisersListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -3615,13 +3467,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual System.Nullable<long> SubaccountId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/advertisers";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -3629,123 +3481,110 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "advertiserGroupIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserGroupIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "floodlightConfigurationIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "floodlightConfigurationIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includeAdvertisersWithoutGroupsOnly", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includeAdvertisersWithoutGroupsOnly",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "onlyParent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "onlyParent",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "status", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "status",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "subaccountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "subaccountId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("advertiserGroupIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserGroupIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("floodlightConfigurationIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "floodlightConfigurationIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeAdvertisersWithoutGroupsOnly", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeAdvertisersWithoutGroupsOnly",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("onlyParent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "onlyParent",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "searchString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
+                RequestParameters.Add("status", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "status",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("subaccountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "subaccountId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3762,8 +3601,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Advertiser>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Advertiser body, long profileId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Advertiser body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -3783,16 +3621,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.Advertiser Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/advertisers";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -3800,24 +3638,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3834,8 +3670,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Advertiser>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Advertiser body, long profileId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Advertiser body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -3851,16 +3686,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.Advertiser Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/advertisers";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -3868,15 +3703,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3909,8 +3743,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.BrowsersListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -3922,13 +3755,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long ProfileId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/browsers";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -3936,15 +3769,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3982,8 +3814,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.CampaignCreativeAssociation>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CampaignCreativeAssociation body, long profileId, long campaignId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CampaignCreativeAssociation body, long profileId, long campaignId) : base(service)
             {
                 ProfileId = profileId;
                 CampaignId = campaignId;
@@ -4004,16 +3835,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.CampaignCreativeAssociation Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/campaigns/{campaignId}/campaignCreativeAssociations";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -4021,24 +3852,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "campaignId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "campaignId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("campaignId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "campaignId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4058,8 +3887,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.CampaignCreativeAssociationsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId, long campaignId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId, long campaignId) : base(service)
             {
                 ProfileId = profileId;
                 CampaignId = campaignId;
@@ -4097,13 +3925,13 @@ namespace Google.Apis.Dfareporting.v3_3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/campaigns/{campaignId}/campaignCreativeAssociations";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -4111,51 +3939,46 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "campaignId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "campaignId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("campaignId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "campaignId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
             }
 
         }
@@ -4190,8 +4013,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Campaign>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -4208,13 +4030,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/campaigns/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -4222,24 +4044,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4256,8 +4076,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Campaign>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Campaign body, long profileId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Campaign body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -4273,16 +4092,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.Campaign Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/campaigns";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -4290,15 +4109,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4314,8 +4132,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.CampaignsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -4402,13 +4219,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual System.Nullable<long> SubaccountId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/campaigns";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -4416,132 +4233,118 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "advertiserGroupIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserGroupIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "advertiserIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "archived", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "archived",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "atLeastOneOptimizationActivity", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "atLeastOneOptimizationActivity",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "excludedIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "excludedIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "overriddenEventTagId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "overriddenEventTagId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "subaccountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "subaccountId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("advertiserGroupIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserGroupIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("advertiserIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("archived", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "archived",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("atLeastOneOptimizationActivity", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "atLeastOneOptimizationActivity",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("excludedIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "excludedIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("overriddenEventTagId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "overriddenEventTagId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "searchString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
+                RequestParameters.Add("subaccountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "subaccountId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4558,8 +4361,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Campaign>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Campaign body, long profileId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Campaign body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -4579,16 +4381,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.Campaign Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/campaigns";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -4596,24 +4398,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4630,8 +4430,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Campaign>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Campaign body, long profileId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Campaign body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -4647,16 +4446,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.Campaign Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/campaigns";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -4664,15 +4463,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4707,8 +4505,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.ChangeLog>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -4725,13 +4522,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/changeLogs/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -4739,24 +4536,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4772,8 +4567,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.ChangeLogsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -4958,13 +4752,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual Google.Apis.Util.Repeatable<string> UserProfileIds { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/changeLogs";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -4972,105 +4766,94 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "action", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "action",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxChangeTime", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxChangeTime",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "minChangeTime", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "minChangeTime",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "objectIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "objectIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "objectType", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "objectType",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userProfileIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userProfileIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("action", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "action",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxChangeTime", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxChangeTime",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("minChangeTime", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "minChangeTime",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("objectIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "objectIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("objectType", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "objectType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "searchString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProfileIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProfileIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5103,8 +4886,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.CitiesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -5132,13 +4914,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual Google.Apis.Util.Repeatable<string> RegionDartIds { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/cities";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -5146,51 +4928,46 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "countryDartIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "countryDartIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "dartIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "dartIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "namePrefix", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "namePrefix",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "regionDartIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "regionDartIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("countryDartIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "countryDartIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("dartIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dartIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("namePrefix", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "namePrefix",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("regionDartIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "regionDartIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5225,8 +5002,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.ConnectionType>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -5243,13 +5019,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/connectionTypes/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -5257,24 +5033,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5290,8 +5064,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.ConnectionTypesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -5303,13 +5076,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long ProfileId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/connectionTypes";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -5317,15 +5090,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5360,8 +5132,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class DeleteRequest : DfareportingBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -5378,13 +5149,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/contentCategories/{id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -5392,24 +5163,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5427,8 +5196,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.ContentCategory>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -5445,13 +5213,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/contentCategories/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -5459,24 +5227,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5493,8 +5259,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.ContentCategory>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.ContentCategory body, long profileId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.ContentCategory body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -5510,16 +5275,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.ContentCategory Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/contentCategories";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -5527,15 +5292,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5551,8 +5315,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.ContentCategoriesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -5610,13 +5373,13 @@ namespace Google.Apis.Dfareporting.v3_3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/contentCategories";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -5624,69 +5387,62 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "searchString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
             }
 
         }
@@ -5703,8 +5459,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.ContentCategory>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.ContentCategory body, long profileId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.ContentCategory body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -5724,16 +5479,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.ContentCategory Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/contentCategories";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -5741,24 +5496,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5775,8 +5528,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.ContentCategory>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.ContentCategory body, long profileId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.ContentCategory body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -5792,16 +5544,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.ContentCategory Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/contentCategories";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -5809,15 +5561,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5851,8 +5602,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class BatchinsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.ConversionsBatchInsertResponse>
         {
             /// <summary>Constructs a new Batchinsert request.</summary>
-            public BatchinsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.ConversionsBatchInsertRequest body, long profileId)
-                : base(service)
+            public BatchinsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.ConversionsBatchInsertRequest body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -5868,16 +5618,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.ConversionsBatchInsertRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "batchinsert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/conversions/batchinsert";
 
             /// <summary>Initializes Batchinsert parameter list.</summary>
@@ -5885,15 +5635,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5910,8 +5659,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class BatchupdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.ConversionsBatchUpdateResponse>
         {
             /// <summary>Constructs a new Batchupdate request.</summary>
-            public BatchupdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.ConversionsBatchUpdateRequest body, long profileId)
-                : base(service)
+            public BatchupdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.ConversionsBatchUpdateRequest body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -5927,16 +5675,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.ConversionsBatchUpdateRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "batchupdate";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/conversions/batchupdate";
 
             /// <summary>Initializes Batchupdate parameter list.</summary>
@@ -5944,15 +5692,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5987,8 +5734,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Country>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long dartId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long dartId) : base(service)
             {
                 ProfileId = profileId;
                 DartId = dartId;
@@ -6005,13 +5751,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long DartId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/countries/{dartId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -6019,24 +5765,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "dartId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "dartId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("dartId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dartId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6052,8 +5796,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.CountriesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -6065,13 +5808,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long ProfileId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/countries";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -6079,15 +5822,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6123,8 +5865,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.CreativeAssetMetadata>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CreativeAssetMetadata body, long profileId, long advertiserId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CreativeAssetMetadata body, long profileId, long advertiserId) : base(service)
             {
                 ProfileId = profileId;
                 AdvertiserId = advertiserId;
@@ -6145,16 +5886,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.CreativeAssetMetadata Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/creativeAssets/{advertiserId}/creativeAssets";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -6162,24 +5903,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6358,8 +6097,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class DeleteRequest : DfareportingBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, long profileId, long creativeFieldId, long id)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, long profileId, long creativeFieldId, long id) : base(service)
             {
                 ProfileId = profileId;
                 CreativeFieldId = creativeFieldId;
@@ -6381,13 +6119,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues/{id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -6395,33 +6133,30 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "creativeFieldId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "creativeFieldId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("creativeFieldId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "creativeFieldId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6441,8 +6176,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.CreativeFieldValue>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long creativeFieldId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long creativeFieldId, long id) : base(service)
             {
                 ProfileId = profileId;
                 CreativeFieldId = creativeFieldId;
@@ -6464,13 +6198,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -6478,33 +6212,30 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "creativeFieldId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "creativeFieldId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("creativeFieldId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "creativeFieldId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6523,8 +6254,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.CreativeFieldValue>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CreativeFieldValue body, long profileId, long creativeFieldId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CreativeFieldValue body, long profileId, long creativeFieldId) : base(service)
             {
                 ProfileId = profileId;
                 CreativeFieldId = creativeFieldId;
@@ -6545,16 +6275,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.CreativeFieldValue Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -6562,24 +6292,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "creativeFieldId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "creativeFieldId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("creativeFieldId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "creativeFieldId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6599,8 +6327,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.CreativeFieldValuesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId, long creativeFieldId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId, long creativeFieldId) : base(service)
             {
                 ProfileId = profileId;
                 CreativeFieldId = creativeFieldId;
@@ -6660,13 +6387,13 @@ namespace Google.Apis.Dfareporting.v3_3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -6674,78 +6401,70 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "creativeFieldId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "creativeFieldId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("creativeFieldId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "creativeFieldId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "searchString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
             }
 
         }
@@ -6764,8 +6483,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.CreativeFieldValue>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CreativeFieldValue body, long profileId, long creativeFieldId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CreativeFieldValue body, long profileId, long creativeFieldId) : base(service)
             {
                 ProfileId = profileId;
                 CreativeFieldId = creativeFieldId;
@@ -6790,16 +6508,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.CreativeFieldValue Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -6807,33 +6525,30 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "creativeFieldId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "creativeFieldId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("creativeFieldId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "creativeFieldId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6852,8 +6567,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.CreativeFieldValue>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CreativeFieldValue body, long profileId, long creativeFieldId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CreativeFieldValue body, long profileId, long creativeFieldId) : base(service)
             {
                 ProfileId = profileId;
                 CreativeFieldId = creativeFieldId;
@@ -6874,16 +6588,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.CreativeFieldValue Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -6891,24 +6605,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "creativeFieldId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "creativeFieldId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("creativeFieldId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "creativeFieldId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6943,8 +6655,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class DeleteRequest : DfareportingBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -6961,13 +6672,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/creativeFields/{id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -6975,24 +6686,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7010,8 +6719,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.CreativeField>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -7028,13 +6736,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/creativeFields/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -7042,24 +6750,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7076,8 +6782,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.CreativeField>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CreativeField body, long profileId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CreativeField body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -7093,16 +6798,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.CreativeField Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/creativeFields";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -7110,15 +6815,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7134,8 +6838,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.CreativeFieldsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -7198,13 +6901,13 @@ namespace Google.Apis.Dfareporting.v3_3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/creativeFields";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -7212,78 +6915,70 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "advertiserIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("advertiserIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "searchString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
             }
 
         }
@@ -7300,8 +6995,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.CreativeField>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CreativeField body, long profileId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CreativeField body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -7321,16 +7015,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.CreativeField Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/creativeFields";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -7338,24 +7032,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7372,8 +7064,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.CreativeField>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CreativeField body, long profileId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CreativeField body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -7389,16 +7080,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.CreativeField Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/creativeFields";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -7406,15 +7097,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7449,8 +7139,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.CreativeGroup>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -7467,13 +7156,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/creativeGroups/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -7481,24 +7170,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7515,8 +7202,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.CreativeGroup>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CreativeGroup body, long profileId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CreativeGroup body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -7532,16 +7218,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.CreativeGroup Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/creativeGroups";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -7549,15 +7235,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7573,8 +7258,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.CreativeGroupsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -7641,13 +7325,13 @@ namespace Google.Apis.Dfareporting.v3_3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/creativeGroups";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -7655,87 +7339,78 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "advertiserIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "groupNumber", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "groupNumber",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("advertiserIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("groupNumber", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "groupNumber",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "searchString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
             }
 
         }
@@ -7752,8 +7427,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.CreativeGroup>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CreativeGroup body, long profileId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CreativeGroup body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -7773,16 +7447,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.CreativeGroup Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/creativeGroups";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -7790,24 +7464,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7824,8 +7496,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.CreativeGroup>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CreativeGroup body, long profileId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CreativeGroup body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -7841,16 +7512,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.CreativeGroup Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/creativeGroups";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -7858,15 +7529,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7901,8 +7571,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Creative>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -7919,13 +7588,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/creatives/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -7933,24 +7602,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -7967,8 +7634,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Creative>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Creative body, long profileId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Creative body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -7984,16 +7650,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.Creative Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/creatives";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -8001,15 +7667,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -8025,8 +7690,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.CreativesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -8180,13 +7844,13 @@ namespace Google.Apis.Dfareporting.v3_3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/creatives";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -8194,159 +7858,142 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "active", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "active",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "archived", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "archived",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "campaignId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "campaignId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "companionCreativeIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "companionCreativeIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "creativeFieldIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "creativeFieldIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "renderingIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "renderingIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sizeIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sizeIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "studioCreativeId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "studioCreativeId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "types", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "types",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("active", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "active",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("archived", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "archived",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("campaignId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "campaignId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("companionCreativeIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "companionCreativeIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("creativeFieldIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "creativeFieldIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("renderingIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "renderingIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "searchString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sizeIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sizeIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
+                RequestParameters.Add("studioCreativeId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "studioCreativeId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("types", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "types",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -8363,8 +8010,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Creative>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Creative body, long profileId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Creative body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -8384,16 +8030,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.Creative Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/creatives";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -8401,24 +8047,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -8435,8 +8079,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Creative>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Creative body, long profileId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Creative body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -8452,16 +8095,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.Creative Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/creatives";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -8469,15 +8112,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -8511,8 +8153,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class QueryRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.DimensionValueList>
         {
             /// <summary>Constructs a new Query request.</summary>
-            public QueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.DimensionValueRequest body, long profileId)
-                : base(service)
+            public QueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.DimensionValueRequest body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -8536,16 +8177,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.DimensionValueRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "query";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/dimensionvalues/query";
 
             /// <summary>Initializes Query parameter list.</summary>
@@ -8553,33 +8194,30 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "100",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "100",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -8614,8 +8252,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.DirectorySite>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -8632,13 +8269,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/directorySites/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -8646,24 +8283,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -8680,8 +8315,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.DirectorySite>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.DirectorySite body, long profileId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.DirectorySite body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -8697,16 +8331,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.DirectorySite Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/directorySites";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -8714,15 +8348,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -8738,8 +8371,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.DirectorySitesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -8821,13 +8453,13 @@ namespace Google.Apis.Dfareporting.v3_3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/directorySites";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -8835,114 +8467,102 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "acceptsInStreamVideoPlacements", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "acceptsInStreamVideoPlacements",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "acceptsInterstitialPlacements", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "acceptsInterstitialPlacements",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "acceptsPublisherPaidPlacements", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "acceptsPublisherPaidPlacements",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "active", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "active",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "dfpNetworkCode", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "dfpNetworkCode",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("acceptsInStreamVideoPlacements", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "acceptsInStreamVideoPlacements",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("acceptsInterstitialPlacements", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "acceptsInterstitialPlacements",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("acceptsPublisherPaidPlacements", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "acceptsPublisherPaidPlacements",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("active", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "active",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("dfpNetworkCode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dfpNetworkCode",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "searchString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
             }
 
         }
@@ -8982,8 +8602,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class DeleteRequest : DfareportingBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, long profileId, long objectId, string name, DeleteRequest.ObjectTypeEnum objectType)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, long profileId, long objectId, string name, DeleteRequest.ObjectTypeEnum objectType) : base(service)
             {
                 ProfileId = profileId;
                 ObjectId = objectId;
@@ -9024,13 +8643,13 @@ namespace Google.Apis.Dfareporting.v3_3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/dynamicTargetingKeys/{objectId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -9038,42 +8657,38 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "objectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "objectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "objectType", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "objectType",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("objectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "objectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("objectType", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "objectType",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -9094,8 +8709,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.DynamicTargetingKey>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.DynamicTargetingKey body, long profileId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.DynamicTargetingKey body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -9111,16 +8725,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.DynamicTargetingKey Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/dynamicTargetingKeys";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -9128,15 +8742,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -9152,8 +8765,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.DynamicTargetingKeysListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -9194,13 +8806,13 @@ namespace Google.Apis.Dfareporting.v3_3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/dynamicTargetingKeys";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -9208,51 +8820,46 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "names", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "names",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "objectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "objectId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "objectType", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "objectType",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("names", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "names",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("objectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "objectId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("objectType", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "objectType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -9287,8 +8894,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class DeleteRequest : DfareportingBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -9305,13 +8911,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/eventTags/{id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -9319,24 +8925,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -9354,8 +8958,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.EventTag>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -9372,13 +8975,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/eventTags/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -9386,24 +8989,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -9420,8 +9021,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.EventTag>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.EventTag body, long profileId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.EventTag body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -9437,16 +9037,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.EventTag Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/eventTags";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -9454,15 +9054,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -9478,8 +9077,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.EventTagsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -9576,13 +9174,13 @@ namespace Google.Apis.Dfareporting.v3_3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/eventTags";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -9590,105 +9188,94 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "adId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "adId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "campaignId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "campaignId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "definitionsOnly", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "definitionsOnly",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "enabled", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enabled",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "eventTagTypes", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "eventTagTypes",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("adId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "adId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("campaignId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "campaignId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("definitionsOnly", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "definitionsOnly",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("enabled", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enabled",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("eventTagTypes", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "eventTagTypes",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "searchString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
             }
 
         }
@@ -9705,8 +9292,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.EventTag>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.EventTag body, long profileId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.EventTag body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -9726,16 +9312,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.EventTag Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/eventTags";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -9743,24 +9329,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -9777,8 +9361,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.EventTag>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.EventTag body, long profileId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.EventTag body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -9794,16 +9377,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.EventTag Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/eventTags";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -9811,15 +9394,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -9856,8 +9438,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.File>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long reportId, long fileId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long reportId, long fileId) : base(service)
             {
                 ReportId = reportId;
                 FileId = fileId;
@@ -9875,13 +9456,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long FileId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "reports/{reportId}/files/{fileId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -9889,24 +9470,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "reportId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "reportId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "fileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("reportId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "reportId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
             /// <summary>Gets the media downloader.</summary>
@@ -9974,8 +9553,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.FileList>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -10043,13 +9621,13 @@ namespace Google.Apis.Dfareporting.v3_3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/files";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -10057,60 +9635,54 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "10",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "scope", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "scope",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "MINE",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "LAST_MODIFIED_TIME",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "DESCENDING",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "10",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("scope", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "scope",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "MINE",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "LAST_MODIFIED_TIME",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "DESCENDING",
+                    Pattern = null,
+                });
             }
 
         }
@@ -10145,8 +9717,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class DeleteRequest : DfareportingBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -10163,13 +9734,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/floodlightActivities/{id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -10177,24 +9748,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -10210,8 +9779,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GeneratetagRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.FloodlightActivitiesGenerateTagResponse>
         {
             /// <summary>Constructs a new Generatetag request.</summary>
-            public GeneratetagRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public GeneratetagRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -10227,13 +9795,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual System.Nullable<long> FloodlightActivityId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "generatetag";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/floodlightActivities/generatetag";
 
             /// <summary>Initializes Generatetag parameter list.</summary>
@@ -10241,24 +9809,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "floodlightActivityId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "floodlightActivityId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("floodlightActivityId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "floodlightActivityId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -10276,8 +9842,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.FloodlightActivity>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -10294,13 +9859,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/floodlightActivities/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -10308,24 +9873,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -10342,8 +9905,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.FloodlightActivity>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.FloodlightActivity body, long profileId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.FloodlightActivity body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -10359,16 +9921,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.FloodlightActivity Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/floodlightActivities";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -10376,15 +9938,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -10402,8 +9963,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.FloodlightActivitiesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -10503,13 +10063,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual string TagString { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/floodlightActivities";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -10517,132 +10077,118 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "floodlightActivityGroupIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "floodlightActivityGroupIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "floodlightActivityGroupName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "floodlightActivityGroupName",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "floodlightActivityGroupTagString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "floodlightActivityGroupTagString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "floodlightActivityGroupType", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "floodlightActivityGroupType",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "floodlightConfigurationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "floodlightConfigurationId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "tagString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "tagString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("floodlightActivityGroupIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "floodlightActivityGroupIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("floodlightActivityGroupName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "floodlightActivityGroupName",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("floodlightActivityGroupTagString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "floodlightActivityGroupTagString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("floodlightActivityGroupType", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "floodlightActivityGroupType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("floodlightConfigurationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "floodlightConfigurationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "searchString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
+                RequestParameters.Add("tagString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tagString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -10659,8 +10205,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.FloodlightActivity>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.FloodlightActivity body, long profileId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.FloodlightActivity body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -10680,16 +10225,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.FloodlightActivity Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/floodlightActivities";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -10697,24 +10242,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -10731,8 +10274,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.FloodlightActivity>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.FloodlightActivity body, long profileId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.FloodlightActivity body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -10748,16 +10290,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.FloodlightActivity Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/floodlightActivities";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -10765,15 +10307,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -10808,8 +10349,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.FloodlightActivityGroup>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -10826,13 +10366,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/floodlightActivityGroups/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -10840,24 +10380,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -10874,8 +10412,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.FloodlightActivityGroup>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.FloodlightActivityGroup body, long profileId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.FloodlightActivityGroup body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -10891,16 +10428,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.FloodlightActivityGroup Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/floodlightActivityGroups";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -10908,15 +10445,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -10934,8 +10470,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.FloodlightActivityGroupsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -11020,13 +10555,13 @@ namespace Google.Apis.Dfareporting.v3_3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/floodlightActivityGroups";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -11034,96 +10569,86 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "floodlightConfigurationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "floodlightConfigurationId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "type", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "type",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("floodlightConfigurationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "floodlightConfigurationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "searchString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
+                RequestParameters.Add("type", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "type",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -11140,8 +10665,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.FloodlightActivityGroup>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.FloodlightActivityGroup body, long profileId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.FloodlightActivityGroup body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -11161,16 +10685,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.FloodlightActivityGroup Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/floodlightActivityGroups";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -11178,24 +10702,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -11212,8 +10734,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.FloodlightActivityGroup>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.FloodlightActivityGroup body, long profileId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.FloodlightActivityGroup body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -11229,16 +10750,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.FloodlightActivityGroup Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/floodlightActivityGroups";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -11246,15 +10767,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -11289,8 +10809,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.FloodlightConfiguration>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -11307,13 +10826,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/floodlightConfigurations/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -11321,24 +10840,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -11354,8 +10871,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.FloodlightConfigurationsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -11372,13 +10888,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/floodlightConfigurations";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -11386,24 +10902,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -11420,8 +10934,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.FloodlightConfiguration>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.FloodlightConfiguration body, long profileId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.FloodlightConfiguration body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -11441,16 +10954,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.FloodlightConfiguration Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/floodlightConfigurations";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -11458,24 +10971,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -11492,8 +11003,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.FloodlightConfiguration>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.FloodlightConfiguration body, long profileId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.FloodlightConfiguration body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -11509,16 +11019,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.FloodlightConfiguration Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/floodlightConfigurations";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -11526,15 +11036,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -11570,8 +11079,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.InventoryItem>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long projectId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long projectId, long id) : base(service)
             {
                 ProfileId = profileId;
                 ProjectId = projectId;
@@ -11593,13 +11101,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/projects/{projectId}/inventoryItems/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -11607,33 +11115,30 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -11651,8 +11156,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.InventoryItemsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId, long projectId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId, long projectId) : base(service)
             {
                 ProfileId = profileId;
                 ProjectId = projectId;
@@ -11732,13 +11236,13 @@ namespace Google.Apis.Dfareporting.v3_3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/projects/{projectId}/inventoryItems";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -11746,105 +11250,94 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "inPlan", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "inPlan",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "siteId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "siteId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "type", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "type",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("inPlan", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "inPlan",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("siteId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "siteId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
+                RequestParameters.Add("type", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "type",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -11877,8 +11370,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.LanguagesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -11890,13 +11382,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long ProfileId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/languages";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -11904,15 +11396,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -11945,8 +11436,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.MetrosListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -11958,13 +11448,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long ProfileId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/metros";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -11972,15 +11462,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -12015,8 +11504,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.MobileApp>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, string id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, string id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -12033,13 +11521,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual string Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/mobileApps/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -12047,24 +11535,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -12080,8 +11566,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.MobileAppsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -12127,13 +11612,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual string SearchString { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/mobileApps";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -12141,60 +11626,54 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "directories", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "directories",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("directories", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "directories",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "searchString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -12229,8 +11708,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.MobileCarrier>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -12247,13 +11725,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/mobileCarriers/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -12261,24 +11739,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -12294,8 +11770,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.MobileCarriersListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -12307,13 +11782,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long ProfileId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/mobileCarriers";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -12321,15 +11796,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -12364,8 +11838,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.OperatingSystemVersion>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -12382,13 +11855,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/operatingSystemVersions/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -12396,24 +11869,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -12429,8 +11900,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.OperatingSystemVersionsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -12442,13 +11912,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long ProfileId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/operatingSystemVersions";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -12456,15 +11926,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -12499,8 +11968,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.OperatingSystem>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long dartId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long dartId) : base(service)
             {
                 ProfileId = profileId;
                 DartId = dartId;
@@ -12517,13 +11985,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long DartId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/operatingSystems/{dartId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -12531,24 +11999,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "dartId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "dartId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("dartId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dartId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -12564,8 +12030,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.OperatingSystemsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -12577,13 +12042,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long ProfileId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/operatingSystems";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -12591,15 +12056,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -12635,8 +12099,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.OrderDocument>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long projectId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long projectId, long id) : base(service)
             {
                 ProfileId = profileId;
                 ProjectId = projectId;
@@ -12658,13 +12121,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/projects/{projectId}/orderDocuments/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -12672,33 +12135,30 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -12716,8 +12176,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.OrderDocumentsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId, long projectId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId, long projectId) : base(service)
             {
                 ProfileId = profileId;
                 ProjectId = projectId;
@@ -12793,13 +12252,13 @@ namespace Google.Apis.Dfareporting.v3_3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/projects/{projectId}/orderDocuments";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -12807,105 +12266,94 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "approved", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "approved",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "siteId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "siteId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("approved", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "approved",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "searchString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("siteId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "siteId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
             }
 
         }
@@ -12941,8 +12389,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Order>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long projectId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long projectId, long id) : base(service)
             {
                 ProfileId = profileId;
                 ProjectId = projectId;
@@ -12964,13 +12411,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/projects/{projectId}/orders/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -12978,33 +12425,30 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -13022,8 +12466,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.OrdersListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId, long projectId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId, long projectId) : base(service)
             {
                 ProfileId = profileId;
                 ProjectId = projectId;
@@ -13090,13 +12533,13 @@ namespace Google.Apis.Dfareporting.v3_3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/projects/{projectId}/orders";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -13104,87 +12547,78 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "siteId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "siteId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "searchString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("siteId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "siteId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
             }
 
         }
@@ -13219,8 +12653,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.PlacementGroup>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -13237,13 +12670,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/placementGroups/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -13251,24 +12684,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -13285,8 +12716,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.PlacementGroup>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.PlacementGroup body, long profileId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.PlacementGroup body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -13302,16 +12732,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.PlacementGroup Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/placementGroups";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -13319,15 +12749,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -13343,8 +12772,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.PlacementGroupsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -13494,13 +12922,13 @@ namespace Google.Apis.Dfareporting.v3_3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/placementGroups";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -13508,186 +12936,166 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "advertiserIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "archived", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "archived",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "campaignIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "campaignIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "contentCategoryIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "contentCategoryIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "directorySiteIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "directorySiteIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxEndDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxEndDate",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "800",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxStartDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxStartDate",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "minEndDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "minEndDate",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "minStartDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "minStartDate",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "placementGroupType", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "placementGroupType",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "placementStrategyIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "placementStrategyIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pricingTypes", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pricingTypes",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "siteIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "siteIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("advertiserIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("archived", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "archived",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("campaignIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "campaignIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("contentCategoryIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "contentCategoryIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("directorySiteIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "directorySiteIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxEndDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxEndDate",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "800",
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxStartDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxStartDate",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("minEndDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "minEndDate",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("minStartDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "minStartDate",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("placementGroupType", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "placementGroupType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("placementStrategyIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "placementStrategyIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pricingTypes", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pricingTypes",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "searchString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("siteIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "siteIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
             }
 
         }
@@ -13704,8 +13112,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.PlacementGroup>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.PlacementGroup body, long profileId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.PlacementGroup body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -13725,16 +13132,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.PlacementGroup Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/placementGroups";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -13742,24 +13149,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -13776,8 +13181,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.PlacementGroup>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.PlacementGroup body, long profileId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.PlacementGroup body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -13793,16 +13197,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.PlacementGroup Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/placementGroups";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -13810,15 +13214,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -13853,8 +13256,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class DeleteRequest : DfareportingBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -13871,13 +13273,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/placementStrategies/{id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -13885,24 +13287,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -13920,8 +13320,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.PlacementStrategy>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -13938,13 +13337,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/placementStrategies/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -13952,24 +13351,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -13986,8 +13383,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.PlacementStrategy>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.PlacementStrategy body, long profileId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.PlacementStrategy body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -14003,16 +13399,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.PlacementStrategy Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/placementStrategies";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -14020,15 +13416,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -14044,8 +13439,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.PlacementStrategiesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -14104,13 +13498,13 @@ namespace Google.Apis.Dfareporting.v3_3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/placementStrategies";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -14118,69 +13512,62 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "searchString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
             }
 
         }
@@ -14197,8 +13584,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.PlacementStrategy>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.PlacementStrategy body, long profileId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.PlacementStrategy body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -14218,16 +13604,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.PlacementStrategy Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/placementStrategies";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -14235,24 +13621,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -14269,8 +13653,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.PlacementStrategy>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.PlacementStrategy body, long profileId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.PlacementStrategy body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -14286,16 +13669,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.PlacementStrategy Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/placementStrategies";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -14303,15 +13686,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -14344,8 +13726,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GeneratetagsRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.PlacementsGenerateTagsResponse>
         {
             /// <summary>Constructs a new Generatetags request.</summary>
-            public GeneratetagsRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public GeneratetagsRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -14414,13 +13795,13 @@ namespace Google.Apis.Dfareporting.v3_3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "generatetags";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/placements/generatetags";
 
             /// <summary>Initializes Generatetags parameter list.</summary>
@@ -14428,42 +13809,38 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "campaignId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "campaignId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "placementIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "placementIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "tagFormats", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "tagFormats",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("campaignId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "campaignId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("placementIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "placementIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("tagFormats", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tagFormats",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -14481,8 +13858,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Placement>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -14499,13 +13875,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/placements/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -14513,24 +13889,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -14547,8 +13921,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Placement>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Placement body, long profileId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Placement body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -14564,16 +13937,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.Placement Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/placements";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -14581,15 +13954,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -14605,8 +13977,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.PlacementsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -14782,13 +14153,13 @@ namespace Google.Apis.Dfareporting.v3_3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/placements";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -14796,213 +14167,190 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "advertiserIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "archived", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "archived",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "campaignIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "campaignIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "compatibilities", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "compatibilities",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "contentCategoryIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "contentCategoryIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "directorySiteIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "directorySiteIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "groupIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "groupIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxEndDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxEndDate",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxStartDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxStartDate",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "minEndDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "minEndDate",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "minStartDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "minStartDate",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "paymentSource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "paymentSource",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "placementStrategyIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "placementStrategyIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pricingTypes", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pricingTypes",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "siteIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "siteIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sizeIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sizeIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("advertiserIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("archived", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "archived",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("campaignIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "campaignIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("compatibilities", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "compatibilities",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("contentCategoryIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "contentCategoryIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("directorySiteIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "directorySiteIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("groupIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "groupIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxEndDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxEndDate",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxStartDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxStartDate",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("minEndDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "minEndDate",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("minStartDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "minStartDate",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("paymentSource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "paymentSource",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("placementStrategyIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "placementStrategyIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pricingTypes", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pricingTypes",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "searchString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("siteIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "siteIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sizeIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sizeIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
             }
 
         }
@@ -15019,8 +14367,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Placement>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Placement body, long profileId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Placement body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -15040,16 +14387,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.Placement Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/placements";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -15057,24 +14404,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -15091,8 +14436,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Placement>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Placement body, long profileId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Placement body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -15108,16 +14452,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.Placement Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/placements";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -15125,15 +14469,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -15168,8 +14511,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.PlatformType>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -15186,13 +14528,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/platformTypes/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -15200,24 +14542,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -15233,8 +14573,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.PlatformTypesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -15246,13 +14585,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long ProfileId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/platformTypes";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -15260,15 +14599,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -15303,8 +14641,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.PostalCode>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, string code)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, string code) : base(service)
             {
                 ProfileId = profileId;
                 Code = code;
@@ -15321,13 +14658,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual string Code { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/postalCodes/{code}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -15335,24 +14672,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "code", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "code",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("code", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "code",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -15368,8 +14703,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.PostalCodesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -15381,13 +14715,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long ProfileId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/postalCodes";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -15395,15 +14729,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -15438,8 +14771,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Project>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -15456,13 +14788,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/projects/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -15470,24 +14802,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -15503,8 +14833,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.ProjectsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -15566,13 +14895,13 @@ namespace Google.Apis.Dfareporting.v3_3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/projects";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -15580,78 +14909,70 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "advertiserIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("advertiserIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "searchString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
             }
 
         }
@@ -15684,8 +15005,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.RegionsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -15697,13 +15017,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long ProfileId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/regions";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -15711,15 +15031,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -15754,8 +15073,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.RemarketingListShare>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long remarketingListId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long remarketingListId) : base(service)
             {
                 ProfileId = profileId;
                 RemarketingListId = remarketingListId;
@@ -15772,13 +15090,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long RemarketingListId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/remarketingListShares/{remarketingListId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -15786,24 +15104,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "remarketingListId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "remarketingListId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("remarketingListId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "remarketingListId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -15822,8 +15138,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.RemarketingListShare>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.RemarketingListShare body, long profileId, long remarketingListId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.RemarketingListShare body, long profileId, long remarketingListId) : base(service)
             {
                 ProfileId = profileId;
                 RemarketingListId = remarketingListId;
@@ -15848,16 +15163,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.RemarketingListShare Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/remarketingLists/{remarketingListId}/remarketingListShares";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -15865,33 +15180,30 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "remarketingListId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "remarketingListId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("remarketingListId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "remarketingListId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -15908,8 +15220,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.RemarketingListShare>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.RemarketingListShare body, long profileId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.RemarketingListShare body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -15925,16 +15236,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.RemarketingListShare Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/remarketingListShares";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -15942,15 +15253,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -15985,8 +15295,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.RemarketingList>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -16003,13 +15312,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/remarketingLists/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -16017,24 +15326,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -16051,8 +15358,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.RemarketingList>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.RemarketingList body, long profileId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.RemarketingList body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -16068,16 +15374,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.RemarketingList Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/remarketingLists";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -16085,15 +15391,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -16111,8 +15416,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.RemarketingListsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId, long advertiserId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId, long advertiserId) : base(service)
             {
                 ProfileId = profileId;
                 AdvertiserId = advertiserId;
@@ -16180,13 +15484,13 @@ namespace Google.Apis.Dfareporting.v3_3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/remarketingLists";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -16194,87 +15498,78 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "active", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "active",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "floodlightActivityId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "floodlightActivityId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("active", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "active",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("floodlightActivityId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "floodlightActivityId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
             }
 
         }
@@ -16291,8 +15586,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.RemarketingList>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.RemarketingList body, long profileId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.RemarketingList body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -16312,16 +15606,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.RemarketingList Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/remarketingLists";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -16329,24 +15623,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -16363,8 +15655,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.RemarketingList>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.RemarketingList body, long profileId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.RemarketingList body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -16380,16 +15671,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.RemarketingList Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/remarketingLists";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -16397,15 +15688,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -16461,8 +15751,7 @@ namespace Google.Apis.Dfareporting.v3_3
             public class QueryRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.CompatibleFields>
             {
                 /// <summary>Constructs a new Query request.</summary>
-                public QueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Report body, long profileId)
-                    : base(service)
+                public QueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Report body, long profileId) : base(service)
                 {
                     ProfileId = profileId;
                     Body = body;
@@ -16478,16 +15767,16 @@ namespace Google.Apis.Dfareporting.v3_3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Dfareporting.v3_3.Data.Report Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "query";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "userprofiles/{profileId}/reports/compatiblefields/query";
 
                 /// <summary>Initializes Query parameter list.</summary>
@@ -16495,15 +15784,14 @@ namespace Google.Apis.Dfareporting.v3_3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -16543,8 +15831,7 @@ namespace Google.Apis.Dfareporting.v3_3
             public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.File>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, long profileId, long reportId, long fileId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, long profileId, long reportId, long fileId) : base(service)
                 {
                     ProfileId = profileId;
                     ReportId = reportId;
@@ -16567,13 +15854,13 @@ namespace Google.Apis.Dfareporting.v3_3
                 public virtual long FileId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "userprofiles/{profileId}/reports/{reportId}/files/{fileId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -16581,33 +15868,30 @@ namespace Google.Apis.Dfareporting.v3_3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "reportId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "reportId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "fileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "fileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("reportId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "reportId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
                 /// <summary>Gets the media downloader.</summary>
@@ -16677,8 +15961,7 @@ namespace Google.Apis.Dfareporting.v3_3
             public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.FileList>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, long profileId, long reportId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, long profileId, long reportId) : base(service)
                 {
                     ProfileId = profileId;
                     ReportId = reportId;
@@ -16729,13 +16012,13 @@ namespace Google.Apis.Dfareporting.v3_3
                 }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "userprofiles/{profileId}/reports/{reportId}/files";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -16743,60 +16026,54 @@ namespace Google.Apis.Dfareporting.v3_3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "profileId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "profileId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "reportId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "reportId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "maxResults", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "maxResults",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = "10",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "sortField", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sortField",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = "LAST_MODIFIED_TIME",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "sortOrder", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sortOrder",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = "DESCENDING",
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "profileId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("reportId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "reportId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "10",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sortField",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "LAST_MODIFIED_TIME",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sortOrder",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "DESCENDING",
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -16815,8 +16092,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class DeleteRequest : DfareportingBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, long profileId, long reportId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, long profileId, long reportId) : base(service)
             {
                 ProfileId = profileId;
                 ReportId = reportId;
@@ -16833,13 +16109,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long ReportId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/reports/{reportId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -16847,24 +16123,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "reportId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "reportId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("reportId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "reportId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -16882,8 +16156,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Report>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long reportId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long reportId) : base(service)
             {
                 ProfileId = profileId;
                 ReportId = reportId;
@@ -16900,13 +16173,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long ReportId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/reports/{reportId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -16914,24 +16187,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "reportId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "reportId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("reportId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "reportId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -16948,8 +16219,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Report>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Report body, long profileId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Report body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -16965,16 +16235,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.Report Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/reports";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -16982,15 +16252,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -17006,8 +16275,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.ReportList>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -17075,13 +16343,13 @@ namespace Google.Apis.Dfareporting.v3_3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/reports";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -17089,60 +16357,54 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "10",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "scope", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "scope",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "MINE",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "LAST_MODIFIED_TIME",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "DESCENDING",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "10",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("scope", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "scope",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "MINE",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "LAST_MODIFIED_TIME",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "DESCENDING",
+                    Pattern = null,
+                });
             }
 
         }
@@ -17161,8 +16423,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Report>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Report body, long profileId, long reportId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Report body, long profileId, long reportId) : base(service)
             {
                 ProfileId = profileId;
                 ReportId = reportId;
@@ -17183,16 +16444,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.Report Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/reports/{reportId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -17200,24 +16461,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "reportId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "reportId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("reportId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "reportId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -17235,8 +16494,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class RunRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.File>
         {
             /// <summary>Constructs a new Run request.</summary>
-            public RunRequest(Google.Apis.Services.IClientService service, long profileId, long reportId)
-                : base(service)
+            public RunRequest(Google.Apis.Services.IClientService service, long profileId, long reportId) : base(service)
             {
                 ProfileId = profileId;
                 ReportId = reportId;
@@ -17257,13 +16515,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual System.Nullable<bool> Synchronous { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "run";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/reports/{reportId}/run";
 
             /// <summary>Initializes Run parameter list.</summary>
@@ -17271,33 +16529,30 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "reportId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "reportId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "synchronous", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "synchronous",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("reportId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "reportId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("synchronous", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "synchronous",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
             }
 
         }
@@ -17316,8 +16571,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Report>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Report body, long profileId, long reportId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Report body, long profileId, long reportId) : base(service)
             {
                 ProfileId = profileId;
                 ReportId = reportId;
@@ -17338,16 +16592,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.Report Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/reports/{reportId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -17355,24 +16609,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "reportId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "reportId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("reportId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "reportId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -17407,8 +16659,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Site>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -17425,13 +16676,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/sites/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -17439,24 +16690,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -17473,8 +16722,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Site>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Site body, long profileId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Site body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -17490,16 +16738,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.Site Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/sites";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -17507,15 +16755,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -17531,8 +16778,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.SitesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -17628,13 +16874,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual System.Nullable<bool> UnmappedSite { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/sites";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -17642,150 +16888,134 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "acceptsInStreamVideoPlacements", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "acceptsInStreamVideoPlacements",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "acceptsInterstitialPlacements", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "acceptsInterstitialPlacements",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "acceptsPublisherPaidPlacements", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "acceptsPublisherPaidPlacements",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "adWordsSite", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "adWordsSite",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "approved", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "approved",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "campaignIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "campaignIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "directorySiteIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "directorySiteIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "subaccountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "subaccountId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "unmappedSite", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "unmappedSite",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("acceptsInStreamVideoPlacements", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "acceptsInStreamVideoPlacements",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("acceptsInterstitialPlacements", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "acceptsInterstitialPlacements",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("acceptsPublisherPaidPlacements", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "acceptsPublisherPaidPlacements",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("adWordsSite", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "adWordsSite",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("approved", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "approved",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("campaignIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "campaignIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("directorySiteIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "directorySiteIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "searchString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
+                RequestParameters.Add("subaccountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "subaccountId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("unmappedSite", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "unmappedSite",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -17802,8 +17032,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Site>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Site body, long profileId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Site body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -17823,16 +17052,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.Site Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/sites";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -17840,24 +17069,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -17874,8 +17101,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Site>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Site body, long profileId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Site body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -17891,16 +17117,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.Site Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/sites";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -17908,15 +17134,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -17951,8 +17176,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Size>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -17969,13 +17193,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/sizes/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -17983,24 +17207,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -18017,8 +17239,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Size>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Size body, long profileId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Size body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -18034,16 +17255,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.Size Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/sizes";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -18051,15 +17272,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -18079,8 +17299,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.SizesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -18108,13 +17327,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual System.Nullable<int> Width { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/sizes";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -18122,51 +17341,46 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "height", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "height",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "iabStandard", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "iabStandard",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "width", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "width",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("height", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "height",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("iabStandard", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "iabStandard",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("width", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "width",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -18201,8 +17415,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Subaccount>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -18219,13 +17432,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/subaccounts/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -18233,24 +17446,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -18267,8 +17478,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Subaccount>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Subaccount body, long profileId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Subaccount body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -18284,16 +17494,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.Subaccount Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/subaccounts";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -18301,15 +17511,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -18325,8 +17534,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.SubaccountsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -18384,13 +17592,13 @@ namespace Google.Apis.Dfareporting.v3_3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/subaccounts";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -18398,69 +17606,62 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "searchString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
             }
 
         }
@@ -18477,8 +17678,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Subaccount>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Subaccount body, long profileId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Subaccount body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -18498,16 +17698,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.Subaccount Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/subaccounts";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -18515,24 +17715,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -18549,8 +17747,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Subaccount>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Subaccount body, long profileId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Subaccount body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -18566,16 +17763,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.Subaccount Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/subaccounts";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -18583,15 +17780,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -18626,8 +17822,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.TargetableRemarketingList>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -18644,13 +17839,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/targetableRemarketingLists/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -18658,24 +17853,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -18695,8 +17888,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.TargetableRemarketingListsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId, long advertiserId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId, long advertiserId) : base(service)
             {
                 ProfileId = profileId;
                 AdvertiserId = advertiserId;
@@ -18760,13 +17952,13 @@ namespace Google.Apis.Dfareporting.v3_3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/targetableRemarketingLists";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -18774,78 +17966,70 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "active", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "active",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("active", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "active",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
             }
 
         }
@@ -18880,8 +18064,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.TargetingTemplate>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -18898,13 +18081,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/targetingTemplates/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -18912,24 +18095,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -18946,8 +18127,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.TargetingTemplate>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.TargetingTemplate body, long profileId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.TargetingTemplate body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -18963,16 +18143,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.TargetingTemplate Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/targetingTemplates";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -18980,15 +18160,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -19006,8 +18185,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.TargetingTemplatesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -19069,13 +18247,13 @@ namespace Google.Apis.Dfareporting.v3_3
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/targetingTemplates";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -19083,78 +18261,70 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "searchString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
             }
 
         }
@@ -19171,8 +18341,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.TargetingTemplate>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.TargetingTemplate body, long profileId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.TargetingTemplate body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -19192,16 +18361,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.TargetingTemplate Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/targetingTemplates";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -19209,24 +18378,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -19243,8 +18410,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.TargetingTemplate>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.TargetingTemplate body, long profileId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.TargetingTemplate body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -19260,16 +18426,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.TargetingTemplate Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/targetingTemplates";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -19277,15 +18443,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -19318,8 +18483,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.UserProfile>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -19331,13 +18495,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long ProfileId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -19345,15 +18509,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -19368,21 +18531,20 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.UserProfileList>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
 
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -19424,8 +18586,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.UserRolePermissionGroup>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -19442,13 +18603,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/userRolePermissionGroups/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -19456,24 +18617,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -19489,8 +18648,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.UserRolePermissionGroupsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -19502,13 +18660,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long ProfileId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/userRolePermissionGroups";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -19516,15 +18674,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -19559,8 +18716,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.UserRolePermission>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -19577,13 +18733,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/userRolePermissions/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -19591,24 +18747,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -19624,8 +18778,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.UserRolePermissionsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -19641,13 +18794,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/userRolePermissions";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -19655,24 +18808,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -19707,8 +18858,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class DeleteRequest : DfareportingBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -19725,13 +18875,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/userRoles/{id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -19739,24 +18889,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -19774,8 +18922,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.UserRole>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -19792,13 +18939,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/userRoles/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -19806,24 +18953,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -19840,8 +18985,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.UserRole>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.UserRole body, long profileId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.UserRole body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -19857,16 +19001,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.UserRole Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/userRoles";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -19874,15 +19018,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -19898,8 +19041,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.UserRolesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -19965,13 +19107,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual System.Nullable<long> SubaccountId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/userRoles";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -19979,87 +19121,78 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "accountUserRoleOnly", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "accountUserRoleOnly",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "subaccountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "subaccountId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("accountUserRoleOnly", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accountUserRoleOnly",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "1000",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "searchString",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortField",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ID",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ASCENDING",
+                    Pattern = null,
+                });
+                RequestParameters.Add("subaccountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "subaccountId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -20076,8 +19209,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.UserRole>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.UserRole body, long profileId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.UserRole body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -20097,16 +19229,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.UserRole Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/userRoles";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -20114,24 +19246,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -20148,8 +19278,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class UpdateRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.UserRole>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.UserRole body, long profileId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.UserRole body, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 Body = body;
@@ -20165,16 +19294,16 @@ namespace Google.Apis.Dfareporting.v3_3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dfareporting.v3_3.Data.UserRole Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/userRoles";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -20182,15 +19311,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -20225,8 +19353,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.VideoFormat>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, int id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long profileId, int id) : base(service)
             {
                 ProfileId = profileId;
                 Id = id;
@@ -20243,13 +19370,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual int Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/videoFormats/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -20257,24 +19384,22 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -20290,8 +19415,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.VideoFormatsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long profileId) : base(service)
             {
                 ProfileId = profileId;
                 InitParameters();
@@ -20303,13 +19427,13 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long ProfileId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "userprofiles/{profileId}/videoFormats";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -20317,15 +19441,14 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

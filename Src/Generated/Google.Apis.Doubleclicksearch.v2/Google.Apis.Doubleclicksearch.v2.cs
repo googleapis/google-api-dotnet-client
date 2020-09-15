@@ -18,17 +18,16 @@ namespace Google.Apis.Doubleclicksearch.v2
         public const string Version = "v2";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public DoubleclicksearchService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public DoubleclicksearchService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public DoubleclicksearchService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public DoubleclicksearchService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Conversion = new ConversionResource(this);
             Reports = new ReportsResource(this);
@@ -88,12 +87,11 @@ namespace Google.Apis.Doubleclicksearch.v2
         public virtual SavedColumnsResource SavedColumns { get; }
     }
 
-    ///<summary>A base abstract class for Doubleclicksearch requests.</summary>
+    /// <summary>A base abstract class for Doubleclicksearch requests.</summary>
     public abstract class DoubleclicksearchBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new DoubleclicksearchBaseServiceRequest instance.</summary>
-        protected DoubleclicksearchBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new DoubleclicksearchBaseServiceRequest instance.</summary>
+        protected DoubleclicksearchBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -173,105 +171,94 @@ namespace Google.Apis.Doubleclicksearch.v2
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -313,8 +300,7 @@ namespace Google.Apis.Doubleclicksearch.v2
         public class GetRequest : DoubleclicksearchBaseServiceRequest<Google.Apis.Doubleclicksearch.v2.Data.ConversionList>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long agencyId, long advertiserId, long engineAccountId, int endDate, int rowCount, int startDate, long startRow)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, long agencyId, long advertiserId, long engineAccountId, int endDate, int rowCount, int startDate, long startRow) : base(service)
             {
                 AgencyId = agencyId;
                 AdvertiserId = advertiserId;
@@ -372,13 +358,13 @@ namespace Google.Apis.Doubleclicksearch.v2
             public virtual System.Nullable<long> CriterionId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/engine/{engineAccountId}/conversion";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -386,105 +372,94 @@ namespace Google.Apis.Doubleclicksearch.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "agencyId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "agencyId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "engineAccountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "engineAccountId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "endDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "endDate",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "rowCount", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "rowCount",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "startDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "startDate",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "startRow", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "startRow",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "adGroupId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "adGroupId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "adId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "adId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "campaignId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "campaignId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "criterionId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "criterionId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("agencyId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "agencyId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("engineAccountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "engineAccountId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("endDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "endDate",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("rowCount", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "rowCount",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("startDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "startDate",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("startRow", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "startRow",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("adGroupId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "adGroupId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("adId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "adId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("campaignId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "campaignId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("criterionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "criterionId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -500,8 +475,7 @@ namespace Google.Apis.Doubleclicksearch.v2
         public class InsertRequest : DoubleclicksearchBaseServiceRequest<Google.Apis.Doubleclicksearch.v2.Data.ConversionList>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Doubleclicksearch.v2.Data.ConversionList body)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Doubleclicksearch.v2.Data.ConversionList body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -512,16 +486,16 @@ namespace Google.Apis.Doubleclicksearch.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Doubleclicksearch.v2.Data.ConversionList Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "doubleclicksearch/v2/conversion";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -544,8 +518,7 @@ namespace Google.Apis.Doubleclicksearch.v2
         public class UpdateRequest : DoubleclicksearchBaseServiceRequest<Google.Apis.Doubleclicksearch.v2.Data.ConversionList>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Doubleclicksearch.v2.Data.ConversionList body)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Doubleclicksearch.v2.Data.ConversionList body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -556,16 +529,16 @@ namespace Google.Apis.Doubleclicksearch.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Doubleclicksearch.v2.Data.ConversionList Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "doubleclicksearch/v2/conversion";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -588,8 +561,7 @@ namespace Google.Apis.Doubleclicksearch.v2
         public class UpdateAvailabilityRequest : DoubleclicksearchBaseServiceRequest<Google.Apis.Doubleclicksearch.v2.Data.UpdateAvailabilityResponse>
         {
             /// <summary>Constructs a new UpdateAvailability request.</summary>
-            public UpdateAvailabilityRequest(Google.Apis.Services.IClientService service, Google.Apis.Doubleclicksearch.v2.Data.UpdateAvailabilityRequest body)
-                : base(service)
+            public UpdateAvailabilityRequest(Google.Apis.Services.IClientService service, Google.Apis.Doubleclicksearch.v2.Data.UpdateAvailabilityRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -600,16 +572,16 @@ namespace Google.Apis.Doubleclicksearch.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Doubleclicksearch.v2.Data.UpdateAvailabilityRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "updateAvailability";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "doubleclicksearch/v2/conversion/updateAvailability";
 
             /// <summary>Initializes UpdateAvailability parameter list.</summary>
@@ -649,8 +621,7 @@ namespace Google.Apis.Doubleclicksearch.v2
         public class GenerateRequest : DoubleclicksearchBaseServiceRequest<Google.Apis.Doubleclicksearch.v2.Data.Report>
         {
             /// <summary>Constructs a new Generate request.</summary>
-            public GenerateRequest(Google.Apis.Services.IClientService service, Google.Apis.Doubleclicksearch.v2.Data.ReportRequest body)
-                : base(service)
+            public GenerateRequest(Google.Apis.Services.IClientService service, Google.Apis.Doubleclicksearch.v2.Data.ReportRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -661,16 +632,16 @@ namespace Google.Apis.Doubleclicksearch.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Doubleclicksearch.v2.Data.ReportRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "generate";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "doubleclicksearch/v2/reports/generate";
 
             /// <summary>Initializes Generate parameter list.</summary>
@@ -693,8 +664,7 @@ namespace Google.Apis.Doubleclicksearch.v2
         public class GetRequest : DoubleclicksearchBaseServiceRequest<Google.Apis.Doubleclicksearch.v2.Data.Report>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string reportId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string reportId) : base(service)
             {
                 ReportId = reportId;
                 InitParameters();
@@ -706,13 +676,13 @@ namespace Google.Apis.Doubleclicksearch.v2
             public virtual string ReportId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "doubleclicksearch/v2/reports/{reportId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -720,15 +690,14 @@ namespace Google.Apis.Doubleclicksearch.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "reportId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "reportId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("reportId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "reportId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -746,8 +715,7 @@ namespace Google.Apis.Doubleclicksearch.v2
         public class GetFileRequest : DoubleclicksearchBaseServiceRequest<string>
         {
             /// <summary>Constructs a new GetFile request.</summary>
-            public GetFileRequest(Google.Apis.Services.IClientService service, string reportId, int reportFragment)
-                : base(service)
+            public GetFileRequest(Google.Apis.Services.IClientService service, string reportId, int reportFragment) : base(service)
             {
                 ReportId = reportId;
                 ReportFragment = reportFragment;
@@ -765,13 +733,13 @@ namespace Google.Apis.Doubleclicksearch.v2
             public virtual int ReportFragment { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getFile";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "doubleclicksearch/v2/reports/{reportId}/files/{reportFragment}";
 
             /// <summary>Initializes GetFile parameter list.</summary>
@@ -779,24 +747,22 @@ namespace Google.Apis.Doubleclicksearch.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "reportId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "reportId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "reportFragment", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "reportFragment",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("reportId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "reportId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("reportFragment", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "reportFragment",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
             /// <summary>Gets the media downloader.</summary>
@@ -864,8 +830,7 @@ namespace Google.Apis.Doubleclicksearch.v2
         public class RequestRequest : DoubleclicksearchBaseServiceRequest<Google.Apis.Doubleclicksearch.v2.Data.Report>
         {
             /// <summary>Constructs a new Request request.</summary>
-            public RequestRequest(Google.Apis.Services.IClientService service, Google.Apis.Doubleclicksearch.v2.Data.ReportRequest body)
-                : base(service)
+            public RequestRequest(Google.Apis.Services.IClientService service, Google.Apis.Doubleclicksearch.v2.Data.ReportRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -876,16 +841,16 @@ namespace Google.Apis.Doubleclicksearch.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Doubleclicksearch.v2.Data.ReportRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "request";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "doubleclicksearch/v2/reports";
 
             /// <summary>Initializes Request parameter list.</summary>
@@ -927,8 +892,7 @@ namespace Google.Apis.Doubleclicksearch.v2
         public class ListRequest : DoubleclicksearchBaseServiceRequest<Google.Apis.Doubleclicksearch.v2.Data.SavedColumnList>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long agencyId, long advertiserId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, long agencyId, long advertiserId) : base(service)
             {
                 AgencyId = agencyId;
                 AdvertiserId = advertiserId;
@@ -945,13 +909,13 @@ namespace Google.Apis.Doubleclicksearch.v2
             public virtual long AdvertiserId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/savedcolumns";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -959,24 +923,22 @@ namespace Google.Apis.Doubleclicksearch.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "agencyId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "agencyId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "advertiserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "advertiserId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("agencyId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "agencyId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "advertiserId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

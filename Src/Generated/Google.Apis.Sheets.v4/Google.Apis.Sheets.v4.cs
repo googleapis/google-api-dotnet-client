@@ -18,17 +18,16 @@ namespace Google.Apis.Sheets.v4
         public const string Version = "v4";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public SheetsService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public SheetsService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public SheetsService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public SheetsService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Spreadsheets = new SpreadsheetsResource(this);
         }
@@ -106,12 +105,11 @@ namespace Google.Apis.Sheets.v4
         public virtual SpreadsheetsResource Spreadsheets { get; }
     }
 
-    ///<summary>A base abstract class for Sheets requests.</summary>
+    /// <summary>A base abstract class for Sheets requests.</summary>
     public abstract class SheetsBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new SheetsBaseServiceRequest instance.</summary>
-        protected SheetsBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new SheetsBaseServiceRequest instance.</summary>
+        protected SheetsBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -191,105 +189,94 @@ namespace Google.Apis.Sheets.v4
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -345,8 +332,7 @@ namespace Google.Apis.Sheets.v4
             public class GetRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.DeveloperMetadata>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string spreadsheetId, int metadataId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string spreadsheetId, int metadataId) : base(service)
                 {
                     SpreadsheetId = spreadsheetId;
                     MetadataId = metadataId;
@@ -363,13 +349,13 @@ namespace Google.Apis.Sheets.v4
                 public virtual int MetadataId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v4/spreadsheets/{spreadsheetId}/developerMetadata/{metadataId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -377,24 +363,22 @@ namespace Google.Apis.Sheets.v4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "spreadsheetId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "spreadsheetId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "metadataId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "metadataId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("spreadsheetId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "spreadsheetId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("metadataId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "metadataId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -417,8 +401,7 @@ namespace Google.Apis.Sheets.v4
             public class SearchRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.SearchDeveloperMetadataResponse>
             {
                 /// <summary>Constructs a new Search request.</summary>
-                public SearchRequest(Google.Apis.Services.IClientService service, Google.Apis.Sheets.v4.Data.SearchDeveloperMetadataRequest body, string spreadsheetId)
-                    : base(service)
+                public SearchRequest(Google.Apis.Services.IClientService service, Google.Apis.Sheets.v4.Data.SearchDeveloperMetadataRequest body, string spreadsheetId) : base(service)
                 {
                     SpreadsheetId = spreadsheetId;
                     Body = body;
@@ -434,16 +417,16 @@ namespace Google.Apis.Sheets.v4
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Sheets.v4.Data.SearchDeveloperMetadataRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "search";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v4/spreadsheets/{spreadsheetId}/developerMetadata:search";
 
                 /// <summary>Initializes Search parameter list.</summary>
@@ -451,15 +434,14 @@ namespace Google.Apis.Sheets.v4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "spreadsheetId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "spreadsheetId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("spreadsheetId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "spreadsheetId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -499,8 +481,7 @@ namespace Google.Apis.Sheets.v4
             public class CopyToRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.SheetProperties>
             {
                 /// <summary>Constructs a new CopyTo request.</summary>
-                public CopyToRequest(Google.Apis.Services.IClientService service, Google.Apis.Sheets.v4.Data.CopySheetToAnotherSpreadsheetRequest body, string spreadsheetId, int sheetId)
-                    : base(service)
+                public CopyToRequest(Google.Apis.Services.IClientService service, Google.Apis.Sheets.v4.Data.CopySheetToAnotherSpreadsheetRequest body, string spreadsheetId, int sheetId) : base(service)
                 {
                     SpreadsheetId = spreadsheetId;
                     SheetId = sheetId;
@@ -521,16 +502,16 @@ namespace Google.Apis.Sheets.v4
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Sheets.v4.Data.CopySheetToAnotherSpreadsheetRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "copyTo";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v4/spreadsheets/{spreadsheetId}/sheets/{sheetId}:copyTo";
 
                 /// <summary>Initializes CopyTo parameter list.</summary>
@@ -538,24 +519,22 @@ namespace Google.Apis.Sheets.v4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "spreadsheetId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "spreadsheetId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "sheetId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sheetId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("spreadsheetId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "spreadsheetId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("sheetId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sheetId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -605,8 +584,7 @@ namespace Google.Apis.Sheets.v4
             public class AppendRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.AppendValuesResponse>
             {
                 /// <summary>Constructs a new Append request.</summary>
-                public AppendRequest(Google.Apis.Services.IClientService service, Google.Apis.Sheets.v4.Data.ValueRange body, string spreadsheetId, string range)
-                    : base(service)
+                public AppendRequest(Google.Apis.Services.IClientService service, Google.Apis.Sheets.v4.Data.ValueRange body, string spreadsheetId, string range) : base(service)
                 {
                     SpreadsheetId = spreadsheetId;
                     Range = range;
@@ -723,16 +701,16 @@ namespace Google.Apis.Sheets.v4
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Sheets.v4.Data.ValueRange Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "append";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v4/spreadsheets/{spreadsheetId}/values/{range}:append";
 
                 /// <summary>Initializes Append parameter list.</summary>
@@ -740,69 +718,62 @@ namespace Google.Apis.Sheets.v4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "spreadsheetId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "spreadsheetId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "range", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "range",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "includeValuesInResponse", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeValuesInResponse",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "insertDataOption", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "insertDataOption",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "responseDateTimeRenderOption", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "responseDateTimeRenderOption",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "responseValueRenderOption", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "responseValueRenderOption",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "valueInputOption", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "valueInputOption",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("spreadsheetId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "spreadsheetId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("range", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "range",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("includeValuesInResponse", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeValuesInResponse",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("insertDataOption", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "insertDataOption",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("responseDateTimeRenderOption", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "responseDateTimeRenderOption",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("responseValueRenderOption", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "responseValueRenderOption",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("valueInputOption", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "valueInputOption",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -823,8 +794,7 @@ namespace Google.Apis.Sheets.v4
             public class BatchClearRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.BatchClearValuesResponse>
             {
                 /// <summary>Constructs a new BatchClear request.</summary>
-                public BatchClearRequest(Google.Apis.Services.IClientService service, Google.Apis.Sheets.v4.Data.BatchClearValuesRequest body, string spreadsheetId)
-                    : base(service)
+                public BatchClearRequest(Google.Apis.Services.IClientService service, Google.Apis.Sheets.v4.Data.BatchClearValuesRequest body, string spreadsheetId) : base(service)
                 {
                     SpreadsheetId = spreadsheetId;
                     Body = body;
@@ -840,16 +810,16 @@ namespace Google.Apis.Sheets.v4
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Sheets.v4.Data.BatchClearValuesRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "batchClear";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v4/spreadsheets/{spreadsheetId}/values:batchClear";
 
                 /// <summary>Initializes BatchClear parameter list.</summary>
@@ -857,15 +827,14 @@ namespace Google.Apis.Sheets.v4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "spreadsheetId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "spreadsheetId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("spreadsheetId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "spreadsheetId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -888,8 +857,7 @@ namespace Google.Apis.Sheets.v4
             public class BatchClearByDataFilterRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.BatchClearValuesByDataFilterResponse>
             {
                 /// <summary>Constructs a new BatchClearByDataFilter request.</summary>
-                public BatchClearByDataFilterRequest(Google.Apis.Services.IClientService service, Google.Apis.Sheets.v4.Data.BatchClearValuesByDataFilterRequest body, string spreadsheetId)
-                    : base(service)
+                public BatchClearByDataFilterRequest(Google.Apis.Services.IClientService service, Google.Apis.Sheets.v4.Data.BatchClearValuesByDataFilterRequest body, string spreadsheetId) : base(service)
                 {
                     SpreadsheetId = spreadsheetId;
                     Body = body;
@@ -905,16 +873,16 @@ namespace Google.Apis.Sheets.v4
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Sheets.v4.Data.BatchClearValuesByDataFilterRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "batchClearByDataFilter";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v4/spreadsheets/{spreadsheetId}/values:batchClearByDataFilter";
 
                 /// <summary>Initializes BatchClearByDataFilter parameter list.</summary>
@@ -922,15 +890,14 @@ namespace Google.Apis.Sheets.v4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "spreadsheetId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "spreadsheetId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("spreadsheetId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "spreadsheetId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -948,8 +915,7 @@ namespace Google.Apis.Sheets.v4
             public class BatchGetRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.BatchGetValuesResponse>
             {
                 /// <summary>Constructs a new BatchGet request.</summary>
-                public BatchGetRequest(Google.Apis.Services.IClientService service, string spreadsheetId)
-                    : base(service)
+                public BatchGetRequest(Google.Apis.Services.IClientService service, string spreadsheetId) : base(service)
                 {
                     SpreadsheetId = spreadsheetId;
                     InitParameters();
@@ -1040,13 +1006,13 @@ namespace Google.Apis.Sheets.v4
                 }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "batchGet";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v4/spreadsheets/{spreadsheetId}/values:batchGet";
 
                 /// <summary>Initializes BatchGet parameter list.</summary>
@@ -1054,51 +1020,46 @@ namespace Google.Apis.Sheets.v4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "spreadsheetId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "spreadsheetId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "dateTimeRenderOption", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "dateTimeRenderOption",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "majorDimension", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "majorDimension",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "ranges", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "ranges",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "valueRenderOption", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "valueRenderOption",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("spreadsheetId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "spreadsheetId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("dateTimeRenderOption", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dateTimeRenderOption",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("majorDimension", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "majorDimension",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("ranges", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "ranges",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("valueRenderOption", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "valueRenderOption",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1119,8 +1080,7 @@ namespace Google.Apis.Sheets.v4
             public class BatchGetByDataFilterRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.BatchGetValuesByDataFilterResponse>
             {
                 /// <summary>Constructs a new BatchGetByDataFilter request.</summary>
-                public BatchGetByDataFilterRequest(Google.Apis.Services.IClientService service, Google.Apis.Sheets.v4.Data.BatchGetValuesByDataFilterRequest body, string spreadsheetId)
-                    : base(service)
+                public BatchGetByDataFilterRequest(Google.Apis.Services.IClientService service, Google.Apis.Sheets.v4.Data.BatchGetValuesByDataFilterRequest body, string spreadsheetId) : base(service)
                 {
                     SpreadsheetId = spreadsheetId;
                     Body = body;
@@ -1136,16 +1096,16 @@ namespace Google.Apis.Sheets.v4
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Sheets.v4.Data.BatchGetValuesByDataFilterRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "batchGetByDataFilter";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v4/spreadsheets/{spreadsheetId}/values:batchGetByDataFilter";
 
                 /// <summary>Initializes BatchGetByDataFilter parameter list.</summary>
@@ -1153,15 +1113,14 @@ namespace Google.Apis.Sheets.v4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "spreadsheetId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "spreadsheetId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("spreadsheetId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "spreadsheetId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1180,8 +1139,7 @@ namespace Google.Apis.Sheets.v4
             public class BatchUpdateRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.BatchUpdateValuesResponse>
             {
                 /// <summary>Constructs a new BatchUpdate request.</summary>
-                public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Sheets.v4.Data.BatchUpdateValuesRequest body, string spreadsheetId)
-                    : base(service)
+                public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Sheets.v4.Data.BatchUpdateValuesRequest body, string spreadsheetId) : base(service)
                 {
                     SpreadsheetId = spreadsheetId;
                     Body = body;
@@ -1197,16 +1155,16 @@ namespace Google.Apis.Sheets.v4
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Sheets.v4.Data.BatchUpdateValuesRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "batchUpdate";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v4/spreadsheets/{spreadsheetId}/values:batchUpdate";
 
                 /// <summary>Initializes BatchUpdate parameter list.</summary>
@@ -1214,15 +1172,14 @@ namespace Google.Apis.Sheets.v4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "spreadsheetId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "spreadsheetId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("spreadsheetId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "spreadsheetId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1241,8 +1198,7 @@ namespace Google.Apis.Sheets.v4
             public class BatchUpdateByDataFilterRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.BatchUpdateValuesByDataFilterResponse>
             {
                 /// <summary>Constructs a new BatchUpdateByDataFilter request.</summary>
-                public BatchUpdateByDataFilterRequest(Google.Apis.Services.IClientService service, Google.Apis.Sheets.v4.Data.BatchUpdateValuesByDataFilterRequest body, string spreadsheetId)
-                    : base(service)
+                public BatchUpdateByDataFilterRequest(Google.Apis.Services.IClientService service, Google.Apis.Sheets.v4.Data.BatchUpdateValuesByDataFilterRequest body, string spreadsheetId) : base(service)
                 {
                     SpreadsheetId = spreadsheetId;
                     Body = body;
@@ -1258,16 +1214,16 @@ namespace Google.Apis.Sheets.v4
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Sheets.v4.Data.BatchUpdateValuesByDataFilterRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "batchUpdateByDataFilter";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v4/spreadsheets/{spreadsheetId}/values:batchUpdateByDataFilter";
 
                 /// <summary>Initializes BatchUpdateByDataFilter parameter list.</summary>
@@ -1275,15 +1231,14 @@ namespace Google.Apis.Sheets.v4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "spreadsheetId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "spreadsheetId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("spreadsheetId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "spreadsheetId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1306,8 +1261,7 @@ namespace Google.Apis.Sheets.v4
             public class ClearRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.ClearValuesResponse>
             {
                 /// <summary>Constructs a new Clear request.</summary>
-                public ClearRequest(Google.Apis.Services.IClientService service, Google.Apis.Sheets.v4.Data.ClearValuesRequest body, string spreadsheetId, string range)
-                    : base(service)
+                public ClearRequest(Google.Apis.Services.IClientService service, Google.Apis.Sheets.v4.Data.ClearValuesRequest body, string spreadsheetId, string range) : base(service)
                 {
                     SpreadsheetId = spreadsheetId;
                     Range = range;
@@ -1328,16 +1282,16 @@ namespace Google.Apis.Sheets.v4
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Sheets.v4.Data.ClearValuesRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "clear";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v4/spreadsheets/{spreadsheetId}/values/{range}:clear";
 
                 /// <summary>Initializes Clear parameter list.</summary>
@@ -1345,24 +1299,22 @@ namespace Google.Apis.Sheets.v4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "spreadsheetId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "spreadsheetId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "range", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "range",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("spreadsheetId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "spreadsheetId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("range", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "range",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1382,8 +1334,7 @@ namespace Google.Apis.Sheets.v4
             public class GetRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.ValueRange>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string spreadsheetId, string range)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string spreadsheetId, string range) : base(service)
                 {
                     SpreadsheetId = spreadsheetId;
                     Range = range;
@@ -1475,13 +1426,13 @@ namespace Google.Apis.Sheets.v4
                 }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v4/spreadsheets/{spreadsheetId}/values/{range}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1489,51 +1440,46 @@ namespace Google.Apis.Sheets.v4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "spreadsheetId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "spreadsheetId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "range", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "range",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "dateTimeRenderOption", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "dateTimeRenderOption",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "majorDimension", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "majorDimension",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "valueRenderOption", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "valueRenderOption",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("spreadsheetId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "spreadsheetId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("range", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "range",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("dateTimeRenderOption", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dateTimeRenderOption",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("majorDimension", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "majorDimension",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("valueRenderOption", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "valueRenderOption",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1554,8 +1500,7 @@ namespace Google.Apis.Sheets.v4
             public class UpdateRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.UpdateValuesResponse>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Sheets.v4.Data.ValueRange body, string spreadsheetId, string range)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Sheets.v4.Data.ValueRange body, string spreadsheetId, string range) : base(service)
                 {
                     SpreadsheetId = spreadsheetId;
                     Range = range;
@@ -1656,16 +1601,16 @@ namespace Google.Apis.Sheets.v4
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Sheets.v4.Data.ValueRange Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v4/spreadsheets/{spreadsheetId}/values/{range}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -1673,60 +1618,54 @@ namespace Google.Apis.Sheets.v4
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "spreadsheetId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "spreadsheetId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "range", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "range",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "includeValuesInResponse", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeValuesInResponse",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "responseDateTimeRenderOption", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "responseDateTimeRenderOption",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "responseValueRenderOption", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "responseValueRenderOption",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "valueInputOption", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "valueInputOption",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("spreadsheetId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "spreadsheetId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("range", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "range",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("includeValuesInResponse", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeValuesInResponse",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("responseDateTimeRenderOption", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "responseDateTimeRenderOption",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("responseValueRenderOption", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "responseValueRenderOption",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("valueInputOption", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "valueInputOption",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1760,8 +1699,7 @@ namespace Google.Apis.Sheets.v4
         public class BatchUpdateRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.BatchUpdateSpreadsheetResponse>
         {
             /// <summary>Constructs a new BatchUpdate request.</summary>
-            public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Sheets.v4.Data.BatchUpdateSpreadsheetRequest body, string spreadsheetId)
-                : base(service)
+            public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Sheets.v4.Data.BatchUpdateSpreadsheetRequest body, string spreadsheetId) : base(service)
             {
                 SpreadsheetId = spreadsheetId;
                 Body = body;
@@ -1777,16 +1715,16 @@ namespace Google.Apis.Sheets.v4
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Sheets.v4.Data.BatchUpdateSpreadsheetRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "batchUpdate";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v4/spreadsheets/{spreadsheetId}:batchUpdate";
 
             /// <summary>Initializes BatchUpdate parameter list.</summary>
@@ -1794,15 +1732,14 @@ namespace Google.Apis.Sheets.v4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "spreadsheetId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "spreadsheetId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("spreadsheetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "spreadsheetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1818,8 +1755,7 @@ namespace Google.Apis.Sheets.v4
         public class CreateRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.Spreadsheet>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Sheets.v4.Data.Spreadsheet body)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Sheets.v4.Data.Spreadsheet body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -1830,16 +1766,16 @@ namespace Google.Apis.Sheets.v4
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Sheets.v4.Data.Spreadsheet Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v4/spreadsheets";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -1876,8 +1812,7 @@ namespace Google.Apis.Sheets.v4
         public class GetRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.Spreadsheet>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string spreadsheetId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string spreadsheetId) : base(service)
             {
                 SpreadsheetId = spreadsheetId;
                 InitParameters();
@@ -1898,13 +1833,13 @@ namespace Google.Apis.Sheets.v4
             public virtual Google.Apis.Util.Repeatable<string> Ranges { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v4/spreadsheets/{spreadsheetId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1912,33 +1847,30 @@ namespace Google.Apis.Sheets.v4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "spreadsheetId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "spreadsheetId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includeGridData", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includeGridData",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ranges", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ranges",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("spreadsheetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "spreadsheetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeGridData", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeGridData",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ranges", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ranges",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1971,8 +1903,7 @@ namespace Google.Apis.Sheets.v4
         public class GetByDataFilterRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.Spreadsheet>
         {
             /// <summary>Constructs a new GetByDataFilter request.</summary>
-            public GetByDataFilterRequest(Google.Apis.Services.IClientService service, Google.Apis.Sheets.v4.Data.GetSpreadsheetByDataFilterRequest body, string spreadsheetId)
-                : base(service)
+            public GetByDataFilterRequest(Google.Apis.Services.IClientService service, Google.Apis.Sheets.v4.Data.GetSpreadsheetByDataFilterRequest body, string spreadsheetId) : base(service)
             {
                 SpreadsheetId = spreadsheetId;
                 Body = body;
@@ -1988,16 +1919,16 @@ namespace Google.Apis.Sheets.v4
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Sheets.v4.Data.GetSpreadsheetByDataFilterRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getByDataFilter";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v4/spreadsheets/{spreadsheetId}:getByDataFilter";
 
             /// <summary>Initializes GetByDataFilter parameter list.</summary>
@@ -2005,15 +1936,14 @@ namespace Google.Apis.Sheets.v4
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "spreadsheetId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "spreadsheetId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("spreadsheetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "spreadsheetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

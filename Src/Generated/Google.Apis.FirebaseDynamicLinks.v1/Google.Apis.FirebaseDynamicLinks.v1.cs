@@ -18,17 +18,16 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public FirebaseDynamicLinksService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public FirebaseDynamicLinksService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public FirebaseDynamicLinksService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public FirebaseDynamicLinksService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             ManagedShortLinks = new ManagedShortLinksResource(this);
             ShortLinks = new ShortLinksResource(this);
@@ -88,12 +87,11 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
         public virtual V1Resource V1 { get; }
     }
 
-    ///<summary>A base abstract class for FirebaseDynamicLinks requests.</summary>
+    /// <summary>A base abstract class for FirebaseDynamicLinks requests.</summary>
     public abstract class FirebaseDynamicLinksBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new FirebaseDynamicLinksBaseServiceRequest instance.</summary>
-        protected FirebaseDynamicLinksBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new FirebaseDynamicLinksBaseServiceRequest instance.</summary>
+        protected FirebaseDynamicLinksBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -173,105 +171,94 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -312,8 +299,7 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
         public class CreateRequest : FirebaseDynamicLinksBaseServiceRequest<Google.Apis.FirebaseDynamicLinks.v1.Data.CreateManagedShortLinkResponse>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseDynamicLinks.v1.Data.CreateManagedShortLinkRequest body)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseDynamicLinks.v1.Data.CreateManagedShortLinkRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -324,16 +310,16 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.FirebaseDynamicLinks.v1.Data.CreateManagedShortLinkRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/managedShortLinks:create";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -379,8 +365,7 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
         public class CreateRequest : FirebaseDynamicLinksBaseServiceRequest<Google.Apis.FirebaseDynamicLinks.v1.Data.CreateShortDynamicLinkResponse>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseDynamicLinks.v1.Data.CreateShortDynamicLinkRequest body)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseDynamicLinks.v1.Data.CreateShortDynamicLinkRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -391,16 +376,16 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.FirebaseDynamicLinks.v1.Data.CreateShortDynamicLinkRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/shortLinks";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -442,8 +427,7 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
         public class GetLinkStatsRequest : FirebaseDynamicLinksBaseServiceRequest<Google.Apis.FirebaseDynamicLinks.v1.Data.DynamicLinkStats>
         {
             /// <summary>Constructs a new GetLinkStats request.</summary>
-            public GetLinkStatsRequest(Google.Apis.Services.IClientService service, string dynamicLink)
-                : base(service)
+            public GetLinkStatsRequest(Google.Apis.Services.IClientService service, string dynamicLink) : base(service)
             {
                 DynamicLink = dynamicLink;
                 InitParameters();
@@ -463,13 +447,13 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
             public virtual string SdkVersion { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getLinkStats";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{dynamicLink}/linkStats";
 
             /// <summary>Initializes GetLinkStats parameter list.</summary>
@@ -477,33 +461,30 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "dynamicLink", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "dynamicLink",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "durationDays", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "durationDays",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sdkVersion", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sdkVersion",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("dynamicLink", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dynamicLink",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("durationDays", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "durationDays",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sdkVersion", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sdkVersion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -519,8 +500,7 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
         public class InstallAttributionRequest : FirebaseDynamicLinksBaseServiceRequest<Google.Apis.FirebaseDynamicLinks.v1.Data.GetIosPostInstallAttributionResponse>
         {
             /// <summary>Constructs a new InstallAttribution request.</summary>
-            public InstallAttributionRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseDynamicLinks.v1.Data.GetIosPostInstallAttributionRequest body)
-                : base(service)
+            public InstallAttributionRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseDynamicLinks.v1.Data.GetIosPostInstallAttributionRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -531,16 +511,16 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.FirebaseDynamicLinks.v1.Data.GetIosPostInstallAttributionRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "installAttribution";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/installAttribution";
 
             /// <summary>Initializes InstallAttribution parameter list.</summary>
@@ -563,8 +543,7 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
         public class ReopenAttributionRequest : FirebaseDynamicLinksBaseServiceRequest<Google.Apis.FirebaseDynamicLinks.v1.Data.GetIosReopenAttributionResponse>
         {
             /// <summary>Constructs a new ReopenAttribution request.</summary>
-            public ReopenAttributionRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseDynamicLinks.v1.Data.GetIosReopenAttributionRequest body)
-                : base(service)
+            public ReopenAttributionRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseDynamicLinks.v1.Data.GetIosReopenAttributionRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -575,16 +554,16 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.FirebaseDynamicLinks.v1.Data.GetIosReopenAttributionRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "reopenAttribution";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/reopenAttribution";
 
             /// <summary>Initializes ReopenAttribution parameter list.</summary>

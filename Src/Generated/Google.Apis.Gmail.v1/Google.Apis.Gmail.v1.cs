@@ -18,17 +18,16 @@ namespace Google.Apis.Gmail.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public GmailService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public GmailService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public GmailService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public GmailService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Users = new UsersResource(this);
         }
@@ -158,12 +157,11 @@ namespace Google.Apis.Gmail.v1
         public virtual UsersResource Users { get; }
     }
 
-    ///<summary>A base abstract class for Gmail requests.</summary>
+    /// <summary>A base abstract class for Gmail requests.</summary>
     public abstract class GmailBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new GmailBaseServiceRequest instance.</summary>
-        protected GmailBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new GmailBaseServiceRequest instance.</summary>
+        protected GmailBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -243,105 +241,94 @@ namespace Google.Apis.Gmail.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -398,8 +385,7 @@ namespace Google.Apis.Gmail.v1
             public class CreateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Draft>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Draft body, string userId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Draft body, string userId) : base(service)
                 {
                     UserId = userId;
                     Body = body;
@@ -416,16 +402,16 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Gmail.v1.Data.Draft Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/drafts";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -433,15 +419,14 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -595,8 +580,7 @@ namespace Google.Apis.Gmail.v1
             public class DeleteRequest : GmailBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string userId, string id)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string userId, string id) : base(service)
                 {
                     UserId = userId;
                     Id = id;
@@ -614,13 +598,13 @@ namespace Google.Apis.Gmail.v1
                 public virtual string Id { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/drafts/{id}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -628,24 +612,22 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "id", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "id",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -663,8 +645,7 @@ namespace Google.Apis.Gmail.v1
             public class GetRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Draft>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string userId, string id)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string userId, string id) : base(service)
                 {
                     UserId = userId;
                     Id = id;
@@ -708,13 +689,13 @@ namespace Google.Apis.Gmail.v1
                 }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/drafts/{id}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -722,33 +703,30 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "id", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "id",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "format", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "format",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = "full",
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("format", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "format",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "full",
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -765,8 +743,7 @@ namespace Google.Apis.Gmail.v1
             public class ListRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ListDraftsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string userId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string userId) : base(service)
                 {
                     UserId = userId;
                     InitParameters();
@@ -796,13 +773,13 @@ namespace Google.Apis.Gmail.v1
                 public virtual string Q { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/drafts";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -810,51 +787,46 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "includeSpamTrash", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeSpamTrash",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = "false",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "maxResults", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "maxResults",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = "100",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "q", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "q",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("includeSpamTrash", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeSpamTrash",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "100",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("q", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "q",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -874,8 +846,7 @@ namespace Google.Apis.Gmail.v1
             public class SendRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Message>
             {
                 /// <summary>Constructs a new Send request.</summary>
-                public SendRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Draft body, string userId)
-                    : base(service)
+                public SendRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Draft body, string userId) : base(service)
                 {
                     UserId = userId;
                     Body = body;
@@ -892,16 +863,16 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Gmail.v1.Data.Draft Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "send";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/drafts/send";
 
                 /// <summary>Initializes Send parameter list.</summary>
@@ -909,15 +880,14 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1073,8 +1043,7 @@ namespace Google.Apis.Gmail.v1
             public class UpdateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Draft>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Draft body, string userId, string id)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Draft body, string userId, string id) : base(service)
                 {
                     UserId = userId;
                     Id = id;
@@ -1096,16 +1065,16 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Gmail.v1.Data.Draft Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/drafts/{id}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -1113,24 +1082,22 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "id", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "id",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1311,8 +1278,7 @@ namespace Google.Apis.Gmail.v1
             public class ListRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ListHistoryResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string userId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string userId) : base(service)
                 {
                     UserId = userId;
                     InitParameters();
@@ -1365,13 +1331,13 @@ namespace Google.Apis.Gmail.v1
                 public virtual System.Nullable<ulong> StartHistoryId { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/history";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1379,60 +1345,54 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "historyTypes", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "historyTypes",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "labelId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "labelId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "maxResults", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "maxResults",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = "100",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "startHistoryId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "startHistoryId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("historyTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "historyTypes",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("labelId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "labelId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "100",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("startHistoryId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "startHistoryId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1469,8 +1429,7 @@ namespace Google.Apis.Gmail.v1
             public class CreateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Label>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Label body, string userId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Label body, string userId) : base(service)
                 {
                     UserId = userId;
                     Body = body;
@@ -1487,16 +1446,16 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Gmail.v1.Data.Label Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/labels";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -1504,15 +1463,14 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1532,8 +1490,7 @@ namespace Google.Apis.Gmail.v1
             public class DeleteRequest : GmailBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string userId, string id)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string userId, string id) : base(service)
                 {
                     UserId = userId;
                     Id = id;
@@ -1551,13 +1508,13 @@ namespace Google.Apis.Gmail.v1
                 public virtual string Id { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/labels/{id}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -1565,24 +1522,22 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "id", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "id",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1600,8 +1555,7 @@ namespace Google.Apis.Gmail.v1
             public class GetRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Label>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string userId, string id)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string userId, string id) : base(service)
                 {
                     UserId = userId;
                     Id = id;
@@ -1619,13 +1573,13 @@ namespace Google.Apis.Gmail.v1
                 public virtual string Id { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/labels/{id}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1633,24 +1587,22 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "id", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "id",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1667,8 +1619,7 @@ namespace Google.Apis.Gmail.v1
             public class ListRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ListLabelsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string userId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string userId) : base(service)
                 {
                     UserId = userId;
                     InitParameters();
@@ -1681,13 +1632,13 @@ namespace Google.Apis.Gmail.v1
                 public virtual string UserId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/labels";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1695,15 +1646,14 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1722,8 +1672,7 @@ namespace Google.Apis.Gmail.v1
             public class PatchRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Label>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Label body, string userId, string id)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Label body, string userId, string id) : base(service)
                 {
                     UserId = userId;
                     Id = id;
@@ -1745,16 +1694,16 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Gmail.v1.Data.Label Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/labels/{id}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -1762,24 +1711,22 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "id", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "id",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1798,8 +1745,7 @@ namespace Google.Apis.Gmail.v1
             public class UpdateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Label>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Label body, string userId, string id)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Label body, string userId, string id) : base(service)
                 {
                     UserId = userId;
                     Id = id;
@@ -1821,16 +1767,16 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Gmail.v1.Data.Label Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/labels/{id}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -1838,24 +1784,22 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "id", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "id",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1913,8 +1857,7 @@ namespace Google.Apis.Gmail.v1
                 public class GetRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.MessagePartBody>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string userId, string messageId, string id)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string userId, string messageId, string id) : base(service)
                     {
                         UserId = userId;
                         MessageId = messageId;
@@ -1937,13 +1880,13 @@ namespace Google.Apis.Gmail.v1
                     public virtual string Id { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "gmail/v1/users/{userId}/messages/{messageId}/attachments/{id}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -1951,33 +1894,30 @@ namespace Google.Apis.Gmail.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "userId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "userId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = "me",
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "messageId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "messageId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "id", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "id",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = "me",
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("messageId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "messageId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "id",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1998,8 +1938,7 @@ namespace Google.Apis.Gmail.v1
             public class BatchDeleteRequest : GmailBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new BatchDelete request.</summary>
-                public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.BatchDeleteMessagesRequest body, string userId)
-                    : base(service)
+                public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.BatchDeleteMessagesRequest body, string userId) : base(service)
                 {
                     UserId = userId;
                     Body = body;
@@ -2016,16 +1955,16 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Gmail.v1.Data.BatchDeleteMessagesRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "batchDelete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/messages/batchDelete";
 
                 /// <summary>Initializes BatchDelete parameter list.</summary>
@@ -2033,15 +1972,14 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2059,8 +1997,7 @@ namespace Google.Apis.Gmail.v1
             public class BatchModifyRequest : GmailBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new BatchModify request.</summary>
-                public BatchModifyRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.BatchModifyMessagesRequest body, string userId)
-                    : base(service)
+                public BatchModifyRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.BatchModifyMessagesRequest body, string userId) : base(service)
                 {
                     UserId = userId;
                     Body = body;
@@ -2077,16 +2014,16 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Gmail.v1.Data.BatchModifyMessagesRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "batchModify";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/messages/batchModify";
 
                 /// <summary>Initializes BatchModify parameter list.</summary>
@@ -2094,15 +2031,14 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2122,8 +2058,7 @@ namespace Google.Apis.Gmail.v1
             public class DeleteRequest : GmailBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string userId, string id)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string userId, string id) : base(service)
                 {
                     UserId = userId;
                     Id = id;
@@ -2141,13 +2076,13 @@ namespace Google.Apis.Gmail.v1
                 public virtual string Id { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/messages/{id}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -2155,24 +2090,22 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "id", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "id",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2190,8 +2123,7 @@ namespace Google.Apis.Gmail.v1
             public class GetRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Message>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string userId, string id)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string userId, string id) : base(service)
                 {
                     UserId = userId;
                     Id = id;
@@ -2239,13 +2171,13 @@ namespace Google.Apis.Gmail.v1
                 public virtual Google.Apis.Util.Repeatable<string> MetadataHeaders { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/messages/{id}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -2253,42 +2185,38 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "id", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "id",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "format", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "format",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = "full",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "metadataHeaders", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "metadataHeaders",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("format", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "format",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "full",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("metadataHeaders", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "metadataHeaders",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2310,8 +2238,7 @@ namespace Google.Apis.Gmail.v1
             public class ImportRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Message>
             {
                 /// <summary>Constructs a new Import request.</summary>
-                public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Message body, string userId)
-                    : base(service)
+                public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Message body, string userId) : base(service)
                 {
                     UserId = userId;
                     Body = body;
@@ -2358,16 +2285,16 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Gmail.v1.Data.Message Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "import";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/messages/import";
 
                 /// <summary>Initializes Import parameter list.</summary>
@@ -2375,51 +2302,46 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "deleted", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "deleted",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = "false",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "internalDateSource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "internalDateSource",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = "dateHeader",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "neverMarkSpam", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "neverMarkSpam",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = "false",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "processForCalendar", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "processForCalendar",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = "false",
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("deleted", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "deleted",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("internalDateSource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "internalDateSource",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "dateHeader",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("neverMarkSpam", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "neverMarkSpam",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("processForCalendar", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "processForCalendar",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2607,8 +2529,7 @@ namespace Google.Apis.Gmail.v1
             public class InsertRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Message>
             {
                 /// <summary>Constructs a new Insert request.</summary>
-                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Message body, string userId)
-                    : base(service)
+                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Message body, string userId) : base(service)
                 {
                     UserId = userId;
                     Body = body;
@@ -2645,16 +2566,16 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Gmail.v1.Data.Message Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "insert";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/messages";
 
                 /// <summary>Initializes Insert parameter list.</summary>
@@ -2662,33 +2583,30 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "deleted", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "deleted",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = "false",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "internalDateSource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "internalDateSource",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = "receivedTime",
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("deleted", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "deleted",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("internalDateSource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "internalDateSource",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "receivedTime",
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2862,8 +2780,7 @@ namespace Google.Apis.Gmail.v1
             public class ListRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ListMessagesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string userId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string userId) : base(service)
                 {
                     UserId = userId;
                     InitParameters();
@@ -2898,13 +2815,13 @@ namespace Google.Apis.Gmail.v1
                 public virtual string Q { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/messages";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -2912,60 +2829,54 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "includeSpamTrash", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeSpamTrash",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = "false",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "labelIds", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "labelIds",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "maxResults", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "maxResults",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = "100",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "q", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "q",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("includeSpamTrash", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeSpamTrash",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("labelIds", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "labelIds",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "100",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("q", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "q",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2984,8 +2895,7 @@ namespace Google.Apis.Gmail.v1
             public class ModifyRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Message>
             {
                 /// <summary>Constructs a new Modify request.</summary>
-                public ModifyRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.ModifyMessageRequest body, string userId, string id)
-                    : base(service)
+                public ModifyRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.ModifyMessageRequest body, string userId, string id) : base(service)
                 {
                     UserId = userId;
                     Id = id;
@@ -3007,16 +2917,16 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Gmail.v1.Data.ModifyMessageRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "modify";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/messages/{id}/modify";
 
                 /// <summary>Initializes Modify parameter list.</summary>
@@ -3024,24 +2934,22 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "id", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "id",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3059,8 +2967,7 @@ namespace Google.Apis.Gmail.v1
             public class SendRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Message>
             {
                 /// <summary>Constructs a new Send request.</summary>
-                public SendRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Message body, string userId)
-                    : base(service)
+                public SendRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Message body, string userId) : base(service)
                 {
                     UserId = userId;
                     Body = body;
@@ -3077,16 +2984,16 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Gmail.v1.Data.Message Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "send";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/messages/send";
 
                 /// <summary>Initializes Send parameter list.</summary>
@@ -3094,15 +3001,14 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3256,8 +3162,7 @@ namespace Google.Apis.Gmail.v1
             public class TrashRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Message>
             {
                 /// <summary>Constructs a new Trash request.</summary>
-                public TrashRequest(Google.Apis.Services.IClientService service, string userId, string id)
-                    : base(service)
+                public TrashRequest(Google.Apis.Services.IClientService service, string userId, string id) : base(service)
                 {
                     UserId = userId;
                     Id = id;
@@ -3275,13 +3180,13 @@ namespace Google.Apis.Gmail.v1
                 public virtual string Id { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "trash";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/messages/{id}/trash";
 
                 /// <summary>Initializes Trash parameter list.</summary>
@@ -3289,24 +3194,22 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "id", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "id",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3324,8 +3227,7 @@ namespace Google.Apis.Gmail.v1
             public class UntrashRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Message>
             {
                 /// <summary>Constructs a new Untrash request.</summary>
-                public UntrashRequest(Google.Apis.Services.IClientService service, string userId, string id)
-                    : base(service)
+                public UntrashRequest(Google.Apis.Services.IClientService service, string userId, string id) : base(service)
                 {
                     UserId = userId;
                     Id = id;
@@ -3343,13 +3245,13 @@ namespace Google.Apis.Gmail.v1
                 public virtual string Id { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "untrash";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/messages/{id}/untrash";
 
                 /// <summary>Initializes Untrash parameter list.</summary>
@@ -3357,24 +3259,22 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "id", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "id",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3447,8 +3347,7 @@ namespace Google.Apis.Gmail.v1
                 public class CreateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Delegate>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Delegate body, string userId)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Delegate body, string userId) : base(service)
                     {
                         UserId = userId;
                         Body = body;
@@ -3465,16 +3364,16 @@ namespace Google.Apis.Gmail.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Gmail.v1.Data.Delegate Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "gmail/v1/users/{userId}/settings/delegates";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -3482,15 +3381,14 @@ namespace Google.Apis.Gmail.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "userId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "userId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = "me",
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = "me",
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3515,8 +3413,7 @@ namespace Google.Apis.Gmail.v1
                 public class DeleteRequest : GmailBaseServiceRequest<string>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string userId, string delegateEmail)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string userId, string delegateEmail) : base(service)
                     {
                         UserId = userId;
                         DelegateEmail = delegateEmail;
@@ -3534,13 +3431,13 @@ namespace Google.Apis.Gmail.v1
                     public virtual string DelegateEmail { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "gmail/v1/users/{userId}/settings/delegates/{delegateEmail}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -3548,24 +3445,22 @@ namespace Google.Apis.Gmail.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "userId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "userId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = "me",
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "delegateEmail", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "delegateEmail",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = "me",
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("delegateEmail", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "delegateEmail",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3588,8 +3483,7 @@ namespace Google.Apis.Gmail.v1
                 public class GetRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Delegate>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string userId, string delegateEmail)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string userId, string delegateEmail) : base(service)
                     {
                         UserId = userId;
                         DelegateEmail = delegateEmail;
@@ -3607,13 +3501,13 @@ namespace Google.Apis.Gmail.v1
                     public virtual string DelegateEmail { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "gmail/v1/users/{userId}/settings/delegates/{delegateEmail}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -3621,24 +3515,22 @@ namespace Google.Apis.Gmail.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "userId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "userId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = "me",
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "delegateEmail", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "delegateEmail",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = "me",
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("delegateEmail", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "delegateEmail",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3657,8 +3549,7 @@ namespace Google.Apis.Gmail.v1
                 public class ListRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ListDelegatesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string userId)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string userId) : base(service)
                     {
                         UserId = userId;
                         InitParameters();
@@ -3671,13 +3562,13 @@ namespace Google.Apis.Gmail.v1
                     public virtual string UserId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "gmail/v1/users/{userId}/settings/delegates";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -3685,15 +3576,14 @@ namespace Google.Apis.Gmail.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "userId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "userId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = "me",
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = "me",
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3730,8 +3620,7 @@ namespace Google.Apis.Gmail.v1
                 public class CreateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Filter>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Filter body, string userId)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Filter body, string userId) : base(service)
                     {
                         UserId = userId;
                         Body = body;
@@ -3748,16 +3637,16 @@ namespace Google.Apis.Gmail.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Gmail.v1.Data.Filter Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "gmail/v1/users/{userId}/settings/filters";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -3765,15 +3654,14 @@ namespace Google.Apis.Gmail.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "userId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "userId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = "me",
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = "me",
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3791,8 +3679,7 @@ namespace Google.Apis.Gmail.v1
                 public class DeleteRequest : GmailBaseServiceRequest<string>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string userId, string id)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string userId, string id) : base(service)
                     {
                         UserId = userId;
                         Id = id;
@@ -3810,13 +3697,13 @@ namespace Google.Apis.Gmail.v1
                     public virtual string Id { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "gmail/v1/users/{userId}/settings/filters/{id}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -3824,24 +3711,22 @@ namespace Google.Apis.Gmail.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "userId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "userId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = "me",
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "id", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "id",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = "me",
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "id",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3859,8 +3744,7 @@ namespace Google.Apis.Gmail.v1
                 public class GetRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Filter>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string userId, string id)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string userId, string id) : base(service)
                     {
                         UserId = userId;
                         Id = id;
@@ -3878,13 +3762,13 @@ namespace Google.Apis.Gmail.v1
                     public virtual string Id { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "gmail/v1/users/{userId}/settings/filters/{id}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -3892,24 +3776,22 @@ namespace Google.Apis.Gmail.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "userId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "userId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = "me",
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "id", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "id",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = "me",
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "id",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3926,8 +3808,7 @@ namespace Google.Apis.Gmail.v1
                 public class ListRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ListFiltersResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string userId)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string userId) : base(service)
                     {
                         UserId = userId;
                         InitParameters();
@@ -3940,13 +3821,13 @@ namespace Google.Apis.Gmail.v1
                     public virtual string UserId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "gmail/v1/users/{userId}/settings/filters";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -3954,15 +3835,14 @@ namespace Google.Apis.Gmail.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "userId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "userId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = "me",
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = "me",
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4005,8 +3885,7 @@ namespace Google.Apis.Gmail.v1
                 public class CreateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ForwardingAddress>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.ForwardingAddress body, string userId)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.ForwardingAddress body, string userId) : base(service)
                     {
                         UserId = userId;
                         Body = body;
@@ -4023,16 +3902,16 @@ namespace Google.Apis.Gmail.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Gmail.v1.Data.ForwardingAddress Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "gmail/v1/users/{userId}/settings/forwardingAddresses";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -4040,15 +3919,14 @@ namespace Google.Apis.Gmail.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "userId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "userId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = "me",
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = "me",
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4070,8 +3948,7 @@ namespace Google.Apis.Gmail.v1
                 public class DeleteRequest : GmailBaseServiceRequest<string>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string userId, string forwardingEmail)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string userId, string forwardingEmail) : base(service)
                     {
                         UserId = userId;
                         ForwardingEmail = forwardingEmail;
@@ -4089,13 +3966,13 @@ namespace Google.Apis.Gmail.v1
                     public virtual string ForwardingEmail { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "gmail/v1/users/{userId}/settings/forwardingAddresses/{forwardingEmail}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -4103,24 +3980,22 @@ namespace Google.Apis.Gmail.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "userId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "userId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = "me",
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "forwardingEmail", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "forwardingEmail",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = "me",
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("forwardingEmail", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "forwardingEmail",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4138,8 +4013,7 @@ namespace Google.Apis.Gmail.v1
                 public class GetRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ForwardingAddress>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string userId, string forwardingEmail)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string userId, string forwardingEmail) : base(service)
                     {
                         UserId = userId;
                         ForwardingEmail = forwardingEmail;
@@ -4157,13 +4031,13 @@ namespace Google.Apis.Gmail.v1
                     public virtual string ForwardingEmail { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "gmail/v1/users/{userId}/settings/forwardingAddresses/{forwardingEmail}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -4171,24 +4045,22 @@ namespace Google.Apis.Gmail.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "userId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "userId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = "me",
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "forwardingEmail", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "forwardingEmail",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = "me",
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("forwardingEmail", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "forwardingEmail",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4205,8 +4077,7 @@ namespace Google.Apis.Gmail.v1
                 public class ListRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ListForwardingAddressesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string userId)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string userId) : base(service)
                     {
                         UserId = userId;
                         InitParameters();
@@ -4219,13 +4090,13 @@ namespace Google.Apis.Gmail.v1
                     public virtual string UserId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "gmail/v1/users/{userId}/settings/forwardingAddresses";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -4233,15 +4104,14 @@ namespace Google.Apis.Gmail.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "userId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "userId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = "me",
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = "me",
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4299,8 +4169,7 @@ namespace Google.Apis.Gmail.v1
                     public class DeleteRequest : GmailBaseServiceRequest<string>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
-                        public DeleteRequest(Google.Apis.Services.IClientService service, string userId, string sendAsEmail, string id)
-                            : base(service)
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string userId, string sendAsEmail, string id) : base(service)
                         {
                             UserId = userId;
                             SendAsEmail = sendAsEmail;
@@ -4324,13 +4193,13 @@ namespace Google.Apis.Gmail.v1
                         public virtual string Id { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "delete";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "DELETE";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}";
 
                         /// <summary>Initializes Delete parameter list.</summary>
@@ -4338,33 +4207,30 @@ namespace Google.Apis.Gmail.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "userId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "userId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = "me",
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "sendAsEmail", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "sendAsEmail",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "id", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "id",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "userId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = "me",
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("sendAsEmail", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "sendAsEmail",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "id",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -4384,8 +4250,7 @@ namespace Google.Apis.Gmail.v1
                     public class GetRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.SmimeInfo>
                     {
                         /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string userId, string sendAsEmail, string id)
-                            : base(service)
+                        public GetRequest(Google.Apis.Services.IClientService service, string userId, string sendAsEmail, string id) : base(service)
                         {
                             UserId = userId;
                             SendAsEmail = sendAsEmail;
@@ -4409,13 +4274,13 @@ namespace Google.Apis.Gmail.v1
                         public virtual string Id { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}";
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -4423,33 +4288,30 @@ namespace Google.Apis.Gmail.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "userId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "userId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = "me",
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "sendAsEmail", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "sendAsEmail",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "id", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "id",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "userId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = "me",
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("sendAsEmail", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "sendAsEmail",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "id",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -4471,8 +4333,7 @@ namespace Google.Apis.Gmail.v1
                     public class InsertRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.SmimeInfo>
                     {
                         /// <summary>Constructs a new Insert request.</summary>
-                        public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.SmimeInfo body, string userId, string sendAsEmail)
-                            : base(service)
+                        public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.SmimeInfo body, string userId, string sendAsEmail) : base(service)
                         {
                             UserId = userId;
                             SendAsEmail = sendAsEmail;
@@ -4495,16 +4356,16 @@ namespace Google.Apis.Gmail.v1
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Gmail.v1.Data.SmimeInfo Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "insert";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo";
 
                         /// <summary>Initializes Insert parameter list.</summary>
@@ -4512,24 +4373,22 @@ namespace Google.Apis.Gmail.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "userId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "userId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = "me",
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "sendAsEmail", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "sendAsEmail",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "userId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = "me",
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("sendAsEmail", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "sendAsEmail",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -4548,8 +4407,7 @@ namespace Google.Apis.Gmail.v1
                     public class ListRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ListSmimeInfoResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string userId, string sendAsEmail)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string userId, string sendAsEmail) : base(service)
                         {
                             UserId = userId;
                             SendAsEmail = sendAsEmail;
@@ -4568,13 +4426,13 @@ namespace Google.Apis.Gmail.v1
                         public virtual string SendAsEmail { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -4582,24 +4440,22 @@ namespace Google.Apis.Gmail.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "userId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "userId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = "me",
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "sendAsEmail", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "sendAsEmail",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "userId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = "me",
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("sendAsEmail", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "sendAsEmail",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -4619,8 +4475,7 @@ namespace Google.Apis.Gmail.v1
                     public class SetDefaultRequest : GmailBaseServiceRequest<string>
                     {
                         /// <summary>Constructs a new SetDefault request.</summary>
-                        public SetDefaultRequest(Google.Apis.Services.IClientService service, string userId, string sendAsEmail, string id)
-                            : base(service)
+                        public SetDefaultRequest(Google.Apis.Services.IClientService service, string userId, string sendAsEmail, string id) : base(service)
                         {
                             UserId = userId;
                             SendAsEmail = sendAsEmail;
@@ -4644,13 +4499,13 @@ namespace Google.Apis.Gmail.v1
                         public virtual string Id { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "setDefault";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}/setDefault";
 
                         /// <summary>Initializes SetDefault parameter list.</summary>
@@ -4658,33 +4513,30 @@ namespace Google.Apis.Gmail.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "userId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "userId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = "me",
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "sendAsEmail", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "sendAsEmail",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "id", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "id",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "userId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = "me",
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("sendAsEmail", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "sendAsEmail",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "id",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -4715,8 +4567,7 @@ namespace Google.Apis.Gmail.v1
                 public class CreateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.SendAs>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.SendAs body, string userId)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.SendAs body, string userId) : base(service)
                     {
                         UserId = userId;
                         Body = body;
@@ -4733,16 +4584,16 @@ namespace Google.Apis.Gmail.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Gmail.v1.Data.SendAs Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "gmail/v1/users/{userId}/settings/sendAs";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -4750,15 +4601,14 @@ namespace Google.Apis.Gmail.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "userId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "userId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = "me",
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = "me",
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4780,8 +4630,7 @@ namespace Google.Apis.Gmail.v1
                 public class DeleteRequest : GmailBaseServiceRequest<string>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string userId, string sendAsEmail)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string userId, string sendAsEmail) : base(service)
                     {
                         UserId = userId;
                         SendAsEmail = sendAsEmail;
@@ -4799,13 +4648,13 @@ namespace Google.Apis.Gmail.v1
                     public virtual string SendAsEmail { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -4813,24 +4662,22 @@ namespace Google.Apis.Gmail.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "userId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "userId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = "me",
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "sendAsEmail", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "sendAsEmail",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = "me",
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("sendAsEmail", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "sendAsEmail",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4850,8 +4697,7 @@ namespace Google.Apis.Gmail.v1
                 public class GetRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.SendAs>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string userId, string sendAsEmail)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string userId, string sendAsEmail) : base(service)
                     {
                         UserId = userId;
                         SendAsEmail = sendAsEmail;
@@ -4869,13 +4715,13 @@ namespace Google.Apis.Gmail.v1
                     public virtual string SendAsEmail { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -4883,24 +4729,22 @@ namespace Google.Apis.Gmail.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "userId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "userId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = "me",
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "sendAsEmail", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "sendAsEmail",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = "me",
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("sendAsEmail", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "sendAsEmail",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4919,8 +4763,7 @@ namespace Google.Apis.Gmail.v1
                 public class ListRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ListSendAsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string userId)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string userId) : base(service)
                     {
                         UserId = userId;
                         InitParameters();
@@ -4933,13 +4776,13 @@ namespace Google.Apis.Gmail.v1
                     public virtual string UserId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "gmail/v1/users/{userId}/settings/sendAs";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -4947,15 +4790,14 @@ namespace Google.Apis.Gmail.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "userId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "userId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = "me",
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = "me",
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4974,8 +4816,7 @@ namespace Google.Apis.Gmail.v1
                 public class PatchRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.SendAs>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.SendAs body, string userId, string sendAsEmail)
-                        : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.SendAs body, string userId, string sendAsEmail) : base(service)
                     {
                         UserId = userId;
                         SendAsEmail = sendAsEmail;
@@ -4997,16 +4838,16 @@ namespace Google.Apis.Gmail.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Gmail.v1.Data.SendAs Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "patch";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PATCH";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}";
 
                     /// <summary>Initializes Patch parameter list.</summary>
@@ -5014,24 +4855,22 @@ namespace Google.Apis.Gmail.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "userId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "userId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = "me",
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "sendAsEmail", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "sendAsEmail",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = "me",
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("sendAsEmail", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "sendAsEmail",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -5054,8 +4893,7 @@ namespace Google.Apis.Gmail.v1
                 public class UpdateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.SendAs>
                 {
                     /// <summary>Constructs a new Update request.</summary>
-                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.SendAs body, string userId, string sendAsEmail)
-                        : base(service)
+                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.SendAs body, string userId, string sendAsEmail) : base(service)
                     {
                         UserId = userId;
                         SendAsEmail = sendAsEmail;
@@ -5077,16 +4915,16 @@ namespace Google.Apis.Gmail.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Gmail.v1.Data.SendAs Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "update";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PUT";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}";
 
                     /// <summary>Initializes Update parameter list.</summary>
@@ -5094,24 +4932,22 @@ namespace Google.Apis.Gmail.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "userId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "userId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = "me",
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "sendAsEmail", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "sendAsEmail",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = "me",
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("sendAsEmail", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "sendAsEmail",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -5133,8 +4969,7 @@ namespace Google.Apis.Gmail.v1
                 public class VerifyRequest : GmailBaseServiceRequest<string>
                 {
                     /// <summary>Constructs a new Verify request.</summary>
-                    public VerifyRequest(Google.Apis.Services.IClientService service, string userId, string sendAsEmail)
-                        : base(service)
+                    public VerifyRequest(Google.Apis.Services.IClientService service, string userId, string sendAsEmail) : base(service)
                     {
                         UserId = userId;
                         SendAsEmail = sendAsEmail;
@@ -5152,13 +4987,13 @@ namespace Google.Apis.Gmail.v1
                     public virtual string SendAsEmail { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "verify";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/verify";
 
                     /// <summary>Initializes Verify parameter list.</summary>
@@ -5166,24 +5001,22 @@ namespace Google.Apis.Gmail.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "userId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "userId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = "me",
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "sendAsEmail", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "sendAsEmail",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = "me",
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("sendAsEmail", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "sendAsEmail",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -5201,8 +5034,7 @@ namespace Google.Apis.Gmail.v1
             public class GetAutoForwardingRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.AutoForwarding>
             {
                 /// <summary>Constructs a new GetAutoForwarding request.</summary>
-                public GetAutoForwardingRequest(Google.Apis.Services.IClientService service, string userId)
-                    : base(service)
+                public GetAutoForwardingRequest(Google.Apis.Services.IClientService service, string userId) : base(service)
                 {
                     UserId = userId;
                     InitParameters();
@@ -5215,13 +5047,13 @@ namespace Google.Apis.Gmail.v1
                 public virtual string UserId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getAutoForwarding";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/settings/autoForwarding";
 
                 /// <summary>Initializes GetAutoForwarding parameter list.</summary>
@@ -5229,15 +5061,14 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5254,8 +5085,7 @@ namespace Google.Apis.Gmail.v1
             public class GetImapRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ImapSettings>
             {
                 /// <summary>Constructs a new GetImap request.</summary>
-                public GetImapRequest(Google.Apis.Services.IClientService service, string userId)
-                    : base(service)
+                public GetImapRequest(Google.Apis.Services.IClientService service, string userId) : base(service)
                 {
                     UserId = userId;
                     InitParameters();
@@ -5268,13 +5098,13 @@ namespace Google.Apis.Gmail.v1
                 public virtual string UserId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getImap";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/settings/imap";
 
                 /// <summary>Initializes GetImap parameter list.</summary>
@@ -5282,15 +5112,14 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5307,8 +5136,7 @@ namespace Google.Apis.Gmail.v1
             public class GetLanguageRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.LanguageSettings>
             {
                 /// <summary>Constructs a new GetLanguage request.</summary>
-                public GetLanguageRequest(Google.Apis.Services.IClientService service, string userId)
-                    : base(service)
+                public GetLanguageRequest(Google.Apis.Services.IClientService service, string userId) : base(service)
                 {
                     UserId = userId;
                     InitParameters();
@@ -5321,13 +5149,13 @@ namespace Google.Apis.Gmail.v1
                 public virtual string UserId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getLanguage";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/settings/language";
 
                 /// <summary>Initializes GetLanguage parameter list.</summary>
@@ -5335,15 +5163,14 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5360,8 +5187,7 @@ namespace Google.Apis.Gmail.v1
             public class GetPopRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.PopSettings>
             {
                 /// <summary>Constructs a new GetPop request.</summary>
-                public GetPopRequest(Google.Apis.Services.IClientService service, string userId)
-                    : base(service)
+                public GetPopRequest(Google.Apis.Services.IClientService service, string userId) : base(service)
                 {
                     UserId = userId;
                     InitParameters();
@@ -5374,13 +5200,13 @@ namespace Google.Apis.Gmail.v1
                 public virtual string UserId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getPop";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/settings/pop";
 
                 /// <summary>Initializes GetPop parameter list.</summary>
@@ -5388,15 +5214,14 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5413,8 +5238,7 @@ namespace Google.Apis.Gmail.v1
             public class GetVacationRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.VacationSettings>
             {
                 /// <summary>Constructs a new GetVacation request.</summary>
-                public GetVacationRequest(Google.Apis.Services.IClientService service, string userId)
-                    : base(service)
+                public GetVacationRequest(Google.Apis.Services.IClientService service, string userId) : base(service)
                 {
                     UserId = userId;
                     InitParameters();
@@ -5427,13 +5251,13 @@ namespace Google.Apis.Gmail.v1
                 public virtual string UserId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getVacation";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/settings/vacation";
 
                 /// <summary>Initializes GetVacation parameter list.</summary>
@@ -5441,15 +5265,14 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5471,8 +5294,7 @@ namespace Google.Apis.Gmail.v1
             public class UpdateAutoForwardingRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.AutoForwarding>
             {
                 /// <summary>Constructs a new UpdateAutoForwarding request.</summary>
-                public UpdateAutoForwardingRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.AutoForwarding body, string userId)
-                    : base(service)
+                public UpdateAutoForwardingRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.AutoForwarding body, string userId) : base(service)
                 {
                     UserId = userId;
                     Body = body;
@@ -5489,16 +5311,16 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Gmail.v1.Data.AutoForwarding Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "updateAutoForwarding";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/settings/autoForwarding";
 
                 /// <summary>Initializes UpdateAutoForwarding parameter list.</summary>
@@ -5506,15 +5328,14 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5532,8 +5353,7 @@ namespace Google.Apis.Gmail.v1
             public class UpdateImapRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ImapSettings>
             {
                 /// <summary>Constructs a new UpdateImap request.</summary>
-                public UpdateImapRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.ImapSettings body, string userId)
-                    : base(service)
+                public UpdateImapRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.ImapSettings body, string userId) : base(service)
                 {
                     UserId = userId;
                     Body = body;
@@ -5550,16 +5370,16 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Gmail.v1.Data.ImapSettings Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "updateImap";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/settings/imap";
 
                 /// <summary>Initializes UpdateImap parameter list.</summary>
@@ -5567,15 +5387,14 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5599,8 +5418,7 @@ namespace Google.Apis.Gmail.v1
             public class UpdateLanguageRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.LanguageSettings>
             {
                 /// <summary>Constructs a new UpdateLanguage request.</summary>
-                public UpdateLanguageRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.LanguageSettings body, string userId)
-                    : base(service)
+                public UpdateLanguageRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.LanguageSettings body, string userId) : base(service)
                 {
                     UserId = userId;
                     Body = body;
@@ -5617,16 +5435,16 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Gmail.v1.Data.LanguageSettings Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "updateLanguage";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/settings/language";
 
                 /// <summary>Initializes UpdateLanguage parameter list.</summary>
@@ -5634,15 +5452,14 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5660,8 +5477,7 @@ namespace Google.Apis.Gmail.v1
             public class UpdatePopRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.PopSettings>
             {
                 /// <summary>Constructs a new UpdatePop request.</summary>
-                public UpdatePopRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.PopSettings body, string userId)
-                    : base(service)
+                public UpdatePopRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.PopSettings body, string userId) : base(service)
                 {
                     UserId = userId;
                     Body = body;
@@ -5678,16 +5494,16 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Gmail.v1.Data.PopSettings Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "updatePop";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/settings/pop";
 
                 /// <summary>Initializes UpdatePop parameter list.</summary>
@@ -5695,15 +5511,14 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5721,8 +5536,7 @@ namespace Google.Apis.Gmail.v1
             public class UpdateVacationRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.VacationSettings>
             {
                 /// <summary>Constructs a new UpdateVacation request.</summary>
-                public UpdateVacationRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.VacationSettings body, string userId)
-                    : base(service)
+                public UpdateVacationRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.VacationSettings body, string userId) : base(service)
                 {
                     UserId = userId;
                     Body = body;
@@ -5739,16 +5553,16 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Gmail.v1.Data.VacationSettings Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "updateVacation";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/settings/vacation";
 
                 /// <summary>Initializes UpdateVacation parameter list.</summary>
@@ -5756,15 +5570,14 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5803,8 +5616,7 @@ namespace Google.Apis.Gmail.v1
             public class DeleteRequest : GmailBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string userId, string id)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string userId, string id) : base(service)
                 {
                     UserId = userId;
                     Id = id;
@@ -5822,13 +5634,13 @@ namespace Google.Apis.Gmail.v1
                 public virtual string Id { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/threads/{id}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -5836,24 +5648,22 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "id", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "id",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5871,8 +5681,7 @@ namespace Google.Apis.Gmail.v1
             public class GetRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Thread>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string userId, string id)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string userId, string id) : base(service)
                 {
                     UserId = userId;
                     Id = id;
@@ -5915,13 +5724,13 @@ namespace Google.Apis.Gmail.v1
                 public virtual Google.Apis.Util.Repeatable<string> MetadataHeaders { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/threads/{id}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -5929,42 +5738,38 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "id", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "id",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "format", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "format",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = "full",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "metadataHeaders", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "metadataHeaders",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("format", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "format",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "full",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("metadataHeaders", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "metadataHeaders",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5981,8 +5786,7 @@ namespace Google.Apis.Gmail.v1
             public class ListRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ListThreadsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string userId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string userId) : base(service)
                 {
                     UserId = userId;
                     InitParameters();
@@ -6017,13 +5821,13 @@ namespace Google.Apis.Gmail.v1
                 public virtual string Q { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/threads";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -6031,60 +5835,54 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "includeSpamTrash", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeSpamTrash",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = "false",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "labelIds", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "labelIds",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "maxResults", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "maxResults",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = "100",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "q", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "q",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("includeSpamTrash", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeSpamTrash",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("labelIds", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "labelIds",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "100",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("q", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "q",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -6105,8 +5903,7 @@ namespace Google.Apis.Gmail.v1
             public class ModifyRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Thread>
             {
                 /// <summary>Constructs a new Modify request.</summary>
-                public ModifyRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.ModifyThreadRequest body, string userId, string id)
-                    : base(service)
+                public ModifyRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.ModifyThreadRequest body, string userId, string id) : base(service)
                 {
                     UserId = userId;
                     Id = id;
@@ -6128,16 +5925,16 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Gmail.v1.Data.ModifyThreadRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "modify";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/threads/{id}/modify";
 
                 /// <summary>Initializes Modify parameter list.</summary>
@@ -6145,24 +5942,22 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "id", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "id",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -6180,8 +5975,7 @@ namespace Google.Apis.Gmail.v1
             public class TrashRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Thread>
             {
                 /// <summary>Constructs a new Trash request.</summary>
-                public TrashRequest(Google.Apis.Services.IClientService service, string userId, string id)
-                    : base(service)
+                public TrashRequest(Google.Apis.Services.IClientService service, string userId, string id) : base(service)
                 {
                     UserId = userId;
                     Id = id;
@@ -6199,13 +5993,13 @@ namespace Google.Apis.Gmail.v1
                 public virtual string Id { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "trash";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/threads/{id}/trash";
 
                 /// <summary>Initializes Trash parameter list.</summary>
@@ -6213,24 +6007,22 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "id", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "id",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -6248,8 +6040,7 @@ namespace Google.Apis.Gmail.v1
             public class UntrashRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Thread>
             {
                 /// <summary>Constructs a new Untrash request.</summary>
-                public UntrashRequest(Google.Apis.Services.IClientService service, string userId, string id)
-                    : base(service)
+                public UntrashRequest(Google.Apis.Services.IClientService service, string userId, string id) : base(service)
                 {
                     UserId = userId;
                     Id = id;
@@ -6267,13 +6058,13 @@ namespace Google.Apis.Gmail.v1
                 public virtual string Id { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "untrash";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "gmail/v1/users/{userId}/threads/{id}/untrash";
 
                 /// <summary>Initializes Untrash parameter list.</summary>
@@ -6281,24 +6072,22 @@ namespace Google.Apis.Gmail.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = "me",
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "id", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "id",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = "me",
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -6316,8 +6105,7 @@ namespace Google.Apis.Gmail.v1
         public class GetProfileRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Profile>
         {
             /// <summary>Constructs a new GetProfile request.</summary>
-            public GetProfileRequest(Google.Apis.Services.IClientService service, string userId)
-                : base(service)
+            public GetProfileRequest(Google.Apis.Services.IClientService service, string userId) : base(service)
             {
                 UserId = userId;
                 InitParameters();
@@ -6330,13 +6118,13 @@ namespace Google.Apis.Gmail.v1
             public virtual string UserId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getProfile";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "gmail/v1/users/{userId}/profile";
 
             /// <summary>Initializes GetProfile parameter list.</summary>
@@ -6344,15 +6132,14 @@ namespace Google.Apis.Gmail.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = "me",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = "me",
+                    Pattern = null,
+                });
             }
 
         }
@@ -6369,8 +6156,7 @@ namespace Google.Apis.Gmail.v1
         public class StopRequest : GmailBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Stop request.</summary>
-            public StopRequest(Google.Apis.Services.IClientService service, string userId)
-                : base(service)
+            public StopRequest(Google.Apis.Services.IClientService service, string userId) : base(service)
             {
                 UserId = userId;
                 InitParameters();
@@ -6383,13 +6169,13 @@ namespace Google.Apis.Gmail.v1
             public virtual string UserId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "stop";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "gmail/v1/users/{userId}/stop";
 
             /// <summary>Initializes Stop parameter list.</summary>
@@ -6397,15 +6183,14 @@ namespace Google.Apis.Gmail.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = "me",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = "me",
+                    Pattern = null,
+                });
             }
 
         }
@@ -6423,8 +6208,7 @@ namespace Google.Apis.Gmail.v1
         public class WatchRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.WatchResponse>
         {
             /// <summary>Constructs a new Watch request.</summary>
-            public WatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.WatchRequest body, string userId)
-                : base(service)
+            public WatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.WatchRequest body, string userId) : base(service)
             {
                 UserId = userId;
                 Body = body;
@@ -6441,16 +6225,16 @@ namespace Google.Apis.Gmail.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Gmail.v1.Data.WatchRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "watch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "gmail/v1/users/{userId}/watch";
 
             /// <summary>Initializes Watch parameter list.</summary>
@@ -6458,15 +6242,14 @@ namespace Google.Apis.Gmail.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = "me",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = "me",
+                    Pattern = null,
+                });
             }
 
         }

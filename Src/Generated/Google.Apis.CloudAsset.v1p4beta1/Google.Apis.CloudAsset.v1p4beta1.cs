@@ -18,17 +18,16 @@ namespace Google.Apis.CloudAsset.v1p4beta1
         public const string Version = "v1p4beta1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public CloudAssetService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public CloudAssetService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public CloudAssetService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public CloudAssetService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             V1p4beta1 = new V1p4beta1Resource(this);
         }
@@ -80,12 +79,11 @@ namespace Google.Apis.CloudAsset.v1p4beta1
         public virtual V1p4beta1Resource V1p4beta1 { get; }
     }
 
-    ///<summary>A base abstract class for CloudAsset requests.</summary>
+    /// <summary>A base abstract class for CloudAsset requests.</summary>
     public abstract class CloudAssetBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new CloudAssetBaseServiceRequest instance.</summary>
-        protected CloudAssetBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new CloudAssetBaseServiceRequest instance.</summary>
+        protected CloudAssetBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -165,105 +163,94 @@ namespace Google.Apis.CloudAsset.v1p4beta1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -300,8 +287,7 @@ namespace Google.Apis.CloudAsset.v1p4beta1
         public class AnalyzeIamPolicyRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1p4beta1.Data.AnalyzeIamPolicyResponse>
         {
             /// <summary>Constructs a new AnalyzeIamPolicy request.</summary>
-            public AnalyzeIamPolicyRequest(Google.Apis.Services.IClientService service, string parent)
-                : base(service)
+            public AnalyzeIamPolicyRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
             {
                 Parent = parent;
                 InitParameters();
@@ -397,13 +383,13 @@ namespace Google.Apis.CloudAsset.v1p4beta1
             public virtual System.Nullable<bool> OptionsOutputResourceEdges { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "analyzeIamPolicy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1p4beta1/{+parent}:analyzeIamPolicy";
 
             /// <summary>Initializes AnalyzeIamPolicy parameter list.</summary>
@@ -411,114 +397,102 @@ namespace Google.Apis.CloudAsset.v1p4beta1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "analysisQuery.accessSelector.permissions", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "analysisQuery.accessSelector.permissions",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "analysisQuery.accessSelector.roles", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "analysisQuery.accessSelector.roles",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "analysisQuery.identitySelector.identity", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "analysisQuery.identitySelector.identity",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "analysisQuery.resourceSelector.fullResourceName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "analysisQuery.resourceSelector.fullResourceName",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "options.analyzeServiceAccountImpersonation", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "options.analyzeServiceAccountImpersonation",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "options.executionTimeout", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "options.executionTimeout",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "options.expandGroups", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "options.expandGroups",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "options.expandResources", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "options.expandResources",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "options.expandRoles", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "options.expandRoles",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "options.outputGroupEdges", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "options.outputGroupEdges",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "options.outputResourceEdges", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "options.outputResourceEdges",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+$",
+                });
+                RequestParameters.Add("analysisQuery.accessSelector.permissions", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "analysisQuery.accessSelector.permissions",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("analysisQuery.accessSelector.roles", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "analysisQuery.accessSelector.roles",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("analysisQuery.identitySelector.identity", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "analysisQuery.identitySelector.identity",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("analysisQuery.resourceSelector.fullResourceName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "analysisQuery.resourceSelector.fullResourceName",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("options.analyzeServiceAccountImpersonation", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "options.analyzeServiceAccountImpersonation",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("options.executionTimeout", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "options.executionTimeout",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("options.expandGroups", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "options.expandGroups",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("options.expandResources", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "options.expandResources",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("options.expandRoles", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "options.expandRoles",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("options.outputGroupEdges", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "options.outputGroupEdges",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("options.outputResourceEdges", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "options.outputResourceEdges",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -549,8 +523,7 @@ namespace Google.Apis.CloudAsset.v1p4beta1
         public class ExportIamPolicyAnalysisRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1p4beta1.Data.Operation>
         {
             /// <summary>Constructs a new ExportIamPolicyAnalysis request.</summary>
-            public ExportIamPolicyAnalysisRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAsset.v1p4beta1.Data.ExportIamPolicyAnalysisRequest body, string parent)
-                : base(service)
+            public ExportIamPolicyAnalysisRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAsset.v1p4beta1.Data.ExportIamPolicyAnalysisRequest body, string parent) : base(service)
             {
                 Parent = parent;
                 Body = body;
@@ -572,16 +545,16 @@ namespace Google.Apis.CloudAsset.v1p4beta1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudAsset.v1p4beta1.Data.ExportIamPolicyAnalysisRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "exportIamPolicyAnalysis";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1p4beta1/{+parent}:exportIamPolicyAnalysis";
 
             /// <summary>Initializes ExportIamPolicyAnalysis parameter list.</summary>
@@ -589,15 +562,14 @@ namespace Google.Apis.CloudAsset.v1p4beta1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+/[^/]+$",
-                    });
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+$",
+                });
             }
 
         }

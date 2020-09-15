@@ -18,17 +18,16 @@ namespace Google.Apis.Classroom.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public ClassroomService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public ClassroomService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public ClassroomService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public ClassroomService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Courses = new CoursesResource(this);
             Invitations = new InvitationsResource(this);
@@ -212,12 +211,11 @@ namespace Google.Apis.Classroom.v1
         public virtual UserProfilesResource UserProfiles { get; }
     }
 
-    ///<summary>A base abstract class for Classroom requests.</summary>
+    /// <summary>A base abstract class for Classroom requests.</summary>
     public abstract class ClassroomBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new ClassroomBaseServiceRequest instance.</summary>
-        protected ClassroomBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new ClassroomBaseServiceRequest instance.</summary>
+        protected ClassroomBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -297,105 +295,94 @@ namespace Google.Apis.Classroom.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -460,8 +447,7 @@ namespace Google.Apis.Classroom.v1
             public class CreateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.CourseAlias>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.CourseAlias body, string courseId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.CourseAlias body, string courseId) : base(service)
                 {
                     CourseId = courseId;
                     Body = body;
@@ -478,16 +464,16 @@ namespace Google.Apis.Classroom.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Classroom.v1.Data.CourseAlias Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/courses/{courseId}/aliases";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -495,15 +481,14 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "courseId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -530,8 +515,7 @@ namespace Google.Apis.Classroom.v1
             public class DeleteRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string courseId, string alias)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string courseId, string alias) : base(service)
                 {
                     CourseId = courseId;
                     Alias = alias;
@@ -549,13 +533,13 @@ namespace Google.Apis.Classroom.v1
                 public virtual string Alias { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/courses/{courseId}/aliases/{alias}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -563,24 +547,22 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "courseId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "alias", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "alias",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("alias", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "alias",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -601,8 +583,7 @@ namespace Google.Apis.Classroom.v1
             public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListCourseAliasesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string courseId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string courseId) : base(service)
                 {
                     CourseId = courseId;
                     InitParameters();
@@ -626,13 +607,13 @@ namespace Google.Apis.Classroom.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/courses/{courseId}/aliases";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -640,33 +621,30 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "courseId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -711,8 +689,7 @@ namespace Google.Apis.Classroom.v1
             public class CreateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Announcement>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.Announcement body, string courseId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.Announcement body, string courseId) : base(service)
                 {
                     CourseId = courseId;
                     Body = body;
@@ -729,16 +706,16 @@ namespace Google.Apis.Classroom.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Classroom.v1.Data.Announcement Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/courses/{courseId}/announcements";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -746,15 +723,14 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "courseId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -785,8 +761,7 @@ namespace Google.Apis.Classroom.v1
             public class DeleteRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string courseId, string id)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string courseId, string id) : base(service)
                 {
                     CourseId = courseId;
                     Id = id;
@@ -805,13 +780,13 @@ namespace Google.Apis.Classroom.v1
                 public virtual string Id { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/courses/{courseId}/announcements/{id}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -819,24 +794,22 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "courseId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "id", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "id",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -860,8 +833,7 @@ namespace Google.Apis.Classroom.v1
             public class GetRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Announcement>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string courseId, string id)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string courseId, string id) : base(service)
                 {
                     CourseId = courseId;
                     Id = id;
@@ -879,13 +851,13 @@ namespace Google.Apis.Classroom.v1
                 public virtual string Id { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/courses/{courseId}/announcements/{id}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -893,24 +865,22 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "courseId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "id", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "id",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -935,8 +905,7 @@ namespace Google.Apis.Classroom.v1
             public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListAnnouncementsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string courseId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string courseId) : base(service)
                 {
                     CourseId = courseId;
                     InitParameters();
@@ -993,13 +962,13 @@ namespace Google.Apis.Classroom.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/courses/{courseId}/announcements";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1007,51 +976,46 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "courseId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "announcementStates", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "announcementStates",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("announcementStates", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "announcementStates",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1078,8 +1042,7 @@ namespace Google.Apis.Classroom.v1
             public class ModifyAssigneesRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Announcement>
             {
                 /// <summary>Constructs a new ModifyAssignees request.</summary>
-                public ModifyAssigneesRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.ModifyAnnouncementAssigneesRequest body, string courseId, string id)
-                    : base(service)
+                public ModifyAssigneesRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.ModifyAnnouncementAssigneesRequest body, string courseId, string id) : base(service)
                 {
                     CourseId = courseId;
                     Id = id;
@@ -1101,16 +1064,16 @@ namespace Google.Apis.Classroom.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Classroom.v1.Data.ModifyAnnouncementAssigneesRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "modifyAssignees";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/courses/{courseId}/announcements/{id}:modifyAssignees";
 
                 /// <summary>Initializes ModifyAssignees parameter list.</summary>
@@ -1118,24 +1081,22 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "courseId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "id", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "id",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1162,8 +1123,7 @@ namespace Google.Apis.Classroom.v1
             public class PatchRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Announcement>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.Announcement body, string courseId, string id)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.Announcement body, string courseId, string id) : base(service)
                 {
                     CourseId = courseId;
                     Id = id;
@@ -1194,16 +1154,16 @@ namespace Google.Apis.Classroom.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Classroom.v1.Data.Announcement Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/courses/{courseId}/announcements/{id}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -1211,33 +1171,30 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "courseId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "id", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "id",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1301,8 +1258,7 @@ namespace Google.Apis.Classroom.v1
                 public class GetRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.StudentSubmission>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string courseId, string courseWorkId, string id)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string courseId, string courseWorkId, string id) : base(service)
                     {
                         CourseId = courseId;
                         CourseWorkId = courseWorkId;
@@ -1325,13 +1281,13 @@ namespace Google.Apis.Classroom.v1
                     public virtual string Id { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -1339,33 +1295,30 @@ namespace Google.Apis.Classroom.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "courseId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "courseId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "courseWorkId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "courseWorkId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "id", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "id",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("courseWorkId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseWorkId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "id",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1396,8 +1349,7 @@ namespace Google.Apis.Classroom.v1
                 public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListStudentSubmissionsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string courseId, string courseWorkId)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string courseId, string courseWorkId) : base(service)
                     {
                         CourseId = courseId;
                         CourseWorkId = courseWorkId;
@@ -1486,13 +1438,13 @@ namespace Google.Apis.Classroom.v1
                     public virtual string UserId { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -1500,69 +1452,62 @@ namespace Google.Apis.Classroom.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "courseId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "courseId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "courseWorkId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "courseWorkId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "late", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "late",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "states", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "states",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "userId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "userId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("courseWorkId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseWorkId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("late", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "late",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("states", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "states",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1599,8 +1544,7 @@ namespace Google.Apis.Classroom.v1
                 public class ModifyAttachmentsRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.StudentSubmission>
                 {
                     /// <summary>Constructs a new ModifyAttachments request.</summary>
-                    public ModifyAttachmentsRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.ModifyAttachmentsRequest body, string courseId, string courseWorkId, string id)
-                        : base(service)
+                    public ModifyAttachmentsRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.ModifyAttachmentsRequest body, string courseId, string courseWorkId, string id) : base(service)
                     {
                         CourseId = courseId;
                         CourseWorkId = courseWorkId;
@@ -1627,16 +1571,16 @@ namespace Google.Apis.Classroom.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Classroom.v1.Data.ModifyAttachmentsRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "modifyAttachments";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:modifyAttachments";
 
                     /// <summary>Initializes ModifyAttachments parameter list.</summary>
@@ -1644,33 +1588,30 @@ namespace Google.Apis.Classroom.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "courseId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "courseId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "courseWorkId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "courseWorkId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "id", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "id",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("courseWorkId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseWorkId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "id",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1707,8 +1648,7 @@ namespace Google.Apis.Classroom.v1
                 public class PatchRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.StudentSubmission>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.StudentSubmission body, string courseId, string courseWorkId, string id)
-                        : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.StudentSubmission body, string courseId, string courseWorkId, string id) : base(service)
                     {
                         CourseId = courseId;
                         CourseWorkId = courseWorkId;
@@ -1741,16 +1681,16 @@ namespace Google.Apis.Classroom.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Classroom.v1.Data.StudentSubmission Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "patch";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PATCH";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}";
 
                     /// <summary>Initializes Patch parameter list.</summary>
@@ -1758,42 +1698,38 @@ namespace Google.Apis.Classroom.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "courseId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "courseId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "courseWorkId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "courseWorkId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "id", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "id",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "updateMask",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("courseWorkId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseWorkId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "id",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1832,8 +1768,7 @@ namespace Google.Apis.Classroom.v1
                 public class ReclaimRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Reclaim request.</summary>
-                    public ReclaimRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.ReclaimStudentSubmissionRequest body, string courseId, string courseWorkId, string id)
-                        : base(service)
+                    public ReclaimRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.ReclaimStudentSubmissionRequest body, string courseId, string courseWorkId, string id) : base(service)
                     {
                         CourseId = courseId;
                         CourseWorkId = courseWorkId;
@@ -1860,16 +1795,16 @@ namespace Google.Apis.Classroom.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Classroom.v1.Data.ReclaimStudentSubmissionRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "reclaim";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:reclaim";
 
                     /// <summary>Initializes Reclaim parameter list.</summary>
@@ -1877,33 +1812,30 @@ namespace Google.Apis.Classroom.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "courseId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "courseId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "courseWorkId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "courseWorkId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "id", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "id",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("courseWorkId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseWorkId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "id",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1942,8 +1874,7 @@ namespace Google.Apis.Classroom.v1
                 public class ClassroomReturnRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new ClassroomReturn request.</summary>
-                    public ClassroomReturnRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.ReturnStudentSubmissionRequest body, string courseId, string courseWorkId, string id)
-                        : base(service)
+                    public ClassroomReturnRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.ReturnStudentSubmissionRequest body, string courseId, string courseWorkId, string id) : base(service)
                     {
                         CourseId = courseId;
                         CourseWorkId = courseWorkId;
@@ -1970,16 +1901,16 @@ namespace Google.Apis.Classroom.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Classroom.v1.Data.ReturnStudentSubmissionRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "return";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:return";
 
                     /// <summary>Initializes ClassroomReturn parameter list.</summary>
@@ -1987,33 +1918,30 @@ namespace Google.Apis.Classroom.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "courseId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "courseId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "courseWorkId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "courseWorkId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "id", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "id",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("courseWorkId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseWorkId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "id",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2050,8 +1978,7 @@ namespace Google.Apis.Classroom.v1
                 public class TurnInRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new TurnIn request.</summary>
-                    public TurnInRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.TurnInStudentSubmissionRequest body, string courseId, string courseWorkId, string id)
-                        : base(service)
+                    public TurnInRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.TurnInStudentSubmissionRequest body, string courseId, string courseWorkId, string id) : base(service)
                     {
                         CourseId = courseId;
                         CourseWorkId = courseWorkId;
@@ -2078,16 +2005,16 @@ namespace Google.Apis.Classroom.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Classroom.v1.Data.TurnInStudentSubmissionRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "turnIn";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:turnIn";
 
                     /// <summary>Initializes TurnIn parameter list.</summary>
@@ -2095,33 +2022,30 @@ namespace Google.Apis.Classroom.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "courseId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "courseId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "courseWorkId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "courseWorkId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "id", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "id",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("courseWorkId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseWorkId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "id",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2156,8 +2080,7 @@ namespace Google.Apis.Classroom.v1
             public class CreateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.CourseWork>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.CourseWork body, string courseId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.CourseWork body, string courseId) : base(service)
                 {
                     CourseId = courseId;
                     Body = body;
@@ -2174,16 +2097,16 @@ namespace Google.Apis.Classroom.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Classroom.v1.Data.CourseWork Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/courses/{courseId}/courseWork";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -2191,15 +2114,14 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "courseId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2228,8 +2150,7 @@ namespace Google.Apis.Classroom.v1
             public class DeleteRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string courseId, string id)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string courseId, string id) : base(service)
                 {
                     CourseId = courseId;
                     Id = id;
@@ -2248,13 +2169,13 @@ namespace Google.Apis.Classroom.v1
                 public virtual string Id { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/courses/{courseId}/courseWork/{id}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -2262,24 +2183,22 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "courseId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "id", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "id",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2303,8 +2222,7 @@ namespace Google.Apis.Classroom.v1
             public class GetRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.CourseWork>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string courseId, string id)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string courseId, string id) : base(service)
                 {
                     CourseId = courseId;
                     Id = id;
@@ -2322,13 +2240,13 @@ namespace Google.Apis.Classroom.v1
                 public virtual string Id { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/courses/{courseId}/courseWork/{id}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -2336,24 +2254,22 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "courseId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "id", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "id",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2378,8 +2294,7 @@ namespace Google.Apis.Classroom.v1
             public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListCourseWorkResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string courseId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string courseId) : base(service)
                 {
                     CourseId = courseId;
                     InitParameters();
@@ -2436,13 +2351,13 @@ namespace Google.Apis.Classroom.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/courses/{courseId}/courseWork";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -2450,51 +2365,46 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "courseId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "courseWorkStates", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseWorkStates",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("courseWorkStates", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseWorkStates",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2521,8 +2431,7 @@ namespace Google.Apis.Classroom.v1
             public class ModifyAssigneesRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.CourseWork>
             {
                 /// <summary>Constructs a new ModifyAssignees request.</summary>
-                public ModifyAssigneesRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.ModifyCourseWorkAssigneesRequest body, string courseId, string id)
-                    : base(service)
+                public ModifyAssigneesRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.ModifyCourseWorkAssigneesRequest body, string courseId, string id) : base(service)
                 {
                     CourseId = courseId;
                     Id = id;
@@ -2544,16 +2453,16 @@ namespace Google.Apis.Classroom.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Classroom.v1.Data.ModifyCourseWorkAssigneesRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "modifyAssignees";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/courses/{courseId}/courseWork/{id}:modifyAssignees";
 
                 /// <summary>Initializes ModifyAssignees parameter list.</summary>
@@ -2561,24 +2470,22 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "courseId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "id", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "id",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2613,8 +2520,7 @@ namespace Google.Apis.Classroom.v1
             public class PatchRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.CourseWork>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.CourseWork body, string courseId, string id)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.CourseWork body, string courseId, string id) : base(service)
                 {
                     CourseId = courseId;
                     Id = id;
@@ -2646,16 +2552,16 @@ namespace Google.Apis.Classroom.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Classroom.v1.Data.CourseWork Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/courses/{courseId}/courseWork/{id}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -2663,33 +2569,30 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "courseId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "id", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "id",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2736,8 +2639,7 @@ namespace Google.Apis.Classroom.v1
             public class CreateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Student>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.Student body, string courseId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.Student body, string courseId) : base(service)
                 {
                     CourseId = courseId;
                     Body = body;
@@ -2760,16 +2662,16 @@ namespace Google.Apis.Classroom.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Classroom.v1.Data.Student Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/courses/{courseId}/students";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -2777,24 +2679,22 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "courseId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "enrollmentCode", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "enrollmentCode",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("enrollmentCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enrollmentCode",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2820,8 +2720,7 @@ namespace Google.Apis.Classroom.v1
             public class DeleteRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string courseId, string userId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string courseId, string userId) : base(service)
                 {
                     CourseId = courseId;
                     UserId = userId;
@@ -2841,13 +2740,13 @@ namespace Google.Apis.Classroom.v1
                 public virtual string UserId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/courses/{courseId}/students/{userId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -2855,24 +2754,22 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "courseId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2898,8 +2795,7 @@ namespace Google.Apis.Classroom.v1
             public class GetRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Student>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string courseId, string userId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string courseId, string userId) : base(service)
                 {
                     CourseId = courseId;
                     UserId = userId;
@@ -2919,13 +2815,13 @@ namespace Google.Apis.Classroom.v1
                 public virtual string UserId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/courses/{courseId}/students/{userId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -2933,24 +2829,22 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "courseId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2971,8 +2865,7 @@ namespace Google.Apis.Classroom.v1
             public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListStudentsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string courseId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string courseId) : base(service)
                 {
                     CourseId = courseId;
                     InitParameters();
@@ -2996,13 +2889,13 @@ namespace Google.Apis.Classroom.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/courses/{courseId}/students";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -3010,33 +2903,30 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "courseId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3083,8 +2973,7 @@ namespace Google.Apis.Classroom.v1
             public class CreateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Teacher>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.Teacher body, string courseId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.Teacher body, string courseId) : base(service)
                 {
                     CourseId = courseId;
                     Body = body;
@@ -3101,16 +2990,16 @@ namespace Google.Apis.Classroom.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Classroom.v1.Data.Teacher Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/courses/{courseId}/teachers";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -3118,15 +3007,14 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "courseId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3154,8 +3042,7 @@ namespace Google.Apis.Classroom.v1
             public class DeleteRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string courseId, string userId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string courseId, string userId) : base(service)
                 {
                     CourseId = courseId;
                     UserId = userId;
@@ -3175,13 +3062,13 @@ namespace Google.Apis.Classroom.v1
                 public virtual string UserId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/courses/{courseId}/teachers/{userId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -3189,24 +3076,22 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "courseId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3232,8 +3117,7 @@ namespace Google.Apis.Classroom.v1
             public class GetRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Teacher>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string courseId, string userId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string courseId, string userId) : base(service)
                 {
                     CourseId = courseId;
                     UserId = userId;
@@ -3253,13 +3137,13 @@ namespace Google.Apis.Classroom.v1
                 public virtual string UserId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/courses/{courseId}/teachers/{userId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -3267,24 +3151,22 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "courseId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3305,8 +3187,7 @@ namespace Google.Apis.Classroom.v1
             public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListTeachersResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string courseId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string courseId) : base(service)
                 {
                     CourseId = courseId;
                     InitParameters();
@@ -3330,13 +3211,13 @@ namespace Google.Apis.Classroom.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/courses/{courseId}/teachers";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -3344,33 +3225,30 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "courseId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3413,8 +3291,7 @@ namespace Google.Apis.Classroom.v1
             public class CreateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Topic>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.Topic body, string courseId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.Topic body, string courseId) : base(service)
                 {
                     CourseId = courseId;
                     Body = body;
@@ -3431,16 +3308,16 @@ namespace Google.Apis.Classroom.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Classroom.v1.Data.Topic Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/courses/{courseId}/topics";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -3448,15 +3325,14 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "courseId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3480,8 +3356,7 @@ namespace Google.Apis.Classroom.v1
             public class DeleteRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string courseId, string id)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string courseId, string id) : base(service)
                 {
                     CourseId = courseId;
                     Id = id;
@@ -3499,13 +3374,13 @@ namespace Google.Apis.Classroom.v1
                 public virtual string Id { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/courses/{courseId}/topics/{id}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -3513,24 +3388,22 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "courseId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "id", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "id",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3554,8 +3427,7 @@ namespace Google.Apis.Classroom.v1
             public class GetRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Topic>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string courseId, string id)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string courseId, string id) : base(service)
                 {
                     CourseId = courseId;
                     Id = id;
@@ -3572,13 +3444,13 @@ namespace Google.Apis.Classroom.v1
                 public virtual string Id { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/courses/{courseId}/topics/{id}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -3586,24 +3458,22 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "courseId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "id", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "id",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3626,8 +3496,7 @@ namespace Google.Apis.Classroom.v1
             public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListTopicResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string courseId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string courseId) : base(service)
                 {
                     CourseId = courseId;
                     InitParameters();
@@ -3651,13 +3520,13 @@ namespace Google.Apis.Classroom.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/courses/{courseId}/topics";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -3665,33 +3534,30 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "courseId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3716,8 +3582,7 @@ namespace Google.Apis.Classroom.v1
             public class PatchRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Topic>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.Topic body, string courseId, string id)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.Topic body, string courseId, string id) : base(service)
                 {
                     CourseId = courseId;
                     Id = id;
@@ -3747,16 +3612,16 @@ namespace Google.Apis.Classroom.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Classroom.v1.Data.Topic Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/courses/{courseId}/topics/{id}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -3764,33 +3629,30 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "courseId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "id", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "id",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3817,8 +3679,7 @@ namespace Google.Apis.Classroom.v1
         public class CreateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Course>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.Course body)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.Course body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -3829,16 +3690,16 @@ namespace Google.Apis.Classroom.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Classroom.v1.Data.Course Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/courses";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -3866,8 +3727,7 @@ namespace Google.Apis.Classroom.v1
         public class DeleteRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string id)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string id) : base(service)
             {
                 Id = id;
                 InitParameters();
@@ -3880,13 +3740,13 @@ namespace Google.Apis.Classroom.v1
             public virtual string Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/courses/{id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -3894,15 +3754,14 @@ namespace Google.Apis.Classroom.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3923,8 +3782,7 @@ namespace Google.Apis.Classroom.v1
         public class GetRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Course>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string id) : base(service)
             {
                 Id = id;
                 InitParameters();
@@ -3937,13 +3795,13 @@ namespace Google.Apis.Classroom.v1
             public virtual string Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/courses/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -3951,15 +3809,14 @@ namespace Google.Apis.Classroom.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3982,8 +3839,7 @@ namespace Google.Apis.Classroom.v1
         public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListCoursesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -4050,13 +3906,13 @@ namespace Google.Apis.Classroom.v1
             public virtual string TeacherId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/courses";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -4064,51 +3920,46 @@ namespace Google.Apis.Classroom.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "courseStates", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "courseStates",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "studentId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "studentId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "teacherId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "teacherId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("courseStates", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "courseStates",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("studentId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "studentId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("teacherId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "teacherId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4134,8 +3985,7 @@ namespace Google.Apis.Classroom.v1
         public class PatchRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Course>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.Course body, string id)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.Course body, string id) : base(service)
             {
                 Id = id;
                 Body = body;
@@ -4161,16 +4011,16 @@ namespace Google.Apis.Classroom.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Classroom.v1.Data.Course Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/courses/{id}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -4178,24 +4028,22 @@ namespace Google.Apis.Classroom.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "updateMask", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "updateMask",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4219,8 +4067,7 @@ namespace Google.Apis.Classroom.v1
         public class UpdateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Course>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.Course body, string id)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.Course body, string id) : base(service)
             {
                 Id = id;
                 Body = body;
@@ -4237,16 +4084,16 @@ namespace Google.Apis.Classroom.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Classroom.v1.Data.Course Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/courses/{id}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -4254,15 +4101,14 @@ namespace Google.Apis.Classroom.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4305,8 +4151,7 @@ namespace Google.Apis.Classroom.v1
         public class AcceptRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
         {
             /// <summary>Constructs a new Accept request.</summary>
-            public AcceptRequest(Google.Apis.Services.IClientService service, string id)
-                : base(service)
+            public AcceptRequest(Google.Apis.Services.IClientService service, string id) : base(service)
             {
                 Id = id;
                 InitParameters();
@@ -4318,13 +4163,13 @@ namespace Google.Apis.Classroom.v1
             public virtual string Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "accept";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/invitations/{id}:accept";
 
             /// <summary>Initializes Accept parameter list.</summary>
@@ -4332,15 +4177,14 @@ namespace Google.Apis.Classroom.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4366,8 +4210,7 @@ namespace Google.Apis.Classroom.v1
         public class CreateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Invitation>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.Invitation body)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.Invitation body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -4378,16 +4221,16 @@ namespace Google.Apis.Classroom.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Classroom.v1.Data.Invitation Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/invitations";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -4414,8 +4257,7 @@ namespace Google.Apis.Classroom.v1
         public class DeleteRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string id)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string id) : base(service)
             {
                 Id = id;
                 InitParameters();
@@ -4427,13 +4269,13 @@ namespace Google.Apis.Classroom.v1
             public virtual string Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/invitations/{id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -4441,15 +4283,14 @@ namespace Google.Apis.Classroom.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4469,8 +4310,7 @@ namespace Google.Apis.Classroom.v1
         public class GetRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Invitation>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string id)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string id) : base(service)
             {
                 Id = id;
                 InitParameters();
@@ -4482,13 +4322,13 @@ namespace Google.Apis.Classroom.v1
             public virtual string Id { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/invitations/{id}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -4496,15 +4336,14 @@ namespace Google.Apis.Classroom.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4525,8 +4364,7 @@ namespace Google.Apis.Classroom.v1
         public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListInvitationsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -4554,13 +4392,13 @@ namespace Google.Apis.Classroom.v1
             public virtual string UserId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/invitations";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -4568,42 +4406,38 @@ namespace Google.Apis.Classroom.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "courseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "courseId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "courseId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4666,8 +4500,7 @@ namespace Google.Apis.Classroom.v1
         public class CreateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Registration>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.Registration body)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.Registration body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -4678,16 +4511,16 @@ namespace Google.Apis.Classroom.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Classroom.v1.Data.Registration Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/registrations";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -4712,8 +4545,7 @@ namespace Google.Apis.Classroom.v1
         public class DeleteRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string registrationId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string registrationId) : base(service)
             {
                 RegistrationId = registrationId;
                 InitParameters();
@@ -4725,13 +4557,13 @@ namespace Google.Apis.Classroom.v1
             public virtual string RegistrationId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/registrations/{registrationId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -4739,15 +4571,14 @@ namespace Google.Apis.Classroom.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "registrationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "registrationId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("registrationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "registrationId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4833,8 +4664,7 @@ namespace Google.Apis.Classroom.v1
             public class CreateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.GuardianInvitation>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.GuardianInvitation body, string studentId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.GuardianInvitation body, string studentId) : base(service)
                 {
                     StudentId = studentId;
                     Body = body;
@@ -4850,16 +4680,16 @@ namespace Google.Apis.Classroom.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Classroom.v1.Data.GuardianInvitation Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/userProfiles/{studentId}/guardianInvitations";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -4867,15 +4697,14 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "studentId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "studentId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("studentId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "studentId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -4907,8 +4736,7 @@ namespace Google.Apis.Classroom.v1
             public class GetRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.GuardianInvitation>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string studentId, string invitationId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string studentId, string invitationId) : base(service)
                 {
                     StudentId = studentId;
                     InvitationId = invitationId;
@@ -4925,13 +4753,13 @@ namespace Google.Apis.Classroom.v1
                 public virtual string InvitationId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/userProfiles/{studentId}/guardianInvitations/{invitationId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -4939,24 +4767,22 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "studentId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "studentId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "invitationId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "invitationId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("studentId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "studentId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("invitationId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "invitationId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -4991,8 +4817,7 @@ namespace Google.Apis.Classroom.v1
             public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListGuardianInvitationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string studentId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string studentId) : base(service)
                 {
                     StudentId = studentId;
                     InitParameters();
@@ -5045,13 +4870,13 @@ namespace Google.Apis.Classroom.v1
                 }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/userProfiles/{studentId}/guardianInvitations";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -5059,51 +4884,46 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "studentId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "studentId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "invitedEmailAddress", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "invitedEmailAddress",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "states", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "states",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("studentId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "studentId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("invitedEmailAddress", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "invitedEmailAddress",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("states", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "states",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5140,8 +4960,7 @@ namespace Google.Apis.Classroom.v1
             public class PatchRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.GuardianInvitation>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.GuardianInvitation body, string studentId, string invitationId)
-                    : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.GuardianInvitation body, string studentId, string invitationId) : base(service)
                 {
                     StudentId = studentId;
                     InvitationId = invitationId;
@@ -5168,16 +4987,16 @@ namespace Google.Apis.Classroom.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Classroom.v1.Data.GuardianInvitation Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "patch";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/userProfiles/{studentId}/guardianInvitations/{invitationId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -5185,33 +5004,30 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "studentId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "studentId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "invitationId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "invitationId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("studentId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "studentId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("invitationId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "invitationId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5265,8 +5081,7 @@ namespace Google.Apis.Classroom.v1
             public class DeleteRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string studentId, string guardianId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string studentId, string guardianId) : base(service)
                 {
                     StudentId = studentId;
                     GuardianId = guardianId;
@@ -5285,13 +5100,13 @@ namespace Google.Apis.Classroom.v1
                 public virtual string GuardianId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/userProfiles/{studentId}/guardians/{guardianId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -5299,24 +5114,22 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "studentId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "studentId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "guardianId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "guardianId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("studentId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "studentId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("guardianId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "guardianId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5349,8 +5162,7 @@ namespace Google.Apis.Classroom.v1
             public class GetRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Guardian>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string studentId, string guardianId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string studentId, string guardianId) : base(service)
                 {
                     StudentId = studentId;
                     GuardianId = guardianId;
@@ -5369,13 +5181,13 @@ namespace Google.Apis.Classroom.v1
                 public virtual string GuardianId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/userProfiles/{studentId}/guardians/{guardianId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -5383,24 +5195,22 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "studentId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "studentId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "guardianId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "guardianId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("studentId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "studentId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("guardianId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "guardianId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5439,8 +5249,7 @@ namespace Google.Apis.Classroom.v1
             public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListGuardiansResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string studentId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string studentId) : base(service)
                 {
                     StudentId = studentId;
                     InitParameters();
@@ -5471,13 +5280,13 @@ namespace Google.Apis.Classroom.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/userProfiles/{studentId}/guardians";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -5485,42 +5294,38 @@ namespace Google.Apis.Classroom.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "studentId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "studentId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "invitedEmailAddress", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "invitedEmailAddress",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("studentId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "studentId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("invitedEmailAddress", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "invitedEmailAddress",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5543,8 +5348,7 @@ namespace Google.Apis.Classroom.v1
         public class GetRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.UserProfile>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string userId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string userId) : base(service)
             {
                 UserId = userId;
                 InitParameters();
@@ -5558,13 +5362,13 @@ namespace Google.Apis.Classroom.v1
             public virtual string UserId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/userProfiles/{userId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -5572,15 +5376,14 @@ namespace Google.Apis.Classroom.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

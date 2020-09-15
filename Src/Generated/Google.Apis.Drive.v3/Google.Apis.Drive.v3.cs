@@ -18,17 +18,16 @@ namespace Google.Apis.Drive.v3
         public const string Version = "v3";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public DriveService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public DriveService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public DriveService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public DriveService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             About = new AboutResource(this);
             Changes = new ChangesResource(this);
@@ -160,12 +159,11 @@ namespace Google.Apis.Drive.v3
         public virtual TeamdrivesResource Teamdrives { get; }
     }
 
-    ///<summary>A base abstract class for Drive requests.</summary>
+    /// <summary>A base abstract class for Drive requests.</summary>
     public abstract class DriveBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new DriveBaseServiceRequest instance.</summary>
-        protected DriveBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new DriveBaseServiceRequest instance.</summary>
+        protected DriveBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -212,69 +210,62 @@ namespace Google.Apis.Drive.v3
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "userIp", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "userIp",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("userIp", new Google.Apis.Discovery.Parameter
+            {
+                Name = "userIp",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -304,21 +295,20 @@ namespace Google.Apis.Drive.v3
         public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.About>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
 
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "about";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -357,8 +347,7 @@ namespace Google.Apis.Drive.v3
         public class GetStartPageTokenRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.StartPageToken>
         {
             /// <summary>Constructs a new GetStartPageToken request.</summary>
-            public GetStartPageTokenRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public GetStartPageTokenRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -382,13 +371,13 @@ namespace Google.Apis.Drive.v3
             public virtual string TeamDriveId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getStartPageToken";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "changes/startPageToken";
 
             /// <summary>Initializes GetStartPageToken parameter list.</summary>
@@ -396,42 +385,38 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "driveId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "driveId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsAllDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsTeamDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "teamDriveId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "teamDriveId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("driveId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "driveId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsAllDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsAllDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsTeamDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("teamDriveId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "teamDriveId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -449,8 +434,7 @@ namespace Google.Apis.Drive.v3
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.ChangeList>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string pageToken)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string pageToken) : base(service)
             {
                 PageToken = pageToken;
                 InitParameters();
@@ -520,13 +504,13 @@ namespace Google.Apis.Drive.v3
             public virtual string TeamDriveId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "changes";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -534,123 +518,110 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "driveId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "driveId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includeCorpusRemovals", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includeCorpusRemovals",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includeItemsFromAllDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includeItemsFromAllDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includePermissionsForView", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includePermissionsForView",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includeRemoved", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includeRemoved",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "true",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includeTeamDriveItems", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includeTeamDriveItems",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "100",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "restrictToMyDrive", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "restrictToMyDrive",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "spaces", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "spaces",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "drive",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsAllDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsTeamDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "teamDriveId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "teamDriveId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("driveId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "driveId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeCorpusRemovals", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeCorpusRemovals",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeItemsFromAllDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeItemsFromAllDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("includePermissionsForView", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includePermissionsForView",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeRemoved", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeRemoved",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "true",
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeTeamDriveItems", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeTeamDriveItems",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "100",
+                    Pattern = null,
+                });
+                RequestParameters.Add("restrictToMyDrive", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "restrictToMyDrive",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("spaces", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "spaces",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "drive",
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsAllDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsAllDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsTeamDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("teamDriveId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "teamDriveId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -669,8 +640,7 @@ namespace Google.Apis.Drive.v3
         public class WatchRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Channel>
         {
             /// <summary>Constructs a new Watch request.</summary>
-            public WatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.Channel body, string pageToken)
-                : base(service)
+            public WatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.Channel body, string pageToken) : base(service)
             {
                 PageToken = pageToken;
                 Body = body;
@@ -744,16 +714,16 @@ namespace Google.Apis.Drive.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Drive.v3.Data.Channel Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "watch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "changes/watch";
 
             /// <summary>Initializes Watch parameter list.</summary>
@@ -761,123 +731,110 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "driveId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "driveId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includeCorpusRemovals", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includeCorpusRemovals",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includeItemsFromAllDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includeItemsFromAllDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includePermissionsForView", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includePermissionsForView",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includeRemoved", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includeRemoved",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "true",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includeTeamDriveItems", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includeTeamDriveItems",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "100",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "restrictToMyDrive", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "restrictToMyDrive",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "spaces", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "spaces",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "drive",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsAllDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsTeamDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "teamDriveId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "teamDriveId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("driveId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "driveId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeCorpusRemovals", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeCorpusRemovals",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeItemsFromAllDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeItemsFromAllDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("includePermissionsForView", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includePermissionsForView",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeRemoved", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeRemoved",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "true",
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeTeamDriveItems", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeTeamDriveItems",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "100",
+                    Pattern = null,
+                });
+                RequestParameters.Add("restrictToMyDrive", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "restrictToMyDrive",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("spaces", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "spaces",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "drive",
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsAllDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsAllDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsTeamDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("teamDriveId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "teamDriveId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -910,8 +867,7 @@ namespace Google.Apis.Drive.v3
         public class StopRequest : DriveBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Stop request.</summary>
-            public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.Channel body)
-                : base(service)
+            public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.Channel body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -922,16 +878,16 @@ namespace Google.Apis.Drive.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Drive.v3.Data.Channel Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "stop";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "channels/stop";
 
             /// <summary>Initializes Stop parameter list.</summary>
@@ -972,8 +928,7 @@ namespace Google.Apis.Drive.v3
         public class CreateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Comment>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.Comment body, string fileId)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.Comment body, string fileId) : base(service)
             {
                 FileId = fileId;
                 Body = body;
@@ -989,16 +944,16 @@ namespace Google.Apis.Drive.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Drive.v3.Data.Comment Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "files/{fileId}/comments";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -1006,15 +961,14 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "fileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1031,8 +985,7 @@ namespace Google.Apis.Drive.v3
         public class DeleteRequest : DriveBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string fileId, string commentId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string fileId, string commentId) : base(service)
             {
                 FileId = fileId;
                 CommentId = commentId;
@@ -1049,13 +1002,13 @@ namespace Google.Apis.Drive.v3
             public virtual string CommentId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "files/{fileId}/comments/{commentId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -1063,24 +1016,22 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "fileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "commentId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "commentId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("commentId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "commentId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1097,8 +1048,7 @@ namespace Google.Apis.Drive.v3
         public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Comment>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string fileId, string commentId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string fileId, string commentId) : base(service)
             {
                 FileId = fileId;
                 CommentId = commentId;
@@ -1120,13 +1070,13 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> IncludeDeleted { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "files/{fileId}/comments/{commentId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1134,33 +1084,30 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "fileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "commentId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "commentId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includeDeleted", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includeDeleted",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("commentId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "commentId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeDeleted", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeDeleted",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
             }
 
         }
@@ -1176,8 +1123,7 @@ namespace Google.Apis.Drive.v3
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.CommentList>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string fileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string fileId) : base(service)
             {
                 FileId = fileId;
                 InitParameters();
@@ -1207,13 +1153,13 @@ namespace Google.Apis.Drive.v3
             public virtual string StartModifiedTime { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "files/{fileId}/comments";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1221,51 +1167,46 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "fileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includeDeleted", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includeDeleted",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "20",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "startModifiedTime", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "startModifiedTime",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeDeleted", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeDeleted",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "20",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("startModifiedTime", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "startModifiedTime",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1283,8 +1224,7 @@ namespace Google.Apis.Drive.v3
         public class UpdateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Comment>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.Comment body, string fileId, string commentId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.Comment body, string fileId, string commentId) : base(service)
             {
                 FileId = fileId;
                 CommentId = commentId;
@@ -1305,16 +1245,16 @@ namespace Google.Apis.Drive.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Drive.v3.Data.Comment Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "files/{fileId}/comments/{commentId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -1322,24 +1262,22 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "fileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "commentId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "commentId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("commentId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "commentId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1376,8 +1314,7 @@ namespace Google.Apis.Drive.v3
         public class CreateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Drive>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.Drive body, string requestId)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.Drive body, string requestId) : base(service)
             {
                 RequestId = requestId;
                 Body = body;
@@ -1396,16 +1333,16 @@ namespace Google.Apis.Drive.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Drive.v3.Data.Drive Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "drives";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -1413,15 +1350,14 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "requestId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestId",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1439,8 +1375,7 @@ namespace Google.Apis.Drive.v3
         public class DeleteRequest : DriveBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string driveId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string driveId) : base(service)
             {
                 DriveId = driveId;
                 InitParameters();
@@ -1452,13 +1387,13 @@ namespace Google.Apis.Drive.v3
             public virtual string DriveId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "drives/{driveId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -1466,15 +1401,14 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "driveId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "driveId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("driveId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "driveId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1490,8 +1424,7 @@ namespace Google.Apis.Drive.v3
         public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Drive>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string driveId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string driveId) : base(service)
             {
                 DriveId = driveId;
                 InitParameters();
@@ -1508,13 +1441,13 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "drives/{driveId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1522,24 +1455,22 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "driveId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "driveId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "useDomainAdminAccess", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "useDomainAdminAccess",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("driveId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "driveId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("useDomainAdminAccess", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "useDomainAdminAccess",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
             }
 
         }
@@ -1555,8 +1486,7 @@ namespace Google.Apis.Drive.v3
         public class HideRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Drive>
         {
             /// <summary>Constructs a new Hide request.</summary>
-            public HideRequest(Google.Apis.Services.IClientService service, string driveId)
-                : base(service)
+            public HideRequest(Google.Apis.Services.IClientService service, string driveId) : base(service)
             {
                 DriveId = driveId;
                 InitParameters();
@@ -1568,13 +1498,13 @@ namespace Google.Apis.Drive.v3
             public virtual string DriveId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "hide";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "drives/{driveId}/hide";
 
             /// <summary>Initializes Hide parameter list.</summary>
@@ -1582,15 +1512,14 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "driveId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "driveId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("driveId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "driveId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1605,8 +1534,7 @@ namespace Google.Apis.Drive.v3
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.DriveList>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -1630,13 +1558,13 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "drives";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1644,42 +1572,38 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "10",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "q", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "q",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "useDomainAdminAccess", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "useDomainAdminAccess",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "10",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("q", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "q",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("useDomainAdminAccess", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "useDomainAdminAccess",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
             }
 
         }
@@ -1695,8 +1619,7 @@ namespace Google.Apis.Drive.v3
         public class UnhideRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Drive>
         {
             /// <summary>Constructs a new Unhide request.</summary>
-            public UnhideRequest(Google.Apis.Services.IClientService service, string driveId)
-                : base(service)
+            public UnhideRequest(Google.Apis.Services.IClientService service, string driveId) : base(service)
             {
                 DriveId = driveId;
                 InitParameters();
@@ -1708,13 +1631,13 @@ namespace Google.Apis.Drive.v3
             public virtual string DriveId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "unhide";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "drives/{driveId}/unhide";
 
             /// <summary>Initializes Unhide parameter list.</summary>
@@ -1722,15 +1645,14 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "driveId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "driveId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("driveId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "driveId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1747,8 +1669,7 @@ namespace Google.Apis.Drive.v3
         public class UpdateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Drive>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.Drive body, string driveId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.Drive body, string driveId) : base(service)
             {
                 DriveId = driveId;
                 Body = body;
@@ -1769,16 +1690,16 @@ namespace Google.Apis.Drive.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Drive.v3.Data.Drive Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "drives/{driveId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -1786,24 +1707,22 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "driveId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "driveId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "useDomainAdminAccess", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "useDomainAdminAccess",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("driveId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "driveId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("useDomainAdminAccess", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "useDomainAdminAccess",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
             }
 
         }
@@ -1839,8 +1758,7 @@ namespace Google.Apis.Drive.v3
         public class CopyRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.File>
         {
             /// <summary>Constructs a new Copy request.</summary>
-            public CopyRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.File body, string fileId)
-                : base(service)
+            public CopyRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.File body, string fileId) : base(service)
             {
                 FileId = fileId;
                 Body = body;
@@ -1891,16 +1809,16 @@ namespace Google.Apis.Drive.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Drive.v3.Data.File Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "copy";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "files/{fileId}/copy";
 
             /// <summary>Initializes Copy parameter list.</summary>
@@ -1908,78 +1826,70 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "fileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "enforceSingleParent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enforceSingleParent",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ignoreDefaultVisibility", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ignoreDefaultVisibility",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includePermissionsForView", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includePermissionsForView",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "keepRevisionForever", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "keepRevisionForever",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ocrLanguage", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ocrLanguage",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsAllDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsTeamDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("enforceSingleParent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enforceSingleParent",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("ignoreDefaultVisibility", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ignoreDefaultVisibility",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("includePermissionsForView", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includePermissionsForView",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("keepRevisionForever", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "keepRevisionForever",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("ocrLanguage", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ocrLanguage",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsAllDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsAllDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsTeamDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
             }
 
         }
@@ -1995,8 +1905,7 @@ namespace Google.Apis.Drive.v3
         public class CreateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.File>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.File body)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.File body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -2046,16 +1955,16 @@ namespace Google.Apis.Drive.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Drive.v3.Data.File Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "files";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -2063,78 +1972,70 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enforceSingleParent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enforceSingleParent",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ignoreDefaultVisibility", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ignoreDefaultVisibility",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includePermissionsForView", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includePermissionsForView",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "keepRevisionForever", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "keepRevisionForever",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ocrLanguage", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ocrLanguage",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsAllDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsTeamDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "useContentAsIndexableText", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "useContentAsIndexableText",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enforceSingleParent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enforceSingleParent",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("ignoreDefaultVisibility", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ignoreDefaultVisibility",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("includePermissionsForView", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includePermissionsForView",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("keepRevisionForever", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "keepRevisionForever",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("ocrLanguage", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ocrLanguage",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsAllDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsAllDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsTeamDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("useContentAsIndexableText", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "useContentAsIndexableText",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
             }
 
         }
@@ -2287,8 +2188,7 @@ namespace Google.Apis.Drive.v3
         public class DeleteRequest : DriveBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string fileId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string fileId) : base(service)
             {
                 FileId = fileId;
                 InitParameters();
@@ -2314,13 +2214,13 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "files/{fileId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -2328,42 +2228,38 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "fileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "enforceSingleParent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enforceSingleParent",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsAllDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsTeamDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("enforceSingleParent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enforceSingleParent",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsAllDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsAllDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsTeamDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
             }
 
         }
@@ -2378,8 +2274,7 @@ namespace Google.Apis.Drive.v3
         public class EmptyTrashRequest : DriveBaseServiceRequest<string>
         {
             /// <summary>Constructs a new EmptyTrash request.</summary>
-            public EmptyTrashRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public EmptyTrashRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -2392,13 +2287,13 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "emptyTrash";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "files/trash";
 
             /// <summary>Initializes EmptyTrash parameter list.</summary>
@@ -2406,15 +2301,14 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enforceSingleParent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enforceSingleParent",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enforceSingleParent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enforceSingleParent",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
             }
 
         }
@@ -2434,8 +2328,7 @@ namespace Google.Apis.Drive.v3
         public class ExportRequest : DriveBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Export request.</summary>
-            public ExportRequest(Google.Apis.Services.IClientService service, string fileId, string mimeType)
-                : base(service)
+            public ExportRequest(Google.Apis.Services.IClientService service, string fileId, string mimeType) : base(service)
             {
                 FileId = fileId;
                 MimeType = mimeType;
@@ -2453,13 +2346,13 @@ namespace Google.Apis.Drive.v3
             public virtual string MimeType { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "export";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "files/{fileId}/export";
 
             /// <summary>Initializes Export parameter list.</summary>
@@ -2467,24 +2360,22 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "fileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "mimeType", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "mimeType",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("mimeType", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "mimeType",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
             /// <summary>Gets the media downloader.</summary>
@@ -2551,8 +2442,7 @@ namespace Google.Apis.Drive.v3
         public class GenerateIdsRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.GeneratedIds>
         {
             /// <summary>Constructs a new GenerateIds request.</summary>
-            public GenerateIdsRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public GenerateIdsRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -2568,13 +2458,13 @@ namespace Google.Apis.Drive.v3
             public virtual string Space { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "generateIds";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "files/generateIds";
 
             /// <summary>Initializes GenerateIds parameter list.</summary>
@@ -2582,24 +2472,22 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "count", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "count",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "10",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "space", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "space",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "drive",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("count", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "count",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "10",
+                    Pattern = null,
+                });
+                RequestParameters.Add("space", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "space",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "drive",
+                    Pattern = null,
+                });
             }
 
         }
@@ -2615,8 +2503,7 @@ namespace Google.Apis.Drive.v3
         public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.File>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string fileId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string fileId) : base(service)
             {
                 FileId = fileId;
                 MediaDownloader = new Google.Apis.Download.MediaDownloader(service);
@@ -2647,13 +2534,13 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "files/{fileId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -2661,51 +2548,46 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "fileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "acknowledgeAbuse", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "acknowledgeAbuse",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includePermissionsForView", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includePermissionsForView",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsAllDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsTeamDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("acknowledgeAbuse", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "acknowledgeAbuse",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("includePermissionsForView", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includePermissionsForView",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsAllDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsAllDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsTeamDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
             }
 
             /// <summary>Gets the media downloader.</summary>
@@ -2772,8 +2654,7 @@ namespace Google.Apis.Drive.v3
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.FileList>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -2863,13 +2744,13 @@ namespace Google.Apis.Drive.v3
             public virtual string TeamDriveId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "files";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2877,132 +2758,118 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "corpora", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "corpora",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "corpus", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "corpus",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "driveId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "driveId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includeItemsFromAllDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includeItemsFromAllDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includePermissionsForView", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includePermissionsForView",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includeTeamDriveItems", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includeTeamDriveItems",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "100",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "q", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "q",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "spaces", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "spaces",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "drive",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsAllDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsTeamDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "teamDriveId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "teamDriveId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("corpora", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "corpora",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("corpus", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "corpus",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("driveId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "driveId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeItemsFromAllDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeItemsFromAllDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("includePermissionsForView", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includePermissionsForView",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeTeamDriveItems", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeTeamDriveItems",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "100",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("q", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "q",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("spaces", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "spaces",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "drive",
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsAllDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsAllDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsTeamDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("teamDriveId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "teamDriveId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3019,8 +2886,7 @@ namespace Google.Apis.Drive.v3
         public class UpdateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.File>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.File body, string fileId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.File body, string fileId) : base(service)
             {
                 FileId = fileId;
                 Body = body;
@@ -3079,16 +2945,16 @@ namespace Google.Apis.Drive.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Drive.v3.Data.File Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "files/{fileId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -3096,96 +2962,86 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "fileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "addParents", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "addParents",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "enforceSingleParent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enforceSingleParent",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includePermissionsForView", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includePermissionsForView",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "keepRevisionForever", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "keepRevisionForever",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ocrLanguage", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ocrLanguage",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "removeParents", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "removeParents",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsAllDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsTeamDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "useContentAsIndexableText", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "useContentAsIndexableText",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("addParents", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "addParents",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("enforceSingleParent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enforceSingleParent",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("includePermissionsForView", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includePermissionsForView",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("keepRevisionForever", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "keepRevisionForever",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("ocrLanguage", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ocrLanguage",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("removeParents", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "removeParents",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsAllDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsAllDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsTeamDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("useContentAsIndexableText", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "useContentAsIndexableText",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
             }
 
         }
@@ -3346,8 +3202,7 @@ namespace Google.Apis.Drive.v3
         public class WatchRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Channel>
         {
             /// <summary>Constructs a new Watch request.</summary>
-            public WatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.Channel body, string fileId)
-                : base(service)
+            public WatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.Channel body, string fileId) : base(service)
             {
                 FileId = fileId;
                 Body = body;
@@ -3382,16 +3237,16 @@ namespace Google.Apis.Drive.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Drive.v3.Data.Channel Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "watch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "files/{fileId}/watch";
 
             /// <summary>Initializes Watch parameter list.</summary>
@@ -3399,51 +3254,46 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "fileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "acknowledgeAbuse", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "acknowledgeAbuse",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includePermissionsForView", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includePermissionsForView",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsAllDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsTeamDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("acknowledgeAbuse", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "acknowledgeAbuse",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("includePermissionsForView", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includePermissionsForView",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsAllDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsAllDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsTeamDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
             }
 
             /// <summary>Gets the media downloader.</summary>
@@ -3529,8 +3379,7 @@ namespace Google.Apis.Drive.v3
         public class CreateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Permission>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.Permission body, string fileId)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.Permission body, string fileId) : base(service)
             {
                 FileId = fileId;
                 Body = body;
@@ -3590,16 +3439,16 @@ namespace Google.Apis.Drive.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Drive.v3.Data.Permission Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "files/{fileId}/permissions";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -3607,87 +3456,78 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "fileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "emailMessage", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "emailMessage",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "enforceSingleParent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enforceSingleParent",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "moveToNewOwnersRoot", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "moveToNewOwnersRoot",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sendNotificationEmail", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sendNotificationEmail",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsAllDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsTeamDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "transferOwnership", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "transferOwnership",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "useDomainAdminAccess", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "useDomainAdminAccess",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("emailMessage", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "emailMessage",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("enforceSingleParent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enforceSingleParent",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("moveToNewOwnersRoot", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "moveToNewOwnersRoot",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("sendNotificationEmail", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sendNotificationEmail",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsAllDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsAllDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsTeamDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("transferOwnership", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "transferOwnership",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("useDomainAdminAccess", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "useDomainAdminAccess",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
             }
 
         }
@@ -3705,8 +3545,7 @@ namespace Google.Apis.Drive.v3
         public class DeleteRequest : DriveBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string fileId, string permissionId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string fileId, string permissionId) : base(service)
             {
                 FileId = fileId;
                 PermissionId = permissionId;
@@ -3737,13 +3576,13 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "files/{fileId}/permissions/{permissionId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -3751,51 +3590,46 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "fileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "permissionId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "permissionId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsAllDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsTeamDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "useDomainAdminAccess", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "useDomainAdminAccess",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("permissionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "permissionId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsAllDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsAllDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsTeamDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("useDomainAdminAccess", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "useDomainAdminAccess",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
             }
 
         }
@@ -3813,8 +3647,7 @@ namespace Google.Apis.Drive.v3
         public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Permission>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string fileId, string permissionId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string fileId, string permissionId) : base(service)
             {
                 FileId = fileId;
                 PermissionId = permissionId;
@@ -3845,13 +3678,13 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "files/{fileId}/permissions/{permissionId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -3859,51 +3692,46 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "fileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "permissionId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "permissionId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsAllDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsTeamDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "useDomainAdminAccess", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "useDomainAdminAccess",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("permissionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "permissionId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsAllDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsAllDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsTeamDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("useDomainAdminAccess", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "useDomainAdminAccess",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
             }
 
         }
@@ -3919,8 +3747,7 @@ namespace Google.Apis.Drive.v3
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.PermissionList>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string fileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string fileId) : base(service)
             {
                 FileId = fileId;
                 InitParameters();
@@ -3962,13 +3789,13 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "files/{fileId}/permissions";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -3976,69 +3803,62 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "fileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includePermissionsForView", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includePermissionsForView",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsAllDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsTeamDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "useDomainAdminAccess", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "useDomainAdminAccess",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includePermissionsForView", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includePermissionsForView",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsAllDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsAllDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsTeamDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("useDomainAdminAccess", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "useDomainAdminAccess",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
             }
 
         }
@@ -4057,8 +3877,7 @@ namespace Google.Apis.Drive.v3
         public class UpdateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Permission>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.Permission body, string fileId, string permissionId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.Permission body, string fileId, string permissionId) : base(service)
             {
                 FileId = fileId;
                 PermissionId = permissionId;
@@ -4102,16 +3921,16 @@ namespace Google.Apis.Drive.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Drive.v3.Data.Permission Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "files/{fileId}/permissions/{permissionId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -4119,69 +3938,62 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "fileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "permissionId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "permissionId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "removeExpiration", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "removeExpiration",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsAllDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "supportsTeamDrives",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "transferOwnership", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "transferOwnership",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "useDomainAdminAccess", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "useDomainAdminAccess",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("permissionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "permissionId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("removeExpiration", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "removeExpiration",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsAllDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsAllDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "supportsTeamDrives",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("transferOwnership", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "transferOwnership",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("useDomainAdminAccess", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "useDomainAdminAccess",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
             }
 
         }
@@ -4216,8 +4028,7 @@ namespace Google.Apis.Drive.v3
         public class CreateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Reply>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.Reply body, string fileId, string commentId)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.Reply body, string fileId, string commentId) : base(service)
             {
                 FileId = fileId;
                 CommentId = commentId;
@@ -4238,16 +4049,16 @@ namespace Google.Apis.Drive.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Drive.v3.Data.Reply Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "files/{fileId}/comments/{commentId}/replies";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -4255,24 +4066,22 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "fileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "commentId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "commentId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("commentId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "commentId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4291,8 +4100,7 @@ namespace Google.Apis.Drive.v3
         public class DeleteRequest : DriveBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string fileId, string commentId, string replyId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string fileId, string commentId, string replyId) : base(service)
             {
                 FileId = fileId;
                 CommentId = commentId;
@@ -4314,13 +4122,13 @@ namespace Google.Apis.Drive.v3
             public virtual string ReplyId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "files/{fileId}/comments/{commentId}/replies/{replyId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -4328,33 +4136,30 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "fileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "commentId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "commentId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "replyId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "replyId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("commentId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "commentId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("replyId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "replyId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4373,8 +4178,7 @@ namespace Google.Apis.Drive.v3
         public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Reply>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string fileId, string commentId, string replyId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string fileId, string commentId, string replyId) : base(service)
             {
                 FileId = fileId;
                 CommentId = commentId;
@@ -4401,13 +4205,13 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> IncludeDeleted { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "files/{fileId}/comments/{commentId}/replies/{replyId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -4415,42 +4219,38 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "fileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "commentId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "commentId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "replyId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "replyId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includeDeleted", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includeDeleted",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("commentId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "commentId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("replyId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "replyId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeDeleted", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeDeleted",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
             }
 
         }
@@ -4467,8 +4267,7 @@ namespace Google.Apis.Drive.v3
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.ReplyList>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string fileId, string commentId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string fileId, string commentId) : base(service)
             {
                 FileId = fileId;
                 CommentId = commentId;
@@ -4499,13 +4298,13 @@ namespace Google.Apis.Drive.v3
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "files/{fileId}/comments/{commentId}/replies";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -4513,51 +4312,46 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "fileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "commentId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "commentId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includeDeleted", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includeDeleted",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "20",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("commentId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "commentId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeDeleted", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeDeleted",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "20",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4577,8 +4371,7 @@ namespace Google.Apis.Drive.v3
         public class UpdateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Reply>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.Reply body, string fileId, string commentId, string replyId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.Reply body, string fileId, string commentId, string replyId) : base(service)
             {
                 FileId = fileId;
                 CommentId = commentId;
@@ -4604,16 +4397,16 @@ namespace Google.Apis.Drive.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Drive.v3.Data.Reply Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "files/{fileId}/comments/{commentId}/replies/{replyId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -4621,33 +4414,30 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "fileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "commentId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "commentId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "replyId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "replyId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("commentId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "commentId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("replyId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "replyId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4686,8 +4476,7 @@ namespace Google.Apis.Drive.v3
         public class DeleteRequest : DriveBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string fileId, string revisionId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string fileId, string revisionId) : base(service)
             {
                 FileId = fileId;
                 RevisionId = revisionId;
@@ -4704,13 +4493,13 @@ namespace Google.Apis.Drive.v3
             public virtual string RevisionId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "files/{fileId}/revisions/{revisionId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -4718,24 +4507,22 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "fileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "revisionId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "revisionId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("revisionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "revisionId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4753,8 +4540,7 @@ namespace Google.Apis.Drive.v3
         public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Revision>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string fileId, string revisionId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string fileId, string revisionId) : base(service)
             {
                 FileId = fileId;
                 RevisionId = revisionId;
@@ -4777,13 +4563,13 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> AcknowledgeAbuse { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "files/{fileId}/revisions/{revisionId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -4791,33 +4577,30 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "fileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "revisionId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "revisionId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "acknowledgeAbuse", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "acknowledgeAbuse",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("revisionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "revisionId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("acknowledgeAbuse", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "acknowledgeAbuse",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
             }
 
             /// <summary>Gets the media downloader.</summary>
@@ -4885,8 +4668,7 @@ namespace Google.Apis.Drive.v3
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.RevisionList>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string fileId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string fileId) : base(service)
             {
                 FileId = fileId;
                 InitParameters();
@@ -4907,13 +4689,13 @@ namespace Google.Apis.Drive.v3
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "files/{fileId}/revisions";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -4921,33 +4703,30 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "fileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "200",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "200",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4966,8 +4745,7 @@ namespace Google.Apis.Drive.v3
         public class UpdateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Revision>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.Revision body, string fileId, string revisionId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.Revision body, string fileId, string revisionId) : base(service)
             {
                 FileId = fileId;
                 RevisionId = revisionId;
@@ -4988,16 +4766,16 @@ namespace Google.Apis.Drive.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Drive.v3.Data.Revision Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "files/{fileId}/revisions/{revisionId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -5005,24 +4783,22 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "fileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "revisionId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "revisionId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("fileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("revisionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "revisionId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5059,8 +4835,7 @@ namespace Google.Apis.Drive.v3
         public class CreateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.TeamDrive>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.TeamDrive body, string requestId)
-                : base(service)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.TeamDrive body, string requestId) : base(service)
             {
                 RequestId = requestId;
                 Body = body;
@@ -5079,16 +4854,16 @@ namespace Google.Apis.Drive.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Drive.v3.Data.TeamDrive Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "create";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "teamdrives";
 
             /// <summary>Initializes Create parameter list.</summary>
@@ -5096,15 +4871,14 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "requestId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestId",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5120,8 +4894,7 @@ namespace Google.Apis.Drive.v3
         public class DeleteRequest : DriveBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string teamDriveId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string teamDriveId) : base(service)
             {
                 TeamDriveId = teamDriveId;
                 InitParameters();
@@ -5133,13 +4906,13 @@ namespace Google.Apis.Drive.v3
             public virtual string TeamDriveId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "teamdrives/{teamDriveId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -5147,15 +4920,14 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "teamDriveId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "teamDriveId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("teamDriveId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "teamDriveId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5171,8 +4943,7 @@ namespace Google.Apis.Drive.v3
         public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.TeamDrive>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string teamDriveId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string teamDriveId) : base(service)
             {
                 TeamDriveId = teamDriveId;
                 InitParameters();
@@ -5189,13 +4960,13 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "teamdrives/{teamDriveId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -5203,24 +4974,22 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "teamDriveId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "teamDriveId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "useDomainAdminAccess", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "useDomainAdminAccess",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("teamDriveId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "teamDriveId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("useDomainAdminAccess", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "useDomainAdminAccess",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
             }
 
         }
@@ -5235,8 +5004,7 @@ namespace Google.Apis.Drive.v3
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.TeamDriveList>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -5260,13 +5028,13 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "teamdrives";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -5274,42 +5042,38 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "10",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "q", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "q",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "useDomainAdminAccess", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "useDomainAdminAccess",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "10",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("q", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "q",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("useDomainAdminAccess", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "useDomainAdminAccess",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
             }
 
         }
@@ -5326,8 +5090,7 @@ namespace Google.Apis.Drive.v3
         public class UpdateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.TeamDrive>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.TeamDrive body, string teamDriveId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.TeamDrive body, string teamDriveId) : base(service)
             {
                 TeamDriveId = teamDriveId;
                 Body = body;
@@ -5348,16 +5111,16 @@ namespace Google.Apis.Drive.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Drive.v3.Data.TeamDrive Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "teamdrives/{teamDriveId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -5365,24 +5128,22 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "teamDriveId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "teamDriveId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "useDomainAdminAccess", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "useDomainAdminAccess",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "false",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("teamDriveId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "teamDriveId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("useDomainAdminAccess", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "useDomainAdminAccess",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
+                    Pattern = null,
+                });
             }
 
         }

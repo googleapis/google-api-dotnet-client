@@ -18,17 +18,16 @@ namespace Google.Apis.Reseller.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public ResellerService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public ResellerService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public ResellerService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public ResellerService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Customers = new CustomersResource(this);
             Resellernotify = new ResellernotifyResource(this);
@@ -94,12 +93,11 @@ namespace Google.Apis.Reseller.v1
         public virtual SubscriptionsResource Subscriptions { get; }
     }
 
-    ///<summary>A base abstract class for Reseller requests.</summary>
+    /// <summary>A base abstract class for Reseller requests.</summary>
     public abstract class ResellerBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new ResellerBaseServiceRequest instance.</summary>
-        protected ResellerBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new ResellerBaseServiceRequest instance.</summary>
+        protected ResellerBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -146,69 +144,62 @@ namespace Google.Apis.Reseller.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "userIp", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "userIp",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("userIp", new Google.Apis.Discovery.Parameter
+            {
+                Name = "userIp",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -241,8 +232,7 @@ namespace Google.Apis.Reseller.v1
         public class GetRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.Customer>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string customerId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string customerId) : base(service)
             {
                 CustomerId = customerId;
                 InitParameters();
@@ -256,13 +246,13 @@ namespace Google.Apis.Reseller.v1
             public virtual string CustomerId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "customers/{customerId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -270,15 +260,14 @@ namespace Google.Apis.Reseller.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -294,8 +283,7 @@ namespace Google.Apis.Reseller.v1
         public class InsertRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.Customer>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Reseller.v1.Data.Customer body)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Reseller.v1.Data.Customer body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -313,16 +301,16 @@ namespace Google.Apis.Reseller.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Reseller.v1.Data.Customer Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "customers";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -330,15 +318,14 @@ namespace Google.Apis.Reseller.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "customerAuthToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerAuthToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("customerAuthToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerAuthToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -357,8 +344,7 @@ namespace Google.Apis.Reseller.v1
         public class PatchRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.Customer>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Reseller.v1.Data.Customer body, string customerId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Reseller.v1.Data.Customer body, string customerId) : base(service)
             {
                 CustomerId = customerId;
                 Body = body;
@@ -376,16 +362,16 @@ namespace Google.Apis.Reseller.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Reseller.v1.Data.Customer Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "customers/{customerId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -393,15 +379,14 @@ namespace Google.Apis.Reseller.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -420,8 +405,7 @@ namespace Google.Apis.Reseller.v1
         public class UpdateRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.Customer>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Reseller.v1.Data.Customer body, string customerId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Reseller.v1.Data.Customer body, string customerId) : base(service)
             {
                 CustomerId = customerId;
                 Body = body;
@@ -439,16 +423,16 @@ namespace Google.Apis.Reseller.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Reseller.v1.Data.Customer Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "customers/{customerId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -456,15 +440,14 @@ namespace Google.Apis.Reseller.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -496,21 +479,20 @@ namespace Google.Apis.Reseller.v1
         public class GetwatchdetailsRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.ResellernotifyGetwatchdetailsResponse>
         {
             /// <summary>Constructs a new Getwatchdetails request.</summary>
-            public GetwatchdetailsRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public GetwatchdetailsRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
 
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getwatchdetails";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "resellernotify/getwatchdetails";
 
             /// <summary>Initializes Getwatchdetails parameter list.</summary>
@@ -532,8 +514,7 @@ namespace Google.Apis.Reseller.v1
         public class RegisterRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.ResellernotifyResource>
         {
             /// <summary>Constructs a new Register request.</summary>
-            public RegisterRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public RegisterRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -544,13 +525,13 @@ namespace Google.Apis.Reseller.v1
             public virtual string ServiceAccountEmailAddress { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "register";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "resellernotify/register";
 
             /// <summary>Initializes Register parameter list.</summary>
@@ -558,15 +539,14 @@ namespace Google.Apis.Reseller.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "serviceAccountEmailAddress", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "serviceAccountEmailAddress",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("serviceAccountEmailAddress", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "serviceAccountEmailAddress",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -581,8 +561,7 @@ namespace Google.Apis.Reseller.v1
         public class UnregisterRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.ResellernotifyResource>
         {
             /// <summary>Constructs a new Unregister request.</summary>
-            public UnregisterRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public UnregisterRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -593,13 +572,13 @@ namespace Google.Apis.Reseller.v1
             public virtual string ServiceAccountEmailAddress { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "unregister";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "resellernotify/unregister";
 
             /// <summary>Initializes Unregister parameter list.</summary>
@@ -607,15 +586,14 @@ namespace Google.Apis.Reseller.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "serviceAccountEmailAddress", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "serviceAccountEmailAddress",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("serviceAccountEmailAddress", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "serviceAccountEmailAddress",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -654,8 +632,7 @@ namespace Google.Apis.Reseller.v1
         public class ActivateRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.Subscription>
         {
             /// <summary>Constructs a new Activate request.</summary>
-            public ActivateRequest(Google.Apis.Services.IClientService service, string customerId, string subscriptionId)
-                : base(service)
+            public ActivateRequest(Google.Apis.Services.IClientService service, string customerId, string subscriptionId) : base(service)
             {
                 CustomerId = customerId;
                 SubscriptionId = subscriptionId;
@@ -677,13 +654,13 @@ namespace Google.Apis.Reseller.v1
             public virtual string SubscriptionId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "activate";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "customers/{customerId}/subscriptions/{subscriptionId}/activate";
 
             /// <summary>Initializes Activate parameter list.</summary>
@@ -691,24 +668,22 @@ namespace Google.Apis.Reseller.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "subscriptionId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "subscriptionId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("subscriptionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "subscriptionId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -733,8 +708,7 @@ namespace Google.Apis.Reseller.v1
         public class ChangePlanRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.Subscription>
         {
             /// <summary>Constructs a new ChangePlan request.</summary>
-            public ChangePlanRequest(Google.Apis.Services.IClientService service, Google.Apis.Reseller.v1.Data.ChangePlanRequest body, string customerId, string subscriptionId)
-                : base(service)
+            public ChangePlanRequest(Google.Apis.Services.IClientService service, Google.Apis.Reseller.v1.Data.ChangePlanRequest body, string customerId, string subscriptionId) : base(service)
             {
                 CustomerId = customerId;
                 SubscriptionId = subscriptionId;
@@ -760,16 +734,16 @@ namespace Google.Apis.Reseller.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Reseller.v1.Data.ChangePlanRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "changePlan";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "customers/{customerId}/subscriptions/{subscriptionId}/changePlan";
 
             /// <summary>Initializes ChangePlan parameter list.</summary>
@@ -777,24 +751,22 @@ namespace Google.Apis.Reseller.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "subscriptionId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "subscriptionId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("subscriptionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "subscriptionId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -819,8 +791,7 @@ namespace Google.Apis.Reseller.v1
         public class ChangeRenewalSettingsRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.Subscription>
         {
             /// <summary>Constructs a new ChangeRenewalSettings request.</summary>
-            public ChangeRenewalSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.Reseller.v1.Data.RenewalSettings body, string customerId, string subscriptionId)
-                : base(service)
+            public ChangeRenewalSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.Reseller.v1.Data.RenewalSettings body, string customerId, string subscriptionId) : base(service)
             {
                 CustomerId = customerId;
                 SubscriptionId = subscriptionId;
@@ -846,16 +817,16 @@ namespace Google.Apis.Reseller.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Reseller.v1.Data.RenewalSettings Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "changeRenewalSettings";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "customers/{customerId}/subscriptions/{subscriptionId}/changeRenewalSettings";
 
             /// <summary>Initializes ChangeRenewalSettings parameter list.</summary>
@@ -863,24 +834,22 @@ namespace Google.Apis.Reseller.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "subscriptionId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "subscriptionId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("subscriptionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "subscriptionId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -903,8 +872,7 @@ namespace Google.Apis.Reseller.v1
         public class ChangeSeatsRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.Subscription>
         {
             /// <summary>Constructs a new ChangeSeats request.</summary>
-            public ChangeSeatsRequest(Google.Apis.Services.IClientService service, Google.Apis.Reseller.v1.Data.Seats body, string customerId, string subscriptionId)
-                : base(service)
+            public ChangeSeatsRequest(Google.Apis.Services.IClientService service, Google.Apis.Reseller.v1.Data.Seats body, string customerId, string subscriptionId) : base(service)
             {
                 CustomerId = customerId;
                 SubscriptionId = subscriptionId;
@@ -930,16 +898,16 @@ namespace Google.Apis.Reseller.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Reseller.v1.Data.Seats Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "changeSeats";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "customers/{customerId}/subscriptions/{subscriptionId}/changeSeats";
 
             /// <summary>Initializes ChangeSeats parameter list.</summary>
@@ -947,24 +915,22 @@ namespace Google.Apis.Reseller.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "subscriptionId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "subscriptionId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("subscriptionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "subscriptionId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -989,8 +955,7 @@ namespace Google.Apis.Reseller.v1
         public class DeleteRequest : ResellerBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string customerId, string subscriptionId, DeleteRequest.DeletionTypeEnum deletionType)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string customerId, string subscriptionId, DeleteRequest.DeletionTypeEnum deletionType) : base(service)
             {
                 CustomerId = customerId;
                 SubscriptionId = subscriptionId;
@@ -1034,13 +999,13 @@ namespace Google.Apis.Reseller.v1
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "customers/{customerId}/subscriptions/{subscriptionId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -1048,33 +1013,30 @@ namespace Google.Apis.Reseller.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "subscriptionId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "subscriptionId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "deletionType", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deletionType",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("subscriptionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "subscriptionId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("deletionType", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deletionType",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1096,8 +1058,7 @@ namespace Google.Apis.Reseller.v1
         public class GetRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.Subscription>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string customerId, string subscriptionId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string customerId, string subscriptionId) : base(service)
             {
                 CustomerId = customerId;
                 SubscriptionId = subscriptionId;
@@ -1119,13 +1080,13 @@ namespace Google.Apis.Reseller.v1
             public virtual string SubscriptionId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "customers/{customerId}/subscriptions/{subscriptionId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1133,24 +1094,22 @@ namespace Google.Apis.Reseller.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "subscriptionId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "subscriptionId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("subscriptionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "subscriptionId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1169,8 +1128,7 @@ namespace Google.Apis.Reseller.v1
         public class InsertRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.Subscription>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Reseller.v1.Data.Subscription body, string customerId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Reseller.v1.Data.Subscription body, string customerId) : base(service)
             {
                 CustomerId = customerId;
                 Body = body;
@@ -1195,16 +1153,16 @@ namespace Google.Apis.Reseller.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Reseller.v1.Data.Subscription Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "customers/{customerId}/subscriptions";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -1212,24 +1170,22 @@ namespace Google.Apis.Reseller.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "customerAuthToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerAuthToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("customerAuthToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerAuthToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1246,8 +1202,7 @@ namespace Google.Apis.Reseller.v1
         public class ListRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.Subscriptions>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -1284,13 +1239,13 @@ namespace Google.Apis.Reseller.v1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "subscriptions";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1298,51 +1253,46 @@ namespace Google.Apis.Reseller.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "customerAuthToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerAuthToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "customerNamePrefix", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerNamePrefix",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("customerAuthToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerAuthToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("customerNamePrefix", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerNamePrefix",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1364,8 +1314,7 @@ namespace Google.Apis.Reseller.v1
         public class StartPaidServiceRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.Subscription>
         {
             /// <summary>Constructs a new StartPaidService request.</summary>
-            public StartPaidServiceRequest(Google.Apis.Services.IClientService service, string customerId, string subscriptionId)
-                : base(service)
+            public StartPaidServiceRequest(Google.Apis.Services.IClientService service, string customerId, string subscriptionId) : base(service)
             {
                 CustomerId = customerId;
                 SubscriptionId = subscriptionId;
@@ -1387,13 +1336,13 @@ namespace Google.Apis.Reseller.v1
             public virtual string SubscriptionId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "startPaidService";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "customers/{customerId}/subscriptions/{subscriptionId}/startPaidService";
 
             /// <summary>Initializes StartPaidService parameter list.</summary>
@@ -1401,24 +1350,22 @@ namespace Google.Apis.Reseller.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "subscriptionId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "subscriptionId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("subscriptionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "subscriptionId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1440,8 +1387,7 @@ namespace Google.Apis.Reseller.v1
         public class SuspendRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.Subscription>
         {
             /// <summary>Constructs a new Suspend request.</summary>
-            public SuspendRequest(Google.Apis.Services.IClientService service, string customerId, string subscriptionId)
-                : base(service)
+            public SuspendRequest(Google.Apis.Services.IClientService service, string customerId, string subscriptionId) : base(service)
             {
                 CustomerId = customerId;
                 SubscriptionId = subscriptionId;
@@ -1463,13 +1409,13 @@ namespace Google.Apis.Reseller.v1
             public virtual string SubscriptionId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "suspend";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "customers/{customerId}/subscriptions/{subscriptionId}/suspend";
 
             /// <summary>Initializes Suspend parameter list.</summary>
@@ -1477,24 +1423,22 @@ namespace Google.Apis.Reseller.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "subscriptionId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "subscriptionId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("subscriptionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "subscriptionId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

@@ -18,17 +18,16 @@ namespace Google.Apis.CloudSearch.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public CloudSearchService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public CloudSearchService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public CloudSearchService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public CloudSearchService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Debug = new DebugResource(this);
             Indexing = new IndexingResource(this);
@@ -152,12 +151,11 @@ namespace Google.Apis.CloudSearch.v1
         public virtual StatsResource Stats { get; }
     }
 
-    ///<summary>A base abstract class for CloudSearch requests.</summary>
+    /// <summary>A base abstract class for CloudSearch requests.</summary>
     public abstract class CloudSearchBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new CloudSearchBaseServiceRequest instance.</summary>
-        protected CloudSearchBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new CloudSearchBaseServiceRequest instance.</summary>
+        protected CloudSearchBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -237,105 +235,94 @@ namespace Google.Apis.CloudSearch.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -426,8 +413,7 @@ namespace Google.Apis.CloudSearch.v1
                     public class ListRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.ListUnmappedIdentitiesResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                         {
                             Parent = parent;
                             InitParameters();
@@ -453,13 +439,13 @@ namespace Google.Apis.CloudSearch.v1
                         public virtual string PageToken { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "v1/debug/{+parent}/unmappedids";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -467,42 +453,38 @@ namespace Google.Apis.CloudSearch.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^datasources/[^/]+/items/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "debugOptions.enableDebugging",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^datasources/[^/]+/items/[^/]+$",
+                            });
+                            RequestParameters.Add("debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "debugOptions.enableDebugging",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -522,8 +504,7 @@ namespace Google.Apis.CloudSearch.v1
                 public class CheckAccessRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.CheckAccessResponse>
                 {
                     /// <summary>Constructs a new CheckAccess request.</summary>
-                    public CheckAccessRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.Principal body, string name)
-                        : base(service)
+                    public CheckAccessRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.Principal body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -544,16 +525,16 @@ namespace Google.Apis.CloudSearch.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudSearch.v1.Data.Principal Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "checkAccess";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/debug/{+name}:checkAccess";
 
                     /// <summary>Initializes CheckAccess parameter list.</summary>
@@ -561,24 +542,22 @@ namespace Google.Apis.CloudSearch.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^datasources/[^/]+/items/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "debugOptions.enableDebugging",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^datasources/[^/]+/items/[^/]+$",
+                        });
+                        RequestParameters.Add("debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "debugOptions.enableDebugging",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -597,8 +576,7 @@ namespace Google.Apis.CloudSearch.v1
                 public class SearchByViewUrlRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.SearchItemsByViewUrlResponse>
                 {
                     /// <summary>Constructs a new SearchByViewUrl request.</summary>
-                    public SearchByViewUrlRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.SearchItemsByViewUrlRequest body, string name)
-                        : base(service)
+                    public SearchByViewUrlRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.SearchItemsByViewUrlRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -614,16 +592,16 @@ namespace Google.Apis.CloudSearch.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudSearch.v1.Data.SearchItemsByViewUrlRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "searchByViewUrl";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/debug/{+name}/items:searchByViewUrl";
 
                     /// <summary>Initializes SearchByViewUrl parameter list.</summary>
@@ -631,15 +609,14 @@ namespace Google.Apis.CloudSearch.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^datasources/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^datasources/[^/]+$",
+                        });
                     }
 
                 }
@@ -698,8 +675,7 @@ namespace Google.Apis.CloudSearch.v1
                 public class ListForunmappedidentityRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.ListItemNamesForUnmappedIdentityResponse>
                 {
                     /// <summary>Constructs a new ListForunmappedidentity request.</summary>
-                    public ListForunmappedidentityRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListForunmappedidentityRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -733,13 +709,13 @@ namespace Google.Apis.CloudSearch.v1
                     public virtual string UserResourceName { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "listForunmappedidentity";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/debug/{+parent}/items:forunmappedidentity";
 
                     /// <summary>Initializes ListForunmappedidentity parameter list.</summary>
@@ -747,60 +723,54 @@ namespace Google.Apis.CloudSearch.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^identitysources/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "debugOptions.enableDebugging",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "groupResourceName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "groupResourceName",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "userResourceName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "userResourceName",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^identitysources/[^/]+$",
+                        });
+                        RequestParameters.Add("debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "debugOptions.enableDebugging",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("groupResourceName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "groupResourceName",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("userResourceName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userResourceName",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -838,8 +808,7 @@ namespace Google.Apis.CloudSearch.v1
                 public class ListRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.ListUnmappedIdentitiesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
                     {
                         Parent = parent;
                         InitParameters();
@@ -896,13 +865,13 @@ namespace Google.Apis.CloudSearch.v1
                     }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/debug/{+parent}/unmappedids";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -910,51 +879,46 @@ namespace Google.Apis.CloudSearch.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^identitysources/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "debugOptions.enableDebugging",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "resolutionStatusCode", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resolutionStatusCode",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^identitysources/[^/]+$",
+                        });
+                        RequestParameters.Add("debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "debugOptions.enableDebugging",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("resolutionStatusCode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resolutionStatusCode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1032,8 +996,7 @@ namespace Google.Apis.CloudSearch.v1
                 public class DeleteRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -1084,13 +1047,13 @@ namespace Google.Apis.CloudSearch.v1
                     public virtual string Version { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/indexing/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -1098,51 +1061,46 @@ namespace Google.Apis.CloudSearch.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^datasources/[^/]+/items/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "connectorName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "connectorName",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "debugOptions.enableDebugging",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "mode", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "mode",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "version", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "version",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^datasources/[^/]+/items/[^/]+$",
+                        });
+                        RequestParameters.Add("connectorName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "connectorName",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "debugOptions.enableDebugging",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("mode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "mode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("version", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "version",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1163,8 +1121,7 @@ namespace Google.Apis.CloudSearch.v1
                 public class DeleteQueueItemsRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new DeleteQueueItems request.</summary>
-                    public DeleteQueueItemsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.DeleteQueueItemsRequest body, string name)
-                        : base(service)
+                    public DeleteQueueItemsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.DeleteQueueItemsRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1181,16 +1138,16 @@ namespace Google.Apis.CloudSearch.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudSearch.v1.Data.DeleteQueueItemsRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "deleteQueueItems";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/indexing/{+name}/items:deleteQueueItems";
 
                     /// <summary>Initializes DeleteQueueItems parameter list.</summary>
@@ -1198,15 +1155,14 @@ namespace Google.Apis.CloudSearch.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^datasources/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^datasources/[^/]+$",
+                        });
                     }
 
                 }
@@ -1224,8 +1180,7 @@ namespace Google.Apis.CloudSearch.v1
                 public class GetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Item>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -1247,13 +1202,13 @@ namespace Google.Apis.CloudSearch.v1
                     public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/indexing/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -1261,33 +1216,30 @@ namespace Google.Apis.CloudSearch.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^datasources/[^/]+/items/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "connectorName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "connectorName",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "debugOptions.enableDebugging",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^datasources/[^/]+/items/[^/]+$",
+                        });
+                        RequestParameters.Add("connectorName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "connectorName",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "debugOptions.enableDebugging",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1311,8 +1263,7 @@ namespace Google.Apis.CloudSearch.v1
                 public class IndexRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Index request.</summary>
-                    public IndexRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.IndexItemRequest body, string name)
-                        : base(service)
+                    public IndexRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.IndexItemRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1329,16 +1280,16 @@ namespace Google.Apis.CloudSearch.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudSearch.v1.Data.IndexItemRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "index";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/indexing/{+name}:index";
 
                     /// <summary>Initializes Index parameter list.</summary>
@@ -1346,15 +1297,14 @@ namespace Google.Apis.CloudSearch.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^datasources/[^/]+/items/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^datasources/[^/]+/items/[^/]+$",
+                        });
                     }
 
                 }
@@ -1372,8 +1322,7 @@ namespace Google.Apis.CloudSearch.v1
                 public class ListRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.ListItemsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -1413,13 +1362,13 @@ namespace Google.Apis.CloudSearch.v1
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/indexing/{+name}/items";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -1427,60 +1376,54 @@ namespace Google.Apis.CloudSearch.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^datasources/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "brief", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "brief",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "connectorName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "connectorName",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "debugOptions.enableDebugging",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^datasources/[^/]+$",
+                        });
+                        RequestParameters.Add("brief", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "brief",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("connectorName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "connectorName",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "debugOptions.enableDebugging",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1511,8 +1454,7 @@ namespace Google.Apis.CloudSearch.v1
                 public class PollRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.PollItemsResponse>
                 {
                     /// <summary>Constructs a new Poll request.</summary>
-                    public PollRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.PollItemsRequest body, string name)
-                        : base(service)
+                    public PollRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.PollItemsRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1528,16 +1470,16 @@ namespace Google.Apis.CloudSearch.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudSearch.v1.Data.PollItemsRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "poll";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/indexing/{+name}/items:poll";
 
                     /// <summary>Initializes Poll parameter list.</summary>
@@ -1545,15 +1487,14 @@ namespace Google.Apis.CloudSearch.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^datasources/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^datasources/[^/]+$",
+                        });
                     }
 
                 }
@@ -1575,8 +1516,7 @@ namespace Google.Apis.CloudSearch.v1
                 public class PushRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Item>
                 {
                     /// <summary>Constructs a new Push request.</summary>
-                    public PushRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.PushItemRequest body, string name)
-                        : base(service)
+                    public PushRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.PushItemRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1594,16 +1534,16 @@ namespace Google.Apis.CloudSearch.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudSearch.v1.Data.PushItemRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "push";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/indexing/{+name}:push";
 
                     /// <summary>Initializes Push parameter list.</summary>
@@ -1611,15 +1551,14 @@ namespace Google.Apis.CloudSearch.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^datasources/[^/]+/items/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^datasources/[^/]+/items/[^/]+$",
+                        });
                     }
 
                 }
@@ -1642,8 +1581,7 @@ namespace Google.Apis.CloudSearch.v1
                 public class UnreserveRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Unreserve request.</summary>
-                    public UnreserveRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.UnreserveItemsRequest body, string name)
-                        : base(service)
+                    public UnreserveRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.UnreserveItemsRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1660,16 +1598,16 @@ namespace Google.Apis.CloudSearch.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudSearch.v1.Data.UnreserveItemsRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "unreserve";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/indexing/{+name}/items:unreserve";
 
                     /// <summary>Initializes Unreserve parameter list.</summary>
@@ -1677,15 +1615,14 @@ namespace Google.Apis.CloudSearch.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^datasources/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^datasources/[^/]+$",
+                        });
                     }
 
                 }
@@ -1709,8 +1646,7 @@ namespace Google.Apis.CloudSearch.v1
                 public class UploadRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.UploadItemRef>
                 {
                     /// <summary>Constructs a new Upload request.</summary>
-                    public UploadRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.StartUploadItemRequest body, string name)
-                        : base(service)
+                    public UploadRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.StartUploadItemRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1727,16 +1663,16 @@ namespace Google.Apis.CloudSearch.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudSearch.v1.Data.StartUploadItemRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "upload";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/indexing/{+name}:upload";
 
                     /// <summary>Initializes Upload parameter list.</summary>
@@ -1744,15 +1680,14 @@ namespace Google.Apis.CloudSearch.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^datasources/[^/]+/items/[^/]+$",
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^datasources/[^/]+/items/[^/]+$",
+                        });
                     }
 
                 }
@@ -1771,8 +1706,7 @@ namespace Google.Apis.CloudSearch.v1
             public class DeleteSchemaRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new DeleteSchema request.</summary>
-                public DeleteSchemaRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public DeleteSchemaRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -1789,13 +1723,13 @@ namespace Google.Apis.CloudSearch.v1
                 public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "deleteSchema";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/indexing/{+name}/schema";
 
                 /// <summary>Initializes DeleteSchema parameter list.</summary>
@@ -1803,24 +1737,22 @@ namespace Google.Apis.CloudSearch.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^datasources/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "debugOptions.enableDebugging",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^datasources/[^/]+$",
+                    });
+                    RequestParameters.Add("debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "debugOptions.enableDebugging",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1838,8 +1770,7 @@ namespace Google.Apis.CloudSearch.v1
             public class GetSchemaRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Schema>
             {
                 /// <summary>Constructs a new GetSchema request.</summary>
-                public GetSchemaRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetSchemaRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -1856,13 +1787,13 @@ namespace Google.Apis.CloudSearch.v1
                 public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getSchema";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/indexing/{+name}/schema";
 
                 /// <summary>Initializes GetSchema parameter list.</summary>
@@ -1870,24 +1801,22 @@ namespace Google.Apis.CloudSearch.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^datasources/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "debugOptions.enableDebugging",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^datasources/[^/]+$",
+                    });
+                    RequestParameters.Add("debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "debugOptions.enableDebugging",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1908,8 +1837,7 @@ namespace Google.Apis.CloudSearch.v1
             public class UpdateSchemaRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new UpdateSchema request.</summary>
-                public UpdateSchemaRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.UpdateSchemaRequest body, string name)
-                    : base(service)
+                public UpdateSchemaRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.UpdateSchemaRequest body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -1925,16 +1853,16 @@ namespace Google.Apis.CloudSearch.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudSearch.v1.Data.UpdateSchemaRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "updateSchema";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/indexing/{+name}/schema";
 
                 /// <summary>Initializes UpdateSchema parameter list.</summary>
@@ -1942,15 +1870,14 @@ namespace Google.Apis.CloudSearch.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^datasources/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^datasources/[^/]+$",
+                    });
                 }
 
             }
@@ -2003,8 +1930,7 @@ namespace Google.Apis.CloudSearch.v1
         public class UploadRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Media>
         {
             /// <summary>Constructs a new Upload request.</summary>
-            public UploadRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.Media body, string resourceName)
-                : base(service)
+            public UploadRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.Media body, string resourceName) : base(service)
             {
                 ResourceName = resourceName;
                 Body = body;
@@ -2020,16 +1946,16 @@ namespace Google.Apis.CloudSearch.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudSearch.v1.Data.Media Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "upload";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/media/{+resourceName}";
 
             /// <summary>Initializes Upload parameter list.</summary>
@@ -2037,15 +1963,14 @@ namespace Google.Apis.CloudSearch.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "resourceName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resourceName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^.*$",
-                    });
+                RequestParameters.Add("resourceName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resourceName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^.*$",
+                });
             }
 
         }
@@ -2252,8 +2177,7 @@ namespace Google.Apis.CloudSearch.v1
             public class ListRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.ListOperationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -2277,13 +2201,13 @@ namespace Google.Apis.CloudSearch.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}/lro";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -2291,42 +2215,38 @@ namespace Google.Apis.CloudSearch.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^operations/.*$",
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^operations/.*$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2345,8 +2265,7 @@ namespace Google.Apis.CloudSearch.v1
         public class GetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string name)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
             {
                 Name = name;
                 InitParameters();
@@ -2358,13 +2277,13 @@ namespace Google.Apis.CloudSearch.v1
             public virtual string Name { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/{+name}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -2372,15 +2291,14 @@ namespace Google.Apis.CloudSearch.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^operations/.*$",
-                    });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^operations/.*$",
+                });
             }
 
         }
@@ -2437,8 +2355,7 @@ namespace Google.Apis.CloudSearch.v1
             public class ListRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.ListQuerySourcesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service) : base(service)
                 {
                     InitParameters();
                 }
@@ -2477,13 +2394,13 @@ namespace Google.Apis.CloudSearch.v1
                 public virtual string RequestOptionsTimeZone { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/query/sources";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -2491,51 +2408,46 @@ namespace Google.Apis.CloudSearch.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "requestOptions.debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestOptions.debugOptions.enableDebugging",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "requestOptions.languageCode", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestOptions.languageCode",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "requestOptions.searchApplicationId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestOptions.searchApplicationId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "requestOptions.timeZone", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestOptions.timeZone",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("requestOptions.debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestOptions.debugOptions.enableDebugging",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("requestOptions.languageCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestOptions.languageCode",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("requestOptions.searchApplicationId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestOptions.searchApplicationId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("requestOptions.timeZone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestOptions.timeZone",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2562,8 +2474,7 @@ namespace Google.Apis.CloudSearch.v1
         public class SearchRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.SearchResponse>
         {
             /// <summary>Constructs a new Search request.</summary>
-            public SearchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.SearchRequest body)
-                : base(service)
+            public SearchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.SearchRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -2574,16 +2485,16 @@ namespace Google.Apis.CloudSearch.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudSearch.v1.Data.SearchRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "search";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/query/search";
 
             /// <summary>Initializes Search parameter list.</summary>
@@ -2612,8 +2523,7 @@ namespace Google.Apis.CloudSearch.v1
         public class SuggestRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.SuggestResponse>
         {
             /// <summary>Constructs a new Suggest request.</summary>
-            public SuggestRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.SuggestRequest body)
-                : base(service)
+            public SuggestRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.SuggestRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -2624,16 +2534,16 @@ namespace Google.Apis.CloudSearch.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudSearch.v1.Data.SuggestRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "suggest";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/query/suggest";
 
             /// <summary>Initializes Suggest parameter list.</summary>
@@ -2693,8 +2603,7 @@ namespace Google.Apis.CloudSearch.v1
             public class CreateRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.DataSource body)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.DataSource body) : base(service)
                 {
                     Body = body;
                     InitParameters();
@@ -2705,16 +2614,16 @@ namespace Google.Apis.CloudSearch.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudSearch.v1.Data.DataSource Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/settings/datasources";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -2737,8 +2646,7 @@ namespace Google.Apis.CloudSearch.v1
             public class DeleteRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -2755,13 +2663,13 @@ namespace Google.Apis.CloudSearch.v1
                 public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/settings/{+name}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -2769,24 +2677,22 @@ namespace Google.Apis.CloudSearch.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^datasources/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "debugOptions.enableDebugging",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^datasources/[^/]+$",
+                    });
+                    RequestParameters.Add("debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "debugOptions.enableDebugging",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2802,8 +2708,7 @@ namespace Google.Apis.CloudSearch.v1
             public class GetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.DataSource>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -2820,13 +2725,13 @@ namespace Google.Apis.CloudSearch.v1
                 public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/settings/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -2834,24 +2739,22 @@ namespace Google.Apis.CloudSearch.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^datasources/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "debugOptions.enableDebugging",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^datasources/[^/]+$",
+                    });
+                    RequestParameters.Add("debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "debugOptions.enableDebugging",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2866,8 +2769,7 @@ namespace Google.Apis.CloudSearch.v1
             public class ListRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.ListDataSourceResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service) : base(service)
                 {
                     InitParameters();
                 }
@@ -2888,13 +2790,13 @@ namespace Google.Apis.CloudSearch.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/settings/datasources";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -2902,33 +2804,30 @@ namespace Google.Apis.CloudSearch.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "debugOptions.enableDebugging",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "debugOptions.enableDebugging",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2946,8 +2845,7 @@ namespace Google.Apis.CloudSearch.v1
             public class UpdateRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.UpdateDataSourceRequest body, string name)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.UpdateDataSourceRequest body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -2964,16 +2862,16 @@ namespace Google.Apis.CloudSearch.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudSearch.v1.Data.UpdateDataSourceRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/settings/{+name}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -2981,15 +2879,14 @@ namespace Google.Apis.CloudSearch.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^datasources/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^datasources/[^/]+$",
+                    });
                 }
 
             }
@@ -3026,8 +2923,7 @@ namespace Google.Apis.CloudSearch.v1
             public class CreateRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.SearchApplication body)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.SearchApplication body) : base(service)
                 {
                     Body = body;
                     InitParameters();
@@ -3038,16 +2934,16 @@ namespace Google.Apis.CloudSearch.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudSearch.v1.Data.SearchApplication Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/settings/searchapplications";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -3073,8 +2969,7 @@ namespace Google.Apis.CloudSearch.v1
             public class DeleteRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -3092,13 +2987,13 @@ namespace Google.Apis.CloudSearch.v1
                 public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/settings/{+name}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -3106,24 +3001,22 @@ namespace Google.Apis.CloudSearch.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^searchapplications/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "debugOptions.enableDebugging",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^searchapplications/[^/]+$",
+                    });
+                    RequestParameters.Add("debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "debugOptions.enableDebugging",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3141,8 +3034,7 @@ namespace Google.Apis.CloudSearch.v1
             public class GetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.SearchApplication>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -3159,13 +3051,13 @@ namespace Google.Apis.CloudSearch.v1
                 public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/settings/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -3173,24 +3065,22 @@ namespace Google.Apis.CloudSearch.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^searchapplications/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "debugOptions.enableDebugging",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^searchapplications/[^/]+$",
+                    });
+                    RequestParameters.Add("debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "debugOptions.enableDebugging",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3207,8 +3097,7 @@ namespace Google.Apis.CloudSearch.v1
             public class ListRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.ListSearchApplicationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service) : base(service)
                 {
                     InitParameters();
                 }
@@ -3229,13 +3118,13 @@ namespace Google.Apis.CloudSearch.v1
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/settings/searchapplications";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -3243,33 +3132,30 @@ namespace Google.Apis.CloudSearch.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "debugOptions.enableDebugging",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "debugOptions.enableDebugging",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3289,8 +3175,7 @@ namespace Google.Apis.CloudSearch.v1
             public class ResetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Reset request.</summary>
-                public ResetRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.ResetSearchApplicationRequest body, string name)
-                    : base(service)
+                public ResetRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.ResetSearchApplicationRequest body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -3307,16 +3192,16 @@ namespace Google.Apis.CloudSearch.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudSearch.v1.Data.ResetSearchApplicationRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "reset";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/settings/{+name}:reset";
 
                 /// <summary>Initializes Reset parameter list.</summary>
@@ -3324,15 +3209,14 @@ namespace Google.Apis.CloudSearch.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^searchapplications/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^searchapplications/[^/]+$",
+                    });
                 }
 
             }
@@ -3351,8 +3235,7 @@ namespace Google.Apis.CloudSearch.v1
             public class UpdateRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.SearchApplication body, string name)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.SearchApplication body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -3368,16 +3251,16 @@ namespace Google.Apis.CloudSearch.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudSearch.v1.Data.SearchApplication Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/settings/{+name}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -3385,15 +3268,14 @@ namespace Google.Apis.CloudSearch.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^searchapplications/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^searchapplications/[^/]+$",
+                    });
                 }
 
             }
@@ -3471,8 +3353,7 @@ namespace Google.Apis.CloudSearch.v1
                 public class GetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetDataSourceIndexStatsResponse>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -3509,13 +3390,13 @@ namespace Google.Apis.CloudSearch.v1
                     public virtual System.Nullable<int> ToDateYear { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/stats/index/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -3523,69 +3404,62 @@ namespace Google.Apis.CloudSearch.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^datasources/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "fromDate.day", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fromDate.day",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "fromDate.month", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fromDate.month",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "fromDate.year", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fromDate.year",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "toDate.day", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "toDate.day",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "toDate.month", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "toDate.month",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "toDate.year", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "toDate.year",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^datasources/[^/]+$",
+                        });
+                        RequestParameters.Add("fromDate.day", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fromDate.day",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("fromDate.month", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fromDate.month",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("fromDate.year", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fromDate.year",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("toDate.day", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "toDate.day",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("toDate.month", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "toDate.month",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("toDate.year", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "toDate.year",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3643,8 +3517,7 @@ namespace Google.Apis.CloudSearch.v1
                 public class GetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetSearchApplicationQueryStatsResponse>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -3681,13 +3554,13 @@ namespace Google.Apis.CloudSearch.v1
                     public virtual System.Nullable<int> ToDateYear { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/stats/query/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -3695,69 +3568,62 @@ namespace Google.Apis.CloudSearch.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^searchapplications/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "fromDate.day", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fromDate.day",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "fromDate.month", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fromDate.month",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "fromDate.year", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fromDate.year",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "toDate.day", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "toDate.day",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "toDate.month", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "toDate.month",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "toDate.year", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "toDate.year",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^searchapplications/[^/]+$",
+                        });
+                        RequestParameters.Add("fromDate.day", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fromDate.day",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("fromDate.month", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fromDate.month",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("fromDate.year", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fromDate.year",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("toDate.day", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "toDate.day",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("toDate.month", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "toDate.month",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("toDate.year", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "toDate.year",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3815,8 +3681,7 @@ namespace Google.Apis.CloudSearch.v1
                 public class GetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetSearchApplicationSessionStatsResponse>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -3853,13 +3718,13 @@ namespace Google.Apis.CloudSearch.v1
                     public virtual System.Nullable<int> ToDateYear { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/stats/session/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -3867,69 +3732,62 @@ namespace Google.Apis.CloudSearch.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^searchapplications/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "fromDate.day", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fromDate.day",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "fromDate.month", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fromDate.month",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "fromDate.year", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fromDate.year",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "toDate.day", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "toDate.day",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "toDate.month", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "toDate.month",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "toDate.year", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "toDate.year",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^searchapplications/[^/]+$",
+                        });
+                        RequestParameters.Add("fromDate.day", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fromDate.day",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("fromDate.month", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fromDate.month",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("fromDate.year", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fromDate.year",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("toDate.day", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "toDate.day",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("toDate.month", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "toDate.month",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("toDate.year", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "toDate.year",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3987,8 +3845,7 @@ namespace Google.Apis.CloudSearch.v1
                 public class GetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetSearchApplicationUserStatsResponse>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
@@ -4025,13 +3882,13 @@ namespace Google.Apis.CloudSearch.v1
                     public virtual System.Nullable<int> ToDateYear { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/stats/user/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -4039,69 +3896,62 @@ namespace Google.Apis.CloudSearch.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^searchapplications/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "fromDate.day", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fromDate.day",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "fromDate.month", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fromDate.month",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "fromDate.year", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fromDate.year",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "toDate.day", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "toDate.day",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "toDate.month", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "toDate.month",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "toDate.year", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "toDate.year",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^searchapplications/[^/]+$",
+                        });
+                        RequestParameters.Add("fromDate.day", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fromDate.day",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("fromDate.month", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fromDate.month",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("fromDate.year", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fromDate.year",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("toDate.day", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "toDate.day",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("toDate.month", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "toDate.month",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("toDate.year", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "toDate.year",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -4122,8 +3972,7 @@ namespace Google.Apis.CloudSearch.v1
         public class GetIndexRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetCustomerIndexStatsResponse>
         {
             /// <summary>Constructs a new GetIndex request.</summary>
-            public GetIndexRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public GetIndexRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -4154,13 +4003,13 @@ namespace Google.Apis.CloudSearch.v1
             public virtual System.Nullable<int> ToDateYear { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getIndex";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/stats/index";
 
             /// <summary>Initializes GetIndex parameter list.</summary>
@@ -4168,60 +4017,54 @@ namespace Google.Apis.CloudSearch.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "fromDate.day", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fromDate.day",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "fromDate.month", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fromDate.month",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "fromDate.year", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fromDate.year",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "toDate.day", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "toDate.day",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "toDate.month", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "toDate.month",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "toDate.year", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "toDate.year",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("fromDate.day", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fromDate.day",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("fromDate.month", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fromDate.month",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("fromDate.year", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fromDate.year",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("toDate.day", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "toDate.day",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("toDate.month", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "toDate.month",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("toDate.year", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "toDate.year",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4238,8 +4081,7 @@ namespace Google.Apis.CloudSearch.v1
         public class GetQueryRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetCustomerQueryStatsResponse>
         {
             /// <summary>Constructs a new GetQuery request.</summary>
-            public GetQueryRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public GetQueryRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -4270,13 +4112,13 @@ namespace Google.Apis.CloudSearch.v1
             public virtual System.Nullable<int> ToDateYear { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getQuery";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/stats/query";
 
             /// <summary>Initializes GetQuery parameter list.</summary>
@@ -4284,60 +4126,54 @@ namespace Google.Apis.CloudSearch.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "fromDate.day", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fromDate.day",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "fromDate.month", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fromDate.month",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "fromDate.year", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fromDate.year",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "toDate.day", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "toDate.day",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "toDate.month", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "toDate.month",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "toDate.year", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "toDate.year",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("fromDate.day", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fromDate.day",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("fromDate.month", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fromDate.month",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("fromDate.year", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fromDate.year",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("toDate.day", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "toDate.day",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("toDate.month", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "toDate.month",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("toDate.year", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "toDate.year",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4354,8 +4190,7 @@ namespace Google.Apis.CloudSearch.v1
         public class GetSessionRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetCustomerSessionStatsResponse>
         {
             /// <summary>Constructs a new GetSession request.</summary>
-            public GetSessionRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public GetSessionRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -4386,13 +4221,13 @@ namespace Google.Apis.CloudSearch.v1
             public virtual System.Nullable<int> ToDateYear { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getSession";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/stats/session";
 
             /// <summary>Initializes GetSession parameter list.</summary>
@@ -4400,60 +4235,54 @@ namespace Google.Apis.CloudSearch.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "fromDate.day", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fromDate.day",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "fromDate.month", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fromDate.month",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "fromDate.year", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fromDate.year",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "toDate.day", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "toDate.day",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "toDate.month", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "toDate.month",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "toDate.year", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "toDate.year",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("fromDate.day", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fromDate.day",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("fromDate.month", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fromDate.month",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("fromDate.year", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fromDate.year",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("toDate.day", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "toDate.day",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("toDate.month", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "toDate.month",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("toDate.year", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "toDate.year",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4470,8 +4299,7 @@ namespace Google.Apis.CloudSearch.v1
         public class GetUserRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetCustomerUserStatsResponse>
         {
             /// <summary>Constructs a new GetUser request.</summary>
-            public GetUserRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public GetUserRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -4502,13 +4330,13 @@ namespace Google.Apis.CloudSearch.v1
             public virtual System.Nullable<int> ToDateYear { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getUser";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1/stats/user";
 
             /// <summary>Initializes GetUser parameter list.</summary>
@@ -4516,60 +4344,54 @@ namespace Google.Apis.CloudSearch.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "fromDate.day", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fromDate.day",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "fromDate.month", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fromDate.month",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "fromDate.year", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fromDate.year",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "toDate.day", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "toDate.day",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "toDate.month", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "toDate.month",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "toDate.year", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "toDate.year",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("fromDate.day", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fromDate.day",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("fromDate.month", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fromDate.month",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("fromDate.year", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fromDate.year",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("toDate.day", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "toDate.day",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("toDate.month", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "toDate.month",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("toDate.year", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "toDate.year",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

@@ -18,17 +18,16 @@ namespace Google.Apis.Tasks.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public TasksService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public TasksService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public TasksService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public TasksService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Tasklists = new TasklistsResource(this);
             Tasks = new TasksResource(this);
@@ -90,12 +89,11 @@ namespace Google.Apis.Tasks.v1
         public virtual TasksResource Tasks { get; }
     }
 
-    ///<summary>A base abstract class for Tasks requests.</summary>
+    /// <summary>A base abstract class for Tasks requests.</summary>
     public abstract class TasksBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new TasksBaseServiceRequest instance.</summary>
-        protected TasksBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new TasksBaseServiceRequest instance.</summary>
+        protected TasksBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -175,105 +173,94 @@ namespace Google.Apis.Tasks.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -304,8 +291,7 @@ namespace Google.Apis.Tasks.v1
         public class DeleteRequest : TasksBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string tasklist)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string tasklist) : base(service)
             {
                 Tasklist = tasklist;
                 InitParameters();
@@ -317,13 +303,13 @@ namespace Google.Apis.Tasks.v1
             public virtual string Tasklist { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "tasks/v1/users/@me/lists/{tasklist}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -331,15 +317,14 @@ namespace Google.Apis.Tasks.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "tasklist", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "tasklist",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("tasklist", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tasklist",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -355,8 +340,7 @@ namespace Google.Apis.Tasks.v1
         public class GetRequest : TasksBaseServiceRequest<Google.Apis.Tasks.v1.Data.TaskList>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string tasklist)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string tasklist) : base(service)
             {
                 Tasklist = tasklist;
                 InitParameters();
@@ -368,13 +352,13 @@ namespace Google.Apis.Tasks.v1
             public virtual string Tasklist { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "tasks/v1/users/@me/lists/{tasklist}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -382,15 +366,14 @@ namespace Google.Apis.Tasks.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "tasklist", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "tasklist",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("tasklist", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tasklist",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -406,8 +389,7 @@ namespace Google.Apis.Tasks.v1
         public class InsertRequest : TasksBaseServiceRequest<Google.Apis.Tasks.v1.Data.TaskList>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Tasks.v1.Data.TaskList body)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Tasks.v1.Data.TaskList body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -418,16 +400,16 @@ namespace Google.Apis.Tasks.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Tasks.v1.Data.TaskList Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "tasks/v1/users/@me/lists";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -449,8 +431,7 @@ namespace Google.Apis.Tasks.v1
         public class ListRequest : TasksBaseServiceRequest<Google.Apis.Tasks.v1.Data.TaskLists>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -466,13 +447,13 @@ namespace Google.Apis.Tasks.v1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "tasks/v1/users/@me/lists";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -480,24 +461,22 @@ namespace Google.Apis.Tasks.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -516,8 +495,7 @@ namespace Google.Apis.Tasks.v1
         public class PatchRequest : TasksBaseServiceRequest<Google.Apis.Tasks.v1.Data.TaskList>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Tasks.v1.Data.TaskList body, string tasklist)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Tasks.v1.Data.TaskList body, string tasklist) : base(service)
             {
                 Tasklist = tasklist;
                 Body = body;
@@ -533,16 +511,16 @@ namespace Google.Apis.Tasks.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Tasks.v1.Data.TaskList Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "tasks/v1/users/@me/lists/{tasklist}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -550,15 +528,14 @@ namespace Google.Apis.Tasks.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "tasklist", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "tasklist",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("tasklist", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tasklist",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -575,8 +552,7 @@ namespace Google.Apis.Tasks.v1
         public class UpdateRequest : TasksBaseServiceRequest<Google.Apis.Tasks.v1.Data.TaskList>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Tasks.v1.Data.TaskList body, string tasklist)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Tasks.v1.Data.TaskList body, string tasklist) : base(service)
             {
                 Tasklist = tasklist;
                 Body = body;
@@ -592,16 +568,16 @@ namespace Google.Apis.Tasks.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Tasks.v1.Data.TaskList Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "tasks/v1/users/@me/lists/{tasklist}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -609,15 +585,14 @@ namespace Google.Apis.Tasks.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "tasklist", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "tasklist",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("tasklist", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tasklist",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -652,8 +627,7 @@ namespace Google.Apis.Tasks.v1
         public class ClearRequest : TasksBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Clear request.</summary>
-            public ClearRequest(Google.Apis.Services.IClientService service, string tasklist)
-                : base(service)
+            public ClearRequest(Google.Apis.Services.IClientService service, string tasklist) : base(service)
             {
                 Tasklist = tasklist;
                 InitParameters();
@@ -665,13 +639,13 @@ namespace Google.Apis.Tasks.v1
             public virtual string Tasklist { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "clear";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "tasks/v1/lists/{tasklist}/clear";
 
             /// <summary>Initializes Clear parameter list.</summary>
@@ -679,15 +653,14 @@ namespace Google.Apis.Tasks.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "tasklist", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "tasklist",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("tasklist", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tasklist",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -704,8 +677,7 @@ namespace Google.Apis.Tasks.v1
         public class DeleteRequest : TasksBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string tasklist, string task)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string tasklist, string task) : base(service)
             {
                 Tasklist = tasklist;
                 Task = task;
@@ -722,13 +694,13 @@ namespace Google.Apis.Tasks.v1
             public virtual string Task { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "tasks/v1/lists/{tasklist}/tasks/{task}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -736,24 +708,22 @@ namespace Google.Apis.Tasks.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "tasklist", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "tasklist",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "task", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "task",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("tasklist", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tasklist",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("task", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "task",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -770,8 +740,7 @@ namespace Google.Apis.Tasks.v1
         public class GetRequest : TasksBaseServiceRequest<Google.Apis.Tasks.v1.Data.Task>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string tasklist, string task)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string tasklist, string task) : base(service)
             {
                 Tasklist = tasklist;
                 Task = task;
@@ -788,13 +757,13 @@ namespace Google.Apis.Tasks.v1
             public virtual string Task { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "tasks/v1/lists/{tasklist}/tasks/{task}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -802,24 +771,22 @@ namespace Google.Apis.Tasks.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "tasklist", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "tasklist",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "task", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "task",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("tasklist", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tasklist",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("task", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "task",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -836,8 +803,7 @@ namespace Google.Apis.Tasks.v1
         public class InsertRequest : TasksBaseServiceRequest<Google.Apis.Tasks.v1.Data.Task>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Tasks.v1.Data.Task body, string tasklist)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Tasks.v1.Data.Task body, string tasklist) : base(service)
             {
                 Tasklist = tasklist;
                 Body = body;
@@ -863,16 +829,16 @@ namespace Google.Apis.Tasks.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Tasks.v1.Data.Task Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "tasks/v1/lists/{tasklist}/tasks";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -880,33 +846,30 @@ namespace Google.Apis.Tasks.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "tasklist", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "tasklist",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "previous", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "previous",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("tasklist", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tasklist",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("previous", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "previous",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -922,8 +885,7 @@ namespace Google.Apis.Tasks.v1
         public class ListRequest : TasksBaseServiceRequest<Google.Apis.Tasks.v1.Data.Tasks>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string tasklist)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string tasklist) : base(service)
             {
                 Tasklist = tasklist;
                 InitParameters();
@@ -984,13 +946,13 @@ namespace Google.Apis.Tasks.v1
             public virtual string UpdatedMin { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "tasks/v1/lists/{tasklist}/tasks";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -998,105 +960,94 @@ namespace Google.Apis.Tasks.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "tasklist", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "tasklist",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "completedMax", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "completedMax",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "completedMin", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "completedMin",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "dueMax", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "dueMax",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "dueMin", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "dueMin",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "showCompleted", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "showCompleted",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "showDeleted", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "showDeleted",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "showHidden", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "showHidden",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "updatedMin", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "updatedMin",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("tasklist", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tasklist",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("completedMax", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "completedMax",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("completedMin", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "completedMin",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("dueMax", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dueMax",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("dueMin", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dueMin",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("showCompleted", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "showCompleted",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "showDeleted",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("showHidden", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "showHidden",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("updatedMin", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updatedMin",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1115,8 +1066,7 @@ namespace Google.Apis.Tasks.v1
         public class MoveRequest : TasksBaseServiceRequest<Google.Apis.Tasks.v1.Data.Task>
         {
             /// <summary>Constructs a new Move request.</summary>
-            public MoveRequest(Google.Apis.Services.IClientService service, string tasklist, string task)
-                : base(service)
+            public MoveRequest(Google.Apis.Services.IClientService service, string tasklist, string task) : base(service)
             {
                 Tasklist = tasklist;
                 Task = task;
@@ -1143,13 +1093,13 @@ namespace Google.Apis.Tasks.v1
             public virtual string Previous { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "move";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "tasks/v1/lists/{tasklist}/tasks/{task}/move";
 
             /// <summary>Initializes Move parameter list.</summary>
@@ -1157,42 +1107,38 @@ namespace Google.Apis.Tasks.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "tasklist", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "tasklist",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "task", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "task",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "previous", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "previous",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("tasklist", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tasklist",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("task", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "task",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("previous", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "previous",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1210,8 +1156,7 @@ namespace Google.Apis.Tasks.v1
         public class PatchRequest : TasksBaseServiceRequest<Google.Apis.Tasks.v1.Data.Task>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Tasks.v1.Data.Task body, string tasklist, string task)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Tasks.v1.Data.Task body, string tasklist, string task) : base(service)
             {
                 Tasklist = tasklist;
                 Task = task;
@@ -1232,16 +1177,16 @@ namespace Google.Apis.Tasks.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Tasks.v1.Data.Task Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "tasks/v1/lists/{tasklist}/tasks/{task}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -1249,24 +1194,22 @@ namespace Google.Apis.Tasks.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "tasklist", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "tasklist",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "task", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "task",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("tasklist", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tasklist",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("task", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "task",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1284,8 +1227,7 @@ namespace Google.Apis.Tasks.v1
         public class UpdateRequest : TasksBaseServiceRequest<Google.Apis.Tasks.v1.Data.Task>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Tasks.v1.Data.Task body, string tasklist, string task)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Tasks.v1.Data.Task body, string tasklist, string task) : base(service)
             {
                 Tasklist = tasklist;
                 Task = task;
@@ -1306,16 +1248,16 @@ namespace Google.Apis.Tasks.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Tasks.v1.Data.Task Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "tasks/v1/lists/{tasklist}/tasks/{task}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -1323,24 +1265,22 @@ namespace Google.Apis.Tasks.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "tasklist", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "tasklist",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "task", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "task",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("tasklist", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tasklist",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("task", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "task",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

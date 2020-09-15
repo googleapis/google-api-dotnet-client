@@ -18,17 +18,16 @@ namespace Google.Apis.Plus.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public PlusService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public PlusService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public PlusService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public PlusService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Activities = new ActivitiesResource(this);
             Comments = new CommentsResource(this);
@@ -106,12 +105,11 @@ namespace Google.Apis.Plus.v1
         public virtual PeopleResource People { get; }
     }
 
-    ///<summary>A base abstract class for Plus requests.</summary>
+    /// <summary>A base abstract class for Plus requests.</summary>
     public abstract class PlusBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new PlusBaseServiceRequest instance.</summary>
-        protected PlusBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new PlusBaseServiceRequest instance.</summary>
+        protected PlusBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -158,69 +156,62 @@ namespace Google.Apis.Plus.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "userIp", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "userIp",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("userIp", new Google.Apis.Discovery.Parameter
+            {
+                Name = "userIp",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -251,8 +242,7 @@ namespace Google.Apis.Plus.v1
         public class GetRequest : PlusBaseServiceRequest<Google.Apis.Plus.v1.Data.Activity>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string activityId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string activityId) : base(service)
             {
                 ActivityId = activityId;
                 InitParameters();
@@ -264,13 +254,13 @@ namespace Google.Apis.Plus.v1
             public virtual string ActivityId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "activities/{activityId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -278,15 +268,14 @@ namespace Google.Apis.Plus.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "activityId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "activityId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("activityId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "activityId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -304,8 +293,7 @@ namespace Google.Apis.Plus.v1
         public class ListRequest : PlusBaseServiceRequest<Google.Apis.Plus.v1.Data.ActivityFeed>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string userId, ListRequest.CollectionEnum collection)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string userId, ListRequest.CollectionEnum collection) : base(service)
             {
                 UserId = userId;
                 Collection = collection;
@@ -341,13 +329,13 @@ namespace Google.Apis.Plus.v1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "people/{userId}/activities/{collection}";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -355,42 +343,38 @@ namespace Google.Apis.Plus.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "collection", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "collection",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "20",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("collection", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "collection",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "20",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -406,8 +390,7 @@ namespace Google.Apis.Plus.v1
         public class SearchRequest : PlusBaseServiceRequest<Google.Apis.Plus.v1.Data.ActivityFeed>
         {
             /// <summary>Constructs a new Search request.</summary>
-            public SearchRequest(Google.Apis.Services.IClientService service, string query)
-                : base(service)
+            public SearchRequest(Google.Apis.Services.IClientService service, string query) : base(service)
             {
                 Query = query;
                 InitParameters();
@@ -450,13 +433,13 @@ namespace Google.Apis.Plus.v1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "search";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "activities";
 
             /// <summary>Initializes Search parameter list.</summary>
@@ -464,51 +447,46 @@ namespace Google.Apis.Plus.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "query", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "query",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "language", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "language",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "en-US",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "10",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "recent",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("query", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "query",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "language",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "en-US",
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "10",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "recent",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -541,8 +519,7 @@ namespace Google.Apis.Plus.v1
         public class GetRequest : PlusBaseServiceRequest<Google.Apis.Plus.v1.Data.Comment>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string commentId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string commentId) : base(service)
             {
                 CommentId = commentId;
                 InitParameters();
@@ -554,13 +531,13 @@ namespace Google.Apis.Plus.v1
             public virtual string CommentId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "comments/{commentId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -568,15 +545,14 @@ namespace Google.Apis.Plus.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "commentId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "commentId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("commentId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "commentId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -592,8 +568,7 @@ namespace Google.Apis.Plus.v1
         public class ListRequest : PlusBaseServiceRequest<Google.Apis.Plus.v1.Data.CommentFeed>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string activityId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string activityId) : base(service)
             {
                 ActivityId = activityId;
                 InitParameters();
@@ -630,13 +605,13 @@ namespace Google.Apis.Plus.v1
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "activities/{activityId}/comments";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -644,42 +619,38 @@ namespace Google.Apis.Plus.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "activityId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "activityId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "20",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ascending",
-                        Pattern = null,
-                    });
+                RequestParameters.Add("activityId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "activityId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "20",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sortOrder",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "ascending",
+                    Pattern = null,
+                });
             }
 
         }
@@ -715,8 +686,7 @@ namespace Google.Apis.Plus.v1
         public class GetRequest : PlusBaseServiceRequest<Google.Apis.Plus.v1.Data.Person>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string userId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string userId) : base(service)
             {
                 UserId = userId;
                 InitParameters();
@@ -729,13 +699,13 @@ namespace Google.Apis.Plus.v1
             public virtual string UserId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "people/{userId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -743,15 +713,14 @@ namespace Google.Apis.Plus.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -769,8 +738,7 @@ namespace Google.Apis.Plus.v1
         public class ListRequest : PlusBaseServiceRequest<Google.Apis.Plus.v1.Data.PeopleFeed>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string userId, ListRequest.CollectionEnum collection)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string userId, ListRequest.CollectionEnum collection) : base(service)
             {
                 UserId = userId;
                 Collection = collection;
@@ -827,13 +795,13 @@ namespace Google.Apis.Plus.v1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "people/{userId}/people/{collection}";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -841,51 +809,46 @@ namespace Google.Apis.Plus.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "collection", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "collection",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "100",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("collection", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "collection",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "100",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -903,8 +866,7 @@ namespace Google.Apis.Plus.v1
         public class ListByActivityRequest : PlusBaseServiceRequest<Google.Apis.Plus.v1.Data.PeopleFeed>
         {
             /// <summary>Constructs a new ListByActivity request.</summary>
-            public ListByActivityRequest(Google.Apis.Services.IClientService service, string activityId, ListByActivityRequest.CollectionEnum collection)
-                : base(service)
+            public ListByActivityRequest(Google.Apis.Services.IClientService service, string activityId, ListByActivityRequest.CollectionEnum collection) : base(service)
             {
                 ActivityId = activityId;
                 Collection = collection;
@@ -942,13 +904,13 @@ namespace Google.Apis.Plus.v1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "listByActivity";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "activities/{activityId}/people/{collection}";
 
             /// <summary>Initializes ListByActivity parameter list.</summary>
@@ -956,42 +918,38 @@ namespace Google.Apis.Plus.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "activityId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "activityId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "collection", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "collection",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "20",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("activityId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "activityId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("collection", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "collection",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "20",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1007,8 +965,7 @@ namespace Google.Apis.Plus.v1
         public class SearchRequest : PlusBaseServiceRequest<Google.Apis.Plus.v1.Data.PeopleFeed>
         {
             /// <summary>Constructs a new Search request.</summary>
-            public SearchRequest(Google.Apis.Services.IClientService service, string query)
-                : base(service)
+            public SearchRequest(Google.Apis.Services.IClientService service, string query) : base(service)
             {
                 Query = query;
                 InitParameters();
@@ -1036,13 +993,13 @@ namespace Google.Apis.Plus.v1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "search";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "people";
 
             /// <summary>Initializes Search parameter list.</summary>
@@ -1050,42 +1007,38 @@ namespace Google.Apis.Plus.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "query", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "query",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "language", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "language",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "en-US",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "25",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("query", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "query",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "language",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "en-US",
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "25",
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

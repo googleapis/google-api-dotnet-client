@@ -18,17 +18,16 @@ namespace Google.Apis.ToolResults.v1beta3
         public const string Version = "v1beta3";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public ToolResultsService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public ToolResultsService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public ToolResultsService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public ToolResultsService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Projects = new ProjectsResource(this);
         }
@@ -80,12 +79,11 @@ namespace Google.Apis.ToolResults.v1beta3
         public virtual ProjectsResource Projects { get; }
     }
 
-    ///<summary>A base abstract class for ToolResults requests.</summary>
+    /// <summary>A base abstract class for ToolResults requests.</summary>
     public abstract class ToolResultsBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new ToolResultsBaseServiceRequest instance.</summary>
-        protected ToolResultsBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new ToolResultsBaseServiceRequest instance.</summary>
+        protected ToolResultsBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -165,105 +163,94 @@ namespace Google.Apis.ToolResults.v1beta3
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -358,8 +345,7 @@ namespace Google.Apis.ToolResults.v1beta3
                     public class GetRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ScreenshotCluster>
                     {
                         /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string clusterId)
-                            : base(service)
+                        public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string clusterId) : base(service)
                         {
                             ProjectId = projectId;
                             HistoryId = historyId;
@@ -386,13 +372,13 @@ namespace Google.Apis.ToolResults.v1beta3
                         public virtual string ClusterId { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/clusters/{clusterId}";
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -400,42 +386,38 @@ namespace Google.Apis.ToolResults.v1beta3
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "historyId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "historyId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "executionId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "executionId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "clusterId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "clusterId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("historyId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "historyId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("executionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "executionId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -462,8 +444,7 @@ namespace Google.Apis.ToolResults.v1beta3
                     public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListScreenshotClustersResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId) : base(service)
                         {
                             ProjectId = projectId;
                             HistoryId = historyId;
@@ -485,13 +466,13 @@ namespace Google.Apis.ToolResults.v1beta3
                         public virtual string ExecutionId { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/clusters";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -499,33 +480,30 @@ namespace Google.Apis.ToolResults.v1beta3
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "historyId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "historyId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "executionId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "executionId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("historyId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "historyId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("executionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "executionId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -569,8 +547,7 @@ namespace Google.Apis.ToolResults.v1beta3
                     public class GetRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Environment>
                     {
                         /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string environmentId)
-                            : base(service)
+                        public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string environmentId) : base(service)
                         {
                             ProjectId = projectId;
                             HistoryId = historyId;
@@ -597,13 +574,13 @@ namespace Google.Apis.ToolResults.v1beta3
                         public virtual string EnvironmentId { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/environments/{environmentId}";
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -611,42 +588,38 @@ namespace Google.Apis.ToolResults.v1beta3
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "historyId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "historyId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "executionId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "executionId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "environmentId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "environmentId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("historyId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "historyId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("executionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "executionId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("environmentId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "environmentId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -671,8 +644,7 @@ namespace Google.Apis.ToolResults.v1beta3
                     public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListEnvironmentsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId) : base(service)
                         {
                             ProjectId = projectId;
                             HistoryId = historyId;
@@ -703,13 +675,13 @@ namespace Google.Apis.ToolResults.v1beta3
                         public virtual string PageToken { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/environments";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -717,51 +689,46 @@ namespace Google.Apis.ToolResults.v1beta3
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "historyId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "historyId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "executionId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "executionId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("historyId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "historyId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("executionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "executionId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -828,8 +795,7 @@ namespace Google.Apis.ToolResults.v1beta3
                         public class CreateRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.PerfMetricsSummary>
                         {
                             /// <summary>Constructs a new Create request.</summary>
-                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.PerfMetricsSummary body, string projectId, string historyId, string executionId, string stepId)
-                                : base(service)
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.PerfMetricsSummary body, string projectId, string historyId, string executionId, string stepId) : base(service)
                             {
                                 ProjectId = projectId;
                                 HistoryId = historyId;
@@ -860,16 +826,16 @@ namespace Google.Apis.ToolResults.v1beta3
                             /// <summary>Gets or sets the body of this request.</summary>
                             Google.Apis.ToolResults.v1beta3.Data.PerfMetricsSummary Body { get; set; }
 
-                            ///<summary>Returns the body of the request.</summary>
+                            /// <summary>Returns the body of the request.</summary>
                             protected override object GetBody() => Body;
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "create";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "POST";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary";
 
                             /// <summary>Initializes Create parameter list.</summary>
@@ -877,42 +843,38 @@ namespace Google.Apis.ToolResults.v1beta3
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "projectId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "projectId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "historyId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "historyId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "executionId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "executionId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "stepId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "stepId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
+                                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "projectId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("historyId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "historyId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("executionId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "executionId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("stepId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "stepId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
                             }
 
                         }
@@ -985,8 +947,7 @@ namespace Google.Apis.ToolResults.v1beta3
                             public class BatchCreateRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.BatchCreatePerfSamplesResponse>
                             {
                                 /// <summary>Constructs a new BatchCreate request.</summary>
-                                public BatchCreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.BatchCreatePerfSamplesRequest body, string projectId, string historyId, string executionId, string stepId, string sampleSeriesId)
-                                    : base(service)
+                                public BatchCreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.BatchCreatePerfSamplesRequest body, string projectId, string historyId, string executionId, string stepId, string sampleSeriesId) : base(service)
                                 {
                                     ProjectId = projectId;
                                     HistoryId = historyId;
@@ -1022,16 +983,16 @@ namespace Google.Apis.ToolResults.v1beta3
                                 /// <summary>Gets or sets the body of this request.</summary>
                                 Google.Apis.ToolResults.v1beta3.Data.BatchCreatePerfSamplesRequest Body { get; set; }
 
-                                ///<summary>Returns the body of the request.</summary>
+                                /// <summary>Returns the body of the request.</summary>
                                 protected override object GetBody() => Body;
 
-                                ///<summary>Gets the method name.</summary>
+                                /// <summary>Gets the method name.</summary>
                                 public override string MethodName => "batchCreate";
 
-                                ///<summary>Gets the HTTP method.</summary>
+                                /// <summary>Gets the HTTP method.</summary>
                                 public override string HttpMethod => "POST";
 
-                                ///<summary>Gets the REST path.</summary>
+                                /// <summary>Gets the REST path.</summary>
                                 public override string RestPath => "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}/samples:batchCreate";
 
                                 /// <summary>Initializes BatchCreate parameter list.</summary>
@@ -1039,51 +1000,46 @@ namespace Google.Apis.ToolResults.v1beta3
                                 {
                                     base.InitParameters();
 
-                                    RequestParameters.Add(
-                                        "projectId", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "projectId",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
-                                    RequestParameters.Add(
-                                        "historyId", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "historyId",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
-                                    RequestParameters.Add(
-                                        "executionId", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "executionId",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
-                                    RequestParameters.Add(
-                                        "stepId", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "stepId",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
-                                    RequestParameters.Add(
-                                        "sampleSeriesId", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "sampleSeriesId",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
+                                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "projectId",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("historyId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "historyId",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("executionId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "executionId",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("stepId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "stepId",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("sampleSeriesId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "sampleSeriesId",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
                                 }
 
                             }
@@ -1119,8 +1075,7 @@ namespace Google.Apis.ToolResults.v1beta3
                             public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListPerfSamplesResponse>
                             {
                                 /// <summary>Constructs a new List request.</summary>
-                                public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId, string sampleSeriesId)
-                                    : base(service)
+                                public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId, string sampleSeriesId) : base(service)
                                 {
                                     ProjectId = projectId;
                                     HistoryId = historyId;
@@ -1161,13 +1116,13 @@ namespace Google.Apis.ToolResults.v1beta3
                                 public virtual string PageToken { get; set; }
 
 
-                                ///<summary>Gets the method name.</summary>
+                                /// <summary>Gets the method name.</summary>
                                 public override string MethodName => "list";
 
-                                ///<summary>Gets the HTTP method.</summary>
+                                /// <summary>Gets the HTTP method.</summary>
                                 public override string HttpMethod => "GET";
 
-                                ///<summary>Gets the REST path.</summary>
+                                /// <summary>Gets the REST path.</summary>
                                 public override string RestPath => "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}/samples";
 
                                 /// <summary>Initializes List parameter list.</summary>
@@ -1175,69 +1130,62 @@ namespace Google.Apis.ToolResults.v1beta3
                                 {
                                     base.InitParameters();
 
-                                    RequestParameters.Add(
-                                        "projectId", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "projectId",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
-                                    RequestParameters.Add(
-                                        "historyId", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "historyId",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
-                                    RequestParameters.Add(
-                                        "executionId", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "executionId",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
-                                    RequestParameters.Add(
-                                        "stepId", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "stepId",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
-                                    RequestParameters.Add(
-                                        "sampleSeriesId", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "sampleSeriesId",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
-                                    RequestParameters.Add(
-                                        "pageSize", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "pageSize",
-                                            IsRequired = false,
-                                            ParameterType = "query",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
-                                    RequestParameters.Add(
-                                        "pageToken", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "pageToken",
-                                            IsRequired = false,
-                                            ParameterType = "query",
-                                            DefaultValue = null,
-                                            Pattern = null,
-                                        });
+                                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "projectId",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("historyId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "historyId",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("executionId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "executionId",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("stepId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "stepId",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("sampleSeriesId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "sampleSeriesId",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageSize",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageToken",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
                                 }
 
                             }
@@ -1264,8 +1212,7 @@ namespace Google.Apis.ToolResults.v1beta3
                         public class CreateRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.PerfSampleSeries>
                         {
                             /// <summary>Constructs a new Create request.</summary>
-                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.PerfSampleSeries body, string projectId, string historyId, string executionId, string stepId)
-                                : base(service)
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.PerfSampleSeries body, string projectId, string historyId, string executionId, string stepId) : base(service)
                             {
                                 ProjectId = projectId;
                                 HistoryId = historyId;
@@ -1296,16 +1243,16 @@ namespace Google.Apis.ToolResults.v1beta3
                             /// <summary>Gets or sets the body of this request.</summary>
                             Google.Apis.ToolResults.v1beta3.Data.PerfSampleSeries Body { get; set; }
 
-                            ///<summary>Returns the body of the request.</summary>
+                            /// <summary>Returns the body of the request.</summary>
                             protected override object GetBody() => Body;
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "create";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "POST";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries";
 
                             /// <summary>Initializes Create parameter list.</summary>
@@ -1313,42 +1260,38 @@ namespace Google.Apis.ToolResults.v1beta3
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "projectId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "projectId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "historyId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "historyId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "executionId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "executionId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "stepId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "stepId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
+                                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "projectId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("historyId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "historyId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("executionId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "executionId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("stepId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "stepId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
                             }
 
                         }
@@ -1372,8 +1315,7 @@ namespace Google.Apis.ToolResults.v1beta3
                         public class GetRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.PerfSampleSeries>
                         {
                             /// <summary>Constructs a new Get request.</summary>
-                            public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId, string sampleSeriesId)
-                                : base(service)
+                            public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId, string sampleSeriesId) : base(service)
                             {
                                 ProjectId = projectId;
                                 HistoryId = historyId;
@@ -1405,13 +1347,13 @@ namespace Google.Apis.ToolResults.v1beta3
                             public virtual string SampleSeriesId { get; private set; }
 
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "get";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "GET";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}";
 
                             /// <summary>Initializes Get parameter list.</summary>
@@ -1419,51 +1361,46 @@ namespace Google.Apis.ToolResults.v1beta3
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "projectId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "projectId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "historyId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "historyId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "executionId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "executionId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "stepId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "stepId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "sampleSeriesId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "sampleSeriesId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
+                                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "projectId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("historyId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "historyId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("executionId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "executionId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("stepId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "stepId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("sampleSeriesId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "sampleSeriesId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
                             }
 
                         }
@@ -1490,8 +1427,7 @@ namespace Google.Apis.ToolResults.v1beta3
                         public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListPerfSampleSeriesResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
-                            public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId)
-                                : base(service)
+                            public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId) : base(service)
                             {
                                 ProjectId = projectId;
                                 HistoryId = historyId;
@@ -1539,13 +1475,13 @@ namespace Google.Apis.ToolResults.v1beta3
                             }
 
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "list";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "GET";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries";
 
                             /// <summary>Initializes List parameter list.</summary>
@@ -1553,51 +1489,46 @@ namespace Google.Apis.ToolResults.v1beta3
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "projectId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "projectId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "historyId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "historyId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "executionId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "executionId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "stepId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "stepId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "filter", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "filter",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
+                                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "projectId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("historyId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "historyId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("executionId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "executionId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("stepId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "stepId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
                             }
 
                         }
@@ -1647,8 +1578,7 @@ namespace Google.Apis.ToolResults.v1beta3
                         public class GetRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.TestCase>
                         {
                             /// <summary>Constructs a new Get request.</summary>
-                            public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId, string testCaseId)
-                                : base(service)
+                            public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId, string testCaseId) : base(service)
                             {
                                 ProjectId = projectId;
                                 HistoryId = historyId;
@@ -1681,13 +1611,13 @@ namespace Google.Apis.ToolResults.v1beta3
                             public virtual string TestCaseId { get; private set; }
 
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "get";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "GET";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/testCases/{testCaseId}";
 
                             /// <summary>Initializes Get parameter list.</summary>
@@ -1695,51 +1625,46 @@ namespace Google.Apis.ToolResults.v1beta3
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "projectId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "projectId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "historyId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "historyId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "executionId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "executionId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "stepId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "stepId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "testCaseId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "testCaseId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
+                                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "projectId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("historyId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "historyId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("executionId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "executionId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("stepId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "stepId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("testCaseId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "testCaseId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
                             }
 
                         }
@@ -1766,8 +1691,7 @@ namespace Google.Apis.ToolResults.v1beta3
                         public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListTestCasesResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
-                            public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId)
-                                : base(service)
+                            public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId) : base(service)
                             {
                                 ProjectId = projectId;
                                 HistoryId = historyId;
@@ -1804,13 +1728,13 @@ namespace Google.Apis.ToolResults.v1beta3
                             public virtual string PageToken { get; set; }
 
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "list";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "GET";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/testCases";
 
                             /// <summary>Initializes List parameter list.</summary>
@@ -1818,60 +1742,54 @@ namespace Google.Apis.ToolResults.v1beta3
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "projectId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "projectId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "historyId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "historyId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "executionId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "executionId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "stepId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "stepId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "pageSize", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageSize",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "pageToken", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageToken",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
+                                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "projectId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("historyId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "historyId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("executionId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "executionId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("stepId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "stepId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
                             }
 
                         }
@@ -1917,8 +1835,7 @@ namespace Google.Apis.ToolResults.v1beta3
                         public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListStepThumbnailsResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
-                            public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId)
-                                : base(service)
+                            public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId) : base(service)
                             {
                                 ProjectId = projectId;
                                 HistoryId = historyId;
@@ -1954,13 +1871,13 @@ namespace Google.Apis.ToolResults.v1beta3
                             public virtual string PageToken { get; set; }
 
 
-                            ///<summary>Gets the method name.</summary>
+                            /// <summary>Gets the method name.</summary>
                             public override string MethodName => "list";
 
-                            ///<summary>Gets the HTTP method.</summary>
+                            /// <summary>Gets the HTTP method.</summary>
                             public override string HttpMethod => "GET";
 
-                            ///<summary>Gets the REST path.</summary>
+                            /// <summary>Gets the REST path.</summary>
                             public override string RestPath => "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/thumbnails";
 
                             /// <summary>Initializes List parameter list.</summary>
@@ -1968,60 +1885,54 @@ namespace Google.Apis.ToolResults.v1beta3
                             {
                                 base.InitParameters();
 
-                                RequestParameters.Add(
-                                    "projectId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "projectId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "historyId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "historyId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "executionId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "executionId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "stepId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "stepId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "pageSize", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageSize",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "pageToken", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageToken",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
+                                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "projectId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("historyId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "historyId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("executionId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "executionId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("stepId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "stepId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
                             }
 
                         }
@@ -2048,8 +1959,7 @@ namespace Google.Apis.ToolResults.v1beta3
                     public class AccessibilityClustersRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListStepAccessibilityClustersResponse>
                     {
                         /// <summary>Constructs a new AccessibilityClusters request.</summary>
-                        public AccessibilityClustersRequest(Google.Apis.Services.IClientService service, string name)
-                            : base(service)
+                        public AccessibilityClustersRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                         {
                             Name = name;
                             InitParameters();
@@ -2070,13 +1980,13 @@ namespace Google.Apis.ToolResults.v1beta3
                         public virtual string Locale { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "accessibilityClusters";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "toolresults/v1beta3/{+name}:accessibilityClusters";
 
                         /// <summary>Initializes AccessibilityClusters parameter list.</summary>
@@ -2084,24 +1994,22 @@ namespace Google.Apis.ToolResults.v1beta3
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/histories/[^/]+/executions/[^/]+/steps/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "locale", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "locale",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/histories/[^/]+/executions/[^/]+/steps/[^/]+$",
+                            });
+                            RequestParameters.Add("locale", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "locale",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -2127,8 +2035,7 @@ namespace Google.Apis.ToolResults.v1beta3
                     public class CreateRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Step>
                     {
                         /// <summary>Constructs a new Create request.</summary>
-                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.Step body, string projectId, string historyId, string executionId)
-                            : base(service)
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.Step body, string projectId, string historyId, string executionId) : base(service)
                         {
                             ProjectId = projectId;
                             HistoryId = historyId;
@@ -2159,16 +2066,16 @@ namespace Google.Apis.ToolResults.v1beta3
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.ToolResults.v1beta3.Data.Step Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "create";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps";
 
                         /// <summary>Initializes Create parameter list.</summary>
@@ -2176,42 +2083,38 @@ namespace Google.Apis.ToolResults.v1beta3
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "historyId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "historyId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "executionId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "executionId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "requestId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "requestId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("historyId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "historyId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("executionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "executionId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -2236,8 +2139,7 @@ namespace Google.Apis.ToolResults.v1beta3
                     public class GetRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Step>
                     {
                         /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId)
-                            : base(service)
+                        public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId) : base(service)
                         {
                             ProjectId = projectId;
                             HistoryId = historyId;
@@ -2264,13 +2166,13 @@ namespace Google.Apis.ToolResults.v1beta3
                         public virtual string StepId { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}";
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -2278,42 +2180,38 @@ namespace Google.Apis.ToolResults.v1beta3
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "historyId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "historyId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "executionId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "executionId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "stepId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "stepId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("historyId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "historyId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("executionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "executionId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("stepId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stepId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -2336,8 +2234,7 @@ namespace Google.Apis.ToolResults.v1beta3
                     public class GetPerfMetricsSummaryRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.PerfMetricsSummary>
                     {
                         /// <summary>Constructs a new GetPerfMetricsSummary request.</summary>
-                        public GetPerfMetricsSummaryRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId)
-                            : base(service)
+                        public GetPerfMetricsSummaryRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string stepId) : base(service)
                         {
                             ProjectId = projectId;
                             HistoryId = historyId;
@@ -2364,13 +2261,13 @@ namespace Google.Apis.ToolResults.v1beta3
                         public virtual string StepId { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "getPerfMetricsSummary";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary";
 
                         /// <summary>Initializes GetPerfMetricsSummary parameter list.</summary>
@@ -2378,42 +2275,38 @@ namespace Google.Apis.ToolResults.v1beta3
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "historyId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "historyId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "executionId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "executionId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "stepId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "stepId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("historyId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "historyId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("executionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "executionId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("stepId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stepId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -2442,8 +2335,7 @@ namespace Google.Apis.ToolResults.v1beta3
                     public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListStepsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId) : base(service)
                         {
                             ProjectId = projectId;
                             HistoryId = historyId;
@@ -2474,13 +2366,13 @@ namespace Google.Apis.ToolResults.v1beta3
                         public virtual string PageToken { get; set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -2488,51 +2380,46 @@ namespace Google.Apis.ToolResults.v1beta3
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "historyId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "historyId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "executionId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "executionId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("historyId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "historyId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("executionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "executionId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -2564,8 +2451,7 @@ namespace Google.Apis.ToolResults.v1beta3
                     public class PatchRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Step>
                     {
                         /// <summary>Constructs a new Patch request.</summary>
-                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.Step body, string projectId, string historyId, string executionId, string stepId)
-                            : base(service)
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.Step body, string projectId, string historyId, string executionId, string stepId) : base(service)
                         {
                             ProjectId = projectId;
                             HistoryId = historyId;
@@ -2601,16 +2487,16 @@ namespace Google.Apis.ToolResults.v1beta3
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.ToolResults.v1beta3.Data.Step Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "patch";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "PATCH";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}";
 
                         /// <summary>Initializes Patch parameter list.</summary>
@@ -2618,51 +2504,46 @@ namespace Google.Apis.ToolResults.v1beta3
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "historyId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "historyId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "executionId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "executionId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "stepId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "stepId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "requestId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "requestId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("historyId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "historyId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("executionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "executionId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("stepId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stepId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -2692,8 +2573,7 @@ namespace Google.Apis.ToolResults.v1beta3
                     public class PublishXunitXmlFilesRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Step>
                     {
                         /// <summary>Constructs a new PublishXunitXmlFiles request.</summary>
-                        public PublishXunitXmlFilesRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.PublishXunitXmlFilesRequest body, string projectId, string historyId, string executionId, string stepId)
-                            : base(service)
+                        public PublishXunitXmlFilesRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.PublishXunitXmlFilesRequest body, string projectId, string historyId, string executionId, string stepId) : base(service)
                         {
                             ProjectId = projectId;
                             HistoryId = historyId;
@@ -2724,16 +2604,16 @@ namespace Google.Apis.ToolResults.v1beta3
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.ToolResults.v1beta3.Data.PublishXunitXmlFilesRequest Body { get; set; }
 
-                        ///<summary>Returns the body of the request.</summary>
+                        /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "publishXunitXmlFiles";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}:publishXunitXmlFiles";
 
                         /// <summary>Initializes PublishXunitXmlFiles parameter list.</summary>
@@ -2741,42 +2621,38 @@ namespace Google.Apis.ToolResults.v1beta3
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "historyId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "historyId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "executionId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "executionId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "stepId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "stepId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("historyId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "historyId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("executionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "executionId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("stepId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stepId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -2802,8 +2678,7 @@ namespace Google.Apis.ToolResults.v1beta3
                 public class CreateRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Execution>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.Execution body, string projectId, string historyId)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.Execution body, string projectId, string historyId) : base(service)
                     {
                         ProjectId = projectId;
                         HistoryId = historyId;
@@ -2829,16 +2704,16 @@ namespace Google.Apis.ToolResults.v1beta3
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.ToolResults.v1beta3.Data.Execution Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -2846,33 +2721,30 @@ namespace Google.Apis.ToolResults.v1beta3
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "historyId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "historyId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "requestId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "requestId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("historyId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "historyId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2895,8 +2767,7 @@ namespace Google.Apis.ToolResults.v1beta3
                 public class GetRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Execution>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId) : base(service)
                     {
                         ProjectId = projectId;
                         HistoryId = historyId;
@@ -2918,13 +2789,13 @@ namespace Google.Apis.ToolResults.v1beta3
                     public virtual string ExecutionId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -2932,33 +2803,30 @@ namespace Google.Apis.ToolResults.v1beta3
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "historyId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "historyId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "executionId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "executionId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("historyId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "historyId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("executionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "executionId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2984,8 +2852,7 @@ namespace Google.Apis.ToolResults.v1beta3
                 public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListExecutionsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId) : base(service)
                     {
                         ProjectId = projectId;
                         HistoryId = historyId;
@@ -3011,13 +2878,13 @@ namespace Google.Apis.ToolResults.v1beta3
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -3025,42 +2892,38 @@ namespace Google.Apis.ToolResults.v1beta3
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "historyId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "historyId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("historyId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "historyId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3086,8 +2949,7 @@ namespace Google.Apis.ToolResults.v1beta3
                 public class PatchRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Execution>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.Execution body, string projectId, string historyId, string executionId)
-                        : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.Execution body, string projectId, string historyId, string executionId) : base(service)
                     {
                         ProjectId = projectId;
                         HistoryId = historyId;
@@ -3118,16 +2980,16 @@ namespace Google.Apis.ToolResults.v1beta3
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.ToolResults.v1beta3.Data.Execution Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "patch";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PATCH";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}";
 
                     /// <summary>Initializes Patch parameter list.</summary>
@@ -3135,42 +2997,38 @@ namespace Google.Apis.ToolResults.v1beta3
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "historyId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "historyId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "executionId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "executionId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "requestId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "requestId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("historyId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "historyId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("executionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "executionId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3194,8 +3052,7 @@ namespace Google.Apis.ToolResults.v1beta3
             public class CreateRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.History>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.History body, string projectId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ToolResults.v1beta3.Data.History body, string projectId) : base(service)
                 {
                     ProjectId = projectId;
                     Body = body;
@@ -3216,16 +3073,16 @@ namespace Google.Apis.ToolResults.v1beta3
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.ToolResults.v1beta3.Data.History Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "toolresults/v1beta3/projects/{projectId}/histories";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -3233,24 +3090,22 @@ namespace Google.Apis.ToolResults.v1beta3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "requestId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3272,8 +3127,7 @@ namespace Google.Apis.ToolResults.v1beta3
             public class GetRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.History>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId) : base(service)
                 {
                     ProjectId = projectId;
                     HistoryId = historyId;
@@ -3290,13 +3144,13 @@ namespace Google.Apis.ToolResults.v1beta3
                 public virtual string HistoryId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "toolresults/v1beta3/projects/{projectId}/histories/{historyId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -3304,24 +3158,22 @@ namespace Google.Apis.ToolResults.v1beta3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "historyId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "historyId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("historyId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "historyId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3345,8 +3197,7 @@ namespace Google.Apis.ToolResults.v1beta3
             public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListHistoriesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string projectId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string projectId) : base(service)
                 {
                     ProjectId = projectId;
                     InitParameters();
@@ -3372,13 +3223,13 @@ namespace Google.Apis.ToolResults.v1beta3
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "toolresults/v1beta3/projects/{projectId}/histories";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -3386,42 +3237,38 @@ namespace Google.Apis.ToolResults.v1beta3
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filterByName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filterByName",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filterByName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filterByName",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3440,8 +3287,7 @@ namespace Google.Apis.ToolResults.v1beta3
         public class GetSettingsRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ProjectSettings>
         {
             /// <summary>Constructs a new GetSettings request.</summary>
-            public GetSettingsRequest(Google.Apis.Services.IClientService service, string projectId)
-                : base(service)
+            public GetSettingsRequest(Google.Apis.Services.IClientService service, string projectId) : base(service)
             {
                 ProjectId = projectId;
                 InitParameters();
@@ -3453,13 +3299,13 @@ namespace Google.Apis.ToolResults.v1beta3
             public virtual string ProjectId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getSettings";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "toolresults/v1beta3/projects/{projectId}/settings";
 
             /// <summary>Initializes GetSettings parameter list.</summary>
@@ -3467,15 +3313,14 @@ namespace Google.Apis.ToolResults.v1beta3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3515,8 +3360,7 @@ namespace Google.Apis.ToolResults.v1beta3
         public class InitializeSettingsRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ProjectSettings>
         {
             /// <summary>Constructs a new InitializeSettings request.</summary>
-            public InitializeSettingsRequest(Google.Apis.Services.IClientService service, string projectId)
-                : base(service)
+            public InitializeSettingsRequest(Google.Apis.Services.IClientService service, string projectId) : base(service)
             {
                 ProjectId = projectId;
                 InitParameters();
@@ -3528,13 +3372,13 @@ namespace Google.Apis.ToolResults.v1beta3
             public virtual string ProjectId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "initializeSettings";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "toolresults/v1beta3/projects/{projectId}:initializeSettings";
 
             /// <summary>Initializes InitializeSettings parameter list.</summary>
@@ -3542,15 +3386,14 @@ namespace Google.Apis.ToolResults.v1beta3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

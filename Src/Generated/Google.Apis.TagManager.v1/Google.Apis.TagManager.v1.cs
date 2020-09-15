@@ -18,17 +18,16 @@ namespace Google.Apis.TagManager.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public TagManagerService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public TagManagerService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public TagManagerService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public TagManagerService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Accounts = new AccountsResource(this);
         }
@@ -118,12 +117,11 @@ namespace Google.Apis.TagManager.v1
         public virtual AccountsResource Accounts { get; }
     }
 
-    ///<summary>A base abstract class for TagManager requests.</summary>
+    /// <summary>A base abstract class for TagManager requests.</summary>
     public abstract class TagManagerBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new TagManagerBaseServiceRequest instance.</summary>
-        protected TagManagerBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new TagManagerBaseServiceRequest instance.</summary>
+        protected TagManagerBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -203,105 +201,94 @@ namespace Google.Apis.TagManager.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -381,8 +368,7 @@ namespace Google.Apis.TagManager.v1
                 public class CreateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.Environment>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Environment body, string accountId, string containerId)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Environment body, string accountId, string containerId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -403,16 +389,16 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.TagManager.v1.Data.Environment Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -420,24 +406,22 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -456,8 +440,7 @@ namespace Google.Apis.TagManager.v1
                 public class DeleteRequest : TagManagerBaseServiceRequest<string>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string environmentId)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string environmentId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -479,13 +462,13 @@ namespace Google.Apis.TagManager.v1
                     public virtual string EnvironmentId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments/{environmentId}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -493,33 +476,30 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "environmentId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "environmentId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("environmentId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "environmentId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -538,8 +518,7 @@ namespace Google.Apis.TagManager.v1
                 public class GetRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.Environment>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string environmentId)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string environmentId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -561,13 +540,13 @@ namespace Google.Apis.TagManager.v1
                     public virtual string EnvironmentId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments/{environmentId}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -575,33 +554,30 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "environmentId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "environmentId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("environmentId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "environmentId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -619,8 +595,7 @@ namespace Google.Apis.TagManager.v1
                 public class ListRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.ListEnvironmentsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string accountId, string containerId)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string accountId, string containerId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -637,13 +612,13 @@ namespace Google.Apis.TagManager.v1
                     public virtual string ContainerId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -651,24 +626,22 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -688,8 +661,7 @@ namespace Google.Apis.TagManager.v1
                 public class UpdateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.Environment>
                 {
                     /// <summary>Constructs a new Update request.</summary>
-                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Environment body, string accountId, string containerId, string environmentId)
-                        : base(service)
+                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Environment body, string accountId, string containerId, string environmentId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -720,16 +692,16 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.TagManager.v1.Data.Environment Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "update";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PUT";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments/{environmentId}";
 
                     /// <summary>Initializes Update parameter list.</summary>
@@ -737,42 +709,38 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "environmentId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "environmentId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "fingerprint", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fingerprint",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("environmentId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "environmentId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("fingerprint", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fingerprint",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -829,8 +797,7 @@ namespace Google.Apis.TagManager.v1
                     public class ListRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.FolderEntities>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string folderId)
-                            : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string folderId) : base(service)
                         {
                             AccountId = accountId;
                             ContainerId = containerId;
@@ -852,13 +819,13 @@ namespace Google.Apis.TagManager.v1
                         public virtual string FolderId { get; private set; }
 
 
-                        ///<summary>Gets the method name.</summary>
+                        /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
-                        ///<summary>Gets the HTTP method.</summary>
+                        /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "GET";
 
-                        ///<summary>Gets the REST path.</summary>
+                        /// <summary>Gets the REST path.</summary>
                         public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}/entities";
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -866,33 +833,30 @@ namespace Google.Apis.TagManager.v1
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add(
-                                "accountId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "accountId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "containerId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "containerId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "folderId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "folderId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
+                            RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "accountId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "containerId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("folderId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "folderId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
 
                     }
@@ -912,8 +876,7 @@ namespace Google.Apis.TagManager.v1
                 public class CreateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.Folder>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Folder body, string accountId, string containerId)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Folder body, string accountId, string containerId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -934,16 +897,16 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.TagManager.v1.Data.Folder Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -951,24 +914,22 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -987,8 +948,7 @@ namespace Google.Apis.TagManager.v1
                 public class DeleteRequest : TagManagerBaseServiceRequest<string>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string folderId)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string folderId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -1010,13 +970,13 @@ namespace Google.Apis.TagManager.v1
                     public virtual string FolderId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -1024,33 +984,30 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "folderId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "folderId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("folderId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "folderId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1069,8 +1026,7 @@ namespace Google.Apis.TagManager.v1
                 public class GetRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.Folder>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string folderId)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string folderId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -1092,13 +1048,13 @@ namespace Google.Apis.TagManager.v1
                     public virtual string FolderId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -1106,33 +1062,30 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "folderId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "folderId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("folderId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "folderId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1150,8 +1103,7 @@ namespace Google.Apis.TagManager.v1
                 public class ListRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.ListFoldersResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string accountId, string containerId)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string accountId, string containerId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -1168,13 +1120,13 @@ namespace Google.Apis.TagManager.v1
                     public virtual string ContainerId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -1182,24 +1134,22 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1219,8 +1169,7 @@ namespace Google.Apis.TagManager.v1
                 public class UpdateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.Folder>
                 {
                     /// <summary>Constructs a new Update request.</summary>
-                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Folder body, string accountId, string containerId, string folderId)
-                        : base(service)
+                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Folder body, string accountId, string containerId, string folderId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -1251,16 +1200,16 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.TagManager.v1.Data.Folder Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "update";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PUT";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}";
 
                     /// <summary>Initializes Update parameter list.</summary>
@@ -1268,42 +1217,38 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "folderId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "folderId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "fingerprint", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fingerprint",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("folderId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "folderId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("fingerprint", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fingerprint",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1342,8 +1287,7 @@ namespace Google.Apis.TagManager.v1
                 public class UpdateRequest : TagManagerBaseServiceRequest<string>
                 {
                     /// <summary>Constructs a new Update request.</summary>
-                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Folder body, string accountId, string containerId, string folderId)
-                        : base(service)
+                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Folder body, string accountId, string containerId, string folderId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -1381,16 +1325,16 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.TagManager.v1.Data.Folder Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "update";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PUT";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/move_folders/{folderId}";
 
                     /// <summary>Initializes Update parameter list.</summary>
@@ -1398,60 +1342,54 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "folderId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "folderId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "tagId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "tagId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "triggerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "triggerId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "variableId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "variableId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("folderId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "folderId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("tagId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "tagId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("triggerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "triggerId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("variableId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "variableId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1490,8 +1428,7 @@ namespace Google.Apis.TagManager.v1
                 public class UpdateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.Environment>
                 {
                     /// <summary>Constructs a new Update request.</summary>
-                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Environment body, string accountId, string containerId, string environmentId)
-                        : base(service)
+                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Environment body, string accountId, string containerId, string environmentId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -1517,16 +1454,16 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.TagManager.v1.Data.Environment Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "update";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PUT";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/reauthorize_environments/{environmentId}";
 
                     /// <summary>Initializes Update parameter list.</summary>
@@ -1534,33 +1471,30 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "environmentId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "environmentId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("environmentId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "environmentId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1598,8 +1532,7 @@ namespace Google.Apis.TagManager.v1
                 public class CreateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.Tag>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Tag body, string accountId, string containerId)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Tag body, string accountId, string containerId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -1620,16 +1553,16 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.TagManager.v1.Data.Tag Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -1637,24 +1570,22 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1673,8 +1604,7 @@ namespace Google.Apis.TagManager.v1
                 public class DeleteRequest : TagManagerBaseServiceRequest<string>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string tagId)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string tagId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -1696,13 +1626,13 @@ namespace Google.Apis.TagManager.v1
                     public virtual string TagId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags/{tagId}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -1710,33 +1640,30 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "tagId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "tagId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("tagId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "tagId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1755,8 +1682,7 @@ namespace Google.Apis.TagManager.v1
                 public class GetRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.Tag>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string tagId)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string tagId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -1778,13 +1704,13 @@ namespace Google.Apis.TagManager.v1
                     public virtual string TagId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags/{tagId}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -1792,33 +1718,30 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "tagId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "tagId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("tagId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "tagId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1836,8 +1759,7 @@ namespace Google.Apis.TagManager.v1
                 public class ListRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.ListTagsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string accountId, string containerId)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string accountId, string containerId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -1854,13 +1776,13 @@ namespace Google.Apis.TagManager.v1
                     public virtual string ContainerId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -1868,24 +1790,22 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1905,8 +1825,7 @@ namespace Google.Apis.TagManager.v1
                 public class UpdateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.Tag>
                 {
                     /// <summary>Constructs a new Update request.</summary>
-                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Tag body, string accountId, string containerId, string tagId)
-                        : base(service)
+                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Tag body, string accountId, string containerId, string tagId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -1937,16 +1856,16 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.TagManager.v1.Data.Tag Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "update";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PUT";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags/{tagId}";
 
                     /// <summary>Initializes Update parameter list.</summary>
@@ -1954,42 +1873,38 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "tagId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "tagId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "fingerprint", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fingerprint",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("tagId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "tagId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("fingerprint", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fingerprint",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2027,8 +1942,7 @@ namespace Google.Apis.TagManager.v1
                 public class CreateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.Trigger>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Trigger body, string accountId, string containerId)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Trigger body, string accountId, string containerId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -2049,16 +1963,16 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.TagManager.v1.Data.Trigger Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -2066,24 +1980,22 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2102,8 +2014,7 @@ namespace Google.Apis.TagManager.v1
                 public class DeleteRequest : TagManagerBaseServiceRequest<string>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string triggerId)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string triggerId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -2125,13 +2036,13 @@ namespace Google.Apis.TagManager.v1
                     public virtual string TriggerId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers/{triggerId}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -2139,33 +2050,30 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "triggerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "triggerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("triggerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "triggerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2184,8 +2092,7 @@ namespace Google.Apis.TagManager.v1
                 public class GetRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.Trigger>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string triggerId)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string triggerId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -2207,13 +2114,13 @@ namespace Google.Apis.TagManager.v1
                     public virtual string TriggerId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers/{triggerId}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -2221,33 +2128,30 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "triggerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "triggerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("triggerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "triggerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2265,8 +2169,7 @@ namespace Google.Apis.TagManager.v1
                 public class ListRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.ListTriggersResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string accountId, string containerId)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string accountId, string containerId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -2283,13 +2186,13 @@ namespace Google.Apis.TagManager.v1
                     public virtual string ContainerId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -2297,24 +2200,22 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2334,8 +2235,7 @@ namespace Google.Apis.TagManager.v1
                 public class UpdateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.Trigger>
                 {
                     /// <summary>Constructs a new Update request.</summary>
-                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Trigger body, string accountId, string containerId, string triggerId)
-                        : base(service)
+                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Trigger body, string accountId, string containerId, string triggerId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -2366,16 +2266,16 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.TagManager.v1.Data.Trigger Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "update";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PUT";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers/{triggerId}";
 
                     /// <summary>Initializes Update parameter list.</summary>
@@ -2383,42 +2283,38 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "triggerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "triggerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "fingerprint", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fingerprint",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("triggerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "triggerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("fingerprint", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fingerprint",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2456,8 +2352,7 @@ namespace Google.Apis.TagManager.v1
                 public class CreateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.Variable>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Variable body, string accountId, string containerId)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Variable body, string accountId, string containerId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -2478,16 +2373,16 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.TagManager.v1.Data.Variable Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -2495,24 +2390,22 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2531,8 +2424,7 @@ namespace Google.Apis.TagManager.v1
                 public class DeleteRequest : TagManagerBaseServiceRequest<string>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string variableId)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string variableId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -2554,13 +2446,13 @@ namespace Google.Apis.TagManager.v1
                     public virtual string VariableId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables/{variableId}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -2568,33 +2460,30 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "variableId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "variableId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("variableId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "variableId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2613,8 +2502,7 @@ namespace Google.Apis.TagManager.v1
                 public class GetRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.Variable>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string variableId)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string variableId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -2636,13 +2524,13 @@ namespace Google.Apis.TagManager.v1
                     public virtual string VariableId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables/{variableId}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -2650,33 +2538,30 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "variableId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "variableId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("variableId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "variableId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2694,8 +2579,7 @@ namespace Google.Apis.TagManager.v1
                 public class ListRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.ListVariablesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string accountId, string containerId)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string accountId, string containerId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -2712,13 +2596,13 @@ namespace Google.Apis.TagManager.v1
                     public virtual string ContainerId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -2726,24 +2610,22 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2763,8 +2645,7 @@ namespace Google.Apis.TagManager.v1
                 public class UpdateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.Variable>
                 {
                     /// <summary>Constructs a new Update request.</summary>
-                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Variable body, string accountId, string containerId, string variableId)
-                        : base(service)
+                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Variable body, string accountId, string containerId, string variableId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -2795,16 +2676,16 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.TagManager.v1.Data.Variable Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "update";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PUT";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables/{variableId}";
 
                     /// <summary>Initializes Update parameter list.</summary>
@@ -2812,42 +2693,38 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "variableId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "variableId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "fingerprint", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fingerprint",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("variableId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "variableId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("fingerprint", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fingerprint",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2885,8 +2762,7 @@ namespace Google.Apis.TagManager.v1
                 public class CreateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.CreateContainerVersionResponse>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.CreateContainerVersionRequestVersionOptions body, string accountId, string containerId)
-                        : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.CreateContainerVersionRequestVersionOptions body, string accountId, string containerId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -2907,16 +2783,16 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.TagManager.v1.Data.CreateContainerVersionRequestVersionOptions Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "create";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions";
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -2924,24 +2800,22 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -2960,8 +2834,7 @@ namespace Google.Apis.TagManager.v1
                 public class DeleteRequest : TagManagerBaseServiceRequest<string>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string containerVersionId)
-                        : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string containerVersionId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -2983,13 +2856,13 @@ namespace Google.Apis.TagManager.v1
                     public virtual string ContainerVersionId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "DELETE";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -2997,33 +2870,30 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerVersionId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerVersionId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerVersionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerVersionId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3043,8 +2913,7 @@ namespace Google.Apis.TagManager.v1
                 public class GetRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.ContainerVersion>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string containerVersionId)
-                        : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string containerVersionId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -3067,13 +2936,13 @@ namespace Google.Apis.TagManager.v1
                     public virtual string ContainerVersionId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}";
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -3081,33 +2950,30 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerVersionId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerVersionId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerVersionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerVersionId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3125,8 +2991,7 @@ namespace Google.Apis.TagManager.v1
                 public class ListRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.ListContainerVersionsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string accountId, string containerId)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string accountId, string containerId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -3151,13 +3016,13 @@ namespace Google.Apis.TagManager.v1
                     public virtual System.Nullable<bool> IncludeDeleted { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -3165,42 +3030,38 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "headers", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "headers",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = "false",
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "includeDeleted", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "includeDeleted",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = "false",
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("headers", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "headers",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = "false",
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("includeDeleted", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includeDeleted",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = "false",
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3219,8 +3080,7 @@ namespace Google.Apis.TagManager.v1
                 public class PublishRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.PublishContainerVersionResponse>
                 {
                     /// <summary>Constructs a new Publish request.</summary>
-                    public PublishRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string containerVersionId)
-                        : base(service)
+                    public PublishRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string containerVersionId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -3247,13 +3107,13 @@ namespace Google.Apis.TagManager.v1
                     public virtual string Fingerprint { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "publish";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/publish";
 
                     /// <summary>Initializes Publish parameter list.</summary>
@@ -3261,42 +3121,38 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerVersionId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerVersionId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "fingerprint", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fingerprint",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerVersionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerVersionId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("fingerprint", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fingerprint",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3319,8 +3175,7 @@ namespace Google.Apis.TagManager.v1
                 public class RestoreRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.ContainerVersion>
                 {
                     /// <summary>Constructs a new Restore request.</summary>
-                    public RestoreRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string containerVersionId)
-                        : base(service)
+                    public RestoreRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string containerVersionId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -3342,13 +3197,13 @@ namespace Google.Apis.TagManager.v1
                     public virtual string ContainerVersionId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "restore";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/restore";
 
                     /// <summary>Initializes Restore parameter list.</summary>
@@ -3356,33 +3211,30 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerVersionId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerVersionId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerVersionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerVersionId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3401,8 +3253,7 @@ namespace Google.Apis.TagManager.v1
                 public class UndeleteRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.ContainerVersion>
                 {
                     /// <summary>Constructs a new Undelete request.</summary>
-                    public UndeleteRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string containerVersionId)
-                        : base(service)
+                    public UndeleteRequest(Google.Apis.Services.IClientService service, string accountId, string containerId, string containerVersionId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -3424,13 +3275,13 @@ namespace Google.Apis.TagManager.v1
                     public virtual string ContainerVersionId { get; private set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "undelete";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/undelete";
 
                     /// <summary>Initializes Undelete parameter list.</summary>
@@ -3438,33 +3289,30 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerVersionId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerVersionId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerVersionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerVersionId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3484,8 +3332,7 @@ namespace Google.Apis.TagManager.v1
                 public class UpdateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.ContainerVersion>
                 {
                     /// <summary>Constructs a new Update request.</summary>
-                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.ContainerVersion body, string accountId, string containerId, string containerVersionId)
-                        : base(service)
+                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.ContainerVersion body, string accountId, string containerId, string containerVersionId) : base(service)
                     {
                         AccountId = accountId;
                         ContainerId = containerId;
@@ -3516,16 +3363,16 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.TagManager.v1.Data.ContainerVersion Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "update";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "PUT";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}";
 
                     /// <summary>Initializes Update parameter list.</summary>
@@ -3533,42 +3380,38 @@ namespace Google.Apis.TagManager.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerVersionId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerVersionId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "fingerprint", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fingerprint",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("containerVersionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "containerVersionId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("fingerprint", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fingerprint",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3586,8 +3429,7 @@ namespace Google.Apis.TagManager.v1
             public class CreateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.Container>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Container body, string accountId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Container body, string accountId) : base(service)
                 {
                     AccountId = accountId;
                     Body = body;
@@ -3603,16 +3445,16 @@ namespace Google.Apis.TagManager.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.TagManager.v1.Data.Container Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -3620,15 +3462,14 @@ namespace Google.Apis.TagManager.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3646,8 +3487,7 @@ namespace Google.Apis.TagManager.v1
             public class DeleteRequest : TagManagerBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string containerId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string containerId) : base(service)
                 {
                     AccountId = accountId;
                     ContainerId = containerId;
@@ -3664,13 +3504,13 @@ namespace Google.Apis.TagManager.v1
                 public virtual string ContainerId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -3678,24 +3518,22 @@ namespace Google.Apis.TagManager.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "containerId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "containerId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "containerId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3713,8 +3551,7 @@ namespace Google.Apis.TagManager.v1
             public class GetRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.Container>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string containerId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string containerId) : base(service)
                 {
                     AccountId = accountId;
                     ContainerId = containerId;
@@ -3731,13 +3568,13 @@ namespace Google.Apis.TagManager.v1
                 public virtual string ContainerId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -3745,24 +3582,22 @@ namespace Google.Apis.TagManager.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "containerId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "containerId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "containerId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3778,8 +3613,7 @@ namespace Google.Apis.TagManager.v1
             public class ListRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.ListContainersResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId) : base(service)
                 {
                     AccountId = accountId;
                     InitParameters();
@@ -3791,13 +3625,13 @@ namespace Google.Apis.TagManager.v1
                 public virtual string AccountId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -3805,15 +3639,14 @@ namespace Google.Apis.TagManager.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3832,8 +3665,7 @@ namespace Google.Apis.TagManager.v1
             public class UpdateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.Container>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Container body, string accountId, string containerId)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Container body, string accountId, string containerId) : base(service)
                 {
                     AccountId = accountId;
                     ContainerId = containerId;
@@ -3859,16 +3691,16 @@ namespace Google.Apis.TagManager.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.TagManager.v1.Data.Container Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "tagmanager/v1/accounts/{accountId}/containers/{containerId}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -3876,33 +3708,30 @@ namespace Google.Apis.TagManager.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "containerId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "containerId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "fingerprint", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "fingerprint",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("containerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "containerId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("fingerprint", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fingerprint",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3938,8 +3767,7 @@ namespace Google.Apis.TagManager.v1
             public class CreateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.UserAccess>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.UserAccess body, string accountId)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.UserAccess body, string accountId) : base(service)
                 {
                     AccountId = accountId;
                     Body = body;
@@ -3955,16 +3783,16 @@ namespace Google.Apis.TagManager.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.TagManager.v1.Data.UserAccess Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "tagmanager/v1/accounts/{accountId}/permissions";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -3972,15 +3800,14 @@ namespace Google.Apis.TagManager.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3997,8 +3824,7 @@ namespace Google.Apis.TagManager.v1
             public class DeleteRequest : TagManagerBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string permissionId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string permissionId) : base(service)
                 {
                     AccountId = accountId;
                     PermissionId = permissionId;
@@ -4015,13 +3841,13 @@ namespace Google.Apis.TagManager.v1
                 public virtual string PermissionId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "tagmanager/v1/accounts/{accountId}/permissions/{permissionId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -4029,24 +3855,22 @@ namespace Google.Apis.TagManager.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "permissionId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "permissionId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("permissionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "permissionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -4063,8 +3887,7 @@ namespace Google.Apis.TagManager.v1
             public class GetRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.UserAccess>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string permissionId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string permissionId) : base(service)
                 {
                     AccountId = accountId;
                     PermissionId = permissionId;
@@ -4081,13 +3904,13 @@ namespace Google.Apis.TagManager.v1
                 public virtual string PermissionId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "tagmanager/v1/accounts/{accountId}/permissions/{permissionId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -4095,24 +3918,22 @@ namespace Google.Apis.TagManager.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "permissionId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "permissionId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("permissionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "permissionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -4130,8 +3951,7 @@ namespace Google.Apis.TagManager.v1
             public class ListRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.ListAccountUsersResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string accountId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId) : base(service)
                 {
                     AccountId = accountId;
                     InitParameters();
@@ -4143,13 +3963,13 @@ namespace Google.Apis.TagManager.v1
                 public virtual string AccountId { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "tagmanager/v1/accounts/{accountId}/permissions";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -4157,15 +3977,14 @@ namespace Google.Apis.TagManager.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -4183,8 +4002,7 @@ namespace Google.Apis.TagManager.v1
             public class UpdateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.UserAccess>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.UserAccess body, string accountId, string permissionId)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.UserAccess body, string accountId, string permissionId) : base(service)
                 {
                     AccountId = accountId;
                     PermissionId = permissionId;
@@ -4205,16 +4023,16 @@ namespace Google.Apis.TagManager.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.TagManager.v1.Data.UserAccess Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "tagmanager/v1/accounts/{accountId}/permissions/{permissionId}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -4222,24 +4040,22 @@ namespace Google.Apis.TagManager.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "permissionId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "permissionId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("permissionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "permissionId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -4256,8 +4072,7 @@ namespace Google.Apis.TagManager.v1
         public class GetRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.Account>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string accountId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string accountId) : base(service)
             {
                 AccountId = accountId;
                 InitParameters();
@@ -4269,13 +4084,13 @@ namespace Google.Apis.TagManager.v1
             public virtual string AccountId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "tagmanager/v1/accounts/{accountId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -4283,15 +4098,14 @@ namespace Google.Apis.TagManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "accountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "accountId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accountId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4306,21 +4120,20 @@ namespace Google.Apis.TagManager.v1
         public class ListRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.ListAccountsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
 
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "tagmanager/v1/accounts";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -4344,8 +4157,7 @@ namespace Google.Apis.TagManager.v1
         public class UpdateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.Account>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Account body, string accountId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Account body, string accountId) : base(service)
             {
                 AccountId = accountId;
                 Body = body;
@@ -4365,16 +4177,16 @@ namespace Google.Apis.TagManager.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.TagManager.v1.Data.Account Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "tagmanager/v1/accounts/{accountId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -4382,24 +4194,22 @@ namespace Google.Apis.TagManager.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "accountId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "accountId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "fingerprint", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fingerprint",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accountId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("fingerprint", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fingerprint",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

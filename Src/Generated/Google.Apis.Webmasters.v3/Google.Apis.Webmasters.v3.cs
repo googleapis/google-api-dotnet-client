@@ -18,17 +18,16 @@ namespace Google.Apis.Webmasters.v3
         public const string Version = "v3";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public WebmastersService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public WebmastersService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public WebmastersService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public WebmastersService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Searchanalytics = new SearchanalyticsResource(this);
             Sitemaps = new SitemapsResource(this);
@@ -94,12 +93,11 @@ namespace Google.Apis.Webmasters.v3
         public virtual SitesResource Sites { get; }
     }
 
-    ///<summary>A base abstract class for Webmasters requests.</summary>
+    /// <summary>A base abstract class for Webmasters requests.</summary>
     public abstract class WebmastersBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new WebmastersBaseServiceRequest instance.</summary>
-        protected WebmastersBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new WebmastersBaseServiceRequest instance.</summary>
+        protected WebmastersBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -146,69 +144,62 @@ namespace Google.Apis.Webmasters.v3
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "userIp", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "userIp",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("userIp", new Google.Apis.Discovery.Parameter
+            {
+                Name = "userIp",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -250,8 +241,7 @@ namespace Google.Apis.Webmasters.v3
         public class QueryRequest : WebmastersBaseServiceRequest<Google.Apis.Webmasters.v3.Data.SearchAnalyticsQueryResponse>
         {
             /// <summary>Constructs a new Query request.</summary>
-            public QueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Webmasters.v3.Data.SearchAnalyticsQueryRequest body, string siteUrl)
-                : base(service)
+            public QueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Webmasters.v3.Data.SearchAnalyticsQueryRequest body, string siteUrl) : base(service)
             {
                 SiteUrl = siteUrl;
                 Body = body;
@@ -267,16 +257,16 @@ namespace Google.Apis.Webmasters.v3
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Webmasters.v3.Data.SearchAnalyticsQueryRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "query";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sites/{siteUrl}/searchAnalytics/query";
 
             /// <summary>Initializes Query parameter list.</summary>
@@ -284,15 +274,14 @@ namespace Google.Apis.Webmasters.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "siteUrl", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "siteUrl",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("siteUrl", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "siteUrl",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -327,8 +316,7 @@ namespace Google.Apis.Webmasters.v3
         public class DeleteRequest : WebmastersBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string siteUrl, string feedpath)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string siteUrl, string feedpath) : base(service)
             {
                 SiteUrl = siteUrl;
                 Feedpath = feedpath;
@@ -345,13 +333,13 @@ namespace Google.Apis.Webmasters.v3
             public virtual string Feedpath { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sites/{siteUrl}/sitemaps/{feedpath}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -359,24 +347,22 @@ namespace Google.Apis.Webmasters.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "siteUrl", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "siteUrl",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "feedpath", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "feedpath",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("siteUrl", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "siteUrl",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("feedpath", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "feedpath",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -394,8 +380,7 @@ namespace Google.Apis.Webmasters.v3
         public class GetRequest : WebmastersBaseServiceRequest<Google.Apis.Webmasters.v3.Data.WmxSitemap>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string siteUrl, string feedpath)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string siteUrl, string feedpath) : base(service)
             {
                 SiteUrl = siteUrl;
                 Feedpath = feedpath;
@@ -412,13 +397,13 @@ namespace Google.Apis.Webmasters.v3
             public virtual string Feedpath { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sites/{siteUrl}/sitemaps/{feedpath}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -426,24 +411,22 @@ namespace Google.Apis.Webmasters.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "siteUrl", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "siteUrl",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "feedpath", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "feedpath",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("siteUrl", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "siteUrl",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("feedpath", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "feedpath",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -461,8 +444,7 @@ namespace Google.Apis.Webmasters.v3
         public class ListRequest : WebmastersBaseServiceRequest<Google.Apis.Webmasters.v3.Data.SitemapsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string siteUrl)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string siteUrl) : base(service)
             {
                 SiteUrl = siteUrl;
                 InitParameters();
@@ -478,13 +460,13 @@ namespace Google.Apis.Webmasters.v3
             public virtual string SitemapIndex { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sites/{siteUrl}/sitemaps";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -492,24 +474,22 @@ namespace Google.Apis.Webmasters.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "siteUrl", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "siteUrl",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sitemapIndex", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sitemapIndex",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("siteUrl", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "siteUrl",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sitemapIndex", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sitemapIndex",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -527,8 +507,7 @@ namespace Google.Apis.Webmasters.v3
         public class SubmitRequest : WebmastersBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Submit request.</summary>
-            public SubmitRequest(Google.Apis.Services.IClientService service, string siteUrl, string feedpath)
-                : base(service)
+            public SubmitRequest(Google.Apis.Services.IClientService service, string siteUrl, string feedpath) : base(service)
             {
                 SiteUrl = siteUrl;
                 Feedpath = feedpath;
@@ -545,13 +524,13 @@ namespace Google.Apis.Webmasters.v3
             public virtual string Feedpath { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "submit";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sites/{siteUrl}/sitemaps/{feedpath}";
 
             /// <summary>Initializes Submit parameter list.</summary>
@@ -559,24 +538,22 @@ namespace Google.Apis.Webmasters.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "siteUrl", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "siteUrl",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "feedpath", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "feedpath",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("siteUrl", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "siteUrl",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("feedpath", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "feedpath",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -609,8 +586,7 @@ namespace Google.Apis.Webmasters.v3
         public class AddRequest : WebmastersBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Add request.</summary>
-            public AddRequest(Google.Apis.Services.IClientService service, string siteUrl)
-                : base(service)
+            public AddRequest(Google.Apis.Services.IClientService service, string siteUrl) : base(service)
             {
                 SiteUrl = siteUrl;
                 InitParameters();
@@ -622,13 +598,13 @@ namespace Google.Apis.Webmasters.v3
             public virtual string SiteUrl { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "add";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sites/{siteUrl}";
 
             /// <summary>Initializes Add parameter list.</summary>
@@ -636,15 +612,14 @@ namespace Google.Apis.Webmasters.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "siteUrl", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "siteUrl",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("siteUrl", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "siteUrl",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -662,8 +637,7 @@ namespace Google.Apis.Webmasters.v3
         public class DeleteRequest : WebmastersBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string siteUrl)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string siteUrl) : base(service)
             {
                 SiteUrl = siteUrl;
                 InitParameters();
@@ -677,13 +651,13 @@ namespace Google.Apis.Webmasters.v3
             public virtual string SiteUrl { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sites/{siteUrl}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -691,15 +665,14 @@ namespace Google.Apis.Webmasters.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "siteUrl", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "siteUrl",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("siteUrl", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "siteUrl",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -717,8 +690,7 @@ namespace Google.Apis.Webmasters.v3
         public class GetRequest : WebmastersBaseServiceRequest<Google.Apis.Webmasters.v3.Data.WmxSite>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string siteUrl)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string siteUrl) : base(service)
             {
                 SiteUrl = siteUrl;
                 InitParameters();
@@ -732,13 +704,13 @@ namespace Google.Apis.Webmasters.v3
             public virtual string SiteUrl { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sites/{siteUrl}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -746,15 +718,14 @@ namespace Google.Apis.Webmasters.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "siteUrl", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "siteUrl",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("siteUrl", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "siteUrl",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -769,21 +740,20 @@ namespace Google.Apis.Webmasters.v3
         public class ListRequest : WebmastersBaseServiceRequest<Google.Apis.Webmasters.v3.Data.SitesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
 
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "sites";
 
             /// <summary>Initializes List parameter list.</summary>

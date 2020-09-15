@@ -18,17 +18,16 @@ namespace Google.Apis.AndroidEnterprise.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public AndroidEnterpriseService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public AndroidEnterpriseService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public AndroidEnterpriseService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public AndroidEnterpriseService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Devices = new DevicesResource(this);
             Enterprises = new EnterprisesResource(this);
@@ -140,12 +139,11 @@ namespace Google.Apis.AndroidEnterprise.v1
         public virtual WebappsResource Webapps { get; }
     }
 
-    ///<summary>A base abstract class for AndroidEnterprise requests.</summary>
+    /// <summary>A base abstract class for AndroidEnterprise requests.</summary>
     public abstract class AndroidEnterpriseBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new AndroidEnterpriseBaseServiceRequest instance.</summary>
-        protected AndroidEnterpriseBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new AndroidEnterpriseBaseServiceRequest instance.</summary>
+        protected AndroidEnterpriseBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -225,105 +223,94 @@ namespace Google.Apis.AndroidEnterprise.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -361,8 +348,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class ForceReportUploadRequest : AndroidEnterpriseBaseServiceRequest<string>
         {
             /// <summary>Constructs a new ForceReportUpload request.</summary>
-            public ForceReportUploadRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string deviceId)
-                : base(service)
+            public ForceReportUploadRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string deviceId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 UserId = userId;
@@ -384,13 +370,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string DeviceId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "forceReportUpload";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/forceReportUpload";
 
             /// <summary>Initializes ForceReportUpload parameter list.</summary>
@@ -398,33 +384,30 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "deviceId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deviceId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("deviceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deviceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -443,8 +426,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class GetRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.Device>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string deviceId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string deviceId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 UserId = userId;
@@ -466,13 +448,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string DeviceId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -480,33 +462,30 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "deviceId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deviceId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("deviceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deviceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -531,8 +510,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class GetStateRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.DeviceState>
         {
             /// <summary>Constructs a new GetState request.</summary>
-            public GetStateRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string deviceId)
-                : base(service)
+            public GetStateRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string deviceId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 UserId = userId;
@@ -554,13 +532,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string DeviceId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getState";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/state";
 
             /// <summary>Initializes GetState parameter list.</summary>
@@ -568,33 +546,30 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "deviceId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deviceId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("deviceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deviceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -612,8 +587,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.DevicesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 UserId = userId;
@@ -630,13 +604,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string UserId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -644,24 +618,22 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -687,8 +659,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class SetStateRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.DeviceState>
         {
             /// <summary>Constructs a new SetState request.</summary>
-            public SetStateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.DeviceState body, string enterpriseId, string userId, string deviceId)
-                : base(service)
+            public SetStateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.DeviceState body, string enterpriseId, string userId, string deviceId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 UserId = userId;
@@ -714,16 +685,16 @@ namespace Google.Apis.AndroidEnterprise.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidEnterprise.v1.Data.DeviceState Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "setState";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/state";
 
             /// <summary>Initializes SetState parameter list.</summary>
@@ -731,33 +702,30 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "deviceId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deviceId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("deviceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deviceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -777,8 +745,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class UpdateRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.Device>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.Device body, string enterpriseId, string userId, string deviceId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.Device body, string enterpriseId, string userId, string deviceId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 UserId = userId;
@@ -809,16 +776,16 @@ namespace Google.Apis.AndroidEnterprise.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidEnterprise.v1.Data.Device Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -826,42 +793,38 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "deviceId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deviceId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "updateMask", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "updateMask",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("deviceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deviceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -895,8 +858,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class AcknowledgeNotificationSetRequest : AndroidEnterpriseBaseServiceRequest<string>
         {
             /// <summary>Constructs a new AcknowledgeNotificationSet request.</summary>
-            public AcknowledgeNotificationSetRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public AcknowledgeNotificationSetRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -908,13 +870,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string NotificationSetId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "acknowledgeNotificationSet";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/acknowledgeNotificationSet";
 
             /// <summary>Initializes AcknowledgeNotificationSet parameter list.</summary>
@@ -922,15 +884,14 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "notificationSetId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "notificationSetId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("notificationSetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "notificationSetId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -947,8 +908,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class CompleteSignupRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.Enterprise>
         {
             /// <summary>Constructs a new CompleteSignup request.</summary>
-            public CompleteSignupRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public CompleteSignupRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -963,13 +923,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string EnterpriseToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "completeSignup";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/completeSignup";
 
             /// <summary>Initializes CompleteSignup parameter list.</summary>
@@ -977,24 +937,22 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "completionToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "completionToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "enterpriseToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("completionToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "completionToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("enterpriseToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1015,8 +973,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class CreateWebTokenRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.AdministratorWebToken>
         {
             /// <summary>Constructs a new CreateWebToken request.</summary>
-            public CreateWebTokenRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.AdministratorWebTokenSpec body, string enterpriseId)
-                : base(service)
+            public CreateWebTokenRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.AdministratorWebTokenSpec body, string enterpriseId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 Body = body;
@@ -1032,16 +989,16 @@ namespace Google.Apis.AndroidEnterprise.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidEnterprise.v1.Data.AdministratorWebTokenSpec Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "createWebToken";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/createWebToken";
 
             /// <summary>Initializes CreateWebToken parameter list.</summary>
@@ -1049,15 +1006,14 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1074,8 +1030,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class EnrollRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.Enterprise>
         {
             /// <summary>Constructs a new Enroll request.</summary>
-            public EnrollRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.Enterprise body, string token)
-                : base(service)
+            public EnrollRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.Enterprise body, string token) : base(service)
             {
                 Token = token;
                 Body = body;
@@ -1091,16 +1046,16 @@ namespace Google.Apis.AndroidEnterprise.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidEnterprise.v1.Data.Enterprise Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "enroll";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/enroll";
 
             /// <summary>Initializes Enroll parameter list.</summary>
@@ -1108,15 +1063,14 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "token", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "token",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("token", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "token",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1131,8 +1085,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class GenerateSignupUrlRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.SignupInfo>
         {
             /// <summary>Constructs a new GenerateSignupUrl request.</summary>
-            public GenerateSignupUrlRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public GenerateSignupUrlRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -1148,13 +1101,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string CallbackUrl { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "generateSignupUrl";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/signupUrl";
 
             /// <summary>Initializes GenerateSignupUrl parameter list.</summary>
@@ -1162,15 +1115,14 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "callbackUrl", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "callbackUrl",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("callbackUrl", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "callbackUrl",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1186,8 +1138,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class GetRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.Enterprise>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string enterpriseId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string enterpriseId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 InitParameters();
@@ -1199,13 +1150,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string EnterpriseId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1213,15 +1164,14 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1251,8 +1201,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class GetServiceAccountRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ServiceAccount>
         {
             /// <summary>Constructs a new GetServiceAccount request.</summary>
-            public GetServiceAccountRequest(Google.Apis.Services.IClientService service, string enterpriseId)
-                : base(service)
+            public GetServiceAccountRequest(Google.Apis.Services.IClientService service, string enterpriseId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 InitParameters();
@@ -1281,13 +1230,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getServiceAccount";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/serviceAccount";
 
             /// <summary>Initializes GetServiceAccount parameter list.</summary>
@@ -1295,24 +1244,22 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "keyType", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "keyType",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("keyType", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "keyType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1330,8 +1277,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class GetStoreLayoutRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.StoreLayout>
         {
             /// <summary>Constructs a new GetStoreLayout request.</summary>
-            public GetStoreLayoutRequest(Google.Apis.Services.IClientService service, string enterpriseId)
-                : base(service)
+            public GetStoreLayoutRequest(Google.Apis.Services.IClientService service, string enterpriseId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 InitParameters();
@@ -1343,13 +1289,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string EnterpriseId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getStoreLayout";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout";
 
             /// <summary>Initializes GetStoreLayout parameter list.</summary>
@@ -1357,15 +1303,14 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1387,8 +1332,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.EnterprisesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string domain)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string domain) : base(service)
             {
                 Domain = domain;
                 InitParameters();
@@ -1400,13 +1344,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string Domain { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1414,15 +1358,14 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "domain", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "domain",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("domain", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "domain",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1455,8 +1398,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class PullNotificationSetRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.NotificationSet>
         {
             /// <summary>Constructs a new PullNotificationSet request.</summary>
-            public PullNotificationSetRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public PullNotificationSetRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -1486,13 +1428,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "pullNotificationSet";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/pullNotificationSet";
 
             /// <summary>Initializes PullNotificationSet parameter list.</summary>
@@ -1500,15 +1442,14 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "requestMode", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestMode",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("requestMode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestMode",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1526,8 +1467,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class SendTestPushNotificationRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.EnterprisesSendTestPushNotificationResponse>
         {
             /// <summary>Constructs a new SendTestPushNotification request.</summary>
-            public SendTestPushNotificationRequest(Google.Apis.Services.IClientService service, string enterpriseId)
-                : base(service)
+            public SendTestPushNotificationRequest(Google.Apis.Services.IClientService service, string enterpriseId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 InitParameters();
@@ -1539,13 +1479,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string EnterpriseId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "sendTestPushNotification";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/sendTestPushNotification";
 
             /// <summary>Initializes SendTestPushNotification parameter list.</summary>
@@ -1553,15 +1493,14 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1578,8 +1517,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class SetAccountRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.EnterpriseAccount>
         {
             /// <summary>Constructs a new SetAccount request.</summary>
-            public SetAccountRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.EnterpriseAccount body, string enterpriseId)
-                : base(service)
+            public SetAccountRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.EnterpriseAccount body, string enterpriseId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 Body = body;
@@ -1595,16 +1533,16 @@ namespace Google.Apis.AndroidEnterprise.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidEnterprise.v1.Data.EnterpriseAccount Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "setAccount";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/account";
 
             /// <summary>Initializes SetAccount parameter list.</summary>
@@ -1612,15 +1550,14 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1645,8 +1582,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class SetStoreLayoutRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.StoreLayout>
         {
             /// <summary>Constructs a new SetStoreLayout request.</summary>
-            public SetStoreLayoutRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.StoreLayout body, string enterpriseId)
-                : base(service)
+            public SetStoreLayoutRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.StoreLayout body, string enterpriseId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 Body = body;
@@ -1662,16 +1598,16 @@ namespace Google.Apis.AndroidEnterprise.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidEnterprise.v1.Data.StoreLayout Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "setStoreLayout";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout";
 
             /// <summary>Initializes SetStoreLayout parameter list.</summary>
@@ -1679,15 +1615,14 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1703,8 +1638,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class UnenrollRequest : AndroidEnterpriseBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Unenroll request.</summary>
-            public UnenrollRequest(Google.Apis.Services.IClientService service, string enterpriseId)
-                : base(service)
+            public UnenrollRequest(Google.Apis.Services.IClientService service, string enterpriseId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 InitParameters();
@@ -1716,13 +1650,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string EnterpriseId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "unenroll";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/unenroll";
 
             /// <summary>Initializes Unenroll parameter list.</summary>
@@ -1730,15 +1664,14 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1775,8 +1708,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class DeleteRequest : AndroidEnterpriseBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string entitlementId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string entitlementId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 UserId = userId;
@@ -1798,13 +1730,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string EntitlementId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/entitlements/{entitlementId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -1812,33 +1744,30 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "entitlementId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "entitlementId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("entitlementId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "entitlementId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1858,8 +1787,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class GetRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.Entitlement>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string entitlementId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string entitlementId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 UserId = userId;
@@ -1881,13 +1809,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string EntitlementId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/entitlements/{entitlementId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1895,33 +1823,30 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "entitlementId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "entitlementId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("entitlementId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "entitlementId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1939,8 +1864,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.EntitlementsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 UserId = userId;
@@ -1957,13 +1881,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string UserId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/entitlements";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1971,24 +1895,22 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2009,8 +1931,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class UpdateRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.Entitlement>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.Entitlement body, string enterpriseId, string userId, string entitlementId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.Entitlement body, string enterpriseId, string userId, string entitlementId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 UserId = userId;
@@ -2042,16 +1963,16 @@ namespace Google.Apis.AndroidEnterprise.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidEnterprise.v1.Data.Entitlement Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/entitlements/{entitlementId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -2059,42 +1980,38 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "entitlementId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "entitlementId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "install", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "install",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("entitlementId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "entitlementId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("install", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "install",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2129,8 +2046,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class GetRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.GroupLicense>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string enterpriseId, string groupLicenseId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string enterpriseId, string groupLicenseId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 GroupLicenseId = groupLicenseId;
@@ -2147,13 +2063,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string GroupLicenseId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/groupLicenses/{groupLicenseId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -2161,24 +2077,22 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "groupLicenseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "groupLicenseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("groupLicenseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "groupLicenseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2194,8 +2108,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.GroupLicensesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 InitParameters();
@@ -2207,13 +2120,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string EnterpriseId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/groupLicenses";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2221,15 +2134,14 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2264,8 +2176,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.GroupLicenseUsersListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId, string groupLicenseId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId, string groupLicenseId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 GroupLicenseId = groupLicenseId;
@@ -2282,13 +2193,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string GroupLicenseId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/groupLicenses/{groupLicenseId}/users";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2296,24 +2207,22 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "groupLicenseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "groupLicenseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("groupLicenseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "groupLicenseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2353,8 +2262,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class DeleteRequest : AndroidEnterpriseBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string deviceId, string installId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string deviceId, string installId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 UserId = userId;
@@ -2381,13 +2289,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string InstallId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -2395,42 +2303,38 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "deviceId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deviceId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "installId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "installId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("deviceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deviceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("installId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "installId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2451,8 +2355,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class GetRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.Install>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string deviceId, string installId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string deviceId, string installId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 UserId = userId;
@@ -2479,13 +2382,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string InstallId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -2493,42 +2396,38 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "deviceId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deviceId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "installId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "installId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("deviceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deviceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("installId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "installId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2547,8 +2446,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.InstallsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string deviceId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string deviceId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 UserId = userId;
@@ -2570,13 +2468,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string DeviceId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2584,33 +2482,30 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "deviceId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deviceId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("deviceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deviceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2634,8 +2529,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class UpdateRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.Install>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.Install body, string enterpriseId, string userId, string deviceId, string installId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.Install body, string enterpriseId, string userId, string deviceId, string installId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 UserId = userId;
@@ -2666,16 +2560,16 @@ namespace Google.Apis.AndroidEnterprise.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidEnterprise.v1.Data.Install Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -2683,42 +2577,38 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "deviceId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deviceId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "installId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "installId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("deviceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deviceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("installId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "installId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2757,8 +2647,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class DeleteRequest : AndroidEnterpriseBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string deviceId, string managedConfigurationForDeviceId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string deviceId, string managedConfigurationForDeviceId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 UserId = userId;
@@ -2785,13 +2674,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string ManagedConfigurationForDeviceId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -2799,42 +2688,38 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "deviceId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deviceId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "managedConfigurationForDeviceId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "managedConfigurationForDeviceId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("deviceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deviceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("managedConfigurationForDeviceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "managedConfigurationForDeviceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2856,8 +2741,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class GetRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string deviceId, string managedConfigurationForDeviceId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string deviceId, string managedConfigurationForDeviceId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 UserId = userId;
@@ -2884,13 +2768,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string ManagedConfigurationForDeviceId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -2898,42 +2782,38 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "deviceId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deviceId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "managedConfigurationForDeviceId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "managedConfigurationForDeviceId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("deviceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deviceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("managedConfigurationForDeviceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "managedConfigurationForDeviceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2954,8 +2834,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ManagedConfigurationsForDeviceListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string deviceId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string deviceId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 UserId = userId;
@@ -2977,13 +2856,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string DeviceId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2991,33 +2870,30 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "deviceId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deviceId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("deviceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deviceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3040,8 +2916,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class UpdateRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration body, string enterpriseId, string userId, string deviceId, string managedConfigurationForDeviceId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration body, string enterpriseId, string userId, string deviceId, string managedConfigurationForDeviceId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 UserId = userId;
@@ -3072,16 +2947,16 @@ namespace Google.Apis.AndroidEnterprise.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -3089,42 +2964,38 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "deviceId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deviceId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "managedConfigurationForDeviceId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "managedConfigurationForDeviceId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("deviceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deviceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("managedConfigurationForDeviceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "managedConfigurationForDeviceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3161,8 +3032,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class DeleteRequest : AndroidEnterpriseBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string managedConfigurationForUserId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string managedConfigurationForUserId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 UserId = userId;
@@ -3184,13 +3054,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string ManagedConfigurationForUserId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -3198,33 +3068,30 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "managedConfigurationForUserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "managedConfigurationForUserId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("managedConfigurationForUserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "managedConfigurationForUserId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3244,8 +3111,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class GetRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string managedConfigurationForUserId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string managedConfigurationForUserId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 UserId = userId;
@@ -3267,13 +3133,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string ManagedConfigurationForUserId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -3281,33 +3147,30 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "managedConfigurationForUserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "managedConfigurationForUserId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("managedConfigurationForUserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "managedConfigurationForUserId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3325,8 +3188,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ManagedConfigurationsForUserListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 UserId = userId;
@@ -3343,13 +3205,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string UserId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -3357,24 +3219,22 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3401,8 +3261,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class UpdateRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration body, string enterpriseId, string userId, string managedConfigurationForUserId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration body, string enterpriseId, string userId, string managedConfigurationForUserId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 UserId = userId;
@@ -3428,16 +3287,16 @@ namespace Google.Apis.AndroidEnterprise.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -3445,33 +3304,30 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "managedConfigurationForUserId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "managedConfigurationForUserId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("managedConfigurationForUserId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "managedConfigurationForUserId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3506,8 +3362,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ManagedConfigurationsSettingsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId, string productId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId, string productId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 ProductId = productId;
@@ -3524,13 +3379,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string ProductId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/managedConfigurationsSettings";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -3538,24 +3393,22 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "productId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "productId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "productId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3588,8 +3441,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class GetRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.Permission>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string permissionId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string permissionId) : base(service)
             {
                 PermissionId = permissionId;
                 InitParameters();
@@ -3605,13 +3457,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string Language { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/permissions/{permissionId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -3619,24 +3471,22 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "permissionId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "permissionId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "language", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "language",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("permissionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "permissionId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "language",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3678,8 +3528,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class ApproveRequest : AndroidEnterpriseBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Approve request.</summary>
-            public ApproveRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.ProductsApproveRequest body, string enterpriseId, string productId)
-                : base(service)
+            public ApproveRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.ProductsApproveRequest body, string enterpriseId, string productId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 ProductId = productId;
@@ -3700,16 +3549,16 @@ namespace Google.Apis.AndroidEnterprise.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidEnterprise.v1.Data.ProductsApproveRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "approve";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/approve";
 
             /// <summary>Initializes Approve parameter list.</summary>
@@ -3717,24 +3566,22 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "productId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "productId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "productId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3762,8 +3609,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class GenerateApprovalUrlRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ProductsGenerateApprovalUrlResponse>
         {
             /// <summary>Constructs a new GenerateApprovalUrl request.</summary>
-            public GenerateApprovalUrlRequest(Google.Apis.Services.IClientService service, string enterpriseId, string productId)
-                : base(service)
+            public GenerateApprovalUrlRequest(Google.Apis.Services.IClientService service, string enterpriseId, string productId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 ProductId = productId;
@@ -3785,13 +3631,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string LanguageCode { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "generateApprovalUrl";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/generateApprovalUrl";
 
             /// <summary>Initializes GenerateApprovalUrl parameter list.</summary>
@@ -3799,33 +3645,30 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "productId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "productId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "languageCode", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "languageCode",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "productId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "languageCode",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3843,8 +3686,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class GetRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.Product>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string enterpriseId, string productId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string enterpriseId, string productId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 ProductId = productId;
@@ -3865,13 +3707,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string Language { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -3879,33 +3721,30 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "productId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "productId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "language", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "language",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "productId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "language",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -3929,8 +3768,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class GetAppRestrictionsSchemaRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.AppRestrictionsSchema>
         {
             /// <summary>Constructs a new GetAppRestrictionsSchema request.</summary>
-            public GetAppRestrictionsSchemaRequest(Google.Apis.Services.IClientService service, string enterpriseId, string productId)
-                : base(service)
+            public GetAppRestrictionsSchemaRequest(Google.Apis.Services.IClientService service, string enterpriseId, string productId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 ProductId = productId;
@@ -3951,13 +3789,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string Language { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getAppRestrictionsSchema";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/appRestrictionsSchema";
 
             /// <summary>Initializes GetAppRestrictionsSchema parameter list.</summary>
@@ -3965,33 +3803,30 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "productId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "productId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "language", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "language",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "productId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "language",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4009,8 +3844,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class GetPermissionsRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ProductPermissions>
         {
             /// <summary>Constructs a new GetPermissions request.</summary>
-            public GetPermissionsRequest(Google.Apis.Services.IClientService service, string enterpriseId, string productId)
-                : base(service)
+            public GetPermissionsRequest(Google.Apis.Services.IClientService service, string enterpriseId, string productId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 ProductId = productId;
@@ -4027,13 +3861,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string ProductId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getPermissions";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/permissions";
 
             /// <summary>Initializes GetPermissions parameter list.</summary>
@@ -4041,24 +3875,22 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "productId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "productId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "productId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4076,8 +3908,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ProductsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 InitParameters();
@@ -4115,13 +3946,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string Token { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/products";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -4129,60 +3960,54 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "approved", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "approved",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "language", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "language",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "query", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "query",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "token", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "token",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("approved", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "approved",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "language",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("query", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "query",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("token", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "token",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4200,8 +4025,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class UnapproveRequest : AndroidEnterpriseBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Unapprove request.</summary>
-            public UnapproveRequest(Google.Apis.Services.IClientService service, string enterpriseId, string productId)
-                : base(service)
+            public UnapproveRequest(Google.Apis.Services.IClientService service, string enterpriseId, string productId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 ProductId = productId;
@@ -4218,13 +4042,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string ProductId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "unapprove";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/unapprove";
 
             /// <summary>Initializes Unapprove parameter list.</summary>
@@ -4232,24 +4056,22 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "productId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "productId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "productId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4288,8 +4110,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class DeleteRequest : AndroidEnterpriseBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string enterpriseId, string keyId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string enterpriseId, string keyId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 KeyId = keyId;
@@ -4306,13 +4127,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string KeyId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/serviceAccountKeys/{keyId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -4320,24 +4141,22 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "keyId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "keyId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("keyId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "keyId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4360,8 +4179,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class InsertRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ServiceAccountKey>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.ServiceAccountKey body, string enterpriseId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.ServiceAccountKey body, string enterpriseId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 Body = body;
@@ -4377,16 +4195,16 @@ namespace Google.Apis.AndroidEnterprise.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidEnterprise.v1.Data.ServiceAccountKey Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/serviceAccountKeys";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -4394,15 +4212,14 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4424,8 +4241,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ServiceAccountKeysListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 InitParameters();
@@ -4437,13 +4253,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string EnterpriseId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/serviceAccountKeys";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -4451,15 +4267,14 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4495,8 +4310,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class DeleteRequest : AndroidEnterpriseBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string enterpriseId, string pageId, string clusterId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string enterpriseId, string pageId, string clusterId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 PageId = pageId;
@@ -4518,13 +4332,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string ClusterId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -4532,33 +4346,30 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clusterId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clusterId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clusterId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4577,8 +4388,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class GetRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.StoreCluster>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string enterpriseId, string pageId, string clusterId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string enterpriseId, string pageId, string clusterId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 PageId = pageId;
@@ -4600,13 +4410,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string ClusterId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -4614,33 +4424,30 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clusterId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clusterId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clusterId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4659,8 +4466,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class InsertRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.StoreCluster>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.StoreCluster body, string enterpriseId, string pageId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.StoreCluster body, string enterpriseId, string pageId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 PageId = pageId;
@@ -4681,16 +4487,16 @@ namespace Google.Apis.AndroidEnterprise.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidEnterprise.v1.Data.StoreCluster Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -4698,24 +4504,22 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4733,8 +4537,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.StoreLayoutClustersListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId, string pageId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId, string pageId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 PageId = pageId;
@@ -4751,13 +4554,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string PageId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -4765,24 +4568,22 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4802,8 +4603,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class UpdateRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.StoreCluster>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.StoreCluster body, string enterpriseId, string pageId, string clusterId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.StoreCluster body, string enterpriseId, string pageId, string clusterId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 PageId = pageId;
@@ -4829,16 +4629,16 @@ namespace Google.Apis.AndroidEnterprise.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidEnterprise.v1.Data.StoreCluster Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -4846,33 +4646,30 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "clusterId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "clusterId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "clusterId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4907,8 +4704,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class DeleteRequest : AndroidEnterpriseBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string enterpriseId, string pageId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string enterpriseId, string pageId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 PageId = pageId;
@@ -4925,13 +4721,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string PageId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -4939,24 +4735,22 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4974,8 +4768,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class GetRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.StorePage>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string enterpriseId, string pageId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string enterpriseId, string pageId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 PageId = pageId;
@@ -4992,13 +4785,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string PageId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -5006,24 +4799,22 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5040,8 +4831,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class InsertRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.StorePage>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.StorePage body, string enterpriseId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.StorePage body, string enterpriseId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 Body = body;
@@ -5057,16 +4847,16 @@ namespace Google.Apis.AndroidEnterprise.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidEnterprise.v1.Data.StorePage Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -5074,15 +4864,14 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5098,8 +4887,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.StoreLayoutPagesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 InitParameters();
@@ -5111,13 +4899,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string EnterpriseId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -5125,15 +4913,14 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5152,8 +4939,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class UpdateRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.StorePage>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.StorePage body, string enterpriseId, string pageId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.StorePage body, string enterpriseId, string pageId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 PageId = pageId;
@@ -5174,16 +4960,16 @@ namespace Google.Apis.AndroidEnterprise.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidEnterprise.v1.Data.StorePage Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -5191,24 +4977,22 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5243,8 +5027,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class DeleteRequest : AndroidEnterpriseBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 UserId = userId;
@@ -5261,13 +5044,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string UserId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -5275,24 +5058,22 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5314,8 +5095,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class GenerateAuthenticationTokenRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.AuthenticationToken>
         {
             /// <summary>Constructs a new GenerateAuthenticationToken request.</summary>
-            public GenerateAuthenticationTokenRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId)
-                : base(service)
+            public GenerateAuthenticationTokenRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 UserId = userId;
@@ -5332,13 +5112,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string UserId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "generateAuthenticationToken";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/authenticationToken";
 
             /// <summary>Initializes GenerateAuthenticationToken parameter list.</summary>
@@ -5346,24 +5126,22 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5381,8 +5159,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class GetRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.User>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 UserId = userId;
@@ -5399,13 +5176,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string UserId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -5413,24 +5190,22 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5448,8 +5223,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class GetAvailableProductSetRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ProductSet>
         {
             /// <summary>Constructs a new GetAvailableProductSet request.</summary>
-            public GetAvailableProductSetRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId)
-                : base(service)
+            public GetAvailableProductSetRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 UserId = userId;
@@ -5466,13 +5240,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string UserId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getAvailableProductSet";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/availableProductSet";
 
             /// <summary>Initializes GetAvailableProductSet parameter list.</summary>
@@ -5480,24 +5254,22 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5520,8 +5292,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class InsertRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.User>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.User body, string enterpriseId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.User body, string enterpriseId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 Body = body;
@@ -5537,16 +5308,16 @@ namespace Google.Apis.AndroidEnterprise.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidEnterprise.v1.Data.User Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -5554,15 +5325,14 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5584,8 +5354,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.UsersListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId, string email)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId, string email) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 Email = email;
@@ -5602,13 +5371,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string Email { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -5616,24 +5385,22 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "email", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "email",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("email", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "email",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5655,8 +5422,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class RevokeDeviceAccessRequest : AndroidEnterpriseBaseServiceRequest<string>
         {
             /// <summary>Constructs a new RevokeDeviceAccess request.</summary>
-            public RevokeDeviceAccessRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId)
-                : base(service)
+            public RevokeDeviceAccessRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 UserId = userId;
@@ -5673,13 +5439,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string UserId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "revokeDeviceAccess";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/deviceAccess";
 
             /// <summary>Initializes RevokeDeviceAccess parameter list.</summary>
@@ -5687,24 +5453,22 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5727,8 +5491,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class SetAvailableProductSetRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ProductSet>
         {
             /// <summary>Constructs a new SetAvailableProductSet request.</summary>
-            public SetAvailableProductSetRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.ProductSet body, string enterpriseId, string userId)
-                : base(service)
+            public SetAvailableProductSetRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.ProductSet body, string enterpriseId, string userId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 UserId = userId;
@@ -5749,16 +5512,16 @@ namespace Google.Apis.AndroidEnterprise.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidEnterprise.v1.Data.ProductSet Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "setAvailableProductSet";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/availableProductSet";
 
             /// <summary>Initializes SetAvailableProductSet parameter list.</summary>
@@ -5766,24 +5529,22 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5806,8 +5567,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class UpdateRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.User>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.User body, string enterpriseId, string userId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.User body, string enterpriseId, string userId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 UserId = userId;
@@ -5828,16 +5588,16 @@ namespace Google.Apis.AndroidEnterprise.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidEnterprise.v1.Data.User Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -5845,24 +5605,22 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5897,8 +5655,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class DeleteRequest : AndroidEnterpriseBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string enterpriseId, string webAppId)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string enterpriseId, string webAppId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 WebAppId = webAppId;
@@ -5915,13 +5672,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string WebAppId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/webApps/{webAppId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -5929,24 +5686,22 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "webAppId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "webAppId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("webAppId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "webAppId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5964,8 +5719,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class GetRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.WebApp>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string enterpriseId, string webAppId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string enterpriseId, string webAppId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 WebAppId = webAppId;
@@ -5982,13 +5736,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string WebAppId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/webApps/{webAppId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -5996,24 +5750,22 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "webAppId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "webAppId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("webAppId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "webAppId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6030,8 +5782,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class InsertRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.WebApp>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.WebApp body, string enterpriseId)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.WebApp body, string enterpriseId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 Body = body;
@@ -6047,16 +5798,16 @@ namespace Google.Apis.AndroidEnterprise.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidEnterprise.v1.Data.WebApp Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/webApps";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -6064,15 +5815,14 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6088,8 +5838,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.WebAppsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 InitParameters();
@@ -6101,13 +5850,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual string EnterpriseId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/webApps";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -6115,15 +5864,14 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -6142,8 +5890,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         public class UpdateRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.WebApp>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.WebApp body, string enterpriseId, string webAppId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.WebApp body, string enterpriseId, string webAppId) : base(service)
             {
                 EnterpriseId = enterpriseId;
                 WebAppId = webAppId;
@@ -6164,16 +5911,16 @@ namespace Google.Apis.AndroidEnterprise.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidEnterprise.v1.Data.WebApp Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "androidenterprise/v1/enterprises/{enterpriseId}/webApps/{webAppId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -6181,24 +5928,22 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "webAppId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "webAppId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("enterpriseId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enterpriseId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("webAppId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "webAppId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

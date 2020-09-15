@@ -18,17 +18,16 @@ namespace Google.Apis.Groupssettings.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public GroupssettingsService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public GroupssettingsService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public GroupssettingsService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public GroupssettingsService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Groups = new GroupsResource(this);
         }
@@ -80,12 +79,11 @@ namespace Google.Apis.Groupssettings.v1
         public virtual GroupsResource Groups { get; }
     }
 
-    ///<summary>A base abstract class for Groupssettings requests.</summary>
+    /// <summary>A base abstract class for Groupssettings requests.</summary>
     public abstract class GroupssettingsBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new GroupssettingsBaseServiceRequest instance.</summary>
-        protected GroupssettingsBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new GroupssettingsBaseServiceRequest instance.</summary>
+        protected GroupssettingsBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -135,69 +133,62 @@ namespace Google.Apis.Groupssettings.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "atom",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "userIp", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "userIp",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "atom",
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("userIp", new Google.Apis.Discovery.Parameter
+            {
+                Name = "userIp",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -228,8 +219,7 @@ namespace Google.Apis.Groupssettings.v1
         public class GetRequest : GroupssettingsBaseServiceRequest<Google.Apis.Groupssettings.v1.Data.Groups>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string groupUniqueId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string groupUniqueId) : base(service)
             {
                 GroupUniqueId = groupUniqueId;
                 InitParameters();
@@ -241,13 +231,13 @@ namespace Google.Apis.Groupssettings.v1
             public virtual string GroupUniqueId { get; private set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{groupUniqueId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -255,15 +245,14 @@ namespace Google.Apis.Groupssettings.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "groupUniqueId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "groupUniqueId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("groupUniqueId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "groupUniqueId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -280,8 +269,7 @@ namespace Google.Apis.Groupssettings.v1
         public class PatchRequest : GroupssettingsBaseServiceRequest<Google.Apis.Groupssettings.v1.Data.Groups>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Groupssettings.v1.Data.Groups body, string groupUniqueId)
-                : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Groupssettings.v1.Data.Groups body, string groupUniqueId) : base(service)
             {
                 GroupUniqueId = groupUniqueId;
                 Body = body;
@@ -297,16 +285,16 @@ namespace Google.Apis.Groupssettings.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Groupssettings.v1.Data.Groups Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "patch";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PATCH";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{groupUniqueId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -314,15 +302,14 @@ namespace Google.Apis.Groupssettings.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "groupUniqueId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "groupUniqueId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("groupUniqueId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "groupUniqueId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -339,8 +326,7 @@ namespace Google.Apis.Groupssettings.v1
         public class UpdateRequest : GroupssettingsBaseServiceRequest<Google.Apis.Groupssettings.v1.Data.Groups>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Groupssettings.v1.Data.Groups body, string groupUniqueId)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Groupssettings.v1.Data.Groups body, string groupUniqueId) : base(service)
             {
                 GroupUniqueId = groupUniqueId;
                 Body = body;
@@ -356,16 +342,16 @@ namespace Google.Apis.Groupssettings.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Groupssettings.v1.Data.Groups Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "{groupUniqueId}";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -373,15 +359,14 @@ namespace Google.Apis.Groupssettings.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "groupUniqueId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "groupUniqueId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("groupUniqueId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "groupUniqueId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

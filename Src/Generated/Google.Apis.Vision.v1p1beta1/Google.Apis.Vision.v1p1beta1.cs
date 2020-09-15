@@ -18,17 +18,16 @@ namespace Google.Apis.Vision.v1p1beta1
         public const string Version = "v1p1beta1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public VisionService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public VisionService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public VisionService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public VisionService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Files = new FilesResource(this);
             Images = new ImagesResource(this);
@@ -94,12 +93,11 @@ namespace Google.Apis.Vision.v1p1beta1
         public virtual ProjectsResource Projects { get; }
     }
 
-    ///<summary>A base abstract class for Vision requests.</summary>
+    /// <summary>A base abstract class for Vision requests.</summary>
     public abstract class VisionBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new VisionBaseServiceRequest instance.</summary>
-        protected VisionBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new VisionBaseServiceRequest instance.</summary>
+        protected VisionBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -179,105 +177,94 @@ namespace Google.Apis.Vision.v1p1beta1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -314,8 +301,7 @@ namespace Google.Apis.Vision.v1p1beta1
         public class AnnotateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateFilesResponse>
         {
             /// <summary>Constructs a new Annotate request.</summary>
-            public AnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateFilesRequest body)
-                : base(service)
+            public AnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateFilesRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -326,16 +312,16 @@ namespace Google.Apis.Vision.v1p1beta1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateFilesRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "annotate";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1p1beta1/files:annotate";
 
             /// <summary>Initializes Annotate parameter list.</summary>
@@ -364,8 +350,7 @@ namespace Google.Apis.Vision.v1p1beta1
         public class AsyncBatchAnnotateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1p1beta1.Data.Operation>
         {
             /// <summary>Constructs a new AsyncBatchAnnotate request.</summary>
-            public AsyncBatchAnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesRequest body)
-                : base(service)
+            public AsyncBatchAnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -376,16 +361,16 @@ namespace Google.Apis.Vision.v1p1beta1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "asyncBatchAnnotate";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1p1beta1/files:asyncBatchAnnotate";
 
             /// <summary>Initializes AsyncBatchAnnotate parameter list.</summary>
@@ -425,8 +410,7 @@ namespace Google.Apis.Vision.v1p1beta1
         public class AnnotateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateImagesResponse>
         {
             /// <summary>Constructs a new Annotate request.</summary>
-            public AnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateImagesRequest body)
-                : base(service)
+            public AnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateImagesRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -437,16 +421,16 @@ namespace Google.Apis.Vision.v1p1beta1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateImagesRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "annotate";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1p1beta1/images:annotate";
 
             /// <summary>Initializes Annotate parameter list.</summary>
@@ -477,8 +461,7 @@ namespace Google.Apis.Vision.v1p1beta1
         public class AsyncBatchAnnotateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1p1beta1.Data.Operation>
         {
             /// <summary>Constructs a new AsyncBatchAnnotate request.</summary>
-            public AsyncBatchAnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateImagesRequest body)
-                : base(service)
+            public AsyncBatchAnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateImagesRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -489,16 +472,16 @@ namespace Google.Apis.Vision.v1p1beta1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateImagesRequest Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "asyncBatchAnnotate";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v1p1beta1/images:asyncBatchAnnotate";
 
             /// <summary>Initializes AsyncBatchAnnotate parameter list.</summary>
@@ -569,8 +552,7 @@ namespace Google.Apis.Vision.v1p1beta1
             public class AnnotateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateFilesResponse>
             {
                 /// <summary>Constructs a new Annotate request.</summary>
-                public AnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateFilesRequest body, string parent)
-                    : base(service)
+                public AnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateFilesRequest body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -589,16 +571,16 @@ namespace Google.Apis.Vision.v1p1beta1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateFilesRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "annotate";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1p1beta1/{+parent}/files:annotate";
 
                 /// <summary>Initializes Annotate parameter list.</summary>
@@ -606,15 +588,14 @@ namespace Google.Apis.Vision.v1p1beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
                 }
 
             }
@@ -640,8 +621,7 @@ namespace Google.Apis.Vision.v1p1beta1
             public class AsyncBatchAnnotateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1p1beta1.Data.Operation>
             {
                 /// <summary>Constructs a new AsyncBatchAnnotate request.</summary>
-                public AsyncBatchAnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesRequest body, string parent)
-                    : base(service)
+                public AsyncBatchAnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesRequest body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -660,16 +640,16 @@ namespace Google.Apis.Vision.v1p1beta1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "asyncBatchAnnotate";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1p1beta1/{+parent}/files:asyncBatchAnnotate";
 
                 /// <summary>Initializes AsyncBatchAnnotate parameter list.</summary>
@@ -677,15 +657,14 @@ namespace Google.Apis.Vision.v1p1beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
                 }
 
             }
@@ -724,8 +703,7 @@ namespace Google.Apis.Vision.v1p1beta1
             public class AnnotateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateImagesResponse>
             {
                 /// <summary>Constructs a new Annotate request.</summary>
-                public AnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateImagesRequest body, string parent)
-                    : base(service)
+                public AnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateImagesRequest body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -744,16 +722,16 @@ namespace Google.Apis.Vision.v1p1beta1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateImagesRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "annotate";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1p1beta1/{+parent}/images:annotate";
 
                 /// <summary>Initializes Annotate parameter list.</summary>
@@ -761,15 +739,14 @@ namespace Google.Apis.Vision.v1p1beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
                 }
 
             }
@@ -797,8 +774,7 @@ namespace Google.Apis.Vision.v1p1beta1
             public class AsyncBatchAnnotateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1p1beta1.Data.Operation>
             {
                 /// <summary>Constructs a new AsyncBatchAnnotate request.</summary>
-                public AsyncBatchAnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateImagesRequest body, string parent)
-                    : base(service)
+                public AsyncBatchAnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateImagesRequest body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -817,16 +793,16 @@ namespace Google.Apis.Vision.v1p1beta1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateImagesRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "asyncBatchAnnotate";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1p1beta1/{+parent}/images:asyncBatchAnnotate";
 
                 /// <summary>Initializes AsyncBatchAnnotate parameter list.</summary>
@@ -834,15 +810,14 @@ namespace Google.Apis.Vision.v1p1beta1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
                 }
 
             }
@@ -907,8 +882,7 @@ namespace Google.Apis.Vision.v1p1beta1
                 public class AnnotateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateFilesResponse>
                 {
                     /// <summary>Constructs a new Annotate request.</summary>
-                    public AnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateFilesRequest body, string parent)
-                        : base(service)
+                    public AnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateFilesRequest body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -927,16 +901,16 @@ namespace Google.Apis.Vision.v1p1beta1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateFilesRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "annotate";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1p1beta1/{+parent}/files:annotate";
 
                     /// <summary>Initializes Annotate parameter list.</summary>
@@ -944,15 +918,14 @@ namespace Google.Apis.Vision.v1p1beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
                     }
 
                 }
@@ -980,8 +953,7 @@ namespace Google.Apis.Vision.v1p1beta1
                 public class AsyncBatchAnnotateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1p1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new AsyncBatchAnnotate request.</summary>
-                    public AsyncBatchAnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesRequest body, string parent)
-                        : base(service)
+                    public AsyncBatchAnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesRequest body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -1000,16 +972,16 @@ namespace Google.Apis.Vision.v1p1beta1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "asyncBatchAnnotate";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1p1beta1/{+parent}/files:asyncBatchAnnotate";
 
                     /// <summary>Initializes AsyncBatchAnnotate parameter list.</summary>
@@ -1017,15 +989,14 @@ namespace Google.Apis.Vision.v1p1beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
                     }
 
                 }
@@ -1064,8 +1035,7 @@ namespace Google.Apis.Vision.v1p1beta1
                 public class AnnotateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateImagesResponse>
                 {
                     /// <summary>Constructs a new Annotate request.</summary>
-                    public AnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateImagesRequest body, string parent)
-                        : base(service)
+                    public AnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateImagesRequest body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -1084,16 +1054,16 @@ namespace Google.Apis.Vision.v1p1beta1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1BatchAnnotateImagesRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "annotate";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1p1beta1/{+parent}/images:annotate";
 
                     /// <summary>Initializes Annotate parameter list.</summary>
@@ -1101,15 +1071,14 @@ namespace Google.Apis.Vision.v1p1beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
                     }
 
                 }
@@ -1139,8 +1108,7 @@ namespace Google.Apis.Vision.v1p1beta1
                 public class AsyncBatchAnnotateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1p1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new AsyncBatchAnnotate request.</summary>
-                    public AsyncBatchAnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateImagesRequest body, string parent)
-                        : base(service)
+                    public AsyncBatchAnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateImagesRequest body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -1159,16 +1127,16 @@ namespace Google.Apis.Vision.v1p1beta1
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateImagesRequest Body { get; set; }
 
-                    ///<summary>Returns the body of the request.</summary>
+                    /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "asyncBatchAnnotate";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "POST";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1p1beta1/{+parent}/images:asyncBatchAnnotate";
 
                     /// <summary>Initializes AsyncBatchAnnotate parameter list.</summary>
@@ -1176,15 +1144,14 @@ namespace Google.Apis.Vision.v1p1beta1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
                     }
 
                 }

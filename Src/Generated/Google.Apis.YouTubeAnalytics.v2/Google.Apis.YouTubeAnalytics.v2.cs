@@ -18,17 +18,16 @@ namespace Google.Apis.YouTubeAnalytics.v2
         public const string Version = "v2";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public YouTubeAnalyticsService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public YouTubeAnalyticsService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public YouTubeAnalyticsService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public YouTubeAnalyticsService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             GroupItems = new GroupItemsResource(this);
             Groups = new GroupsResource(this);
@@ -112,12 +111,11 @@ namespace Google.Apis.YouTubeAnalytics.v2
         public virtual ReportsResource Reports { get; }
     }
 
-    ///<summary>A base abstract class for YouTubeAnalytics requests.</summary>
+    /// <summary>A base abstract class for YouTubeAnalytics requests.</summary>
     public abstract class YouTubeAnalyticsBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new YouTubeAnalyticsBaseServiceRequest instance.</summary>
-        protected YouTubeAnalyticsBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new YouTubeAnalyticsBaseServiceRequest instance.</summary>
+        protected YouTubeAnalyticsBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -197,105 +195,94 @@ namespace Google.Apis.YouTubeAnalytics.v2
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -325,8 +312,7 @@ namespace Google.Apis.YouTubeAnalytics.v2
         public class DeleteRequest : YouTubeAnalyticsBaseServiceRequest<Google.Apis.YouTubeAnalytics.v2.Data.EmptyResponse>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -348,13 +334,13 @@ namespace Google.Apis.YouTubeAnalytics.v2
             public virtual string OnBehalfOfContentOwner { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/groupItems";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -362,24 +348,22 @@ namespace Google.Apis.YouTubeAnalytics.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "onBehalfOfContentOwner",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "onBehalfOfContentOwner",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -395,8 +379,7 @@ namespace Google.Apis.YouTubeAnalytics.v2
         public class InsertRequest : YouTubeAnalyticsBaseServiceRequest<Google.Apis.YouTubeAnalytics.v2.Data.GroupItem>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.YouTubeAnalytics.v2.Data.GroupItem body)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.YouTubeAnalytics.v2.Data.GroupItem body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -417,16 +400,16 @@ namespace Google.Apis.YouTubeAnalytics.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.YouTubeAnalytics.v2.Data.GroupItem Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/groupItems";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -434,15 +417,14 @@ namespace Google.Apis.YouTubeAnalytics.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "onBehalfOfContentOwner",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "onBehalfOfContentOwner",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -457,8 +439,7 @@ namespace Google.Apis.YouTubeAnalytics.v2
         public class ListRequest : YouTubeAnalyticsBaseServiceRequest<Google.Apis.YouTubeAnalytics.v2.Data.ListGroupItemsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -480,13 +461,13 @@ namespace Google.Apis.YouTubeAnalytics.v2
             public virtual string OnBehalfOfContentOwner { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/groupItems";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -494,24 +475,22 @@ namespace Google.Apis.YouTubeAnalytics.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "groupId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "groupId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "onBehalfOfContentOwner",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("groupId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "groupId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "onBehalfOfContentOwner",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -543,8 +522,7 @@ namespace Google.Apis.YouTubeAnalytics.v2
         public class DeleteRequest : YouTubeAnalyticsBaseServiceRequest<Google.Apis.YouTubeAnalytics.v2.Data.EmptyResponse>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -565,13 +543,13 @@ namespace Google.Apis.YouTubeAnalytics.v2
             public virtual string OnBehalfOfContentOwner { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "DELETE";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/groups";
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -579,24 +557,22 @@ namespace Google.Apis.YouTubeAnalytics.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "onBehalfOfContentOwner",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "onBehalfOfContentOwner",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -612,8 +588,7 @@ namespace Google.Apis.YouTubeAnalytics.v2
         public class InsertRequest : YouTubeAnalyticsBaseServiceRequest<Google.Apis.YouTubeAnalytics.v2.Data.Group>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.YouTubeAnalytics.v2.Data.Group body)
-                : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.YouTubeAnalytics.v2.Data.Group body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -634,16 +609,16 @@ namespace Google.Apis.YouTubeAnalytics.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.YouTubeAnalytics.v2.Data.Group Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/groups";
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -651,15 +626,14 @@ namespace Google.Apis.YouTubeAnalytics.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "onBehalfOfContentOwner",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "onBehalfOfContentOwner",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -678,8 +652,7 @@ namespace Google.Apis.YouTubeAnalytics.v2
         public class ListRequest : YouTubeAnalyticsBaseServiceRequest<Google.Apis.YouTubeAnalytics.v2.Data.ListGroupsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -714,13 +687,13 @@ namespace Google.Apis.YouTubeAnalytics.v2
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/groups";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -728,42 +701,38 @@ namespace Google.Apis.YouTubeAnalytics.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "mine", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "mine",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "onBehalfOfContentOwner",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("mine", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "mine",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "onBehalfOfContentOwner",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -779,8 +748,7 @@ namespace Google.Apis.YouTubeAnalytics.v2
         public class UpdateRequest : YouTubeAnalyticsBaseServiceRequest<Google.Apis.YouTubeAnalytics.v2.Data.Group>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.YouTubeAnalytics.v2.Data.Group body)
-                : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.YouTubeAnalytics.v2.Data.Group body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -801,16 +769,16 @@ namespace Google.Apis.YouTubeAnalytics.v2
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.YouTubeAnalytics.v2.Data.Group Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "update";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "PUT";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/groups";
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -818,15 +786,14 @@ namespace Google.Apis.YouTubeAnalytics.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "onBehalfOfContentOwner",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "onBehalfOfContentOwner",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -858,8 +825,7 @@ namespace Google.Apis.YouTubeAnalytics.v2
         public class QueryRequest : YouTubeAnalyticsBaseServiceRequest<Google.Apis.YouTubeAnalytics.v2.Data.QueryResponse>
         {
             /// <summary>Constructs a new Query request.</summary>
-            public QueryRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public QueryRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -936,13 +902,13 @@ namespace Google.Apis.YouTubeAnalytics.v2
             public virtual System.Nullable<int> StartIndex { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "query";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "v2/reports";
 
             /// <summary>Initializes Query parameter list.</summary>
@@ -950,105 +916,94 @@ namespace Google.Apis.YouTubeAnalytics.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "currency", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "currency",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "dimensions", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "dimensions",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "endDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "endDate",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filters", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filters",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includeHistoricalChannelData", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includeHistoricalChannelData",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "metrics", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "metrics",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sort", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sort",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "startDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "startDate",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "startIndex", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "startIndex",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("currency", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "currency",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("dimensions", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dimensions",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("endDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "endDate",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("filters", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filters",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ids",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeHistoricalChannelData", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeHistoricalChannelData",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("metrics", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "metrics",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sort", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sort",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("startDate", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "startDate",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("startIndex", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "startIndex",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

@@ -18,17 +18,16 @@ namespace Google.Apis.Books.v1
         public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public BooksService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public BooksService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public BooksService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public BooksService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Bookshelves = new BookshelvesResource(this);
             Cloudloading = new CloudloadingResource(this);
@@ -128,12 +127,11 @@ namespace Google.Apis.Books.v1
         public virtual VolumesResource Volumes { get; }
     }
 
-    ///<summary>A base abstract class for Books requests.</summary>
+    /// <summary>A base abstract class for Books requests.</summary>
     public abstract class BooksBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new BooksBaseServiceRequest instance.</summary>
-        protected BooksBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new BooksBaseServiceRequest instance.</summary>
+        protected BooksBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -213,105 +211,94 @@ namespace Google.Apis.Books.v1
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -363,8 +350,7 @@ namespace Google.Apis.Books.v1
             public class ListRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Volumes>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string userId, string shelf)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string userId, string shelf) : base(service)
                 {
                     UserId = userId;
                     Shelf = shelf;
@@ -397,13 +383,13 @@ namespace Google.Apis.Books.v1
                 public virtual System.Nullable<long> StartIndex { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "books/v1/users/{userId}/bookshelves/{shelf}/volumes";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -411,60 +397,54 @@ namespace Google.Apis.Books.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "userId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "userId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "shelf", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "shelf",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "maxResults", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "maxResults",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "showPreorders", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "showPreorders",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "source", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "source",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "startIndex", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "startIndex",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("shelf", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "shelf",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("showPreorders", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showPreorders",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("startIndex", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "startIndex",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -483,8 +463,7 @@ namespace Google.Apis.Books.v1
         public class GetRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Bookshelf>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string userId, string shelf)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string userId, string shelf) : base(service)
             {
                 UserId = userId;
                 Shelf = shelf;
@@ -505,13 +484,13 @@ namespace Google.Apis.Books.v1
             public virtual string Source { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "books/v1/users/{userId}/bookshelves/{shelf}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -519,33 +498,30 @@ namespace Google.Apis.Books.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "shelf", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "shelf",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "source", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "source",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("shelf", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "shelf",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "source",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -561,8 +537,7 @@ namespace Google.Apis.Books.v1
         public class ListRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Bookshelves>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string userId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string userId) : base(service)
             {
                 UserId = userId;
                 InitParameters();
@@ -578,13 +553,13 @@ namespace Google.Apis.Books.v1
             public virtual string Source { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "books/v1/users/{userId}/bookshelves";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -592,24 +567,22 @@ namespace Google.Apis.Books.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "source", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "source",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "source",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -641,8 +614,7 @@ namespace Google.Apis.Books.v1
         public class AddBookRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.BooksCloudloadingResource>
         {
             /// <summary>Constructs a new AddBook request.</summary>
-            public AddBookRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public AddBookRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -665,13 +637,13 @@ namespace Google.Apis.Books.v1
             public virtual string UploadClientToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "addBook";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "books/v1/cloudloading/addBook";
 
             /// <summary>Initializes AddBook parameter list.</summary>
@@ -679,42 +651,38 @@ namespace Google.Apis.Books.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "drive_document_id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "drive_document_id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "mime_type", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "mime_type",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "upload_client_token", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "upload_client_token",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("drive_document_id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "drive_document_id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("mime_type", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "mime_type",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("upload_client_token", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "upload_client_token",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -729,8 +697,7 @@ namespace Google.Apis.Books.v1
         public class DeleteBookRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Empty>
         {
             /// <summary>Constructs a new DeleteBook request.</summary>
-            public DeleteBookRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public DeleteBookRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -741,13 +708,13 @@ namespace Google.Apis.Books.v1
             public virtual string VolumeId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "deleteBook";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "books/v1/cloudloading/deleteBook";
 
             /// <summary>Initializes DeleteBook parameter list.</summary>
@@ -755,15 +722,14 @@ namespace Google.Apis.Books.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "volumeId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "volumeId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "volumeId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -779,8 +745,7 @@ namespace Google.Apis.Books.v1
         public class UpdateBookRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.BooksCloudloadingResource>
         {
             /// <summary>Constructs a new UpdateBook request.</summary>
-            public UpdateBookRequest(Google.Apis.Services.IClientService service, Google.Apis.Books.v1.Data.BooksCloudloadingResource body)
-                : base(service)
+            public UpdateBookRequest(Google.Apis.Services.IClientService service, Google.Apis.Books.v1.Data.BooksCloudloadingResource body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -791,16 +756,16 @@ namespace Google.Apis.Books.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Books.v1.Data.BooksCloudloadingResource Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "updateBook";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "books/v1/cloudloading/updateBook";
 
             /// <summary>Initializes UpdateBook parameter list.</summary>
@@ -839,8 +804,7 @@ namespace Google.Apis.Books.v1
         public class ListOfflineMetadataRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Metadata>
         {
             /// <summary>Constructs a new ListOfflineMetadata request.</summary>
-            public ListOfflineMetadataRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListOfflineMetadataRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -851,13 +815,13 @@ namespace Google.Apis.Books.v1
             public virtual string Cpksver { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "listOfflineMetadata";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "books/v1/dictionary/listOfflineMetadata";
 
             /// <summary>Initializes ListOfflineMetadata parameter list.</summary>
@@ -865,15 +829,14 @@ namespace Google.Apis.Books.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "cpksver", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "cpksver",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("cpksver", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "cpksver",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -905,8 +868,7 @@ namespace Google.Apis.Books.v1
         public class GetFamilyInfoRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.FamilyInfo>
         {
             /// <summary>Constructs a new GetFamilyInfo request.</summary>
-            public GetFamilyInfoRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public GetFamilyInfoRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -917,13 +879,13 @@ namespace Google.Apis.Books.v1
             public virtual string Source { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getFamilyInfo";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "books/v1/familysharing/getFamilyInfo";
 
             /// <summary>Initializes GetFamilyInfo parameter list.</summary>
@@ -931,15 +893,14 @@ namespace Google.Apis.Books.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "source", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "source",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "source",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -956,8 +917,7 @@ namespace Google.Apis.Books.v1
         public class ShareRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Empty>
         {
             /// <summary>Constructs a new Share request.</summary>
-            public ShareRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ShareRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -976,13 +936,13 @@ namespace Google.Apis.Books.v1
             public virtual string VolumeId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "share";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "books/v1/familysharing/share";
 
             /// <summary>Initializes Share parameter list.</summary>
@@ -990,33 +950,30 @@ namespace Google.Apis.Books.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "docId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "docId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "source", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "source",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "volumeId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "volumeId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("docId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "docId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "source",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "volumeId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1033,8 +990,7 @@ namespace Google.Apis.Books.v1
         public class UnshareRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Empty>
         {
             /// <summary>Constructs a new Unshare request.</summary>
-            public UnshareRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public UnshareRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -1053,13 +1009,13 @@ namespace Google.Apis.Books.v1
             public virtual string VolumeId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "unshare";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "books/v1/familysharing/unshare";
 
             /// <summary>Initializes Unshare parameter list.</summary>
@@ -1067,33 +1023,30 @@ namespace Google.Apis.Books.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "docId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "docId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "source", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "source",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "volumeId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "volumeId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("docId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "docId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "source",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "volumeId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -1150,8 +1103,7 @@ namespace Google.Apis.Books.v1
             public class GetRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.DictionaryAnnotationdata>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string volumeId, string layerId, string annotationDataId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string volumeId, string layerId, string annotationDataId) : base(service)
                 {
                     VolumeId = volumeId;
                     LayerId = layerId;
@@ -1204,13 +1156,13 @@ namespace Google.Apis.Books.v1
                 public virtual System.Nullable<int> W { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "books/v1/volumes/{volumeId}/layers/{layerId}/data/{annotationDataId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1218,96 +1170,86 @@ namespace Google.Apis.Books.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "volumeId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "volumeId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "layerId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "layerId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "annotationDataId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "annotationDataId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "allowWebDefinitions", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "allowWebDefinitions",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "contentVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "contentVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "h", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "h",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "locale", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "locale",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "scale", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "scale",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "source", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "source",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "w", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "w",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "volumeId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("layerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "layerId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("annotationDataId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "annotationDataId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("allowWebDefinitions", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "allowWebDefinitions",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("contentVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "contentVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("h", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "h",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("locale", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "locale",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("scale", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scale",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("w", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "w",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1325,8 +1267,7 @@ namespace Google.Apis.Books.v1
             public class ListRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Annotationsdata>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string volumeId, string layerId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string volumeId, string layerId) : base(service)
                 {
                     VolumeId = volumeId;
                     LayerId = layerId;
@@ -1392,13 +1333,13 @@ namespace Google.Apis.Books.v1
                 public virtual System.Nullable<int> W { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "books/v1/volumes/{volumeId}/layers/{layerId}/data";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1406,123 +1347,110 @@ namespace Google.Apis.Books.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "volumeId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "volumeId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "layerId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "layerId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "annotationDataId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "annotationDataId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "contentVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "contentVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "h", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "h",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "locale", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "locale",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "maxResults", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "maxResults",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "scale", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "scale",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "source", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "source",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "updatedMax", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updatedMax",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "updatedMin", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updatedMin",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "w", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "w",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "volumeId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("layerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "layerId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("annotationDataId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "annotationDataId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("contentVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "contentVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("h", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "h",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("locale", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "locale",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("scale", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scale",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updatedMax", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updatedMax",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updatedMin", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updatedMin",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("w", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "w",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1561,8 +1489,7 @@ namespace Google.Apis.Books.v1
             public class GetRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Volumeannotation>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string volumeId, string layerId, string annotationId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string volumeId, string layerId, string annotationId) : base(service)
                 {
                     VolumeId = volumeId;
                     LayerId = layerId;
@@ -1593,13 +1520,13 @@ namespace Google.Apis.Books.v1
                 public virtual string Source { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "books/v1/volumes/{volumeId}/layers/{layerId}/annotations/{annotationId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1607,51 +1534,46 @@ namespace Google.Apis.Books.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "volumeId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "volumeId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "layerId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "layerId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "annotationId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "annotationId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "locale", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "locale",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "source", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "source",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "volumeId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("layerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "layerId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("annotationId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "annotationId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("locale", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "locale",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1669,8 +1591,7 @@ namespace Google.Apis.Books.v1
             public class ListRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Volumeannotations>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string volumeId, string layerId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string volumeId, string layerId) : base(service)
                 {
                     VolumeId = volumeId;
                     LayerId = layerId;
@@ -1742,13 +1663,13 @@ namespace Google.Apis.Books.v1
                 public virtual string VolumeAnnotationsVersion { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "books/v1/volumes/{volumeId}/layers/{layerId}";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1756,141 +1677,126 @@ namespace Google.Apis.Books.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "volumeId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "volumeId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "layerId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "layerId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "contentVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "contentVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "endOffset", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "endOffset",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "endPosition", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "endPosition",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "locale", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "locale",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "maxResults", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "maxResults",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "showDeleted", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "showDeleted",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "source", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "source",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "startOffset", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "startOffset",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "startPosition", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "startPosition",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "updatedMax", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updatedMax",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "updatedMin", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updatedMin",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "volumeAnnotationsVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "volumeAnnotationsVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "volumeId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("layerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "layerId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("contentVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "contentVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("endOffset", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "endOffset",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("endPosition", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "endPosition",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("locale", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "locale",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showDeleted",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("startOffset", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "startOffset",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("startPosition", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "startPosition",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updatedMax", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updatedMax",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updatedMin", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updatedMin",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("volumeAnnotationsVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "volumeAnnotationsVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1909,8 +1815,7 @@ namespace Google.Apis.Books.v1
         public class GetRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Layersummary>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string volumeId, string summaryId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string volumeId, string summaryId) : base(service)
             {
                 VolumeId = volumeId;
                 SummaryId = summaryId;
@@ -1935,13 +1840,13 @@ namespace Google.Apis.Books.v1
             public virtual string Source { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "books/v1/volumes/{volumeId}/layersummary/{summaryId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1949,42 +1854,38 @@ namespace Google.Apis.Books.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "volumeId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "volumeId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "summaryId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "summaryId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "contentVersion", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "contentVersion",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "source", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "source",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "volumeId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("summaryId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "summaryId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("contentVersion", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "contentVersion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "source",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2000,8 +1901,7 @@ namespace Google.Apis.Books.v1
         public class ListRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Layersummaries>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string volumeId)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string volumeId) : base(service)
             {
                 VolumeId = volumeId;
                 InitParameters();
@@ -2029,13 +1929,13 @@ namespace Google.Apis.Books.v1
             public virtual string Source { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "books/v1/volumes/{volumeId}/layersummary";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2043,51 +1943,46 @@ namespace Google.Apis.Books.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "volumeId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "volumeId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "contentVersion", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "contentVersion",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "source", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "source",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "volumeId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("contentVersion", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "contentVersion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "source",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2119,8 +2014,7 @@ namespace Google.Apis.Books.v1
         public class GetUserSettingsRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Usersettings>
         {
             /// <summary>Constructs a new GetUserSettings request.</summary>
-            public GetUserSettingsRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public GetUserSettingsRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -2131,13 +2025,13 @@ namespace Google.Apis.Books.v1
             public virtual string Country { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "getUserSettings";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "books/v1/myconfig/getUserSettings";
 
             /// <summary>Initializes GetUserSettings parameter list.</summary>
@@ -2145,15 +2039,14 @@ namespace Google.Apis.Books.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "country", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "country",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("country", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "country",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2168,8 +2061,7 @@ namespace Google.Apis.Books.v1
         public class ReleaseDownloadAccessRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.DownloadAccesses>
         {
             /// <summary>Constructs a new ReleaseDownloadAccess request.</summary>
-            public ReleaseDownloadAccessRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ReleaseDownloadAccessRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -2192,13 +2084,13 @@ namespace Google.Apis.Books.v1
             public virtual Google.Apis.Util.Repeatable<string> VolumeIds { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "releaseDownloadAccess";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "books/v1/myconfig/releaseDownloadAccess";
 
             /// <summary>Initializes ReleaseDownloadAccess parameter list.</summary>
@@ -2206,42 +2098,38 @@ namespace Google.Apis.Books.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "cpksver", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "cpksver",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "locale", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "locale",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "source", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "source",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "volumeIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "volumeIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("cpksver", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "cpksver",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("locale", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "locale",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "source",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("volumeIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "volumeIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2256,8 +2144,7 @@ namespace Google.Apis.Books.v1
         public class RequestAccessRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.RequestAccessData>
         {
             /// <summary>Constructs a new RequestAccess request.</summary>
-            public RequestAccessRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public RequestAccessRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -2304,13 +2191,13 @@ namespace Google.Apis.Books.v1
             public virtual string VolumeId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "requestAccess";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "books/v1/myconfig/requestAccess";
 
             /// <summary>Initializes RequestAccess parameter list.</summary>
@@ -2318,60 +2205,54 @@ namespace Google.Apis.Books.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "cpksver", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "cpksver",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "licenseTypes", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "licenseTypes",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "locale", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "locale",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "nonce", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "nonce",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "source", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "source",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "volumeId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "volumeId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("cpksver", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "cpksver",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("licenseTypes", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "licenseTypes",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("locale", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "locale",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("nonce", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "nonce",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "source",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "volumeId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2386,8 +2267,7 @@ namespace Google.Apis.Books.v1
         public class SyncVolumeLicensesRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Volumes>
         {
             /// <summary>Constructs a new SyncVolumeLicenses request.</summary>
-            public SyncVolumeLicensesRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public SyncVolumeLicensesRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -2436,13 +2316,13 @@ namespace Google.Apis.Books.v1
             public virtual Google.Apis.Util.Repeatable<string> VolumeIds { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "syncVolumeLicenses";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "books/v1/myconfig/syncVolumeLicenses";
 
             /// <summary>Initializes SyncVolumeLicenses parameter list.</summary>
@@ -2450,78 +2330,70 @@ namespace Google.Apis.Books.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "cpksver", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "cpksver",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "features", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "features",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includeNonComicsSeries", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includeNonComicsSeries",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "locale", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "locale",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "nonce", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "nonce",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "showPreorders", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "showPreorders",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "source", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "source",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "volumeIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "volumeIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("cpksver", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "cpksver",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("features", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "features",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeNonComicsSeries", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeNonComicsSeries",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("locale", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "locale",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("nonce", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "nonce",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("showPreorders", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "showPreorders",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "source",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("volumeIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "volumeIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -2539,8 +2411,7 @@ namespace Google.Apis.Books.v1
         public class UpdateUserSettingsRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Usersettings>
         {
             /// <summary>Constructs a new UpdateUserSettings request.</summary>
-            public UpdateUserSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.Books.v1.Data.Usersettings body)
-                : base(service)
+            public UpdateUserSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.Books.v1.Data.Usersettings body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -2551,16 +2422,16 @@ namespace Google.Apis.Books.v1
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Books.v1.Data.Usersettings Body { get; set; }
 
-            ///<summary>Returns the body of the request.</summary>
+            /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "updateUserSettings";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "books/v1/myconfig/updateUserSettings";
 
             /// <summary>Initializes UpdateUserSettings parameter list.</summary>
@@ -2621,8 +2492,7 @@ namespace Google.Apis.Books.v1
             public class DeleteRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string annotationId)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string annotationId) : base(service)
                 {
                     AnnotationId = annotationId;
                     InitParameters();
@@ -2638,13 +2508,13 @@ namespace Google.Apis.Books.v1
                 public virtual string Source { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "books/v1/mylibrary/annotations/{annotationId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -2652,24 +2522,22 @@ namespace Google.Apis.Books.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "annotationId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "annotationId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "source", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "source",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("annotationId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "annotationId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2685,8 +2553,7 @@ namespace Google.Apis.Books.v1
             public class InsertRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Annotation>
             {
                 /// <summary>Constructs a new Insert request.</summary>
-                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Books.v1.Data.Annotation body)
-                    : base(service)
+                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Books.v1.Data.Annotation body) : base(service)
                 {
                     Body = body;
                     InitParameters();
@@ -2714,16 +2581,16 @@ namespace Google.Apis.Books.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Books.v1.Data.Annotation Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "insert";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "books/v1/mylibrary/annotations";
 
                 /// <summary>Initializes Insert parameter list.</summary>
@@ -2731,42 +2598,38 @@ namespace Google.Apis.Books.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "annotationId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "annotationId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "country", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "country",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "showOnlySummaryInResponse", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "showOnlySummaryInResponse",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "source", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "source",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("annotationId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "annotationId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("country", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "country",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("showOnlySummaryInResponse", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showOnlySummaryInResponse",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2781,8 +2644,7 @@ namespace Google.Apis.Books.v1
             public class ListRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Annotations>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service) : base(service)
                 {
                     InitParameters();
                 }
@@ -2831,13 +2693,13 @@ namespace Google.Apis.Books.v1
                 public virtual string VolumeId { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "books/v1/mylibrary/annotations";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -2845,96 +2707,86 @@ namespace Google.Apis.Books.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "contentVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "contentVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "layerId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "layerId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "layerIds", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "layerIds",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "maxResults", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "maxResults",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "showDeleted", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "showDeleted",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "source", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "source",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "updatedMax", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updatedMax",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "updatedMin", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updatedMin",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "volumeId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "volumeId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("contentVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "contentVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("layerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "layerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("layerIds", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "layerIds",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showDeleted",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updatedMax", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updatedMax",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updatedMin", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updatedMin",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "volumeId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -2949,8 +2801,7 @@ namespace Google.Apis.Books.v1
             public class SummaryRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.AnnotationsSummary>
             {
                 /// <summary>Constructs a new Summary request.</summary>
-                public SummaryRequest(Google.Apis.Services.IClientService service)
-                    : base(service)
+                public SummaryRequest(Google.Apis.Services.IClientService service) : base(service)
                 {
                     InitParameters();
                 }
@@ -2965,13 +2816,13 @@ namespace Google.Apis.Books.v1
                 public virtual string VolumeId { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "summary";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "books/v1/mylibrary/annotations/summary";
 
                 /// <summary>Initializes Summary parameter list.</summary>
@@ -2979,24 +2830,22 @@ namespace Google.Apis.Books.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "layerIds", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "layerIds",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "volumeId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "volumeId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("layerIds", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "layerIds",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "volumeId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3013,8 +2862,7 @@ namespace Google.Apis.Books.v1
             public class UpdateRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Annotation>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Books.v1.Data.Annotation body, string annotationId)
-                    : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Books.v1.Data.Annotation body, string annotationId) : base(service)
                 {
                     AnnotationId = annotationId;
                     Body = body;
@@ -3034,16 +2882,16 @@ namespace Google.Apis.Books.v1
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Books.v1.Data.Annotation Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "update";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "books/v1/mylibrary/annotations/{annotationId}";
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -3051,24 +2899,22 @@ namespace Google.Apis.Books.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "annotationId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "annotationId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "source", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "source",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("annotationId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "annotationId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3122,8 +2968,7 @@ namespace Google.Apis.Books.v1
                 public class ListRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Volumes>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string shelf)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string shelf) : base(service)
                     {
                         Shelf = shelf;
                         InitParameters();
@@ -3176,13 +3021,13 @@ namespace Google.Apis.Books.v1
                     public virtual System.Nullable<long> StartIndex { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "books/v1/mylibrary/bookshelves/{shelf}/volumes";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -3190,78 +3035,70 @@ namespace Google.Apis.Books.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "shelf", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "shelf",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "country", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "country",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "maxResults", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "maxResults",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "projection", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projection",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "q", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "q",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "showPreorders", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "showPreorders",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "source", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "source",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "startIndex", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "startIndex",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("shelf", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "shelf",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("country", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "country",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "maxResults",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("projection", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projection",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("q", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "q",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("showPreorders", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "showPreorders",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "source",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("startIndex", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "startIndex",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -3278,8 +3115,7 @@ namespace Google.Apis.Books.v1
             public class AddVolumeRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Empty>
             {
                 /// <summary>Constructs a new AddVolume request.</summary>
-                public AddVolumeRequest(Google.Apis.Services.IClientService service, string shelf)
-                    : base(service)
+                public AddVolumeRequest(Google.Apis.Services.IClientService service, string shelf) : base(service)
                 {
                     Shelf = shelf;
                     InitParameters();
@@ -3319,13 +3155,13 @@ namespace Google.Apis.Books.v1
                 public virtual string VolumeId { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "addVolume";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "books/v1/mylibrary/bookshelves/{shelf}/addVolume";
 
                 /// <summary>Initializes AddVolume parameter list.</summary>
@@ -3333,42 +3169,38 @@ namespace Google.Apis.Books.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "shelf", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "shelf",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "reason", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "reason",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "source", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "source",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "volumeId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "volumeId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("shelf", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "shelf",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("reason", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "reason",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "volumeId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3384,8 +3216,7 @@ namespace Google.Apis.Books.v1
             public class ClearVolumesRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Empty>
             {
                 /// <summary>Constructs a new ClearVolumes request.</summary>
-                public ClearVolumesRequest(Google.Apis.Services.IClientService service, string shelf)
-                    : base(service)
+                public ClearVolumesRequest(Google.Apis.Services.IClientService service, string shelf) : base(service)
                 {
                     Shelf = shelf;
                     InitParameters();
@@ -3401,13 +3232,13 @@ namespace Google.Apis.Books.v1
                 public virtual string Source { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "clearVolumes";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "books/v1/mylibrary/bookshelves/{shelf}/clearVolumes";
 
                 /// <summary>Initializes ClearVolumes parameter list.</summary>
@@ -3415,24 +3246,22 @@ namespace Google.Apis.Books.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "shelf", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "shelf",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "source", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "source",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("shelf", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "shelf",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3448,8 +3277,7 @@ namespace Google.Apis.Books.v1
             public class GetRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Bookshelf>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string shelf)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string shelf) : base(service)
                 {
                     Shelf = shelf;
                     InitParameters();
@@ -3465,13 +3293,13 @@ namespace Google.Apis.Books.v1
                 public virtual string Source { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "books/v1/mylibrary/bookshelves/{shelf}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -3479,24 +3307,22 @@ namespace Google.Apis.Books.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "shelf", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "shelf",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "source", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "source",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("shelf", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "shelf",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3511,8 +3337,7 @@ namespace Google.Apis.Books.v1
             public class ListRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Bookshelves>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service) : base(service)
                 {
                     InitParameters();
                 }
@@ -3523,13 +3348,13 @@ namespace Google.Apis.Books.v1
                 public virtual string Source { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "books/v1/mylibrary/bookshelves";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -3537,15 +3362,14 @@ namespace Google.Apis.Books.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "source", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "source",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3561,8 +3385,7 @@ namespace Google.Apis.Books.v1
             public class MoveVolumeRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Empty>
             {
                 /// <summary>Constructs a new MoveVolume request.</summary>
-                public MoveVolumeRequest(Google.Apis.Services.IClientService service, string shelf)
-                    : base(service)
+                public MoveVolumeRequest(Google.Apis.Services.IClientService service, string shelf) : base(service)
                 {
                     Shelf = shelf;
                     InitParameters();
@@ -3587,13 +3410,13 @@ namespace Google.Apis.Books.v1
                 public virtual System.Nullable<int> VolumePosition { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "moveVolume";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "books/v1/mylibrary/bookshelves/{shelf}/moveVolume";
 
                 /// <summary>Initializes MoveVolume parameter list.</summary>
@@ -3601,42 +3424,38 @@ namespace Google.Apis.Books.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "shelf", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "shelf",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "source", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "source",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "volumeId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "volumeId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "volumePosition", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "volumePosition",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("shelf", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "shelf",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "volumeId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("volumePosition", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "volumePosition",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3652,8 +3471,7 @@ namespace Google.Apis.Books.v1
             public class RemoveVolumeRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Empty>
             {
                 /// <summary>Constructs a new RemoveVolume request.</summary>
-                public RemoveVolumeRequest(Google.Apis.Services.IClientService service, string shelf)
-                    : base(service)
+                public RemoveVolumeRequest(Google.Apis.Services.IClientService service, string shelf) : base(service)
                 {
                     Shelf = shelf;
                     InitParameters();
@@ -3687,13 +3505,13 @@ namespace Google.Apis.Books.v1
                 public virtual string VolumeId { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "removeVolume";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "books/v1/mylibrary/bookshelves/{shelf}/removeVolume";
 
                 /// <summary>Initializes RemoveVolume parameter list.</summary>
@@ -3701,42 +3519,38 @@ namespace Google.Apis.Books.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "shelf", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "shelf",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "reason", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "reason",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "source", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "source",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "volumeId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "volumeId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("shelf", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "shelf",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("reason", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "reason",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "volumeId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3771,8 +3585,7 @@ namespace Google.Apis.Books.v1
             public class GetRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.ReadingPosition>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string volumeId)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string volumeId) : base(service)
                 {
                     VolumeId = volumeId;
                     InitParameters();
@@ -3792,13 +3605,13 @@ namespace Google.Apis.Books.v1
                 public virtual string Source { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "books/v1/mylibrary/readingpositions/{volumeId}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -3806,33 +3619,30 @@ namespace Google.Apis.Books.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "volumeId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "volumeId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "contentVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "contentVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "source", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "source",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "volumeId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("contentVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "contentVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -3848,8 +3658,7 @@ namespace Google.Apis.Books.v1
             public class SetPositionRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Empty>
             {
                 /// <summary>Constructs a new SetPosition request.</summary>
-                public SetPositionRequest(Google.Apis.Services.IClientService service, string volumeId)
-                    : base(service)
+                public SetPositionRequest(Google.Apis.Services.IClientService service, string volumeId) : base(service)
                 {
                     VolumeId = volumeId;
                     InitParameters();
@@ -3910,13 +3719,13 @@ namespace Google.Apis.Books.v1
                 public virtual string Timestamp { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "setPosition";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "books/v1/mylibrary/readingpositions/{volumeId}/setPosition";
 
                 /// <summary>Initializes SetPosition parameter list.</summary>
@@ -3924,69 +3733,62 @@ namespace Google.Apis.Books.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "volumeId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "volumeId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "action", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "action",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "contentVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "contentVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "deviceCookie", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "deviceCookie",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "position", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "position",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "source", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "source",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "timestamp", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "timestamp",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "volumeId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("action", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "action",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("contentVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "contentVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("deviceCookie", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "deviceCookie",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("position", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "position",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("timestamp", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "timestamp",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -4019,8 +3821,7 @@ namespace Google.Apis.Books.v1
         public class GetRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Notification>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -4040,13 +3841,13 @@ namespace Google.Apis.Books.v1
             public virtual string Source { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "books/v1/notification/get";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -4054,33 +3855,30 @@ namespace Google.Apis.Books.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "locale", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "locale",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "notification_id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "notification_id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "source", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "source",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("locale", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "locale",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("notification_id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "notification_id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "source",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4112,8 +3910,7 @@ namespace Google.Apis.Books.v1
         public class ListCategoriesRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Category>
         {
             /// <summary>Constructs a new ListCategories request.</summary>
-            public ListCategoriesRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListCategoriesRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -4124,13 +3921,13 @@ namespace Google.Apis.Books.v1
             public virtual string Locale { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "listCategories";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "books/v1/onboarding/listCategories";
 
             /// <summary>Initializes ListCategories parameter list.</summary>
@@ -4138,15 +3935,14 @@ namespace Google.Apis.Books.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "locale", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "locale",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("locale", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "locale",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4161,8 +3957,7 @@ namespace Google.Apis.Books.v1
         public class ListCategoryVolumesRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Volume2>
         {
             /// <summary>Constructs a new ListCategoryVolumes request.</summary>
-            public ListCategoryVolumesRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListCategoryVolumesRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -4204,13 +3999,13 @@ namespace Google.Apis.Books.v1
             public virtual string PageToken { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "listCategoryVolumes";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "books/v1/onboarding/listCategoryVolumes";
 
             /// <summary>Initializes ListCategoryVolumes parameter list.</summary>
@@ -4218,51 +4013,46 @@ namespace Google.Apis.Books.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "categoryId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "categoryId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "locale", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "locale",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxAllowedMaturityRating", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxAllowedMaturityRating",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("categoryId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "categoryId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("locale", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "locale",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxAllowedMaturityRating", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxAllowedMaturityRating",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4294,8 +4084,7 @@ namespace Google.Apis.Books.v1
         public class GetRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Discoveryclusters>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -4330,13 +4119,13 @@ namespace Google.Apis.Books.v1
             public virtual string Source { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "books/v1/personalizedstream/get";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -4344,33 +4133,30 @@ namespace Google.Apis.Books.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "locale", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "locale",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxAllowedMaturityRating", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxAllowedMaturityRating",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "source", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "source",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("locale", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "locale",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxAllowedMaturityRating", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxAllowedMaturityRating",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "source",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4402,8 +4188,7 @@ namespace Google.Apis.Books.v1
         public class AcceptRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Empty>
         {
             /// <summary>Constructs a new Accept request.</summary>
-            public AcceptRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public AcceptRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -4442,13 +4227,13 @@ namespace Google.Apis.Books.v1
             public virtual string VolumeId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "accept";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "books/v1/promooffer/accept";
 
             /// <summary>Initializes Accept parameter list.</summary>
@@ -4456,78 +4241,70 @@ namespace Google.Apis.Books.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "androidId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "androidId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "device", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "device",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "manufacturer", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "manufacturer",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "model", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "model",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "offerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "offerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "product", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "product",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "serial", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "serial",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "volumeId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "volumeId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("androidId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "androidId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("device", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "device",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("manufacturer", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "manufacturer",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("model", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "model",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("offerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "offerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("product", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "product",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("serial", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "serial",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "volumeId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4542,8 +4319,7 @@ namespace Google.Apis.Books.v1
         public class DismissRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Empty>
         {
             /// <summary>Constructs a new Dismiss request.</summary>
-            public DismissRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public DismissRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -4578,13 +4354,13 @@ namespace Google.Apis.Books.v1
             public virtual string Serial { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "dismiss";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "books/v1/promooffer/dismiss";
 
             /// <summary>Initializes Dismiss parameter list.</summary>
@@ -4592,69 +4368,62 @@ namespace Google.Apis.Books.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "androidId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "androidId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "device", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "device",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "manufacturer", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "manufacturer",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "model", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "model",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "offerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "offerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "product", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "product",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "serial", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "serial",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("androidId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "androidId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("device", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "device",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("manufacturer", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "manufacturer",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("model", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "model",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("offerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "offerId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("product", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "product",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("serial", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "serial",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4669,8 +4438,7 @@ namespace Google.Apis.Books.v1
         public class GetRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Offers>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -4701,13 +4469,13 @@ namespace Google.Apis.Books.v1
             public virtual string Serial { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "books/v1/promooffer/get";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -4715,60 +4483,54 @@ namespace Google.Apis.Books.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "androidId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "androidId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "device", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "device",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "manufacturer", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "manufacturer",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "model", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "model",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "product", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "product",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "serial", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "serial",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("androidId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "androidId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("device", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "device",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("manufacturer", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "manufacturer",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("model", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "model",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("product", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "product",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("serial", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "serial",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4819,8 +4581,7 @@ namespace Google.Apis.Books.v1
             public class GetRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Seriesmembership>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service) : base(service)
                 {
                     InitParameters();
                 }
@@ -4839,13 +4600,13 @@ namespace Google.Apis.Books.v1
                 public virtual string SeriesId { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "books/v1/series/membership/get";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -4853,33 +4614,30 @@ namespace Google.Apis.Books.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "page_size", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "page_size",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "page_token", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "page_token",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "series_id", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "series_id",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("page_size", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "page_size",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("page_token", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "page_token",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("series_id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "series_id",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -4895,8 +4653,7 @@ namespace Google.Apis.Books.v1
         public class GetRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Series>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -4907,13 +4664,13 @@ namespace Google.Apis.Books.v1
             public virtual Google.Apis.Util.Repeatable<string> SeriesId { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "books/v1/series/get";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -4921,15 +4678,14 @@ namespace Google.Apis.Books.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "series_id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "series_id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("series_id", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "series_id",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -4984,8 +4740,7 @@ namespace Google.Apis.Books.v1
             public class ListRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Volumes>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string volumeId)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string volumeId) : base(service)
                 {
                     VolumeId = volumeId;
                     InitParameters();
@@ -5045,13 +4800,13 @@ namespace Google.Apis.Books.v1
                 public virtual string Source { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "books/v1/volumes/{volumeId}/associated";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -5059,51 +4814,46 @@ namespace Google.Apis.Books.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "volumeId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "volumeId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "association", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "association",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "locale", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "locale",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "maxAllowedMaturityRating", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "maxAllowedMaturityRating",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "source", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "source",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "volumeId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("association", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "association",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("locale", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "locale",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("maxAllowedMaturityRating", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxAllowedMaturityRating",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5137,8 +4887,7 @@ namespace Google.Apis.Books.v1
             public class ListRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Volumes>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service) : base(service)
                 {
                     InitParameters();
                 }
@@ -5223,13 +4972,13 @@ namespace Google.Apis.Books.v1
                 public virtual System.Nullable<long> StartIndex { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "books/v1/volumes/mybooks";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -5237,69 +4986,62 @@ namespace Google.Apis.Books.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "acquireMethod", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "acquireMethod",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "country", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "country",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "locale", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "locale",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "maxResults", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "maxResults",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "processingState", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "processingState",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "source", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "source",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "startIndex", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "startIndex",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("acquireMethod", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "acquireMethod",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("country", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "country",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("locale", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "locale",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("processingState", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "processingState",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("startIndex", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "startIndex",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5333,8 +5075,7 @@ namespace Google.Apis.Books.v1
             public class ListRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Volumes>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service) : base(service)
                 {
                     InitParameters();
                 }
@@ -5369,13 +5110,13 @@ namespace Google.Apis.Books.v1
                 public virtual string Source { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "books/v1/volumes/recommended";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -5383,33 +5124,30 @@ namespace Google.Apis.Books.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "locale", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "locale",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "maxAllowedMaturityRating", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "maxAllowedMaturityRating",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "source", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "source",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("locale", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "locale",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("maxAllowedMaturityRating", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxAllowedMaturityRating",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5424,8 +5162,7 @@ namespace Google.Apis.Books.v1
             public class RateRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.BooksVolumesRecommendedRateResponse>
             {
                 /// <summary>Constructs a new Rate request.</summary>
-                public RateRequest(Google.Apis.Services.IClientService service)
-                    : base(service)
+                public RateRequest(Google.Apis.Services.IClientService service) : base(service)
                 {
                     InitParameters();
                 }
@@ -5462,13 +5199,13 @@ namespace Google.Apis.Books.v1
                 public virtual string VolumeId { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "rate";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "books/v1/volumes/recommended/rate";
 
                 /// <summary>Initializes Rate parameter list.</summary>
@@ -5476,42 +5213,38 @@ namespace Google.Apis.Books.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "locale", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "locale",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "rating", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "rating",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "source", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "source",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "volumeId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "volumeId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("locale", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "locale",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("rating", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "rating",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "volumeId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5545,8 +5278,7 @@ namespace Google.Apis.Books.v1
             public class ListRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Volumes>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service) : base(service)
                 {
                     InitParameters();
                 }
@@ -5595,13 +5327,13 @@ namespace Google.Apis.Books.v1
                 public virtual Google.Apis.Util.Repeatable<string> VolumeId { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "books/v1/volumes/useruploaded";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -5609,60 +5341,54 @@ namespace Google.Apis.Books.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "locale", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "locale",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "maxResults", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "maxResults",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "processingState", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "processingState",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "source", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "source",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "startIndex", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "startIndex",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "volumeId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "volumeId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("locale", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "locale",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("processingState", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "processingState",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("startIndex", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "startIndex",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "volumeId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -5679,8 +5405,7 @@ namespace Google.Apis.Books.v1
         public class GetRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Volume>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string volumeId)
-                : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string volumeId) : base(service)
             {
                 VolumeId = volumeId;
                 InitParameters();
@@ -5729,13 +5454,13 @@ namespace Google.Apis.Books.v1
             public virtual System.Nullable<bool> UserLibraryConsistentRead { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "books/v1/volumes/{volumeId}";
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -5743,69 +5468,62 @@ namespace Google.Apis.Books.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "volumeId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "volumeId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "country", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "country",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "includeNonComicsSeries", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includeNonComicsSeries",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "partner", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "partner",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "projection", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projection",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "source", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "source",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "user_library_consistent_read", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "user_library_consistent_read",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "volumeId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("country", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "country",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeNonComicsSeries", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeNonComicsSeries",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("partner", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partner",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("projection", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projection",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "source",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("user_library_consistent_read", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "user_library_consistent_read",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }
@@ -5820,8 +5538,7 @@ namespace Google.Apis.Books.v1
         public class ListRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Volumes>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service)
-                : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
             {
                 InitParameters();
             }
@@ -5986,13 +5703,13 @@ namespace Google.Apis.Books.v1
             public virtual System.Nullable<long> StartIndex { get; set; }
 
 
-            ///<summary>Gets the method name.</summary>
+            /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
-            ///<summary>Gets the HTTP method.</summary>
+            /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "GET";
 
-            ///<summary>Gets the REST path.</summary>
+            /// <summary>Gets the REST path.</summary>
             public override string RestPath => "books/v1/volumes";
 
             /// <summary>Initializes List parameter list.</summary>
@@ -6000,132 +5717,118 @@ namespace Google.Apis.Books.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "download", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "download",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "langRestrict", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "langRestrict",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "libraryRestrict", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "libraryRestrict",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxAllowedMaturityRating", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxAllowedMaturityRating",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "partner", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "partner",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "printType", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "printType",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "projection", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projection",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "q", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "q",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "showPreorders", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "showPreorders",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "source", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "source",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "startIndex", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "startIndex",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
+                RequestParameters.Add("download", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "download",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("langRestrict", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "langRestrict",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("libraryRestrict", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "libraryRestrict",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxAllowedMaturityRating", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxAllowedMaturityRating",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("partner", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "partner",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("printType", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "printType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("projection", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projection",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("q", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "q",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("showPreorders", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "showPreorders",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "source",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("startIndex", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "startIndex",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

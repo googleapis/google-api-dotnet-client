@@ -18,17 +18,16 @@ namespace Google.Apis.Pubsub.v1beta2
         public const string Version = "v1beta2";
 
         /// <summary>The discovery version used to generate this service.</summary>
-        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
-            Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public PubsubService() :
-            this(new Google.Apis.Services.BaseClientService.Initializer()) {}
+        public PubsubService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public PubsubService(Google.Apis.Services.BaseClientService.Initializer initializer)
-            : base(initializer)
+        public PubsubService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Projects = new ProjectsResource(this);
         }
@@ -86,12 +85,11 @@ namespace Google.Apis.Pubsub.v1beta2
         public virtual ProjectsResource Projects { get; }
     }
 
-    ///<summary>A base abstract class for Pubsub requests.</summary>
+    /// <summary>A base abstract class for Pubsub requests.</summary>
     public abstract class PubsubBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new PubsubBaseServiceRequest instance.</summary>
-        protected PubsubBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
+        /// <summary>Constructs a new PubsubBaseServiceRequest instance.</summary>
+        protected PubsubBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -171,105 +169,94 @@ namespace Google.Apis.Pubsub.v1beta2
         {
             base.InitParameters();
 
-            RequestParameters.Add(
-                "$.xgafv", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "$.xgafv",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "access_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "access_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "alt", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "alt",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "json",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "callback", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "callback",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "fields", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "fields",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "key", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "key",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "oauth_token", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "oauth_token",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "prettyPrint", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "prettyPrint",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "true",
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "quotaUser", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "quotaUser",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "uploadType", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "uploadType",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            RequestParameters.Add(
-                "upload_protocol", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "upload_protocol",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
         }
     }
 
@@ -327,8 +314,7 @@ namespace Google.Apis.Pubsub.v1beta2
             public class AcknowledgeRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.Empty>
             {
                 /// <summary>Constructs a new Acknowledge request.</summary>
-                public AcknowledgeRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1beta2.Data.AcknowledgeRequest body, string subscription)
-                    : base(service)
+                public AcknowledgeRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1beta2.Data.AcknowledgeRequest body, string subscription) : base(service)
                 {
                     Subscription = subscription;
                     Body = body;
@@ -344,16 +330,16 @@ namespace Google.Apis.Pubsub.v1beta2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Pubsub.v1beta2.Data.AcknowledgeRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "acknowledge";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta2/{+subscription}:acknowledge";
 
                 /// <summary>Initializes Acknowledge parameter list.</summary>
@@ -361,15 +347,14 @@ namespace Google.Apis.Pubsub.v1beta2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "subscription", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "subscription",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
-                        });
+                    RequestParameters.Add("subscription", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "subscription",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
+                    });
                 }
 
             }
@@ -396,8 +381,7 @@ namespace Google.Apis.Pubsub.v1beta2
             public class CreateRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.Subscription>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1beta2.Data.Subscription body, string name)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1beta2.Data.Subscription body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -417,16 +401,16 @@ namespace Google.Apis.Pubsub.v1beta2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Pubsub.v1beta2.Data.Subscription Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta2/{+name}";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -434,15 +418,14 @@ namespace Google.Apis.Pubsub.v1beta2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
+                    });
                 }
 
             }
@@ -464,8 +447,7 @@ namespace Google.Apis.Pubsub.v1beta2
             public class DeleteRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string subscription)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string subscription) : base(service)
                 {
                     Subscription = subscription;
                     InitParameters();
@@ -477,13 +459,13 @@ namespace Google.Apis.Pubsub.v1beta2
                 public virtual string Subscription { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta2/{+subscription}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -491,15 +473,14 @@ namespace Google.Apis.Pubsub.v1beta2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "subscription", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "subscription",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
-                        });
+                    RequestParameters.Add("subscription", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "subscription",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
+                    });
                 }
 
             }
@@ -515,8 +496,7 @@ namespace Google.Apis.Pubsub.v1beta2
             public class GetRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.Subscription>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string subscription)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string subscription) : base(service)
                 {
                     Subscription = subscription;
                     InitParameters();
@@ -528,13 +508,13 @@ namespace Google.Apis.Pubsub.v1beta2
                 public virtual string Subscription { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta2/{+subscription}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -542,15 +522,14 @@ namespace Google.Apis.Pubsub.v1beta2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "subscription", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "subscription",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
-                        });
+                    RequestParameters.Add("subscription", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "subscription",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
+                    });
                 }
 
             }
@@ -569,8 +548,7 @@ namespace Google.Apis.Pubsub.v1beta2
             public class GetIamPolicyRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.Policy>
             {
                 /// <summary>Constructs a new GetIamPolicy request.</summary>
-                public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource)
-                    : base(service)
+                public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
                 {
                     Resource = resource;
                     InitParameters();
@@ -591,13 +569,13 @@ namespace Google.Apis.Pubsub.v1beta2
                 public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getIamPolicy";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta2/{+resource}:getIamPolicy";
 
                 /// <summary>Initializes GetIamPolicy parameter list.</summary>
@@ -605,24 +583,22 @@ namespace Google.Apis.Pubsub.v1beta2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "options.requestedPolicyVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
+                    });
+                    RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "options.requestedPolicyVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -638,8 +614,7 @@ namespace Google.Apis.Pubsub.v1beta2
             public class ListRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.ListSubscriptionsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string project)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string project) : base(service)
                 {
                     Project = project;
                     InitParameters();
@@ -661,13 +636,13 @@ namespace Google.Apis.Pubsub.v1beta2
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta2/{+project}/subscriptions";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -675,33 +650,30 @@ namespace Google.Apis.Pubsub.v1beta2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "project", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "project",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -724,8 +696,7 @@ namespace Google.Apis.Pubsub.v1beta2
             public class ModifyAckDeadlineRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.Empty>
             {
                 /// <summary>Constructs a new ModifyAckDeadline request.</summary>
-                public ModifyAckDeadlineRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1beta2.Data.ModifyAckDeadlineRequest body, string subscription)
-                    : base(service)
+                public ModifyAckDeadlineRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1beta2.Data.ModifyAckDeadlineRequest body, string subscription) : base(service)
                 {
                     Subscription = subscription;
                     Body = body;
@@ -741,16 +712,16 @@ namespace Google.Apis.Pubsub.v1beta2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Pubsub.v1beta2.Data.ModifyAckDeadlineRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "modifyAckDeadline";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta2/{+subscription}:modifyAckDeadline";
 
                 /// <summary>Initializes ModifyAckDeadline parameter list.</summary>
@@ -758,15 +729,14 @@ namespace Google.Apis.Pubsub.v1beta2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "subscription", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "subscription",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
-                        });
+                    RequestParameters.Add("subscription", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "subscription",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
+                    });
                 }
 
             }
@@ -789,8 +759,7 @@ namespace Google.Apis.Pubsub.v1beta2
             public class ModifyPushConfigRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.Empty>
             {
                 /// <summary>Constructs a new ModifyPushConfig request.</summary>
-                public ModifyPushConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1beta2.Data.ModifyPushConfigRequest body, string subscription)
-                    : base(service)
+                public ModifyPushConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1beta2.Data.ModifyPushConfigRequest body, string subscription) : base(service)
                 {
                     Subscription = subscription;
                     Body = body;
@@ -806,16 +775,16 @@ namespace Google.Apis.Pubsub.v1beta2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Pubsub.v1beta2.Data.ModifyPushConfigRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "modifyPushConfig";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta2/{+subscription}:modifyPushConfig";
 
                 /// <summary>Initializes ModifyPushConfig parameter list.</summary>
@@ -823,15 +792,14 @@ namespace Google.Apis.Pubsub.v1beta2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "subscription", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "subscription",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
-                        });
+                    RequestParameters.Add("subscription", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "subscription",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
+                    });
                 }
 
             }
@@ -852,8 +820,7 @@ namespace Google.Apis.Pubsub.v1beta2
             public class PullRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.PullResponse>
             {
                 /// <summary>Constructs a new Pull request.</summary>
-                public PullRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1beta2.Data.PullRequest body, string subscription)
-                    : base(service)
+                public PullRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1beta2.Data.PullRequest body, string subscription) : base(service)
                 {
                     Subscription = subscription;
                     Body = body;
@@ -869,16 +836,16 @@ namespace Google.Apis.Pubsub.v1beta2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Pubsub.v1beta2.Data.PullRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "pull";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta2/{+subscription}:pull";
 
                 /// <summary>Initializes Pull parameter list.</summary>
@@ -886,15 +853,14 @@ namespace Google.Apis.Pubsub.v1beta2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "subscription", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "subscription",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
-                        });
+                    RequestParameters.Add("subscription", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "subscription",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
+                    });
                 }
 
             }
@@ -914,8 +880,7 @@ namespace Google.Apis.Pubsub.v1beta2
             public class SetIamPolicyRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.Policy>
             {
                 /// <summary>Constructs a new SetIamPolicy request.</summary>
-                public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1beta2.Data.SetIamPolicyRequest body, string resource)
-                    : base(service)
+                public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1beta2.Data.SetIamPolicyRequest body, string resource) : base(service)
                 {
                     Resource = resource;
                     Body = body;
@@ -932,16 +897,16 @@ namespace Google.Apis.Pubsub.v1beta2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Pubsub.v1beta2.Data.SetIamPolicyRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "setIamPolicy";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta2/{+resource}:setIamPolicy";
 
                 /// <summary>Initializes SetIamPolicy parameter list.</summary>
@@ -949,15 +914,14 @@ namespace Google.Apis.Pubsub.v1beta2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
-                        });
+                    RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
+                    });
                 }
 
             }
@@ -981,8 +945,7 @@ namespace Google.Apis.Pubsub.v1beta2
             public class TestIamPermissionsRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.TestIamPermissionsResponse>
             {
                 /// <summary>Constructs a new TestIamPermissions request.</summary>
-                public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1beta2.Data.TestIamPermissionsRequest body, string resource)
-                    : base(service)
+                public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1beta2.Data.TestIamPermissionsRequest body, string resource) : base(service)
                 {
                     Resource = resource;
                     Body = body;
@@ -999,16 +962,16 @@ namespace Google.Apis.Pubsub.v1beta2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Pubsub.v1beta2.Data.TestIamPermissionsRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "testIamPermissions";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta2/{+resource}:testIamPermissions";
 
                 /// <summary>Initializes TestIamPermissions parameter list.</summary>
@@ -1016,15 +979,14 @@ namespace Google.Apis.Pubsub.v1beta2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
-                        });
+                    RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
+                    });
                 }
 
             }
@@ -1078,8 +1040,7 @@ namespace Google.Apis.Pubsub.v1beta2
                 public class ListRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.ListTopicSubscriptionsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string topic)
-                        : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, string topic) : base(service)
                     {
                         Topic = topic;
                         InitParameters();
@@ -1101,13 +1062,13 @@ namespace Google.Apis.Pubsub.v1beta2
                     public virtual string PageToken { get; set; }
 
 
-                    ///<summary>Gets the method name.</summary>
+                    /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
-                    ///<summary>Gets the HTTP method.</summary>
+                    /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
-                    ///<summary>Gets the REST path.</summary>
+                    /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1beta2/{+topic}/subscriptions";
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -1115,33 +1076,30 @@ namespace Google.Apis.Pubsub.v1beta2
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "topic", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "topic",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/topics/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
+                        RequestParameters.Add("topic", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "topic",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/topics/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -1162,8 +1120,7 @@ namespace Google.Apis.Pubsub.v1beta2
             public class CreateRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.Topic>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1beta2.Data.Topic body, string name)
-                    : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1beta2.Data.Topic body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -1182,16 +1139,16 @@ namespace Google.Apis.Pubsub.v1beta2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Pubsub.v1beta2.Data.Topic Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "create";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PUT";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta2/{+name}";
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -1199,15 +1156,14 @@ namespace Google.Apis.Pubsub.v1beta2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/topics/[^/]+$",
-                        });
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/topics/[^/]+$",
+                    });
                 }
 
             }
@@ -1229,8 +1185,7 @@ namespace Google.Apis.Pubsub.v1beta2
             public class DeleteRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string topic)
-                    : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string topic) : base(service)
                 {
                     Topic = topic;
                     InitParameters();
@@ -1242,13 +1197,13 @@ namespace Google.Apis.Pubsub.v1beta2
                 public virtual string Topic { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "DELETE";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta2/{+topic}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -1256,15 +1211,14 @@ namespace Google.Apis.Pubsub.v1beta2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "topic", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "topic",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/topics/[^/]+$",
-                        });
+                    RequestParameters.Add("topic", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "topic",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/topics/[^/]+$",
+                    });
                 }
 
             }
@@ -1280,8 +1234,7 @@ namespace Google.Apis.Pubsub.v1beta2
             public class GetRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.Topic>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string topic)
-                    : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string topic) : base(service)
                 {
                     Topic = topic;
                     InitParameters();
@@ -1293,13 +1246,13 @@ namespace Google.Apis.Pubsub.v1beta2
                 public virtual string Topic { get; private set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta2/{+topic}";
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1307,15 +1260,14 @@ namespace Google.Apis.Pubsub.v1beta2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "topic", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "topic",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/topics/[^/]+$",
-                        });
+                    RequestParameters.Add("topic", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "topic",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/topics/[^/]+$",
+                    });
                 }
 
             }
@@ -1334,8 +1286,7 @@ namespace Google.Apis.Pubsub.v1beta2
             public class GetIamPolicyRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.Policy>
             {
                 /// <summary>Constructs a new GetIamPolicy request.</summary>
-                public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource)
-                    : base(service)
+                public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
                 {
                     Resource = resource;
                     InitParameters();
@@ -1356,13 +1307,13 @@ namespace Google.Apis.Pubsub.v1beta2
                 public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getIamPolicy";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta2/{+resource}:getIamPolicy";
 
                 /// <summary>Initializes GetIamPolicy parameter list.</summary>
@@ -1370,24 +1321,22 @@ namespace Google.Apis.Pubsub.v1beta2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/topics/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "options.requestedPolicyVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/topics/[^/]+$",
+                    });
+                    RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "options.requestedPolicyVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1403,8 +1352,7 @@ namespace Google.Apis.Pubsub.v1beta2
             public class ListRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.ListTopicsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string project)
-                    : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string project) : base(service)
                 {
                     Project = project;
                     InitParameters();
@@ -1425,13 +1373,13 @@ namespace Google.Apis.Pubsub.v1beta2
                 public virtual string PageToken { get; set; }
 
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta2/{+project}/topics";
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1439,33 +1387,30 @@ namespace Google.Apis.Pubsub.v1beta2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "project", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "project",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
+                    RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
 
             }
@@ -1486,8 +1431,7 @@ namespace Google.Apis.Pubsub.v1beta2
             public class PublishRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.PublishResponse>
             {
                 /// <summary>Constructs a new Publish request.</summary>
-                public PublishRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1beta2.Data.PublishRequest body, string topic)
-                    : base(service)
+                public PublishRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1beta2.Data.PublishRequest body, string topic) : base(service)
                 {
                     Topic = topic;
                     Body = body;
@@ -1503,16 +1447,16 @@ namespace Google.Apis.Pubsub.v1beta2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Pubsub.v1beta2.Data.PublishRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "publish";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta2/{+topic}:publish";
 
                 /// <summary>Initializes Publish parameter list.</summary>
@@ -1520,15 +1464,14 @@ namespace Google.Apis.Pubsub.v1beta2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "topic", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "topic",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/topics/[^/]+$",
-                        });
+                    RequestParameters.Add("topic", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "topic",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/topics/[^/]+$",
+                    });
                 }
 
             }
@@ -1548,8 +1491,7 @@ namespace Google.Apis.Pubsub.v1beta2
             public class SetIamPolicyRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.Policy>
             {
                 /// <summary>Constructs a new SetIamPolicy request.</summary>
-                public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1beta2.Data.SetIamPolicyRequest body, string resource)
-                    : base(service)
+                public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1beta2.Data.SetIamPolicyRequest body, string resource) : base(service)
                 {
                     Resource = resource;
                     Body = body;
@@ -1566,16 +1508,16 @@ namespace Google.Apis.Pubsub.v1beta2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Pubsub.v1beta2.Data.SetIamPolicyRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "setIamPolicy";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta2/{+resource}:setIamPolicy";
 
                 /// <summary>Initializes SetIamPolicy parameter list.</summary>
@@ -1583,15 +1525,14 @@ namespace Google.Apis.Pubsub.v1beta2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/topics/[^/]+$",
-                        });
+                    RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/topics/[^/]+$",
+                    });
                 }
 
             }
@@ -1615,8 +1556,7 @@ namespace Google.Apis.Pubsub.v1beta2
             public class TestIamPermissionsRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.TestIamPermissionsResponse>
             {
                 /// <summary>Constructs a new TestIamPermissions request.</summary>
-                public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1beta2.Data.TestIamPermissionsRequest body, string resource)
-                    : base(service)
+                public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1beta2.Data.TestIamPermissionsRequest body, string resource) : base(service)
                 {
                     Resource = resource;
                     Body = body;
@@ -1633,16 +1573,16 @@ namespace Google.Apis.Pubsub.v1beta2
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Pubsub.v1beta2.Data.TestIamPermissionsRequest Body { get; set; }
 
-                ///<summary>Returns the body of the request.</summary>
+                /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
-                ///<summary>Gets the method name.</summary>
+                /// <summary>Gets the method name.</summary>
                 public override string MethodName => "testIamPermissions";
 
-                ///<summary>Gets the HTTP method.</summary>
+                /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
-                ///<summary>Gets the REST path.</summary>
+                /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1beta2/{+resource}:testIamPermissions";
 
                 /// <summary>Initializes TestIamPermissions parameter list.</summary>
@@ -1650,15 +1590,14 @@ namespace Google.Apis.Pubsub.v1beta2
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/topics/[^/]+$",
-                        });
+                    RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/topics/[^/]+$",
+                    });
                 }
 
             }
