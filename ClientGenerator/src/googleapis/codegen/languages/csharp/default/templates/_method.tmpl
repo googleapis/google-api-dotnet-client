@@ -86,8 +86,7 @@ public {{ method.className }}Request(
     {% endfor %}
 {% end_parameter_list %})
 
-{% endnoeol %}
-    : base(service)
+{% endnoeol %} : base(service)
 {
 {% filter noblanklines %}{% indent %}
 {% for p in method.requiredParameters %}
