@@ -749,17 +749,11 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
         public virtual string RequestTimeRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="RequestTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> RequestTime
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(RequestTimeRaw);
-            }
-            set
-            {
-                RequestTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(RequestTimeRaw);
+            set => RequestTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
     }    

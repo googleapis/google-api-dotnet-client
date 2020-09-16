@@ -3867,17 +3867,11 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string StartTimeRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> StartTime
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(StartTimeRaw);
-            }
-            set
-            {
-                StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>[Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in
@@ -6683,17 +6677,11 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string SnapshotTimeRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="SnapshotTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> SnapshotTime
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(SnapshotTimeRaw);
-            }
-            set
-            {
-                SnapshotTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(SnapshotTimeRaw);
+            set => SnapshotTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

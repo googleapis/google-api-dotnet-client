@@ -1133,17 +1133,11 @@ namespace Google.Apis.Plus.v1.Data
         public virtual string PublishedRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> Published
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(PublishedRaw);
-            }
-            set
-            {
-                PublishedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(PublishedRaw);
+            set => PublishedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>Radius, in meters, of the region where this activity occurred, centered at the latitude and
@@ -1160,17 +1154,11 @@ namespace Google.Apis.Plus.v1.Data
         public virtual string UpdatedRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> Updated
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(UpdatedRaw);
-            }
-            set
-            {
-                UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(UpdatedRaw);
+            set => UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>The link to this activity.</summary>
@@ -1616,17 +1604,11 @@ namespace Google.Apis.Plus.v1.Data
         public virtual string UpdatedRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> Updated
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(UpdatedRaw);
-            }
-            set
-            {
-                UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(UpdatedRaw);
+            set => UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
     }    
@@ -1667,17 +1649,11 @@ namespace Google.Apis.Plus.v1.Data
         public virtual string PublishedRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> Published
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(PublishedRaw);
-            }
-            set
-            {
-                PublishedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(PublishedRaw);
+            set => PublishedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>Link to this comment resource.</summary>
@@ -1689,17 +1665,11 @@ namespace Google.Apis.Plus.v1.Data
         public virtual string UpdatedRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> Updated
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(UpdatedRaw);
-            }
-            set
-            {
-                UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(UpdatedRaw);
+            set => UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>This comment's verb, indicating what action was performed. Possible values are: - "post" - Publish
@@ -1855,17 +1825,11 @@ namespace Google.Apis.Plus.v1.Data
         public virtual string UpdatedRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> Updated
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(UpdatedRaw);
-            }
-            set
-            {
-                UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(UpdatedRaw);
+            set => UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
     }    

@@ -8367,17 +8367,11 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string ModificationDateRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ModificationDateRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> ModificationDate
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(ModificationDateRaw);
-            }
-            set
-            {
-                ModificationDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(ModificationDateRaw);
+            set => ModificationDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>A link back to this change.</summary>
@@ -8578,17 +8572,11 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string CreatedDateRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedDateRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> CreatedDate
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(CreatedDateRaw);
-            }
-            set
-            {
-                CreatedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(CreatedDateRaw);
+            set => CreatedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>Whether this comment has been deleted. If a comment has been deleted the content will be cleared
@@ -8617,17 +8605,11 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string ModifiedDateRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ModifiedDateRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> ModifiedDate
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(ModifiedDateRaw);
-            }
-            set
-            {
-                ModifiedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(ModifiedDateRaw);
+            set => ModifiedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>Replies to this post.</summary>
@@ -8712,17 +8694,11 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string CreatedDateRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedDateRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> CreatedDate
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(CreatedDateRaw);
-            }
-            set
-            {
-                CreatedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(CreatedDateRaw);
+            set => CreatedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>Whether this reply has been deleted. If a reply has been deleted the content will be cleared and
@@ -8743,17 +8719,11 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string ModifiedDateRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ModifiedDateRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> ModifiedDate
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(ModifiedDateRaw);
-            }
-            set
-            {
-                ModifiedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(ModifiedDateRaw);
+            set => ModifiedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>The ID of the reply.</summary>
@@ -8824,17 +8794,11 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string RestrictionDateRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="RestrictionDateRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> RestrictionDate
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(RestrictionDateRaw);
-            }
-            set
-            {
-                RestrictionDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(RestrictionDateRaw);
+            set => RestrictionDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>The type of the content restriction. Currently the only possible value is
@@ -8873,17 +8837,11 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string CreatedDateRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedDateRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> CreatedDate
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(CreatedDateRaw);
-            }
-            set
-            {
-                CreatedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(CreatedDateRaw);
+            set => CreatedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>Whether the shared drive is hidden from default view.</summary>
@@ -9125,17 +9083,11 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string CreatedDateRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedDateRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> CreatedDate
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(CreatedDateRaw);
-            }
-            set
-            {
-                CreatedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(CreatedDateRaw);
+            set => CreatedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>A link to open this file with the user's default app for this file. Only populated when the
@@ -9257,17 +9209,11 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string LastViewedByMeDateRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="LastViewedByMeDateRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> LastViewedByMeDate
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(LastViewedByMeDateRaw);
-            }
-            set
-            {
-                LastViewedByMeDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(LastViewedByMeDateRaw);
+            set => LastViewedByMeDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>Deprecated.</summary>
@@ -9275,17 +9221,11 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string MarkedViewedByMeDateRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="MarkedViewedByMeDateRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> MarkedViewedByMeDate
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(MarkedViewedByMeDateRaw);
-            }
-            set
-            {
-                MarkedViewedByMeDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(MarkedViewedByMeDateRaw);
+            set => MarkedViewedByMeDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>An MD5 checksum for the content of this file. This field is only populated for files with content
@@ -9304,17 +9244,11 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string ModifiedByMeDateRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ModifiedByMeDateRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> ModifiedByMeDate
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(ModifiedByMeDateRaw);
-            }
-            set
-            {
-                ModifiedByMeDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(ModifiedByMeDateRaw);
+            set => ModifiedByMeDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>Last time this file was modified by anyone (formatted RFC 3339 timestamp). This is only mutable on
@@ -9323,17 +9257,11 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string ModifiedDateRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ModifiedDateRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> ModifiedDate
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(ModifiedDateRaw);
-            }
-            set
-            {
-                ModifiedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(ModifiedDateRaw);
+            set => ModifiedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>A map of the id of each of the user's apps to a link to open this file with that app. Only
@@ -9399,17 +9327,11 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string SharedWithMeDateRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="SharedWithMeDateRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> SharedWithMeDate
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(SharedWithMeDateRaw);
-            }
-            set
-            {
-                SharedWithMeDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(SharedWithMeDateRaw);
+            set => SharedWithMeDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>User that shared the item with the current user, if available.</summary>
@@ -9455,17 +9377,11 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string TrashedDateRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="TrashedDateRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> TrashedDate
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(TrashedDateRaw);
-            }
-            set
-            {
-                TrashedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(TrashedDateRaw);
+            set => TrashedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>If the file has been explicitly trashed, the user who trashed it. Only populated for items in
@@ -10013,17 +9929,11 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string ExpirationDateRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ExpirationDateRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> ExpirationDate
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(ExpirationDateRaw);
-            }
-            set
-            {
-                ExpirationDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(ExpirationDateRaw);
+            set => ExpirationDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>The ID of the user this permission refers to, and identical to the permissionId in the About and
@@ -10283,17 +10193,11 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string ModifiedDateRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ModifiedDateRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> ModifiedDate
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(ModifiedDateRaw);
-            }
-            set
-            {
-                ModifiedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(ModifiedDateRaw);
+            set => ModifiedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>The original filename when this revision was created. This will only be populated on files with
@@ -10403,17 +10307,11 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string CreatedDateRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedDateRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> CreatedDate
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(CreatedDateRaw);
-            }
-            set
-            {
-                CreatedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(CreatedDateRaw);
+            set => CreatedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>The ID of this Team Drive which is also the ID of the top level folder of this Team
