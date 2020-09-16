@@ -280,12 +280,17 @@ class CSharpApi(api.Api):
                    self.values['versionNoDots'].replace('-', '')))
     self.model_module.SetPath('Data')
 
+  # pylint: disable=unused-argument
   def NestedClassNameForProperty(self, name, owning_schema):
+    # Nested classes are only used within the class that contains
+    # them, so it's fine to just return the class name as a simple-name,
+    # without any qualification. We detect collisions with the parent
+    # name, but that's the only use of the parent name.
     parent_name = owning_schema.class_name.split('.')[-1]
     class_name = utilities.CamelCase(name) + 'Data'
     if parent_name == class_name:
       class_name += 'Schema'
-    return '%s.%s' % (parent_name, class_name)
+    return class_name
 
   # pylint: disable=unused-argument
   def ToClassName(self, s, element, element_type=None):
