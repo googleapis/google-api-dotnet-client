@@ -955,17 +955,11 @@ namespace Google.Apis.Webmasters.v3.Data
         public virtual string LastDownloadedRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="LastDownloadedRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> LastDownloaded
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(LastDownloadedRaw);
-            }
-            set
-            {
-                LastDownloadedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(LastDownloadedRaw);
+            set => LastDownloadedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>Date & time in which this sitemap was submitted. Date format is in RFC 3339 format (yyyy-mm-
@@ -974,17 +968,11 @@ namespace Google.Apis.Webmasters.v3.Data
         public virtual string LastSubmittedRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="LastSubmittedRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> LastSubmitted
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(LastSubmittedRaw);
-            }
-            set
-            {
-                LastSubmittedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(LastSubmittedRaw);
+            set => LastSubmittedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>The url of the sitemap.</summary>

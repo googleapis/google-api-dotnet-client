@@ -4391,17 +4391,11 @@ namespace Google.Apis.Calendar.v3.Data
         public virtual string UpdatedRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> Updated
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(UpdatedRaw);
-            }
-            set
-            {
-                UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(UpdatedRaw);
+            set => UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -4681,17 +4675,11 @@ namespace Google.Apis.Calendar.v3.Data
         public virtual string CreatedRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> Created
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(CreatedRaw);
-            }
-            set
-            {
-                CreatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(CreatedRaw);
+            set => CreatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>The creator of the event. Read-only.</summary>
@@ -4867,17 +4855,11 @@ namespace Google.Apis.Calendar.v3.Data
         public virtual string UpdatedRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> Updated
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(UpdatedRaw);
-            }
-            set
-            {
-                UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(UpdatedRaw);
+            set => UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>Visibility of the event. Optional. Possible values are: - "default" - Uses the default visibility
@@ -5118,17 +5100,11 @@ namespace Google.Apis.Calendar.v3.Data
         public virtual string DateTimeRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="DateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> DateTime
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(DateTimeRaw);
-            }
-            set
-            {
-                DateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(DateTimeRaw);
+            set => DateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>The time zone in which the time is specified. (Formatted as an IANA Time Zone Database name, e.g.
@@ -5216,17 +5192,11 @@ namespace Google.Apis.Calendar.v3.Data
         public virtual string UpdatedRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> Updated
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(UpdatedRaw);
-            }
-            set
-            {
-                UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(UpdatedRaw);
+            set => UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
     }    
@@ -5280,17 +5250,11 @@ namespace Google.Apis.Calendar.v3.Data
         public virtual string TimeMaxRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="TimeMaxRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> TimeMax
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(TimeMaxRaw);
-            }
-            set
-            {
-                TimeMaxRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(TimeMaxRaw);
+            set => TimeMaxRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>The start of the interval for the query formatted as per RFC3339.</summary>
@@ -5298,17 +5262,11 @@ namespace Google.Apis.Calendar.v3.Data
         public virtual string TimeMinRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="TimeMinRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> TimeMin
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(TimeMinRaw);
-            }
-            set
-            {
-                TimeMinRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(TimeMinRaw);
+            set => TimeMinRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>Time zone used in the response. Optional. The default is UTC.</summary>
@@ -5348,17 +5306,11 @@ namespace Google.Apis.Calendar.v3.Data
         public virtual string TimeMaxRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="TimeMaxRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> TimeMax
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(TimeMaxRaw);
-            }
-            set
-            {
-                TimeMaxRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(TimeMaxRaw);
+            set => TimeMaxRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>The start of the interval.</summary>
@@ -5366,17 +5318,11 @@ namespace Google.Apis.Calendar.v3.Data
         public virtual string TimeMinRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="TimeMinRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> TimeMin
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(TimeMinRaw);
-            }
-            set
-            {
-                TimeMinRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(TimeMinRaw);
+            set => TimeMinRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -5438,17 +5384,11 @@ namespace Google.Apis.Calendar.v3.Data
         public virtual string EndRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="EndRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> End
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(EndRaw);
-            }
-            set
-            {
-                EndRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(EndRaw);
+            set => EndRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>The (inclusive) start of the time period.</summary>
@@ -5456,17 +5396,11 @@ namespace Google.Apis.Calendar.v3.Data
         public virtual string StartRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="StartRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> Start
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(StartRaw);
-            }
-            set
-            {
-                StartRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(StartRaw);
+            set => StartRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

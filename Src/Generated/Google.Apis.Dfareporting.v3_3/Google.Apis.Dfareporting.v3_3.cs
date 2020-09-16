@@ -19908,17 +19908,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         public virtual string EndTimeRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> EndTime
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(EndTimeRaw);
-            }
-            set
-            {
-                EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>Event tag overrides for this ad.</summary>
@@ -19987,17 +19981,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         public virtual string StartTimeRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> StartTime
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(StartTimeRaw);
-            }
-            set
-            {
-                StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>Subaccount ID of this ad. This is a read-only field that can be left blank.</summary>
@@ -20576,17 +20564,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         public virtual string ChangeTimeRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ChangeTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> ChangeTime
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(ChangeTimeRaw);
-            }
-            set
-            {
-                ChangeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(ChangeTimeRaw);
+            set => ChangeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>Field name of the object which changed.</summary>
@@ -21984,17 +21966,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         public virtual string EndTimeRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> EndTime
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(EndTimeRaw);
-            }
-            set
-            {
-                EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>Rich media exit overrides for this creative assignment. Applicable when the creative type is any of
@@ -22018,17 +21994,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         public virtual string StartTimeRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> StartTime
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(StartTimeRaw);
-            }
-            set
-            {
-                StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>Weight of the creative assignment, applicable when the rotation type is
@@ -24602,17 +24572,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         public virtual string LastSentTimeRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="LastSentTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> LastSentTime
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(LastSentTimeRaw);
-            }
-            set
-            {
-                LastSentTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(LastSentTimeRaw);
+            set => LastSentTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>ID of the order from which this order document is created.</summary>

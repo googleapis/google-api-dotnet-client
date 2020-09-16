@@ -7411,17 +7411,11 @@ namespace Google.Apis.Storage.v1.Data
         public virtual string TimeCreatedRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="TimeCreatedRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> TimeCreated
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(TimeCreatedRaw);
-            }
-            set
-            {
-                TimeCreatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(TimeCreatedRaw);
+            set => TimeCreatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>The modification time of the bucket in RFC 3339 format.</summary>
@@ -7429,17 +7423,11 @@ namespace Google.Apis.Storage.v1.Data
         public virtual string UpdatedRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> Updated
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(UpdatedRaw);
-            }
-            set
-            {
-                UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(UpdatedRaw);
+            set => UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>The bucket's versioning configuration.</summary>
@@ -7540,17 +7528,11 @@ namespace Google.Apis.Storage.v1.Data
                 public virtual string LockedTimeRaw { get; set; }
 
                 /// <summary><seealso cref="System.DateTime"/> representation of <see cref="LockedTimeRaw"/>.</summary>
-                [Newtonsoft.Json.JsonIgnore]
+                [Newtonsoft.Json.JsonIgnoreAttribute]
                 public virtual System.Nullable<System.DateTime> LockedTime
                 {
-                    get
-                    {
-                        return Google.Apis.Util.Utilities.GetDateTimeFromString(LockedTimeRaw);
-                    }
-                    set
-                    {
-                        LockedTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-                    }
+                    get => Google.Apis.Util.Utilities.GetDateTimeFromString(LockedTimeRaw);
+                    set => LockedTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
                 }
 
             }    
@@ -7569,17 +7551,11 @@ namespace Google.Apis.Storage.v1.Data
                 public virtual string LockedTimeRaw { get; set; }
 
                 /// <summary><seealso cref="System.DateTime"/> representation of <see cref="LockedTimeRaw"/>.</summary>
-                [Newtonsoft.Json.JsonIgnore]
+                [Newtonsoft.Json.JsonIgnoreAttribute]
                 public virtual System.Nullable<System.DateTime> LockedTime
                 {
-                    get
-                    {
-                        return Google.Apis.Util.Utilities.GetDateTimeFromString(LockedTimeRaw);
-                    }
-                    set
-                    {
-                        LockedTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-                    }
+                    get => Google.Apis.Util.Utilities.GetDateTimeFromString(LockedTimeRaw);
+                    set => LockedTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
                 }
 
             }
@@ -7729,17 +7705,11 @@ namespace Google.Apis.Storage.v1.Data
             public virtual string EffectiveTimeRaw { get; set; }
 
             /// <summary><seealso cref="System.DateTime"/> representation of <see cref="EffectiveTimeRaw"/>.</summary>
-            [Newtonsoft.Json.JsonIgnore]
+            [Newtonsoft.Json.JsonIgnoreAttribute]
             public virtual System.Nullable<System.DateTime> EffectiveTime
             {
-                get
-                {
-                    return Google.Apis.Util.Utilities.GetDateTimeFromString(EffectiveTimeRaw);
-                }
-                set
-                {
-                    EffectiveTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-                }
+                get => Google.Apis.Util.Utilities.GetDateTimeFromString(EffectiveTimeRaw);
+                set => EffectiveTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
             }
 
             /// <summary>Once locked, an object retention policy cannot be modified.</summary>
@@ -8072,17 +8042,11 @@ namespace Google.Apis.Storage.v1.Data
         public virtual string TimeCreatedRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="TimeCreatedRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> TimeCreated
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(TimeCreatedRaw);
-            }
-            set
-            {
-                TimeCreatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(TimeCreatedRaw);
+            set => TimeCreatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>The last modification time of the HMAC key metadata in RFC 3339 format.</summary>
@@ -8090,17 +8054,11 @@ namespace Google.Apis.Storage.v1.Data
         public virtual string UpdatedRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> Updated
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(UpdatedRaw);
-            }
-            set
-            {
-                UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(UpdatedRaw);
+            set => UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
     }    
@@ -8234,17 +8192,11 @@ namespace Google.Apis.Storage.v1.Data
         public virtual string CustomTimeRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CustomTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> CustomTime
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(CustomTimeRaw);
-            }
-            set
-            {
-                CustomTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(CustomTimeRaw);
+            set => CustomTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>Metadata of customer-supplied encryption key, if the object is encrypted by such a key.</summary>
@@ -8318,17 +8270,11 @@ namespace Google.Apis.Storage.v1.Data
         public virtual string RetentionExpirationTimeRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="RetentionExpirationTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> RetentionExpirationTime
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(RetentionExpirationTimeRaw);
-            }
-            set
-            {
-                RetentionExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(RetentionExpirationTimeRaw);
+            set => RetentionExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>The link to this object.</summary>
@@ -8355,17 +8301,11 @@ namespace Google.Apis.Storage.v1.Data
         public virtual string TimeCreatedRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="TimeCreatedRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> TimeCreated
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(TimeCreatedRaw);
-            }
-            set
-            {
-                TimeCreatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(TimeCreatedRaw);
+            set => TimeCreatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of
@@ -8374,17 +8314,11 @@ namespace Google.Apis.Storage.v1.Data
         public virtual string TimeDeletedRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="TimeDeletedRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> TimeDeleted
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(TimeDeletedRaw);
-            }
-            set
-            {
-                TimeDeletedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(TimeDeletedRaw);
+            set => TimeDeletedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>The time at which the object's storage class was last changed. When the object is initially
@@ -8393,17 +8327,11 @@ namespace Google.Apis.Storage.v1.Data
         public virtual string TimeStorageClassUpdatedRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="TimeStorageClassUpdatedRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> TimeStorageClassUpdated
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(TimeStorageClassUpdatedRaw);
-            }
-            set
-            {
-                TimeStorageClassUpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(TimeStorageClassUpdatedRaw);
+            set => TimeStorageClassUpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>The modification time of the object metadata in RFC 3339 format.</summary>
@@ -8411,17 +8339,11 @@ namespace Google.Apis.Storage.v1.Data
         public virtual string UpdatedRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> Updated
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(UpdatedRaw);
-            }
-            set
-            {
-                UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(UpdatedRaw);
+            set => UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         

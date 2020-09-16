@@ -1690,17 +1690,11 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
             public virtual string TimeRaw { get; set; }
 
             /// <summary><seealso cref="System.DateTime"/> representation of <see cref="TimeRaw"/>.</summary>
-            [Newtonsoft.Json.JsonIgnore]
+            [Newtonsoft.Json.JsonIgnoreAttribute]
             public virtual System.Nullable<System.DateTime> Time
             {
-                get
-                {
-                    return Google.Apis.Util.Utilities.GetDateTimeFromString(TimeRaw);
-                }
-                set
-                {
-                    TimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-                }
+                get => Google.Apis.Util.Utilities.GetDateTimeFromString(TimeRaw);
+                set => TimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
             }
 
             /// <summary>Unique qualifier if multiple events have the same time.</summary>
@@ -1859,17 +1853,11 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
             public virtual string DatetimeValueRaw { get; set; }
 
             /// <summary><seealso cref="System.DateTime"/> representation of <see cref="DatetimeValueRaw"/>.</summary>
-            [Newtonsoft.Json.JsonIgnore]
+            [Newtonsoft.Json.JsonIgnoreAttribute]
             public virtual System.Nullable<System.DateTime> DatetimeValue
             {
-                get
-                {
-                    return Google.Apis.Util.Utilities.GetDateTimeFromString(DatetimeValueRaw);
-                }
-                set
-                {
-                    DatetimeValueRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-                }
+                get => Google.Apis.Util.Utilities.GetDateTimeFromString(DatetimeValueRaw);
+                set => DatetimeValueRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
             }
 
             /// <summary>Output only. Integer value of the parameter.</summary>

@@ -735,17 +735,11 @@ namespace Google.Apis.AdExchangeBuyer.v1_2.Data
         public virtual string ApiUploadTimestampRaw { get; set; }
 
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ApiUploadTimestampRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
+        [Newtonsoft.Json.JsonIgnoreAttribute]
         public virtual System.Nullable<System.DateTime> ApiUploadTimestamp
         {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(ApiUploadTimestampRaw);
-            }
-            set
-            {
-                ApiUploadTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(ApiUploadTimestampRaw);
+            set => ApiUploadTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>All attributes for the ads that may be shown from this snippet.</summary>
