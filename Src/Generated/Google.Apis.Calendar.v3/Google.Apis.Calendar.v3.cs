@@ -4093,7 +4093,7 @@ namespace Google.Apis.Calendar.v3.Data
 
         /// <summary>The scope of the rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
-        public virtual AclRule.ScopeData Scope { get; set; } 
+        public virtual ScopeData Scope { get; set; } 
 
         
 
@@ -4251,7 +4251,7 @@ namespace Google.Apis.Calendar.v3.Data
 
         /// <summary>The notifications that the authenticated user is receiving for this calendar.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationSettings")]
-        public virtual CalendarListEntry.NotificationSettingsData NotificationSettings { get; set; } 
+        public virtual NotificationSettingsData NotificationSettings { get; set; } 
 
         /// <summary>Whether the calendar is the primary calendar of the authenticated user. Read-only. Optional. The
         /// default is False.</summary>
@@ -4684,7 +4684,7 @@ namespace Google.Apis.Calendar.v3.Data
 
         /// <summary>The creator of the event. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creator")]
-        public virtual Event.CreatorData Creator { get; set; } 
+        public virtual CreatorData Creator { get; set; } 
 
         /// <summary>Description of the event. Can contain HTML. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -4706,12 +4706,12 @@ namespace Google.Apis.Calendar.v3.Data
 
         /// <summary>Extended properties of the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extendedProperties")]
-        public virtual Event.ExtendedPropertiesData ExtendedProperties { get; set; } 
+        public virtual ExtendedPropertiesData ExtendedProperties { get; set; } 
 
         /// <summary>A gadget that extends this event. Gadgets are deprecated; this structure is instead only used for
         /// returning birthday calendar metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gadget")]
-        public virtual Event.GadgetData Gadget { get; set; } 
+        public virtual GadgetData Gadget { get; set; } 
 
         /// <summary>Whether attendees other than the organizer can invite others to the event. Optional. The default is
         /// True.</summary>
@@ -4775,7 +4775,7 @@ namespace Google.Apis.Calendar.v3.Data
         /// entry in attendees with the organizer field set to True. To change the organizer, use the move operation.
         /// Read-only, except when importing an event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("organizer")]
-        public virtual Event.OrganizerData Organizer { get; set; } 
+        public virtual OrganizerData Organizer { get; set; } 
 
         /// <summary>For an instance of a recurring event, this is the time at which this event would start according to
         /// the recurrence data in the recurring event identified by recurringEventId. It uniquely identifies the
@@ -4802,7 +4802,7 @@ namespace Google.Apis.Calendar.v3.Data
 
         /// <summary>Information about the event's reminders for the authenticated user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reminders")]
-        public virtual Event.RemindersData Reminders { get; set; } 
+        public virtual RemindersData Reminders { get; set; } 
 
         /// <summary>Sequence number as per iCalendar.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sequence")]
@@ -4812,7 +4812,7 @@ namespace Google.Apis.Calendar.v3.Data
         /// identifiable by an URL with HTTP or HTTPS scheme. Can only be seen or modified by the creator of the
         /// event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual Event.SourceData Source { get; set; } 
+        public virtual SourceData Source { get; set; } 
 
         /// <summary>The (inclusive) start time of the event. For a recurring event, this is the start time of the first
         /// instance.</summary>

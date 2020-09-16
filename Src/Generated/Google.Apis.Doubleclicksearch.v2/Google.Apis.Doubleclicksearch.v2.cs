@@ -1191,7 +1191,7 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         /// <summary>Asynchronous report only. Contains a list of generated report files once the report has
         /// successfully completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("files")]
-        public virtual System.Collections.Generic.IList<Report.FilesData> Files { get; set; } 
+        public virtual System.Collections.Generic.IList<FilesData> Files { get; set; } 
 
         /// <summary>Asynchronous report only. Id of the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -1325,7 +1325,7 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         /// <summary>A list of filters to be applied to the report.\ The maximum number of filters per request is
         /// 300.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filters")]
-        public virtual System.Collections.Generic.IList<ReportRequest.FiltersData> Filters { get; set; } 
+        public virtual System.Collections.Generic.IList<FiltersData> Filters { get; set; } 
 
         /// <summary>Determines if removed entities should be included in the report. Defaults to `false`. Deprecated,
         /// please use `includeRemovedEntities` instead.</summary>
@@ -1344,13 +1344,13 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         /// <summary>Synchronous report only. A list of columns and directions defining sorting to be performed on the
         /// report rows.\ The maximum number of orderings per request is 300.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
-        public virtual System.Collections.Generic.IList<ReportRequest.OrderByData> OrderBy { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderByData> OrderBy { get; set; } 
 
         /// <summary>The reportScope is a set of IDs that are used to determine which subset of entities will be
         /// returned in the report. The full lineage of IDs from the lowest scoped level desired up through agency is
         /// required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportScope")]
-        public virtual ReportRequest.ReportScopeData ReportScope { get; set; } 
+        public virtual ReportScopeData ReportScope { get; set; } 
 
         /// <summary>Determines the type of rows that are returned in the report. For example, if you specify
         /// `reportType: keyword`, each row in the report will contain data about a keyword. See the [Types of Reports
@@ -1377,7 +1377,7 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         /// <summary>If metrics are requested in a report, this argument will be used to restrict the metrics to a
         /// specific time range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeRange")]
-        public virtual ReportRequest.TimeRangeData TimeRange { get; set; } 
+        public virtual TimeRangeData TimeRange { get; set; } 
 
         /// <summary>If `true`, the report would only be created if all the requested stat data are sourced from a
         /// single timezone. Defaults to `false`.</summary>

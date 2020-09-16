@@ -3885,7 +3885,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// of the first training run. For subsequent training runs, any option not explicitly specified in the input
         /// query will be copied from the previous training run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingOptions")]
-        public virtual BqmlTrainingRun.TrainingOptionsData TrainingOptions { get; set; } 
+        public virtual TrainingOptionsData TrainingOptions { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4128,7 +4128,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email];
         /// access.role: OWNER;</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("access")]
-        public virtual System.Collections.Generic.IList<Dataset.AccessData> Access { get; set; } 
+        public virtual System.Collections.Generic.IList<AccessData> Access { get; set; } 
 
         /// <summary>[Output-only] The time when this dataset was created, in milliseconds since the epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
@@ -4262,7 +4262,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// full information about a particular dataset resource, use the Datasets: get method. This property is omitted
         /// when there are no datasets in the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasets")]
-        public virtual System.Collections.Generic.IList<DatasetList.DatasetsData> Datasets { get; set; } 
+        public virtual System.Collections.Generic.IList<DatasetsData> Datasets { get; set; } 
 
         /// <summary>A hash value of the results page. You can use this property to determine if the page has changed
         /// since the last request.</summary>
@@ -5402,7 +5402,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>List of jobs that were requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobs")]
-        public virtual System.Collections.Generic.IList<JobList.JobsData> Jobs { get; set; } 
+        public virtual System.Collections.Generic.IList<JobsData> Jobs { get; set; } 
 
         /// <summary>The resource type of the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -5519,7 +5519,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>[Output-only] Job resource usage breakdown by reservation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservationUsage")]
-        public virtual System.Collections.Generic.IList<JobStatistics.ReservationUsageData> ReservationUsage { get; set; } 
+        public virtual System.Collections.Generic.IList<ReservationUsageData> ReservationUsage { get; set; } 
 
         /// <summary>[Output-only] Name of the primary reservation assigned to this job. Note that this could be
         /// different than reservations reported in the reservation usage field if parent reservations were used to
@@ -5646,7 +5646,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>[Output-only] Job resource usage breakdown by reservation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservationUsage")]
-        public virtual System.Collections.Generic.IList<JobStatistics2.ReservationUsageData> ReservationUsage { get; set; } 
+        public virtual System.Collections.Generic.IList<ReservationUsageData> ReservationUsage { get; set; } 
 
         /// <summary>[Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL
         /// queries.</summary>
@@ -5931,7 +5931,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// subsequent training runs. Default values are used for any options not specified in the input
         /// query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelOptions")]
-        public virtual ModelDefinition.ModelOptionsData ModelOptions { get; set; } 
+        public virtual ModelOptionsData ModelOptions { get; set; } 
 
         /// <summary>[Output-only, Beta] Information about ml training runs, each training run comprises of multiple
         /// iterations and there may be multiple training runs for the model if warm start is used or if a user decides
@@ -6068,7 +6068,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>Projects to which you have at least READ access.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projects")]
-        public virtual System.Collections.Generic.IList<ProjectList.ProjectsData> Projects { get; set; } 
+        public virtual System.Collections.Generic.IList<ProjectsData> Projects { get; set; } 
 
         /// <summary>The total number of projects in the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalItems")]
@@ -6139,7 +6139,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>[Optional] The types of the fields of this struct, in order, if this is a struct.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structTypes")]
-        public virtual System.Collections.Generic.IList<QueryParameterType.StructTypesData> StructTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<StructTypesData> StructTypes { get; set; } 
 
         /// <summary>[Required] The top level type of this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -6386,7 +6386,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>[TrustedTester] [Required] Defines the ranges for range partitioning.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual RangePartitioning.RangeData Range { get; set; } 
+        public virtual RangeData Range { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6925,7 +6925,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The rows to insert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
-        public virtual System.Collections.Generic.IList<TableDataInsertAllRequest.RowsData> Rows { get; set; } 
+        public virtual System.Collections.Generic.IList<RowsData> Rows { get; set; } 
 
         /// <summary>[Optional] Insert all valid rows of a request, even if invalid rows exist. The default value is
         /// false, which causes the entire request to fail if any invalid rows exist.</summary>
@@ -6962,7 +6962,7 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>An array of errors for rows that were not inserted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertErrors")]
-        public virtual System.Collections.Generic.IList<TableDataInsertAllResponse.InsertErrorsData> InsertErrors { get; set; } 
+        public virtual System.Collections.Generic.IList<InsertErrorsData> InsertErrors { get; set; } 
 
         /// <summary>The resource type of the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -7014,7 +7014,7 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>[Optional] The categories attached to this field, used for field-level access control.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categories")]
-        public virtual TableFieldSchema.CategoriesData Categories { get; set; } 
+        public virtual CategoriesData Categories { get; set; } 
 
         /// <summary>[Optional] The field description. The maximum length is 1,024 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -7035,7 +7035,7 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string Name { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("policyTags")]
-        public virtual TableFieldSchema.PolicyTagsData PolicyTags { get; set; } 
+        public virtual PolicyTagsData PolicyTags { get; set; } 
 
         /// <summary>[Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as
         /// INTEGER), FLOAT, FLOAT64 (same as FLOAT), BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME,
@@ -7084,7 +7084,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>Tables in the requested dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tables")]
-        public virtual System.Collections.Generic.IList<TableList.TablesData> Tables { get; set; } 
+        public virtual System.Collections.Generic.IList<TablesData> Tables { get; set; } 
 
         /// <summary>The total number of tables in the dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalItems")]
@@ -7143,7 +7143,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
             /// <summary>Additional details for a view.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("view")]
-            public virtual TablesData.ViewData View { get; set; } 
+            public virtual ViewData View { get; set; } 
 
             
 

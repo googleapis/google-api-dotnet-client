@@ -4034,7 +4034,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         /// <summary>[Output Only] If errors are generated during processing of the operation, this field will be
         /// populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Operation.ErrorData Error { get; set; } 
+        public virtual ErrorData Error { get; set; } 
 
         /// <summary>[Output Only] If the operation fails, this field contains the HTTP error message that was returned,
         /// such as `NOT FOUND`.</summary>
@@ -4114,7 +4114,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         /// <summary>[Output Only] If warning messages are generated during processing of the operation, this field will
         /// be populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
-        public virtual System.Collections.Generic.IList<Operation.WarningsData> Warnings { get; set; } 
+        public virtual System.Collections.Generic.IList<WarningsData> Warnings { get; set; } 
 
         /// <summary>[Output Only] The URL of the zone where the operation resides. Only applicable when performing per-
         /// zone operations.</summary>
@@ -4131,7 +4131,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         {
             /// <summary>[Output Only] The array of errors encountered while processing this operation.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-            public virtual System.Collections.Generic.IList<ErrorData.ErrorsData> Errors { get; set; } 
+            public virtual System.Collections.Generic.IList<ErrorsData> Errors { get; set; } 
 
             
 
@@ -4163,7 +4163,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningsData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -4402,7 +4402,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         /// <summary>Output only. If warning messages are generated during processing of this resource, this field will
         /// be populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
-        public virtual System.Collections.Generic.IList<Resource.WarningsData> Warnings { get; set; } 
+        public virtual System.Collections.Generic.IList<WarningsData> Warnings { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4418,7 +4418,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningsData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -4465,7 +4465,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         /// <summary>Output only. If errors are generated during update of the resource, this field will be
         /// populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual ResourceUpdate.ErrorData Error { get; set; } 
+        public virtual ErrorData Error { get; set; } 
 
         /// <summary>Output only. The expanded properties of the resource with reference values expanded. Returned as
         /// serialized YAML.</summary>
@@ -4492,7 +4492,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         /// <summary>Output only. If warning messages are generated during processing of this resource, this field will
         /// be populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
-        public virtual System.Collections.Generic.IList<ResourceUpdate.WarningsData> Warnings { get; set; } 
+        public virtual System.Collections.Generic.IList<WarningsData> Warnings { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4504,7 +4504,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         {
             /// <summary>[Output Only] The array of errors encountered while processing this operation.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-            public virtual System.Collections.Generic.IList<ErrorData.ErrorsData> Errors { get; set; } 
+            public virtual System.Collections.Generic.IList<ErrorsData> Errors { get; set; } 
 
             
 
@@ -4536,7 +4536,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningsData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]

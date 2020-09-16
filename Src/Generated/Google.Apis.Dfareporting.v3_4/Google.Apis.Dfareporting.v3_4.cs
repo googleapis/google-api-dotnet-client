@@ -23524,7 +23524,7 @@ namespace Google.Apis.Dfareporting.v3_4.Data
 
         /// <summary>The URLs where the completed report file can be downloaded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urls")]
-        public virtual File.UrlsData Urls { get; set; } 
+        public virtual UrlsData Urls { get; set; } 
 
         
 
@@ -26312,15 +26312,15 @@ namespace Google.Apis.Dfareporting.v3_4.Data
 
         /// <summary>The report criteria for a report of type "STANDARD".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("criteria")]
-        public virtual Report.CriteriaData Criteria { get; set; } 
+        public virtual CriteriaData Criteria { get; set; } 
 
         /// <summary>The report criteria for a report of type "CROSS_DIMENSION_REACH".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crossDimensionReachCriteria")]
-        public virtual Report.CrossDimensionReachCriteriaData CrossDimensionReachCriteria { get; set; } 
+        public virtual CrossDimensionReachCriteriaData CrossDimensionReachCriteria { get; set; } 
 
         /// <summary>The report's email delivery settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delivery")]
-        public virtual Report.DeliveryData Delivery { get; set; } 
+        public virtual DeliveryData Delivery { get; set; } 
 
         /// <summary>The eTag of this response for caching purposes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
@@ -26332,7 +26332,7 @@ namespace Google.Apis.Dfareporting.v3_4.Data
 
         /// <summary>The report criteria for a report of type "FLOODLIGHT".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightCriteria")]
-        public virtual Report.FloodlightCriteriaData FloodlightCriteria { get; set; } 
+        public virtual FloodlightCriteriaData FloodlightCriteria { get; set; } 
 
         /// <summary>The output format of the report. If not specified, default format is "CSV". Note that the actual
         /// format in the completed report file might differ if for instance the report's size exceeds the format's
@@ -26362,24 +26362,24 @@ namespace Google.Apis.Dfareporting.v3_4.Data
 
         /// <summary>The report criteria for a report of type "PATH_ATTRIBUTION".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathAttributionCriteria")]
-        public virtual Report.PathAttributionCriteriaData PathAttributionCriteria { get; set; } 
+        public virtual PathAttributionCriteriaData PathAttributionCriteria { get; set; } 
 
         /// <summary>The report criteria for a report of type "PATH".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathCriteria")]
-        public virtual Report.PathCriteriaData PathCriteria { get; set; } 
+        public virtual PathCriteriaData PathCriteria { get; set; } 
 
         /// <summary>The report criteria for a report of type "PATH_TO_CONVERSION".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathToConversionCriteria")]
-        public virtual Report.PathToConversionCriteriaData PathToConversionCriteria { get; set; } 
+        public virtual PathToConversionCriteriaData PathToConversionCriteria { get; set; } 
 
         /// <summary>The report criteria for a report of type "REACH".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reachCriteria")]
-        public virtual Report.ReachCriteriaData ReachCriteria { get; set; } 
+        public virtual ReachCriteriaData ReachCriteria { get; set; } 
 
         /// <summary>The report's schedule. Can only be set if the report's 'dateRange' is a relative date range and the
         /// relative date range is not "TODAY".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
-        public virtual Report.ScheduleData Schedule { get; set; } 
+        public virtual ScheduleData Schedule { get; set; } 
 
         /// <summary>The subaccount ID to which this report belongs if applicable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subAccountId")]
@@ -26507,7 +26507,7 @@ namespace Google.Apis.Dfareporting.v3_4.Data
 
             /// <summary>The properties of the report.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("reportProperties")]
-            public virtual FloodlightCriteriaData.ReportPropertiesData ReportProperties { get; set; } 
+            public virtual ReportPropertiesData ReportProperties { get; set; } 
 
             
 
@@ -26642,7 +26642,7 @@ namespace Google.Apis.Dfareporting.v3_4.Data
 
             /// <summary>The properties of the report.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("reportProperties")]
-            public virtual PathToConversionCriteriaData.ReportPropertiesData ReportProperties { get; set; } 
+            public virtual ReportPropertiesData ReportProperties { get; set; } 
 
             
 

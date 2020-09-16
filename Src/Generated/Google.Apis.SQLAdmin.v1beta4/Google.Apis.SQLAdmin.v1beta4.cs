@@ -4277,7 +4277,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>The name and status of the failover replica. This property is applicable only to Second Generation
         /// instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failoverReplica")]
-        public virtual DatabaseInstance.FailoverReplicaData FailoverReplica { get; set; } 
+        public virtual FailoverReplicaData FailoverReplica { get; set; } 
 
         /// <summary>The Compute Engine zone that the instance is currently serving from. This value could be different
         /// from the zone that was specified when the instance was created if the instance has failed over to its
@@ -4524,7 +4524,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     {
         /// <summary>Options for exporting data as CSV.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("csvExportOptions")]
-        public virtual ExportContext.CsvExportOptionsData CsvExportOptions { get; set; } 
+        public virtual CsvExportOptionsData CsvExportOptions { get; set; } 
 
         /// <summary>Databases to be exported. *MySQL instances:* If *fileType* is *SQL* and no database is specified,
         /// all databases are exported, except for the *mysql* system database. If *fileType* is *CSV*, you can specify
@@ -4550,7 +4550,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
 
         /// <summary>Options for exporting data as SQL statements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlExportOptions")]
-        public virtual ExportContext.SqlExportOptionsData SqlExportOptions { get; set; } 
+        public virtual SqlExportOptionsData SqlExportOptions { get; set; } 
 
         /// <summary>The path to the file in Google Cloud Storage where the export will be stored. The URI is in the
         /// form *gs: //bucketName/fileName*. If the file already exists, the requests // succeeds, but the operation
@@ -4576,7 +4576,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         {
             /// <summary>Options for exporting from MySQL.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("mysqlExportOptions")]
-            public virtual SqlExportOptionsData.MysqlExportOptionsData MysqlExportOptions { get; set; } 
+            public virtual MysqlExportOptionsData MysqlExportOptions { get; set; } 
 
             /// <summary>Export only schemas.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("schemaOnly")]
@@ -4691,11 +4691,11 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     {
         /// <summary>Import parameters specific to SQL Server .BAK files</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bakImportOptions")]
-        public virtual ImportContext.BakImportOptionsData BakImportOptions { get; set; } 
+        public virtual BakImportOptionsData BakImportOptions { get; set; } 
 
         /// <summary>Options for importing data as CSV.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("csvImportOptions")]
-        public virtual ImportContext.CsvImportOptionsData CsvImportOptions { get; set; } 
+        public virtual CsvImportOptionsData CsvImportOptions { get; set; } 
 
         /// <summary>The target database for the import. If *fileType* is *SQL*, this field is required only if the
         /// import file does not specify a database, and is overridden by any database specification in the import file.
@@ -4730,7 +4730,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public class BakImportOptionsData
         {
             [Newtonsoft.Json.JsonPropertyAttribute("encryptionOptions")]
-            public virtual BakImportOptionsData.EncryptionOptionsData EncryptionOptions { get; set; } 
+            public virtual EncryptionOptionsData EncryptionOptions { get; set; } 
 
             
 

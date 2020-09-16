@@ -1532,7 +1532,7 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
     {
         /// <summary>User doing the action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actor")]
-        public virtual Activity.ActorData Actor { get; set; } 
+        public virtual ActorData Actor { get; set; } 
 
         /// <summary>ETag of the entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
@@ -1540,11 +1540,11 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
 
         /// <summary>Activity events in the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("events")]
-        public virtual System.Collections.Generic.IList<Activity.EventsData> Events { get; set; } 
+        public virtual System.Collections.Generic.IList<EventsData> Events { get; set; } 
 
         /// <summary>Unique identifier for each activity record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual Activity.IdData Id { get; set; } 
+        public virtual IdData Id { get; set; } 
 
         /// <summary>IP address of the user doing the action. This is the Internet Protocol (IP) address of the user
         /// when logging into G Suite which may or may not reflect the user's physical location. For example, the IP
@@ -1603,7 +1603,7 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
             /// <summary>Parameter value pairs for various applications. For more information about eventName
             /// parameters, see the list of event names for various applications above in applicationName.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-            public virtual System.Collections.Generic.IList<EventsData.ParametersData> Parameters { get; set; } 
+            public virtual System.Collections.Generic.IList<ParametersData> Parameters { get; set; } 
 
             /// <summary>Type of event. The G Suite service or feature that an administrator changes is identified in
             /// the type property which identifies an event using the eventName property. For a full list of the API's
@@ -1628,7 +1628,7 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
                 /// parameter are returned as a list of parameter values. For example, the address parameter may have a
                 /// value as [{parameter: [{name: city, value: abc}]}]</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("messageValue")]
-                public virtual ParametersData.MessageValueData MessageValue { get; set; } 
+                public virtual MessageValueData MessageValue { get; set; } 
 
                 /// <summary>Integer values of the parameter.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("multiIntValue")]
@@ -1636,7 +1636,7 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
 
                 /// <summary>List of messageValue objects.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("multiMessageValue")]
-                public virtual System.Collections.Generic.IList<ParametersData.MultiMessageValueData> MultiMessageValue { get; set; } 
+                public virtual System.Collections.Generic.IList<MultiMessageValueData> MultiMessageValue { get; set; } 
 
                 /// <summary>String values of the parameter.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("multiValue")]
@@ -1799,7 +1799,7 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
 
         /// <summary>Output only. Information about the type of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entity")]
-        public virtual UsageReport.EntityData Entity { get; set; } 
+        public virtual EntityData Entity { get; set; } 
 
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
@@ -1812,7 +1812,7 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
         /// <summary>Output only. Parameter value pairs for various applications. For the Customers usage report
         /// parameters and values, see the customer usage parameters reference.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IList<UsageReport.ParametersData> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IList<ParametersData> Parameters { get; set; } 
 
         
 
@@ -1901,7 +1901,7 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
 
         /// <summary>Warnings, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
-        public virtual System.Collections.Generic.IList<UsageReports.WarningsData> Warnings { get; set; } 
+        public virtual System.Collections.Generic.IList<WarningsData> Warnings { get; set; } 
 
         
 
@@ -1913,7 +1913,7 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
 
             /// <summary>Key-value pairs to give detailed information on the warning.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningsData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>The human readable messages for a warning are: - Data is not available warning - Sorry, data
             /// for date yyyy-mm-dd for application "application name" is not available. - Partial data is available

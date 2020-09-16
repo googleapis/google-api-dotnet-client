@@ -1326,7 +1326,7 @@ namespace Google.Apis.Tasks.v1.Data
 
         /// <summary>Collection of links. This collection is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("links")]
-        public virtual System.Collections.Generic.IList<Task.LinksData> Links { get; set; } 
+        public virtual System.Collections.Generic.IList<LinksData> Links { get; set; } 
 
         /// <summary>Notes describing the task. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]

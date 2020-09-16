@@ -57098,7 +57098,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual AcceleratorTypeAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -57115,7 +57115,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -57171,7 +57171,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual AcceleratorTypeList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -57188,7 +57188,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -57224,7 +57224,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] An informational warning that appears when the accelerator types list is
         /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual AcceleratorTypesScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -57242,7 +57242,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -57464,7 +57464,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual AddressAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -57481,7 +57481,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -57536,7 +57536,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual AddressList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -57553,7 +57553,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -57589,7 +57589,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] Informational warning which replaces the list of addresses when the list is
         /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual AddressesScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -57607,7 +57607,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -58117,7 +58117,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual AutoscalerAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -58134,7 +58134,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -58189,7 +58189,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual AutoscalerList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -58206,7 +58206,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -58278,7 +58278,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] Informational warning which replaces the list of autoscalers when the list is
         /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual AutoscalersScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -58296,7 +58296,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -58695,7 +58695,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual BackendBucketList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -58712,7 +58712,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -59013,7 +59013,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual BackendServiceAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -59030,7 +59030,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -59187,7 +59187,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual BackendServiceList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -59204,7 +59204,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -59267,7 +59267,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Informational warning which replaces the list of backend services when the list is empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual BackendServicesScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -59284,7 +59284,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -59567,7 +59567,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual CommitmentAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -59584,7 +59584,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -59639,7 +59639,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual CommitmentList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -59656,7 +59656,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -59692,7 +59692,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] Informational warning which replaces the list of commitments when the list is
         /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual CommitmentsScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -59710,7 +59710,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -60189,7 +60189,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual DiskAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -60206,7 +60206,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -60294,7 +60294,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual DiskList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -60311,7 +60311,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -60454,7 +60454,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual DiskTypeAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -60471,7 +60471,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -60526,7 +60526,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual DiskTypeList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -60543,7 +60543,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -60579,7 +60579,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] Informational warning which replaces the list of disk types when the list is
         /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual DiskTypesScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -60597,7 +60597,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -60664,7 +60664,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] Informational warning which replaces the list of disks when the list is
         /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual DisksScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -60682,7 +60682,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -60817,7 +60817,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual ExchangedPeeringRoutesList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -60834,7 +60834,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -61031,7 +61031,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual ExternalVpnGatewayList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         
 
@@ -61046,7 +61046,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -61096,7 +61096,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range
         /// tuple that describes a permitted connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowed")]
-        public virtual System.Collections.Generic.IList<Firewall.AllowedData> Allowed { get; set; } 
+        public virtual System.Collections.Generic.IList<AllowedData> Allowed { get; set; } 
 
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
@@ -61105,7 +61105,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range
         /// tuple that describes a denied connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("denied")]
-        public virtual System.Collections.Generic.IList<Firewall.DeniedData> Denied { get; set; } 
+        public virtual System.Collections.Generic.IList<DeniedData> Denied { get; set; } 
 
         /// <summary>An optional description of this resource. Provide this field when you create the
         /// resource.</summary>
@@ -61285,7 +61285,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual FirewallList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -61302,7 +61302,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -61642,7 +61642,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual ForwardingRuleAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -61659,7 +61659,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -61714,7 +61714,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual ForwardingRuleList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -61731,7 +61731,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -61775,7 +61775,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Informational warning which replaces the list of forwarding rules when the list is empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual ForwardingRulesScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -61792,7 +61792,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -62249,7 +62249,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual HealthCheckList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -62266,7 +62266,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -62427,7 +62427,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual HealthCheckServicesList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -62444,7 +62444,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -62498,7 +62498,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual HealthChecksAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -62515,7 +62515,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -62550,7 +62550,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Informational warning which replaces the list of backend services when the list is empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual HealthChecksScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -62567,7 +62567,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -62933,7 +62933,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual HttpHealthCheckList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -62950,7 +62950,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -63359,7 +63359,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual HttpsHealthCheckList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -63376,7 +63376,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -63493,7 +63493,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>The parameters of the raw disk image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rawDisk")]
-        public virtual Image.RawDiskData RawDisk { get; set; } 
+        public virtual RawDiskData RawDisk { get; set; } 
 
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
@@ -63626,7 +63626,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual ImageList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -63643,7 +63643,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -63905,7 +63905,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual InstanceAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -63922,7 +63922,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -64065,7 +64065,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual InstanceGroupAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -64082,7 +64082,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -64138,7 +64138,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual InstanceGroupList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -64155,7 +64155,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -64396,7 +64396,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual InstanceGroupManagerAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -64413,7 +64413,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -64487,7 +64487,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual InstanceGroupManagerList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -64504,7 +64504,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -64799,7 +64799,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual InstanceGroupManagersListPerInstanceConfigsResp.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -64816,7 +64816,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -64875,7 +64875,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] The warning that replaces the list of managed instance groups when the list is
         /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual InstanceGroupManagersScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -64893,7 +64893,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -64999,7 +64999,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual InstanceGroupsListInstances.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -65016,7 +65016,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -65073,7 +65073,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] An informational warning that replaces the list of instance groups when the list is
         /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual InstanceGroupsScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -65091,7 +65091,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -65165,7 +65165,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual InstanceList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -65182,7 +65182,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -65238,7 +65238,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual InstanceListReferrers.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -65255,7 +65255,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -65537,7 +65537,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual InstanceTemplateList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -65554,7 +65554,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -65628,7 +65628,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] Informational warning which replaces the list of instances when the list is
         /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual InstancesScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -65646,7 +65646,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -66078,7 +66078,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual InterconnectAttachmentAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -66095,7 +66095,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -66151,7 +66151,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual InterconnectAttachmentList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -66168,7 +66168,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -66240,7 +66240,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Informational warning which replaces the list of addresses when the list is empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual InterconnectAttachmentsScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -66257,7 +66257,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -66444,7 +66444,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual InterconnectList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -66461,7 +66461,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -66598,7 +66598,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual InterconnectLocationList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -66615,7 +66615,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -66900,7 +66900,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual LicensesListResponse.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -66917,7 +66917,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -67045,7 +67045,7 @@ namespace Google.Apis.Compute.v1.Data
     {
         /// <summary>[Output Only] A list of accelerator configurations assigned to this machine type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accelerators")]
-        public virtual System.Collections.Generic.IList<MachineType.AcceleratorsData> Accelerators { get; set; } 
+        public virtual System.Collections.Generic.IList<AcceleratorsData> Accelerators { get; set; } 
 
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
@@ -67101,7 +67101,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] A list of extended scratch disks assigned to the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scratchDisks")]
-        public virtual System.Collections.Generic.IList<MachineType.ScratchDisksData> ScratchDisks { get; set; } 
+        public virtual System.Collections.Generic.IList<ScratchDisksData> ScratchDisks { get; set; } 
 
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
@@ -67164,7 +67164,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual MachineTypeAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -67181,7 +67181,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -67237,7 +67237,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual MachineTypeList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -67254,7 +67254,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -67289,7 +67289,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] An informational warning that appears when the machine types list is empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual MachineTypesScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -67306,7 +67306,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -67410,7 +67410,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] Encountered errors during the last attempt to create or delete the
         /// instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual ManagedInstanceLastAttempt.ErrorsData Errors { get; set; } 
+        public virtual ErrorsData Errors { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -67422,7 +67422,7 @@ namespace Google.Apis.Compute.v1.Data
         {
             /// <summary>[Output Only] The array of errors encountered while processing this operation.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-            public virtual System.Collections.Generic.IList<ErrorsData.ErrorsDataSchema> Errors { get; set; } 
+            public virtual System.Collections.Generic.IList<ErrorsDataSchema> Errors { get; set; } 
 
             
 
@@ -67474,7 +67474,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Array of key/value pairs. The total size of all keys and values must be less than 512 KB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Metadata.ItemsData> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<ItemsData> Items { get; set; } 
 
         /// <summary>[Output Only] Type of the resource. Always compute#metadata for metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -67795,7 +67795,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual NetworkEndpointGroupAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -67812,7 +67812,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -67968,7 +67968,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual NetworkEndpointGroupList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -67985,7 +67985,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -68068,7 +68068,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual NetworkEndpointGroupsListNetworkEndpoints.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -68085,7 +68085,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -68121,7 +68121,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] An informational warning that replaces the list of network endpoint groups when the
         /// list is empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual NetworkEndpointGroupsScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -68139,7 +68139,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -68271,7 +68271,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual NetworkList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -68288,7 +68288,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -68542,7 +68542,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual NodeGroupAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -68559,7 +68559,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -68633,7 +68633,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual NodeGroupList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -68650,7 +68650,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -68758,7 +68758,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual NodeGroupsListNodes.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -68775,7 +68775,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -68810,7 +68810,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] An informational warning that appears when the nodeGroup list is empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual NodeGroupsScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -68827,7 +68827,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -68974,7 +68974,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual NodeTemplateAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -68991,7 +68991,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -69047,7 +69047,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual NodeTemplateList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -69064,7 +69064,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -69115,7 +69115,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] An informational warning that appears when the node templates list is
         /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual NodeTemplatesScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -69133,7 +69133,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -69249,7 +69249,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual NodeTypeAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -69266,7 +69266,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -69321,7 +69321,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual NodeTypeList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -69338,7 +69338,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -69373,7 +69373,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] An informational warning that appears when the node types list is empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual NodeTypesScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -69390,7 +69390,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -69532,7 +69532,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual NotificationEndpointList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -69549,7 +69549,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -69618,7 +69618,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] If errors are generated during processing of the operation, this field will be
         /// populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Operation.ErrorData Error { get; set; } 
+        public virtual ErrorData Error { get; set; } 
 
         /// <summary>[Output Only] If the operation fails, this field contains the HTTP error message that was returned,
         /// such as `NOT FOUND`.</summary>
@@ -69698,7 +69698,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] If warning messages are generated during processing of the operation, this field will
         /// be populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
-        public virtual System.Collections.Generic.IList<Operation.WarningsData> Warnings { get; set; } 
+        public virtual System.Collections.Generic.IList<WarningsData> Warnings { get; set; } 
 
         /// <summary>[Output Only] The URL of the zone where the operation resides. Only applicable when performing per-
         /// zone operations.</summary>
@@ -69715,7 +69715,7 @@ namespace Google.Apis.Compute.v1.Data
         {
             /// <summary>[Output Only] The array of errors encountered while processing this operation.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-            public virtual System.Collections.Generic.IList<ErrorData.ErrorsData> Errors { get; set; } 
+            public virtual System.Collections.Generic.IList<ErrorsData> Errors { get; set; } 
 
             
 
@@ -69747,7 +69747,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningsData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -69803,7 +69803,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual OperationAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -69820,7 +69820,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -69876,7 +69876,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual OperationList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -69893,7 +69893,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -69929,7 +69929,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] Informational warning which replaces the list of operations when the list is
         /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual OperationsScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -69947,7 +69947,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -70156,7 +70156,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual PacketMirroringAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -70173,7 +70173,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -70262,7 +70262,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual PacketMirroringList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -70279,7 +70279,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -70385,7 +70385,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Informational warning which replaces the list of packetMirrorings when the list is empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual PacketMirroringsScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -70402,7 +70402,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -70978,7 +70978,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual RegionAutoscalerList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -70995,7 +70995,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -71049,7 +71049,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual RegionDiskTypeList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -71066,7 +71066,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -71151,7 +71151,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual RegionInstanceGroupList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -71168,7 +71168,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -71236,7 +71236,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual RegionInstanceGroupManagerList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -71253,7 +71253,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -71395,7 +71395,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual RegionInstanceGroupManagersListInstanceConfigsResp.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -71412,7 +71412,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -71520,7 +71520,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual RegionInstanceGroupsListInstances.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -71537,7 +71537,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -71626,7 +71626,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual RegionList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -71643,7 +71643,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -71855,7 +71855,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual ReservationAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -71872,7 +71872,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -71927,7 +71927,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual ReservationList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -71944,7 +71944,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -71989,7 +71989,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Informational warning which replaces the list of reservations when the list is empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual ReservationsScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -72006,7 +72006,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -72073,7 +72073,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Informational warning which replaces the list of resourcePolicies when the list is empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual ResourcePoliciesScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -72090,7 +72090,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -72202,7 +72202,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual ResourcePolicyAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         
 
@@ -72217,7 +72217,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -72341,7 +72341,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual ResourcePolicyList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         
 
@@ -72356,7 +72356,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -72584,7 +72584,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] If potential misconfigurations are detected for this route, this field will be
         /// populated with warning messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
-        public virtual System.Collections.Generic.IList<Route.WarningsData> Warnings { get; set; } 
+        public virtual System.Collections.Generic.IList<WarningsData> Warnings { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -72600,7 +72600,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningsData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -72655,7 +72655,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual RouteList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -72672,7 +72672,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -72809,7 +72809,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual RouterAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -72826,7 +72826,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -73014,7 +73014,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual RouterList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -73031,7 +73031,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -73316,7 +73316,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Informational warning which replaces the list of routers when the list is empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual RoutersScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -73333,7 +73333,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -73612,7 +73612,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual SecurityPolicyList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -73629,7 +73629,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -74035,7 +74035,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual SnapshotList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -74052,7 +74052,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -74208,7 +74208,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual SslCertificateAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -74225,7 +74225,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -74280,7 +74280,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual SslCertificateList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -74297,7 +74297,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -74369,7 +74369,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Informational warning which replaces the list of backend services when the list is empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual SslCertificatesScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -74386,7 +74386,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -74441,7 +74441,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual SslPoliciesList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -74458,7 +74458,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -74562,7 +74562,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] If potential misconfigurations are detected for this SSL policy, this field will be
         /// populated with warning messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
-        public virtual System.Collections.Generic.IList<SslPolicy.WarningsData> Warnings { get; set; } 
+        public virtual System.Collections.Generic.IList<WarningsData> Warnings { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -74578,7 +74578,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningsData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -74807,7 +74807,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual SubnetworkAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -74824,7 +74824,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -74879,7 +74879,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual SubnetworkList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -74896,7 +74896,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -75004,7 +75004,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>An informational warning that appears when the list of addresses is empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual SubnetworksScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -75021,7 +75021,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -75215,7 +75215,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual TargetGrpcProxyList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -75232,7 +75232,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -75267,7 +75267,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Informational warning which replaces the list of backend services when the list is empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual TargetHttpProxiesScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -75284,7 +75284,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -75429,7 +75429,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual TargetHttpProxyList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -75446,7 +75446,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -75481,7 +75481,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Informational warning which replaces the list of backend services when the list is empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual TargetHttpsProxiesScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -75498,7 +75498,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -75656,7 +75656,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual TargetHttpsProxyAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -75673,7 +75673,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -75728,7 +75728,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual TargetHttpsProxyList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -75745,7 +75745,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -75859,7 +75859,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual TargetInstanceAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -75876,7 +75876,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -75931,7 +75931,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual TargetInstanceList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -75948,7 +75948,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -75983,7 +75983,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Informational warning which replaces the list of addresses when the list is empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual TargetInstancesScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -76000,7 +76000,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -76147,7 +76147,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual TargetPoolAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -76164,7 +76164,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -76233,7 +76233,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual TargetPoolList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -76250,7 +76250,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -76331,7 +76331,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Informational warning which replaces the list of addresses when the list is empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual TargetPoolsScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -76348,7 +76348,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -76504,7 +76504,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual TargetSslProxyList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -76521,7 +76521,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -76647,7 +76647,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual TargetTcpProxyList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -76664,7 +76664,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -76783,7 +76783,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual TargetVpnGatewayAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -76800,7 +76800,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -76855,7 +76855,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual TargetVpnGatewayList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -76872,7 +76872,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -76908,7 +76908,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] Informational warning which replaces the list of addresses when the list is
         /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual TargetVpnGatewaysScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -76926,7 +76926,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -77150,7 +77150,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual UrlMapList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -77167,7 +77167,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -77276,7 +77276,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual UrlMapsAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -77293,7 +77293,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -77328,7 +77328,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Informational warning which replaces the list of backend services when the list is empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual UrlMapsScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -77345,7 +77345,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -77477,7 +77477,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual UsableSubnetworksAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -77494,7 +77494,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -77625,7 +77625,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual VmEndpointNatMappingsList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -77642,7 +77642,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -77765,7 +77765,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual VpnGatewayAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -77782,7 +77782,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -77837,7 +77837,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual VpnGatewayList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -77854,7 +77854,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -77988,7 +77988,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] Informational warning which replaces the list of addresses when the list is
         /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual VpnGatewaysScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -78006,7 +78006,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -78191,7 +78191,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual VpnTunnelAggregatedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -78208,7 +78208,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -78263,7 +78263,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual VpnTunnelList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -78280,7 +78280,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -78315,7 +78315,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Informational warning which replaces the list of addresses when the list is empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual VpnTunnelsScopedList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -78332,7 +78332,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -78448,7 +78448,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual XpnHostList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -78465,7 +78465,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -78588,7 +78588,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual ZoneList.WarningData Warning { get; set; } 
+        public virtual WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -78605,7 +78605,7 @@ namespace Google.Apis.Compute.v1.Data
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]

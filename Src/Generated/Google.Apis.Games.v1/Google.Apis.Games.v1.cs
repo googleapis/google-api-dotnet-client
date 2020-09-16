@@ -3726,7 +3726,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>A representation of the individual components of the name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual Player.NameData Name { get; set; } 
+        public virtual NameData Name { get; set; } 
 
         /// <summary>The player ID that was used for this player the first time they signed into the game in question.
         /// This is only populated for calls to player.get for the requesting player, only if the player ID has

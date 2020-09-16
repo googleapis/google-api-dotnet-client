@@ -326,7 +326,7 @@ namespace Google.Apis.Discovery.v1.Data
 
         /// <summary>The individual directory entries. One entry per api/version pair.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<DirectoryList.ItemsData> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<ItemsData> Items { get; set; } 
 
         /// <summary>The kind for this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -356,7 +356,7 @@ namespace Google.Apis.Discovery.v1.Data
 
             /// <summary>Links to 16x16 and 32x32 icons representing the API.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("icons")]
-            public virtual ItemsData.IconsData Icons { get; set; } 
+            public virtual IconsData Icons { get; set; } 
 
             /// <summary>The id of this API.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -416,7 +416,7 @@ namespace Google.Apis.Discovery.v1.Data
 
         /// <summary>Additional information about this property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
-        public virtual JsonSchema.AnnotationsData Annotations { get; set; } 
+        public virtual AnnotationsData Annotations { get; set; } 
 
         /// <summary>The default value of this property (if one exists).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("default")]
@@ -491,7 +491,7 @@ namespace Google.Apis.Discovery.v1.Data
         /// <summary>In a variant data type, the value of one property is used to determine how to interpret the entire
         /// entity. Its value must exist in a map of descriminant values to schema names.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variant")]
-        public virtual JsonSchema.VariantData Variant { get; set; } 
+        public virtual VariantData Variant { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -516,7 +516,7 @@ namespace Google.Apis.Discovery.v1.Data
 
             /// <summary>The map of discriminant value to schema to use for parsing..</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("map")]
-            public virtual System.Collections.Generic.IList<VariantData.MapData> Map { get; set; } 
+            public virtual System.Collections.Generic.IList<MapData> Map { get; set; } 
 
             
 
@@ -536,7 +536,7 @@ namespace Google.Apis.Discovery.v1.Data
     {
         /// <summary>Authentication information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auth")]
-        public virtual RestDescription.AuthData Auth { get; set; } 
+        public virtual AuthData Auth { get; set; } 
 
         /// <summary>[DEPRECATED] The base path for REST requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("basePath")]
@@ -581,7 +581,7 @@ namespace Google.Apis.Discovery.v1.Data
 
         /// <summary>Links to 16x16 and 32x32 icons representing the API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("icons")]
-        public virtual RestDescription.IconsData Icons { get; set; } 
+        public virtual IconsData Icons { get; set; } 
 
         /// <summary>The ID of this API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -662,7 +662,7 @@ namespace Google.Apis.Discovery.v1.Data
         {
             /// <summary>OAuth 2.0 authentication information.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("oauth2")]
-            public virtual AuthData.Oauth2Data Oauth2 { get; set; } 
+            public virtual Oauth2Data Oauth2 { get; set; } 
 
             
 
@@ -671,7 +671,7 @@ namespace Google.Apis.Discovery.v1.Data
             {
                 /// <summary>Available OAuth 2.0 scopes.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
-                public virtual System.Collections.Generic.IDictionary<string,Oauth2Data.ScopesDataElement> Scopes { get; set; } 
+                public virtual System.Collections.Generic.IDictionary<string,ScopesDataElement> Scopes { get; set; } 
 
                 
 
@@ -722,7 +722,7 @@ namespace Google.Apis.Discovery.v1.Data
 
         /// <summary>Media upload parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaUpload")]
-        public virtual RestMethod.MediaUploadData MediaUpload { get; set; } 
+        public virtual MediaUploadData MediaUpload { get; set; } 
 
         /// <summary>Ordered list of required parameters, serves as a hint to clients on how to structure their method
         /// signatures. The array is ordered such that the "most-significant" parameter appears first.</summary>
@@ -740,11 +740,11 @@ namespace Google.Apis.Discovery.v1.Data
 
         /// <summary>The schema for the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("request")]
-        public virtual RestMethod.RequestData Request { get; set; } 
+        public virtual RequestData Request { get; set; } 
 
         /// <summary>The schema for the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual RestMethod.ResponseData Response { get; set; } 
+        public virtual ResponseData Response { get; set; } 
 
         /// <summary>OAuth 2.0 scopes applicable to this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
@@ -784,7 +784,7 @@ namespace Google.Apis.Discovery.v1.Data
 
             /// <summary>Supported upload protocols.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("protocols")]
-            public virtual MediaUploadData.ProtocolsData Protocols { get; set; } 
+            public virtual ProtocolsData Protocols { get; set; } 
 
             
 
@@ -793,11 +793,11 @@ namespace Google.Apis.Discovery.v1.Data
             {
                 /// <summary>Supports the Resumable Media Upload protocol.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("resumable")]
-                public virtual ProtocolsData.ResumableData Resumable { get; set; } 
+                public virtual ResumableData Resumable { get; set; } 
 
                 /// <summary>Supports uploading as a single HTTP request.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("simple")]
-                public virtual ProtocolsData.SimpleData Simple { get; set; } 
+                public virtual SimpleData Simple { get; set; } 
 
                 
 

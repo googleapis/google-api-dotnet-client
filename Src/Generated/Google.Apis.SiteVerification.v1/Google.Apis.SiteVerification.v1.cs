@@ -569,7 +569,7 @@ namespace Google.Apis.SiteVerification.v1.Data
     {
         /// <summary>The site for which a verification token will be generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("site")]
-        public virtual SiteVerificationWebResourceGettokenRequest.SiteData Site { get; set; } 
+        public virtual SiteData Site { get; set; } 
 
         /// <summary>The verification method that will be used to verify this site. For sites, 'FILE' or 'META' methods
         /// may be used. For domains, only 'DNS' may be used.</summary>
@@ -636,7 +636,7 @@ namespace Google.Apis.SiteVerification.v1.Data
 
         /// <summary>The address and type of a site that is verified or will be verified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("site")]
-        public virtual SiteVerificationWebResourceResource.SiteData Site { get; set; } 
+        public virtual SiteData Site { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

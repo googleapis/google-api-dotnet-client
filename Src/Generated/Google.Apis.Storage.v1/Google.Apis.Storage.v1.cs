@@ -7305,11 +7305,11 @@ namespace Google.Apis.Storage.v1.Data
 
         /// <summary>The bucket's billing configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billing")]
-        public virtual Bucket.BillingData Billing { get; set; } 
+        public virtual BillingData Billing { get; set; } 
 
         /// <summary>The bucket's Cross-Origin Resource Sharing (CORS) configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cors")]
-        public virtual System.Collections.Generic.IList<Bucket.CorsData> Cors { get; set; } 
+        public virtual System.Collections.Generic.IList<CorsData> Cors { get; set; } 
 
         /// <summary>The default value for event-based hold on newly created objects in this bucket. Event-based hold is
         /// a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being
@@ -7329,7 +7329,7 @@ namespace Google.Apis.Storage.v1.Data
 
         /// <summary>Encryption configuration for a bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryption")]
-        public virtual Bucket.EncryptionData Encryption { get; set; } 
+        public virtual EncryptionData Encryption { get; set; } 
 
         /// <summary>HTTP 1.1 Entity tag for the bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
@@ -7337,7 +7337,7 @@ namespace Google.Apis.Storage.v1.Data
 
         /// <summary>The bucket's IAM configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iamConfiguration")]
-        public virtual Bucket.IamConfigurationData IamConfiguration { get; set; } 
+        public virtual IamConfigurationData IamConfiguration { get; set; } 
 
         /// <summary>The ID of the bucket. For buckets, the id and name properties are the same.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -7353,7 +7353,7 @@ namespace Google.Apis.Storage.v1.Data
 
         /// <summary>The bucket's lifecycle configuration. See lifecycle management for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycle")]
-        public virtual Bucket.LifecycleData Lifecycle { get; set; } 
+        public virtual LifecycleData Lifecycle { get; set; } 
 
         /// <summary>The location of the bucket. Object data for objects in the bucket resides in physical storage
         /// within this region. Defaults to US. See the developer's guide for the authoritative list.</summary>
@@ -7367,7 +7367,7 @@ namespace Google.Apis.Storage.v1.Data
         /// <summary>The bucket's logging configuration, which defines the destination bucket and optional name prefix
         /// for the current bucket's logs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logging")]
-        public virtual Bucket.LoggingData Logging { get; set; } 
+        public virtual LoggingData Logging { get; set; } 
 
         /// <summary>The metadata generation of this bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metageneration")]
@@ -7379,7 +7379,7 @@ namespace Google.Apis.Storage.v1.Data
 
         /// <summary>The owner of the bucket. This is always the project team's owner group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("owner")]
-        public virtual Bucket.OwnerData Owner { get; set; } 
+        public virtual OwnerData Owner { get; set; } 
 
         /// <summary>The project number of the project the bucket belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
@@ -7392,7 +7392,7 @@ namespace Google.Apis.Storage.v1.Data
         /// cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease
         /// period of a locked retention policy will result in a PERMISSION_DENIED error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retentionPolicy")]
-        public virtual Bucket.RetentionPolicyData RetentionPolicy { get; set; } 
+        public virtual RetentionPolicyData RetentionPolicy { get; set; } 
 
         /// <summary>The URI of this bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
@@ -7432,12 +7432,12 @@ namespace Google.Apis.Storage.v1.Data
 
         /// <summary>The bucket's versioning configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versioning")]
-        public virtual Bucket.VersioningData Versioning { get; set; } 
+        public virtual VersioningData Versioning { get; set; } 
 
         /// <summary>The bucket's website configuration, controlling how the service behaves when accessing bucket
         /// contents as a web site. See the Static Website Examples for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("website")]
-        public virtual Bucket.WebsiteData Website { get; set; } 
+        public virtual WebsiteData Website { get; set; } 
 
         /// <summary>The zone or zones from which the bucket is intended to use zonal quota. Requests for data from
         /// outside the specified affinities are still allowed but won't be able to use zonal quota. The zone or zones
@@ -7503,11 +7503,11 @@ namespace Google.Apis.Storage.v1.Data
             /// as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable
             /// and disable the feature.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("bucketPolicyOnly")]
-            public virtual IamConfigurationData.BucketPolicyOnlyData BucketPolicyOnly { get; set; } 
+            public virtual BucketPolicyOnlyData BucketPolicyOnly { get; set; } 
 
             /// <summary>The bucket's uniform bucket-level access configuration.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("uniformBucketLevelAccess")]
-            public virtual IamConfigurationData.UniformBucketLevelAccessData UniformBucketLevelAccess { get; set; } 
+            public virtual UniformBucketLevelAccessData UniformBucketLevelAccess { get; set; } 
 
             
 
@@ -7567,7 +7567,7 @@ namespace Google.Apis.Storage.v1.Data
             /// <summary>A lifecycle management rule, which is made of an action to take and the condition(s) under
             /// which the action will be taken.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("rule")]
-            public virtual System.Collections.Generic.IList<LifecycleData.RuleData> Rule { get; set; } 
+            public virtual System.Collections.Generic.IList<RuleData> Rule { get; set; } 
 
             
 
@@ -7575,11 +7575,11 @@ namespace Google.Apis.Storage.v1.Data
             {
                 /// <summary>The action to take.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("action")]
-                public virtual RuleData.ActionData Action { get; set; } 
+                public virtual ActionData Action { get; set; } 
 
                 /// <summary>The condition(s) under which the action will be taken.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-                public virtual RuleData.ConditionData Condition { get; set; } 
+                public virtual ConditionData Condition { get; set; } 
 
                 
 
@@ -7794,7 +7794,7 @@ namespace Google.Apis.Storage.v1.Data
 
         /// <summary>The project team associated with the entity, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectTeam")]
-        public virtual BucketAccessControl.ProjectTeamData ProjectTeam { get; set; } 
+        public virtual ProjectTeamData ProjectTeam { get; set; } 
 
         /// <summary>The access permission for the entity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
@@ -7920,7 +7920,7 @@ namespace Google.Apis.Storage.v1.Data
 
         /// <summary>The list of source objects that will be concatenated into a single object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceObjects")]
-        public virtual System.Collections.Generic.IList<ComposeRequest.SourceObjectsData> SourceObjects { get; set; } 
+        public virtual System.Collections.Generic.IList<SourceObjectsData> SourceObjects { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7938,7 +7938,7 @@ namespace Google.Apis.Storage.v1.Data
 
             /// <summary>Conditions that must be met for this operation to execute.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("objectPreconditions")]
-            public virtual SourceObjectsData.ObjectPreconditionsData ObjectPreconditions { get; set; } 
+            public virtual ObjectPreconditionsData ObjectPreconditions { get; set; } 
 
             
 
@@ -8201,7 +8201,7 @@ namespace Google.Apis.Storage.v1.Data
 
         /// <summary>Metadata of customer-supplied encryption key, if the object is encrypted by such a key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerEncryption")]
-        public virtual Object.CustomerEncryptionData CustomerEncryption { get; set; } 
+        public virtual CustomerEncryptionData CustomerEncryption { get; set; } 
 
         /// <summary>HTTP 1.1 Entity tag for the object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
@@ -8259,7 +8259,7 @@ namespace Google.Apis.Storage.v1.Data
 
         /// <summary>The owner of the object. This will always be the uploader of the object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("owner")]
-        public virtual Object.OwnerData Owner { get; set; } 
+        public virtual OwnerData Owner { get; set; } 
 
         /// <summary>A server-determined value that specifies the earliest time that the object's retention period
         /// expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active
@@ -8425,7 +8425,7 @@ namespace Google.Apis.Storage.v1.Data
 
         /// <summary>The project team associated with the entity, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectTeam")]
-        public virtual ObjectAccessControl.ProjectTeamData ProjectTeam { get; set; } 
+        public virtual ProjectTeamData ProjectTeam { get; set; } 
 
         /// <summary>The access permission for the entity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
@@ -8498,7 +8498,7 @@ namespace Google.Apis.Storage.v1.Data
         /// <summary>An association between a role, which comes with a set of permissions, and members who may assume
         /// that role.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<Policy.BindingsData> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<BindingsData> Bindings { get; set; } 
 
         /// <summary>HTTP 1.1  Entity tag for the policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]

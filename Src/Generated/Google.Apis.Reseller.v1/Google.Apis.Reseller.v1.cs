@@ -1698,7 +1698,7 @@ namespace Google.Apis.Reseller.v1.Data
         /// annual commitment plan, and the 30-day free trial plan. For more information about the API"s payment plans,
         /// see the API concepts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plan")]
-        public virtual Subscription.PlanData Plan { get; set; } 
+        public virtual PlanData Plan { get; set; } 
 
         /// <summary>This is an optional property. This purchase order (PO) information is for resellers to use for
         /// their company tracking usage. If a purchaseOrderId value is given it appears in the API responses and shows
@@ -1759,12 +1759,12 @@ namespace Google.Apis.Reseller.v1.Data
         /// <summary>Read-only transfer related information for the subscription. For more information, see retrieve
         /// transferable subscriptions for a customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferInfo")]
-        public virtual Subscription.TransferInfoData TransferInfo { get; set; } 
+        public virtual TransferInfoData TransferInfo { get; set; } 
 
         /// <summary>The G Suite annual commitment and flexible payment plans can be in a 30-day free trial. For more
         /// information, see the API concepts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trialSettings")]
-        public virtual Subscription.TrialSettingsData TrialSettings { get; set; } 
+        public virtual TrialSettingsData TrialSettings { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1779,7 +1779,7 @@ namespace Google.Apis.Reseller.v1.Data
             /// billingMethod value is OFFLINE, the subscription property object plan.commitmentInterval is omitted in
             /// all API responses.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("commitmentInterval")]
-            public virtual PlanData.CommitmentIntervalData CommitmentInterval { get; set; } 
+            public virtual CommitmentIntervalData CommitmentInterval { get; set; } 
 
             /// <summary>The isCommitmentPlan property's boolean value identifies the plan as an annual commitment plan:
             /// - true — The subscription's plan is an annual commitment plan. - false — The plan is not an annual
