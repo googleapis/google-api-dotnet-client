@@ -998,7 +998,7 @@ namespace Google.Apis.Blogger.v2.Data
 
         /// <summary>The locale this Blog is set to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locale")]
-        public virtual Blog.LocaleData Locale { get; set; } 
+        public virtual LocaleData Locale { get; set; } 
 
         /// <summary>The name of this blog. This is displayed as the title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -1006,11 +1006,11 @@ namespace Google.Apis.Blogger.v2.Data
 
         /// <summary>The container of pages in this blog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pages")]
-        public virtual Blog.PagesData Pages { get; set; } 
+        public virtual PagesData Pages { get; set; } 
 
         /// <summary>The container of posts in this blog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("posts")]
-        public virtual Blog.PostsData Posts { get; set; } 
+        public virtual PostsData Posts { get; set; } 
 
         /// <summary>RFC 3339 date-time when this blog was published.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("published")]
@@ -1154,11 +1154,11 @@ namespace Google.Apis.Blogger.v2.Data
     {
         /// <summary>The author of this Comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("author")]
-        public virtual Comment.AuthorData Author { get; set; } 
+        public virtual AuthorData Author { get; set; } 
 
         /// <summary>Data about the blog containing this comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blog")]
-        public virtual Comment.BlogData Blog { get; set; } 
+        public virtual BlogData Blog { get; set; } 
 
         /// <summary>The actual content of the comment. May include HTML markup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
@@ -1170,7 +1170,7 @@ namespace Google.Apis.Blogger.v2.Data
 
         /// <summary>Data about the comment this is in reply to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inReplyTo")]
-        public virtual Comment.InReplyToData InReplyTo { get; set; } 
+        public virtual InReplyToData InReplyTo { get; set; } 
 
         /// <summary>The kind of this entry. Always blogger#comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -1178,7 +1178,7 @@ namespace Google.Apis.Blogger.v2.Data
 
         /// <summary>Data about the post containing this comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("post")]
-        public virtual Comment.PostData Post { get; set; } 
+        public virtual PostData Post { get; set; } 
 
         /// <summary>RFC 3339 date-time when this comment was published.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("published")]
@@ -1213,7 +1213,7 @@ namespace Google.Apis.Blogger.v2.Data
 
             /// <summary>The creator's avatar.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("image")]
-            public virtual AuthorData.ImageData Image { get; set; } 
+            public virtual ImageData Image { get; set; } 
 
             /// <summary>The URL of the creator's Profile page.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("url")]
@@ -1287,11 +1287,11 @@ namespace Google.Apis.Blogger.v2.Data
     {
         /// <summary>The author of this Page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("author")]
-        public virtual Page.AuthorData Author { get; set; } 
+        public virtual AuthorData Author { get; set; } 
 
         /// <summary>Data about the blog containing this Page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blog")]
-        public virtual Page.BlogData Blog { get; set; } 
+        public virtual BlogData Blog { get; set; } 
 
         /// <summary>The body content of this Page, in HTML.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
@@ -1348,7 +1348,7 @@ namespace Google.Apis.Blogger.v2.Data
 
             /// <summary>The creator's avatar.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("image")]
-            public virtual AuthorData.ImageData Image { get; set; } 
+            public virtual ImageData Image { get; set; } 
 
             /// <summary>The URL of the creator's Profile page.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("url")]
@@ -1400,11 +1400,11 @@ namespace Google.Apis.Blogger.v2.Data
     {
         /// <summary>The author of this Post.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("author")]
-        public virtual Post.AuthorData Author { get; set; } 
+        public virtual AuthorData Author { get; set; } 
 
         /// <summary>Data about the blog containing this Post.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blog")]
-        public virtual Post.BlogData Blog { get; set; } 
+        public virtual BlogData Blog { get; set; } 
 
         /// <summary>The content of the Post. May contain HTML markup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
@@ -1424,7 +1424,7 @@ namespace Google.Apis.Blogger.v2.Data
 
         /// <summary>Display image for the Post.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("images")]
-        public virtual System.Collections.Generic.IList<Post.ImagesData> Images { get; set; } 
+        public virtual System.Collections.Generic.IList<ImagesData> Images { get; set; } 
 
         /// <summary>The kind of this entity. Always blogger#post.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -1436,7 +1436,7 @@ namespace Google.Apis.Blogger.v2.Data
 
         /// <summary>The location for geotagged posts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual Post.LocationData Location { get; set; } 
+        public virtual LocationData Location { get; set; } 
 
         /// <summary>RFC 3339 date-time when this Post was published.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("published")]
@@ -1448,7 +1448,7 @@ namespace Google.Apis.Blogger.v2.Data
 
         /// <summary>The container of comments on this Post.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replies")]
-        public virtual Post.RepliesData Replies { get; set; } 
+        public virtual RepliesData Replies { get; set; } 
 
         /// <summary>The API REST URL to fetch this resource from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
@@ -1489,7 +1489,7 @@ namespace Google.Apis.Blogger.v2.Data
 
             /// <summary>The creator's avatar.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("image")]
-            public virtual AuthorData.ImageData Image { get; set; } 
+            public virtual ImageData Image { get; set; } 
 
             /// <summary>The URL of the creator's Profile page.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("url")]
@@ -1594,7 +1594,7 @@ namespace Google.Apis.Blogger.v2.Data
 
         /// <summary>The container of blogs for this user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blogs")]
-        public virtual User.BlogsData Blogs { get; set; } 
+        public virtual BlogsData Blogs { get; set; } 
 
         /// <summary>The timestamp of when this profile was created, in seconds since epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("created")]
@@ -1614,7 +1614,7 @@ namespace Google.Apis.Blogger.v2.Data
 
         /// <summary>This user's locale</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locale")]
-        public virtual User.LocaleData Locale { get; set; } 
+        public virtual LocaleData Locale { get; set; } 
 
         /// <summary>The API REST URL to fetch this resource from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]

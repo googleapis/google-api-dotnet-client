@@ -1580,7 +1580,7 @@ namespace Google.Apis.Customsearch.v1.Data
         /// <summary>An array of block objects for this promotion. See [Google WebSearch Protocol
         /// reference](https://developers.google.com/custom-search/docs/xml_results) for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bodyLines")]
-        public virtual System.Collections.Generic.IList<Promotion.BodyLinesData> BodyLines { get; set; } 
+        public virtual System.Collections.Generic.IList<BodyLinesData> BodyLines { get; set; } 
 
         /// <summary>An abridged version of this search's result URL, e.g. www.example.com.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayLink")]
@@ -1592,7 +1592,7 @@ namespace Google.Apis.Customsearch.v1.Data
 
         /// <summary>Image belonging to a promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual Promotion.ImageData Image { get; set; } 
+        public virtual ImageData Image { get; set; } 
 
         /// <summary>The URL of the promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
@@ -1678,7 +1678,7 @@ namespace Google.Apis.Customsearch.v1.Data
 
         /// <summary>Image belonging to a custom search result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual Result.ImageData Image { get; set; } 
+        public virtual ImageData Image { get; set; } 
 
         /// <summary>A unique identifier for the type of current object. For this API, it is
         /// `customsearch#result.`</summary>
@@ -1688,7 +1688,7 @@ namespace Google.Apis.Customsearch.v1.Data
         /// <summary>Encapsulates all information about [refinement labels](https://developers.google.com/custom-
         /// search/docs/xml_results).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IList<Result.LabelsData> Labels { get; set; } 
+        public virtual System.Collections.Generic.IList<LabelsData> Labels { get; set; } 
 
         /// <summary>The full URL to which the search result is pointing, e.g. http://www.example.com/foo/bar.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
@@ -1793,19 +1793,19 @@ namespace Google.Apis.Customsearch.v1.Data
 
         /// <summary>Query metadata for the previous, current, and next pages of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queries")]
-        public virtual Search.QueriesData Queries { get; set; } 
+        public virtual QueriesData Queries { get; set; } 
 
         /// <summary>Metadata about a search operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchInformation")]
-        public virtual Search.SearchInformationData SearchInformation { get; set; } 
+        public virtual SearchInformationData SearchInformation { get; set; } 
 
         /// <summary>Spell correction information for a query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spelling")]
-        public virtual Search.SpellingData Spelling { get; set; } 
+        public virtual SpellingData Spelling { get; set; } 
 
         /// <summary>OpenSearch template and URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual Search.UrlData Url { get; set; } 
+        public virtual UrlData Url { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1816,15 +1816,15 @@ namespace Google.Apis.Customsearch.v1.Data
         {
             /// <summary>Metadata representing the next page of results, if applicable.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("nextPage")]
-            public virtual System.Collections.Generic.IList<QueriesData.NextPageData> NextPage { get; set; } 
+            public virtual System.Collections.Generic.IList<NextPageData> NextPage { get; set; } 
 
             /// <summary>Metadata representing the previous page of results, if applicable.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("previousPage")]
-            public virtual System.Collections.Generic.IList<QueriesData.PreviousPageData> PreviousPage { get; set; } 
+            public virtual System.Collections.Generic.IList<PreviousPageData> PreviousPage { get; set; } 
 
             /// <summary>Metadata representing the current request.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("request")]
-            public virtual System.Collections.Generic.IList<QueriesData.RequestData> Request { get; set; } 
+            public virtual System.Collections.Generic.IList<RequestData> Request { get; set; } 
 
             
 

@@ -2894,7 +2894,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
 
         /// <summary>Your bidder locations that have distinct URLs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bidderLocation")]
-        public virtual System.Collections.Generic.IList<Account.BidderLocationData> BidderLocation { get; set; } 
+        public virtual System.Collections.Generic.IList<BidderLocationData> BidderLocation { get; set; } 
 
         /// <summary>The nid parameter value used in cookie match requests. Please contact your technical account
         /// manager if you need to change this.</summary>
@@ -3163,7 +3163,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         public virtual string AdChoicesDestinationUrl { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("adTechnologyProviders")]
-        public virtual Creative.AdTechnologyProvidersData AdTechnologyProviders { get; set; } 
+        public virtual AdTechnologyProvidersData AdTechnologyProviders { get; set; } 
 
         /// <summary>Detected advertiser id, if any. Read-only. This field should not be set in requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
@@ -3207,7 +3207,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         /// <summary>Shows any corrections that were applied to this creative. Read-only. This field should not be set
         /// in requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("corrections")]
-        public virtual System.Collections.Generic.IList<Creative.CorrectionsData> Corrections { get; set; } 
+        public virtual System.Collections.Generic.IList<CorrectionsData> Corrections { get; set; } 
 
         /// <summary>Creative status identity type that the creative item applies to. Ad Exchange real-time bidding is
         /// migrating to the sizeless creative verification. Originally, Ad Exchange assigned creative verification
@@ -3232,7 +3232,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         /// <summary>The filtering reasons for the creative. Read-only. This field should not be set in
         /// requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filteringReasons")]
-        public virtual Creative.FilteringReasonsData FilteringReasons { get; set; } 
+        public virtual FilteringReasonsData FilteringReasons { get; set; } 
 
         /// <summary>Ad height.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
@@ -3254,7 +3254,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         /// <summary>If nativeAd is set, HTMLSnippet, videoVastXML, and the videoURL outside of nativeAd should not be
         /// set. (The videoURL inside nativeAd can be set.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nativeAd")]
-        public virtual Creative.NativeAdData NativeAd { get; set; } 
+        public virtual NativeAdData NativeAd { get; set; } 
 
         /// <summary>Top-level open auction status. Read-only. This field should not be set in requests. If disapproved,
         /// an entry for auctionType=OPEN_AUCTION (or ALL) in servingRestrictions will also exist. Note that this may be
@@ -3283,7 +3283,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         /// auction). Read-only. This field should not be set in requests. See the examples in the Creatives guide for
         /// more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingRestrictions")]
-        public virtual System.Collections.Generic.IList<Creative.ServingRestrictionsData> ServingRestrictions { get; set; } 
+        public virtual System.Collections.Generic.IList<ServingRestrictionsData> ServingRestrictions { get; set; } 
 
         /// <summary>List of vendor types for the ads that may be shown from this snippet. Each vendor type is
         /// represented by an integer as defined in vendors.txt.</summary>
@@ -3339,7 +3339,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         {
             /// <summary>All known serving contexts containing serving status information.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("contexts")]
-            public virtual System.Collections.Generic.IList<CorrectionsData.ContextsData> Contexts { get; set; } 
+            public virtual System.Collections.Generic.IList<ContextsData> Contexts { get; set; } 
 
             /// <summary>Additional details about the correction.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("details")]
@@ -3386,7 +3386,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
 
             /// <summary>The filtering reasons.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("reasons")]
-            public virtual System.Collections.Generic.IList<FilteringReasonsData.ReasonsData> Reasons { get; set; } 
+            public virtual System.Collections.Generic.IList<ReasonsData> Reasons { get; set; } 
 
             
 
@@ -3413,7 +3413,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
 
             /// <summary>The app icon, for app download ads.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("appIcon")]
-            public virtual NativeAdData.AppIconData AppIcon { get; set; } 
+            public virtual AppIconData AppIcon { get; set; } 
 
             /// <summary>A long description of the ad.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("body")]
@@ -3437,7 +3437,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
 
             /// <summary>A large image.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("image")]
-            public virtual NativeAdData.ImageData Image { get; set; } 
+            public virtual ImageData Image { get; set; } 
 
             /// <summary>The URLs are called when the impression is rendered.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("impressionTrackingUrl")]
@@ -3445,7 +3445,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
 
             /// <summary>A smaller image, for the advertiser logo.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("logo")]
-            public virtual NativeAdData.LogoData Logo { get; set; } 
+            public virtual LogoData Logo { get; set; } 
 
             /// <summary>The price of the promoted app including the currency info.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("price")]
@@ -3509,14 +3509,14 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         {
             /// <summary>All known contexts/restrictions.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("contexts")]
-            public virtual System.Collections.Generic.IList<ServingRestrictionsData.ContextsData> Contexts { get; set; } 
+            public virtual System.Collections.Generic.IList<ContextsData> Contexts { get; set; } 
 
             /// <summary>The reasons for disapproval within this restriction, if any. Note that not all disapproval
             /// reasons may be categorized, so it is possible for the creative to have a status of DISAPPROVED or
             /// CONDITIONALLY_APPROVED with an empty list for disapproval_reasons. In this case, please reach out to
             /// your TAM to help debug the issue.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("disapprovalReasons")]
-            public virtual System.Collections.Generic.IList<ServingRestrictionsData.DisapprovalReasonsData> DisapprovalReasons { get; set; } 
+            public virtual System.Collections.Generic.IList<DisapprovalReasonsData> DisapprovalReasons { get; set; } 
 
             /// <summary>Why the creative is ineligible to serve in this context (e.g., it has been explicitly
             /// disapproved or is pending review).</summary>
@@ -3568,7 +3568,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
     {
         /// <summary>A list of external deal ids and ARC approval status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dealStatuses")]
-        public virtual System.Collections.Generic.IList<CreativeDealIds.DealStatusesData> DealStatuses { get; set; } 
+        public virtual System.Collections.Generic.IList<DealStatusesData> DealStatuses { get; set; } 
 
         /// <summary>Resource type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -4348,7 +4348,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         /// <summary>Requests which allow one of these (width, height) pairs will match. All pairs must be supported ad
         /// dimensions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
-        public virtual System.Collections.Generic.IList<PretargetingConfig.DimensionsData> Dimensions { get; set; } 
+        public virtual System.Collections.Generic.IList<DimensionsData> Dimensions { get; set; } 
 
         /// <summary>Requests with any of these content labels will not match. Values are from content-labels.txt in the
         /// downloadable files section.</summary>
@@ -4361,7 +4361,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
 
         /// <summary>Requests containing any of these placements will not match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedPlacements")]
-        public virtual System.Collections.Generic.IList<PretargetingConfig.ExcludedPlacementsData> ExcludedPlacements { get; set; } 
+        public virtual System.Collections.Generic.IList<ExcludedPlacementsData> ExcludedPlacements { get; set; } 
 
         /// <summary>Requests containing any of these users list ids will not match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedUserLists")]
@@ -4417,7 +4417,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
 
         /// <summary>Requests containing any of these placements will match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placements")]
-        public virtual System.Collections.Generic.IList<PretargetingConfig.PlacementsData> Placements { get; set; } 
+        public virtual System.Collections.Generic.IList<PlacementsData> Placements { get; set; } 
 
         /// <summary>Requests matching any of these platforms will match. Possible values are
         /// PRETARGETING_PLATFORM_MOBILE, PRETARGETING_PLATFORM_DESKTOP, and PRETARGETING_PLATFORM_TABLET.</summary>
@@ -4451,7 +4451,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
 
         /// <summary>Video requests satisfying any of these player size constraints will match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoPlayerSizes")]
-        public virtual System.Collections.Generic.IList<PretargetingConfig.VideoPlayerSizesData> VideoPlayerSizes { get; set; } 
+        public virtual System.Collections.Generic.IList<VideoPlayerSizesData> VideoPlayerSizes { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

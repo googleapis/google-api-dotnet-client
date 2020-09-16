@@ -1074,7 +1074,7 @@ namespace Google.Apis.Plus.v1.Data
 
         /// <summary>The person who performed this activity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actor")]
-        public virtual Activity.ActorData Actor { get; set; } 
+        public virtual ActorData Actor { get; set; } 
 
         /// <summary>Street address where this activity occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
@@ -1113,7 +1113,7 @@ namespace Google.Apis.Plus.v1.Data
 
         /// <summary>The object of this activity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("object")]
-        public virtual Activity.ObjectData Object__ { get; set; } 
+        public virtual ObjectData Object__ { get; set; } 
 
         /// <summary>ID of the place where this activity occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placeId")]
@@ -1125,7 +1125,7 @@ namespace Google.Apis.Plus.v1.Data
 
         /// <summary>The service provider that initially published this activity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provider")]
-        public virtual Activity.ProviderData Provider { get; set; } 
+        public virtual ProviderData Provider { get; set; } 
 
         /// <summary>The time at which this activity was initially published. Formatted as an RFC 3339
         /// timestamp.</summary>
@@ -1178,7 +1178,7 @@ namespace Google.Apis.Plus.v1.Data
         {
             /// <summary>Actor info specific to particular clients.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("clientSpecificActorInfo")]
-            public virtual ActorData.ClientSpecificActorInfoData ClientSpecificActorInfo { get; set; } 
+            public virtual ClientSpecificActorInfoData ClientSpecificActorInfo { get; set; } 
 
             /// <summary>The name of the actor, suitable for display.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
@@ -1190,11 +1190,11 @@ namespace Google.Apis.Plus.v1.Data
 
             /// <summary>The image representation of the actor.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("image")]
-            public virtual ActorData.ImageData Image { get; set; } 
+            public virtual ImageData Image { get; set; } 
 
             /// <summary>An object representation of the individual components of name.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("name")]
-            public virtual ActorData.NameData Name { get; set; } 
+            public virtual NameData Name { get; set; } 
 
             /// <summary>The link to the actor's Google profile.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("url")]
@@ -1202,7 +1202,7 @@ namespace Google.Apis.Plus.v1.Data
 
             /// <summary>Verification status of actor.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("verification")]
-            public virtual ActorData.VerificationData Verification { get; set; } 
+            public virtual VerificationData Verification { get; set; } 
 
             
 
@@ -1211,7 +1211,7 @@ namespace Google.Apis.Plus.v1.Data
             {
                 /// <summary>Actor info specific to YouTube clients.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("youtubeActorInfo")]
-                public virtual ClientSpecificActorInfoData.YoutubeActorInfoData YoutubeActorInfo { get; set; } 
+                public virtual YoutubeActorInfoData YoutubeActorInfo { get; set; } 
 
                 
 
@@ -1264,11 +1264,11 @@ namespace Google.Apis.Plus.v1.Data
             /// <summary>If this activity's object is itself another activity, such as when a person reshares an
             /// activity, this property specifies the original activity's actor.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("actor")]
-            public virtual ObjectData.ActorData Actor { get; set; } 
+            public virtual ActorData Actor { get; set; } 
 
             /// <summary>The media objects attached to this activity.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("attachments")]
-            public virtual System.Collections.Generic.IList<ObjectData.AttachmentsData> Attachments { get; set; } 
+            public virtual System.Collections.Generic.IList<AttachmentsData> Attachments { get; set; } 
 
             /// <summary>The HTML-formatted content, which is suitable for display.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("content")]
@@ -1291,15 +1291,15 @@ namespace Google.Apis.Plus.v1.Data
 
             /// <summary>People who +1'd this activity.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("plusoners")]
-            public virtual ObjectData.PlusonersData Plusoners { get; set; } 
+            public virtual PlusonersData Plusoners { get; set; } 
 
             /// <summary>Comments in reply to this activity.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("replies")]
-            public virtual ObjectData.RepliesData Replies { get; set; } 
+            public virtual RepliesData Replies { get; set; } 
 
             /// <summary>People who reshared this activity.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("resharers")]
-            public virtual ObjectData.ResharersData Resharers { get; set; } 
+            public virtual ResharersData Resharers { get; set; } 
 
             /// <summary>The URL that points to the linked resource.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("url")]
@@ -1313,7 +1313,7 @@ namespace Google.Apis.Plus.v1.Data
             {
                 /// <summary>Actor info specific to particular clients.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("clientSpecificActorInfo")]
-                public virtual ActorData.ClientSpecificActorInfoData ClientSpecificActorInfo { get; set; } 
+                public virtual ClientSpecificActorInfoData ClientSpecificActorInfo { get; set; } 
 
                 /// <summary>The original actor's name, which is suitable for display.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
@@ -1325,7 +1325,7 @@ namespace Google.Apis.Plus.v1.Data
 
                 /// <summary>The image representation of the original actor.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("image")]
-                public virtual ActorData.ImageData Image { get; set; } 
+                public virtual ImageData Image { get; set; } 
 
                 /// <summary>A link to the original actor's Google profile.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("url")]
@@ -1333,7 +1333,7 @@ namespace Google.Apis.Plus.v1.Data
 
                 /// <summary>Verification status of actor.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("verification")]
-                public virtual ActorData.VerificationData Verification { get; set; } 
+                public virtual VerificationData Verification { get; set; } 
 
                 
 
@@ -1342,7 +1342,7 @@ namespace Google.Apis.Plus.v1.Data
                 {
                     /// <summary>Actor info specific to YouTube clients.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("youtubeActorInfo")]
-                    public virtual ClientSpecificActorInfoData.YoutubeActorInfoData YoutubeActorInfo { get; set; } 
+                    public virtual YoutubeActorInfoData YoutubeActorInfo { get; set; } 
 
                     
 
@@ -1388,11 +1388,11 @@ namespace Google.Apis.Plus.v1.Data
 
                 /// <summary>If the attachment is a video, the embeddable link.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("embed")]
-                public virtual AttachmentsData.EmbedData Embed { get; set; } 
+                public virtual EmbedData Embed { get; set; } 
 
                 /// <summary>The full image URL for photo attachments.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("fullImage")]
-                public virtual AttachmentsData.FullImageData FullImage { get; set; } 
+                public virtual FullImageData FullImage { get; set; } 
 
                 /// <summary>The ID of the attachment.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -1400,7 +1400,7 @@ namespace Google.Apis.Plus.v1.Data
 
                 /// <summary>The preview image for photos or videos.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("image")]
-                public virtual AttachmentsData.ImageData Image { get; set; } 
+                public virtual ImageData Image { get; set; } 
 
                 /// <summary>The type of media object. Possible values include, but are not limited to, the following
                 /// values: - "photo" - A photo. - "album" - A photo album. - "video" - A video. - "article" - An
@@ -1411,7 +1411,7 @@ namespace Google.Apis.Plus.v1.Data
                 /// <summary>If the attachment is an album, this property is a list of potential additional thumbnails
                 /// from the album.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("thumbnails")]
-                public virtual System.Collections.Generic.IList<AttachmentsData.ThumbnailsData> Thumbnails { get; set; } 
+                public virtual System.Collections.Generic.IList<ThumbnailsData> Thumbnails { get; set; } 
 
                 /// <summary>The link to the attachment, which should be of type text/html.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("url")]
@@ -1482,7 +1482,7 @@ namespace Google.Apis.Plus.v1.Data
 
                     /// <summary>Image resource.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("image")]
-                    public virtual ThumbnailsData.ImageData Image { get; set; } 
+                    public virtual ImageData Image { get; set; } 
 
                     /// <summary>URL of the webpage containing the image.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("url")]
@@ -1617,7 +1617,7 @@ namespace Google.Apis.Plus.v1.Data
     {
         /// <summary>The person who posted this comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actor")]
-        public virtual Comment.ActorData Actor { get; set; } 
+        public virtual ActorData Actor { get; set; } 
 
         /// <summary>ETag of this response for caching purposes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
@@ -1629,7 +1629,7 @@ namespace Google.Apis.Plus.v1.Data
 
         /// <summary>The activity this comment replied to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inReplyTo")]
-        public virtual System.Collections.Generic.IList<Comment.InReplyToData> InReplyTo { get; set; } 
+        public virtual System.Collections.Generic.IList<InReplyToData> InReplyTo { get; set; } 
 
         /// <summary>Identifies this resource as a comment. Value: "plus#comment".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -1637,11 +1637,11 @@ namespace Google.Apis.Plus.v1.Data
 
         /// <summary>The object of this comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("object")]
-        public virtual Comment.ObjectData Object__ { get; set; } 
+        public virtual ObjectData Object__ { get; set; } 
 
         /// <summary>People who +1'd this comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plusoners")]
-        public virtual Comment.PlusonersData Plusoners { get; set; } 
+        public virtual PlusonersData Plusoners { get; set; } 
 
         /// <summary>The time at which this comment was initially published. Formatted as an RFC 3339
         /// timestamp.</summary>
@@ -1684,7 +1684,7 @@ namespace Google.Apis.Plus.v1.Data
         {
             /// <summary>Actor info specific to particular clients.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("clientSpecificActorInfo")]
-            public virtual ActorData.ClientSpecificActorInfoData ClientSpecificActorInfo { get; set; } 
+            public virtual ClientSpecificActorInfoData ClientSpecificActorInfo { get; set; } 
 
             /// <summary>The name of this actor, suitable for display.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
@@ -1696,7 +1696,7 @@ namespace Google.Apis.Plus.v1.Data
 
             /// <summary>The image representation of this actor.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("image")]
-            public virtual ActorData.ImageData Image { get; set; } 
+            public virtual ImageData Image { get; set; } 
 
             /// <summary>A link to the Person resource for this actor.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("url")]
@@ -1704,7 +1704,7 @@ namespace Google.Apis.Plus.v1.Data
 
             /// <summary>Verification status of actor.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("verification")]
-            public virtual ActorData.VerificationData Verification { get; set; } 
+            public virtual VerificationData Verification { get; set; } 
 
             
 
@@ -1713,7 +1713,7 @@ namespace Google.Apis.Plus.v1.Data
             {
                 /// <summary>Actor info specific to YouTube clients.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("youtubeActorInfo")]
-                public virtual ClientSpecificActorInfoData.YoutubeActorInfoData YoutubeActorInfo { get; set; } 
+                public virtual YoutubeActorInfoData YoutubeActorInfo { get; set; } 
 
                 
 
@@ -1878,7 +1878,7 @@ namespace Google.Apis.Plus.v1.Data
         /// <summary>The age range of the person. Valid ranges are 17 or younger, 18 to 20, and 21 or older. Age is
         /// determined from the user's birthday using Western age reckoning.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ageRange")]
-        public virtual Person.AgeRangeData AgeRange { get; set; } 
+        public virtual AgeRangeData AgeRange { get; set; } 
 
         /// <summary>The person's date of birth, represented as YYYY-MM-DD.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("birthday")]
@@ -1895,7 +1895,7 @@ namespace Google.Apis.Plus.v1.Data
 
         /// <summary>The cover photo content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cover")]
-        public virtual Person.CoverData Cover { get; set; } 
+        public virtual CoverData Cover { get; set; } 
 
         /// <summary>(this field is not currently used)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentLocation")]
@@ -1915,7 +1915,7 @@ namespace Google.Apis.Plus.v1.Data
         /// to retrieve these email addresses, or the email scope can be used to retrieve just the Google account email
         /// address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emails")]
-        public virtual System.Collections.Generic.IList<Person.EmailsData> Emails { get; set; } 
+        public virtual System.Collections.Generic.IList<EmailsData> Emails { get; set; } 
 
         /// <summary>ETag of this response for caching purposes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
@@ -1932,7 +1932,7 @@ namespace Google.Apis.Plus.v1.Data
 
         /// <summary>The representation of the person's profile photo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual Person.ImageData Image { get; set; } 
+        public virtual ImageData Image { get; set; } 
 
         /// <summary>Whether this user has signed up for Google+.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isPlusUser")]
@@ -1948,7 +1948,7 @@ namespace Google.Apis.Plus.v1.Data
 
         /// <summary>An object representation of the individual components of a person's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual Person.NameData Name { get; set; } 
+        public virtual NameData Name { get; set; } 
 
         /// <summary>The nickname of this person.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nickname")]
@@ -1965,11 +1965,11 @@ namespace Google.Apis.Plus.v1.Data
 
         /// <summary>A list of current or past organizations with which this person is associated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("organizations")]
-        public virtual System.Collections.Generic.IList<Person.OrganizationsData> Organizations { get; set; } 
+        public virtual System.Collections.Generic.IList<OrganizationsData> Organizations { get; set; } 
 
         /// <summary>A list of places where this person has lived.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placesLived")]
-        public virtual System.Collections.Generic.IList<Person.PlacesLivedData> PlacesLived { get; set; } 
+        public virtual System.Collections.Generic.IList<PlacesLivedData> PlacesLived { get; set; } 
 
         /// <summary>If a Google+ Page, the number of people who have +1'd this page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plusOneCount")]
@@ -1998,7 +1998,7 @@ namespace Google.Apis.Plus.v1.Data
 
         /// <summary>A list of URLs for this person.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urls")]
-        public virtual System.Collections.Generic.IList<Person.UrlsData> Urls { get; set; } 
+        public virtual System.Collections.Generic.IList<UrlsData> Urls { get; set; } 
 
         /// <summary>Whether the person or Google+ Page has been verified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verified")]
@@ -2027,11 +2027,11 @@ namespace Google.Apis.Plus.v1.Data
         {
             /// <summary>Extra information about the cover photo.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("coverInfo")]
-            public virtual CoverData.CoverInfoData CoverInfo { get; set; } 
+            public virtual CoverInfoData CoverInfo { get; set; } 
 
             /// <summary>The person's primary cover image.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("coverPhoto")]
-            public virtual CoverData.CoverPhotoData CoverPhoto { get; set; } 
+            public virtual CoverPhotoData CoverPhoto { get; set; } 
 
             /// <summary>The layout of the cover art. Possible values include, but are not limited to, the following
             /// values: - "banner" - One large image banner.</summary>
@@ -2207,7 +2207,7 @@ namespace Google.Apis.Plus.v1.Data
     {
         /// <summary>The physical address of the place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
-        public virtual Place.AddressData Address { get; set; } 
+        public virtual AddressData Address { get; set; } 
 
         /// <summary>The display name of the place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
@@ -2223,7 +2223,7 @@ namespace Google.Apis.Plus.v1.Data
 
         /// <summary>The position of the place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("position")]
-        public virtual Place.PositionData Position { get; set; } 
+        public virtual PositionData Position { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

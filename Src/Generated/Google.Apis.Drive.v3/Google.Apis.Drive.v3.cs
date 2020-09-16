@@ -5170,7 +5170,7 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>A list of themes that are supported for shared drives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveThemes")]
-        public virtual System.Collections.Generic.IList<About.DriveThemesData> DriveThemes { get; set; } 
+        public virtual System.Collections.Generic.IList<DriveThemesData> DriveThemes { get; set; } 
 
         /// <summary>A map of source MIME type to possible targets for all supported exports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportFormats")]
@@ -5198,11 +5198,11 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>The user's storage quota limits and usage. All fields are measured in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageQuota")]
-        public virtual About.StorageQuotaData StorageQuota { get; set; } 
+        public virtual StorageQuotaData StorageQuota { get; set; } 
 
         /// <summary>Deprecated - use driveThemes instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teamDriveThemes")]
-        public virtual System.Collections.Generic.IList<About.TeamDriveThemesData> TeamDriveThemes { get; set; } 
+        public virtual System.Collections.Generic.IList<TeamDriveThemesData> TeamDriveThemes { get; set; } 
 
         /// <summary>The authenticated user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
@@ -5468,7 +5468,7 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>The file content to which the comment refers, typically within the anchor region. For a text file,
         /// for example, this would be the text at the location of the comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotedFileContent")]
-        public virtual Comment.QuotedFileContentData QuotedFileContent { get; set; } 
+        public virtual QuotedFileContentData QuotedFileContent { get; set; } 
 
         /// <summary>The full list of replies to the comment in chronological order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replies")]
@@ -5566,7 +5566,7 @@ namespace Google.Apis.Drive.v3.Data
         /// This is a write only field; it can only be set on drive.drives.update requests that don't set themeId. When
         /// specified, all fields of the backgroundImageFile must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundImageFile")]
-        public virtual Drive.BackgroundImageFileData BackgroundImageFile { get; set; } 
+        public virtual BackgroundImageFileData BackgroundImageFile { get; set; } 
 
         /// <summary>A short-lived link to this shared drive's background image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundImageLink")]
@@ -5574,7 +5574,7 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>Capabilities the current user has on this shared drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capabilities")]
-        public virtual Drive.CapabilitiesData Capabilities { get; set; } 
+        public virtual CapabilitiesData Capabilities { get; set; } 
 
         /// <summary>The color of this shared drive as an RGB hex string. It can only be set on a drive.drives.update
         /// request that does not set themeId.</summary>
@@ -5612,7 +5612,7 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>A set of restrictions that apply to this shared drive or items inside this shared drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictions")]
-        public virtual Drive.RestrictionsData Restrictions { get; set; } 
+        public virtual RestrictionsData Restrictions { get; set; } 
 
         /// <summary>The ID of the theme from which the background image and color will be set. The set of possible
         /// driveThemes can be retrieved from a drive.about.get response. When not specified on a drive.drives.create
@@ -5800,12 +5800,12 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>Capabilities the current user has on this file. Each capability corresponds to a fine-grained
         /// action that a user may take.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capabilities")]
-        public virtual File.CapabilitiesData Capabilities { get; set; } 
+        public virtual CapabilitiesData Capabilities { get; set; } 
 
         /// <summary>Additional information about the content of the file. These fields are never populated in
         /// responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentHints")]
-        public virtual File.ContentHintsData ContentHints { get; set; } 
+        public virtual ContentHintsData ContentHints { get; set; } 
 
         /// <summary>Restrictions for accessing the content of the file. Only populated if such a restriction
         /// exists.</summary>
@@ -5889,7 +5889,7 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>Additional metadata about image media, if available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageMediaMetadata")]
-        public virtual File.ImageMediaMetadataData ImageMediaMetadata { get; set; } 
+        public virtual ImageMediaMetadataData ImageMediaMetadata { get; set; } 
 
         /// <summary>Whether the file was created or opened by the requesting app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isAppAuthorized")]
@@ -6013,7 +6013,7 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>Shortcut file details. Only populated for shortcut files, which have the mimeType field set to
         /// application/vnd.google-apps.shortcut.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortcutDetails")]
-        public virtual File.ShortcutDetailsData ShortcutDetails { get; set; } 
+        public virtual ShortcutDetailsData ShortcutDetails { get; set; } 
 
         /// <summary>The size of the file's content in bytes. This is only applicable to files with binary content in
         /// Google Drive.</summary>
@@ -6074,7 +6074,7 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>Additional metadata about video media. This may not be available immediately upon upload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoMediaMetadata")]
-        public virtual File.VideoMediaMetadataData VideoMediaMetadata { get; set; } 
+        public virtual VideoMediaMetadataData VideoMediaMetadata { get; set; } 
 
         /// <summary>Whether the file has been viewed by this user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewedByMe")]
@@ -6292,7 +6292,7 @@ namespace Google.Apis.Drive.v3.Data
             /// <summary>A thumbnail for the file. This will only be used if Google Drive cannot generate a standard
             /// thumbnail.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("thumbnail")]
-            public virtual ContentHintsData.ThumbnailData Thumbnail { get; set; } 
+            public virtual ThumbnailData Thumbnail { get; set; } 
 
             
 
@@ -6364,7 +6364,7 @@ namespace Google.Apis.Drive.v3.Data
 
             /// <summary>Geographic location information stored in the image.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("location")]
-            public virtual ImageMediaMetadataData.LocationData Location { get; set; } 
+            public virtual LocationData Location { get; set; } 
 
             /// <summary>The smallest f-number of the lens at the focal length used to create the photo (APEX
             /// value).</summary>
@@ -6556,7 +6556,7 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>Details of whether the permissions on this shared drive item are inherited or directly on this
         /// item. This is an output-only field which is present only for shared drive items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissionDetails")]
-        public virtual System.Collections.Generic.IList<Permission.PermissionDetailsData> PermissionDetails { get; set; } 
+        public virtual System.Collections.Generic.IList<PermissionDetailsData> PermissionDetails { get; set; } 
 
         /// <summary>A link to the user's profile photo, if available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photoLink")]
@@ -6569,7 +6569,7 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>Deprecated - use permissionDetails instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teamDrivePermissionDetails")]
-        public virtual System.Collections.Generic.IList<Permission.TeamDrivePermissionDetailsData> TeamDrivePermissionDetails { get; set; } 
+        public virtual System.Collections.Generic.IList<TeamDrivePermissionDetailsData> TeamDrivePermissionDetails { get; set; } 
 
         /// <summary>The type of the grantee. Valid values are: - user - group - domain - anyone  When creating a
         /// permission, if type is user or group, you must provide an emailAddress for the user or group. When type is
@@ -6858,7 +6858,7 @@ namespace Google.Apis.Drive.v3.Data
         /// This is a write only field; it can only be set on drive.teamdrives.update requests that don't set themeId.
         /// When specified, all fields of the backgroundImageFile must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundImageFile")]
-        public virtual TeamDrive.BackgroundImageFileData BackgroundImageFile { get; set; } 
+        public virtual BackgroundImageFileData BackgroundImageFile { get; set; } 
 
         /// <summary>A short-lived link to this Team Drive's background image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundImageLink")]
@@ -6866,7 +6866,7 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>Capabilities the current user has on this Team Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capabilities")]
-        public virtual TeamDrive.CapabilitiesData Capabilities { get; set; } 
+        public virtual CapabilitiesData Capabilities { get; set; } 
 
         /// <summary>The color of this Team Drive as an RGB hex string. It can only be set on a drive.teamdrives.update
         /// request that does not set themeId.</summary>
@@ -6900,7 +6900,7 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>A set of restrictions that apply to this Team Drive or items inside this Team Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictions")]
-        public virtual TeamDrive.RestrictionsData Restrictions { get; set; } 
+        public virtual RestrictionsData Restrictions { get; set; } 
 
         /// <summary>The ID of the theme from which the background image and color will be set. The set of possible
         /// teamDriveThemes can be retrieved from a drive.about.get response. When not specified on a

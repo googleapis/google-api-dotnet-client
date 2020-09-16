@@ -5852,7 +5852,7 @@ namespace Google.Apis.Books.v1.Data
 
         /// <summary>Selection ranges sent from the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientVersionRanges")]
-        public virtual Annotation.ClientVersionRangesData ClientVersionRanges { get; set; } 
+        public virtual ClientVersionRangesData ClientVersionRanges { get; set; } 
 
         /// <summary>Timestamp for the created time of this annotation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("created")]
@@ -5860,7 +5860,7 @@ namespace Google.Apis.Books.v1.Data
 
         /// <summary>Selection ranges for the most recent content version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentVersionRanges")]
-        public virtual Annotation.CurrentVersionRangesData CurrentVersionRanges { get; set; } 
+        public virtual CurrentVersionRangesData CurrentVersionRanges { get; set; } 
 
         /// <summary>User-created data for this annotation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
@@ -5887,7 +5887,7 @@ namespace Google.Apis.Books.v1.Data
         public virtual string LayerId { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("layerSummary")]
-        public virtual Annotation.LayerSummaryData LayerSummary { get; set; } 
+        public virtual LayerSummaryData LayerSummary { get; set; } 
 
         /// <summary>Pages that this annotation spans.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageIds")]
@@ -6010,7 +6010,7 @@ namespace Google.Apis.Books.v1.Data
         public virtual string Kind { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("layers")]
-        public virtual System.Collections.Generic.IList<AnnotationsSummary.LayersData> Layers { get; set; } 
+        public virtual System.Collections.Generic.IList<LayersData> Layers { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6174,7 +6174,7 @@ namespace Google.Apis.Books.v1.Data
     {
         /// <summary>A list of onboarding categories.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Category.ItemsData> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<ItemsData> Items { get; set; } 
 
         /// <summary>Resource type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -6294,10 +6294,10 @@ namespace Google.Apis.Books.v1.Data
     public class Dictlayerdata : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("common")]
-        public virtual Dictlayerdata.CommonData Common { get; set; } 
+        public virtual CommonData Common { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("dict")]
-        public virtual Dictlayerdata.DictData Dict { get; set; } 
+        public virtual DictData Dict { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
@@ -6319,10 +6319,10 @@ namespace Google.Apis.Books.v1.Data
         {
             /// <summary>The source, url and attribution for this dictionary data.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("source")]
-            public virtual DictData.SourceData Source { get; set; } 
+            public virtual SourceData Source { get; set; } 
 
             [Newtonsoft.Json.JsonPropertyAttribute("words")]
-            public virtual System.Collections.Generic.IList<DictData.WordsData> Words { get; set; } 
+            public virtual System.Collections.Generic.IList<WordsData> Words { get; set; } 
 
             
 
@@ -6340,25 +6340,25 @@ namespace Google.Apis.Books.v1.Data
             public class WordsData
             {
                 [Newtonsoft.Json.JsonPropertyAttribute("derivatives")]
-                public virtual System.Collections.Generic.IList<WordsData.DerivativesData> Derivatives { get; set; } 
+                public virtual System.Collections.Generic.IList<DerivativesData> Derivatives { get; set; } 
 
                 [Newtonsoft.Json.JsonPropertyAttribute("examples")]
-                public virtual System.Collections.Generic.IList<WordsData.ExamplesData> Examples { get; set; } 
+                public virtual System.Collections.Generic.IList<ExamplesData> Examples { get; set; } 
 
                 [Newtonsoft.Json.JsonPropertyAttribute("senses")]
-                public virtual System.Collections.Generic.IList<WordsData.SensesData> Senses { get; set; } 
+                public virtual System.Collections.Generic.IList<SensesData> Senses { get; set; } 
 
                 /// <summary>The words with different meanings but not related words, e.g. "go" (game) and "go"
                 /// (verb).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("source")]
-                public virtual WordsData.SourceData Source { get; set; } 
+                public virtual SourceData Source { get; set; } 
 
                 
 
                 public class DerivativesData
                 {
                     [Newtonsoft.Json.JsonPropertyAttribute("source")]
-                    public virtual DerivativesData.SourceData Source { get; set; } 
+                    public virtual SourceData Source { get; set; } 
 
                     [Newtonsoft.Json.JsonPropertyAttribute("text")]
                     public virtual string Text { get; set; } 
@@ -6379,7 +6379,7 @@ namespace Google.Apis.Books.v1.Data
                 public class ExamplesData
                 {
                     [Newtonsoft.Json.JsonPropertyAttribute("source")]
-                    public virtual ExamplesData.SourceData Source { get; set; } 
+                    public virtual SourceData Source { get; set; } 
 
                     [Newtonsoft.Json.JsonPropertyAttribute("text")]
                     public virtual string Text { get; set; } 
@@ -6400,10 +6400,10 @@ namespace Google.Apis.Books.v1.Data
                 public class SensesData
                 {
                     [Newtonsoft.Json.JsonPropertyAttribute("conjugations")]
-                    public virtual System.Collections.Generic.IList<SensesData.ConjugationsData> Conjugations { get; set; } 
+                    public virtual System.Collections.Generic.IList<ConjugationsData> Conjugations { get; set; } 
 
                     [Newtonsoft.Json.JsonPropertyAttribute("definitions")]
-                    public virtual System.Collections.Generic.IList<SensesData.DefinitionsData> Definitions { get; set; } 
+                    public virtual System.Collections.Generic.IList<DefinitionsData> Definitions { get; set; } 
 
                     [Newtonsoft.Json.JsonPropertyAttribute("partOfSpeech")]
                     public virtual string PartOfSpeech { get; set; } 
@@ -6415,13 +6415,13 @@ namespace Google.Apis.Books.v1.Data
                     public virtual string PronunciationUrl { get; set; } 
 
                     [Newtonsoft.Json.JsonPropertyAttribute("source")]
-                    public virtual SensesData.SourceData Source { get; set; } 
+                    public virtual SourceData Source { get; set; } 
 
                     [Newtonsoft.Json.JsonPropertyAttribute("syllabification")]
                     public virtual string Syllabification { get; set; } 
 
                     [Newtonsoft.Json.JsonPropertyAttribute("synonyms")]
-                    public virtual System.Collections.Generic.IList<SensesData.SynonymsData> Synonyms { get; set; } 
+                    public virtual System.Collections.Generic.IList<SynonymsData> Synonyms { get; set; } 
 
                     
 
@@ -6441,14 +6441,14 @@ namespace Google.Apis.Books.v1.Data
                         public virtual string Definition { get; set; } 
 
                         [Newtonsoft.Json.JsonPropertyAttribute("examples")]
-                        public virtual System.Collections.Generic.IList<DefinitionsData.ExamplesData> Examples { get; set; } 
+                        public virtual System.Collections.Generic.IList<ExamplesData> Examples { get; set; } 
 
                         
 
                         public class ExamplesData
                         {
                             [Newtonsoft.Json.JsonPropertyAttribute("source")]
-                            public virtual ExamplesData.SourceData Source { get; set; } 
+                            public virtual SourceData Source { get; set; } 
 
                             [Newtonsoft.Json.JsonPropertyAttribute("text")]
                             public virtual string Text { get; set; } 
@@ -6480,7 +6480,7 @@ namespace Google.Apis.Books.v1.Data
                     public class SynonymsData
                     {
                         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-                        public virtual SynonymsData.SourceData Source { get; set; } 
+                        public virtual SourceData Source { get; set; } 
 
                         [Newtonsoft.Json.JsonPropertyAttribute("text")]
                         public virtual string Text { get; set; } 
@@ -6517,7 +6517,7 @@ namespace Google.Apis.Books.v1.Data
     public class Discoveryclusters : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("clusters")]
-        public virtual System.Collections.Generic.IList<Discoveryclusters.ClustersData> Clusters { get; set; } 
+        public virtual System.Collections.Generic.IList<ClustersData> Clusters { get; set; } 
 
         /// <summary>Resorce type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -6533,7 +6533,7 @@ namespace Google.Apis.Books.v1.Data
         public class ClustersData
         {
             [Newtonsoft.Json.JsonPropertyAttribute("banner_with_content_container")]
-            public virtual ClustersData.BannerWithContentContainerData BannerWithContentContainer { get; set; } 
+            public virtual BannerWithContentContainerData BannerWithContentContainer { get; set; } 
 
             [Newtonsoft.Json.JsonPropertyAttribute("subTitle")]
             public virtual string SubTitle { get; set; } 
@@ -6664,7 +6664,7 @@ namespace Google.Apis.Books.v1.Data
 
         /// <summary>Family membership info of the user that made the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membership")]
-        public virtual FamilyInfo.MembershipData Membership { get; set; } 
+        public virtual MembershipData Membership { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6741,10 +6741,10 @@ namespace Google.Apis.Books.v1.Data
     public class Geolayerdata : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("common")]
-        public virtual Geolayerdata.CommonData Common { get; set; } 
+        public virtual CommonData Common { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("geo")]
-        public virtual Geolayerdata.GeoData Geo { get; set; } 
+        public virtual GeoData Geo { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
@@ -6808,7 +6808,7 @@ namespace Google.Apis.Books.v1.Data
 
             /// <summary>The viewport for showing this location. This is a latitude, longitude rectangle.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("viewport")]
-            public virtual GeoData.ViewportData Viewport { get; set; } 
+            public virtual ViewportData Viewport { get; set; } 
 
             /// <summary>The Zoom level to use for the map. Zoom levels between 0 (the lowest zoom level, in which the
             /// entire world can be seen on one map) to 21+ (down to individual buildings). See: https:
@@ -6822,10 +6822,10 @@ namespace Google.Apis.Books.v1.Data
             public class ViewportData
             {
                 [Newtonsoft.Json.JsonPropertyAttribute("hi")]
-                public virtual ViewportData.HiData Hi { get; set; } 
+                public virtual HiData Hi { get; set; } 
 
                 [Newtonsoft.Json.JsonPropertyAttribute("lo")]
-                public virtual ViewportData.LoData Lo { get; set; } 
+                public virtual LoData Lo { get; set; } 
 
                 
 
@@ -6935,7 +6935,7 @@ namespace Google.Apis.Books.v1.Data
     {
         /// <summary>A list of offline dictionary metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Metadata.ItemsData> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<ItemsData> Items { get; set; } 
 
         /// <summary>Resource type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -7025,7 +7025,7 @@ namespace Google.Apis.Books.v1.Data
     {
         /// <summary>A list of offers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Offers.ItemsData> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<ItemsData> Items { get; set; } 
 
         /// <summary>Resource type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -7047,7 +7047,7 @@ namespace Google.Apis.Books.v1.Data
             public virtual string Id { get; set; } 
 
             [Newtonsoft.Json.JsonPropertyAttribute("items")]
-            public virtual System.Collections.Generic.IList<ItemsData.ItemsDataSchema> Items { get; set; } 
+            public virtual System.Collections.Generic.IList<ItemsDataSchema> Items { get; set; } 
 
             
 
@@ -7132,7 +7132,7 @@ namespace Google.Apis.Books.v1.Data
     {
         /// <summary>Author of this review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("author")]
-        public virtual Review.AuthorData Author { get; set; } 
+        public virtual AuthorData Author { get; set; } 
 
         /// <summary>Review text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
@@ -7158,7 +7158,7 @@ namespace Google.Apis.Books.v1.Data
         /// <summary>Information regarding the source of this review, when the review is not from a Google Books
         /// user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual Review.SourceData Source { get; set; } 
+        public virtual SourceData Source { get; set; } 
 
         /// <summary>Title for this review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
@@ -7211,7 +7211,7 @@ namespace Google.Apis.Books.v1.Data
         public virtual string Kind { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("series")]
-        public virtual System.Collections.Generic.IList<Series.SeriesData> SeriesValue { get; set; } 
+        public virtual System.Collections.Generic.IList<SeriesData> SeriesValue { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7238,7 +7238,7 @@ namespace Google.Apis.Books.v1.Data
             public virtual string SeriesId { get; set; } 
 
             [Newtonsoft.Json.JsonPropertyAttribute("seriesSubscriptionReleaseInfo")]
-            public virtual SeriesData.SeriesSubscriptionReleaseInfoData SeriesSubscriptionReleaseInfo { get; set; } 
+            public virtual SeriesSubscriptionReleaseInfoData SeriesSubscriptionReleaseInfo { get; set; } 
 
             [Newtonsoft.Json.JsonPropertyAttribute("seriesType")]
             public virtual string SeriesType { get; set; } 
@@ -7257,10 +7257,10 @@ namespace Google.Apis.Books.v1.Data
                 public virtual string CancelTime { get; set; } 
 
                 [Newtonsoft.Json.JsonPropertyAttribute("currentReleaseInfo")]
-                public virtual SeriesSubscriptionReleaseInfoData.CurrentReleaseInfoData CurrentReleaseInfo { get; set; } 
+                public virtual CurrentReleaseInfoData CurrentReleaseInfo { get; set; } 
 
                 [Newtonsoft.Json.JsonPropertyAttribute("nextReleaseInfo")]
-                public virtual SeriesSubscriptionReleaseInfoData.NextReleaseInfoData NextReleaseInfo { get; set; } 
+                public virtual NextReleaseInfoData NextReleaseInfo { get; set; } 
 
                 [Newtonsoft.Json.JsonPropertyAttribute("seriesSubscriptionType")]
                 public virtual string SeriesSubscriptionType { get; set; } 
@@ -7326,10 +7326,10 @@ namespace Google.Apis.Books.v1.Data
 
         /// <summary>User settings in sub-objects, each for different purposes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notesExport")]
-        public virtual Usersettings.NotesExportData NotesExport { get; set; } 
+        public virtual NotesExportData NotesExport { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("notification")]
-        public virtual Usersettings.NotificationData Notification { get; set; } 
+        public virtual NotificationData Notification { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7349,19 +7349,19 @@ namespace Google.Apis.Books.v1.Data
         public class NotificationData
         {
             [Newtonsoft.Json.JsonPropertyAttribute("matchMyInterests")]
-            public virtual NotificationData.MatchMyInterestsData MatchMyInterests { get; set; } 
+            public virtual MatchMyInterestsData MatchMyInterests { get; set; } 
 
             [Newtonsoft.Json.JsonPropertyAttribute("moreFromAuthors")]
-            public virtual NotificationData.MoreFromAuthorsData MoreFromAuthors { get; set; } 
+            public virtual MoreFromAuthorsData MoreFromAuthors { get; set; } 
 
             [Newtonsoft.Json.JsonPropertyAttribute("moreFromSeries")]
-            public virtual NotificationData.MoreFromSeriesData MoreFromSeries { get; set; } 
+            public virtual MoreFromSeriesData MoreFromSeries { get; set; } 
 
             [Newtonsoft.Json.JsonPropertyAttribute("priceDrop")]
-            public virtual NotificationData.PriceDropData PriceDrop { get; set; } 
+            public virtual PriceDropData PriceDrop { get; set; } 
 
             [Newtonsoft.Json.JsonPropertyAttribute("rewardExpirations")]
-            public virtual NotificationData.RewardExpirationsData RewardExpirations { get; set; } 
+            public virtual RewardExpirationsData RewardExpirations { get; set; } 
 
             
 
@@ -7407,7 +7407,7 @@ namespace Google.Apis.Books.v1.Data
         /// <summary>Any information about a volume related to reading or obtaining that volume text. This information
         /// can depend on country (books may be public domain in one country but not in another, e.g.).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessInfo")]
-        public virtual Volume.AccessInfoData AccessInfo { get; set; } 
+        public virtual AccessInfoData AccessInfo { get; set; } 
 
         /// <summary>Opaque identifier for a specific version of a volume resource. (In LITE projection)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
@@ -7423,21 +7423,21 @@ namespace Google.Apis.Books.v1.Data
 
         /// <summary>What layers exist in this volume and high level information about them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("layerInfo")]
-        public virtual Volume.LayerInfoData LayerInfo { get; set; } 
+        public virtual LayerInfoData LayerInfo { get; set; } 
 
         /// <summary>Recommendation related information for this volume.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommendedInfo")]
-        public virtual Volume.RecommendedInfoData RecommendedInfo { get; set; } 
+        public virtual RecommendedInfoData RecommendedInfo { get; set; } 
 
         /// <summary>Any information about a volume related to the eBookstore and/or purchaseability. This information
         /// can depend on the country where the request originates from (i.e. books may not be for sale in certain
         /// countries).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("saleInfo")]
-        public virtual Volume.SaleInfoData SaleInfo { get; set; } 
+        public virtual SaleInfoData SaleInfo { get; set; } 
 
         /// <summary>Search result information related to this volume.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchInfo")]
-        public virtual Volume.SearchInfoData SearchInfo { get; set; } 
+        public virtual SearchInfoData SearchInfo { get; set; } 
 
         /// <summary>URL to this resource. (In LITE projection.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
@@ -7446,11 +7446,11 @@ namespace Google.Apis.Books.v1.Data
         /// <summary>User specific information related to this volume. (e.g. page this user last read or whether they
         /// purchased this book)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userInfo")]
-        public virtual Volume.UserInfoData UserInfo { get; set; } 
+        public virtual UserInfoData UserInfo { get; set; } 
 
         /// <summary>General volume information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeInfo")]
-        public virtual Volume.VolumeInfoData VolumeInfo { get; set; } 
+        public virtual VolumeInfoData VolumeInfo { get; set; } 
 
         
 
@@ -7483,7 +7483,7 @@ namespace Google.Apis.Books.v1.Data
 
             /// <summary>Information about epub content. (In LITE projection.)</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("epub")]
-            public virtual AccessInfoData.EpubData Epub { get; set; } 
+            public virtual EpubData Epub { get; set; } 
 
             /// <summary>Whether this volume requires that the client explicitly request offline download license rather
             /// than have it done automatically when loading the content, if the client supports it.</summary>
@@ -7492,7 +7492,7 @@ namespace Google.Apis.Books.v1.Data
 
             /// <summary>Information about pdf content. (In LITE projection.)</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("pdf")]
-            public virtual AccessInfoData.PdfData Pdf { get; set; } 
+            public virtual PdfData Pdf { get; set; } 
 
             /// <summary>Whether or not this book is public domain in the country listed above.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("publicDomain")]
@@ -7568,7 +7568,7 @@ namespace Google.Apis.Books.v1.Data
         {
             /// <summary>A layer should appear here if and only if the layer exists for this book.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("layers")]
-            public virtual System.Collections.Generic.IList<LayerInfoData.LayersData> Layers { get; set; } 
+            public virtual System.Collections.Generic.IList<LayersData> Layers { get; set; } 
 
             
 
@@ -7616,11 +7616,11 @@ namespace Google.Apis.Books.v1.Data
 
             /// <summary>Suggested retail price. (In LITE projection.)</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("listPrice")]
-            public virtual SaleInfoData.ListPriceData ListPrice { get; set; } 
+            public virtual ListPriceData ListPrice { get; set; } 
 
             /// <summary>Offers available for this volume (sales and rentals).</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("offers")]
-            public virtual System.Collections.Generic.IList<SaleInfoData.OffersData> Offers { get; set; } 
+            public virtual System.Collections.Generic.IList<OffersData> Offers { get; set; } 
 
             /// <summary>The date on which this book is available for sale.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("onSaleDate")]
@@ -7629,7 +7629,7 @@ namespace Google.Apis.Books.v1.Data
             /// <summary>The actual selling price of the book. This is the same as the suggested retail or list price
             /// unless there are offers or discounts on this volume. (In LITE projection.)</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("retailPrice")]
-            public virtual SaleInfoData.RetailPriceData RetailPrice { get; set; } 
+            public virtual RetailPriceData RetailPrice { get; set; } 
 
             /// <summary>Whether or not this book is available for sale or offered for free in the Google eBookstore for
             /// the country listed above. Possible values are FOR_SALE, FOR_RENTAL_ONLY, FOR_SALE_AND_RENTAL, FREE,
@@ -7664,15 +7664,15 @@ namespace Google.Apis.Books.v1.Data
 
                 /// <summary>Offer list (=undiscounted) price in Micros.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("listPrice")]
-                public virtual OffersData.ListPriceData ListPrice { get; set; } 
+                public virtual ListPriceData ListPrice { get; set; } 
 
                 /// <summary>The rental duration (for rental offers only).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("rentalDuration")]
-                public virtual OffersData.RentalDurationData RentalDuration { get; set; } 
+                public virtual RentalDurationData RentalDuration { get; set; } 
 
                 /// <summary>Offer retail (=discounted) price in Micros</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("retailPrice")]
-                public virtual OffersData.RetailPriceData RetailPrice { get; set; } 
+                public virtual RetailPriceData RetailPrice { get; set; } 
 
                 
 
@@ -7749,7 +7749,7 @@ namespace Google.Apis.Books.v1.Data
 
             /// <summary>Copy/Paste accounting information.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("copy")]
-            public virtual UserInfoData.CopyData Copy { get; set; } 
+            public virtual CopyData Copy { get; set; } 
 
             /// <summary>Whether this volume is purchased, sample, pd download etc.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("entitlementType")]
@@ -7757,7 +7757,7 @@ namespace Google.Apis.Books.v1.Data
 
             /// <summary>Information on the ability to share with the family.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("familySharing")]
-            public virtual UserInfoData.FamilySharingData FamilySharing { get; set; } 
+            public virtual FamilySharingData FamilySharing { get; set; } 
 
             /// <summary>Whether or not the user shared this volume with the family.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("isFamilySharedFromUser")]
@@ -7800,7 +7800,7 @@ namespace Google.Apis.Books.v1.Data
 
             /// <summary>Period during this book is/was a valid rental.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("rentalPeriod")]
-            public virtual UserInfoData.RentalPeriodData RentalPeriod { get; set; } 
+            public virtual RentalPeriodData RentalPeriod { get; set; } 
 
             /// <summary>Whether this book is an active or an expired rental.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("rentalState")]
@@ -7816,7 +7816,7 @@ namespace Google.Apis.Books.v1.Data
             public virtual string Updated { get; set; } 
 
             [Newtonsoft.Json.JsonPropertyAttribute("userUploadedVolumeInfo")]
-            public virtual UserInfoData.UserUploadedVolumeInfoData UserUploadedVolumeInfo { get; set; } 
+            public virtual UserUploadedVolumeInfoData UserUploadedVolumeInfo { get; set; } 
 
             
 
@@ -7915,15 +7915,15 @@ namespace Google.Apis.Books.v1.Data
 
             /// <summary>Physical dimensions of this volume.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
-            public virtual VolumeInfoData.DimensionsData Dimensions { get; set; } 
+            public virtual DimensionsData Dimensions { get; set; } 
 
             /// <summary>A list of image links for all the sizes that are available. (In LITE projection.)</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("imageLinks")]
-            public virtual VolumeInfoData.ImageLinksData ImageLinks { get; set; } 
+            public virtual ImageLinksData ImageLinks { get; set; } 
 
             /// <summary>Industry standard identifiers for this volume.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("industryIdentifiers")]
-            public virtual System.Collections.Generic.IList<VolumeInfoData.IndustryIdentifiersData> IndustryIdentifiers { get; set; } 
+            public virtual System.Collections.Generic.IList<IndustryIdentifiersData> IndustryIdentifiers { get; set; } 
 
             /// <summary>URL to view information about this volume on the Google Books site. (In LITE
             /// projection)</summary>
@@ -7949,7 +7949,7 @@ namespace Google.Apis.Books.v1.Data
 
             /// <summary>A top-level summary of the panelization info in this volume.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("panelizationSummary")]
-            public virtual VolumeInfoData.PanelizationSummaryData PanelizationSummary { get; set; } 
+            public virtual PanelizationSummaryData PanelizationSummary { get; set; } 
 
             /// <summary>URL to preview this volume on the Google Books site.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("previewLink")]
@@ -7977,7 +7977,7 @@ namespace Google.Apis.Books.v1.Data
 
             /// <summary>The reading modes available for this volume.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("readingModes")]
-            public virtual VolumeInfoData.ReadingModesData ReadingModes { get; set; } 
+            public virtual ReadingModesData ReadingModes { get; set; } 
 
             /// <summary>Total number of sample pages as per publisher metadata.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("samplePageCount")]
@@ -8117,7 +8117,7 @@ namespace Google.Apis.Books.v1.Data
 
         /// <summary>The content ranges to identify the selected text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentRanges")]
-        public virtual Volumeannotation.ContentRangesData ContentRanges { get; set; } 
+        public virtual ContentRangesData ContentRanges { get; set; } 
 
         /// <summary>Data for this annotation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
@@ -8249,7 +8249,7 @@ namespace Google.Apis.Books.v1.Data
         public virtual string ShortSeriesBookTitle { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("volumeSeries")]
-        public virtual System.Collections.Generic.IList<Volumeseriesinfo.VolumeSeriesData> VolumeSeries { get; set; } 
+        public virtual System.Collections.Generic.IList<VolumeSeriesData> VolumeSeries { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8259,7 +8259,7 @@ namespace Google.Apis.Books.v1.Data
         {
             /// <summary>List of issues. Applicable only for Collection Edition and Omnibus.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("issue")]
-            public virtual System.Collections.Generic.IList<VolumeSeriesData.IssueData> Issue { get; set; } 
+            public virtual System.Collections.Generic.IList<IssueData> Issue { get; set; } 
 
             /// <summary>The book order number in the series.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("orderNumber")]

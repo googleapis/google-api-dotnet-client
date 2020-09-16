@@ -3972,7 +3972,7 @@ namespace Google.Apis.AdSense.v1_4.Data
         /// <summary>The colors which are included in the style. These are represented as six hexadecimal characters,
         /// similar to HTML color codes, but without the leading hash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("colors")]
-        public virtual AdStyle.ColorsData Colors { get; set; } 
+        public virtual ColorsData Colors { get; set; } 
 
         /// <summary>The style of the corners in the ad (deprecated: never populated, ignored).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("corners")]
@@ -3980,7 +3980,7 @@ namespace Google.Apis.AdSense.v1_4.Data
 
         /// <summary>The font which is included in the style.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("font")]
-        public virtual AdStyle.FontData Font { get; set; } 
+        public virtual FontData Font { get; set; } 
 
         /// <summary>Kind this is, in this case adsense#adStyle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -4039,7 +4039,7 @@ namespace Google.Apis.AdSense.v1_4.Data
         /// <summary>Settings specific to content ads (AFC) and highend mobile content ads (AFMC -
         /// deprecated).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentAdsSettings")]
-        public virtual AdUnit.ContentAdsSettingsData ContentAdsSettings { get; set; } 
+        public virtual ContentAdsSettingsData ContentAdsSettings { get; set; } 
 
         /// <summary>Custom style information specific to this ad unit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customStyle")]
@@ -4047,7 +4047,7 @@ namespace Google.Apis.AdSense.v1_4.Data
 
         /// <summary>Settings specific to feed ads (AFF) - deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feedAdsSettings")]
-        public virtual AdUnit.FeedAdsSettingsData FeedAdsSettings { get; set; } 
+        public virtual FeedAdsSettingsData FeedAdsSettings { get; set; } 
 
         /// <summary>Unique identifier of this ad unit. This should be considered an opaque identifier; it is not safe
         /// to rely on it being in any particular format.</summary>
@@ -4060,7 +4060,7 @@ namespace Google.Apis.AdSense.v1_4.Data
 
         /// <summary>Settings specific to WAP mobile content ads (AFMC) - deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileContentAdsSettings")]
-        public virtual AdUnit.MobileContentAdsSettingsData MobileContentAdsSettings { get; set; } 
+        public virtual MobileContentAdsSettingsData MobileContentAdsSettings { get; set; } 
 
         /// <summary>Name of this ad unit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -4089,7 +4089,7 @@ namespace Google.Apis.AdSense.v1_4.Data
         {
             /// <summary>The backup option to be used in instances where no ad is available.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("backupOption")]
-            public virtual ContentAdsSettingsData.BackupOptionData BackupOption { get; set; } 
+            public virtual BackupOptionData BackupOption { get; set; } 
 
             /// <summary>Size of this ad unit.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("size")]
@@ -4197,7 +4197,7 @@ namespace Google.Apis.AdSense.v1_4.Data
         /// <summary>The header information of the columns requested in the report. This is a list of headers; one for
         /// each dimension in the request, followed by one for each metric in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
-        public virtual System.Collections.Generic.IList<AdsenseReportsGenerateResponse.HeadersData> Headers { get; set; } 
+        public virtual System.Collections.Generic.IList<HeadersData> Headers { get; set; } 
 
         /// <summary>Kind this is, in this case adsense#report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -4316,7 +4316,7 @@ namespace Google.Apis.AdSense.v1_4.Data
 
         /// <summary>The targeting information of this custom channel, if activated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingInfo")]
-        public virtual CustomChannel.TargetingInfoData TargetingInfo { get; set; } 
+        public virtual TargetingInfoData TargetingInfo { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
