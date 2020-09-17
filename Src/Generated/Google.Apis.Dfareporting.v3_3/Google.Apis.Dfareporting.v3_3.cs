@@ -6054,9 +6054,7 @@ namespace Google.Apis.Dfareporting.v3_3
             /// </description></item>
             /// </list>
             /// </remarks>
-            public InsertMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CreativeAssetMetadata body, long
-             profileId, long
-             advertiserId, System.IO.Stream stream, string contentType)
+            public InsertMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CreativeAssetMetadata body, long profileId, long advertiserId, System.IO.Stream stream, string contentType)
                 : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "userprofiles/{profileId}/creativeAssets/{advertiserId}/creativeAssets"), "POST", stream, contentType)
             {
                 ProfileId = profileId;

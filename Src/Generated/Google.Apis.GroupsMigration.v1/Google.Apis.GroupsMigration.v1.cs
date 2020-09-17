@@ -444,8 +444,7 @@ namespace Google.Apis.GroupsMigration.v1
             /// </description></item>
             /// </list>
             /// </remarks>
-            public InsertMediaUpload(Google.Apis.Services.IClientService service, string
-             groupId, System.IO.Stream stream, string contentType)
+            public InsertMediaUpload(Google.Apis.Services.IClientService service, string groupId, System.IO.Stream stream, string contentType)
                 : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "groups/v1/groups/{groupId}/archive"), "POST", stream, contentType)
             {
                 GroupId = groupId;

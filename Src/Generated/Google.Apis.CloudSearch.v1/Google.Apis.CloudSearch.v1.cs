@@ -2109,8 +2109,7 @@ namespace Google.Apis.CloudSearch.v1
             /// </description></item>
             /// </list>
             /// </remarks>
-            public UploadMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.Media body, string
-             resourceName, System.IO.Stream stream, string contentType)
+            public UploadMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.Media body, string resourceName, System.IO.Stream stream, string contentType)
                 : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "v1/media/{+resourceName}"), "POST", stream, contentType)
             {
                 ResourceName = resourceName;

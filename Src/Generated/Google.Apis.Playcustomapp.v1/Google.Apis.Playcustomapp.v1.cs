@@ -471,8 +471,7 @@ namespace Google.Apis.Playcustomapp.v1
                 /// </description></item>
                 /// </list>
                 /// </remarks>
-                public CreateMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Playcustomapp.v1.Data.CustomApp body, long
-                 account, System.IO.Stream stream, string contentType)
+                public CreateMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Playcustomapp.v1.Data.CustomApp body, long account, System.IO.Stream stream, string contentType)
                     : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "playcustomapp/v1/accounts/{account}/customApps"), "POST", stream, contentType)
                 {
                     Account = account;

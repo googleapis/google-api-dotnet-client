@@ -6994,10 +6994,7 @@ namespace Google.Apis.Analytics.v3
                 /// </description></item>
                 /// </list>
                 /// </remarks>
-                public UploadDataMediaUpload(Google.Apis.Services.IClientService service, string
-                 accountId, string
-                 webPropertyId, string
-                 customDataSourceId, System.IO.Stream stream, string contentType)
+                public UploadDataMediaUpload(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string customDataSourceId, System.IO.Stream stream, string contentType)
                     : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/uploads"), "POST", stream, contentType)
                 {
                     AccountId = accountId;
