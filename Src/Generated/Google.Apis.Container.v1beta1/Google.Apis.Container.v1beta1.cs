@@ -6104,6 +6104,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<StatusCondition> Conditions { get; set; } 
 
+        /// <summary>Configuration of Confidential Nodes</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidentialNodes")]
+        public virtual ConfidentialNodes ConfidentialNodes { get; set; } 
+
         /// <summary>[Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
         /// text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
@@ -6584,6 +6588,18 @@ namespace Google.Apis.Container.v1beta1.Data
         /// been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>ConfidentialNodes is configuration for the confidential nodes feature, which makes nodes run on
+    /// confidential VMs.</summary>
+    public class ConfidentialNodes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether Confidential Nodes feature is enabled for all nodes in this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
