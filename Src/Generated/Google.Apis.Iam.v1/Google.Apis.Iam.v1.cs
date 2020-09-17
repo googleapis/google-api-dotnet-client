@@ -1755,7 +1755,8 @@ namespace Google.Apis.Iam.v1
 
                 }
 
-                /// <summary>Deletes a ServiceAccountKey.</summary>
+                /// <summary>Deletes a ServiceAccountKey. Deleting a service account key does not revoke short-lived
+                /// credentials that have been issued based on the service account key.</summary>
                 /// <param name="name">Required. The resource name of the service account key in the following format:
                 /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`. Using `-` as a wildcard for the `PROJECT_ID` will
                 /// infer the project from the account. The `ACCOUNT` value can be the `email` address or the `unique_id` of the service
@@ -1765,7 +1766,8 @@ namespace Google.Apis.Iam.v1
                     return new DeleteRequest(service, name);
                 }
 
-                /// <summary>Deletes a ServiceAccountKey.</summary>
+                /// <summary>Deletes a ServiceAccountKey. Deleting a service account key does not revoke short-lived
+                /// credentials that have been issued based on the service account key.</summary>
                 public class DeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
