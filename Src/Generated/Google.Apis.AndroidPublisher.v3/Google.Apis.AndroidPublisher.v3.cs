@@ -656,9 +656,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// </description></item>
                 /// </list>
                 /// </remarks>
-                public UploadMediaUpload(Google.Apis.Services.IClientService service, string
-                 packageName, string
-                 editId, System.IO.Stream stream, string contentType)
+                public UploadMediaUpload(Google.Apis.Services.IClientService service, string packageName, string editId, System.IO.Stream stream, string contentType)
                     : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks"), "POST", stream, contentType)
                 {
                     PackageName = packageName;
@@ -971,9 +969,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// </description></item>
                 /// </list>
                 /// </remarks>
-                public UploadMediaUpload(Google.Apis.Services.IClientService service, string
-                 packageName, string
-                 editId, System.IO.Stream stream, string contentType)
+                public UploadMediaUpload(Google.Apis.Services.IClientService service, string packageName, string editId, System.IO.Stream stream, string contentType)
                     : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "androidpublisher/v3/applications/{packageName}/edits/{editId}/bundles"), "POST", stream, contentType)
                 {
                     PackageName = packageName;
@@ -1265,11 +1261,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// </description></item>
                 /// </list>
                 /// </remarks>
-                public UploadMediaUpload(Google.Apis.Services.IClientService service, string
-                 packageName, string
-                 editId, int
-                 apkVersionCode, UploadMediaUpload.DeobfuscationFileTypeEnum
-                 deobfuscationFileType, System.IO.Stream stream, string contentType)
+                public UploadMediaUpload(Google.Apis.Services.IClientService service, string packageName, string editId, int apkVersionCode, UploadMediaUpload.DeobfuscationFileTypeEnum deobfuscationFileType, System.IO.Stream stream, string contentType)
                     : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/deobfuscationFiles/{deobfuscationFileType}"), "POST", stream, contentType)
                 {
                     PackageName = packageName;
@@ -2139,11 +2131,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// </description></item>
                 /// </list>
                 /// </remarks>
-                public UploadMediaUpload(Google.Apis.Services.IClientService service, string
-                 packageName, string
-                 editId, int
-                 apkVersionCode, UploadMediaUpload.ExpansionFileTypeEnum
-                 expansionFileType, System.IO.Stream stream, string contentType)
+                public UploadMediaUpload(Google.Apis.Services.IClientService service, string packageName, string editId, int apkVersionCode, UploadMediaUpload.ExpansionFileTypeEnum expansionFileType, System.IO.Stream stream, string contentType)
                     : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}"), "POST", stream, contentType)
                 {
                     PackageName = packageName;
@@ -2875,11 +2863,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// </description></item>
                 /// </list>
                 /// </remarks>
-                public UploadMediaUpload(Google.Apis.Services.IClientService service, string
-                 packageName, string
-                 editId, string
-                 language, UploadMediaUpload.ImageTypeEnum
-                 imageType, System.IO.Stream stream, string contentType)
+                public UploadMediaUpload(Google.Apis.Services.IClientService service, string packageName, string editId, string language, UploadMediaUpload.ImageTypeEnum imageType, System.IO.Stream stream, string contentType)
                     : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}"), "POST", stream, contentType)
                 {
                     PackageName = packageName;
@@ -4961,8 +4945,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// </description></item>
             /// </list>
             /// </remarks>
-            public UploadapkMediaUpload(Google.Apis.Services.IClientService service, string
-             packageName, System.IO.Stream stream, string contentType)
+            public UploadapkMediaUpload(Google.Apis.Services.IClientService service, string packageName, System.IO.Stream stream, string contentType)
                 : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "androidpublisher/v3/applications/internalappsharing/{packageName}/artifacts/apk"), "POST", stream, contentType)
             {
                 PackageName = packageName;
@@ -5152,8 +5135,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// </description></item>
             /// </list>
             /// </remarks>
-            public UploadbundleMediaUpload(Google.Apis.Services.IClientService service, string
-             packageName, System.IO.Stream stream, string contentType)
+            public UploadbundleMediaUpload(Google.Apis.Services.IClientService service, string packageName, System.IO.Stream stream, string contentType)
                 : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "androidpublisher/v3/applications/internalappsharing/{packageName}/artifacts/bundle"), "POST", stream, contentType)
             {
                 PackageName = packageName;

@@ -5265,8 +5265,7 @@ namespace Google.Apis.Storage.v1
             /// </description></item>
             /// </list>
             /// </remarks>
-            public InsertMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Object body, string
-             bucket, System.IO.Stream stream, string contentType)
+            public InsertMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Object body, string bucket, System.IO.Stream stream, string contentType)
                 : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "b/{bucket}/o"), "POST", stream, contentType)
             {
                 Bucket = bucket;

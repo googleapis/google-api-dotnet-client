@@ -1159,8 +1159,7 @@ namespace Google.Apis.YouTube.v3
             /// </description></item>
             /// </list>
             /// </remarks>
-            public InsertMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.YouTube.v3.Data.Caption body, Google.Apis.Util.Repeatable<string>
-             part, System.IO.Stream stream, string contentType)
+            public InsertMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.YouTube.v3.Data.Caption body, Google.Apis.Util.Repeatable<string> part, System.IO.Stream stream, string contentType)
                 : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "youtube/v3/captions"), "POST", stream, contentType)
             {
                 Part = part;
@@ -1529,8 +1528,7 @@ namespace Google.Apis.YouTube.v3
             /// </description></item>
             /// </list>
             /// </remarks>
-            public UpdateMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.YouTube.v3.Data.Caption body, Google.Apis.Util.Repeatable<string>
-             part, System.IO.Stream stream, string contentType)
+            public UpdateMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.YouTube.v3.Data.Caption body, Google.Apis.Util.Repeatable<string> part, System.IO.Stream stream, string contentType)
                 : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "youtube/v3/captions"), "PUT", stream, contentType)
             {
                 Part = part;
@@ -8237,8 +8235,7 @@ namespace Google.Apis.YouTube.v3
             /// </description></item>
             /// </list>
             /// </remarks>
-            public SetMediaUpload(Google.Apis.Services.IClientService service, string
-             videoId, System.IO.Stream stream, string contentType)
+            public SetMediaUpload(Google.Apis.Services.IClientService service, string videoId, System.IO.Stream stream, string contentType)
                 : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "youtube/v3/thumbnails/set"), "POST", stream, contentType)
             {
                 VideoId = videoId;
@@ -8896,8 +8893,7 @@ namespace Google.Apis.YouTube.v3
             /// </description></item>
             /// </list>
             /// </remarks>
-            public InsertMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.YouTube.v3.Data.Video body, Google.Apis.Util.Repeatable<string>
-             part, System.IO.Stream stream, string contentType)
+            public InsertMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.YouTube.v3.Data.Video body, Google.Apis.Util.Repeatable<string> part, System.IO.Stream stream, string contentType)
                 : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "youtube/v3/videos"), "POST", stream, contentType)
             {
                 Part = part;
@@ -9600,8 +9596,7 @@ namespace Google.Apis.YouTube.v3
             /// </description></item>
             /// </list>
             /// </remarks>
-            public SetMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.YouTube.v3.Data.InvideoBranding body, string
-             channelId, System.IO.Stream stream, string contentType)
+            public SetMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.YouTube.v3.Data.InvideoBranding body, string channelId, System.IO.Stream stream, string contentType)
                 : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "youtube/v3/watermarks/set"), "POST", stream, contentType)
             {
                 ChannelId = channelId;

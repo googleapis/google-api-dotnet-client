@@ -3181,8 +3181,7 @@ namespace Google.Apis.Drive.v3
             /// </description></item>
             /// </list>
             /// </remarks>
-            public UpdateMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.File body, string
-             fileId, System.IO.Stream stream, string contentType)
+            public UpdateMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.File body, string fileId, System.IO.Stream stream, string contentType)
                 : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "files/{fileId}"), "PATCH", stream, contentType)
             {
                 FileId = fileId;

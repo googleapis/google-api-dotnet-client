@@ -558,8 +558,7 @@ namespace Google.Apis.Gmail.v1
                 /// </description></item>
                 /// </list>
                 /// </remarks>
-                public CreateMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Draft body, string
-                 userId, System.IO.Stream stream, string contentType)
+                public CreateMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Draft body, string userId, System.IO.Stream stream, string contentType)
                     : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "gmail/v1/users/{userId}/drafts"), "POST", stream, contentType)
                 {
                     UserId = userId;
@@ -1020,8 +1019,7 @@ namespace Google.Apis.Gmail.v1
                 /// </description></item>
                 /// </list>
                 /// </remarks>
-                public SendMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Draft body, string
-                 userId, System.IO.Stream stream, string contentType)
+                public SendMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Draft body, string userId, System.IO.Stream stream, string contentType)
                     : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "gmail/v1/users/{userId}/drafts/send"), "POST", stream, contentType)
                 {
                     UserId = userId;
@@ -1234,9 +1232,7 @@ namespace Google.Apis.Gmail.v1
                 /// </description></item>
                 /// </list>
                 /// </remarks>
-                public UpdateMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Draft body, string
-                 userId, string
-                 id, System.IO.Stream stream, string contentType)
+                public UpdateMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Draft body, string userId, string id, System.IO.Stream stream, string contentType)
                     : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "gmail/v1/users/{userId}/drafts/{id}"), "PUT", stream, contentType)
                 {
                     UserId = userId;
@@ -2505,8 +2501,7 @@ namespace Google.Apis.Gmail.v1
                 /// </description></item>
                 /// </list>
                 /// </remarks>
-                public ImportMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Message body, string
-                 userId, System.IO.Stream stream, string contentType)
+                public ImportMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Message body, string userId, System.IO.Stream stream, string contentType)
                     : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "gmail/v1/users/{userId}/messages/import"), "POST", stream, contentType)
                 {
                     UserId = userId;
@@ -2759,8 +2754,7 @@ namespace Google.Apis.Gmail.v1
                 /// </description></item>
                 /// </list>
                 /// </remarks>
-                public InsertMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Message body, string
-                 userId, System.IO.Stream stream, string contentType)
+                public InsertMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Message body, string userId, System.IO.Stream stream, string contentType)
                     : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "gmail/v1/users/{userId}/messages"), "POST", stream, contentType)
                 {
                     UserId = userId;
@@ -3140,8 +3134,7 @@ namespace Google.Apis.Gmail.v1
                 /// </description></item>
                 /// </list>
                 /// </remarks>
-                public SendMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Message body, string
-                 userId, System.IO.Stream stream, string contentType)
+                public SendMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Message body, string userId, System.IO.Stream stream, string contentType)
                     : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "gmail/v1/users/{userId}/messages/send"), "POST", stream, contentType)
                 {
                     UserId = userId;

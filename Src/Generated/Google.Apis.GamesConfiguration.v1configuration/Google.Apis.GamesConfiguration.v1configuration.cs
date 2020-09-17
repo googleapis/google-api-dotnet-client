@@ -805,9 +805,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration
             /// </description></item>
             /// </list>
             /// </remarks>
-            public UploadMediaUpload(Google.Apis.Services.IClientService service, string
-             resourceId, UploadMediaUpload.ImageTypeEnum
-             imageType, System.IO.Stream stream, string contentType)
+            public UploadMediaUpload(Google.Apis.Services.IClientService service, string resourceId, UploadMediaUpload.ImageTypeEnum imageType, System.IO.Stream stream, string contentType)
                 : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "games/v1configuration/images/{resourceId}/imageType/{imageType}"), "POST", stream, contentType)
             {
                 ResourceId = resourceId;

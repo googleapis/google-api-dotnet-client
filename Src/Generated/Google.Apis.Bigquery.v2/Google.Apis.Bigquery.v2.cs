@@ -1177,8 +1177,7 @@ namespace Google.Apis.Bigquery.v2
             /// </description></item>
             /// </list>
             /// </remarks>
-            public InsertMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.Job body, string
-             projectId, System.IO.Stream stream, string contentType)
+            public InsertMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.Job body, string projectId, System.IO.Stream stream, string contentType)
                 : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "projects/{projectId}/jobs"), "POST", stream, contentType)
             {
                 ProjectId = projectId;
