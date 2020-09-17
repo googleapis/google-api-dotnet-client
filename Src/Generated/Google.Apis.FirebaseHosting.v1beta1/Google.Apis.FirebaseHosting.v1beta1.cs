@@ -1599,8 +1599,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("sizeBytes", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<long> SizeBytes { get; set; }
 
-                    /// <summary>A unique id for the new version. This is only specified for legacy version
-                    /// creations.</summary>
+                    /// <summary>A unique id for the new version. This is was only specified for legacy version
+                    /// creations, and should be blank.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("versionId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string VersionId { get; set; }
 
@@ -3285,8 +3285,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("sizeBytes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> SizeBytes { get; set; }
 
-                /// <summary>A unique id for the new version. This is only specified for legacy version
-                /// creations.</summary>
+                /// <summary>A unique id for the new version. This is was only specified for legacy version creations,
+                /// and should be blank.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("versionId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string VersionId { get; set; }
 

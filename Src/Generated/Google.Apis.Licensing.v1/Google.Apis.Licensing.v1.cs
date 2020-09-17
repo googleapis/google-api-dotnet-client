@@ -41,13 +41,13 @@ namespace Google.Apis.Licensing.v1
         /// <summary>Gets the service base URI.</summary>
         public override string BaseUri =>
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://www.googleapis.com/apps/licensing/v1/product/";
+            BaseUriOverride ?? "https://www.googleapis.com/";
         #else
-            "https://www.googleapis.com/apps/licensing/v1/product/";
+            "https://www.googleapis.com/";
         #endif
 
         /// <summary>Gets the service base path.</summary>
-        public override string BasePath => "apps/licensing/v1/product/";
+        public override string BasePath => "";
 
         #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
@@ -57,7 +57,7 @@ namespace Google.Apis.Licensing.v1
         public override string BatchPath => "batch/licensing/v1";
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Licensing API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Enterprise License Manager API.</summary>
         public class Scope
         {
             /// <summary>View and manage G Suite licenses for your domain</summary>
@@ -65,7 +65,7 @@ namespace Google.Apis.Licensing.v1
 
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Licensing API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Enterprise License Manager API.</summary>
         public static class ScopeConstants
         {
             /// <summary>View and manage G Suite licenses for your domain</summary>
@@ -87,17 +87,46 @@ namespace Google.Apis.Licensing.v1
         {
         }
 
-        /// <summary>Data format for the response.</summary>
+        /// <summary>V1 error format.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+        /// <summary>V1 error format.</summary>
+        public enum XgafvEnum
+        {
+            /// <summary>v1 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("1")]
+            Value1,
+            /// <summary>v2 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("2")]
+            Value2,
+        }
+
+        /// <summary>OAuth access token.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string AccessToken { get; set; }
+
+        /// <summary>Data format for response.</summary>
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
-        /// <summary>Data format for the response.</summary>
+        /// <summary>Data format for response.</summary>
         public enum AltEnum
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+            /// <summary>Media download with context-dependent Content-Type</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media,
+            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+            [Google.Apis.Util.StringValueAttribute("proto")]
+            Proto,
         }
+
+        /// <summary>JSONP</summary>
+        [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string Callback { get; set; }
 
         /// <summary>Selector specifying which fields to include in a partial response.</summary>
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
@@ -116,26 +145,54 @@ namespace Google.Apis.Licensing.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
-        /// characters.</summary>
+        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
+        /// assigned to a user, but should not exceed 40 characters.</summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
-        /// <summary>Deprecated. Please use quotaUser instead.</summary>
-        [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string UserIp { get; set; }
+        /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadType { get; set; }
+
+        /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadProtocol { get; set; }
 
         /// <summary>Initializes Licensing parameter list.</summary>
         protected override void InitParameters()
         {
             base.InitParameters();
 
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
             RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
             {
                 Name = "alt",
                 IsRequired = false,
                 ParameterType = "query",
                 DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
                 Pattern = null,
             });
             RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
@@ -178,9 +235,17 @@ namespace Google.Apis.Licensing.v1
                 DefaultValue = null,
                 Pattern = null,
             });
-            RequestParameters.Add("userIp", new Google.Apis.Discovery.Parameter
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
             {
-                Name = "userIp",
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
                 IsRequired = false,
                 ParameterType = "query",
                 DefaultValue = null,
@@ -258,7 +323,7 @@ namespace Google.Apis.Licensing.v1
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{productId}/sku/{skuId}/user/{userId}";
+            public override string RestPath => "apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -346,7 +411,7 @@ namespace Google.Apis.Licensing.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{productId}/sku/{skuId}/user/{userId}";
+            public override string RestPath => "apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -429,7 +494,7 @@ namespace Google.Apis.Licensing.v1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{productId}/sku/{skuId}/user";
+            public override string RestPath => "apps/licensing/v1/product/{productId}/sku/{skuId}/user";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -508,7 +573,7 @@ namespace Google.Apis.Licensing.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{productId}/users";
+            public override string RestPath => "apps/licensing/v1/product/{productId}/users";
 
             /// <summary>Initializes ListForProduct parameter list.</summary>
             protected override void InitParameters()
@@ -611,7 +676,7 @@ namespace Google.Apis.Licensing.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{productId}/sku/{skuId}/users";
+            public override string RestPath => "apps/licensing/v1/product/{productId}/sku/{skuId}/users";
 
             /// <summary>Initializes ListForProductAndSku parameter list.</summary>
             protected override void InitParameters()
@@ -662,8 +727,7 @@ namespace Google.Apis.Licensing.v1
 
         }
 
-        /// <summary>Reassign a user's product SKU with a different SKU in the same product. This method supports patch
-        /// semantics.</summary>
+        /// <summary>Patch a Licensing info via Apiary Patch Orchestration</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="productId">A product's unique identifier. For more information about products in this version of the
         /// API, see Products and SKUs.</param>
@@ -679,8 +743,7 @@ namespace Google.Apis.Licensing.v1
             return new PatchRequest(service, body, productId, skuId, userId);
         }
 
-        /// <summary>Reassign a user's product SKU with a different SKU in the same product. This method supports patch
-        /// semantics.</summary>
+        /// <summary>Patch a Licensing info via Apiary Patch Orchestration</summary>
         public class PatchRequest : LicensingBaseServiceRequest<Google.Apis.Licensing.v1.Data.LicenseAssignment>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -725,7 +788,7 @@ namespace Google.Apis.Licensing.v1
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{productId}/sku/{skuId}/user/{userId}";
+            public override string RestPath => "apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -821,7 +884,7 @@ namespace Google.Apis.Licensing.v1
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{productId}/sku/{skuId}/user/{userId}";
+            public override string RestPath => "apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -916,7 +979,6 @@ namespace Google.Apis.Licensing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>LicesnseAssignment List for a given product/sku for a customer.</summary>
     public class LicenseAssignmentList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>ETag of the resource.</summary>

@@ -1076,7 +1076,7 @@
    }
   }
  }, 
- "revision": "20200908", 
+ "revision": "20200912", 
  "rootUrl": "https://cloudidentity.googleapis.com/", 
  "schemas": {
   "AndroidAttributes": {

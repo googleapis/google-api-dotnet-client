@@ -6036,6 +6036,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isList")]
         public virtual System.Nullable<bool> IsList { get; set; } 
 
+        /// <summary>Indicates whether the parameter content is logged in text and audio. If it is set to true, the
+        /// parameter content will be replaced to parameter name in both request and response. The default value is
+        /// false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redact")]
+        public virtual System.Nullable<bool> Redact { get; set; } 
+
         /// <summary>Indicates whether the parameter is required. Optional parameters will not trigger prompts; however,
         /// they are filled if the user specifies them. Required parameters must be filled before form filling
         /// concludes.</summary>
@@ -6347,6 +6353,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Indicates whether the parameter represents a list of values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isList")]
         public virtual System.Nullable<bool> IsList { get; set; } 
+
+        /// <summary>Indicates whether the parameter content is logged in text and audio. If it is set to true, the
+        /// parameter content will be replaced to parameter id in both request and response. The default value is
+        /// false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redact")]
+        public virtual System.Nullable<bool> Redact { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

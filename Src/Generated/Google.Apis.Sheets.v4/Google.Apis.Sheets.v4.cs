@@ -6772,7 +6772,7 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>Represents spreadsheet theme</summary>
     public class SpreadsheetTheme : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>/ Name of the primary font family.</summary>
+        /// <summary>Name of the primary font family.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryFontFamily")]
         public virtual string PrimaryFontFamily { get; set; } 
 

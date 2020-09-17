@@ -57,7 +57,21 @@ namespace Google.Apis.AdMob.v1
         public override string BatchPath => "batch";
         #endif
 
+        /// <summary>Available OAuth 2.0 scopes for use with the AdMob API.</summary>
+        public class Scope
+        {
+            /// <summary>See your AdMob data</summary>
+            public static string AdmobReport = "https://www.googleapis.com/auth/admob.report";
 
+        }
+
+        /// <summary>Available OAuth 2.0 scope constants for use with the AdMob API.</summary>
+        public static class ScopeConstants
+        {
+            /// <summary>See your AdMob data</summary>
+            public const string AdmobReport = "https://www.googleapis.com/auth/admob.report";
+
+        }
 
 
 
@@ -712,8 +726,8 @@ namespace Google.Apis.AdMob.v1.Data
         public virtual LocalizationSettings LocalizationSettings { get; set; } 
 
         /// <summary>Maximum number of report data rows to return. If the value is not set, the API returns as many rows
-        /// as possible, up to 100000. Acceptable values are 1-100000, inclusive. Any other values are treated as
-        /// 100000.</summary>
+        /// as possible, up to 100000. Acceptable values are 1-100000, inclusive. Values larger than 100000 return an
+        /// error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxReportRows")]
         public virtual System.Nullable<int> MaxReportRows { get; set; } 
 
@@ -803,8 +817,8 @@ namespace Google.Apis.AdMob.v1.Data
         public virtual LocalizationSettings LocalizationSettings { get; set; } 
 
         /// <summary>Maximum number of report data rows to return. If the value is not set, the API returns as many rows
-        /// as possible, up to 100000. Acceptable values are 1-100000, inclusive. Any other values are treated as
-        /// 100000.</summary>
+        /// as possible, up to 100000. Acceptable values are 1-100000, inclusive. Values larger than 100000 return an
+        /// error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxReportRows")]
         public virtual System.Nullable<int> MaxReportRows { get; set; } 
 

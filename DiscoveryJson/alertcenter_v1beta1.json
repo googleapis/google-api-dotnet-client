@@ -423,7 +423,7 @@
    }
   }
  }, 
- "revision": "20200905", 
+ "revision": "20200912", 
  "rootUrl": "https://alertcenter.googleapis.com/", 
  "schemas": {
   "AccountWarning": {

@@ -3475,12 +3475,15 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string LocationId { get; set; } 
 
         /// <summary>The unique Google-assigned identifier of the Google Analytics web stream associated with the
-        /// Firebase Web App. Firebase SDKs use this ID to interact with Google Analytics APIs. This field is only
-        /// present if the App is linked to a web stream in a Google Analytics App + Web property. Learn more about this
-        /// ID and Google Analytics web streams in the [Analytics
+        /// `WebApp`. Firebase SDKs use this ID to interact with Google Analytics APIs. This field is only present if
+        /// the `WebApp` is linked to a web stream in a Google Analytics App + Web property. Learn more about this ID
+        /// and Google Analytics web streams in the [Analytics
         /// documentation](https://support.google.com/analytics/topic/9303475). To generate a `measurementId` and link
-        /// the Web App with a Google Analytics web stream, call
-        /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics).</summary>
+        /// the `WebApp` with a Google Analytics web stream, call
+        /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics). For apps using the Firebase JavaScript
+        /// SDK v7.20.0 and later, Firebase dynamically fetches the `measurementId` when your app initializes Analytics.
+        /// Having this ID in your config object is optional, but it does serve as a fallback in the rare case that the
+        /// dynamic fetch fails.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("measurementId")]
         public virtual string MeasurementId { get; set; } 
 

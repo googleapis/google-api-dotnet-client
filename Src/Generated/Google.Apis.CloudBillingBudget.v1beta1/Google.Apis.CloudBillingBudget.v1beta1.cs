@@ -616,11 +616,17 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
     /// <summary>AllUpdatesRule defines notifications that are sent based on budget spend and thresholds.</summary>
     public class GoogleCloudBillingBudgetsV1beta1AllUpdatesRule : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. When set to true, disables default notifications sent when a threshold is exceeded.
+        /// Default notifications are sent to those with Billing Account Administrator and Billing Account User IAM
+        /// roles for the target account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableDefaultIamRecipients")]
+        public virtual System.Nullable<bool> DisableDefaultIamRecipients { get; set; } 
+
         /// <summary>Optional. Targets to send notifications to when a threshold is exceeded. This is in addition to
-        /// default recipients who have billing account roles. The value is the full REST resource name of a monitoring
-        /// notification channel with the form `projects/{project_id}/notificationChannels/{channel_id}`. A maximum of 5
-        /// channels are allowed. See https://cloud.google.com/billing/docs/how-to/budgets-notification-recipients for
-        /// more details.</summary>
+        /// default recipients who have billing account IAM roles. The value is the full REST resource name of a
+        /// monitoring notification channel with the form `projects/{project_id}/notificationChannels/{channel_id}`. A
+        /// maximum of 5 channels are allowed. See https://cloud.google.com/billing/docs/how-to/budgets-notification-
+        /// recipients for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitoringNotificationChannels")]
         public virtual System.Collections.Generic.IList<string> MonitoringNotificationChannels { get; set; } 
 

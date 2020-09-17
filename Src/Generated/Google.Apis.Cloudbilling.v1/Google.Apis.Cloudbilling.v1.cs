@@ -1307,7 +1307,7 @@ namespace Google.Apis.Cloudbilling.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("masterBillingAccount")]
         public virtual string MasterBillingAccount { get; set; } 
 
-        /// <summary>The resource name of the billing account. The resource name has the form
+        /// <summary>Output only. The resource name of the billing account. The resource name has the form
         /// `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF` would be the
         /// resource name for billing account `012345-567890-ABCDEF`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

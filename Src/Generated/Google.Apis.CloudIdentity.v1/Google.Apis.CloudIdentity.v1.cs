@@ -2128,6 +2128,26 @@ namespace Google.Apis.CloudIdentity.v1
             }
 
 
+            /// <summary>Optional. The initial configuration option for the `Group`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("initialGroupConfig", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<InitialGroupConfigEnum> InitialGroupConfig { get; set; }
+
+            /// <summary>Optional. The initial configuration option for the `Group`.</summary>
+            public enum InitialGroupConfigEnum
+            {
+                /// <summary>Default. Should not be used.</summary>
+                [Google.Apis.Util.StringValueAttribute("INITIAL_GROUP_CONFIG_UNSPECIFIED")]
+                INITIALGROUPCONFIGUNSPECIFIED,
+                /// <summary>The end user making the request will be added as the initial owner of the
+                /// `Group`.</summary>
+                [Google.Apis.Util.StringValueAttribute("WITH_INITIAL_OWNER")]
+                WITHINITIALOWNER,
+                /// <summary>An empty group is created without any initial owners. This can only be used by admins of
+                /// the domain.</summary>
+                [Google.Apis.Util.StringValueAttribute("EMPTY")]
+                EMPTY,
+            }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudIdentity.v1.Data.Group Body { get; set; }
@@ -2149,6 +2169,14 @@ namespace Google.Apis.CloudIdentity.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add("initialGroupConfig", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "initialGroupConfig",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
 
         }

@@ -2245,9 +2245,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <summary>Feature graphic.</summary>
                     [Google.Apis.Util.StringValueAttribute("featureGraphic")]
                     FeatureGraphic,
-                    /// <summary>Promo graphic.</summary>
-                    [Google.Apis.Util.StringValueAttribute("promoGraphic")]
-                    PromoGraphic,
                     /// <summary>TV banner.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvBanner")]
                     TvBanner,
@@ -2389,9 +2386,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <summary>Feature graphic.</summary>
                     [Google.Apis.Util.StringValueAttribute("featureGraphic")]
                     FeatureGraphic,
-                    /// <summary>Promo graphic.</summary>
-                    [Google.Apis.Util.StringValueAttribute("promoGraphic")]
-                    PromoGraphic,
                     /// <summary>TV banner.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvBanner")]
                     TvBanner,
@@ -2522,9 +2516,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <summary>Feature graphic.</summary>
                     [Google.Apis.Util.StringValueAttribute("featureGraphic")]
                     FeatureGraphic,
-                    /// <summary>Promo graphic.</summary>
-                    [Google.Apis.Util.StringValueAttribute("promoGraphic")]
-                    PromoGraphic,
                     /// <summary>TV banner.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvBanner")]
                     TvBanner,
@@ -2652,9 +2643,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <summary>Feature graphic.</summary>
                     [Google.Apis.Util.StringValueAttribute("featureGraphic")]
                     FeatureGraphic,
-                    /// <summary>Promo graphic.</summary>
-                    [Google.Apis.Util.StringValueAttribute("promoGraphic")]
-                    PromoGraphic,
                     /// <summary>TV banner.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvBanner")]
                     TvBanner,
@@ -2864,9 +2852,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <summary>Feature graphic.</summary>
                     [Google.Apis.Util.StringValueAttribute("featureGraphic")]
                     FeatureGraphic,
-                    /// <summary>Promo graphic.</summary>
-                    [Google.Apis.Util.StringValueAttribute("promoGraphic")]
-                    PromoGraphic,
                     /// <summary>TV banner.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvBanner")]
                     TvBanner,

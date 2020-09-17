@@ -593,7 +593,7 @@
    }
   }
  }, 
- "revision": "20200909", 
+ "revision": "20200916", 
  "rootUrl": "https://realtimebidding.googleapis.com/", 
  "schemas": {
   "AdTechnologyProviders": {

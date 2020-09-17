@@ -3336,6 +3336,17 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string JobId { get; private set; }
 
+                    /// <summary>If specified, determines the maximum number of stages to return. If unspecified, the
+                    /// service may choose an appropriate default, or may return an arbitrarily large number of
+                    /// results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>If supplied, this should be the value of next_page_token returned by an earlier call.
+                    /// This will cause the next page of results to be returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "getExecutionDetails";
@@ -3372,6 +3383,22 @@ namespace Google.Apis.Dataflow.v1b3
                             Name = "jobId",
                             IsRequired = true,
                             ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -6186,6 +6213,88 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The environment values to be set at runtime for flex template.</summary>
+    public class FlexTemplateRuntimeEnvironment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Additional experiment flags for the job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalExperiments")]
+        public virtual System.Collections.Generic.IList<string> AdditionalExperiments { get; set; } 
+
+        /// <summary>Additional user labels to be specified for the job. Keys and values must follow the restrictions
+        /// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-
+        /// resources#restrictions) page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalUserLabels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> AdditionalUserLabels { get; set; } 
+
+        /// <summary>Whether to enable Streaming Engine for the job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableStreamingEngine")]
+        public virtual System.Nullable<bool> EnableStreamingEngine { get; set; } 
+
+        /// <summary>Configuration for VM IPs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipConfiguration")]
+        public virtual string IpConfiguration { get; set; } 
+
+        /// <summary>Name for the Cloud KMS key for the job. Key format is:
+        /// projects//locations//keyRings//cryptoKeys/</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; } 
+
+        /// <summary>The machine type to use for the job. Defaults to the value from the template if not
+        /// specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; } 
+
+        /// <summary>The maximum number of Google Compute Engine instances to be made available to your pipeline during
+        /// execution, from 1 to 1000.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxWorkers")]
+        public virtual System.Nullable<int> MaxWorkers { get; set; } 
+
+        /// <summary>Network to which VMs will be assigned. If empty or unspecified, the service will use the network
+        /// "default".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; } 
+
+        /// <summary>The initial number of Google Compute Engine instances for the job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numWorkers")]
+        public virtual System.Nullable<int> NumWorkers { get; set; } 
+
+        /// <summary>The email address of the service account to run the job as.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
+        public virtual string ServiceAccountEmail { get; set; } 
+
+        /// <summary>Subnetwork to which VMs will be assigned, if desired. Expected to be of the form
+        /// "regions/REGION/subnetworks/SUBNETWORK".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
+        public virtual string Subnetwork { get; set; } 
+
+        /// <summary>The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning
+        /// with `gs://`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tempLocation")]
+        public virtual string TempLocation { get; set; } 
+
+        /// <summary>The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
+        /// which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither
+        /// worker_region nor worker_zone is specified, default to the control plane's region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerRegion")]
+        public virtual string WorkerRegion { get; set; } 
+
+        /// <summary>The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
+        /// which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither
+        /// worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on
+        /// available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerZone")]
+        public virtual string WorkerZone { get; set; } 
+
+        /// <summary>The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-
+        /// zones) for launching worker instances to run your pipeline. In the future, worker_zone will take
+        /// precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A metric value representing a list of floating point numbers.</summary>
     public class FloatingPointList : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6538,6 +6647,11 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>Information about the execution of a job.</summary>
     public class JobExecutionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If present, this response does not contain all requested tasks. To obtain the next page of results,
+        /// repeat the request with page_token set to this value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
         /// <summary>The stages of the job execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stages")]
         public virtual System.Collections.Generic.IList<StageSummary> Stages { get; set; } 
@@ -6711,6 +6825,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>Gcs path to a file with json serialized ContainerSpec as content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerSpecGcsPath")]
         public virtual string ContainerSpecGcsPath { get; set; } 
+
+        /// <summary>The runtime environment for the FlexTemplate job</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual FlexTemplateRuntimeEnvironment Environment { get; set; } 
 
         /// <summary>Required. The job name to use for the created job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobName")]

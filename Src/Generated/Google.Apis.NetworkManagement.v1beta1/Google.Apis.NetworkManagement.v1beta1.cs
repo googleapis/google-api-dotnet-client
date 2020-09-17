@@ -1585,6 +1585,12 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
+        /// <summary>Output only. The probing details of this test from the latest run, present for applicable tests
+        /// only. The details are updated when creating a new test, updating an existing test, or triggering a one-time
+        /// rerun of an existing test.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("probingDetails")]
+        public virtual ProbingDetails ProbingDetails { get; set; } 
+
         /// <summary>IP Protocol of the test. When not provided, "TCP" is assumed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
         public virtual string Protocol { get; set; } 
@@ -2210,6 +2216,42 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
+    }    
+
+    /// <summary>The details of probing from the latest run.</summary>
+    public class ProbingDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Causes that the probing was aborted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("abortCause")]
+        public virtual string AbortCause { get; set; } 
+
+        /// <summary>Derived from the test input. The actual source and destination endpoint where the probing was
+        /// run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointInfo")]
+        public virtual EndpointInfo EndpointInfo { get; set; } 
+
+        /// <summary>The details of an internal failure or a cancellation of reachability analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; } 
+
+        /// <summary>The overall reachability result of the test.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual string Result { get; set; } 
+
+        /// <summary>Number of probes sent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentProbeCount")]
+        public virtual System.Nullable<int> SentProbeCount { get; set; } 
+
+        /// <summary>Number of probes that reached destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successfulProbeCount")]
+        public virtual System.Nullable<int> SuccessfulProbeCount { get; set; } 
+
+        /// <summary>The time the reachability state was verified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifyTime")]
+        public virtual object VerifyTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>The details of reachability state from the latest run.</summary>

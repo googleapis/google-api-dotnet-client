@@ -3850,6 +3850,8 @@ namespace Google.Apis.ShoppingContent.v2_1
                 Completed,
                 [Google.Apis.Util.StringValueAttribute("new")]
                 New__,
+                [Google.Apis.Util.StringValueAttribute("pending")]
+                Pending,
                 [Google.Apis.Util.StringValueAttribute("shipped")]
                 Shipped,
                 [Google.Apis.Util.StringValueAttribute("undeliverable")]
@@ -12069,7 +12071,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     public class OrderreturnsRefundOperation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If true, the item will be fully refunded. // Allowed only when payment_type is FOP. Merchant can
+        /// <summary>If true, the item will be fully refunded. Allowed only when payment_type is FOP. Merchant can
         /// choose this refund option to indicate the full remaining amount of corresponding object to be refunded to
         /// the customer via FOP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullRefund")]
