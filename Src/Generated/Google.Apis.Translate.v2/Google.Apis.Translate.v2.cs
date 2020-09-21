@@ -35,7 +35,7 @@ namespace Google.Apis.Translate.v2
         }
 
         /// <summary>Gets the service supported features.</summary>
-        public override System.Collections.Generic.IList<string> Features => new string[] {"dataWrapper"};
+        public override System.Collections.Generic.IList<string> Features => new string[] { "dataWrapper", };
 
         /// <summary>Gets the service name.</summary>
         public override string Name => "translate";
