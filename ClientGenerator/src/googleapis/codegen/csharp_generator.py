@@ -46,7 +46,7 @@ class CSharpLanguageModel(language_model.LanguageModel):
   array_of_policy = language_model.NamingPolicy(
       format_string='System.Collections.Generic.IList<{name}>')
   map_of_policy = language_model.NamingPolicy(
-      format_string='System.Collections.Generic.IDictionary<string,{name}>')
+      format_string='System.Collections.Generic.IDictionary<string, {name}>')
   constant_policy = language_model.NamingPolicy(
       case_transform=language_model.UPPER_CAMEL_CASE)
   class_name_policy = language_model.NamingPolicy(
