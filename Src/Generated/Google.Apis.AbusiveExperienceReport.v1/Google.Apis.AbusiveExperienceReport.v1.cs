@@ -373,35 +373,35 @@ namespace Google.Apis.AbusiveExperienceReport.v1.Data
     {
         /// <summary>The site's Abusive Experience Report status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("abusiveStatus")]
-        public virtual string AbusiveStatus { get; set; } 
+        public virtual string AbusiveStatus { get; set; }
 
         /// <summary>The time at which [enforcement](https://support.google.com/webtools/answer/7538608) against the
         /// site began or will begin. Not set when the filter_status is OFF.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enforcementTime")]
-        public virtual object EnforcementTime { get; set; } 
+        public virtual object EnforcementTime { get; set; }
 
         /// <summary>The site's [enforcement status](https://support.google.com/webtools/answer/7538608).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterStatus")]
-        public virtual string FilterStatus { get; set; } 
+        public virtual string FilterStatus { get; set; }
 
         /// <summary>The time at which the site's status last changed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastChangeTime")]
-        public virtual object LastChangeTime { get; set; } 
+        public virtual object LastChangeTime { get; set; }
 
         /// <summary>A link to the full Abusive Experience Report for the site. Not set in ViolatingSitesResponse. Note
         /// that you must complete the [Search Console verification
         /// process](https://support.google.com/webmasters/answer/9008080) for the site before you can access the full
         /// report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportUrl")]
-        public virtual string ReportUrl { get; set; } 
+        public virtual string ReportUrl { get; set; }
 
         /// <summary>The name of the reviewed site, e.g. `google.com`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviewedSite")]
-        public virtual string ReviewedSite { get; set; } 
+        public virtual string ReviewedSite { get; set; }
 
         /// <summary>Whether the site is currently under review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("underReview")]
-        public virtual System.Nullable<bool> UnderReview { get; set; } 
+        public virtual System.Nullable<bool> UnderReview { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -412,7 +412,7 @@ namespace Google.Apis.AbusiveExperienceReport.v1.Data
     {
         /// <summary>The list of violating sites.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("violatingSites")]
-        public virtual System.Collections.Generic.IList<SiteSummaryResponse> ViolatingSites { get; set; } 
+        public virtual System.Collections.Generic.IList<SiteSummaryResponse> ViolatingSites { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

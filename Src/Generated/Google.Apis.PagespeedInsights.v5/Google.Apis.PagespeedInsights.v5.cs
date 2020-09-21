@@ -444,15 +444,15 @@ namespace Google.Apis.PagespeedInsights.v5.Data
     {
         /// <summary>The category group that the audit belongs to (optional).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("group")]
-        public virtual string Group { get; set; } 
+        public virtual string Group { get; set; }
 
         /// <summary>The audit ref id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The weight this audit's score has on the overall category score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weight")]
-        public virtual System.Nullable<double> Weight { get; set; } 
+        public virtual System.Nullable<double> Weight { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -464,15 +464,15 @@ namespace Google.Apis.PagespeedInsights.v5.Data
     {
         /// <summary>Upper bound for a bucket's range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("max")]
-        public virtual System.Nullable<int> Max { get; set; } 
+        public virtual System.Nullable<int> Max { get; set; }
 
         /// <summary>Lower bound for a bucket's range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("min")]
-        public virtual System.Nullable<int> Min { get; set; } 
+        public virtual System.Nullable<int> Min { get; set; }
 
         /// <summary>The proportion of data in this bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proportion")]
-        public virtual System.Nullable<double> Proportion { get; set; } 
+        public virtual System.Nullable<double> Proportion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -483,23 +483,23 @@ namespace Google.Apis.PagespeedInsights.v5.Data
     {
         /// <summary>The accessibility category, containing all accessibility related audits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessibility")]
-        public virtual LighthouseCategoryV5 Accessibility { get; set; } 
+        public virtual LighthouseCategoryV5 Accessibility { get; set; }
 
         /// <summary>The best practices category, containing all best practices related audits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("best-practices")]
-        public virtual LighthouseCategoryV5 BestPractices { get; set; } 
+        public virtual LighthouseCategoryV5 BestPractices { get; set; }
 
         /// <summary>The performance category, containing all performance related audits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performance")]
-        public virtual LighthouseCategoryV5 Performance { get; set; } 
+        public virtual LighthouseCategoryV5 Performance { get; set; }
 
         /// <summary>The Progressive-Web-App (PWA) category, containing all pwa related audits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pwa")]
-        public virtual LighthouseCategoryV5 Pwa { get; set; } 
+        public virtual LighthouseCategoryV5 Pwa { get; set; }
 
         /// <summary>The Search-Engine-Optimization (SEO) category, containing all seo related audits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seo")]
-        public virtual LighthouseCategoryV5 Seo { get; set; } 
+        public virtual LighthouseCategoryV5 Seo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -510,11 +510,11 @@ namespace Google.Apis.PagespeedInsights.v5.Data
     {
         /// <summary>The description of what the category is grouping</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The human readable title of the group</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -525,19 +525,19 @@ namespace Google.Apis.PagespeedInsights.v5.Data
     {
         /// <summary>How Lighthouse was run, e.g. from the Chrome extension or from the npm module.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channel")]
-        public virtual string Channel { get; set; } 
+        public virtual string Channel { get; set; }
 
         /// <summary>The form factor the emulation should use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emulatedFormFactor")]
-        public virtual string EmulatedFormFactor { get; set; } 
+        public virtual string EmulatedFormFactor { get; set; }
 
         /// <summary>The locale setting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locale")]
-        public virtual string Locale { get; set; } 
+        public virtual string Locale { get; set; }
 
         /// <summary>List of categories of audits the run should conduct.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onlyCategories")]
-        public virtual object OnlyCategories { get; set; } 
+        public virtual object OnlyCategories { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -548,15 +548,15 @@ namespace Google.Apis.PagespeedInsights.v5.Data
     {
         /// <summary>The benchmark index number that indicates rough device class.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("benchmarkIndex")]
-        public virtual System.Nullable<double> BenchmarkIndex { get; set; } 
+        public virtual System.Nullable<double> BenchmarkIndex { get; set; }
 
         /// <summary>The user agent string of the version of Chrome used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostUserAgent")]
-        public virtual string HostUserAgent { get; set; } 
+        public virtual string HostUserAgent { get; set; }
 
         /// <summary>The user agent string that was sent over the network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUserAgent")]
-        public virtual string NetworkUserAgent { get; set; } 
+        public virtual string NetworkUserAgent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -567,7 +567,7 @@ namespace Google.Apis.PagespeedInsights.v5.Data
     {
         /// <summary>Internationalized strings that are formatted to the locale in configSettings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rendererFormattedStrings")]
-        public virtual RendererFormattedStrings RendererFormattedStrings { get; set; } 
+        public virtual RendererFormattedStrings RendererFormattedStrings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -578,49 +578,49 @@ namespace Google.Apis.PagespeedInsights.v5.Data
     {
         /// <summary>The description of the audit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Freeform details section of the audit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Details { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Details { get; set; }
 
         /// <summary>The value that should be displayed on the UI for this audit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayValue")]
-        public virtual string DisplayValue { get; set; } 
+        public virtual string DisplayValue { get; set; }
 
         /// <summary>An error message from a thrown error inside the audit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
-        public virtual string ErrorMessage { get; set; } 
+        public virtual string ErrorMessage { get; set; }
 
         /// <summary>An explanation of the errors in the audit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("explanation")]
-        public virtual string Explanation { get; set; } 
+        public virtual string Explanation { get; set; }
 
         /// <summary>The audit's id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>A numeric value that has a meaning specific to the audit, e.g. the number of nodes in the DOM or
         /// the timestamp of a specific load event. More information can be found in the audit details, if
         /// present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numericValue")]
-        public virtual System.Nullable<double> NumericValue { get; set; } 
+        public virtual System.Nullable<double> NumericValue { get; set; }
 
         /// <summary>The score of the audit, can be null.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
-        public virtual object Score { get; set; } 
+        public virtual object Score { get; set; }
 
         /// <summary>The enumerated score display mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoreDisplayMode")]
-        public virtual string ScoreDisplayMode { get; set; } 
+        public virtual string ScoreDisplayMode { get; set; }
 
         /// <summary>The human readable title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>Possible warnings that occurred in the audit, can be null.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
-        public virtual object Warnings { get; set; } 
+        public virtual object Warnings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -631,28 +631,28 @@ namespace Google.Apis.PagespeedInsights.v5.Data
     {
         /// <summary>An array of references to all the audit members of this category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditRefs")]
-        public virtual System.Collections.Generic.IList<AuditRefs> AuditRefs { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditRefs> AuditRefs { get; set; }
 
         /// <summary>A more detailed description of the category and its importance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The string identifier of the category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>A description for the manual audits in the category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manualDescription")]
-        public virtual string ManualDescription { get; set; } 
+        public virtual string ManualDescription { get; set; }
 
         /// <summary>The overall score of the category, the weighted average of all its audits. (The category's score,
         /// can be null.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
-        public virtual object Score { get; set; } 
+        public virtual object Score { get; set; }
 
         /// <summary>The human-friendly name of the category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -663,64 +663,64 @@ namespace Google.Apis.PagespeedInsights.v5.Data
     {
         /// <summary>Map of audits in the LHR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audits")]
-        public virtual System.Collections.Generic.IDictionary<string,LighthouseAuditResultV5> Audits { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, LighthouseAuditResultV5> Audits { get; set; }
 
         /// <summary>Map of categories in the LHR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categories")]
-        public virtual Categories Categories { get; set; } 
+        public virtual Categories Categories { get; set; }
 
         /// <summary>Map of category groups in the LHR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoryGroups")]
-        public virtual System.Collections.Generic.IDictionary<string,CategoryGroupV5> CategoryGroups { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, CategoryGroupV5> CategoryGroups { get; set; }
 
         /// <summary>The configuration settings for this LHR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configSettings")]
-        public virtual ConfigSettings ConfigSettings { get; set; } 
+        public virtual ConfigSettings ConfigSettings { get; set; }
 
         /// <summary>Environment settings that were used when making this LHR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
-        public virtual Environment Environment { get; set; } 
+        public virtual Environment Environment { get; set; }
 
         /// <summary>The time that this run was fetched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fetchTime")]
-        public virtual string FetchTime { get; set; } 
+        public virtual string FetchTime { get; set; }
 
         /// <summary>The final resolved url that was audited.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalUrl")]
-        public virtual string FinalUrl { get; set; } 
+        public virtual string FinalUrl { get; set; }
 
         /// <summary>The internationalization strings that are required to render the LHR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("i18n")]
-        public virtual I18n I18n { get; set; } 
+        public virtual I18n I18n { get; set; }
 
         /// <summary>The lighthouse version that was used to generate this LHR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lighthouseVersion")]
-        public virtual string LighthouseVersion { get; set; } 
+        public virtual string LighthouseVersion { get; set; }
 
         /// <summary>The original requested url.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedUrl")]
-        public virtual string RequestedUrl { get; set; } 
+        public virtual string RequestedUrl { get; set; }
 
         /// <summary>List of all run warnings in the LHR. Will always output to at least `[]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runWarnings")]
-        public virtual System.Collections.Generic.IList<object> RunWarnings { get; set; } 
+        public virtual System.Collections.Generic.IList<object> RunWarnings { get; set; }
 
         /// <summary>A top-level error message that, if present, indicates a serious enough problem that this Lighthouse
         /// result may need to be discarded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeError")]
-        public virtual RuntimeError RuntimeError { get; set; } 
+        public virtual RuntimeError RuntimeError { get; set; }
 
         /// <summary>The Stack Pack advice strings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackPacks")]
-        public virtual System.Collections.Generic.IList<StackPack> StackPacks { get; set; } 
+        public virtual System.Collections.Generic.IList<StackPack> StackPacks { get; set; }
 
         /// <summary>Timing information for this LHR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timing")]
-        public virtual Timing Timing { get; set; } 
+        public virtual Timing Timing { get; set; }
 
         /// <summary>The user agent that was used to run this LHR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
-        public virtual string UserAgent { get; set; } 
+        public virtual string UserAgent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -731,23 +731,23 @@ namespace Google.Apis.PagespeedInsights.v5.Data
     {
         /// <summary>The url, pattern or origin which the metrics are on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The requested URL, which may differ from the resolved "id".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initial_url")]
-        public virtual string InitialUrl { get; set; } 
+        public virtual string InitialUrl { get; set; }
 
         /// <summary>The map of .</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
-        public virtual System.Collections.Generic.IDictionary<string,UserPageLoadMetricV5> Metrics { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, UserPageLoadMetricV5> Metrics { get; set; }
 
         /// <summary>True if the result is an origin fallback from a page, false otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("origin_fallback")]
-        public virtual System.Nullable<bool> OriginFallback { get; set; } 
+        public virtual System.Nullable<bool> OriginFallback { get; set; }
 
         /// <summary>The human readable speed "category" of the id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overall_category")]
-        public virtual string OverallCategory { get; set; } 
+        public virtual string OverallCategory { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -758,35 +758,35 @@ namespace Google.Apis.PagespeedInsights.v5.Data
     {
         /// <summary>The UTC timestamp of this analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analysisUTCTimestamp")]
-        public virtual string AnalysisUTCTimestamp { get; set; } 
+        public virtual string AnalysisUTCTimestamp { get; set; }
 
         /// <summary>The captcha verify result</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("captchaResult")]
-        public virtual string CaptchaResult { get; set; } 
+        public virtual string CaptchaResult { get; set; }
 
         /// <summary>Canonicalized and final URL for the document, after following page redirects (if any).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Kind of result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Lighthouse response for the audit url as an object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lighthouseResult")]
-        public virtual LighthouseResultV5 LighthouseResult { get; set; } 
+        public virtual LighthouseResultV5 LighthouseResult { get; set; }
 
         /// <summary>Metrics of end users' page loading experience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loadingExperience")]
-        public virtual PagespeedApiLoadingExperienceV5 LoadingExperience { get; set; } 
+        public virtual PagespeedApiLoadingExperienceV5 LoadingExperience { get; set; }
 
         /// <summary>Metrics of the aggregated page loading experience of the origin</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originLoadingExperience")]
-        public virtual PagespeedApiLoadingExperienceV5 OriginLoadingExperience { get; set; } 
+        public virtual PagespeedApiLoadingExperienceV5 OriginLoadingExperience { get; set; }
 
         /// <summary>The version of PageSpeed used to generate these results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual PagespeedVersion Version { get; set; } 
+        public virtual PagespeedVersion Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -797,11 +797,11 @@ namespace Google.Apis.PagespeedInsights.v5.Data
     {
         /// <summary>The major version number of PageSpeed used to generate these results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("major")]
-        public virtual string Major { get; set; } 
+        public virtual string Major { get; set; }
 
         /// <summary>The minor version number of PageSpeed used to generate these results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minor")]
-        public virtual string Minor { get; set; } 
+        public virtual string Minor { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -812,67 +812,67 @@ namespace Google.Apis.PagespeedInsights.v5.Data
     {
         /// <summary>The tooltip text on an expandable chevron icon.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditGroupExpandTooltip")]
-        public virtual string AuditGroupExpandTooltip { get; set; } 
+        public virtual string AuditGroupExpandTooltip { get; set; }
 
         /// <summary>The label for the initial request in a critical request chain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crcInitialNavigation")]
-        public virtual string CrcInitialNavigation { get; set; } 
+        public virtual string CrcInitialNavigation { get; set; }
 
         /// <summary>The label for values shown in the summary of critical request chains.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crcLongestDurationLabel")]
-        public virtual string CrcLongestDurationLabel { get; set; } 
+        public virtual string CrcLongestDurationLabel { get; set; }
 
         /// <summary>The label shown next to an audit or metric that has had an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorLabel")]
-        public virtual string ErrorLabel { get; set; } 
+        public virtual string ErrorLabel { get; set; }
 
         /// <summary>The error string shown next to an erroring audit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorMissingAuditInfo")]
-        public virtual string ErrorMissingAuditInfo { get; set; } 
+        public virtual string ErrorMissingAuditInfo { get; set; }
 
         /// <summary>The title of the lab data performance category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labDataTitle")]
-        public virtual string LabDataTitle { get; set; } 
+        public virtual string LabDataTitle { get; set; }
 
         /// <summary>The disclaimer shown under performance explaning that the network can vary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lsPerformanceCategoryDescription")]
-        public virtual string LsPerformanceCategoryDescription { get; set; } 
+        public virtual string LsPerformanceCategoryDescription { get; set; }
 
         /// <summary>The heading shown above a list of audits that were not computerd in the run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manualAuditsGroupTitle")]
-        public virtual string ManualAuditsGroupTitle { get; set; } 
+        public virtual string ManualAuditsGroupTitle { get; set; }
 
         /// <summary>The heading shown above a list of audits that do not apply to a page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notApplicableAuditsGroupTitle")]
-        public virtual string NotApplicableAuditsGroupTitle { get; set; } 
+        public virtual string NotApplicableAuditsGroupTitle { get; set; }
 
         /// <summary>The heading for the estimated page load savings opportunity of an audit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("opportunityResourceColumnLabel")]
-        public virtual string OpportunityResourceColumnLabel { get; set; } 
+        public virtual string OpportunityResourceColumnLabel { get; set; }
 
         /// <summary>The heading for the estimated page load savings of opportunity audits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("opportunitySavingsColumnLabel")]
-        public virtual string OpportunitySavingsColumnLabel { get; set; } 
+        public virtual string OpportunitySavingsColumnLabel { get; set; }
 
         /// <summary>The heading that is shown above a list of audits that are passing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passedAuditsGroupTitle")]
-        public virtual string PassedAuditsGroupTitle { get; set; } 
+        public virtual string PassedAuditsGroupTitle { get; set; }
 
         /// <summary>The label that explains the score gauges scale (0-49, 50-89, 90-100).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scorescaleLabel")]
-        public virtual string ScorescaleLabel { get; set; } 
+        public virtual string ScorescaleLabel { get; set; }
 
         /// <summary>The label shown preceding important warnings that may have invalidated an entire report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toplevelWarningsMessage")]
-        public virtual string ToplevelWarningsMessage { get; set; } 
+        public virtual string ToplevelWarningsMessage { get; set; }
 
         /// <summary>The disclaimer shown below a performance metric value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("varianceDisclaimer")]
-        public virtual string VarianceDisclaimer { get; set; } 
+        public virtual string VarianceDisclaimer { get; set; }
 
         /// <summary>The label shown above a bulleted list of warnings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warningHeader")]
-        public virtual string WarningHeader { get; set; } 
+        public virtual string WarningHeader { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -883,11 +883,11 @@ namespace Google.Apis.PagespeedInsights.v5.Data
     {
         /// <summary>The enumerated Lighthouse Error code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual string Code { get; set; } 
+        public virtual string Code { get; set; }
 
         /// <summary>A human readable message explaining the error code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -898,19 +898,19 @@ namespace Google.Apis.PagespeedInsights.v5.Data
     {
         /// <summary>The stack pack advice strings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("descriptions")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Descriptions { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Descriptions { get; set; }
 
         /// <summary>The stack pack icon data uri.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iconDataURL")]
-        public virtual string IconDataURL { get; set; } 
+        public virtual string IconDataURL { get; set; }
 
         /// <summary>The stack pack id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The stack pack title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -921,7 +921,7 @@ namespace Google.Apis.PagespeedInsights.v5.Data
     {
         /// <summary>The total duration of Lighthouse's run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("total")]
-        public virtual System.Nullable<double> Total { get; set; } 
+        public virtual System.Nullable<double> Total { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -932,28 +932,28 @@ namespace Google.Apis.PagespeedInsights.v5.Data
     {
         /// <summary>The category of the specific time metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
-        public virtual string Category { get; set; } 
+        public virtual string Category { get; set; }
 
         /// <summary>Metric distributions. Proportions should sum up to 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distributions")]
-        public virtual System.Collections.Generic.IList<Bucket> Distributions { get; set; } 
+        public virtual System.Collections.Generic.IList<Bucket> Distributions { get; set; }
 
         /// <summary>Identifies the form factor of the metric being collected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formFactor")]
-        public virtual string FormFactor { get; set; } 
+        public virtual string FormFactor { get; set; }
 
         /// <summary>The median number of the metric, in millisecond.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("median")]
-        public virtual System.Nullable<int> Median { get; set; } 
+        public virtual System.Nullable<int> Median { get; set; }
 
         /// <summary>Identifies the type of the metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricId")]
-        public virtual string MetricId { get; set; } 
+        public virtual string MetricId { get; set; }
 
         /// <summary>We use this field to store certain percentile value for this metric. For v4, this field contains
         /// pc50. For v5, this field contains pc90.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percentile")]
-        public virtual System.Nullable<int> Percentile { get; set; } 
+        public virtual System.Nullable<int> Percentile { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

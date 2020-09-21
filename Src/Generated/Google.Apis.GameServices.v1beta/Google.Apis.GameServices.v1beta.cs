@@ -2977,15 +2977,15 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
-        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
-        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; }
 
         /// <summary>Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
         /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual string Service { get; set; } 
+        public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3000,14 +3000,14 @@ namespace Google.Apis.GameServices.v1beta.Data
         /// <summary>Specifies the identities that do not cause logging for this type of permission. Follows the same
         /// format of Binding.members.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
-        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreChildExemptions")]
-        public virtual System.Nullable<bool> IgnoreChildExemptions { get; set; } 
+        public virtual System.Nullable<bool> IgnoreChildExemptions { get; set; }
 
         /// <summary>The log type that this config enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logType")]
-        public virtual string LogType { get; set; } 
+        public virtual string LogType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3018,7 +3018,7 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>The type of the permission that was checked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissionType")]
-        public virtual string PermissionType { get; set; } 
+        public virtual string PermissionType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3030,7 +3030,7 @@ namespace Google.Apis.GameServices.v1beta.Data
         /// <summary>A client-specified ID for this binding. Expected to be globally unique to support the internal
         /// bindings-by-ID API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; } 
+        public virtual string BindingId { get; set; }
 
         /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
         /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
@@ -3038,7 +3038,7 @@ namespace Google.Apis.GameServices.v1beta.Data
         /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; } 
+        public virtual Expr Condition { get; set; }
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
@@ -3060,12 +3060,12 @@ namespace Google.Apis.GameServices.v1beta.Data
         /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
         /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3083,11 +3083,11 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>Information used by the Cloud Audit Logging pipeline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizationLoggingOptions")]
-        public virtual AuthorizationLoggingOptions AuthorizationLoggingOptions { get; set; } 
+        public virtual AuthorizationLoggingOptions AuthorizationLoggingOptions { get; set; }
 
         /// <summary>The log_name to populate in the Cloud Audit Record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logName")]
-        public virtual string LogName { get; set; } 
+        public virtual string LogName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3098,24 +3098,24 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>Trusted attributes supplied by the IAM system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iam")]
-        public virtual string Iam { get; set; } 
+        public virtual string Iam { get; set; }
 
         /// <summary>An operator to apply the subject with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("op")]
-        public virtual string Op { get; set; } 
+        public virtual string Op { get; set; }
 
         /// <summary>Trusted attributes discharged by the service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("svc")]
-        public virtual string Svc { get; set; } 
+        public virtual string Svc { get; set; }
 
         /// <summary>Trusted attributes supplied by any service that owns resources and uses the IAM system for access
         /// control.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sys")]
-        public virtual string Sys { get; set; } 
+        public virtual string Sys { get; set; }
 
         /// <summary>The objects of the condition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<string> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3134,15 +3134,15 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>Custom fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customFields")]
-        public virtual System.Collections.Generic.IList<CustomField> CustomFields { get; set; } 
+        public virtual System.Collections.Generic.IList<CustomField> CustomFields { get; set; }
 
         /// <summary>The field value to attribute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual string Field { get; set; } 
+        public virtual string Field { get; set; }
 
         /// <summary>The metric to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metric")]
-        public virtual string Metric { get; set; } 
+        public virtual string Metric { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3154,12 +3154,12 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>Name is the field name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Value is the field value. It is important that in contrast to the CounterOptions.field, the value
         /// here is a constant that is not derived from the IAMContext.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3169,7 +3169,7 @@ namespace Google.Apis.GameServices.v1beta.Data
     public class DataAccessOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("logMode")]
-        public virtual string LogMode { get; set; } 
+        public virtual string LogMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3180,11 +3180,11 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>The name of the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
-        public virtual string Cluster { get; set; } 
+        public virtual string Cluster { get; set; }
 
         /// <summary>The details about the Agones fleets and autoscalers created in the game server cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fleetDetails")]
-        public virtual System.Collections.Generic.IList<DeployedFleetDetails> FleetDetails { get; set; } 
+        public virtual System.Collections.Generic.IList<DeployedFleetDetails> FleetDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3195,20 +3195,20 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>The name of the Agones fleet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fleet")]
-        public virtual string Fleet { get; set; } 
+        public virtual string Fleet { get; set; }
 
         /// <summary>The fleet spec retrieved from the Agones fleet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fleetSpec")]
-        public virtual string FleetSpec { get; set; } 
+        public virtual string FleetSpec { get; set; }
 
         /// <summary>The source spec that is used to create the Agones fleet. The GameServerConfig resource may no
         /// longer exist in the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("specSource")]
-        public virtual SpecSource SpecSource { get; set; } 
+        public virtual SpecSource SpecSource { get; set; }
 
         /// <summary>The current status of the Agones fleet. Includes count of game servers in various states.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual DeployedFleetStatus Status { get; set; } 
+        public virtual DeployedFleetStatus Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3219,16 +3219,16 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>The name of the Agones autoscaler.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoscaler")]
-        public virtual string Autoscaler { get; set; } 
+        public virtual string Autoscaler { get; set; }
 
         /// <summary>The autoscaler spec retrieved from Agones.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fleetAutoscalerSpec")]
-        public virtual string FleetAutoscalerSpec { get; set; } 
+        public virtual string FleetAutoscalerSpec { get; set; }
 
         /// <summary>The source spec that is used to create the autoscaler. The GameServerConfig resource may no longer
         /// exist in the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("specSource")]
-        public virtual SpecSource SpecSource { get; set; } 
+        public virtual SpecSource SpecSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3239,11 +3239,11 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>Information about the Agones autoscaler for that fleet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployedAutoscaler")]
-        public virtual DeployedFleetAutoscaler DeployedAutoscaler { get; set; } 
+        public virtual DeployedFleetAutoscaler DeployedAutoscaler { get; set; }
 
         /// <summary>Information about the Agones fleet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployedFleet")]
-        public virtual DeployedFleet DeployedFleet { get; set; } 
+        public virtual DeployedFleet DeployedFleet { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3255,20 +3255,20 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>The number of GameServer replicas in the ALLOCATED state in this fleet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allocatedReplicas")]
-        public virtual System.Nullable<long> AllocatedReplicas { get; set; } 
+        public virtual System.Nullable<long> AllocatedReplicas { get; set; }
 
         /// <summary>The number of GameServer replicas in the READY state in this fleet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readyReplicas")]
-        public virtual System.Nullable<long> ReadyReplicas { get; set; } 
+        public virtual System.Nullable<long> ReadyReplicas { get; set; }
 
         /// <summary>The total number of current GameServer replicas in this fleet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicas")]
-        public virtual System.Nullable<long> Replicas { get; set; } 
+        public virtual System.Nullable<long> Replicas { get; set; }
 
         /// <summary>The number of GameServer replicas in the RESERVED state in this fleet. Reserved instances won't be
         /// deleted on scale down, but won't cause an autoscaler to scale up.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservedReplicas")]
-        public virtual System.Nullable<long> ReservedReplicas { get; set; } 
+        public virtual System.Nullable<long> ReservedReplicas { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3300,21 +3300,21 @@ namespace Google.Apis.GameServices.v1beta.Data
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
         /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3332,11 +3332,11 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>The state of the game server deployment in each game server cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterState")]
-        public virtual System.Collections.Generic.IList<DeployedClusterState> ClusterState { get; set; } 
+        public virtual System.Collections.Generic.IList<DeployedClusterState> ClusterState { get; set; }
 
         /// <summary>List of locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unavailable")]
-        public virtual System.Collections.Generic.IList<string> Unavailable { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Unavailable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3347,11 +3347,11 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>Agones fleet spec. Example spec: `https://agones.dev/site/docs/reference/fleet/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fleetSpec")]
-        public virtual string FleetSpec { get; set; } 
+        public virtual string FleetSpec { get; set; }
 
         /// <summary>The name of the FleetConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3363,33 +3363,33 @@ namespace Google.Apis.GameServices.v1beta.Data
         /// <summary>The game server cluster connection information. This information is used to manage game server
         /// clusters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionInfo")]
-        public virtual GameServerClusterConnectionInfo ConnectionInfo { get; set; } 
+        public virtual GameServerClusterConnectionInfo ConnectionInfo { get; set; }
 
         /// <summary>Output only. The creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Human readable description of the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The labels associated with this game server cluster. Each label is a key-value pair.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Required. The resource name of the game server cluster. Uses the form:
         /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example,
         /// `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The last-modified time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
     }    
 
@@ -3398,12 +3398,12 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>Reference to the GKE cluster where the game servers are installed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeClusterReference")]
-        public virtual GkeClusterReference GkeClusterReference { get; set; } 
+        public virtual GkeClusterReference GkeClusterReference { get; set; }
 
         /// <summary>Namespace designated on the game server cluster where the Agones game server instances will be
         /// created. Existence of the namespace will be validated during creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
-        public virtual string Namespace__ { get; set; } 
+        public virtual string Namespace__ { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3414,33 +3414,33 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>Output only. The creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The description of the game server config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>FleetConfig contains a list of Agones fleet specs. Only one FleetConfig is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fleetConfigs")]
-        public virtual System.Collections.Generic.IList<FleetConfig> FleetConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<FleetConfig> FleetConfigs { get; set; }
 
         /// <summary>The labels associated with this game server config. Each label is a key-value pair.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The resource name of the game server config. Uses the form:
         /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`. For example,
         /// `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The autoscaling settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scalingConfigs")]
-        public virtual System.Collections.Generic.IList<ScalingConfig> ScalingConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<ScalingConfig> ScalingConfigs { get; set; }
 
         /// <summary>Output only. The last-modified time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3451,11 +3451,11 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>The game server config for this override.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configVersion")]
-        public virtual string ConfigVersion { get; set; } 
+        public virtual string ConfigVersion { get; set; }
 
         /// <summary>Selector for choosing applicable realms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("realmsSelector")]
-        public virtual RealmSelector RealmsSelector { get; set; } 
+        public virtual RealmSelector RealmsSelector { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3466,29 +3466,29 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>Output only. The creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Human readable description of the game server delpoyment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The labels associated with this game server deployment. Each label is a key-value pair.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The resource name of the game server deployment. Uses the form:
         /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-
         /// project/locations/global/gameServerDeployments/my-deployment`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The last-modified time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
     }    
 
@@ -3497,31 +3497,31 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>Output only. The creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The default game server config is applied to all realms unless overridden in the rollout. For
         /// example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultGameServerConfig")]
-        public virtual string DefaultGameServerConfig { get; set; } 
+        public virtual string DefaultGameServerConfig { get; set; }
 
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Contains the game server config rollout overrides. Overrides are processed in the order they are
         /// listed. Once a match is found for a realm, the rest of the list is not processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gameServerConfigOverrides")]
-        public virtual System.Collections.Generic.IList<GameServerConfigOverride> GameServerConfigOverrides { get; set; } 
+        public virtual System.Collections.Generic.IList<GameServerConfigOverride> GameServerConfigOverrides { get; set; }
 
         /// <summary>The resource name of the game server deployment rollout. Uses the form:
         /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`. For example, `projects
         /// /my-project/locations/global/gameServerDeployments/my-deployment/rollout`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The last-modified time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
     }    
 
@@ -3533,7 +3533,7 @@ namespace Google.Apis.GameServices.v1beta.Data
         /// `{cluster}` If project and location are not specified, the project and location of the GameServerCluster
         /// resource are used to generate the full name of the GKE cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
-        public virtual string Cluster { get; set; } 
+        public virtual string Cluster { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3544,7 +3544,7 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>Resource labels for this selector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3555,16 +3555,16 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>The list of game server clusters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gameServerClusters")]
-        public virtual System.Collections.Generic.IList<GameServerCluster> GameServerClusters { get; set; } 
+        public virtual System.Collections.Generic.IList<GameServerCluster> GameServerClusters { get; set; }
 
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>List of locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3575,16 +3575,16 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>The list of game server configs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gameServerConfigs")]
-        public virtual System.Collections.Generic.IList<GameServerConfig> GameServerConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<GameServerConfig> GameServerConfigs { get; set; }
 
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>List of locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3595,16 +3595,16 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>The list of game server deployments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gameServerDeployments")]
-        public virtual System.Collections.Generic.IList<GameServerDeployment> GameServerDeployments { get; set; } 
+        public virtual System.Collections.Generic.IList<GameServerDeployment> GameServerDeployments { get; set; }
 
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>List of locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3615,11 +3615,11 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>A list of locations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
+        public virtual System.Collections.Generic.IList<Location> Locations { get; set; }
 
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3630,11 +3630,11 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3646,15 +3646,15 @@ namespace Google.Apis.GameServices.v1beta.Data
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of realms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("realms")]
-        public virtual System.Collections.Generic.IList<Realm> Realms { get; set; } 
+        public virtual System.Collections.Generic.IList<Realm> Realms { get; set; }
 
         /// <summary>List of locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3665,25 +3665,25 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-
         /// east1"}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The canonical id for this location. For example: `"us-east1"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>Service-specific metadata. For example the available capacity at the given location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>Resource name for the location, which may vary between implementations. For example: `"projects
         /// /example-project/locations/us-east1"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3694,15 +3694,15 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>Cloud audit options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudAudit")]
-        public virtual CloudAuditOptions CloudAudit { get; set; } 
+        public virtual CloudAuditOptions CloudAudit { get; set; }
 
         /// <summary>Counter options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("counter")]
-        public virtual CounterOptions Counter { get; set; } 
+        public virtual CounterOptions Counter { get; set; }
 
         /// <summary>Data access options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataAccess")]
-        public virtual DataAccessOptions DataAccess { get; set; } 
+        public virtual DataAccessOptions DataAccess { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3714,23 +3714,23 @@ namespace Google.Apis.GameServices.v1beta.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -3738,7 +3738,7 @@ namespace Google.Apis.GameServices.v1beta.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3749,43 +3749,43 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>Output only. API version used to start the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; } 
+        public virtual string ApiVersion { get; set; }
 
         /// <summary>Output only. The time the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. The time the operation finished running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Output only. Operation status for Game Services API operations. Operation status is in the form of
         /// key-value pairs where keys are resource IDs and the values show the status of the operation. In case of
         /// failures, the value includes an error code and error message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationStatus")]
-        public virtual System.Collections.Generic.IDictionary<string,OperationStatus> OperationStatus { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, OperationStatus> OperationStatus { get; set; }
 
         /// <summary>Output only. Identifies whether the user has requested cancellation of the operation. Operations
         /// that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1,
         /// corresponding to `Code.CANCELLED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
-        public virtual System.Nullable<bool> RequestedCancellation { get; set; } 
+        public virtual System.Nullable<bool> RequestedCancellation { get; set; }
 
         /// <summary>Output only. Human-readable status of the operation, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
-        public virtual string StatusMessage { get; set; } 
+        public virtual string StatusMessage { get; set; }
 
         /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; } 
+        public virtual string Target { get; set; }
 
         /// <summary>Output only. List of Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
-        public virtual string Verb { get; set; } 
+        public virtual string Verb { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3795,15 +3795,15 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>Output only. Whether the operation is done or still in progress.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error code in case of failures.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
-        public virtual string ErrorCode { get; set; } 
+        public virtual string ErrorCode { get; set; }
 
         /// <summary>The human-readable error message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
-        public virtual string ErrorMessage { get; set; } 
+        public virtual string ErrorMessage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3833,12 +3833,12 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
-        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; }
 
         /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
         /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
         /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
@@ -3849,10 +3849,10 @@ namespace Google.Apis.GameServices.v1beta.Data
         /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
         /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("iamOwned")]
-        public virtual System.Nullable<bool> IamOwned { get; set; } 
+        public virtual System.Nullable<bool> IamOwned { get; set; }
 
         /// <summary>If more than one rule is specified, the rules are applied in the following manner: - All matching
         /// LOG rules are always applied. - If any DENY/DENY_WITH_LOG rule matches, permission is denied. Logging will
@@ -3860,7 +3860,7 @@ namespace Google.Apis.GameServices.v1beta.Data
         /// matches, permission is granted. Logging will be applied if one or more matching rule requires logging. -
         /// Otherwise, if no rule applies, permission is denied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
-        public virtual System.Collections.Generic.IList<Rule> Rules { get; set; } 
+        public virtual System.Collections.Generic.IList<Rule> Rules { get; set; }
 
         /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
         /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
@@ -3874,7 +3874,7 @@ namespace Google.Apis.GameServices.v1beta.Data
         /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
     }    
 
@@ -3883,11 +3883,11 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>The ETag of the game server cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The target state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetState")]
-        public virtual TargetState TargetState { get; set; } 
+        public virtual TargetState TargetState { get; set; }
 
     }    
 
@@ -3896,11 +3896,11 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>The ETag of the game server cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The target state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetState")]
-        public virtual TargetState TargetState { get; set; } 
+        public virtual TargetState TargetState { get; set; }
 
     }    
 
@@ -3910,15 +3910,15 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>ETag of the game server deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The target state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetState")]
-        public virtual TargetState TargetState { get; set; } 
+        public virtual TargetState TargetState { get; set; }
 
         /// <summary>Locations that could not be reached on this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unavailable")]
-        public virtual System.Collections.Generic.IList<string> Unavailable { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Unavailable { get; set; }
 
     }    
 
@@ -3927,11 +3927,11 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>ETag of the realm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The target state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetState")]
-        public virtual TargetState TargetState { get; set; } 
+        public virtual TargetState TargetState { get; set; }
 
     }    
 
@@ -3940,11 +3940,11 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>The ETag of the game server cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The target state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetState")]
-        public virtual TargetState TargetState { get; set; } 
+        public virtual TargetState TargetState { get; set; }
 
     }    
 
@@ -3953,34 +3953,34 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>Output only. The creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Human readable description of the realm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The labels associated with this realm. Each label is a key-value pair.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The resource name of the realm. Uses the form:
         /// `projects/{project}/locations/{location}/realms/{realm}`. For example, `projects/my-
         /// project/locations/{location}/realms/my-realm`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. Time zone where all policies targeting this realm are evaluated. The value of this field
         /// must be from the IANA time zone database: https://www.iana.org/time-zones.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
-        public virtual string TimeZone { get; set; } 
+        public virtual string TimeZone { get; set; }
 
         /// <summary>Output only. The last-modified time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
     }    
 
@@ -3989,7 +3989,7 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>List of realms to match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("realms")]
-        public virtual System.Collections.Generic.IList<string> Realms { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Realms { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4000,36 +4000,36 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>Required</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual string Action { get; set; } 
+        public virtual string Action { get; set; }
 
         /// <summary>Additional restrictions that must be met. All conditions must pass for the rule to match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
-        public virtual System.Collections.Generic.IList<Condition> Conditions { get; set; } 
+        public virtual System.Collections.Generic.IList<Condition> Conditions { get; set; }
 
         /// <summary>Human-readable description of the rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>If one or more 'in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is
         /// in at least one of these entries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("in")]
-        public virtual System.Collections.Generic.IList<string> In__ { get; set; } 
+        public virtual System.Collections.Generic.IList<string> In__ { get; set; }
 
         /// <summary>The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG
         /// action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logConfig")]
-        public virtual System.Collections.Generic.IList<LogConfig> LogConfig { get; set; } 
+        public virtual System.Collections.Generic.IList<LogConfig> LogConfig { get; set; }
 
         /// <summary>If one or more 'not_in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR
         /// is in none of the entries. The format for in and not_in entries can be found at in the Local IAM
         /// documentation (see go/local-iam#features).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notIn")]
-        public virtual System.Collections.Generic.IList<string> NotIn { get; set; } 
+        public virtual System.Collections.Generic.IList<string> NotIn { get; set; }
 
         /// <summary>A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value of '*' matches all
         /// permissions, and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4041,21 +4041,21 @@ namespace Google.Apis.GameServices.v1beta.Data
         /// <summary>Required. Agones fleet autoscaler spec. Example spec:
         /// https://agones.dev/site/docs/reference/fleetautoscaler/</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fleetAutoscalerSpec")]
-        public virtual string FleetAutoscalerSpec { get; set; } 
+        public virtual string FleetAutoscalerSpec { get; set; }
 
         /// <summary>Required. The name of the Scaling Config</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The schedules to which this Scaling Config applies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schedules")]
-        public virtual System.Collections.Generic.IList<Schedule> Schedules { get; set; } 
+        public virtual System.Collections.Generic.IList<Schedule> Schedules { get; set; }
 
         /// <summary>Labels used to identify the game server clusters to which this Agones scaling config applies. A
         /// game server cluster is subject to this Agones scaling config if its labels match any of the selector
         /// entries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectors")]
-        public virtual System.Collections.Generic.IList<LabelSelector> Selectors { get; set; } 
+        public virtual System.Collections.Generic.IList<LabelSelector> Selectors { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4071,20 +4071,20 @@ namespace Google.Apis.GameServices.v1beta.Data
         /// <summary>The duration for the cron job event. The duration of the event is effective after the cron job's
         /// start time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cronJobDuration")]
-        public virtual object CronJobDuration { get; set; } 
+        public virtual object CronJobDuration { get; set; }
 
         /// <summary>The cron definition of the scheduled event. See https://en.wikipedia.org/wiki/Cron. Cron spec
         /// specifies the local time as defined by the realm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cronSpec")]
-        public virtual string CronSpec { get; set; } 
+        public virtual string CronSpec { get; set; }
 
         /// <summary>The end time of the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>The start time of the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4097,13 +4097,13 @@ namespace Google.Apis.GameServices.v1beta.Data
         /// a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
         /// might reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual Policy Policy { get; set; } 
+        public virtual Policy Policy { get; set; }
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
         /// will be modified. If no mask is provided, the following default mask is used: `paths: "bindings,
         /// etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4115,12 +4115,12 @@ namespace Google.Apis.GameServices.v1beta.Data
         /// <summary>The game server config resource. Uses the form: `projects/{project}/locations/{location}/gameServer
         /// Deployments/{deployment_id}/configs/{config_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gameServerConfigName")]
-        public virtual string GameServerConfigName { get; set; } 
+        public virtual string GameServerConfigName { get; set; }
 
         /// <summary>The name of the Agones leet config or Agones scaling config used to derive the Agones fleet or
         /// Agones autoscaler spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4135,17 +4135,17 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4156,17 +4156,17 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>Agones fleet details for game server clusters and game server deployments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fleetDetails")]
-        public virtual System.Collections.Generic.IList<TargetFleetDetails> FleetDetails { get; set; } 
+        public virtual System.Collections.Generic.IList<TargetFleetDetails> FleetDetails { get; set; }
 
         /// <summary>The game server cluster name. Uses the form:
         /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gameServerClusterName")]
-        public virtual string GameServerClusterName { get; set; } 
+        public virtual string GameServerClusterName { get; set; }
 
         /// <summary>The game server deployment name. Uses the form:
         /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gameServerDeploymentName")]
-        public virtual string GameServerDeploymentName { get; set; } 
+        public virtual string GameServerDeploymentName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4177,11 +4177,11 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>The name of the Agones fleet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Encapsulates the source of the Agones fleet spec. The Agones fleet spec source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("specSource")]
-        public virtual SpecSource SpecSource { get; set; } 
+        public virtual SpecSource SpecSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4192,12 +4192,12 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>The name of the Agones autoscaler.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Encapsulates the source of the Agones fleet spec. Details about the Agones autoscaler
         /// spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("specSource")]
-        public virtual SpecSource SpecSource { get; set; } 
+        public virtual SpecSource SpecSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4208,11 +4208,11 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>Reference to target Agones fleet autoscaling policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoscaler")]
-        public virtual TargetFleetAutoscaler Autoscaler { get; set; } 
+        public virtual TargetFleetAutoscaler Autoscaler { get; set; }
 
         /// <summary>Reference to target Agones fleet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fleet")]
-        public virtual TargetFleet Fleet { get; set; } 
+        public virtual TargetFleet Fleet { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4223,7 +4223,7 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>Details about Agones fleets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<TargetDetails> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<TargetDetails> Details { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4236,7 +4236,7 @@ namespace Google.Apis.GameServices.v1beta.Data
         /// 'storage.*') are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4247,7 +4247,7 @@ namespace Google.Apis.GameServices.v1beta.Data
     {
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

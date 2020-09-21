@@ -519,11 +519,11 @@ namespace Google.Apis.CloudProfiler.v2.Data
     {
         /// <summary>Deployment details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
-        public virtual Deployment Deployment { get; set; } 
+        public virtual Deployment Deployment { get; set; }
 
         /// <summary>One or more profile types that the agent is capable of providing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileType")]
-        public virtual System.Collections.Generic.IList<string> ProfileType { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ProfileType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -540,17 +540,17 @@ namespace Google.Apis.CloudProfiler.v2.Data
         /// "region" label should be present describing the deployment location. An example of a zone is "us-
         /// central1-a", an example of a region is "us-central1" or "us-central".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Project ID is the ID of a cloud project. Validation regex: `^a-z{4,61}[a-z0-9]$`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Target is the service name used to group related deployments: * Service name for GAE Flex /
         /// Standard. * Cluster and container name for GKE. * User-specified string for direct GCE profiling (e.g.
         /// Java). * Job name for Dataflow. Validation regex: `^[a-z]([-a-z0-9_.]{0,253}[a-z0-9])?$`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; } 
+        public virtual string Target { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -561,34 +561,34 @@ namespace Google.Apis.CloudProfiler.v2.Data
     {
         /// <summary>Deployment this profile corresponds to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
-        public virtual Deployment Deployment { get; set; } 
+        public virtual Deployment Deployment { get; set; }
 
         /// <summary>Duration of the profiling session. Input (for the offline mode) or output (for the online mode).
         /// The field represents requested profiling duration. It may slightly differ from the effective profiling
         /// duration, which is recorded in the profile data, in case the profiling can't be stopped immediately (e.g. in
         /// case stopping the profiling is handled asynchronously).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
-        public virtual object Duration { get; set; } 
+        public virtual object Duration { get; set; }
 
         /// <summary>Input only. Labels associated to this specific profile. These labels will get merged with the
         /// deployment labels for the final data set. See documentation on deployment labels for validation rules and
         /// limits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Output only. Opaque, server-assigned, unique ID for this profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Input only. Profile bytes, as a gzip compressed serialized proto, the format is
         /// https://github.com/google/pprof/blob/master/proto/profile.proto.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileBytes")]
-        public virtual string ProfileBytes { get; set; } 
+        public virtual string ProfileBytes { get; set; }
 
         /// <summary>Type of profile. For offline mode, this must be specified when creating the profile. For online
         /// mode it is assigned and returned by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileType")]
-        public virtual string ProfileType { get; set; } 
+        public virtual string ProfileType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

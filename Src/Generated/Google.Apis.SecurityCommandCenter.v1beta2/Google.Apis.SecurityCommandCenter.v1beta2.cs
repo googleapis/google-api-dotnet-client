@@ -3128,12 +3128,12 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     {
         /// <summary>The state of enablement for the module at its level of the resource hierarchy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("moduleEnablementState")]
-        public virtual string ModuleEnablementState { get; set; } 
+        public virtual string ModuleEnablementState { get; set; }
 
         /// <summary>The configuration value for the module. The absence of this field implies its inheritance from the
         /// parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Value { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3145,28 +3145,28 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>The configurations including the state of enablement for the service's different modules. The
         /// absence of a module in the map implies its configuration is inherited from its parent's.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modules")]
-        public virtual System.Collections.Generic.IDictionary<string,Config> Modules { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, Config> Modules { get; set; }
 
         /// <summary>The resource name of the ContainerThreatDetectionSettings. Formats: *
         /// organizations/{organization}/containerThreatDetectionSettings *
         /// folders/{folder}/containerThreatDetectionSettings * projects/{project}/containerThreatDetectionSettings *
         /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The service account used by Container Threat Detection for scanning. Service accounts
         /// are scoped at the project level meaning this field will be empty at any level above a project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
-        public virtual string ServiceAccount { get; set; } 
+        public virtual string ServiceAccount { get; set; }
 
         /// <summary>The state of enablement for the service at its level of the resource hierarchy. A DISABLED state
         /// will override all module enablement_states to DISABLED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceEnablementState")]
-        public virtual string ServiceEnablementState { get; set; } 
+        public virtual string ServiceEnablementState { get; set; }
 
         /// <summary>Output only. The time the settings were last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3177,15 +3177,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     {
         /// <summary>The time the subscription has or will end.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>The time the subscription has or will start.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The type of subscription</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3197,22 +3197,22 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>The configurations including the state of enablement for the service's different modules. The
         /// absence of a module in the map implies its configuration is inherited from its parent's.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modules")]
-        public virtual System.Collections.Generic.IDictionary<string,Config> Modules { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, Config> Modules { get; set; }
 
         /// <summary>The resource name of the EventThreatDetectionSettings. Formats: *
         /// organizations/{organization}/eventThreatDetectionSettings * folders/{folder}/eventThreatDetectionSettings *
         /// projects/{project}/eventThreatDetectionSettings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The state of enablement for the service at its level of the resource hierarchy. A DISABLED state
         /// will override all module enablement_states to DISABLED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceEnablementState")]
-        public virtual string ServiceEnablementState { get; set; } 
+        public virtual string ServiceEnablementState { get; set; }
 
         /// <summary>Output only. The time the settings were last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3227,58 +3227,58 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>The additional taxonomy group within findings from a given source. This field is immutable after
         /// creation time. Example: "XSS_FLASH_INJECTION"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
-        public virtual string Category { get; set; } 
+        public virtual string Category { get; set; }
 
         /// <summary>The time at which the finding was created in Security Command Center.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The time at which the event took place, or when an update to the finding occurred. For example, if
         /// the finding represents an open firewall it would capture the time the detector believes the firewall became
         /// open. The accuracy is determined by the detector. If the finding were to be resolved afterward, this time
         /// would reflect when the finding was resolved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
-        public virtual object EventTime { get; set; } 
+        public virtual object EventTime { get; set; }
 
         /// <summary>The URI that, if available, points to a web page outside of Security Command Center where
         /// additional information about the finding can be found. This field is guaranteed to be either empty or a well
         /// formed URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalUri")]
-        public virtual string ExternalUri { get; set; } 
+        public virtual string ExternalUri { get; set; }
 
         /// <summary>The relative resource name of this finding. See:
         /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
         /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The relative resource name of the source the finding belongs to. See:
         /// https://cloud.google.com/apis/design/resource_names#relative_resource_name This field is immutable after
         /// creation time. For example: "organizations/{organization_id}/sources/{source_id}"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
-        public virtual string Parent { get; set; } 
+        public virtual string Parent { get; set; }
 
         /// <summary>For findings on Google Cloud resources, the full resource name of the Google Cloud resource this
         /// finding is for. See: https://cloud.google.com/apis/design/resource_names#full_resource_name When the finding
         /// is for a non-Google Cloud resource, the resourceName can be a customer or partner defined string. This field
         /// is immutable after creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
-        public virtual string ResourceName { get; set; } 
+        public virtual string ResourceName { get; set; }
 
         /// <summary>Output only. User specified security marks. These marks are entirely managed by the user and come
         /// from the SecurityMarks resource that belongs to the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityMarks")]
-        public virtual SecurityMarks SecurityMarks { get; set; } 
+        public virtual SecurityMarks SecurityMarks { get; set; }
 
         /// <summary>Source specific properties. These properties are managed by the source that writes the finding. The
         /// key names in the source_properties map must be between 1 and 255 characters, and must start with a letter
         /// and contain alphanumeric characters or underscores only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceProperties")]
-        public virtual System.Collections.Generic.IDictionary<string,object> SourceProperties { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> SourceProperties { get; set; }
 
         /// <summary>The state of the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3289,15 +3289,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     {
         /// <summary>If it's a Finding based notification config, this field will be populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finding")]
-        public virtual Finding Finding { get; set; } 
+        public virtual Finding Finding { get; set; }
 
         /// <summary>Name of the notification config that generated current notification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationConfigName")]
-        public virtual string NotificationConfigName { get; set; } 
+        public virtual string NotificationConfigName { get; set; }
 
         /// <summary>The Cloud resource tied to this notification's Finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
-        public virtual GoogleCloudSecuritycenterV1Resource Resource { get; set; } 
+        public virtual GoogleCloudSecuritycenterV1Resource Resource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3309,23 +3309,23 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>The full resource name of the resource. See:
         /// https://cloud.google.com/apis/design/resource_names#full_resource_name</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The full resource name of resource's parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
-        public virtual string Parent { get; set; } 
+        public virtual string Parent { get; set; }
 
         /// <summary> The human readable name of resource's parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentDisplayName")]
-        public virtual string ParentDisplayName { get; set; } 
+        public virtual string ParentDisplayName { get; set; }
 
         /// <summary>The full resource name of project that the resource belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
-        public virtual string Project { get; set; } 
+        public virtual string Project { get; set; }
 
         /// <summary> The human readable name of project that the resource belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectDisplayName")]
-        public virtual string ProjectDisplayName { get; set; } 
+        public virtual string ProjectDisplayName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3336,11 +3336,11 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     {
         /// <summary>The duration between asset discovery run start and end</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
-        public virtual object Duration { get; set; } 
+        public virtual object Duration { get; set; }
 
         /// <summary>The state of an asset discovery run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3351,11 +3351,11 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     {
         /// <summary>The duration between asset discovery run start and end</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
-        public virtual object Duration { get; set; } 
+        public virtual object Duration { get; set; }
 
         /// <summary>The state of an asset discovery run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3369,38 +3369,38 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     {
         /// <summary>The time at which the asset was created in Security Command Center.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Cloud IAM Policy information associated with the Google Cloud resource described by the Security
         /// Command Center asset. This information is managed and defined by the Google Cloud resource and cannot be
         /// modified by the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iamPolicy")]
-        public virtual GoogleCloudSecuritycenterV1p1beta1IamPolicy IamPolicy { get; set; } 
+        public virtual GoogleCloudSecuritycenterV1p1beta1IamPolicy IamPolicy { get; set; }
 
         /// <summary>The relative resource name of this asset. See:
         /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
         /// "organizations/{organization_id}/assets/{asset_id}".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Resource managed properties. These properties are managed and defined by the Google Cloud resource
         /// and cannot be modified by the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceProperties")]
-        public virtual System.Collections.Generic.IDictionary<string,object> ResourceProperties { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> ResourceProperties { get; set; }
 
         /// <summary>Security Command Center managed properties. These properties are managed by Security Command Center
         /// and cannot be modified by the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityCenterProperties")]
-        public virtual GoogleCloudSecuritycenterV1p1beta1SecurityCenterProperties SecurityCenterProperties { get; set; } 
+        public virtual GoogleCloudSecuritycenterV1p1beta1SecurityCenterProperties SecurityCenterProperties { get; set; }
 
         /// <summary>User specified security marks. These marks are entirely managed by the user and come from the
         /// SecurityMarks resource that belongs to the asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityMarks")]
-        public virtual GoogleCloudSecuritycenterV1p1beta1SecurityMarks SecurityMarks { get; set; } 
+        public virtual GoogleCloudSecuritycenterV1p1beta1SecurityMarks SecurityMarks { get; set; }
 
         /// <summary>The time at which the asset was last updated, added, or deleted in Cloud SCC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3414,62 +3414,62 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>The additional taxonomy group within findings from a given source. This field is immutable after
         /// creation time. Example: "XSS_FLASH_INJECTION"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
-        public virtual string Category { get; set; } 
+        public virtual string Category { get; set; }
 
         /// <summary>The time at which the finding was created in Security Command Center.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The time at which the event took place, or when an update to the finding occurred. For example, if
         /// the finding represents an open firewall it would capture the time the detector believes the firewall became
         /// open. The accuracy is determined by the detector. If the finding were to be resolved afterward, this time
         /// would reflect when the finding was resolved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
-        public virtual object EventTime { get; set; } 
+        public virtual object EventTime { get; set; }
 
         /// <summary>The URI that, if available, points to a web page outside of Security Command Center where
         /// additional information about the finding can be found. This field is guaranteed to be either empty or a well
         /// formed URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalUri")]
-        public virtual string ExternalUri { get; set; } 
+        public virtual string ExternalUri { get; set; }
 
         /// <summary>The relative resource name of this finding. See:
         /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
         /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The relative resource name of the source the finding belongs to. See:
         /// https://cloud.google.com/apis/design/resource_names#relative_resource_name This field is immutable after
         /// creation time. For example: "organizations/{organization_id}/sources/{source_id}"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
-        public virtual string Parent { get; set; } 
+        public virtual string Parent { get; set; }
 
         /// <summary>For findings on Google Cloud resources, the full resource name of the Google Cloud resource this
         /// finding is for. See: https://cloud.google.com/apis/design/resource_names#full_resource_name When the finding
         /// is for a non-Google Cloud resource, the resourceName can be a customer or partner defined string. This field
         /// is immutable after creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
-        public virtual string ResourceName { get; set; } 
+        public virtual string ResourceName { get; set; }
 
         /// <summary>Output only. User specified security marks. These marks are entirely managed by the user and come
         /// from the SecurityMarks resource that belongs to the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityMarks")]
-        public virtual GoogleCloudSecuritycenterV1p1beta1SecurityMarks SecurityMarks { get; set; } 
+        public virtual GoogleCloudSecuritycenterV1p1beta1SecurityMarks SecurityMarks { get; set; }
 
         /// <summary>The severity of the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
-        public virtual string Severity { get; set; } 
+        public virtual string Severity { get; set; }
 
         /// <summary>Source specific properties. These properties are managed by the source that writes the finding. The
         /// key names in the source_properties map must be between 1 and 255 characters, and must start with a letter
         /// and contain alphanumeric characters or underscores only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceProperties")]
-        public virtual System.Collections.Generic.IDictionary<string,object> SourceProperties { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> SourceProperties { get; set; }
 
         /// <summary>The state of the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3483,7 +3483,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>The JSON representation of the Policy associated with the asset. See
         /// https://cloud.google.com/iam/docs/reference/rest/v1/Policy for format details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyBlob")]
-        public virtual string PolicyBlob { get; set; } 
+        public virtual string PolicyBlob { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3494,19 +3494,19 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     {
         /// <summary>If it's a Finding based notification config, this field will be populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finding")]
-        public virtual GoogleCloudSecuritycenterV1p1beta1Finding Finding { get; set; } 
+        public virtual GoogleCloudSecuritycenterV1p1beta1Finding Finding { get; set; }
 
         /// <summary>Name of the notification config that generated current notification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationConfigName")]
-        public virtual string NotificationConfigName { get; set; } 
+        public virtual string NotificationConfigName { get; set; }
 
         /// <summary>The Cloud resource tied to the notification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
-        public virtual GoogleCloudSecuritycenterV1p1beta1Resource Resource { get; set; } 
+        public virtual GoogleCloudSecuritycenterV1p1beta1Resource Resource { get; set; }
 
         /// <summary>If it's an asset based notification config, this field will be populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("temporalAsset")]
-        public virtual GoogleCloudSecuritycenterV1p1beta1TemporalAsset TemporalAsset { get; set; } 
+        public virtual GoogleCloudSecuritycenterV1p1beta1TemporalAsset TemporalAsset { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3518,23 +3518,23 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>The full resource name of the resource. See:
         /// https://cloud.google.com/apis/design/resource_names#full_resource_name</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The full resource name of resource's parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
-        public virtual string Parent { get; set; } 
+        public virtual string Parent { get; set; }
 
         /// <summary> The human readable name of resource's parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentDisplayName")]
-        public virtual string ParentDisplayName { get; set; } 
+        public virtual string ParentDisplayName { get; set; }
 
         /// <summary>The full resource name of project that the resource belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
-        public virtual string Project { get; set; } 
+        public virtual string Project { get; set; }
 
         /// <summary> The human readable name of project that the resource belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectDisplayName")]
-        public virtual string ProjectDisplayName { get; set; } 
+        public virtual string ProjectDisplayName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3545,11 +3545,11 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     {
         /// <summary>The duration between asset discovery run start and end</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
-        public virtual object Duration { get; set; } 
+        public virtual object Duration { get; set; }
 
         /// <summary>The state of an asset discovery run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3561,40 +3561,40 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     {
         /// <summary>The user defined display name for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceDisplayName")]
-        public virtual string ResourceDisplayName { get; set; } 
+        public virtual string ResourceDisplayName { get; set; }
 
         /// <summary>The full resource name of the Google Cloud resource this asset represents. This field is immutable
         /// after create time. See: https://cloud.google.com/apis/design/resource_names#full_resource_name</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
-        public virtual string ResourceName { get; set; } 
+        public virtual string ResourceName { get; set; }
 
         /// <summary>Owners of the Google Cloud resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceOwners")]
-        public virtual System.Collections.Generic.IList<string> ResourceOwners { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ResourceOwners { get; set; }
 
         /// <summary>The full resource name of the immediate parent of the resource. See:
         /// https://cloud.google.com/apis/design/resource_names#full_resource_name</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceParent")]
-        public virtual string ResourceParent { get; set; } 
+        public virtual string ResourceParent { get; set; }
 
         /// <summary>The user defined display name for the parent of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceParentDisplayName")]
-        public virtual string ResourceParentDisplayName { get; set; } 
+        public virtual string ResourceParentDisplayName { get; set; }
 
         /// <summary>The full resource name of the project the resource belongs to. See:
         /// https://cloud.google.com/apis/design/resource_names#full_resource_name</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceProject")]
-        public virtual string ResourceProject { get; set; } 
+        public virtual string ResourceProject { get; set; }
 
         /// <summary>The user defined display name for the project of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceProjectDisplayName")]
-        public virtual string ResourceProjectDisplayName { get; set; } 
+        public virtual string ResourceProjectDisplayName { get; set; }
 
         /// <summary>The type of the Google Cloud resource. Examples include: APPLICATION, PROJECT, and ORGANIZATION.
         /// This is a case insensitive field defined by Security Command Center and/or the producer of the resource and
         /// is immutable after create time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
-        public virtual string ResourceType { get; set; } 
+        public virtual string ResourceType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3610,14 +3610,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// Keys must be letters, numbers, underscores, or dashes * Values have leading and trailing whitespace trimmed,
         /// remaining characters must be between 1 - 4096 characters (inclusive)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marks")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Marks { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Marks { get; set; }
 
         /// <summary>The relative resource name of the SecurityMarks. See:
         /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples:
         /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
         /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3629,11 +3629,11 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     {
         /// <summary>Asset data that includes attributes, properties and marks about the asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("asset")]
-        public virtual GoogleCloudSecuritycenterV1p1beta1Asset Asset { get; set; } 
+        public virtual GoogleCloudSecuritycenterV1p1beta1Asset Asset { get; set; }
 
         /// <summary>Represents if the asset was created/updated/deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("changeType")]
-        public virtual string ChangeType { get; set; } 
+        public virtual string ChangeType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3647,16 +3647,16 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// is only referenced by services that support log sink. Please refer to the documentation for an updated list
         /// of compatible services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logSinkProject")]
-        public virtual string LogSinkProject { get; set; } 
+        public virtual string LogSinkProject { get; set; }
 
         /// <summary>The resource name of the SecurityCenterSettings. Format:
         /// organizations/{organization}/securityCenterSettings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The organization level service account to be used for security center components.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgServiceAccount")]
-        public virtual string OrgServiceAccount { get; set; } 
+        public virtual string OrgServiceAccount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3668,27 +3668,27 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>The configurations including the state of enablement for the service's different modules. The
         /// absence of a module in the map implies its configuration is inherited from its parent's.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modules")]
-        public virtual System.Collections.Generic.IDictionary<string,Config> Modules { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, Config> Modules { get; set; }
 
         /// <summary>The resource name of the SecurityHealthAnalyticsSettings. Formats: *
         /// organizations/{organization}/securityHealthAnalyticsSettings *
         /// folders/{folder}/securityHealthAnalyticsSettings *
         /// projects/{project}/securityHealthAnalyticsSettings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The service account used by Security Health Analytics detectors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
-        public virtual string ServiceAccount { get; set; } 
+        public virtual string ServiceAccount { get; set; }
 
         /// <summary>The state of enablement for the service at its level of the resource hierarchy. A DISABLED state
         /// will override all module enablement_states to DISABLED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceEnablementState")]
-        public virtual string ServiceEnablementState { get; set; } 
+        public virtual string ServiceEnablementState { get; set; }
 
         /// <summary>Output only. The time the settings were last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3704,14 +3704,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// Keys must be letters, numbers, underscores, or dashes * Values have leading and trailing whitespace trimmed,
         /// remaining characters must be between 1 - 4096 characters (inclusive)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marks")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Marks { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Marks { get; set; }
 
         /// <summary>The relative resource name of the SecurityMarks. See:
         /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples:
         /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
         /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3723,15 +3723,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>The details of the most recent active subscription. If there has never been a subscription this
         /// will be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual Details Details { get; set; } 
+        public virtual Details Details { get; set; }
 
         /// <summary>The resource name of the subscription. Format: organizations/{organization}/subscription</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The tier of SCC features this organization currently has access to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]
-        public virtual string Tier { get; set; } 
+        public virtual string Tier { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3743,22 +3743,22 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>The configurations including the state of enablement for the service's different modules. The
         /// absence of a module in the map implies its configuration is inherited from its parent's.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modules")]
-        public virtual System.Collections.Generic.IDictionary<string,Config> Modules { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, Config> Modules { get; set; }
 
         /// <summary>The resource name of the WebSecurityScannerSettings. Formats: *
         /// organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings *
         /// projects/{project}/webSecurityScannerSettings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The state of enablement for the service at its level of the resource hierarchy. A DISABLED state
         /// will override all module enablement_states to DISABLED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceEnablementState")]
-        public virtual string ServiceEnablementState { get; set; } 
+        public virtual string ServiceEnablementState { get; set; }
 
         /// <summary>Output only. The time the settings were last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

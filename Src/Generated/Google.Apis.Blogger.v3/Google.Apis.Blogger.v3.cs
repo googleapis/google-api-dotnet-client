@@ -3681,55 +3681,55 @@ namespace Google.Apis.Blogger.v3.Data
     {
         /// <summary>The JSON custom meta-data for the Blog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customMetaData")]
-        public virtual string CustomMetaData { get; set; } 
+        public virtual string CustomMetaData { get; set; }
 
         /// <summary>The description of this blog. This is displayed underneath the title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The identifier for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The kind of this entry. Always blogger#blog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The locale this Blog is set to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locale")]
-        public virtual LocaleData Locale { get; set; } 
+        public virtual LocaleData Locale { get; set; }
 
         /// <summary>The name of this blog. This is displayed as the title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The container of pages in this blog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pages")]
-        public virtual PagesData Pages { get; set; } 
+        public virtual PagesData Pages { get; set; }
 
         /// <summary>The container of posts in this blog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("posts")]
-        public virtual PostsData Posts { get; set; } 
+        public virtual PostsData Posts { get; set; }
 
         /// <summary>RFC 3339 date-time when this blog was published.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("published")]
-        public virtual string Published { get; set; } 
+        public virtual string Published { get; set; }
 
         /// <summary>The API REST URL to fetch this resource from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>The status of the blog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>RFC 3339 date-time when this blog was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]
-        public virtual string Updated { get; set; } 
+        public virtual string Updated { get; set; }
 
         /// <summary>The URL where this blog is published.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3740,15 +3740,15 @@ namespace Google.Apis.Blogger.v3.Data
         {
             /// <summary>The country this blog's locale is set to.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("country")]
-            public virtual string Country { get; set; } 
+            public virtual string Country { get; set; }
 
             /// <summary>The language this blog is authored in.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("language")]
-            public virtual string Language { get; set; } 
+            public virtual string Language { get; set; }
 
             /// <summary>The language variant this blog is authored in.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("variant")]
-            public virtual string Variant { get; set; } 
+            public virtual string Variant { get; set; }
 
         }    
 
@@ -3757,11 +3757,11 @@ namespace Google.Apis.Blogger.v3.Data
         {
             /// <summary>The URL of the container for pages in this blog.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-            public virtual string SelfLink { get; set; } 
+            public virtual string SelfLink { get; set; }
 
             /// <summary>The count of pages in this blog.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("totalItems")]
-            public virtual System.Nullable<int> TotalItems { get; set; } 
+            public virtual System.Nullable<int> TotalItems { get; set; }
 
         }    
 
@@ -3770,15 +3770,15 @@ namespace Google.Apis.Blogger.v3.Data
         {
             /// <summary>The List of Posts for this Blog.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("items")]
-            public virtual System.Collections.Generic.IList<Post> Items { get; set; } 
+            public virtual System.Collections.Generic.IList<Post> Items { get; set; }
 
             /// <summary>The URL of the container for posts in this blog.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-            public virtual string SelfLink { get; set; } 
+            public virtual string SelfLink { get; set; }
 
             /// <summary>The count of posts in this blog.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("totalItems")]
-            public virtual System.Nullable<int> TotalItems { get; set; } 
+            public virtual System.Nullable<int> TotalItems { get; set; }
 
         }
     }    
@@ -3787,15 +3787,15 @@ namespace Google.Apis.Blogger.v3.Data
     {
         /// <summary>Admin level list of blog per-user information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blogUserInfos")]
-        public virtual System.Collections.Generic.IList<BlogUserInfo> BlogUserInfos { get; set; } 
+        public virtual System.Collections.Generic.IList<BlogUserInfo> BlogUserInfos { get; set; }
 
         /// <summary>The list of Blogs this user has Authorship or Admin rights over.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Blog> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Blog> Items { get; set; }
 
         /// <summary>The kind of this entity. Always blogger#blogList.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3805,27 +3805,27 @@ namespace Google.Apis.Blogger.v3.Data
     {
         /// <summary>ID of the Blog resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blogId")]
-        public virtual string BlogId { get; set; } 
+        public virtual string BlogId { get; set; }
 
         /// <summary>True if the user has Admin level access to the blog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasAdminAccess")]
-        public virtual System.Nullable<bool> HasAdminAccess { get; set; } 
+        public virtual System.Nullable<bool> HasAdminAccess { get; set; }
 
         /// <summary>The kind of this entity. Always blogger#blogPerUserInfo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The Photo Album Key for the user when adding photos to the blog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photosAlbumKey")]
-        public virtual string PhotosAlbumKey { get; set; } 
+        public virtual string PhotosAlbumKey { get; set; }
 
         /// <summary>Access permissions that the user has for the blog (ADMIN, AUTHOR, or READER).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>ID of the User.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
-        public virtual string UserId { get; set; } 
+        public virtual string UserId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3835,15 +3835,15 @@ namespace Google.Apis.Blogger.v3.Data
     {
         /// <summary>The Blog resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blog")]
-        public virtual Blog Blog { get; set; } 
+        public virtual Blog Blog { get; set; }
 
         /// <summary>Information about a User for the Blog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blog_user_info")]
-        public virtual BlogPerUserInfo BlogUserInfoValue { get; set; } 
+        public virtual BlogPerUserInfo BlogUserInfoValue { get; set; }
 
         /// <summary>The kind of this entity. Always blogger#blogUserInfo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3853,47 +3853,47 @@ namespace Google.Apis.Blogger.v3.Data
     {
         /// <summary>The author of this Comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("author")]
-        public virtual AuthorData Author { get; set; } 
+        public virtual AuthorData Author { get; set; }
 
         /// <summary>Data about the blog containing this comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blog")]
-        public virtual BlogData Blog { get; set; } 
+        public virtual BlogData Blog { get; set; }
 
         /// <summary>The actual content of the comment. May include HTML markup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual string Content { get; set; } 
+        public virtual string Content { get; set; }
 
         /// <summary>The identifier for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Data about the comment this is in reply to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inReplyTo")]
-        public virtual InReplyToData InReplyTo { get; set; } 
+        public virtual InReplyToData InReplyTo { get; set; }
 
         /// <summary>The kind of this entry. Always blogger#comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Data about the post containing this comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("post")]
-        public virtual PostData Post { get; set; } 
+        public virtual PostData Post { get; set; }
 
         /// <summary>RFC 3339 date-time when this comment was published.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("published")]
-        public virtual string Published { get; set; } 
+        public virtual string Published { get; set; }
 
         /// <summary>The API REST URL to fetch this resource from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>The status of the comment (only populated for admin users).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>RFC 3339 date-time when this comment was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]
-        public virtual string Updated { get; set; } 
+        public virtual string Updated { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3904,19 +3904,19 @@ namespace Google.Apis.Blogger.v3.Data
         {
             /// <summary>The display name.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-            public virtual string DisplayName { get; set; } 
+            public virtual string DisplayName { get; set; }
 
             /// <summary>The identifier of the creator.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
-            public virtual string Id { get; set; } 
+            public virtual string Id { get; set; }
 
             /// <summary>The creator's avatar.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("image")]
-            public virtual ImageData Image { get; set; } 
+            public virtual ImageData Image { get; set; }
 
             /// <summary>The URL of the creator's Profile page.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("url")]
-            public virtual string Url { get; set; } 
+            public virtual string Url { get; set; }
 
             
 
@@ -3925,7 +3925,7 @@ namespace Google.Apis.Blogger.v3.Data
             {
                 /// <summary>The creator's avatar URL.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("url")]
-                public virtual string Url { get; set; } 
+                public virtual string Url { get; set; }
 
             }
         }    
@@ -3935,7 +3935,7 @@ namespace Google.Apis.Blogger.v3.Data
         {
             /// <summary>The identifier of the blog containing this comment.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
-            public virtual string Id { get; set; } 
+            public virtual string Id { get; set; }
 
         }    
 
@@ -3944,7 +3944,7 @@ namespace Google.Apis.Blogger.v3.Data
         {
             /// <summary>The identified of the parent of this comment.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
-            public virtual string Id { get; set; } 
+            public virtual string Id { get; set; }
 
         }    
 
@@ -3953,7 +3953,7 @@ namespace Google.Apis.Blogger.v3.Data
         {
             /// <summary>The identifier of the post containing this comment.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
-            public virtual string Id { get; set; } 
+            public virtual string Id { get; set; }
 
         }
     }    
@@ -3962,23 +3962,23 @@ namespace Google.Apis.Blogger.v3.Data
     {
         /// <summary>Etag of the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The List of Comments for a Post.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Comment> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Comment> Items { get; set; }
 
         /// <summary>The kind of this entry. Always blogger#commentList.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to fetch the next page, if one exists.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Pagination token to fetch the previous page, if one exists.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prevPageToken")]
-        public virtual string PrevPageToken { get; set; } 
+        public virtual string PrevPageToken { get; set; }
 
     }    
 
@@ -3986,51 +3986,51 @@ namespace Google.Apis.Blogger.v3.Data
     {
         /// <summary>The author of this Page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("author")]
-        public virtual AuthorData Author { get; set; } 
+        public virtual AuthorData Author { get; set; }
 
         /// <summary>Data about the blog containing this Page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blog")]
-        public virtual BlogData Blog { get; set; } 
+        public virtual BlogData Blog { get; set; }
 
         /// <summary>The body content of this Page, in HTML.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual string Content { get; set; } 
+        public virtual string Content { get; set; }
 
         /// <summary>Etag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The identifier for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The kind of this entity. Always blogger#page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>RFC 3339 date-time when this Page was published.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("published")]
-        public virtual string Published { get; set; } 
+        public virtual string Published { get; set; }
 
         /// <summary>The API REST URL to fetch this resource from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>The status of the page for admin resources (either LIVE or DRAFT).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The title of this entity. This is the name displayed in the Admin user interface.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>RFC 3339 date-time when this Page was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]
-        public virtual string Updated { get; set; } 
+        public virtual string Updated { get; set; }
 
         /// <summary>The URL that this Page is displayed at.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         
 
@@ -4039,19 +4039,19 @@ namespace Google.Apis.Blogger.v3.Data
         {
             /// <summary>The display name.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-            public virtual string DisplayName { get; set; } 
+            public virtual string DisplayName { get; set; }
 
             /// <summary>The identifier of the creator.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
-            public virtual string Id { get; set; } 
+            public virtual string Id { get; set; }
 
             /// <summary>The creator's avatar.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("image")]
-            public virtual ImageData Image { get; set; } 
+            public virtual ImageData Image { get; set; }
 
             /// <summary>The URL of the creator's Profile page.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("url")]
-            public virtual string Url { get; set; } 
+            public virtual string Url { get; set; }
 
             
 
@@ -4060,7 +4060,7 @@ namespace Google.Apis.Blogger.v3.Data
             {
                 /// <summary>The creator's avatar URL.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("url")]
-                public virtual string Url { get; set; } 
+                public virtual string Url { get; set; }
 
             }
         }    
@@ -4070,7 +4070,7 @@ namespace Google.Apis.Blogger.v3.Data
         {
             /// <summary>The identifier of the blog containing this page.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
-            public virtual string Id { get; set; } 
+            public virtual string Id { get; set; }
 
         }
     }    
@@ -4079,19 +4079,19 @@ namespace Google.Apis.Blogger.v3.Data
     {
         /// <summary>Etag of the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The list of Pages for a Blog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Page> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Page> Items { get; set; }
 
         /// <summary>The kind of this entity. Always blogger#pageList.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to fetch the next page, if one exists.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
     }    
 
@@ -4099,15 +4099,15 @@ namespace Google.Apis.Blogger.v3.Data
     {
         /// <summary>Blog Id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blogId")]
-        public virtual string BlogId { get; set; } 
+        public virtual string BlogId { get; set; }
 
         /// <summary>The container of posts in this blog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("counts")]
-        public virtual System.Collections.Generic.IList<CountsData> Counts { get; set; } 
+        public virtual System.Collections.Generic.IList<CountsData> Counts { get; set; }
 
         /// <summary>The kind of this entry. Always blogger#page_views.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4117,11 +4117,11 @@ namespace Google.Apis.Blogger.v3.Data
         {
             /// <summary>Count of page views for the given time range.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("count")]
-            public virtual System.Nullable<long> Count { get; set; } 
+            public virtual System.Nullable<long> Count { get; set; }
 
             /// <summary>Time range the given count applies to.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("timeRange")]
-            public virtual string TimeRange { get; set; } 
+            public virtual string TimeRange { get; set; }
 
         }
     }    
@@ -4130,79 +4130,79 @@ namespace Google.Apis.Blogger.v3.Data
     {
         /// <summary>The author of this Post.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("author")]
-        public virtual AuthorData Author { get; set; } 
+        public virtual AuthorData Author { get; set; }
 
         /// <summary>Data about the blog containing this Post.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blog")]
-        public virtual BlogData Blog { get; set; } 
+        public virtual BlogData Blog { get; set; }
 
         /// <summary>The content of the Post. May contain HTML markup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual string Content { get; set; } 
+        public virtual string Content { get; set; }
 
         /// <summary>The JSON meta-data for the Post.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customMetaData")]
-        public virtual string CustomMetaData { get; set; } 
+        public virtual string CustomMetaData { get; set; }
 
         /// <summary>Etag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The identifier of this Post.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Display image for the Post.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("images")]
-        public virtual System.Collections.Generic.IList<ImagesData> Images { get; set; } 
+        public virtual System.Collections.Generic.IList<ImagesData> Images { get; set; }
 
         /// <summary>The kind of this entity. Always blogger#post.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The list of labels this Post was tagged with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IList<string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Labels { get; set; }
 
         /// <summary>The location for geotagged posts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual LocationData Location { get; set; } 
+        public virtual LocationData Location { get; set; }
 
         /// <summary>RFC 3339 date-time when this Post was published.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("published")]
-        public virtual string Published { get; set; } 
+        public virtual string Published { get; set; }
 
         /// <summary>Comment control and display setting for readers of this post.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readerComments")]
-        public virtual string ReaderComments { get; set; } 
+        public virtual string ReaderComments { get; set; }
 
         /// <summary>The container of comments on this Post.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replies")]
-        public virtual RepliesData Replies { get; set; } 
+        public virtual RepliesData Replies { get; set; }
 
         /// <summary>The API REST URL to fetch this resource from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>Status of the post. Only set for admin-level requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The title of the Post.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The title link URL, similar to atom's related link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("titleLink")]
-        public virtual string TitleLink { get; set; } 
+        public virtual string TitleLink { get; set; }
 
         /// <summary>RFC 3339 date-time when this Post was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]
-        public virtual string Updated { get; set; } 
+        public virtual string Updated { get; set; }
 
         /// <summary>The URL where this Post is displayed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         
 
@@ -4211,19 +4211,19 @@ namespace Google.Apis.Blogger.v3.Data
         {
             /// <summary>The display name.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-            public virtual string DisplayName { get; set; } 
+            public virtual string DisplayName { get; set; }
 
             /// <summary>The identifier of the creator.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
-            public virtual string Id { get; set; } 
+            public virtual string Id { get; set; }
 
             /// <summary>The creator's avatar.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("image")]
-            public virtual ImageData Image { get; set; } 
+            public virtual ImageData Image { get; set; }
 
             /// <summary>The URL of the creator's Profile page.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("url")]
-            public virtual string Url { get; set; } 
+            public virtual string Url { get; set; }
 
             
 
@@ -4232,7 +4232,7 @@ namespace Google.Apis.Blogger.v3.Data
             {
                 /// <summary>The creator's avatar URL.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("url")]
-                public virtual string Url { get; set; } 
+                public virtual string Url { get; set; }
 
             }
         }    
@@ -4242,14 +4242,14 @@ namespace Google.Apis.Blogger.v3.Data
         {
             /// <summary>The identifier of the Blog that contains this Post.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
-            public virtual string Id { get; set; } 
+            public virtual string Id { get; set; }
 
         }    
 
         public class ImagesData
         {
             [Newtonsoft.Json.JsonPropertyAttribute("url")]
-            public virtual string Url { get; set; } 
+            public virtual string Url { get; set; }
 
         }    
 
@@ -4258,19 +4258,19 @@ namespace Google.Apis.Blogger.v3.Data
         {
             /// <summary>Location's latitude.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("lat")]
-            public virtual System.Nullable<double> Lat { get; set; } 
+            public virtual System.Nullable<double> Lat { get; set; }
 
             /// <summary>Location's longitude.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("lng")]
-            public virtual System.Nullable<double> Lng { get; set; } 
+            public virtual System.Nullable<double> Lng { get; set; }
 
             /// <summary>Location name.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("name")]
-            public virtual string Name { get; set; } 
+            public virtual string Name { get; set; }
 
             /// <summary>Location's viewport span. Can be used when rendering a map preview.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("span")]
-            public virtual string Span { get; set; } 
+            public virtual string Span { get; set; }
 
         }    
 
@@ -4279,15 +4279,15 @@ namespace Google.Apis.Blogger.v3.Data
         {
             /// <summary>The List of Comments for this Post.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("items")]
-            public virtual System.Collections.Generic.IList<Comment> Items { get; set; } 
+            public virtual System.Collections.Generic.IList<Comment> Items { get; set; }
 
             /// <summary>The URL of the comments on this post.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-            public virtual string SelfLink { get; set; } 
+            public virtual string SelfLink { get; set; }
 
             /// <summary>The count of comments on this post.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("totalItems")]
-            public virtual System.Nullable<long> TotalItems { get; set; } 
+            public virtual System.Nullable<long> TotalItems { get; set; }
 
         }
     }    
@@ -4296,23 +4296,23 @@ namespace Google.Apis.Blogger.v3.Data
     {
         /// <summary>Etag of the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The list of Posts for this Blog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Post> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Post> Items { get; set; }
 
         /// <summary>The kind of this entity. Always blogger#postList.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to fetch the next page, if one exists.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Pagination token to fetch the previous page, if one exists.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prevPageToken")]
-        public virtual string PrevPageToken { get; set; } 
+        public virtual string PrevPageToken { get; set; }
 
     }    
 
@@ -4320,23 +4320,23 @@ namespace Google.Apis.Blogger.v3.Data
     {
         /// <summary>ID of the Blog that the post resource belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blogId")]
-        public virtual string BlogId { get; set; } 
+        public virtual string BlogId { get; set; }
 
         /// <summary>True if the user has Author level access to the post.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasEditAccess")]
-        public virtual System.Nullable<bool> HasEditAccess { get; set; } 
+        public virtual System.Nullable<bool> HasEditAccess { get; set; }
 
         /// <summary>The kind of this entity. Always blogger#postPerUserInfo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>ID of the Post resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postId")]
-        public virtual string PostId { get; set; } 
+        public virtual string PostId { get; set; }
 
         /// <summary>ID of the User.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
-        public virtual string UserId { get; set; } 
+        public virtual string UserId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4346,15 +4346,15 @@ namespace Google.Apis.Blogger.v3.Data
     {
         /// <summary>The kind of this entity. Always blogger#postUserInfo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The Post resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("post")]
-        public virtual Post Post { get; set; } 
+        public virtual Post Post { get; set; }
 
         /// <summary>Information about a User for the Post.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("post_user_info")]
-        public virtual PostPerUserInfo PostUserInfoValue { get; set; } 
+        public virtual PostPerUserInfo PostUserInfoValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4364,15 +4364,15 @@ namespace Google.Apis.Blogger.v3.Data
     {
         /// <summary>The list of Posts with User information for the post, for this Blog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<PostUserInfo> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<PostUserInfo> Items { get; set; }
 
         /// <summary>The kind of this entity. Always blogger#postList.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to fetch the next page, if one exists.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4382,39 +4382,39 @@ namespace Google.Apis.Blogger.v3.Data
     {
         /// <summary>Profile summary information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("about")]
-        public virtual string About { get; set; } 
+        public virtual string About { get; set; }
 
         /// <summary>The container of blogs for this user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blogs")]
-        public virtual BlogsData Blogs { get; set; } 
+        public virtual BlogsData Blogs { get; set; }
 
         /// <summary>The timestamp of when this profile was created, in seconds since epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("created")]
-        public virtual string Created { get; set; } 
+        public virtual string Created { get; set; }
 
         /// <summary>The display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The identifier for this User.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The kind of this entity. Always blogger#user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>This user's locale</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locale")]
-        public virtual LocaleData Locale { get; set; } 
+        public virtual LocaleData Locale { get; set; }
 
         /// <summary>The API REST URL to fetch this resource from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>The user's profile page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4425,7 +4425,7 @@ namespace Google.Apis.Blogger.v3.Data
         {
             /// <summary>The URL of the Blogs for this user.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-            public virtual string SelfLink { get; set; } 
+            public virtual string SelfLink { get; set; }
 
         }    
 
@@ -4434,15 +4434,15 @@ namespace Google.Apis.Blogger.v3.Data
         {
             /// <summary>The country this blog's locale is set to.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("country")]
-            public virtual string Country { get; set; } 
+            public virtual string Country { get; set; }
 
             /// <summary>The language this blog is authored in.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("language")]
-            public virtual string Language { get; set; } 
+            public virtual string Language { get; set; }
 
             /// <summary>The language variant this blog is authored in.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("variant")]
-            public virtual string Variant { get; set; } 
+            public virtual string Variant { get; set; }
 
         }
     }

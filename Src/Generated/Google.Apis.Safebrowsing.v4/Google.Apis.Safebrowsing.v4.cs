@@ -752,7 +752,7 @@ namespace Google.Apis.Safebrowsing.v4.Data
         /// <summary>The SHA256 hash of the client state; that is, of the sorted list of all hashes present in the
         /// database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha256")]
-        public virtual string Sha256 { get; set; } 
+        public virtual string Sha256 { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -764,11 +764,11 @@ namespace Google.Apis.Safebrowsing.v4.Data
         /// <summary>A client ID that (hopefully) uniquely identifies the client implementation of the Safe Browsing
         /// API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
-        public virtual string ClientId { get; set; } 
+        public virtual string ClientId { get; set; }
 
         /// <summary>The version of the client implementation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientVersion")]
-        public virtual string ClientVersion { get; set; } 
+        public virtual string ClientVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -779,31 +779,31 @@ namespace Google.Apis.Safebrowsing.v4.Data
     {
         /// <summary>A client's physical location, expressed as a ISO 31166-1 alpha-2 region code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceLocation")]
-        public virtual string DeviceLocation { get; set; } 
+        public virtual string DeviceLocation { get; set; }
 
         /// <summary>Requests the lists for a specific language. Expects ISO 639 alpha-2 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
-        public virtual string Language { get; set; } 
+        public virtual string Language { get; set; }
 
         /// <summary>Sets the maximum number of entries that the client is willing to have in the local database for the
         /// specified list. This should be a power of 2 between 2**10 and 2**20. If zero, no database size limit is
         /// set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxDatabaseEntries")]
-        public virtual System.Nullable<int> MaxDatabaseEntries { get; set; } 
+        public virtual System.Nullable<int> MaxDatabaseEntries { get; set; }
 
         /// <summary>The maximum size in number of entries. The update will not contain more entries than this value.
         /// This should be a power of 2 between 2**10 and 2**20. If zero, no update size limit is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxUpdateEntries")]
-        public virtual System.Nullable<int> MaxUpdateEntries { get; set; } 
+        public virtual System.Nullable<int> MaxUpdateEntries { get; set; }
 
         /// <summary>Requests the list for a specific geographic location. If not set the server may pick that value
         /// based on the user's IP address. Expects ISO 3166-1 alpha-2 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
-        public virtual string Region { get; set; } 
+        public virtual string Region { get; set; }
 
         /// <summary>The compression types supported by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedCompressions")]
-        public virtual System.Collections.Generic.IList<string> SupportedCompressions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> SupportedCompressions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -825,11 +825,11 @@ namespace Google.Apis.Safebrowsing.v4.Data
     {
         /// <summary>The client metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("client")]
-        public virtual ClientInfo Client { get; set; } 
+        public virtual ClientInfo Client { get; set; }
 
         /// <summary>The requested threat list updates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listUpdateRequests")]
-        public virtual System.Collections.Generic.IList<ListUpdateRequest> ListUpdateRequests { get; set; } 
+        public virtual System.Collections.Generic.IList<ListUpdateRequest> ListUpdateRequests { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -839,12 +839,12 @@ namespace Google.Apis.Safebrowsing.v4.Data
     {
         /// <summary>The list updates requested by the clients.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listUpdateResponses")]
-        public virtual System.Collections.Generic.IList<ListUpdateResponse> ListUpdateResponses { get; set; } 
+        public virtual System.Collections.Generic.IList<ListUpdateResponse> ListUpdateResponses { get; set; }
 
         /// <summary>The minimum duration the client must wait before issuing any update request. If this field is not
         /// set clients may update as soon as they want.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumWaitDuration")]
-        public virtual object MinimumWaitDuration { get; set; } 
+        public virtual object MinimumWaitDuration { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -856,19 +856,19 @@ namespace Google.Apis.Safebrowsing.v4.Data
         /// <summary>Client metadata associated with callers of higher-level APIs built on top of the client's
         /// implementation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiClient")]
-        public virtual ClientInfo ApiClient { get; set; } 
+        public virtual ClientInfo ApiClient { get; set; }
 
         /// <summary>The client metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("client")]
-        public virtual ClientInfo Client { get; set; } 
+        public virtual ClientInfo Client { get; set; }
 
         /// <summary>The current client states for each of the client's local threat lists.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientStates")]
-        public virtual System.Collections.Generic.IList<string> ClientStates { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ClientStates { get; set; }
 
         /// <summary>The lists and hashes to be checked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threatInfo")]
-        public virtual ThreatInfo ThreatInfo { get; set; } 
+        public virtual ThreatInfo ThreatInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -878,17 +878,17 @@ namespace Google.Apis.Safebrowsing.v4.Data
     {
         /// <summary>The full hashes that matched the requested prefixes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matches")]
-        public virtual System.Collections.Generic.IList<ThreatMatch> Matches { get; set; } 
+        public virtual System.Collections.Generic.IList<ThreatMatch> Matches { get; set; }
 
         /// <summary>The minimum duration the client must wait before issuing any find hashes request. If this field is
         /// not set, clients can issue a request as soon as they want.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumWaitDuration")]
-        public virtual object MinimumWaitDuration { get; set; } 
+        public virtual object MinimumWaitDuration { get; set; }
 
         /// <summary>For requested entities that did not match the threat list, how long to cache the
         /// response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negativeCacheDuration")]
-        public virtual object NegativeCacheDuration { get; set; } 
+        public virtual object NegativeCacheDuration { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -899,11 +899,11 @@ namespace Google.Apis.Safebrowsing.v4.Data
     {
         /// <summary>The client metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("client")]
-        public virtual ClientInfo Client { get; set; } 
+        public virtual ClientInfo Client { get; set; }
 
         /// <summary>The lists and entries to be checked for matches.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threatInfo")]
-        public virtual ThreatInfo ThreatInfo { get; set; } 
+        public virtual ThreatInfo ThreatInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -913,7 +913,7 @@ namespace Google.Apis.Safebrowsing.v4.Data
     {
         /// <summary>The threat list matches.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matches")]
-        public virtual System.Collections.Generic.IList<ThreatMatch> Matches { get; set; } 
+        public virtual System.Collections.Generic.IList<ThreatMatch> Matches { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -923,7 +923,7 @@ namespace Google.Apis.Safebrowsing.v4.Data
     {
         /// <summary>The lists available for download by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threatLists")]
-        public virtual System.Collections.Generic.IList<ThreatListDescriptor> ThreatLists { get; set; } 
+        public virtual System.Collections.Generic.IList<ThreatListDescriptor> ThreatLists { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -934,24 +934,24 @@ namespace Google.Apis.Safebrowsing.v4.Data
     {
         /// <summary>The constraints associated with this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("constraints")]
-        public virtual Constraints Constraints { get; set; } 
+        public virtual Constraints Constraints { get; set; }
 
         /// <summary>The type of platform at risk by entries present in the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platformType")]
-        public virtual string PlatformType { get; set; } 
+        public virtual string PlatformType { get; set; }
 
         /// <summary>The current state of the client for the requested list (the encrypted client state that was
         /// received from the last successful list update).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The types of entries present in the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threatEntryType")]
-        public virtual string ThreatEntryType { get; set; } 
+        public virtual string ThreatEntryType { get; set; }
 
         /// <summary>The type of threat posed by entries present in the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threatType")]
-        public virtual string ThreatType { get; set; } 
+        public virtual string ThreatType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -963,39 +963,39 @@ namespace Google.Apis.Safebrowsing.v4.Data
         /// <summary>A set of entries to add to a local threat type's list. Repeated to allow for a combination of
         /// compressed and raw data to be sent in a single response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additions")]
-        public virtual System.Collections.Generic.IList<ThreatEntrySet> Additions { get; set; } 
+        public virtual System.Collections.Generic.IList<ThreatEntrySet> Additions { get; set; }
 
         /// <summary>The expected SHA256 hash of the client state; that is, of the sorted list of all hashes present in
         /// the database after applying the provided update. If the client state doesn't match the expected state, the
         /// client must disregard this update and retry later.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("checksum")]
-        public virtual Checksum Checksum { get; set; } 
+        public virtual Checksum Checksum { get; set; }
 
         /// <summary>The new client state, in encrypted format. Opaque to clients.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newClientState")]
-        public virtual string NewClientState { get; set; } 
+        public virtual string NewClientState { get; set; }
 
         /// <summary>The platform type for which data is returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platformType")]
-        public virtual string PlatformType { get; set; } 
+        public virtual string PlatformType { get; set; }
 
         /// <summary>A set of entries to remove from a local threat type's list. In practice, this field is empty or
         /// contains exactly one ThreatEntrySet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removals")]
-        public virtual System.Collections.Generic.IList<ThreatEntrySet> Removals { get; set; } 
+        public virtual System.Collections.Generic.IList<ThreatEntrySet> Removals { get; set; }
 
         /// <summary>The type of response. This may indicate that an action is required by the client when the response
         /// is received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseType")]
-        public virtual string ResponseType { get; set; } 
+        public virtual string ResponseType { get; set; }
 
         /// <summary>The format of the threats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threatEntryType")]
-        public virtual string ThreatEntryType { get; set; } 
+        public virtual string ThreatEntryType { get; set; }
 
         /// <summary>The threat type for which data is returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threatType")]
-        public virtual string ThreatType { get; set; } 
+        public virtual string ThreatType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1006,11 +1006,11 @@ namespace Google.Apis.Safebrowsing.v4.Data
     {
         /// <summary>The metadata entry key. For JSON requests, the key is base64-encoded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         /// <summary>The metadata entry value. For JSON requests, the value is base64-encoded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1025,12 +1025,12 @@ namespace Google.Apis.Safebrowsing.v4.Data
         /// <summary>The number of bytes for each prefix encoded below. This field can be anywhere from 4 (shortest
         /// prefix) to 32 (full SHA256 hash).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prefixSize")]
-        public virtual System.Nullable<int> PrefixSize { get; set; } 
+        public virtual System.Nullable<int> PrefixSize { get; set; }
 
         /// <summary>The hashes, in binary format, concatenated into one long string. Hashes are sorted in lexicographic
         /// order. For JSON API users, hashes are base64-encoded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rawHashes")]
-        public virtual string RawHashesValue { get; set; } 
+        public virtual string RawHashesValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1041,7 +1041,7 @@ namespace Google.Apis.Safebrowsing.v4.Data
     {
         /// <summary>The indices to remove from a lexicographically-sorted local list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indices")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> Indices { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> Indices { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1053,22 +1053,22 @@ namespace Google.Apis.Safebrowsing.v4.Data
     {
         /// <summary>The encoded deltas that are encoded using the Golomb-Rice coder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encodedData")]
-        public virtual string EncodedData { get; set; } 
+        public virtual string EncodedData { get; set; }
 
         /// <summary>The offset of the first entry in the encoded data, or, if only a single integer was encoded, that
         /// single integer's value. If the field is empty or missing, assume zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstValue")]
-        public virtual System.Nullable<long> FirstValue { get; set; } 
+        public virtual System.Nullable<long> FirstValue { get; set; }
 
         /// <summary>The number of entries that are delta encoded in the encoded data. If only a single integer was
         /// encoded, this will be zero and the single value will be stored in `first_value`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numEntries")]
-        public virtual System.Nullable<int> NumEntries { get; set; } 
+        public virtual System.Nullable<int> NumEntries { get; set; }
 
         /// <summary>The Golomb-Rice parameter, which is a number between 2 and 28. This field is missing (that is,
         /// zero) if `num_entries` is zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("riceParameter")]
-        public virtual System.Nullable<int> RiceParameter { get; set; } 
+        public virtual System.Nullable<int> RiceParameter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1081,16 +1081,16 @@ namespace Google.Apis.Safebrowsing.v4.Data
         /// <summary>The digest of an executable in SHA256 format. The API supports both binary and hex digests. For
         /// JSON requests, digests are base64-encoded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("digest")]
-        public virtual string Digest { get; set; } 
+        public virtual string Digest { get; set; }
 
         /// <summary>A hash prefix, consisting of the most significant 4-32 bytes of a SHA256 hash. This field is in
         /// binary format. For JSON requests, hashes are base64-encoded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hash")]
-        public virtual string Hash { get; set; } 
+        public virtual string Hash { get; set; }
 
         /// <summary>A URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1102,7 +1102,7 @@ namespace Google.Apis.Safebrowsing.v4.Data
     {
         /// <summary>The metadata entries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<MetadataEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<MetadataEntry> Entries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1113,26 +1113,26 @@ namespace Google.Apis.Safebrowsing.v4.Data
     {
         /// <summary>The compression type for the entries in this set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compressionType")]
-        public virtual string CompressionType { get; set; } 
+        public virtual string CompressionType { get; set; }
 
         /// <summary>The raw SHA256-formatted entries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rawHashes")]
-        public virtual RawHashes RawHashes { get; set; } 
+        public virtual RawHashes RawHashes { get; set; }
 
         /// <summary>The raw removal indices for a local list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rawIndices")]
-        public virtual RawIndices RawIndices { get; set; } 
+        public virtual RawIndices RawIndices { get; set; }
 
         /// <summary>The encoded 4-byte prefixes of SHA256-formatted entries, using a Golomb-Rice encoding. The hashes
         /// are converted to uint32, sorted in ascending order, then delta encoded and stored as encoded_data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("riceHashes")]
-        public virtual RiceDeltaEncoding RiceHashes { get; set; } 
+        public virtual RiceDeltaEncoding RiceHashes { get; set; }
 
         /// <summary>The encoded local, lexicographically-sorted list indices, using a Golomb-Rice encoding. Used for
         /// sending compressed removal indices. The removal indices (uint32) are sorted in ascending order, then delta
         /// encoded and stored as encoded_data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("riceIndices")]
-        public virtual RiceDeltaEncoding RiceIndices { get; set; } 
+        public virtual RiceDeltaEncoding RiceIndices { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1142,28 +1142,28 @@ namespace Google.Apis.Safebrowsing.v4.Data
     {
         /// <summary>Client-reported identification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientInfo")]
-        public virtual ClientInfo ClientInfo { get; set; } 
+        public virtual ClientInfo ClientInfo { get; set; }
 
         /// <summary>The threat entry responsible for the hit. Full hash should be reported for hash-based
         /// hits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entry")]
-        public virtual ThreatEntry Entry { get; set; } 
+        public virtual ThreatEntry Entry { get; set; }
 
         /// <summary>The platform type reported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platformType")]
-        public virtual string PlatformType { get; set; } 
+        public virtual string PlatformType { get; set; }
 
         /// <summary>The resources related to the threat hit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<ThreatSource> Resources { get; set; } 
+        public virtual System.Collections.Generic.IList<ThreatSource> Resources { get; set; }
 
         /// <summary>The threat type reported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threatType")]
-        public virtual string ThreatType { get; set; } 
+        public virtual string ThreatType { get; set; }
 
         /// <summary>Details about the user that encountered the threat.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userInfo")]
-        public virtual UserInfo UserInfo { get; set; } 
+        public virtual UserInfo UserInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1175,19 +1175,19 @@ namespace Google.Apis.Safebrowsing.v4.Data
     {
         /// <summary>The platform types to be checked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platformTypes")]
-        public virtual System.Collections.Generic.IList<string> PlatformTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> PlatformTypes { get; set; }
 
         /// <summary>The threat entries to be checked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threatEntries")]
-        public virtual System.Collections.Generic.IList<ThreatEntry> ThreatEntries { get; set; } 
+        public virtual System.Collections.Generic.IList<ThreatEntry> ThreatEntries { get; set; }
 
         /// <summary>The entry types to be checked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threatEntryTypes")]
-        public virtual System.Collections.Generic.IList<string> ThreatEntryTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ThreatEntryTypes { get; set; }
 
         /// <summary>The threat types to be checked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threatTypes")]
-        public virtual System.Collections.Generic.IList<string> ThreatTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ThreatTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1199,15 +1199,15 @@ namespace Google.Apis.Safebrowsing.v4.Data
     {
         /// <summary>The platform type targeted by the list's entries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platformType")]
-        public virtual string PlatformType { get; set; } 
+        public virtual string PlatformType { get; set; }
 
         /// <summary>The entry types contained in the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threatEntryType")]
-        public virtual string ThreatEntryType { get; set; } 
+        public virtual string ThreatEntryType { get; set; }
 
         /// <summary>The threat type posed by the list's entries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threatType")]
-        public virtual string ThreatType { get; set; } 
+        public virtual string ThreatType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1219,27 +1219,27 @@ namespace Google.Apis.Safebrowsing.v4.Data
         /// <summary>The cache lifetime for the returned match. Clients must not cache this response for more than this
         /// duration to avoid false positives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cacheDuration")]
-        public virtual object CacheDuration { get; set; } 
+        public virtual object CacheDuration { get; set; }
 
         /// <summary>The platform type matching this threat.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platformType")]
-        public virtual string PlatformType { get; set; } 
+        public virtual string PlatformType { get; set; }
 
         /// <summary>The threat matching this threat.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threat")]
-        public virtual ThreatEntry Threat { get; set; } 
+        public virtual ThreatEntry Threat { get; set; }
 
         /// <summary>Optional metadata associated with this threat.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threatEntryMetadata")]
-        public virtual ThreatEntryMetadata ThreatEntryMetadata { get; set; } 
+        public virtual ThreatEntryMetadata ThreatEntryMetadata { get; set; }
 
         /// <summary>The threat entry type matching this threat.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threatEntryType")]
-        public virtual string ThreatEntryType { get; set; } 
+        public virtual string ThreatEntryType { get; set; }
 
         /// <summary>The threat type matching this threat.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threatType")]
-        public virtual string ThreatType { get; set; } 
+        public virtual string ThreatType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1250,19 +1250,19 @@ namespace Google.Apis.Safebrowsing.v4.Data
     {
         /// <summary>Referrer of the resource. Only set if the referrer is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referrer")]
-        public virtual string Referrer { get; set; } 
+        public virtual string Referrer { get; set; }
 
         /// <summary>The remote IP of the resource in ASCII format. Either IPv4 or IPv6.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remoteIp")]
-        public virtual string RemoteIp { get; set; } 
+        public virtual string RemoteIp { get; set; }
 
         /// <summary>The type of source reported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The URL of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1273,11 +1273,11 @@ namespace Google.Apis.Safebrowsing.v4.Data
     {
         /// <summary>The UN M.49 region code associated with the user's location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
-        public virtual string RegionCode { get; set; } 
+        public virtual string RegionCode { get; set; }
 
         /// <summary>Unique user identifier defined by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
-        public virtual string UserId { get; set; } 
+        public virtual string UserId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

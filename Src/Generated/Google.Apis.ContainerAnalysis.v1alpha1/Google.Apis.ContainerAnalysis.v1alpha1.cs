@@ -2800,12 +2800,12 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("checksum")]
-        public virtual string Checksum { get; set; } 
+        public virtual string Checksum { get; set; }
 
         /// <summary>Artifact ID, if any; for container images, this will be a URL by digest like
         /// gcr.io/projectID/imagename@sha256:123456</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Name of the artifact. This may be the path to a binary or jar file, or in the case of a container
         /// build, the name used to push the container image to Google Container Registry, as presented to `docker
@@ -2814,14 +2814,14 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into
         /// proto.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Related artifact names. This may be the path to a binary or jar file, or in the case of a container
         /// build, the name used to push the container image to Google Container Registry, as presented to `docker
         /// push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one
         /// image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("names")]
-        public virtual System.Collections.Generic.IList<string> Names { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Names { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2835,7 +2835,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     public class Attestation : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("pgpSignedAttestation")]
-        public virtual PgpSignedAttestation PgpSignedAttestation { get; set; } 
+        public virtual PgpSignedAttestation PgpSignedAttestation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2850,7 +2850,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     public class AttestationAuthority : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("hint")]
-        public virtual AttestationAuthorityHint Hint { get; set; } 
+        public virtual AttestationAuthorityHint Hint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2865,7 +2865,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>The human readable name of this Attestation Authority, for example "qa".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("humanReadableName")]
-        public virtual string HumanReadableName { get; set; } 
+        public virtual string HumanReadableName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2878,11 +2878,11 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>The fingerprint of the base image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
-        public virtual Fingerprint Fingerprint { get; set; } 
+        public virtual Fingerprint Fingerprint { get; set; }
 
         /// <summary>The resource_url for the resource representing the basis of associated occurrence images.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUrl")]
-        public virtual string ResourceUrl { get; set; } 
+        public virtual string ResourceUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2894,7 +2894,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>A client-specified ID for this binding. Expected to be globally unique to support the internal
         /// bindings-by-ID API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; } 
+        public virtual string BindingId { get; set; }
 
         /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
         /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
@@ -2902,7 +2902,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; } 
+        public virtual Expr Condition { get; set; }
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
@@ -2924,12 +2924,12 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
         /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2940,7 +2940,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>The actual provenance</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
-        public virtual BuildProvenance Provenance { get; set; } 
+        public virtual BuildProvenance Provenance { get; set; }
 
         /// <summary>Serialized JSON representation of the provenance, used in generating the `BuildSignature` in the
         /// corresponding Result. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to
@@ -2949,7 +2949,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is
         /// marshalled to json as well to prevent incompatibilities with future changes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provenanceBytes")]
-        public virtual string ProvenanceBytes { get; set; } 
+        public virtual string ProvenanceBytes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2962,57 +2962,57 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>Special options applied to this build. This is a catch-all field where build providers can enter
         /// any desired additional details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildOptions")]
-        public virtual System.Collections.Generic.IDictionary<string,string> BuildOptions { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> BuildOptions { get; set; }
 
         /// <summary>Version string of the builder at the time this build was executed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("builderVersion")]
-        public virtual string BuilderVersion { get; set; } 
+        public virtual string BuilderVersion { get; set; }
 
         /// <summary>Output of the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("builtArtifacts")]
-        public virtual System.Collections.Generic.IList<Artifact> BuiltArtifacts { get; set; } 
+        public virtual System.Collections.Generic.IList<Artifact> BuiltArtifacts { get; set; }
 
         /// <summary>Commands requested by the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commands")]
-        public virtual System.Collections.Generic.IList<Command> Commands { get; set; } 
+        public virtual System.Collections.Generic.IList<Command> Commands { get; set; }
 
         /// <summary>Time at which the build was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>E-mail address of the user who initiated this build. Note that this was the user's e-mail address
         /// at the time the build was initiated; this address may not represent the same end-user for all
         /// time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creator")]
-        public virtual string Creator { get; set; } 
+        public virtual string Creator { get; set; }
 
         /// <summary>Time at which execution of the build was finished.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finishTime")]
-        public virtual object FinishTime { get; set; } 
+        public virtual object FinishTime { get; set; }
 
         /// <summary>Unique identifier of the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Google Cloud Storage bucket where logs were written.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logsBucket")]
-        public virtual string LogsBucket { get; set; } 
+        public virtual string LogsBucket { get; set; }
 
         /// <summary>ID of the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Details of the Source input to the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceProvenance")]
-        public virtual Source SourceProvenance { get; set; } 
+        public virtual Source SourceProvenance { get; set; }
 
         /// <summary>Time at which execution of the build was started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>Trigger identifier if the build was triggered automatically; empty if not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggerId")]
-        public virtual string TriggerId { get; set; } 
+        public virtual string TriggerId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3025,11 +3025,11 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// as the Id or fingerprint for a PGP key, or the CN for a cert), or a reference to an external key (such as a
         /// reference to a key in Cloud Key Management Service).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyId")]
-        public virtual string KeyId { get; set; } 
+        public virtual string KeyId { get; set; }
 
         /// <summary>The type of the key, either stored in `public_key` or referenced in `key_id`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyType")]
-        public virtual string KeyType { get; set; } 
+        public virtual string KeyType { get; set; }
 
         /// <summary>Public key of the builder which can be used to verify that the related findings are valid and
         /// unchanged. If `key_type` is empty, this defaults to PEM encoded public keys. This field may be empty if
@@ -3039,11 +3039,11 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// `BuildDetails` are base64-decoded into a binary representation in signed.bin. OpenSSL can then verify the
         /// signature: `openssl sha256 -verify public.pem -signature signature.bin signed.bin`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicKey")]
-        public virtual string PublicKey { get; set; } 
+        public virtual string PublicKey { get; set; }
 
         /// <summary>Signature of the related `BuildProvenance`, encoded in a base64 string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]
-        public virtual string Signature { get; set; } 
+        public virtual string Signature { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3055,12 +3055,12 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>Version of the builder which produced this Note.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("builderVersion")]
-        public virtual string BuilderVersion { get; set; } 
+        public virtual string BuilderVersion { get; set; }
 
         /// <summary>Signature of the build in Occurrences pointing to the Note containing this
         /// `BuilderDetails`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]
-        public virtual BuildSignature Signature { get; set; } 
+        public virtual BuildSignature Signature { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3071,29 +3071,29 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>Command-line arguments used when executing this Command.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
-        public virtual System.Collections.Generic.IList<string> Args { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Args { get; set; }
 
         /// <summary>Working directory (relative to project source root) used when running this Command.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dir")]
-        public virtual string Dir { get; set; } 
+        public virtual string Dir { get; set; }
 
         /// <summary>Environment variables set before running this Command.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
-        public virtual System.Collections.Generic.IList<string> Env { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Env { get; set; }
 
         /// <summary>Optional unique identifier for this Command, used in wait_for to reference this Command as a
         /// dependency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Name of the command, as presented on the command line, or if the command is packaged as a Docker
         /// container, as presented to `docker pull`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ID(s) of the Command(s) that this Command depends on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("waitFor")]
-        public virtual System.Collections.Generic.IList<string> WaitFor { get; set; } 
+        public virtual System.Collections.Generic.IList<string> WaitFor { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3104,11 +3104,11 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>The operation to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
-        public virtual Operation Operation { get; set; } 
+        public virtual Operation Operation { get; set; }
 
         /// <summary>The ID to use for this operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
-        public virtual string OperationId { get; set; } 
+        public virtual string OperationId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3119,7 +3119,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>Resource URI for the artifact being deployed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
-        public virtual System.Collections.Generic.IList<string> ResourceUri { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ResourceUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3130,32 +3130,32 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>Address of the runtime element hosting this deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
-        public virtual string Address { get; set; } 
+        public virtual string Address { get; set; }
 
         /// <summary>Configuration used to create this deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
-        public virtual string Config { get; set; } 
+        public virtual string Config { get; set; }
 
         /// <summary>Beginning of the lifetime of this deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployTime")]
-        public virtual object DeployTime { get; set; } 
+        public virtual object DeployTime { get; set; }
 
         /// <summary>Platform hosting this deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platform")]
-        public virtual string Platform { get; set; } 
+        public virtual string Platform { get; set; }
 
         /// <summary>Output only. Resource URI for the artifact being deployed taken from the deployable field with the
         /// same name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
-        public virtual System.Collections.Generic.IList<string> ResourceUri { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ResourceUri { get; set; }
 
         /// <summary>End of the lifetime of this deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("undeployTime")]
-        public virtual object UndeployTime { get; set; } 
+        public virtual object UndeployTime { get; set; }
 
         /// <summary>Identity of the user that triggered this deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEmail")]
-        public virtual string UserEmail { get; set; } 
+        public virtual string UserEmail { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3167,21 +3167,21 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>Output only. This contains the base image URL for the derived image occurrence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseResourceUrl")]
-        public virtual string BaseResourceUrl { get; set; } 
+        public virtual string BaseResourceUrl { get; set; }
 
         /// <summary>Output only. The number of layers by which this image differs from the associated image
         /// basis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distance")]
-        public virtual System.Nullable<long> Distance { get; set; } 
+        public virtual System.Nullable<long> Distance { get; set; }
 
         /// <summary>The fingerprint of the derived image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
-        public virtual Fingerprint Fingerprint { get; set; } 
+        public virtual Fingerprint Fingerprint { get; set; }
 
         /// <summary>This contains layer-specific metadata, if populated it has length "distance" and is ordered with
         /// [distance] being the layer immediately following the base image and [1] being the final layer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("layerInfo")]
-        public virtual System.Collections.Generic.IList<Layer> LayerInfo { get; set; } 
+        public virtual System.Collections.Generic.IList<Layer> LayerInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3195,41 +3195,41 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// manifests. Examples include distro or storage location for vulnerable jar. This field can be used as a
         /// filter in list requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpeUri")]
-        public virtual string CpeUri { get; set; } 
+        public virtual string CpeUri { get; set; }
 
         /// <summary>A vendor-specific description of this note.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The fix for this specific package version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixedLocation")]
-        public virtual VulnerabilityLocation FixedLocation { get; set; } 
+        public virtual VulnerabilityLocation FixedLocation { get; set; }
 
         /// <summary>Whether this Detail is obsolete. Occurrences are expected not to point to obsolete
         /// details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isObsolete")]
-        public virtual System.Nullable<bool> IsObsolete { get; set; } 
+        public virtual System.Nullable<bool> IsObsolete { get; set; }
 
         /// <summary>The max version of the package in which the vulnerability exists.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxAffectedVersion")]
-        public virtual Version MaxAffectedVersion { get; set; } 
+        public virtual Version MaxAffectedVersion { get; set; }
 
         /// <summary>The min version of the package in which the vulnerability exists.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minAffectedVersion")]
-        public virtual Version MinAffectedVersion { get; set; } 
+        public virtual Version MinAffectedVersion { get; set; }
 
         /// <summary>The name of the package where the vulnerability was found. This field can be used as a filter in
         /// list requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("package")]
-        public virtual string Package { get; set; } 
+        public virtual string Package { get; set; }
 
         /// <summary>The type of package; whether native or non native(ruby gems, node.js packages etc)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageType")]
-        public virtual string PackageType { get; set; } 
+        public virtual string PackageType { get; set; }
 
         /// <summary>The severity (eg: distro assigned severity) for this vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severityName")]
-        public virtual string SeverityName { get; set; } 
+        public virtual string SeverityName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3240,25 +3240,25 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>The status of discovery for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analysisStatus")]
-        public virtual string AnalysisStatus { get; set; } 
+        public virtual string AnalysisStatus { get; set; }
 
         /// <summary>When an error is encountered this will contain a LocalizedMessage under details to show to the
         /// user. The LocalizedMessage output only and populated by the API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analysisStatusError")]
-        public virtual Status AnalysisStatusError { get; set; } 
+        public virtual Status AnalysisStatusError { get; set; }
 
         /// <summary>Whether the resource is continuously analyzed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("continuousAnalysis")]
-        public virtual string ContinuousAnalysis { get; set; } 
+        public virtual string ContinuousAnalysis { get; set; }
 
         /// <summary>The CPE of the resource being scanned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpe")]
-        public virtual string Cpe { get; set; } 
+        public virtual string Cpe { get; set; }
 
         /// <summary>Output only. An operation that indicates the status of the current scan. This field is deprecated,
         /// do not use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
-        public virtual Operation Operation { get; set; } 
+        public virtual Operation Operation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3272,7 +3272,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>The kind of analysis that is handled by this discovery.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analysisKind")]
-        public virtual string AnalysisKind { get; set; } 
+        public virtual string AnalysisKind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3284,28 +3284,28 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>The CPU architecture for which packages in this distribution channel were built</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
-        public virtual string Architecture { get; set; } 
+        public virtual string Architecture { get; set; }
 
         /// <summary>The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager
         /// version distributing a package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpeUri")]
-        public virtual string CpeUri { get; set; } 
+        public virtual string CpeUri { get; set; }
 
         /// <summary>The distribution channel-specific description of this package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The latest available version of this package in this distribution channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestVersion")]
-        public virtual Version LatestVersion { get; set; } 
+        public virtual Version LatestVersion { get; set; }
 
         /// <summary>A freeform string denoting the maintainer of this package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintainer")]
-        public virtual string Maintainer { get; set; } 
+        public virtual string Maintainer { get; set; }
 
         /// <summary>The distribution channel-specific homepage for this package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3337,21 +3337,21 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
         /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3363,7 +3363,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>Collection of file hashes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHash")]
-        public virtual System.Collections.Generic.IList<Hash> FileHash { get; set; } 
+        public virtual System.Collections.Generic.IList<Hash> FileHash { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3375,17 +3375,17 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>The layer-id of the final layer in the Docker image's v1 representation. This field can be used as
         /// a filter in list requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("v1Name")]
-        public virtual string V1Name { get; set; } 
+        public virtual string V1Name { get; set; }
 
         /// <summary>The ordered list of v2 blobs that represent a given image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("v2Blob")]
-        public virtual System.Collections.Generic.IList<string> V2Blob { get; set; } 
+        public virtual System.Collections.Generic.IList<string> V2Blob { get; set; }
 
         /// <summary>Output only. The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom :=
         /// sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept. This field can be used as a
         /// filter in list requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("v2Name")]
-        public virtual string V2Name { get; set; } 
+        public virtual string V2Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3396,7 +3396,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
-        public virtual GetPolicyOptions Options { get; set; } 
+        public virtual GetPolicyOptions Options { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3411,7 +3411,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// unset. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
-        public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
+        public virtual System.Nullable<int> RequestedPolicyVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3423,7 +3423,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>A map of how many occurrences were found for each severity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("counts")]
-        public virtual System.Collections.Generic.IList<SeverityCount> Counts { get; set; } 
+        public virtual System.Collections.Generic.IList<SeverityCount> Counts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3434,11 +3434,11 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>The alias kind.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The alias name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3449,15 +3449,15 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>An alias, which may be a branch or tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aliasContext")]
-        public virtual GoogleDevtoolsContaineranalysisV1alpha1AliasContext AliasContext { get; set; } 
+        public virtual GoogleDevtoolsContaineranalysisV1alpha1AliasContext AliasContext { get; set; }
 
         /// <summary>The ID of the repo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repoId")]
-        public virtual GoogleDevtoolsContaineranalysisV1alpha1RepoId RepoId { get; set; } 
+        public virtual GoogleDevtoolsContaineranalysisV1alpha1RepoId RepoId { get; set; }
 
         /// <summary>A revision ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
-        public virtual string RevisionId { get; set; } 
+        public virtual string RevisionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3468,20 +3468,20 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>An alias, which may be a branch or tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aliasContext")]
-        public virtual GoogleDevtoolsContaineranalysisV1alpha1AliasContext AliasContext { get; set; } 
+        public virtual GoogleDevtoolsContaineranalysisV1alpha1AliasContext AliasContext { get; set; }
 
         /// <summary>The full project name within the host. Projects may be nested, so "project/subproject" is a valid
         /// project name. The "repo name" is the hostURI/project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gerritProject")]
-        public virtual string GerritProject { get; set; } 
+        public virtual string GerritProject { get; set; }
 
         /// <summary>The URI of a running Gerrit instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostUri")]
-        public virtual string HostUri { get; set; } 
+        public virtual string HostUri { get; set; }
 
         /// <summary>A revision (commit) ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
-        public virtual string RevisionId { get; set; } 
+        public virtual string RevisionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3493,11 +3493,11 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>Required. Git commit hash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
-        public virtual string RevisionId { get; set; } 
+        public virtual string RevisionId { get; set; }
 
         /// <summary>Git repository URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3509,11 +3509,11 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>Output only. The time this operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. The time that this operation was marked completed or failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3525,11 +3525,11 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>The ID of the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>The name of the repo. Leave empty for the default repo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repoName")]
-        public virtual string RepoName { get; set; } 
+        public virtual string RepoName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3540,11 +3540,11 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>A combination of a project ID and a repo name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectRepoId")]
-        public virtual GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoId ProjectRepoId { get; set; } 
+        public virtual GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoId ProjectRepoId { get; set; }
 
         /// <summary>A server-assigned, globally unique identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
-        public virtual string Uid { get; set; } 
+        public virtual string Uid { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3556,19 +3556,19 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>A SourceContext referring to a revision in a Google Cloud Source Repo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudRepo")]
-        public virtual GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext CloudRepo { get; set; } 
+        public virtual GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext CloudRepo { get; set; }
 
         /// <summary>A SourceContext referring to a Gerrit project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gerrit")]
-        public virtual GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContext Gerrit { get; set; } 
+        public virtual GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContext Gerrit { get; set; }
 
         /// <summary>A SourceContext referring to any third party Git repo (e.g., GitHub).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("git")]
-        public virtual GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext Git { get; set; } 
+        public virtual GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext Git { get; set; }
 
         /// <summary>Labels with user defined metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3579,11 +3579,11 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>The type of hash that was performed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The hash value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3594,11 +3594,11 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>All of the places within the filesystem versions of this package have been found.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual System.Collections.Generic.IList<Location> Location { get; set; } 
+        public virtual System.Collections.Generic.IList<Location> Location { get; set; }
 
         /// <summary>Output only. The name of the installed package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3609,11 +3609,11 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>The recovered arguments to the Dockerfile directive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("arguments")]
-        public virtual string Arguments { get; set; } 
+        public virtual string Arguments { get; set; }
 
         /// <summary>The recovered Dockerfile directive used to construct this layer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directive")]
-        public virtual string Directive { get; set; } 
+        public virtual string Directive { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3624,11 +3624,11 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>Token to receive the next page of notes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The occurrences attached to the specified note.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("occurrences")]
-        public virtual System.Collections.Generic.IList<Occurrence> Occurrences { get; set; } 
+        public virtual System.Collections.Generic.IList<Occurrence> Occurrences { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3640,11 +3640,11 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>The next pagination token in the list response. It should be used as page_token for the following
         /// request. An empty value means no more result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The occurrences requested</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
-        public virtual System.Collections.Generic.IList<Note> Notes { get; set; } 
+        public virtual System.Collections.Generic.IList<Note> Notes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3656,11 +3656,11 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>The next pagination token in the list response. It should be used as `page_token` for the following
         /// request. An empty value means no more results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The occurrences requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("occurrences")]
-        public virtual System.Collections.Generic.IList<Occurrence> Occurrences { get; set; } 
+        public virtual System.Collections.Generic.IList<Occurrence> Occurrences { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3671,11 +3671,11 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>A page token to pass in order to get more scan configs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The set of scan configs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scanConfigs")]
-        public virtual System.Collections.Generic.IList<ScanConfig> ScanConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<ScanConfig> ScanConfigs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3688,15 +3688,15 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager
         /// version distributing a package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpeUri")]
-        public virtual string CpeUri { get; set; } 
+        public virtual string CpeUri { get; set; }
 
         /// <summary>The path from which we gathered that this package/version is installed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual string Path { get; set; } 
+        public virtual string Path { get; set; }
 
         /// <summary>The version installed at this location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual Version Version { get; set; } 
+        public virtual Version Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3707,70 +3707,70 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>A note describing an attestation role.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attestationAuthority")]
-        public virtual AttestationAuthority AttestationAuthority { get; set; } 
+        public virtual AttestationAuthority AttestationAuthority { get; set; }
 
         /// <summary>A note describing a base image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseImage")]
-        public virtual Basis BaseImage { get; set; } 
+        public virtual Basis BaseImage { get; set; }
 
         /// <summary>Build provenance type for a verifiable build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildType")]
-        public virtual BuildType BuildType { get; set; } 
+        public virtual BuildType BuildType { get; set; }
 
         /// <summary>Output only. The time this note was created. This field can be used as a filter in list
         /// requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>A note describing something that can be deployed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployable")]
-        public virtual Deployable Deployable { get; set; } 
+        public virtual Deployable Deployable { get; set; }
 
         /// <summary>A note describing a provider/analysis type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discovery")]
-        public virtual Discovery Discovery { get; set; } 
+        public virtual Discovery Discovery { get; set; }
 
         /// <summary>Time of expiration for this note, null if note does not expire.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
-        public virtual object ExpirationTime { get; set; } 
+        public virtual object ExpirationTime { get; set; }
 
         /// <summary>Output only. This explicitly denotes which kind of note is specified. This field can be used as a
         /// filter in list requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>A detailed description of this `Note`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longDescription")]
-        public virtual string LongDescription { get; set; } 
+        public virtual string LongDescription { get; set; }
 
         /// <summary>The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>A note describing a package hosted by various package managers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("package")]
-        public virtual Package Package { get; set; } 
+        public virtual Package Package { get; set; }
 
         /// <summary>URLs associated with this note</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relatedUrl")]
-        public virtual System.Collections.Generic.IList<RelatedUrl> RelatedUrl { get; set; } 
+        public virtual System.Collections.Generic.IList<RelatedUrl> RelatedUrl { get; set; }
 
         /// <summary>A one sentence description of this `Note`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortDescription")]
-        public virtual string ShortDescription { get; set; } 
+        public virtual string ShortDescription { get; set; }
 
         /// <summary>Output only. The time this note was last updated. This field can be used as a filter in list
         /// requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>A note describing an upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgrade")]
-        public virtual UpgradeNote Upgrade { get; set; } 
+        public virtual UpgradeNote Upgrade { get; set; }
 
         /// <summary>A package vulnerability type of note.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vulnerabilityType")]
-        public virtual VulnerabilityType VulnerabilityType { get; set; } 
+        public virtual VulnerabilityType VulnerabilityType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3781,71 +3781,71 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>Describes an attestation of an artifact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attestation")]
-        public virtual Attestation Attestation { get; set; } 
+        public virtual Attestation Attestation { get; set; }
 
         /// <summary>Build details for a verifiable build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildDetails")]
-        public virtual BuildDetails BuildDetails { get; set; } 
+        public virtual BuildDetails BuildDetails { get; set; }
 
         /// <summary>Output only. The time this `Occurrence` was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Describes the deployment of an artifact on a runtime.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
-        public virtual Deployment Deployment { get; set; } 
+        public virtual Deployment Deployment { get; set; }
 
         /// <summary>Describes how this resource derives from the basis in the associated note.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("derivedImage")]
-        public virtual Derived DerivedImage { get; set; } 
+        public virtual Derived DerivedImage { get; set; }
 
         /// <summary>Describes the initial scan status for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discovered")]
-        public virtual Discovered Discovered { get; set; } 
+        public virtual Discovered Discovered { get; set; }
 
         /// <summary>Describes the installation of a package on the linked resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installation")]
-        public virtual Installation Installation { get; set; } 
+        public virtual Installation Installation { get; set; }
 
         /// <summary>Output only. This explicitly denotes which of the `Occurrence` details are specified. This field
         /// can be used as a filter in list requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Output only. The name of the `Occurrence` in the form
         /// "projects/{project_id}/occurrences/{OCCURRENCE_ID}"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}"
         /// This field can be used as a filter in list requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("noteName")]
-        public virtual string NoteName { get; set; } 
+        public virtual string NoteName { get; set; }
 
         /// <summary>A description of actions that can be taken to remedy the `Note`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remediation")]
-        public virtual string Remediation { get; set; } 
+        public virtual string Remediation { get; set; }
 
         /// <summary> The resource for which the `Occurrence` applies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
-        public virtual Resource Resource { get; set; } 
+        public virtual Resource Resource { get; set; }
 
         /// <summary>The unique URL of the image or the container for which the `Occurrence` applies. For example,
         /// https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUrl")]
-        public virtual string ResourceUrl { get; set; } 
+        public virtual string ResourceUrl { get; set; }
 
         /// <summary>Output only. The time this `Occurrence` was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>Describes an upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgrade")]
-        public virtual UpgradeOccurrence Upgrade { get; set; } 
+        public virtual UpgradeOccurrence Upgrade { get; set; }
 
         /// <summary>Details of a security vulnerability note.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vulnerabilityDetails")]
-        public virtual VulnerabilityDetails VulnerabilityDetails { get; set; } 
+        public virtual VulnerabilityDetails VulnerabilityDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3857,23 +3857,23 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -3881,7 +3881,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3893,11 +3893,11 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>The various channels by which a package is distributed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distribution")]
-        public virtual System.Collections.Generic.IList<Distribution> Distribution { get; set; } 
+        public virtual System.Collections.Generic.IList<Distribution> Distribution { get; set; }
 
         /// <summary>The name of the package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3909,14 +3909,14 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>The location of the vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("affectedLocation")]
-        public virtual VulnerabilityLocation AffectedLocation { get; set; } 
+        public virtual VulnerabilityLocation AffectedLocation { get; set; }
 
         /// <summary>The location of the available fix for vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixedLocation")]
-        public virtual VulnerabilityLocation FixedLocation { get; set; } 
+        public virtual VulnerabilityLocation FixedLocation { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("severityName")]
-        public virtual string SeverityName { get; set; } 
+        public virtual string SeverityName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3931,7 +3931,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// the provided type is one that the verifier supports, and that the attestation payload is a valid
         /// instantiation of that type (for example by validating a JSON schema).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
-        public virtual string ContentType { get; set; } 
+        public virtual string ContentType { get; set; }
 
         /// <summary>The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg
         /// --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character
@@ -3943,7 +3943,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB: ``` Above, the fingerprint is
         /// `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pgpKeyId")]
-        public virtual string PgpKeyId { get; set; } 
+        public virtual string PgpKeyId { get; set; }
 
         /// <summary>The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this
         /// message only supports attached signatures, the payload that was signed must be attached. While the signature
@@ -3952,7 +3952,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// --armor --output=signature.gpg payload.json` will create the signature content expected in this field in
         /// `signature.gpg` for the `payload.json` attestation payload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]
-        public virtual string Signature { get; set; } 
+        public virtual string Signature { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3983,7 +3983,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
         /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
         /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
@@ -3994,7 +3994,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
         /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
         /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
@@ -4008,7 +4008,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
     }    
 
@@ -4017,11 +4017,11 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>Label to describe usage of the URL</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual string Label { get; set; } 
+        public virtual string Label { get; set; }
 
         /// <summary>Specific URL to associate with the note</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4032,23 +4032,23 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>Name of the branch to build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("branchName")]
-        public virtual string BranchName { get; set; } 
+        public virtual string BranchName { get; set; }
 
         /// <summary>Explicit commit SHA to build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commitSha")]
-        public virtual string CommitSha { get; set; } 
+        public virtual string CommitSha { get; set; }
 
         /// <summary>ID of the project that owns the repo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Name of the repo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repoName")]
-        public virtual string RepoName { get; set; } 
+        public virtual string RepoName { get; set; }
 
         /// <summary>Name of the tag to build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagName")]
-        public virtual string TagName { get; set; } 
+        public virtual string TagName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4059,16 +4059,16 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>The hash of the resource content. E.g., the Docker digest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentHash")]
-        public virtual Hash ContentHash { get; set; } 
+        public virtual Hash ContentHash { get; set; }
 
         /// <summary>The name of the resource. E.g., the name of a Docker image - "Debian".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The unique URI of the resource. E.g., "https://gcr.io/project/image@sha256:foo" for a Docker
         /// image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4079,24 +4079,24 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>Output only. The time this scan config was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. A human-readable description of what the `ScanConfig` does.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Indicates whether the Scan is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>Output only. The name of the ScanConfig in the form
         /// “projects/{project_id}/scanConfigs/{scan_config_id}".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The time this scan config was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4109,7 +4109,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
         /// might reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual Policy Policy { get; set; } 
+        public virtual Policy Policy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4120,11 +4120,11 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>The number of occurrences with the severity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
-        public virtual System.Nullable<long> Count { get; set; } 
+        public virtual System.Nullable<long> Count { get; set; }
 
         /// <summary>The severity of the occurrences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
-        public virtual string Severity { get; set; } 
+        public virtual string Severity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4137,30 +4137,30 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// case where the source repository had multiple remotes or submodules. This list will not include the context
         /// specified in the context field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalContexts")]
-        public virtual System.Collections.Generic.IList<GoogleDevtoolsContaineranalysisV1alpha1SourceContext> AdditionalContexts { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsContaineranalysisV1alpha1SourceContext> AdditionalContexts { get; set; }
 
         /// <summary>If provided, the input binary artifacts for the build came from this location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("artifactStorageSource")]
-        public virtual StorageSource ArtifactStorageSource { get; set; } 
+        public virtual StorageSource ArtifactStorageSource { get; set; }
 
         /// <summary>If provided, the source code used for the build came from this location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
-        public virtual GoogleDevtoolsContaineranalysisV1alpha1SourceContext Context { get; set; } 
+        public virtual GoogleDevtoolsContaineranalysisV1alpha1SourceContext Context { get; set; }
 
         /// <summary>Hash(es) of the build source, which can be used to verify that the original source integrity was
         /// maintained in the build. The keys to this map are file paths used as build source and the values contain the
         /// hash values for those files. If the build source came in a single package such as a gzipped tarfile
         /// (.tar.gz), the FileHash will be for the single path to that file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
-        public virtual System.Collections.Generic.IDictionary<string,FileHashes> FileHashes { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, FileHashes> FileHashes { get; set; }
 
         /// <summary>If provided, get source from this location in a Cloud Repo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repoSource")]
-        public virtual RepoSource RepoSource { get; set; } 
+        public virtual RepoSource RepoSource { get; set; }
 
         /// <summary>If provided, get the source from this location in in Google Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageSource")]
-        public virtual StorageSource StorageSource { get; set; } 
+        public virtual StorageSource StorageSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4175,17 +4175,17 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4198,15 +4198,15 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>Google Cloud Storage bucket containing source (see [Bucket Name Requirements]
         /// (https://cloud.google.com/storage/docs/bucket-naming#requirements)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
-        public virtual string Bucket { get; set; } 
+        public virtual string Bucket { get; set; }
 
         /// <summary>Google Cloud Storage generation for the object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generation")]
-        public virtual System.Nullable<long> Generation { get; set; } 
+        public virtual System.Nullable<long> Generation { get; set; }
 
         /// <summary>Google Cloud Storage object containing source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("object")]
-        public virtual string Object__ { get; set; } 
+        public virtual string Object__ { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4219,7 +4219,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// 'storage.*') are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4230,7 +4230,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4241,11 +4241,11 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>The operation to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
-        public virtual Operation Operation { get; set; } 
+        public virtual Operation Operation { get; set; }
 
         /// <summary>The fields to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4259,20 +4259,20 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>The operating system classification of this Upgrade, as specified by the upstream operating system
         /// upgrade feed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("classification")]
-        public virtual string Classification { get; set; } 
+        public virtual string Classification { get; set; }
 
         /// <summary>Required - The specific operating system this metadata applies to. See
         /// https://cpe.mitre.org/specification/.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpeUri")]
-        public virtual string CpeUri { get; set; } 
+        public virtual string CpeUri { get; set; }
 
         /// <summary>The cve that would be resolved by this upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cve")]
-        public virtual System.Collections.Generic.IList<string> Cve { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Cve { get; set; }
 
         /// <summary>The severity as specified by the upstream operating system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
-        public virtual string Severity { get; set; } 
+        public virtual string Severity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4284,15 +4284,15 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>Metadata about the upgrade for each specific operating system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distributions")]
-        public virtual System.Collections.Generic.IList<UpgradeDistribution> Distributions { get; set; } 
+        public virtual System.Collections.Generic.IList<UpgradeDistribution> Distributions { get; set; }
 
         /// <summary>Required - The package this Upgrade is for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("package")]
-        public virtual string Package { get; set; } 
+        public virtual string Package { get; set; }
 
         /// <summary>Required - The version of the package in machine + human readable form.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual Version Version { get; set; } 
+        public virtual Version Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4306,15 +4306,15 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>Metadata about the upgrade for available for the specific operating system for the resource_url.
         /// This allows efficient filtering, as well as making it easier to use the occurrence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distribution")]
-        public virtual UpgradeDistribution Distribution { get; set; } 
+        public virtual UpgradeDistribution Distribution { get; set; }
 
         /// <summary>Required - The package this Upgrade is for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("package")]
-        public virtual string Package { get; set; } 
+        public virtual string Package { get; set; }
 
         /// <summary>Required - The version of the package in a machine + human readable form.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parsedVersion")]
-        public virtual Version ParsedVersion { get; set; } 
+        public virtual Version ParsedVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4327,20 +4327,20 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>Used to correct mistakes in the version numbering scheme.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("epoch")]
-        public virtual System.Nullable<int> Epoch { get; set; } 
+        public virtual System.Nullable<int> Epoch { get; set; }
 
         /// <summary>Distinguish between sentinel MIN/MAX versions and normal versions. If kind is not NORMAL, then the
         /// other fields are ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The main part of the version name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The iteration of the package build from the above version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revision")]
-        public virtual string Revision { get; set; } 
+        public virtual string Revision { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4352,25 +4352,25 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>Output only. The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0
         /// indicates low severity and 10 indicates high severity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cvssScore")]
-        public virtual System.Nullable<float> CvssScore { get; set; } 
+        public virtual System.Nullable<float> CvssScore { get; set; }
 
         /// <summary>The distro assigned severity for this vulnerability when that is available and note provider
         /// assigned severity when distro has not yet assigned a severity for this vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveSeverity")]
-        public virtual string EffectiveSeverity { get; set; } 
+        public virtual string EffectiveSeverity { get; set; }
 
         /// <summary>The set of affected locations and their fixes (if available) within the associated
         /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageIssue")]
-        public virtual System.Collections.Generic.IList<PackageIssue> PackageIssue { get; set; } 
+        public virtual System.Collections.Generic.IList<PackageIssue> PackageIssue { get; set; }
 
         /// <summary>Output only. The note provider assigned Severity of the vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
-        public virtual string Severity { get; set; } 
+        public virtual string Severity { get; set; }
 
         /// <summary>The type of package; whether native or non native(ruby gems, node.js packages etc)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4382,16 +4382,16 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>The cpe_uri in [cpe format] (https://cpe.mitre.org/specification/) format. Examples include distro
         /// or storage location for vulnerable jar. This field can be used as a filter in list requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpeUri")]
-        public virtual string CpeUri { get; set; } 
+        public virtual string CpeUri { get; set; }
 
         /// <summary>The package being described.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("package")]
-        public virtual string Package { get; set; } 
+        public virtual string Package { get; set; }
 
         /// <summary>The version of the package being described. This field can be used as a filter in list
         /// requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual Version Version { get; set; } 
+        public virtual Version Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4402,16 +4402,16 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     {
         /// <summary>The CVSS score for this Vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cvssScore")]
-        public virtual System.Nullable<float> CvssScore { get; set; } 
+        public virtual System.Nullable<float> CvssScore { get; set; }
 
         /// <summary>All information about the package to specifically identify this vulnerability. One entry per
         /// (version range and cpe_uri) the package vulnerability has manifested in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<Detail> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<Detail> Details { get; set; }
 
         /// <summary>Note provider assigned impact of the vulnerability</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
-        public virtual string Severity { get; set; } 
+        public virtual string Severity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -6863,12 +6863,12 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
-        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; }
 
         /// <summary>Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
         /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual string Service { get; set; } 
+        public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6883,11 +6883,11 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// <summary>Specifies the identities that do not cause logging for this type of permission. Follows the same
         /// format of Binding.members.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
-        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; }
 
         /// <summary>The log type that this config enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logType")]
-        public virtual string LogType { get; set; } 
+        public virtual string LogType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6902,7 +6902,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; } 
+        public virtual Expr Condition { get; set; }
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
@@ -6924,12 +6924,12 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
         /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6947,7 +6947,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>Character to mask the sensitive values. If not supplied, defaults to "*".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maskingCharacter")]
-        public virtual string MaskingCharacter { get; set; } 
+        public virtual string MaskingCharacter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6958,7 +6958,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>HL7v2 message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual Message Message { get; set; } 
+        public virtual Message Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6972,7 +6972,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// <summary>An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is
         /// generated for each Deidentify operation and is used wherever crypto_key is not specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKey")]
-        public virtual string CryptoKey { get; set; } 
+        public virtual string CryptoKey { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6986,13 +6986,13 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// <summary>Resource name of the dataset, of the form
         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The default timezone used by this dataset. Must be a either a valid IANA time zone name such as
         /// "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources, such as HL7
         /// messages, where no explicit timezone is specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
-        public virtual string TimeZone { get; set; } 
+        public virtual string TimeZone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7006,7 +7006,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// default key is generated for each Deidentify operation and is used wherever crypto_key is not
         /// specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKey")]
-        public virtual string CryptoKey { get; set; } 
+        public virtual string CryptoKey { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7019,20 +7019,20 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>Configures de-id of application/DICOM content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dicom")]
-        public virtual DicomConfig Dicom { get; set; } 
+        public virtual DicomConfig Dicom { get; set; }
 
         /// <summary>Configures de-id of application/FHIR content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fhir")]
-        public virtual FhirConfig Fhir { get; set; } 
+        public virtual FhirConfig Fhir { get; set; }
 
         /// <summary>Configures de-identification of image pixels wherever they are found in the
         /// source_dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual ImageConfig Image { get; set; } 
+        public virtual ImageConfig Image { get; set; }
 
         /// <summary>Configures de-identification of text wherever it is found in the source_dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual TextConfig Text { get; set; } 
+        public virtual TextConfig Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7043,13 +7043,13 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>Deidentify configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
-        public virtual DeidentifyConfig Config { get; set; } 
+        public virtual DeidentifyConfig Config { get; set; }
 
         /// <summary>The name of the dataset resource to create and write the redacted data to. * The destination
         /// dataset must not exist. * The destination dataset must be in the same project and location as the source
         /// dataset. De-identifying data across multiple projects or locations is not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationDataset")]
-        public virtual string DestinationDataset { get; set; } 
+        public virtual string DestinationDataset { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7060,7 +7060,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>De-identify configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
-        public virtual DeidentifyConfig Config { get; set; } 
+        public virtual DeidentifyConfig Config { get; set; }
 
         /// <summary>The name of the DICOM store to create and write the redacted data to. For example,
         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`. * The
@@ -7068,11 +7068,11 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// project. De-identifying data across multiple projects is not supported. * The destination DICOM store must
         /// not exist. * The caller must have the necessary permissions to create the destination DICOM store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationStore")]
-        public virtual string DestinationStore { get; set; } 
+        public virtual string DestinationStore { get; set; }
 
         /// <summary>Filter configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterConfig")]
-        public virtual DicomFilterConfig FilterConfig { get; set; } 
+        public virtual DicomFilterConfig FilterConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7083,7 +7083,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>Deidentify configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
-        public virtual DeidentifyConfig Config { get; set; } 
+        public virtual DeidentifyConfig Config { get; set; }
 
         /// <summary>The name of the FHIR store to create and write the redacted data to. For example,
         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`. * The
@@ -7092,12 +7092,12 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// exist. * The caller must have the healthcare.fhirResources.update permission to write to the destination
         /// FHIR store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationStore")]
-        public virtual string DestinationStore { get; set; } 
+        public virtual string DestinationStore { get; set; }
 
         /// <summary>A filter specifying the resources to include in the output. If not specified, all resources are
         /// included in the output.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceFilter")]
-        public virtual FhirFilter ResourceFilter { get; set; } 
+        public virtual FhirFilter ResourceFilter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7115,15 +7115,15 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>Tag filtering profile that determines which tags to keep/remove.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterProfile")]
-        public virtual string FilterProfile { get; set; } 
+        public virtual string FilterProfile { get; set; }
 
         /// <summary>List of tags to keep. Remove all other tags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keepList")]
-        public virtual TagFilterList KeepList { get; set; } 
+        public virtual TagFilterList KeepList { get; set; }
 
         /// <summary>List of tags to remove. Keep all other tags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removeList")]
-        public virtual TagFilterList RemoveList { get; set; } 
+        public virtual TagFilterList RemoveList { get; set; }
 
         /// <summary>If true, skip replacing StudyInstanceUID, SeriesInstanceUID, SOPInstanceUID, and
         /// MediaStorageSOPInstanceUID and leave them untouched. The Cloud Healthcare API regenerates these UIDs by
@@ -7132,7 +7132,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// containing the UIDs, it would be possible to recover the individual's identity."
         /// http://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_E.3.9.html</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipIdRedaction")]
-        public virtual System.Nullable<bool> SkipIdRedaction { get; set; } 
+        public virtual System.Nullable<bool> SkipIdRedaction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7147,7 +7147,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// "/studies/{studyUID}[/series/{seriesUID}[/instances/{instanceUID}]]" The Cloud Healthcare API service
         /// account must have the `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourcePathsGcsUri")]
-        public virtual string ResourcePathsGcsUri { get; set; } 
+        public virtual string ResourcePathsGcsUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7162,16 +7162,16 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
         /// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datase
         /// ts/{dataset_id}/dicomStores/{dicom_store_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Notification destination for new DICOM instances. Supplied by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationConfig")]
-        public virtual NotificationConfig NotificationConfig { get; set; } 
+        public virtual NotificationConfig NotificationConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7196,12 +7196,12 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// project as the DICOM store you're exporting from. The BigQuery location requires two IAM roles:
         /// `roles/bigquery.dataEditor` and `roles/bigquery.jobUser`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
-        public virtual GoogleCloudHealthcareV1DicomBigQueryDestination BigqueryDestination { get; set; } 
+        public virtual GoogleCloudHealthcareV1DicomBigQueryDestination BigqueryDestination { get; set; }
 
         /// <summary>The Cloud Storage output destination. The Cloud Storage location requires the
         /// `roles/storage.objectAdmin` Cloud IAM role.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
-        public virtual GoogleCloudHealthcareV1DicomGcsDestination GcsDestination { get; set; } 
+        public virtual GoogleCloudHealthcareV1DicomGcsDestination GcsDestination { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7221,14 +7221,14 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// `roles/bigquery.dataEditor` and `roles/bigquery.jobUser`. The output is one BigQuery table per resource
         /// type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
-        public virtual GoogleCloudHealthcareV1FhirBigQueryDestination BigqueryDestination { get; set; } 
+        public virtual GoogleCloudHealthcareV1FhirBigQueryDestination BigqueryDestination { get; set; }
 
         /// <summary>The Cloud Storage output destination. The Healthcare Service Agent account requires the
         /// `roles/storage.objectAdmin` role on the Cloud Storage location. The exported outputs are organized by FHIR
         /// resource types. The server creates one object per resource type. Each object contains newline delimited
         /// JSON, and each line is a FHIR resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
-        public virtual GoogleCloudHealthcareV1FhirGcsDestination GcsDestination { get; set; } 
+        public virtual GoogleCloudHealthcareV1FhirGcsDestination GcsDestination { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7258,21 +7258,21 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
         /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7285,7 +7285,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// FieldMetadata is passed through to the output dataset unmodified. All extensions are removed in the
         /// output.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldMetadataList")]
-        public virtual System.Collections.Generic.IList<FieldMetadata> FieldMetadataList { get; set; } 
+        public virtual System.Collections.Generic.IList<FieldMetadata> FieldMetadataList { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7297,7 +7297,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// <summary>List of resources to include in the output. If this list is empty or not specified, all resources
         /// are included in the output.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual Resources Resources { get; set; } 
+        public virtual Resources Resources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7312,7 +7312,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// skips referential integrity checks. Consequently, operations that rely on references, such as
         /// GetPatientEverything, do not return all the results if broken references exist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableReferentialIntegrity")]
-        public virtual System.Nullable<bool> DisableReferentialIntegrity { get; set; } 
+        public virtual System.Nullable<bool> DisableReferentialIntegrity { get; set; }
 
         /// <summary>Whether to disable resource versioning for this FHIR store. This field can not be changed after the
         /// creation of FHIR store. If set to false, which is the default behavior, all write operations cause
@@ -7320,7 +7320,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// APIs, but cannot be updated. If set to true, no historical versions are kept. The server sends errors for
         /// attempts to read the historical versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableResourceVersioning")]
-        public virtual System.Nullable<bool> DisableResourceVersioning { get; set; } 
+        public virtual System.Nullable<bool> DisableResourceVersioning { get; set; }
 
         /// <summary>Whether this FHIR store has the [updateCreate capability](https://www.hl7.org/fhir
         /// /capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate). This determines if
@@ -7330,7 +7330,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// sensitive data such as patient identifiers, those IDs are part of the FHIR resource path recorded in Cloud
         /// audit logs and Cloud Pub/Sub notifications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableUpdateCreate")]
-        public virtual System.Nullable<bool> EnableUpdateCreate { get; set; } 
+        public virtual System.Nullable<bool> EnableUpdateCreate { get; set; }
 
         /// <summary>User-supplied key-value pairs used to organize FHIR stores. Label keys must be between 1 and 63
         /// characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular
@@ -7338,18 +7338,18 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
         /// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Output only. Resource name of the FHIR store, of the form
         /// `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>If non-empty, publish all resource modifications of this FHIR store to this destination. The Cloud
         /// Pub/Sub message attributes contain a map with a string describing the action that has triggered the
         /// notification. For example, "action":"CreateResource".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationConfig")]
-        public virtual NotificationConfig NotificationConfig { get; set; } 
+        public virtual NotificationConfig NotificationConfig { get; set; }
 
         /// <summary>A list of streaming configs that configure the destinations of streaming export for every resource
         /// mutation in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is
@@ -7360,13 +7360,13 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// account](https://cloud.google.com/iam/docs/service-accounts). Some lag (typically on the order of dozens of
         /// seconds) is expected before the results show up in the streaming destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streamConfigs")]
-        public virtual System.Collections.Generic.IList<StreamConfig> StreamConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<StreamConfig> StreamConfigs { get; set; }
 
         /// <summary>The FHIR specification version that this FHIR store supports natively. This field is immutable
         /// after store creation. Requests are rejected if they contain FHIR resources of a different version. Version
         /// is required for every FHIR store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7377,7 +7377,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>Deidentify action for one field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual string Action { get; set; } 
+        public virtual string Action { get; set; }
 
         /// <summary>List of paths to FHIR fields to be redacted. Each path is a period-separated list where each
         /// component is either a field name or FHIR type name, for example: Patient, HumanName. For "choice" types
@@ -7386,7 +7386,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml. Base64Binary
         /// is also supported, but may only be kept as-is or have all the content removed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paths")]
-        public virtual System.Collections.Generic.IList<string> Paths { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Paths { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7413,12 +7413,12 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// contents of the DICOM store. If the flag is not set and the destination table already exists, the export
         /// call returns an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("force")]
-        public virtual System.Nullable<bool> Force { get; set; } 
+        public virtual System.Nullable<bool> Force { get; set; }
 
         /// <summary>BigQuery URI to a table, up to 2000 characters long, in the format
         /// `bq://projectId.bqDatasetId.tableId`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableUri")]
-        public virtual string TableUri { get; set; } 
+        public virtual string TableUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7442,14 +7442,14 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// - image/jpeg -> .jpg - image/png -> .png - application/octet-stream -> no extension If unspecified, the
         /// instances are exported in the original DICOM format they were uploaded in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-        public virtual string MimeType { get; set; } 
+        public virtual string MimeType { get; set; }
 
         /// <summary>The Cloud Storage destination to export to. URI for a Cloud Storage directory where the server
         /// writes the result files, in the format `gs://{bucket-id}/{path/to/destination/dir}`). If there is no
         /// trailing slash, the service appends one when composing the object path. The user is responsible for creating
         /// the Cloud Storage bucket referenced in `uri_prefix`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uriPrefix")]
-        public virtual string UriPrefix { get; set; } 
+        public virtual string UriPrefix { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7468,7 +7468,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// match 1 character All other URI formats are invalid. Files matching the wildcard are expected to contain
         /// content only, no metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7480,17 +7480,17 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// <summary>BigQuery URI to an existing dataset, up to 2000 characters long, in the format
         /// `bq://projectId.bqDatasetId`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetUri")]
-        public virtual string DatasetUri { get; set; } 
+        public virtual string DatasetUri { get; set; }
 
         /// <summary>If this flag is `TRUE`, all tables are deleted from the dataset before the new exported tables are
         /// written. If the flag is not set and the destination dataset contains tables, the export call returns an
         /// error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("force")]
-        public virtual System.Nullable<bool> Force { get; set; } 
+        public virtual System.Nullable<bool> Force { get; set; }
 
         /// <summary>The configuration for the exported BigQuery schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaConfig")]
-        public virtual SchemaConfig SchemaConfig { get; set; } 
+        public virtual SchemaConfig SchemaConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7504,7 +7504,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// composing the object path. The user is responsible for creating the Cloud Storage bucket referenced in
         /// `uri_prefix`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uriPrefix")]
-        public virtual string UriPrefix { get; set; } 
+        public virtual string UriPrefix { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7522,7 +7522,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// imports all files with `.ndjson` extensions in `my-directory/` and its sub-directories. * `?` to match 1
         /// character Files matching the wildcard are expected to contain content only, no metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7544,7 +7544,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// key `x` as set using the Message.labels map. For example, `labels."priority"="high"`. The operator `:*` can
         /// be used to assert the existence of a label. For example, `labels."priority":*`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual string Filter { get; set; } 
+        public virtual string Filter { get; set; }
 
         /// <summary>The [Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are
         /// published on. Supplied by the client. The notification is a `PubsubMessage` with the following fields: *
@@ -7558,7 +7558,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// Logging. For more information, see [Viewing error logs in Cloud Logging](/healthcare/docs/how-
         /// tos/logging)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
-        public virtual string PubsubTopic { get; set; } 
+        public virtual string PubsubTopic { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7573,22 +7573,22 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
         /// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Resource name of the HL7v2 store, of the form
         /// `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>A list of notification configs. Each configuration uses a filter to determine whether to publish a
         /// message (both Ingest & Create) on the corresponding notification destination. Only the message name is sent
         /// as part of the notification. Supplied by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationConfigs")]
-        public virtual System.Collections.Generic.IList<Hl7V2NotificationConfig> NotificationConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<Hl7V2NotificationConfig> NotificationConfigs { get; set; }
 
         /// <summary>The configuration for the parser. It determines how the server parses the messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parserConfig")]
-        public virtual ParserConfig ParserConfig { get; set; } 
+        public virtual ParserConfig ParserConfig { get; set; }
 
         /// <summary>Determines whether to reject duplicate messages. A duplicate message is a message with the same raw
         /// bytes as a message that has already been ingested/created in this HL7v2 store. The default value is false,
@@ -7597,7 +7597,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// When this field is set to true, CreateMessage/IngestMessage requests with a duplicate message will be
         /// rejected by the store, and IngestMessageErrorDetail returns a NACK message upon rejection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rejectDuplicateMessage")]
-        public virtual System.Nullable<bool> RejectDuplicateMessage { get; set; } 
+        public virtual System.Nullable<bool> RejectDuplicateMessage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7618,16 +7618,16 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>The HTTP Content-Type header value specifying the content type of the body.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
-        public virtual string ContentType { get; set; } 
+        public virtual string ContentType { get; set; }
 
         /// <summary>The HTTP request/response body as raw binary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual string Data { get; set; } 
+        public virtual string Data { get; set; }
 
         /// <summary>Application specific response metadata. Must be set in the first response for streaming
         /// APIs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Extensions { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Extensions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7638,7 +7638,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>Determines how to redact text from image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textRedactionMode")]
-        public virtual string TextRedactionMode { get; set; } 
+        public virtual string TextRedactionMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7652,7 +7652,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// <summary>Cloud Storage source data location and import configuration. The Cloud Storage location requires
         /// the `roles/storage.objectViewer` Cloud IAM role.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
-        public virtual GoogleCloudHealthcareV1DicomGcsSource GcsSource { get; set; } 
+        public virtual GoogleCloudHealthcareV1DicomGcsSource GcsSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7671,13 +7671,13 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// <summary>The content structure in the source location. If not specified, the server treats the input source
         /// files as BUNDLE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentStructure")]
-        public virtual string ContentStructure { get; set; } 
+        public virtual string ContentStructure { get; set; }
 
         /// <summary>Cloud Storage source data location and import configuration. The Healthcare Service Agent account
         /// requires the `roles/storage.objectAdmin` role on the Cloud Storage location. Each Cloud Storage object
         /// should be a text file that contains the format specified in ContentStructure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
-        public virtual GoogleCloudHealthcareV1FhirGcsSource GcsSource { get; set; } 
+        public virtual GoogleCloudHealthcareV1FhirGcsSource GcsSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7696,28 +7696,28 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>Config for character mask.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("characterMaskConfig")]
-        public virtual CharacterMaskConfig CharacterMaskConfig { get; set; } 
+        public virtual CharacterMaskConfig CharacterMaskConfig { get; set; }
 
         /// <summary>Config for crypto hash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoHashConfig")]
-        public virtual CryptoHashConfig CryptoHashConfig { get; set; } 
+        public virtual CryptoHashConfig CryptoHashConfig { get; set; }
 
         /// <summary>Config for date shift.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateShiftConfig")]
-        public virtual DateShiftConfig DateShiftConfig { get; set; } 
+        public virtual DateShiftConfig DateShiftConfig { get; set; }
 
         /// <summary>InfoTypes to apply this transformation to. If this is not specified, the transformation applies to
         /// any info_type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoTypes")]
-        public virtual System.Collections.Generic.IList<string> InfoTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> InfoTypes { get; set; }
 
         /// <summary>Config for text redaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redactConfig")]
-        public virtual RedactConfig RedactConfig { get; set; } 
+        public virtual RedactConfig RedactConfig { get; set; }
 
         /// <summary>Config for replace with InfoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replaceWithInfoTypeConfig")]
-        public virtual ReplaceWithInfoTypeConfig ReplaceWithInfoTypeConfig { get; set; } 
+        public virtual ReplaceWithInfoTypeConfig ReplaceWithInfoTypeConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7728,7 +7728,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>HL7v2 message to ingest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual Message Message { get; set; } 
+        public virtual Message Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7739,11 +7739,11 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>HL7v2 ACK message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hl7Ack")]
-        public virtual string Hl7Ack { get; set; } 
+        public virtual string Hl7Ack { get; set; }
 
         /// <summary>Created message resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual Message Message { get; set; } 
+        public virtual Message Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7754,12 +7754,12 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>The first page of datasets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasets")]
-        public virtual System.Collections.Generic.IList<Dataset> Datasets { get; set; } 
+        public virtual System.Collections.Generic.IList<Dataset> Datasets { get; set; }
 
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7771,12 +7771,12 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// <summary>The returned DICOM stores. Won't be more DICOM stores than the value of page_size in the
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dicomStores")]
-        public virtual System.Collections.Generic.IList<DicomStore> DicomStores { get; set; } 
+        public virtual System.Collections.Generic.IList<DicomStore> DicomStores { get; set; }
 
         /// <summary>Token to retrieve the next page of results or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7788,12 +7788,12 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// <summary>The returned FHIR stores. Won't be more FHIR stores than the value of page_size in the
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fhirStores")]
-        public virtual System.Collections.Generic.IList<FhirStore> FhirStores { get; set; } 
+        public virtual System.Collections.Generic.IList<FhirStore> FhirStores { get; set; }
 
         /// <summary>Token to retrieve the next page of results or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7805,12 +7805,12 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// <summary>The returned HL7v2 stores. Won't be more HL7v2 stores than the value of page_size in the
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hl7V2Stores")]
-        public virtual System.Collections.Generic.IList<Hl7V2Store> Hl7V2Stores { get; set; } 
+        public virtual System.Collections.Generic.IList<Hl7V2Store> Hl7V2Stores { get; set; }
 
         /// <summary>Token to retrieve the next page of results or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7821,11 +7821,11 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>A list of locations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
+        public virtual System.Collections.Generic.IList<Location> Locations { get; set; }
 
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7837,12 +7837,12 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// <summary>The returned Messages. Won't be more Messages than the value of page_size in the request. See view
         /// for populated fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hl7V2Messages")]
-        public virtual System.Collections.Generic.IList<Message> Hl7V2Messages { get; set; } 
+        public virtual System.Collections.Generic.IList<Message> Hl7V2Messages { get; set; }
 
         /// <summary>Token to retrieve the next page of results or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7853,11 +7853,11 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7868,25 +7868,25 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-
         /// east1"}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The canonical id for this location. For example: `"us-east1"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>Service-specific metadata. For example the available capacity at the given location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>Resource name for the location, which may vary between implementations. For example: `"projects
         /// /example-project/locations/us-east1"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7898,11 +7898,11 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>Output only. The datetime when the message was created. Set by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Raw message bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual string Data { get; set; } 
+        public virtual string Data { get; set; }
 
         /// <summary>User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63
         /// characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular
@@ -7910,33 +7910,33 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
         /// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The message type for this message. MSH-9.1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageType")]
-        public virtual string MessageType { get; set; } 
+        public virtual string MessageType { get; set; }
 
         /// <summary>Resource name of the Message, of the form
         /// `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned
         /// by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The parsed version of the raw message data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parsedData")]
-        public virtual ParsedData ParsedData { get; set; } 
+        public virtual ParsedData ParsedData { get; set; }
 
         /// <summary>All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("patientIds")]
-        public virtual System.Collections.Generic.IList<PatientId> PatientIds { get; set; } 
+        public virtual System.Collections.Generic.IList<PatientId> PatientIds { get; set; }
 
         /// <summary>The hospital that this message came from. MSH-4.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sendFacility")]
-        public virtual string SendFacility { get; set; } 
+        public virtual string SendFacility { get; set; }
 
         /// <summary>The datetime the sending application sent this message. MSH-7.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sendTime")]
-        public virtual object SendTime { get; set; } 
+        public virtual object SendTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7955,7 +7955,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// Pub/Sub, errors are logged to Cloud Logging (see [Viewing logs](/healthcare/docs/how-tos/logging)). If the
         /// number of errors exceeds a certain rate, some aren't submitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
-        public virtual string PubsubTopic { get; set; } 
+        public virtual string PubsubTopic { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7967,23 +7967,23 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -7991,7 +7991,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8003,27 +8003,27 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>The name of the API method that initiated the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiMethodName")]
-        public virtual string ApiMethodName { get; set; } 
+        public virtual string ApiMethodName { get; set; }
 
         /// <summary>Specifies if cancellation was requested for the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
-        public virtual System.Nullable<bool> CancelRequested { get; set; } 
+        public virtual System.Nullable<bool> CancelRequested { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("counter")]
-        public virtual ProgressCounter Counter { get; set; } 
+        public virtual ProgressCounter Counter { get; set; }
 
         /// <summary>The time at which the operation was created by the API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The time at which execution was completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>A link to audit and error logs in the log viewer. Error logs are generated only by some operations,
         /// listed at [Viewing logs](/healthcare/docs/how-tos/logging).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logsUrl")]
-        public virtual string LogsUrl { get; set; } 
+        public virtual string LogsUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8033,7 +8033,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     public class ParsedData : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("segments")]
-        public virtual System.Collections.Generic.IList<Segment> Segments { get; set; } 
+        public virtual System.Collections.Generic.IList<Segment> Segments { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8044,12 +8044,12 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>Determines whether messages with no header are allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowNullHeader")]
-        public virtual System.Nullable<bool> AllowNullHeader { get; set; } 
+        public virtual System.Nullable<bool> AllowNullHeader { get; set; }
 
         /// <summary>Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment
         /// terminator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentTerminator")]
-        public virtual string SegmentTerminator { get; set; } 
+        public virtual string SegmentTerminator { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8060,11 +8060,11 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>ID type. For example, MRN or NHS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The patient's unique identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8094,12 +8094,12 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
-        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; }
 
         /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
         /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
         /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
@@ -8110,7 +8110,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
         /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
         /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
@@ -8124,7 +8124,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
     }    
 
@@ -8133,15 +8133,15 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>The number of units that failed in the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failure")]
-        public virtual System.Nullable<long> Failure { get; set; } 
+        public virtual System.Nullable<long> Failure { get; set; }
 
         /// <summary>The number of units that are pending in the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pending")]
-        public virtual System.Nullable<long> Pending { get; set; } 
+        public virtual System.Nullable<long> Pending { get; set; }
 
         /// <summary>The number of units that succeeded in the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("success")]
-        public virtual System.Nullable<long> Success { get; set; } 
+        public virtual System.Nullable<long> Success { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8169,7 +8169,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>List of resources IDs. For example, "Patient/1234".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<string> ResourcesValue { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ResourcesValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8183,11 +8183,11 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// column called `concept.concept` but not `concept.concept.concept`. If not specified or set to 0, the server
         /// will use the default value 2. The maximum depth allowed is 5.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recursiveStructureDepth")]
-        public virtual System.Nullable<long> RecursiveStructureDepth { get; set; } 
+        public virtual System.Nullable<long> RecursiveStructureDepth { get; set; }
 
         /// <summary>Specifies the output schema type. Schema type is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaType")]
-        public virtual string SchemaType { get; set; } 
+        public virtual string SchemaType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8201,7 +8201,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
         /// [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
-        public virtual string ResourceType { get; set; } 
+        public virtual string ResourceType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8218,16 +8218,16 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// the value "CBC". * (1[0].1, "HbA1c") denotes that the first component of the first Instance of Field 1,
         /// which is repeated, has the value "HbA1c".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Fields { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Fields { get; set; }
 
         /// <summary>A string that indicates the type of segment. For example, EVN or PID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentId")]
-        public virtual string SegmentId { get; set; } 
+        public virtual string SegmentId { get; set; }
 
         /// <summary>Set ID for segments that can be in a set. This can be empty if it's missing or isn't
         /// applicable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("setId")]
-        public virtual string SetId { get; set; } 
+        public virtual string SetId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8240,13 +8240,13 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
         /// might reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual Policy Policy { get; set; } 
+        public virtual Policy Policy { get; set; }
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
         /// will be modified. If no mask is provided, the following default mask is used: `paths: "bindings,
         /// etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8261,17 +8261,17 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8301,13 +8301,13 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](/healthcare/docs/how-
         /// tos/logging)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
-        public virtual GoogleCloudHealthcareV1FhirBigQueryDestination BigqueryDestination { get; set; } 
+        public virtual GoogleCloudHealthcareV1FhirBigQueryDestination BigqueryDestination { get; set; }
 
         /// <summary>Supply a FHIR resource type (such as "Patient" or "Observation"). See https://www.hl7.org/fhir
         /// /valueset-resource-types.html for a list of all FHIR resource types. The server treats an empty list as an
         /// intent to stream all the supported resource types in this FHIR store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceTypes")]
-        public virtual System.Collections.Generic.IList<string> ResourceTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ResourceTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8320,7 +8320,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// Elements, as defined at: http://dicom.nema.org/medical/dicom/current/output/html/part06.html#table_6-1,.
         /// They may be provided by "Keyword" or "Tag". For example "PatientID", "00100010".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
-        public virtual System.Collections.Generic.IList<string> Tags { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8333,7 +8333,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// 'storage.*') are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8344,7 +8344,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8354,7 +8354,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     {
         /// <summary>The transformations to apply to the detected data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transformations")]
-        public virtual System.Collections.Generic.IList<InfoTypeTransformation> Transformations { get; set; } 
+        public virtual System.Collections.Generic.IList<InfoTypeTransformation> Transformations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

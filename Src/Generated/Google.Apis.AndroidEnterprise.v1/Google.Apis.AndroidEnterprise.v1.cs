@@ -5959,7 +5959,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>The admin's email address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; } 
+        public virtual string Email { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5970,7 +5970,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>An opaque token to be passed to the Play front-end to generate an iframe.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
-        public virtual string Token { get; set; } 
+        public virtual string Token { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5982,32 +5982,32 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>Options for displaying the Managed Configuration page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedConfigurations")]
-        public virtual AdministratorWebTokenSpecManagedConfigurations ManagedConfigurations { get; set; } 
+        public virtual AdministratorWebTokenSpecManagedConfigurations ManagedConfigurations { get; set; }
 
         /// <summary>The URI of the parent frame hosting the iframe. To prevent XSS, the iframe may not be hosted at
         /// other URIs. This URI must be https. Use whitespaces to separate multiple parent URIs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
-        public virtual string Parent { get; set; } 
+        public virtual string Parent { get; set; }
 
         /// <summary>Deprecated. Use PlaySearch.approveApps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permission")]
-        public virtual System.Collections.Generic.IList<string> Permission { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permission { get; set; }
 
         /// <summary>Options for displaying the managed Play Search apps page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playSearch")]
-        public virtual AdministratorWebTokenSpecPlaySearch PlaySearch { get; set; } 
+        public virtual AdministratorWebTokenSpecPlaySearch PlaySearch { get; set; }
 
         /// <summary>Options for displaying the Private Apps page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateApps")]
-        public virtual AdministratorWebTokenSpecPrivateApps PrivateApps { get; set; } 
+        public virtual AdministratorWebTokenSpecPrivateApps PrivateApps { get; set; }
 
         /// <summary>Options for displaying the Organize apps page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeBuilder")]
-        public virtual AdministratorWebTokenSpecStoreBuilder StoreBuilder { get; set; } 
+        public virtual AdministratorWebTokenSpecStoreBuilder StoreBuilder { get; set; }
 
         /// <summary>Options for displaying the Web Apps page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webApps")]
-        public virtual AdministratorWebTokenSpecWebApps WebApps { get; set; } 
+        public virtual AdministratorWebTokenSpecWebApps WebApps { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6017,7 +6017,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>Whether the Managed Configuration page is displayed. Default is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6027,11 +6027,11 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>Allow access to the iframe in approve mode. Default is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approveApps")]
-        public virtual System.Nullable<bool> ApproveApps { get; set; } 
+        public virtual System.Nullable<bool> ApproveApps { get; set; }
 
         /// <summary>Whether the managed Play Search apps page is displayed. Default is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6041,7 +6041,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>Whether the Private Apps page is displayed. Default is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6051,7 +6051,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>Whether the Organize apps page is displayed. Default is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6061,7 +6061,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>Whether the Web Apps page is displayed. Default is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6072,11 +6072,11 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The set of restrictions that make up this schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictions")]
-        public virtual System.Collections.Generic.IList<AppRestrictionsSchemaRestriction> Restrictions { get; set; } 
+        public virtual System.Collections.Generic.IList<AppRestrictionsSchemaRestriction> Restrictions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6090,7 +6090,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>The id of the product (e.g. "app:com.google.android.gm") for which the app restriction schema
         /// changed. This field will always be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6103,41 +6103,41 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>The default value of the restriction. bundle and bundleArray restrictions never have a default
         /// value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultValue")]
-        public virtual AppRestrictionsSchemaRestrictionRestrictionValue DefaultValue { get; set; } 
+        public virtual AppRestrictionsSchemaRestrictionRestrictionValue DefaultValue { get; set; }
 
         /// <summary>A longer description of the restriction, giving more detail of what it affects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>For choice or multiselect restrictions, the list of possible entries' human-readable
         /// names.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entry")]
-        public virtual System.Collections.Generic.IList<string> Entry { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Entry { get; set; }
 
         /// <summary>For choice or multiselect restrictions, the list of possible entries' machine-readable values.
         /// These values should be used in the configuration, either as a single string value for a choice restriction
         /// or in a stringArray for a multiselect restriction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entryValue")]
-        public virtual System.Collections.Generic.IList<string> EntryValue { get; set; } 
+        public virtual System.Collections.Generic.IList<string> EntryValue { get; set; }
 
         /// <summary>The unique key that the product uses to identify the restriction, e.g.
         /// "com.google.android.gm.fieldname".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         /// <summary>For bundle or bundleArray restrictions, the list of nested restrictions. A bundle restriction is
         /// always nested within a bundleArray restriction, and a bundleArray restriction is at most two levels
         /// deep.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nestedRestriction")]
-        public virtual System.Collections.Generic.IList<AppRestrictionsSchemaRestriction> NestedRestriction { get; set; } 
+        public virtual System.Collections.Generic.IList<AppRestrictionsSchemaRestriction> NestedRestriction { get; set; }
 
         /// <summary>The type of the restriction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictionType")]
-        public virtual string RestrictionType { get; set; } 
+        public virtual string RestrictionType { get; set; }
 
         /// <summary>The name of the restriction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6148,23 +6148,23 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>The type of the value being provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The boolean value - this will only be present if type is bool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueBool")]
-        public virtual System.Nullable<bool> ValueBool { get; set; } 
+        public virtual System.Nullable<bool> ValueBool { get; set; }
 
         /// <summary>The integer value - this will only be present if type is integer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueInteger")]
-        public virtual System.Nullable<int> ValueInteger { get; set; } 
+        public virtual System.Nullable<int> ValueInteger { get; set; }
 
         /// <summary>The list of string values - this will only be present if type is multiselect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueMultiselect")]
-        public virtual System.Collections.Generic.IList<string> ValueMultiselect { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ValueMultiselect { get; set; }
 
         /// <summary>The string value - this will be present for types string, choice and hidden.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueString")]
-        public virtual string ValueString { get; set; } 
+        public virtual string ValueString { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6175,11 +6175,11 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>List of keyed app states. This field will always be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyedAppState")]
-        public virtual System.Collections.Generic.IList<KeyedAppState> KeyedAppState { get; set; } 
+        public virtual System.Collections.Generic.IList<KeyedAppState> KeyedAppState { get; set; }
 
         /// <summary>The package name of the app. This field will always be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
-        public virtual string PackageName { get; set; } 
+        public virtual string PackageName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6193,7 +6193,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>The id of the product (e.g. "app:com.google.android.gm") that was updated. This field will always
         /// be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6204,25 +6204,25 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>True if this version is a production APK.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isProduction")]
-        public virtual System.Nullable<bool> IsProduction { get; set; } 
+        public virtual System.Nullable<bool> IsProduction { get; set; }
 
         /// <summary>Deprecated, use trackId instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("track")]
-        public virtual string Track { get; set; } 
+        public virtual string Track { get; set; }
 
         /// <summary>Track ids that the app version is published in. Replaces the track field (deprecated), but doesn't
         /// include the production track (see isProduction instead).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackId")]
-        public virtual System.Collections.Generic.IList<string> TrackId { get; set; } 
+        public virtual System.Collections.Generic.IList<string> TrackId { get; set; }
 
         /// <summary>Unique increasing identifier for the app version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
-        public virtual System.Nullable<int> VersionCode { get; set; } 
+        public virtual System.Nullable<int> VersionCode { get; set; }
 
         /// <summary>The string used in the Play store by the app developer to identify the version. The string is not
         /// necessarily unique or localized (for example, the string could be "1.4").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionString")]
-        public virtual string VersionString { get; set; } 
+        public virtual string VersionString { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6234,7 +6234,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>A URL that displays a product's permissions and that can also be used to approve the product with
         /// the Products.approve call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approvalUrl")]
-        public virtual string ApprovalUrl { get; set; } 
+        public virtual string ApprovalUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6247,7 +6247,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>The authentication token to be passed to the device policy client on the device where it can be
         /// used to provision the account for which this token was generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
-        public virtual string Token { get; set; } 
+        public virtual string Token { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6259,15 +6259,15 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>Charging state constraint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chargingStateConstraint")]
-        public virtual string ChargingStateConstraint { get; set; } 
+        public virtual string ChargingStateConstraint { get; set; }
 
         /// <summary>Device idle state constraint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIdleStateConstraint")]
-        public virtual string DeviceIdleStateConstraint { get; set; } 
+        public virtual string DeviceIdleStateConstraint { get; set; }
 
         /// <summary>Network type constraint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkTypeConstraint")]
-        public virtual string NetworkTypeConstraint { get; set; } 
+        public virtual string NetworkTypeConstraint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6277,22 +6277,22 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>The constraints for auto-installing the app. You can specify a maximum of one constraint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoInstallConstraint")]
-        public virtual System.Collections.Generic.IList<AutoInstallConstraint> AutoInstallConstraint { get; set; } 
+        public virtual System.Collections.Generic.IList<AutoInstallConstraint> AutoInstallConstraint { get; set; }
 
         /// <summary>The auto-install mode. If unset defaults to "doNotAutoInstall".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoInstallMode")]
-        public virtual string AutoInstallMode { get; set; } 
+        public virtual string AutoInstallMode { get; set; }
 
         /// <summary>The priority of the install, as an unsigned integer. A lower number means higher
         /// priority.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoInstallPriority")]
-        public virtual System.Nullable<int> AutoInstallPriority { get; set; } 
+        public virtual System.Nullable<int> AutoInstallPriority { get; set; }
 
         /// <summary>The minimum version of the app. If a lower version of the app is installed, then the app will be
         /// auto-updated according to the auto-install constraints, instead of waiting for the regular auto-update. You
         /// can set a minimum version code for at most 20 apps per device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumVersionCode")]
-        public virtual System.Nullable<int> MinimumVersionCode { get; set; } 
+        public virtual System.Nullable<int> MinimumVersionCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6305,11 +6305,11 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>The ID of the managed configurations settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mcmId")]
-        public virtual string McmId { get; set; } 
+        public virtual string McmId { get; set; }
 
         /// <summary>The variable set that is attributed to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variableSet")]
-        public virtual System.Collections.Generic.IList<VariableSet> VariableSet { get; set; } 
+        public virtual System.Collections.Generic.IList<VariableSet> VariableSet { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6322,7 +6322,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>The Google Play Services Android ID for the device encoded as a lowercase hex string. For example,
         /// "123456789abcdef0".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidId")]
-        public virtual string AndroidId { get; set; } 
+        public virtual string AndroidId { get; set; }
 
         /// <summary>Identifies the extent to which the device is controlled by a managed Google Play EMM in various
         /// deployment configurations. Possible values include: - "managedDevice", a device that has the EMM's device
@@ -6332,15 +6332,15 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// domain's admin, using the Admin Console to enable the privilege) to use managed Google Play, but the profile
         /// is itself not owned by a DPC. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
-        public virtual string ManagementType { get; set; } 
+        public virtual string ManagementType { get; set; }
 
         /// <summary>The policy enforced on the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual Policy Policy { get; set; } 
+        public virtual Policy Policy { get; set; }
 
         /// <summary>The device report updated with the latest app states.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("report")]
-        public virtual DeviceReport Report { get; set; } 
+        public virtual DeviceReport Report { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6352,12 +6352,12 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>List of app states set by managed apps on the device. App states are defined by the app's
         /// developers. This field will always be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appState")]
-        public virtual System.Collections.Generic.IList<AppState> AppState { get; set; } 
+        public virtual System.Collections.Generic.IList<AppState> AppState { get; set; }
 
         /// <summary>The timestamp of the last report update in milliseconds since epoch. This field will always be
         /// present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdatedTimestampMillis")]
-        public virtual System.Nullable<long> LastUpdatedTimestampMillis { get; set; } 
+        public virtual System.Nullable<long> LastUpdatedTimestampMillis { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6368,15 +6368,15 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>The Android ID of the device. This field will always be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
-        public virtual string DeviceId { get; set; } 
+        public virtual string DeviceId { get; set; }
 
         /// <summary>The device report updated with the latest app states. This field will always be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("report")]
-        public virtual DeviceReport Report { get; set; } 
+        public virtual DeviceReport Report { get; set; }
 
         /// <summary>The ID of the user. This field will always be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
-        public virtual string UserId { get; set; } 
+        public virtual string UserId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6390,7 +6390,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// device can be used to access Google services (including Google Play), while "disabled" means that it cannot.
         /// A new device is initially in the "disabled" state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountState")]
-        public virtual string AccountState { get; set; } 
+        public virtual string AccountState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6400,7 +6400,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>A managed device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("device")]
-        public virtual System.Collections.Generic.IList<Device> Device { get; set; } 
+        public virtual System.Collections.Generic.IList<Device> Device { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6419,19 +6419,19 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>Admins of the enterprise. This is only supported for enterprises created via the EMM-initiated
         /// flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("administrator")]
-        public virtual System.Collections.Generic.IList<Administrator> Administrator { get; set; } 
+        public virtual System.Collections.Generic.IList<Administrator> Administrator { get; set; }
 
         /// <summary>The unique ID for the enterprise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The name of the enterprise, for example, "Example, Inc".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The enterprise's primary domain, such as "example.com".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryDomain")]
-        public virtual string PrimaryDomain { get; set; } 
+        public virtual string PrimaryDomain { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6443,7 +6443,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>The email address of the service account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountEmail")]
-        public virtual string AccountEmail { get; set; } 
+        public virtual string AccountEmail { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6453,7 +6453,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>An enterprise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enterprise")]
-        public virtual System.Collections.Generic.IList<Enterprise> Enterprise { get; set; } 
+        public virtual System.Collections.Generic.IList<Enterprise> Enterprise { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6463,12 +6463,12 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>The message ID of the test push notification that was sent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
-        public virtual string MessageId { get; set; } 
+        public virtual string MessageId { get; set; }
 
         /// <summary>The name of the Cloud Pub/Sub topic to which notifications for this enterprise's enrolled account
         /// will be sent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topicName")]
-        public virtual string TopicName { get; set; } 
+        public virtual string TopicName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6492,12 +6492,12 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>The ID of the product that the entitlement is for. For example,
         /// "app:com.google.android.gm".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>The reason for the entitlement. For example, "free" for free apps. This property is temporary: it
         /// will be replaced by the acquisition kind field of group licenses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6508,7 +6508,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>An entitlement of a user to a product (e.g. an app). For example, a free app that they have
         /// installed, or a paid app that they have been allocated a license to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entitlement")]
-        public virtual System.Collections.Generic.IList<Entitlement> Entitlement { get; set; } 
+        public virtual System.Collections.Generic.IList<Entitlement> Entitlement { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6529,25 +6529,25 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// created because the enterprise purchased licenses for this product; otherwise, the value is "free" (for free
         /// products).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acquisitionKind")]
-        public virtual string AcquisitionKind { get; set; } 
+        public virtual string AcquisitionKind { get; set; }
 
         /// <summary>Whether the product to which this group license relates is currently approved by the enterprise.
         /// Products are approved when a group license is first created, but this approval may be revoked by an
         /// enterprise admin via Google Play. Unapproved products will not be visible to end users in collections, and
         /// new entitlements to them should not normally be created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approval")]
-        public virtual string Approval { get; set; } 
+        public virtual string Approval { get; set; }
 
         /// <summary>The total number of provisioned licenses for this product. Returned by read operations, but ignored
         /// in write operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numProvisioned")]
-        public virtual System.Nullable<int> NumProvisioned { get; set; } 
+        public virtual System.Nullable<int> NumProvisioned { get; set; }
 
         /// <summary>The number of purchased licenses (possibly in multiple purchases). If this field is omitted, then
         /// there is no limit on the number of licenses that can be provisioned (for example, if the acquisition kind is
         /// "free").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numPurchased")]
-        public virtual System.Nullable<int> NumPurchased { get; set; } 
+        public virtual System.Nullable<int> NumPurchased { get; set; }
 
         /// <summary>The permission approval status of the product. This field is only set if the product is approved.
         /// Possible states are: - "currentApproved", the current set of permissions is approved, but additional
@@ -6557,11 +6557,11 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// reapproved, - "allCurrentAndFutureApproved", the current permissions are approved and any future permission
         /// updates will be automatically approved without administrator review. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual string Permissions { get; set; } 
+        public virtual string Permissions { get; set; }
 
         /// <summary>The ID of the product that the license is for. For example, "app:com.google.android.gm".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6571,7 +6571,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>A user of an enterprise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
-        public virtual System.Collections.Generic.IList<User> User { get; set; } 
+        public virtual System.Collections.Generic.IList<User> User { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6581,7 +6581,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>A group license for a product approved for use in the enterprise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupLicense")]
-        public virtual System.Collections.Generic.IList<GroupLicense> GroupLicense { get; set; } 
+        public virtual System.Collections.Generic.IList<GroupLicense> GroupLicense { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6605,16 +6605,16 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// download to the device is in progress. The state "installed" means that the app has been installed. This
         /// field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installState")]
-        public virtual string InstallState { get; set; } 
+        public virtual string InstallState { get; set; }
 
         /// <summary>The ID of the product that the install is for. For example, "app:com.google.android.gm".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>The version of the installed product. Guaranteed to be set only if the install state is
         /// "installed".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
-        public virtual System.Nullable<int> VersionCode { get; set; } 
+        public virtual System.Nullable<int> VersionCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6625,24 +6625,24 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>The Android ID of the device. This field will always be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
-        public virtual string DeviceId { get; set; } 
+        public virtual string DeviceId { get; set; }
 
         /// <summary>Additional details on the failure if applicable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureDetails")]
-        public virtual string FailureDetails { get; set; } 
+        public virtual string FailureDetails { get; set; }
 
         /// <summary>The reason for the installation failure. This field will always be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureReason")]
-        public virtual string FailureReason { get; set; } 
+        public virtual string FailureReason { get; set; }
 
         /// <summary>The id of the product (e.g. "app:com.google.android.gm") for which the install failure event
         /// occured. This field will always be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>The ID of the user. This field will always be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
-        public virtual string UserId { get; set; } 
+        public virtual string UserId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6653,7 +6653,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>An installation of an app for a user on a specific device. The existence of an install implies that
         /// the user must have an entitlement to the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("install")]
-        public virtual System.Collections.Generic.IList<Install> Install { get; set; } 
+        public virtual System.Collections.Generic.IList<Install> Install { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6666,27 +6666,27 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>Additional field intended for machine-readable data. For example, a number or JSON object. To
         /// prevent XSS, we recommend removing any HTML from the data before displaying it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual string Data { get; set; } 
+        public virtual string Data { get; set; }
 
         /// <summary>Key indicating what the app is providing a state for. The content of the key is set by the app's
         /// developer. To prevent XSS, we recommend removing any HTML from the key before displaying it. This field will
         /// always be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         /// <summary>Free-form, human-readable message describing the app state. For example, an error message. To
         /// prevent XSS, we recommend removing any HTML from the message before displaying it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>Severity of the app state. This field will always be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
-        public virtual string Severity { get; set; } 
+        public virtual string Severity { get; set; }
 
         /// <summary>Timestamp of when the app set the state in milliseconds since epoch. This field will always be
         /// present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateTimestampMillis")]
-        public virtual System.Nullable<long> StateTimestampMillis { get; set; } 
+        public virtual System.Nullable<long> StateTimestampMillis { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6697,11 +6697,11 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>The BCP47 tag for a locale. (e.g. "en-US", "de").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locale")]
-        public virtual string Locale { get; set; } 
+        public virtual string Locale { get; set; }
 
         /// <summary>The text localized in the associated locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; } 
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6714,12 +6714,12 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>Duration of the maintenance window, in milliseconds. The duration must be between 30 minutes and 24
         /// hours (inclusive).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("durationMs")]
-        public virtual System.Nullable<long> DurationMs { get; set; } 
+        public virtual System.Nullable<long> DurationMs { get; set; }
 
         /// <summary>Start time of the maintenance window, in milliseconds after midnight on the device. Windows can
         /// span midnight.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTimeAfterMidnightMs")]
-        public virtual System.Nullable<long> StartTimeAfterMidnightMs { get; set; } 
+        public virtual System.Nullable<long> StartTimeAfterMidnightMs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6732,20 +6732,20 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>Contains the ID of the managed configuration profile and the set of configuration variables (if
         /// any) defined for the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configurationVariables")]
-        public virtual ConfigurationVariables ConfigurationVariables { get; set; } 
+        public virtual ConfigurationVariables ConfigurationVariables { get; set; }
 
         /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The set of managed properties for this configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedProperty")]
-        public virtual System.Collections.Generic.IList<ManagedProperty> ManagedProperty { get; set; } 
+        public virtual System.Collections.Generic.IList<ManagedProperty> ManagedProperty { get; set; }
 
         /// <summary>The ID of the product that the managed configuration is for, e.g.
         /// "app:com.google.android.gm".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6755,7 +6755,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>A managed configuration for an app on a specific device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedConfigurationForDevice")]
-        public virtual System.Collections.Generic.IList<ManagedConfiguration> ManagedConfigurationForDevice { get; set; } 
+        public virtual System.Collections.Generic.IList<ManagedConfiguration> ManagedConfigurationForDevice { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6765,7 +6765,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>A managed configuration for an app for a specific user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedConfigurationForUser")]
-        public virtual System.Collections.Generic.IList<ManagedConfiguration> ManagedConfigurationForUser { get; set; } 
+        public virtual System.Collections.Generic.IList<ManagedConfiguration> ManagedConfigurationForUser { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6779,15 +6779,15 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>The last updated time of the managed configuration settings in milliseconds since
         /// 1970-01-01T00:00:00Z.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdatedTimestampMillis")]
-        public virtual System.Nullable<long> LastUpdatedTimestampMillis { get; set; } 
+        public virtual System.Nullable<long> LastUpdatedTimestampMillis { get; set; }
 
         /// <summary>The ID of the managed configurations settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mcmId")]
-        public virtual string McmId { get; set; } 
+        public virtual string McmId { get; set; }
 
         /// <summary>The name of the managed configurations settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6798,7 +6798,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>A managed configurations settings for an app that may be assigned to a group of users in an
         /// enterprise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedConfigurationsSettings")]
-        public virtual System.Collections.Generic.IList<ManagedConfigurationsSettings> ManagedConfigurationsSettings { get; set; } 
+        public virtual System.Collections.Generic.IList<ManagedConfigurationsSettings> ManagedConfigurationsSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6811,35 +6811,35 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>The unique key that identifies the property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         /// <summary>The boolean value - this will only be present if type of the property is bool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueBool")]
-        public virtual System.Nullable<bool> ValueBool { get; set; } 
+        public virtual System.Nullable<bool> ValueBool { get; set; }
 
         /// <summary>The bundle of managed properties - this will only be present if type of the property is
         /// bundle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueBundle")]
-        public virtual ManagedPropertyBundle ValueBundle { get; set; } 
+        public virtual ManagedPropertyBundle ValueBundle { get; set; }
 
         /// <summary>The list of bundles of properties - this will only be present if type of the property is
         /// bundle_array.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueBundleArray")]
-        public virtual System.Collections.Generic.IList<ManagedPropertyBundle> ValueBundleArray { get; set; } 
+        public virtual System.Collections.Generic.IList<ManagedPropertyBundle> ValueBundleArray { get; set; }
 
         /// <summary>The integer value - this will only be present if type of the property is integer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueInteger")]
-        public virtual System.Nullable<int> ValueInteger { get; set; } 
+        public virtual System.Nullable<int> ValueInteger { get; set; }
 
         /// <summary>The string value - this will only be present if type of the property is string, choice or
         /// hidden.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueString")]
-        public virtual string ValueString { get; set; } 
+        public virtual string ValueString { get; set; }
 
         /// <summary>The list of string values - this will only be present if type of the property is
         /// multiselect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueStringArray")]
-        public virtual System.Collections.Generic.IList<string> ValueStringArray { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ValueStringArray { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6850,7 +6850,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>The list of managed properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedProperty")]
-        public virtual System.Collections.Generic.IList<ManagedProperty> ManagedProperty { get; set; } 
+        public virtual System.Collections.Generic.IList<ManagedProperty> ManagedProperty { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6861,21 +6861,21 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>The Android ID of the device. This field will always be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
-        public virtual string DeviceId { get; set; } 
+        public virtual string DeviceId { get; set; }
 
         /// <summary>Policy app on the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dpcPackageName")]
-        public virtual string DpcPackageName { get; set; } 
+        public virtual string DpcPackageName { get; set; }
 
         /// <summary>Identifies the extent to which the device is controlled by an Android EMM in various deployment
         /// configurations. Possible values include: - "managedDevice", a device where the DPC is set as device owner, -
         /// "managedProfile", a device where the DPC is set as profile owner. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
-        public virtual string ManagementType { get; set; } 
+        public virtual string ManagementType { get; set; }
 
         /// <summary>The ID of the user. This field will always be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
-        public virtual string UserId { get; set; } 
+        public virtual string UserId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6887,17 +6887,17 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>The set of permissions that the enterprise admin has already approved for this application. Use
         /// Permissions.Get on the EMM API to retrieve details about these permissions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approvedPermissions")]
-        public virtual System.Collections.Generic.IList<string> ApprovedPermissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ApprovedPermissions { get; set; }
 
         /// <summary>The id of the product (e.g. "app:com.google.android.gm") for which new permissions were added. This
         /// field will always be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>The set of permissions that the app is currently requesting. Use Permissions.Get on the EMM API to
         /// retrieve details about these permissions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPermissions")]
-        public virtual System.Collections.Generic.IList<string> RequestedPermissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> RequestedPermissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6908,48 +6908,48 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>Notifications about new app restrictions schema changes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appRestrictionsSchemaChangeEvent")]
-        public virtual AppRestrictionsSchemaChangeEvent AppRestrictionsSchemaChangeEvent { get; set; } 
+        public virtual AppRestrictionsSchemaChangeEvent AppRestrictionsSchemaChangeEvent { get; set; }
 
         /// <summary>Notifications about app updates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appUpdateEvent")]
-        public virtual AppUpdateEvent AppUpdateEvent { get; set; } 
+        public virtual AppUpdateEvent AppUpdateEvent { get; set; }
 
         /// <summary>Notifications about device report updates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceReportUpdateEvent")]
-        public virtual DeviceReportUpdateEvent DeviceReportUpdateEvent { get; set; } 
+        public virtual DeviceReportUpdateEvent DeviceReportUpdateEvent { get; set; }
 
         /// <summary>The ID of the enterprise for which the notification is sent. This will always be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enterpriseId")]
-        public virtual string EnterpriseId { get; set; } 
+        public virtual string EnterpriseId { get; set; }
 
         /// <summary>Notifications about an app installation failure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installFailureEvent")]
-        public virtual InstallFailureEvent InstallFailureEvent { get; set; } 
+        public virtual InstallFailureEvent InstallFailureEvent { get; set; }
 
         /// <summary>Notifications about new devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newDeviceEvent")]
-        public virtual NewDeviceEvent NewDeviceEvent { get; set; } 
+        public virtual NewDeviceEvent NewDeviceEvent { get; set; }
 
         /// <summary>Notifications about new app permissions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newPermissionsEvent")]
-        public virtual NewPermissionsEvent NewPermissionsEvent { get; set; } 
+        public virtual NewPermissionsEvent NewPermissionsEvent { get; set; }
 
         /// <summary>Type of the notification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationType")]
-        public virtual string NotificationType { get; set; } 
+        public virtual string NotificationType { get; set; }
 
         /// <summary>Notifications about changes to a product's approval status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productApprovalEvent")]
-        public virtual ProductApprovalEvent ProductApprovalEvent { get; set; } 
+        public virtual ProductApprovalEvent ProductApprovalEvent { get; set; }
 
         /// <summary>Notifications about product availability changes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productAvailabilityChangeEvent")]
-        public virtual ProductAvailabilityChangeEvent ProductAvailabilityChangeEvent { get; set; } 
+        public virtual ProductAvailabilityChangeEvent ProductAvailabilityChangeEvent { get; set; }
 
         /// <summary>The time when the notification was published in milliseconds since 1970-01-01T00:00:00Z. This will
         /// always be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestampMillis")]
-        public virtual System.Nullable<long> TimestampMillis { get; set; } 
+        public virtual System.Nullable<long> TimestampMillis { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6961,12 +6961,12 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>The notifications received, or empty if no notifications are present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notification")]
-        public virtual System.Collections.Generic.IList<Notification> Notification { get; set; } 
+        public virtual System.Collections.Generic.IList<Notification> Notification { get; set; }
 
         /// <summary>The notification set ID, required to mark the notification as received with the
         /// Enterprises.AcknowledgeNotification API. This will be omitted if no notifications are present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationSetId")]
-        public virtual string NotificationSetId { get; set; } 
+        public virtual string NotificationSetId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6979,16 +6979,16 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>Maximum number of results returned in one page. ! The number of results included in the API
         /// response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultPerPage")]
-        public virtual System.Nullable<int> ResultPerPage { get; set; } 
+        public virtual System.Nullable<int> ResultPerPage { get; set; }
 
         /// <summary>Index of the first result returned in the current page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-        public virtual System.Nullable<int> StartIndex { get; set; } 
+        public virtual System.Nullable<int> StartIndex { get; set; }
 
         /// <summary>Total number of results available on the backend ! The total number of results in the result
         /// set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-        public virtual System.Nullable<int> TotalResults { get; set; } 
+        public virtual System.Nullable<int> TotalResults { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7003,15 +7003,15 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>A longer description of the Permissions resource, giving more details of what it affects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The name of the permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>An opaque string uniquely identifying the permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissionId")]
-        public virtual string PermissionId { get; set; } 
+        public virtual string PermissionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7024,16 +7024,16 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// to configure the app update policy. "always" enables auto updates. "never" disables auto updates. "wifiOnly"
         /// enables auto updates only when the device is connected to wifi.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoUpdatePolicy")]
-        public virtual string AutoUpdatePolicy { get; set; } 
+        public virtual string AutoUpdatePolicy { get; set; }
 
         /// <summary>Whether the device reports app states to the EMM. The default value is
         /// "deviceReportDisabled".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceReportPolicy")]
-        public virtual string DeviceReportPolicy { get; set; } 
+        public virtual string DeviceReportPolicy { get; set; }
 
         /// <summary>The maintenance window defining when apps running in the foreground should be updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceWindow")]
-        public virtual MaintenanceWindow MaintenanceWindow { get; set; } 
+        public virtual MaintenanceWindow MaintenanceWindow { get; set; }
 
         /// <summary>The availability granted to the device for the specified products. "all" gives the device access to
         /// all products, regardless of approval status. "all" does not enable automatic visibility of "alpha" or "beta"
@@ -7042,12 +7042,12 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// can be whitelisted. If no value is provided, the availability set at the user level is applied by
         /// default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productAvailabilityPolicy")]
-        public virtual string ProductAvailabilityPolicy { get; set; } 
+        public virtual string ProductAvailabilityPolicy { get; set; }
 
         /// <summary>The list of product policies. The productAvailabilityPolicy needs to be set to WHITELIST or ALL for
         /// the product policies to be applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productPolicy")]
-        public virtual System.Collections.Generic.IList<ProductPolicy> ProductPolicy { get; set; } 
+        public virtual System.Collections.Generic.IList<ProductPolicy> ProductPolicy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7062,39 +7062,39 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>The tracks visible to the enterprise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appTracks")]
-        public virtual System.Collections.Generic.IList<TrackInfo> AppTracks { get; set; } 
+        public virtual System.Collections.Generic.IList<TrackInfo> AppTracks { get; set; }
 
         /// <summary>App versions currently available for this product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appVersion")]
-        public virtual System.Collections.Generic.IList<AppVersion> AppVersion { get; set; } 
+        public virtual System.Collections.Generic.IList<AppVersion> AppVersion { get; set; }
 
         /// <summary>The name of the author of the product (for example, the app developer).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorName")]
-        public virtual string AuthorName { get; set; } 
+        public virtual string AuthorName { get; set; }
 
         /// <summary>The countries which this app is available in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availableCountries")]
-        public virtual System.Collections.Generic.IList<string> AvailableCountries { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AvailableCountries { get; set; }
 
         /// <summary>Deprecated, use appTracks instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availableTracks")]
-        public virtual System.Collections.Generic.IList<string> AvailableTracks { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AvailableTracks { get; set; }
 
         /// <summary>The app category (e.g. RACING, SOCIAL, etc.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
-        public virtual string Category { get; set; } 
+        public virtual string Category { get; set; }
 
         /// <summary>The content rating for this app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentRating")]
-        public virtual string ContentRating { get; set; } 
+        public virtual string ContentRating { get; set; }
 
         /// <summary>The localized promotional description, if available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>A link to the (consumer) Google Play details page for the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detailsUrl")]
-        public virtual string DetailsUrl { get; set; } 
+        public virtual string DetailsUrl { get; set; }
 
         /// <summary>How and to whom the package is made available. The value publicGoogleHosted means that the package
         /// is available through the Play store and not restricted to a specific enterprise. The value
@@ -7102,70 +7102,70 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// Google. The value privateSelfHosted means that the package is a private app (restricted to an enterprise)
         /// and is privately hosted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distributionChannel")]
-        public virtual string DistributionChannel { get; set; } 
+        public virtual string DistributionChannel { get; set; }
 
         /// <summary>Noteworthy features (if any) of this product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
-        public virtual System.Collections.Generic.IList<string> Features { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Features { get; set; }
 
         /// <summary>A link to an image that can be used as an icon for the product. This image is suitable for use at
         /// up to 512px x 512px.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
-        public virtual string IconUrl { get; set; } 
+        public virtual string IconUrl { get; set; }
 
         /// <summary>The approximate time (within 7 days) the app was last published, expressed in milliseconds since
         /// epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdatedTimestampMillis")]
-        public virtual System.Nullable<long> LastUpdatedTimestampMillis { get; set; } 
+        public virtual System.Nullable<long> LastUpdatedTimestampMillis { get; set; }
 
         /// <summary>The minimum Android SDK necessary to run the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minAndroidSdkVersion")]
-        public virtual System.Nullable<int> MinAndroidSdkVersion { get; set; } 
+        public virtual System.Nullable<int> MinAndroidSdkVersion { get; set; }
 
         /// <summary>A list of permissions required by the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<ProductPermission> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<ProductPermission> Permissions { get; set; }
 
         /// <summary>A string of the form *app:*. For example, app:com.google.android.gm represents the Gmail
         /// app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>Whether this product is free, free with in-app purchases, or paid. If the pricing is unknown, this
         /// means the product is not generally available anymore (even though it might still be available to people who
         /// own it).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productPricing")]
-        public virtual string ProductPricing { get; set; } 
+        public virtual string ProductPricing { get; set; }
 
         /// <summary>A description of the recent changes made to the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recentChanges")]
-        public virtual string RecentChanges { get; set; } 
+        public virtual string RecentChanges { get; set; }
 
         /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiresContainerApp")]
-        public virtual System.Nullable<bool> RequiresContainerApp { get; set; } 
+        public virtual System.Nullable<bool> RequiresContainerApp { get; set; }
 
         /// <summary>A list of screenshot links representing the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenshotUrls")]
-        public virtual System.Collections.Generic.IList<string> ScreenshotUrls { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ScreenshotUrls { get; set; }
 
         /// <summary>The certificate used to sign this product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signingCertificate")]
-        public virtual ProductSigningCertificate SigningCertificate { get; set; } 
+        public virtual ProductSigningCertificate SigningCertificate { get; set; }
 
         /// <summary>A link to a smaller image that can be used as an icon for the product. This image is suitable for
         /// use at up to 128px x 128px.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("smallIconUrl")]
-        public virtual string SmallIconUrl { get; set; } 
+        public virtual string SmallIconUrl { get; set; }
 
         /// <summary>The name of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>A link to the managed Google Play details page for the product, for use by an Enterprise
         /// admin.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workDetailsUrl")]
-        public virtual string WorkDetailsUrl { get; set; } 
+        public virtual string WorkDetailsUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7176,12 +7176,12 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>Whether the product was approved or unapproved. This field will always be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approved")]
-        public virtual string Approved { get; set; } 
+        public virtual string Approved { get; set; }
 
         /// <summary>The id of the product (e.g. "app:com.google.android.gm") for which the approval status has changed.
         /// This field will always be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7192,12 +7192,12 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>The new state of the product. This field will always be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availabilityStatus")]
-        public virtual string AvailabilityStatus { get; set; } 
+        public virtual string AvailabilityStatus { get; set; }
 
         /// <summary>The id of the product (e.g. "app:com.google.android.gm") for which the product availability
         /// changed. This field will always be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7210,11 +7210,11 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>An opaque string uniquely identifying the permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissionId")]
-        public virtual string PermissionId { get; set; } 
+        public virtual string PermissionId { get; set; }
 
         /// <summary>Whether the permission has been accepted or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7226,11 +7226,11 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>The permissions required by the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permission")]
-        public virtual System.Collections.Generic.IList<ProductPermission> Permission { get; set; } 
+        public virtual System.Collections.Generic.IList<ProductPermission> Permission { get; set; }
 
         /// <summary>The ID of the app that the permissions relate to, e.g. "app:com.google.android.gm".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7241,24 +7241,24 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>The auto-install policy for the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoInstallPolicy")]
-        public virtual AutoInstallPolicy AutoInstallPolicy { get; set; } 
+        public virtual AutoInstallPolicy AutoInstallPolicy { get; set; }
 
         /// <summary>The managed configuration for the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedConfiguration")]
-        public virtual ManagedConfiguration ManagedConfiguration { get; set; } 
+        public virtual ManagedConfiguration ManagedConfiguration { get; set; }
 
         /// <summary>The ID of the product. For example, "app:com.google.android.gm".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>Grants the device visibility to the specified product release track(s), identified by trackIds. The
         /// list of release tracks of a product can be obtained by calling Products.Get.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackIds")]
-        public virtual System.Collections.Generic.IList<string> TrackIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> TrackIds { get; set; }
 
         /// <summary>Deprecated. Use trackIds instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tracks")]
-        public virtual System.Collections.Generic.IList<string> Tracks { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Tracks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7269,7 +7269,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>The list of product IDs making up the set of products.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual System.Collections.Generic.IList<string> ProductId { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ProductId { get; set; }
 
         /// <summary>The interpretation of this product set. "unknown" should never be sent and is ignored if received.
         /// "whitelist" means that the user is entitled to access the product set. "includeAll" means that all products
@@ -7280,14 +7280,14 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// "includeAll" does not enable automatic visibility of "alpha" or "beta" tracks for Android app. Use
         /// ProductVisibility to enable "alpha" or "beta" tracks per user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productSetBehavior")]
-        public virtual string ProductSetBehavior { get; set; } 
+        public virtual string ProductSetBehavior { get; set; }
 
         /// <summary>Additional list of product IDs making up the product set. Unlike the productID array, in this list
         /// It's possible to specify which tracks (alpha, beta, production) of a product are visible to the user. See
         /// ProductVisibility and its fields for more information. Specifying the same product ID both here and in the
         /// productId array is not allowed and it will result in an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productVisibility")]
-        public virtual System.Collections.Generic.IList<ProductVisibility> ProductVisibility { get; set; } 
+        public virtual System.Collections.Generic.IList<ProductVisibility> ProductVisibility { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7298,11 +7298,11 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>The base64 urlsafe encoded SHA1 hash of the certificate. (This field is deprecated in favor of
         /// SHA2-256. It should not be used and may be removed at any time.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certificateHashSha1")]
-        public virtual string CertificateHashSha1 { get; set; } 
+        public virtual string CertificateHashSha1 { get; set; }
 
         /// <summary>The base64 urlsafe encoded SHA2-256 hash of the certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certificateHashSha256")]
-        public virtual string CertificateHashSha256 { get; set; } 
+        public virtual string CertificateHashSha256 { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7314,15 +7314,15 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>The product ID to make visible to the user. Required for each item in the productVisibility
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>Grants the user visibility to the specified product track(s), identified by trackIds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackIds")]
-        public virtual System.Collections.Generic.IList<string> TrackIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> TrackIds { get; set; }
 
         /// <summary>Deprecated. Use trackIds instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tracks")]
-        public virtual System.Collections.Generic.IList<string> Tracks { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Tracks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7335,14 +7335,14 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// display new permissions from an update after the product was approved, or not include new permissions if the
         /// product was updated since the URL was generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approvalUrlInfo")]
-        public virtual ApprovalUrlInfo ApprovalUrlInfo { get; set; } 
+        public virtual ApprovalUrlInfo ApprovalUrlInfo { get; set; }
 
         /// <summary>Sets how new permission requests for the product are handled. "allPermissions" automatically
         /// approves all current and future permissions for the product. "currentPermissionsOnly" approves the current
         /// set of permissions for the product, but any future permissions added through updates will require manual
         /// reapproval. If not specified, only the current set of permissions will be approved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approvedPermissions")]
-        public virtual string ApprovedPermissions { get; set; } 
+        public virtual string ApprovedPermissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7357,7 +7357,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// permissions since it was last approved, and the URL will only display those new permissions that have not
         /// yet been accepted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7367,16 +7367,16 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>General pagination information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
-        public virtual PageInfo PageInfo { get; set; } 
+        public virtual PageInfo PageInfo { get; set; }
 
         /// <summary>Information about a product (e.g. an app) in the Google Play store, for display to an enterprise
         /// admin.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
-        public virtual System.Collections.Generic.IList<Product> Product { get; set; } 
+        public virtual System.Collections.Generic.IList<Product> Product { get; set; }
 
         /// <summary>Pagination information for token pagination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
-        public virtual TokenPagination TokenPagination { get; set; } 
+        public virtual TokenPagination TokenPagination { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7388,12 +7388,12 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>Credentials that can be used to authenticate as this ServiceAccount.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual ServiceAccountKey Key { get; set; } 
+        public virtual ServiceAccountKey Key { get; set; }
 
         /// <summary>The account name of the service account, in the form of an email address. Assigned by the
         /// server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7405,21 +7405,21 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>The body of the private key credentials file, in string format. This is only populated when the
         /// ServiceAccountKey is created, and is not stored by Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual string Data { get; set; } 
+        public virtual string Data { get; set; }
 
         /// <summary>An opaque, unique identifier for this ServiceAccountKey. Assigned by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Public key data for the credentials file. This is an X.509 cert. If you are using the
         /// googleCredentials key type, this is identical to the cert that can be retrieved by using the X.509 cert url
         /// inside of the credentials file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicData")]
-        public virtual string PublicData { get; set; } 
+        public virtual string PublicData { get; set; }
 
         /// <summary>The file format of the generated key data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7429,7 +7429,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>The service account credentials.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountKey")]
-        public virtual System.Collections.Generic.IList<ServiceAccountKey> ServiceAccountKey { get; set; } 
+        public virtual System.Collections.Generic.IList<ServiceAccountKey> ServiceAccountKey { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7442,16 +7442,16 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>An opaque token that will be required, along with the Enterprise Token, for obtaining the
         /// enterprise resource from CompleteSignup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completionToken")]
-        public virtual string CompletionToken { get; set; } 
+        public virtual string CompletionToken { get; set; }
 
         /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>A URL under which the Admin can sign up for an enterprise. The page pointed to cannot be rendered
         /// in an iframe.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7463,25 +7463,25 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>Unique ID of this cluster. Assigned by the server. Immutable once assigned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Ordered list of localized strings giving the name of this page. The text displayed is the one that
         /// best matches the user locale, or the first entry if there is no good match. There needs to be at least one
         /// entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual System.Collections.Generic.IList<LocalizedText> Name { get; set; } 
+        public virtual System.Collections.Generic.IList<LocalizedText> Name { get; set; }
 
         /// <summary>String (US-ASCII only) used to determine order of this cluster within the parent page's elements.
         /// Page elements are sorted in lexicographic order of this field. Duplicated values are allowed, but ordering
         /// between elements with duplicate order is undefined. The value of this field is never visible to a user, it
         /// is used solely for the purpose of defining an ordering. Maximum length is 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderInPage")]
-        public virtual string OrderInPage { get; set; } 
+        public virtual string OrderInPage { get; set; }
 
         /// <summary>List of products in the order they are displayed in the cluster. There should not be duplicates
         /// within a cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual System.Collections.Generic.IList<string> ProductId { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ProductId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7495,13 +7495,13 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// managed Google Play Store. Not specifying a homepage is equivalent to setting the store layout type to
         /// "basic".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("homepageId")]
-        public virtual string HomepageId { get; set; } 
+        public virtual string HomepageId { get; set; }
 
         /// <summary>The store layout type. By default, this value is set to "basic" if the homepageId field is not set,
         /// and to "custom" otherwise. If set to "basic", the layout will consist of all approved apps that have been
         /// whitelisted for the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeLayoutType")]
-        public virtual string StoreLayoutType { get; set; } 
+        public virtual string StoreLayoutType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7511,7 +7511,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>A store cluster of an enterprise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
-        public virtual System.Collections.Generic.IList<StoreCluster> Cluster { get; set; } 
+        public virtual System.Collections.Generic.IList<StoreCluster> Cluster { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7521,7 +7521,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>A store page of an enterprise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("page")]
-        public virtual System.Collections.Generic.IList<StorePage> Page { get; set; } 
+        public virtual System.Collections.Generic.IList<StorePage> Page { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7533,19 +7533,19 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>Unique ID of this page. Assigned by the server. Immutable once assigned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Ordered list of pages a user should be able to reach from this page. The list can't include this
         /// page. It is recommended that the basic pages are created first, before adding the links between pages. The
         /// API doesn't verify that the pages exist or the pages are reachable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
-        public virtual System.Collections.Generic.IList<string> Link { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Link { get; set; }
 
         /// <summary>Ordered list of localized strings giving the name of this page. The text displayed is the one that
         /// best matches the user locale, or the first entry if there is no good match. There needs to be at least one
         /// entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual System.Collections.Generic.IList<LocalizedText> Name { get; set; } 
+        public virtual System.Collections.Generic.IList<LocalizedText> Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7562,10 +7562,10 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>Tokens to pass to the standard list field 'page_token'. Whenever available, tokens are preferred
         /// over manipulating start_index.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("previousPageToken")]
-        public virtual string PreviousPageToken { get; set; } 
+        public virtual string PreviousPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7576,12 +7576,12 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>A modifiable name for a track. This is the visible name in the play developer console.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackAlias")]
-        public virtual string TrackAlias { get; set; } 
+        public virtual string TrackAlias { get; set; }
 
         /// <summary>Unmodifiable, unique track identifier. This identifier is the releaseTrackId in the url of the play
         /// developer console page that displays the track information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackId")]
-        public virtual string TrackId { get; set; } 
+        public virtual string TrackId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7599,35 +7599,35 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// personally identifiable information (PII) for this property. Must always be set for EMM-managed users. Not
         /// set for Google-managed users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountIdentifier")]
-        public virtual string AccountIdentifier { get; set; } 
+        public virtual string AccountIdentifier { get; set; }
 
         /// <summary>The type of account that this user represents. A userAccount can be installed on multiple devices,
         /// but a deviceAccount is specific to a single device. An EMM-managed user (emmManaged) can be either type
         /// (userAccount, deviceAccount), but a Google-managed user (googleManaged) is always a userAccount.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountType")]
-        public virtual string AccountType { get; set; } 
+        public virtual string AccountType { get; set; }
 
         /// <summary>The name that will appear in user interfaces. Setting this property is optional when creating EMM-
         /// managed users. If you do set this property, use something generic about the organization (such as "Example,
         /// Inc.") or your name (as EMM). Not used for Google-managed user accounts. @mutable
         /// androidenterprise.users.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The unique ID for the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The entity that manages the user. With googleManaged users, the source of truth is Google so EMMs
         /// have to make sure a Google Account exists for the user. With emmManaged users, the EMM is in
         /// charge.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
-        public virtual string ManagementType { get; set; } 
+        public virtual string ManagementType { get; set; }
 
         /// <summary>The user's primary email address, for example, "jsmith@example.com". Will always be set for Google
         /// managed users and not set for EMM managed users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryEmail")]
-        public virtual string PrimaryEmail { get; set; } 
+        public virtual string PrimaryEmail { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7637,7 +7637,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>A user of an enterprise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
-        public virtual System.Collections.Generic.IList<User> User { get; set; } 
+        public virtual System.Collections.Generic.IList<User> User { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7650,11 +7650,11 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>The placeholder string; defined by EMM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placeholder")]
-        public virtual string Placeholder { get; set; } 
+        public virtual string Placeholder { get; set; }
 
         /// <summary>The value of the placeholder, specific to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userValue")]
-        public virtual string UserValue { get; set; } 
+        public virtual string UserValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7672,35 +7672,35 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// All browser UI elements, page URL, system status bar and back button are not visible, and the web app takes
         /// up the entirety of the available display area. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayMode")]
-        public virtual string DisplayMode { get; set; } 
+        public virtual string DisplayMode { get; set; }
 
         /// <summary>A list of icons representing this website. If absent, a default icon (for create) or the current
         /// icon (for update) will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("icons")]
-        public virtual System.Collections.Generic.IList<WebAppIcon> Icons { get; set; } 
+        public virtual System.Collections.Generic.IList<WebAppIcon> Icons { get; set; }
 
         /// <summary>A flag whether the app has been published to the Play store yet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isPublished")]
-        public virtual System.Nullable<bool> IsPublished { get; set; } 
+        public virtual System.Nullable<bool> IsPublished { get; set; }
 
         /// <summary>The start URL, i.e. the URL that should load when the user opens the application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startUrl")]
-        public virtual string StartUrl { get; set; } 
+        public virtual string StartUrl { get; set; }
 
         /// <summary>The title of the web app as displayed to the user (e.g., amongst a list of other applications, or
         /// as a label for an icon).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The current version of the app. Note that the version can automatically increase during the
         /// lifetime of the web app, while Google does internal housekeeping to keep the web app up-to-date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
-        public virtual System.Nullable<long> VersionCode { get; set; } 
+        public virtual System.Nullable<long> VersionCode { get; set; }
 
         /// <summary>The ID of the application. A string of the form "app:" where the package name always starts with
         /// the prefix "com.google.enterprise.webapp." followed by a random id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webAppId")]
-        public virtual string WebAppId { get; set; } 
+        public virtual string WebAppId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7713,7 +7713,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// Encoding with URL and Filename Safe Alphabet"). - The image type can be png or jpg. - The image should
         /// ideally be square. - The image should ideally have a size of 512x512. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageData")]
-        public virtual string ImageData { get; set; } 
+        public virtual string ImageData { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7723,7 +7723,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     {
         /// <summary>The manifest describing a web app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webApp")]
-        public virtual System.Collections.Generic.IList<WebApp> WebApp { get; set; } 
+        public virtual System.Collections.Generic.IList<WebApp> WebApp { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

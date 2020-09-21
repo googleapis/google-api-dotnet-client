@@ -8509,7 +8509,7 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>Child link for an account entry. Points to the list of web properties for this account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("childLink")]
-        public virtual ChildLinkData ChildLink { get; set; } 
+        public virtual ChildLinkData ChildLink { get; set; }
 
         /// <summary>Time the account was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("created")]
@@ -8525,27 +8525,27 @@ namespace Google.Apis.Analytics.v3.Data
 
         /// <summary>Account ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Resource type for Analytics account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Account name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Permissions the user has for this account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual PermissionsData Permissions { get; set; } 
+        public virtual PermissionsData Permissions { get; set; }
 
         /// <summary>Link for this account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>Indicates whether this account is starred or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("starred")]
-        public virtual System.Nullable<bool> Starred { get; set; } 
+        public virtual System.Nullable<bool> Starred { get; set; }
 
         /// <summary>Time the account was last modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]
@@ -8568,11 +8568,11 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Link to the list of web properties for this account.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("href")]
-            public virtual string Href { get; set; } 
+            public virtual string Href { get; set; }
 
             /// <summary>Type of the child link. Its value is "analytics#webproperties".</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
-            public virtual string Type { get; set; } 
+            public virtual string Type { get; set; }
 
         }    
 
@@ -8582,7 +8582,7 @@ namespace Google.Apis.Analytics.v3.Data
             /// <summary>All the permissions that the user has for this account. These include any implied permissions
             /// (e.g., EDIT implies VIEW).</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("effective")]
-            public virtual System.Collections.Generic.IList<string> Effective { get; set; } 
+            public virtual System.Collections.Generic.IList<string> Effective { get; set; }
 
         }
     }    
@@ -8592,19 +8592,19 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>Link for this account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("href")]
-        public virtual string Href { get; set; } 
+        public virtual string Href { get; set; }
 
         /// <summary>Account ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Analytics account reference.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Account name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8616,39 +8616,39 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>A list of AccountSummaries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<AccountSummary> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<AccountSummary> Items { get; set; }
 
         /// <summary>The maximum number of resources the response can contain, regardless of the actual number of
         /// resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified
         /// by the max-results query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemsPerPage")]
-        public virtual System.Nullable<int> ItemsPerPage { get; set; } 
+        public virtual System.Nullable<int> ItemsPerPage { get; set; }
 
         /// <summary>Collection type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Link to next page for this AccountSummary collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextLink")]
-        public virtual string NextLink { get; set; } 
+        public virtual string NextLink { get; set; }
 
         /// <summary>Link to previous page for this AccountSummary collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousLink")]
-        public virtual string PreviousLink { get; set; } 
+        public virtual string PreviousLink { get; set; }
 
         /// <summary>The starting index of the resources, which is 1 by default or otherwise specified by the start-
         /// index query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-        public virtual System.Nullable<int> StartIndex { get; set; } 
+        public virtual System.Nullable<int> StartIndex { get; set; }
 
         /// <summary>The total number of results for the query, regardless of the number of results in the
         /// response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-        public virtual System.Nullable<int> TotalResults { get; set; } 
+        public virtual System.Nullable<int> TotalResults { get; set; }
 
         /// <summary>Email ID of the authenticated user</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; } 
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8660,23 +8660,23 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>Account ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Resource type for Analytics AccountSummary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Account name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Indicates whether this account is starred or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("starred")]
-        public virtual System.Nullable<bool> Starred { get; set; } 
+        public virtual System.Nullable<bool> Starred { get; set; }
 
         /// <summary>List of web properties under this account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webProperties")]
-        public virtual System.Collections.Generic.IList<WebPropertySummary> WebProperties { get; set; } 
+        public virtual System.Collections.Generic.IList<WebPropertySummary> WebProperties { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8688,28 +8688,28 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>Account for this ticket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("account")]
-        public virtual Account Account { get; set; } 
+        public virtual Account Account { get; set; }
 
         /// <summary>Account ticket ID used to access the account ticket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Resource type for account ticket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>View (Profile) for the account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profile")]
-        public virtual Profile Profile { get; set; } 
+        public virtual Profile Profile { get; set; }
 
         /// <summary>Redirect URI where the user will be sent after accepting Terms of Service. Must be configured in
         /// APIs console as a callback URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirectUri")]
-        public virtual string RedirectUri { get; set; } 
+        public virtual string RedirectUri { get; set; }
 
         /// <summary>Web property for the account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webproperty")]
-        public virtual Webproperty Webproperty { get; set; } 
+        public virtual Webproperty Webproperty { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8721,23 +8721,23 @@ namespace Google.Apis.Analytics.v3.Data
     public class AccountTreeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("accountName")]
-        public virtual string AccountName { get; set; } 
+        public virtual string AccountName { get; set; }
 
         /// <summary>Resource type for account ticket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("profileName")]
-        public virtual string ProfileName { get; set; } 
+        public virtual string ProfileName { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("timezone")]
-        public virtual string Timezone { get; set; } 
+        public virtual string Timezone { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("webpropertyName")]
-        public virtual string WebpropertyName { get; set; } 
+        public virtual string WebpropertyName { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("websiteUrl")]
-        public virtual string WebsiteUrl { get; set; } 
+        public virtual string WebsiteUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8749,19 +8749,19 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>The account created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("account")]
-        public virtual Account Account { get; set; } 
+        public virtual Account Account { get; set; }
 
         /// <summary>Resource type for account ticket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>View (Profile) for the account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profile")]
-        public virtual Profile Profile { get; set; } 
+        public virtual Profile Profile { get; set; }
 
         /// <summary>Web property for the account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webproperty")]
-        public virtual Webproperty Webproperty { get; set; } 
+        public virtual Webproperty Webproperty { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8774,39 +8774,39 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>A list of accounts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Account> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Account> Items { get; set; }
 
         /// <summary>The maximum number of entries the response can contain, regardless of the actual number of entries
         /// returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the
         /// max-results query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemsPerPage")]
-        public virtual System.Nullable<int> ItemsPerPage { get; set; } 
+        public virtual System.Nullable<int> ItemsPerPage { get; set; }
 
         /// <summary>Collection type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Next link for this account collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextLink")]
-        public virtual string NextLink { get; set; } 
+        public virtual string NextLink { get; set; }
 
         /// <summary>Previous link for this account collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousLink")]
-        public virtual string PreviousLink { get; set; } 
+        public virtual string PreviousLink { get; set; }
 
         /// <summary>The starting index of the entries, which is 1 by default or otherwise specified by the start-index
         /// query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-        public virtual System.Nullable<int> StartIndex { get; set; } 
+        public virtual System.Nullable<int> StartIndex { get; set; }
 
         /// <summary>The total number of results for the query, regardless of the number of results in the
         /// response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-        public virtual System.Nullable<int> TotalResults { get; set; } 
+        public virtual System.Nullable<int> TotalResults { get; set; }
 
         /// <summary>Email ID of the authenticated user</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; } 
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8818,15 +8818,15 @@ namespace Google.Apis.Analytics.v3.Data
         /// <summary>True if auto-tagging is enabled on the Google Ads account. Read-only after the insert
         /// operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoTaggingEnabled")]
-        public virtual System.Nullable<bool> AutoTaggingEnabled { get; set; } 
+        public virtual System.Nullable<bool> AutoTaggingEnabled { get; set; }
 
         /// <summary>Customer ID. This field is required when creating a Google Ads link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
-        public virtual string CustomerId { get; set; } 
+        public virtual string CustomerId { get; set; }
 
         /// <summary>Resource type for Google Ads account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8837,7 +8837,7 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>A list of upload UIDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customDataImportUids")]
-        public virtual System.Collections.Generic.IList<string> CustomDataImportUids { get; set; } 
+        public virtual System.Collections.Generic.IList<string> CustomDataImportUids { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8848,15 +8848,15 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>Map of attribute name and value for this column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Attributes { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Attributes { get; set; }
 
         /// <summary>Column id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Resource type for Analytics column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8867,24 +8867,24 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>List of attributes names returned by columns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributeNames")]
-        public virtual System.Collections.Generic.IList<string> AttributeNames { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AttributeNames { get; set; }
 
         /// <summary>Etag of collection. This etag can be compared with the last response etag to check if response has
         /// changed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>List of columns for a report type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Column> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Column> Items { get; set; }
 
         /// <summary>Collection type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Total number of columns returned in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-        public virtual System.Nullable<int> TotalResults { get; set; } 
+        public virtual System.Nullable<int> TotalResults { get; set; }
 
     }    
 
@@ -8893,10 +8893,10 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>Account ID to which this custom data source belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual string AccountId { get; set; } 
+        public virtual string AccountId { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("childLink")]
-        public virtual ChildLinkData ChildLink { get; set; } 
+        public virtual ChildLinkData ChildLink { get; set; }
 
         /// <summary>Time this custom data source was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("created")]
@@ -8912,43 +8912,43 @@ namespace Google.Apis.Analytics.v3.Data
 
         /// <summary>Description of custom data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Custom data source ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("importBehavior")]
-        public virtual string ImportBehavior { get; set; } 
+        public virtual string ImportBehavior { get; set; }
 
         /// <summary>Resource type for Analytics custom data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this custom data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Parent link for this custom data source. Points to the web property to which this custom data
         /// source belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentLink")]
-        public virtual ParentLinkData ParentLink { get; set; } 
+        public virtual ParentLinkData ParentLink { get; set; }
 
         /// <summary>IDs of views (profiles) linked to the custom data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profilesLinked")]
-        public virtual System.Collections.Generic.IList<string> ProfilesLinked { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ProfilesLinked { get; set; }
 
         /// <summary>Collection of schema headers of the custom data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
-        public virtual System.Collections.Generic.IList<string> Schema { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Schema { get; set; }
 
         /// <summary>Link for this Analytics custom data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>Type of the custom data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>Time this custom data source was last modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]
@@ -8964,11 +8964,11 @@ namespace Google.Apis.Analytics.v3.Data
 
         /// <summary>Upload type of the custom data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadType")]
-        public virtual string UploadType { get; set; } 
+        public virtual string UploadType { get; set; }
 
         /// <summary>Web property ID of the form UA-XXXXX-YY to which this custom data source belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webPropertyId")]
-        public virtual string WebPropertyId { get; set; } 
+        public virtual string WebPropertyId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8979,11 +8979,11 @@ namespace Google.Apis.Analytics.v3.Data
             /// <summary>Link to the list of daily uploads for this custom data source. Link to the list of uploads for
             /// this custom data source.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("href")]
-            public virtual string Href { get; set; } 
+            public virtual string Href { get; set; }
 
             /// <summary>Value is "analytics#dailyUploads". Value is "analytics#uploads".</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
-            public virtual string Type { get; set; } 
+            public virtual string Type { get; set; }
 
         }    
 
@@ -8993,11 +8993,11 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Link to the web property to which this custom data source belongs.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("href")]
-            public virtual string Href { get; set; } 
+            public virtual string Href { get; set; }
 
             /// <summary>Value is "analytics#webproperty".</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
-            public virtual string Type { get; set; } 
+            public virtual string Type { get; set; }
 
         }
     }    
@@ -9008,39 +9008,39 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>Collection of custom data sources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<CustomDataSource> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<CustomDataSource> Items { get; set; }
 
         /// <summary>The maximum number of resources the response can contain, regardless of the actual number of
         /// resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified
         /// by the max-results query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemsPerPage")]
-        public virtual System.Nullable<int> ItemsPerPage { get; set; } 
+        public virtual System.Nullable<int> ItemsPerPage { get; set; }
 
         /// <summary>Collection type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Link to next page for this custom data source collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextLink")]
-        public virtual string NextLink { get; set; } 
+        public virtual string NextLink { get; set; }
 
         /// <summary>Link to previous page for this custom data source collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousLink")]
-        public virtual string PreviousLink { get; set; } 
+        public virtual string PreviousLink { get; set; }
 
         /// <summary>The starting index of the resources, which is 1 by default or otherwise specified by the start-
         /// index query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-        public virtual System.Nullable<int> StartIndex { get; set; } 
+        public virtual System.Nullable<int> StartIndex { get; set; }
 
         /// <summary>The total number of results for the query, regardless of the number of results in the
         /// response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-        public virtual System.Nullable<int> TotalResults { get; set; } 
+        public virtual System.Nullable<int> TotalResults { get; set; }
 
         /// <summary>Email ID of the authenticated user</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; } 
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9051,11 +9051,11 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>Account ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual string AccountId { get; set; } 
+        public virtual string AccountId { get; set; }
 
         /// <summary>Boolean indicating whether the custom dimension is active.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("active")]
-        public virtual System.Nullable<bool> Active { get; set; } 
+        public virtual System.Nullable<bool> Active { get; set; }
 
         /// <summary>Time the custom dimension was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("created")]
@@ -9071,33 +9071,33 @@ namespace Google.Apis.Analytics.v3.Data
 
         /// <summary>Custom dimension ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Index of the custom dimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
-        public virtual System.Nullable<int> Index { get; set; } 
+        public virtual System.Nullable<int> Index { get; set; }
 
         /// <summary>Kind value for a custom dimension. Set to "analytics#customDimension". It is a read-only
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of the custom dimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Parent link for the custom dimension. Points to the property to which the custom dimension
         /// belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentLink")]
-        public virtual ParentLinkData ParentLink { get; set; } 
+        public virtual ParentLinkData ParentLink { get; set; }
 
         /// <summary>Scope of the custom dimension: HIT, SESSION, USER or PRODUCT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
-        public virtual string Scope { get; set; } 
+        public virtual string Scope { get; set; }
 
         /// <summary>Link for the custom dimension</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>Time the custom dimension was last modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]
@@ -9113,7 +9113,7 @@ namespace Google.Apis.Analytics.v3.Data
 
         /// <summary>Property ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webPropertyId")]
-        public virtual string WebPropertyId { get; set; } 
+        public virtual string WebPropertyId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9125,11 +9125,11 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Link to the property to which the custom dimension belongs.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("href")]
-            public virtual string Href { get; set; } 
+            public virtual string Href { get; set; }
 
             /// <summary>Type of the parent link. Set to "analytics#webproperty".</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
-            public virtual string Type { get; set; } 
+            public virtual string Type { get; set; }
 
         }
     }    
@@ -9140,39 +9140,39 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>Collection of custom dimensions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<CustomDimension> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<CustomDimension> Items { get; set; }
 
         /// <summary>The maximum number of resources the response can contain, regardless of the actual number of
         /// resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified
         /// by the max-results query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemsPerPage")]
-        public virtual System.Nullable<int> ItemsPerPage { get; set; } 
+        public virtual System.Nullable<int> ItemsPerPage { get; set; }
 
         /// <summary>Collection type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Link to next page for this custom dimension collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextLink")]
-        public virtual string NextLink { get; set; } 
+        public virtual string NextLink { get; set; }
 
         /// <summary>Link to previous page for this custom dimension collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousLink")]
-        public virtual string PreviousLink { get; set; } 
+        public virtual string PreviousLink { get; set; }
 
         /// <summary>The starting index of the resources, which is 1 by default or otherwise specified by the start-
         /// index query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-        public virtual System.Nullable<int> StartIndex { get; set; } 
+        public virtual System.Nullable<int> StartIndex { get; set; }
 
         /// <summary>The total number of results for the query, regardless of the number of results in the
         /// response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-        public virtual System.Nullable<int> TotalResults { get; set; } 
+        public virtual System.Nullable<int> TotalResults { get; set; }
 
         /// <summary>Email ID of the authenticated user</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; } 
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9183,11 +9183,11 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>Account ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual string AccountId { get; set; } 
+        public virtual string AccountId { get; set; }
 
         /// <summary>Boolean indicating whether the custom metric is active.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("active")]
-        public virtual System.Nullable<bool> Active { get; set; } 
+        public virtual System.Nullable<bool> Active { get; set; }
 
         /// <summary>Time the custom metric was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("created")]
@@ -9203,44 +9203,44 @@ namespace Google.Apis.Analytics.v3.Data
 
         /// <summary>Custom metric ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Index of the custom metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
-        public virtual System.Nullable<int> Index { get; set; } 
+        public virtual System.Nullable<int> Index { get; set; }
 
         /// <summary>Kind value for a custom metric. Set to "analytics#customMetric". It is a read-only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Max value of custom metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("max_value")]
-        public virtual string MaxValue { get; set; } 
+        public virtual string MaxValue { get; set; }
 
         /// <summary>Min value of custom metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("min_value")]
-        public virtual string MinValue { get; set; } 
+        public virtual string MinValue { get; set; }
 
         /// <summary>Name of the custom metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Parent link for the custom metric. Points to the property to which the custom metric
         /// belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentLink")]
-        public virtual ParentLinkData ParentLink { get; set; } 
+        public virtual ParentLinkData ParentLink { get; set; }
 
         /// <summary>Scope of the custom metric: HIT or PRODUCT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
-        public virtual string Scope { get; set; } 
+        public virtual string Scope { get; set; }
 
         /// <summary>Link for the custom metric</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>Data type of custom metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>Time the custom metric was last modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]
@@ -9256,7 +9256,7 @@ namespace Google.Apis.Analytics.v3.Data
 
         /// <summary>Property ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webPropertyId")]
-        public virtual string WebPropertyId { get; set; } 
+        public virtual string WebPropertyId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9268,11 +9268,11 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Link to the property to which the custom metric belongs.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("href")]
-            public virtual string Href { get; set; } 
+            public virtual string Href { get; set; }
 
             /// <summary>Type of the parent link. Set to "analytics#webproperty".</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
-            public virtual string Type { get; set; } 
+            public virtual string Type { get; set; }
 
         }
     }    
@@ -9283,39 +9283,39 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>Collection of custom metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<CustomMetric> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<CustomMetric> Items { get; set; }
 
         /// <summary>The maximum number of resources the response can contain, regardless of the actual number of
         /// resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified
         /// by the max-results query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemsPerPage")]
-        public virtual System.Nullable<int> ItemsPerPage { get; set; } 
+        public virtual System.Nullable<int> ItemsPerPage { get; set; }
 
         /// <summary>Collection type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Link to next page for this custom metric collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextLink")]
-        public virtual string NextLink { get; set; } 
+        public virtual string NextLink { get; set; }
 
         /// <summary>Link to previous page for this custom metric collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousLink")]
-        public virtual string PreviousLink { get; set; } 
+        public virtual string PreviousLink { get; set; }
 
         /// <summary>The starting index of the resources, which is 1 by default or otherwise specified by the start-
         /// index query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-        public virtual System.Nullable<int> StartIndex { get; set; } 
+        public virtual System.Nullable<int> StartIndex { get; set; }
 
         /// <summary>The total number of results for the query, regardless of the number of results in the
         /// response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-        public virtual System.Nullable<int> TotalResults { get; set; } 
+        public virtual System.Nullable<int> TotalResults { get; set; }
 
         /// <summary>Email ID of the authenticated user</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; } 
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9327,31 +9327,31 @@ namespace Google.Apis.Analytics.v3.Data
         /// <summary>A list of Google Ads client accounts. These cannot be MCC accounts. This field is required when
         /// creating a Google Ads link. It cannot be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adWordsAccounts")]
-        public virtual System.Collections.Generic.IList<AdWordsAccount> AdWordsAccounts { get; set; } 
+        public virtual System.Collections.Generic.IList<AdWordsAccount> AdWordsAccounts { get; set; }
 
         /// <summary>Web property being linked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entity")]
-        public virtual EntityData Entity { get; set; } 
+        public virtual EntityData Entity { get; set; }
 
         /// <summary>Entity Google Ads link ID</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Resource type for entity Google Ads link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of the link. This field is required when creating a Google Ads link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>IDs of linked Views (Profiles) represented as strings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileIds")]
-        public virtual System.Collections.Generic.IList<string> ProfileIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ProfileIds { get; set; }
 
         /// <summary>URL link for this Google Analytics - Google Ads link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9361,7 +9361,7 @@ namespace Google.Apis.Analytics.v3.Data
         public class EntityData
         {
             [Newtonsoft.Json.JsonPropertyAttribute("webPropertyRef")]
-            public virtual WebPropertyRef WebPropertyRef { get; set; } 
+            public virtual WebPropertyRef WebPropertyRef { get; set; }
 
         }
     }    
@@ -9372,35 +9372,35 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>A list of entity Google Ads links.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<EntityAdWordsLink> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<EntityAdWordsLink> Items { get; set; }
 
         /// <summary>The maximum number of entries the response can contain, regardless of the actual number of entries
         /// returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the
         /// max-results query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemsPerPage")]
-        public virtual System.Nullable<int> ItemsPerPage { get; set; } 
+        public virtual System.Nullable<int> ItemsPerPage { get; set; }
 
         /// <summary>Collection type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Next link for this Google Ads link collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextLink")]
-        public virtual string NextLink { get; set; } 
+        public virtual string NextLink { get; set; }
 
         /// <summary>Previous link for this Google Ads link collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousLink")]
-        public virtual string PreviousLink { get; set; } 
+        public virtual string PreviousLink { get; set; }
 
         /// <summary>The starting index of the entries, which is 1 by default or otherwise specified by the start-index
         /// query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-        public virtual System.Nullable<int> StartIndex { get; set; } 
+        public virtual System.Nullable<int> StartIndex { get; set; }
 
         /// <summary>The total number of results for the query, regardless of the number of results in the
         /// response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-        public virtual System.Nullable<int> TotalResults { get; set; } 
+        public virtual System.Nullable<int> TotalResults { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9412,27 +9412,27 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>Entity for this link. It can be an account, a web property, or a view (profile).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entity")]
-        public virtual EntityData Entity { get; set; } 
+        public virtual EntityData Entity { get; set; }
 
         /// <summary>Entity user link ID</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Resource type for entity user link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Permissions the user has for this entity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual PermissionsData Permissions { get; set; } 
+        public virtual PermissionsData Permissions { get; set; }
 
         /// <summary>Self link for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>User reference.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userRef")]
-        public virtual UserRef UserRef { get; set; } 
+        public virtual UserRef UserRef { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9443,15 +9443,15 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Account for this link.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("accountRef")]
-            public virtual AccountRef AccountRef { get; set; } 
+            public virtual AccountRef AccountRef { get; set; }
 
             /// <summary>View (Profile) for this link.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("profileRef")]
-            public virtual ProfileRef ProfileRef { get; set; } 
+            public virtual ProfileRef ProfileRef { get; set; }
 
             /// <summary>Web property for this link.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("webPropertyRef")]
-            public virtual WebPropertyRef WebPropertyRef { get; set; } 
+            public virtual WebPropertyRef WebPropertyRef { get; set; }
 
         }    
 
@@ -9462,12 +9462,12 @@ namespace Google.Apis.Analytics.v3.Data
             /// include any implied permissions (e.g., EDIT implies VIEW) or inherited permissions from the parent
             /// entity. Effective permissions are read-only.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("effective")]
-            public virtual System.Collections.Generic.IList<string> Effective { get; set; } 
+            public virtual System.Collections.Generic.IList<string> Effective { get; set; }
 
             /// <summary>Permissions that a user has been assigned at this very level. Does not include any implied or
             /// inherited permissions. Local permissions are modifiable.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("local")]
-            public virtual System.Collections.Generic.IList<string> Local { get; set; } 
+            public virtual System.Collections.Generic.IList<string> Local { get; set; }
 
         }
     }    
@@ -9478,35 +9478,35 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>A list of entity user links.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<EntityUserLink> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<EntityUserLink> Items { get; set; }
 
         /// <summary>The maximum number of entries the response can contain, regardless of the actual number of entries
         /// returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the
         /// max-results query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemsPerPage")]
-        public virtual System.Nullable<int> ItemsPerPage { get; set; } 
+        public virtual System.Nullable<int> ItemsPerPage { get; set; }
 
         /// <summary>Collection type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Next link for this account collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextLink")]
-        public virtual string NextLink { get; set; } 
+        public virtual string NextLink { get; set; }
 
         /// <summary>Previous link for this account collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousLink")]
-        public virtual string PreviousLink { get; set; } 
+        public virtual string PreviousLink { get; set; }
 
         /// <summary>The starting index of the entries, which is 1 by default or otherwise specified by the start-index
         /// query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-        public virtual System.Nullable<int> StartIndex { get; set; } 
+        public virtual System.Nullable<int> StartIndex { get; set; }
 
         /// <summary>The total number of results for the query, regardless of the number of results in the
         /// response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-        public virtual System.Nullable<int> TotalResults { get; set; } 
+        public virtual System.Nullable<int> TotalResults { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9517,7 +9517,7 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>Account ID to which this experiment belongs. This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual string AccountId { get; set; } 
+        public virtual string AccountId { get; set; }
 
         /// <summary>Time the experiment was created. This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("created")]
@@ -9533,12 +9533,12 @@ namespace Google.Apis.Analytics.v3.Data
 
         /// <summary>Notes about this experiment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>If true, the end user will be able to edit the experiment via the Google Analytics user
         /// interface.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("editableInGaUi")]
-        public virtual System.Nullable<bool> EditableInGaUi { get; set; } 
+        public virtual System.Nullable<bool> EditableInGaUi { get; set; }
 
         /// <summary>The ending time of the experiment (the time the status changed from RUNNING to ENDED). This field
         /// is present only if the experiment has ended. This field is read-only.</summary>
@@ -9558,68 +9558,68 @@ namespace Google.Apis.Analytics.v3.Data
         /// performance. Optional -- defaults to False. This field may not be changed for an experiment whose status is
         /// ENDED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("equalWeighting")]
-        public virtual System.Nullable<bool> EqualWeighting { get; set; } 
+        public virtual System.Nullable<bool> EqualWeighting { get; set; }
 
         /// <summary>Experiment ID. Required for patch and update. Disallowed for create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Internal ID for the web property to which this experiment belongs. This field is read-
         /// only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalWebPropertyId")]
-        public virtual string InternalWebPropertyId { get; set; } 
+        public virtual string InternalWebPropertyId { get; set; }
 
         /// <summary>Resource type for an Analytics experiment. This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>An integer number in [3, 90]. Specifies the minimum length of the experiment. Can be changed for a
         /// running experiment. This field may not be changed for an experiments whose status is ENDED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumExperimentLengthInDays")]
-        public virtual System.Nullable<int> MinimumExperimentLengthInDays { get; set; } 
+        public virtual System.Nullable<int> MinimumExperimentLengthInDays { get; set; }
 
         /// <summary>Experiment name. This field may not be changed for an experiment whose status is ENDED. This field
         /// is required when creating an experiment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The metric that the experiment is optimizing. Valid values: "ga:goal(n)Completions",
         /// "ga:adsenseAdsClicks", "ga:adsenseAdsViewed", "ga:adsenseRevenue", "ga:bounces", "ga:pageviews",
         /// "ga:sessionDuration", "ga:transactions", "ga:transactionRevenue". This field is required if status is
         /// "RUNNING" and servingFramework is one of "REDIRECT" or "API".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectiveMetric")]
-        public virtual string ObjectiveMetric { get; set; } 
+        public virtual string ObjectiveMetric { get; set; }
 
         /// <summary>Whether the objectiveMetric should be minimized or maximized. Possible values: "MAXIMUM",
         /// "MINIMUM". Optional--defaults to "MAXIMUM". Cannot be specified without objectiveMetric. Cannot be modified
         /// when status is "RUNNING" or "ENDED".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optimizationType")]
-        public virtual string OptimizationType { get; set; } 
+        public virtual string OptimizationType { get; set; }
 
         /// <summary>Parent link for an experiment. Points to the view (profile) to which this experiment
         /// belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentLink")]
-        public virtual ParentLinkData ParentLink { get; set; } 
+        public virtual ParentLinkData ParentLink { get; set; }
 
         /// <summary>View (Profile) ID to which this experiment belongs. This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileId")]
-        public virtual string ProfileId { get; set; } 
+        public virtual string ProfileId { get; set; }
 
         /// <summary>Why the experiment ended. Possible values: "STOPPED_BY_USER", "WINNER_FOUND", "EXPERIMENT_EXPIRED",
         /// "ENDED_WITH_NO_WINNER", "GOAL_OBJECTIVE_CHANGED". "ENDED_WITH_NO_WINNER" means that the experiment didn't
         /// expire but no winner was projected to be found. If the experiment status is changed via the API to ENDED
         /// this field is set to STOPPED_BY_USER. This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasonExperimentEnded")]
-        public virtual string ReasonExperimentEnded { get; set; } 
+        public virtual string ReasonExperimentEnded { get; set; }
 
         /// <summary>Boolean specifying whether variations URLS are rewritten to match those of the original. This field
         /// may not be changed for an experiments whose status is ENDED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rewriteVariationUrlsAsOriginal")]
-        public virtual System.Nullable<bool> RewriteVariationUrlsAsOriginal { get; set; } 
+        public virtual System.Nullable<bool> RewriteVariationUrlsAsOriginal { get; set; }
 
         /// <summary>Link for this experiment. This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>The framework used to serve the experiment variations and evaluate the results. One of: - REDIRECT:
         /// Google Analytics redirects traffic to different variation pages, reports the chosen variation and evaluates
@@ -9628,11 +9628,11 @@ namespace Google.Apis.Analytics.v3.Data
         /// externally and the chosen variation reported to Google Analytics. The caller is responsible for serving the
         /// selected variation and evaluating the results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingFramework")]
-        public virtual string ServingFramework { get; set; } 
+        public virtual string ServingFramework { get; set; }
 
         /// <summary>The snippet of code to include on the control page(s). This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual string Snippet { get; set; } 
+        public virtual string Snippet { get; set; }
 
         /// <summary>The starting time of the experiment (the time the status changed from READY_TO_RUN to RUNNING).
         /// This field is present only if the experiment has started. This field is read-only.</summary>
@@ -9651,13 +9651,13 @@ namespace Google.Apis.Analytics.v3.Data
         /// created in the "DRAFT", "READY_TO_RUN" or "RUNNING" state. This field is required when creating an
         /// experiment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>A floating-point number in (0, 1]. Specifies the fraction of the traffic that participates in the
         /// experiment. Can be changed for a running experiment. This field may not be changed for an experiments whose
         /// status is ENDED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trafficCoverage")]
-        public virtual System.Nullable<double> TrafficCoverage { get; set; } 
+        public virtual System.Nullable<double> TrafficCoverage { get; set; }
 
         /// <summary>Time the experiment was last modified. This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]
@@ -9675,22 +9675,22 @@ namespace Google.Apis.Analytics.v3.Data
         /// not change once an experiment is in the RUNNING state. At least two variations are required before status
         /// can be set to RUNNING.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variations")]
-        public virtual System.Collections.Generic.IList<VariationsData> Variations { get; set; } 
+        public virtual System.Collections.Generic.IList<VariationsData> Variations { get; set; }
 
         /// <summary>Web property ID to which this experiment belongs. The web property ID is of the form UA-XXXXX-YY.
         /// This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webPropertyId")]
-        public virtual string WebPropertyId { get; set; } 
+        public virtual string WebPropertyId { get; set; }
 
         /// <summary>A floating-point number in (0, 1). Specifies the necessary confidence level to choose a winner.
         /// This field may not be changed for an experiments whose status is ENDED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("winnerConfidenceLevel")]
-        public virtual System.Nullable<double> WinnerConfidenceLevel { get; set; } 
+        public virtual System.Nullable<double> WinnerConfidenceLevel { get; set; }
 
         /// <summary>Boolean specifying whether a winner has been found for this experiment. This field is read-
         /// only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("winnerFound")]
-        public virtual System.Nullable<bool> WinnerFound { get; set; } 
+        public virtual System.Nullable<bool> WinnerFound { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9702,11 +9702,11 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Link to the view (profile) to which this experiment belongs. This field is read-only.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("href")]
-            public virtual string Href { get; set; } 
+            public virtual string Href { get; set; }
 
             /// <summary>Value is "analytics#profile". This field is read-only.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
-            public virtual string Type { get; set; } 
+            public virtual string Type { get; set; }
 
         }    
 
@@ -9715,27 +9715,27 @@ namespace Google.Apis.Analytics.v3.Data
             /// <summary>The name of the variation. This field is required when creating an experiment. This field may
             /// not be changed for an experiment whose status is ENDED.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("name")]
-            public virtual string Name { get; set; } 
+            public virtual string Name { get; set; }
 
             /// <summary>Status of the variation. Possible values: "ACTIVE", "INACTIVE". INACTIVE variations are not
             /// served. This field may not be changed for an experiment whose status is ENDED.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("status")]
-            public virtual string Status { get; set; } 
+            public virtual string Status { get; set; }
 
             /// <summary>The URL of the variation. This field may not be changed for an experiment whose status is
             /// RUNNING or ENDED.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("url")]
-            public virtual string Url { get; set; } 
+            public virtual string Url { get; set; }
 
             /// <summary>Weight that this variation should receive. Only present if the experiment is running. This
             /// field is read-only.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("weight")]
-            public virtual System.Nullable<double> Weight { get; set; } 
+            public virtual System.Nullable<double> Weight { get; set; }
 
             /// <summary>True if the experiment has ended and this variation performed (statistically) significantly
             /// better than the original. This field is read-only.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("won")]
-            public virtual System.Nullable<bool> Won { get; set; } 
+            public virtual System.Nullable<bool> Won { get; set; }
 
         }
     }    
@@ -9747,39 +9747,39 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>A list of experiments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Experiment> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Experiment> Items { get; set; }
 
         /// <summary>The maximum number of resources the response can contain, regardless of the actual number of
         /// resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified
         /// by the max-results query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemsPerPage")]
-        public virtual System.Nullable<int> ItemsPerPage { get; set; } 
+        public virtual System.Nullable<int> ItemsPerPage { get; set; }
 
         /// <summary>Collection type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Link to next page for this experiment collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextLink")]
-        public virtual string NextLink { get; set; } 
+        public virtual string NextLink { get; set; }
 
         /// <summary>Link to previous page for this experiment collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousLink")]
-        public virtual string PreviousLink { get; set; } 
+        public virtual string PreviousLink { get; set; }
 
         /// <summary>The starting index of the resources, which is 1 by default or otherwise specified by the start-
         /// index query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-        public virtual System.Nullable<int> StartIndex { get; set; } 
+        public virtual System.Nullable<int> StartIndex { get; set; }
 
         /// <summary>The total number of results for the query, regardless of the number of resources in the
         /// result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-        public virtual System.Nullable<int> TotalResults { get; set; } 
+        public virtual System.Nullable<int> TotalResults { get; set; }
 
         /// <summary>Email ID of the authenticated user</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; } 
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9790,11 +9790,11 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>Account ID to which this filter belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual string AccountId { get; set; } 
+        public virtual string AccountId { get; set; }
 
         /// <summary>Details for the filter of the type ADVANCED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advancedDetails")]
-        public virtual AdvancedDetailsData AdvancedDetails { get; set; } 
+        public virtual AdvancedDetailsData AdvancedDetails { get; set; }
 
         /// <summary>Time this filter was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("created")]
@@ -9810,44 +9810,44 @@ namespace Google.Apis.Analytics.v3.Data
 
         /// <summary>Details for the filter of the type EXCLUDE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeDetails")]
-        public virtual FilterExpression ExcludeDetails { get; set; } 
+        public virtual FilterExpression ExcludeDetails { get; set; }
 
         /// <summary>Filter ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Details for the filter of the type INCLUDE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeDetails")]
-        public virtual FilterExpression IncludeDetails { get; set; } 
+        public virtual FilterExpression IncludeDetails { get; set; }
 
         /// <summary>Resource type for Analytics filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Details for the filter of the type LOWER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lowercaseDetails")]
-        public virtual LowercaseDetailsData LowercaseDetails { get; set; } 
+        public virtual LowercaseDetailsData LowercaseDetails { get; set; }
 
         /// <summary>Name of this filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Parent link for this filter. Points to the account to which this filter belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentLink")]
-        public virtual ParentLinkData ParentLink { get; set; } 
+        public virtual ParentLinkData ParentLink { get; set; }
 
         /// <summary>Details for the filter of the type SEARCH_AND_REPLACE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchAndReplaceDetails")]
-        public virtual SearchAndReplaceDetailsData SearchAndReplaceDetails { get; set; } 
+        public virtual SearchAndReplaceDetailsData SearchAndReplaceDetails { get; set; }
 
         /// <summary>Link for this filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>Type of this filter. Possible values are INCLUDE, EXCLUDE, LOWERCASE, UPPERCASE, SEARCH_AND_REPLACE
         /// and ADVANCED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>Time this filter was last modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]
@@ -9863,7 +9863,7 @@ namespace Google.Apis.Analytics.v3.Data
 
         /// <summary>Details for the filter of the type UPPER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uppercaseDetails")]
-        public virtual UppercaseDetailsData UppercaseDetails { get; set; } 
+        public virtual UppercaseDetailsData UppercaseDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9874,56 +9874,56 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Indicates if the filter expressions are case sensitive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("caseSensitive")]
-            public virtual System.Nullable<bool> CaseSensitive { get; set; } 
+            public virtual System.Nullable<bool> CaseSensitive { get; set; }
 
             /// <summary>Expression to extract from field A.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("extractA")]
-            public virtual string ExtractA { get; set; } 
+            public virtual string ExtractA { get; set; }
 
             /// <summary>Expression to extract from field B.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("extractB")]
-            public virtual string ExtractB { get; set; } 
+            public virtual string ExtractB { get; set; }
 
             /// <summary>Field A.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("fieldA")]
-            public virtual string FieldA { get; set; } 
+            public virtual string FieldA { get; set; }
 
             /// <summary>The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("fieldAIndex")]
-            public virtual System.Nullable<int> FieldAIndex { get; set; } 
+            public virtual System.Nullable<int> FieldAIndex { get; set; }
 
             /// <summary>Indicates if field A is required to match.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("fieldARequired")]
-            public virtual System.Nullable<bool> FieldARequired { get; set; } 
+            public virtual System.Nullable<bool> FieldARequired { get; set; }
 
             /// <summary>Field B.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("fieldB")]
-            public virtual string FieldB { get; set; } 
+            public virtual string FieldB { get; set; }
 
             /// <summary>The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("fieldBIndex")]
-            public virtual System.Nullable<int> FieldBIndex { get; set; } 
+            public virtual System.Nullable<int> FieldBIndex { get; set; }
 
             /// <summary>Indicates if field B is required to match.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("fieldBRequired")]
-            public virtual System.Nullable<bool> FieldBRequired { get; set; } 
+            public virtual System.Nullable<bool> FieldBRequired { get; set; }
 
             /// <summary>Expression used to construct the output value.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("outputConstructor")]
-            public virtual string OutputConstructor { get; set; } 
+            public virtual string OutputConstructor { get; set; }
 
             /// <summary>Output field.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("outputToField")]
-            public virtual string OutputToField { get; set; } 
+            public virtual string OutputToField { get; set; }
 
             /// <summary>The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("outputToFieldIndex")]
-            public virtual System.Nullable<int> OutputToFieldIndex { get; set; } 
+            public virtual System.Nullable<int> OutputToFieldIndex { get; set; }
 
             /// <summary>Indicates if the existing value of the output field, if any, should be overridden by the output
             /// expression.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("overrideOutputField")]
-            public virtual System.Nullable<bool> OverrideOutputField { get; set; } 
+            public virtual System.Nullable<bool> OverrideOutputField { get; set; }
 
         }    
 
@@ -9932,11 +9932,11 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Field to use in the filter.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("field")]
-            public virtual string Field { get; set; } 
+            public virtual string Field { get; set; }
 
             /// <summary>The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("fieldIndex")]
-            public virtual System.Nullable<int> FieldIndex { get; set; } 
+            public virtual System.Nullable<int> FieldIndex { get; set; }
 
         }    
 
@@ -9945,11 +9945,11 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Link to the account to which this filter belongs.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("href")]
-            public virtual string Href { get; set; } 
+            public virtual string Href { get; set; }
 
             /// <summary>Value is "analytics#account".</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
-            public virtual string Type { get; set; } 
+            public virtual string Type { get; set; }
 
         }    
 
@@ -9958,23 +9958,23 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Determines if the filter is case sensitive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("caseSensitive")]
-            public virtual System.Nullable<bool> CaseSensitive { get; set; } 
+            public virtual System.Nullable<bool> CaseSensitive { get; set; }
 
             /// <summary>Field to use in the filter.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("field")]
-            public virtual string Field { get; set; } 
+            public virtual string Field { get; set; }
 
             /// <summary>The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("fieldIndex")]
-            public virtual System.Nullable<int> FieldIndex { get; set; } 
+            public virtual System.Nullable<int> FieldIndex { get; set; }
 
             /// <summary>Term to replace the search term with.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("replaceString")]
-            public virtual string ReplaceString { get; set; } 
+            public virtual string ReplaceString { get; set; }
 
             /// <summary>Term to search.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("searchString")]
-            public virtual string SearchString { get; set; } 
+            public virtual string SearchString { get; set; }
 
         }    
 
@@ -9983,11 +9983,11 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Field to use in the filter.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("field")]
-            public virtual string Field { get; set; } 
+            public virtual string Field { get; set; }
 
             /// <summary>The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("fieldIndex")]
-            public virtual System.Nullable<int> FieldIndex { get; set; } 
+            public virtual System.Nullable<int> FieldIndex { get; set; }
 
         }
     }    
@@ -9997,11 +9997,11 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>Determines if the filter is case sensitive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("caseSensitive")]
-        public virtual System.Nullable<bool> CaseSensitive { get; set; } 
+        public virtual System.Nullable<bool> CaseSensitive { get; set; }
 
         /// <summary>Filter expression value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expressionValue")]
-        public virtual string ExpressionValue { get; set; } 
+        public virtual string ExpressionValue { get; set; }
 
         /// <summary>Field to filter. Possible values: - Content and Traffic - PAGE_REQUEST_URI, - PAGE_HOSTNAME, -
         /// PAGE_TITLE, - REFERRAL, - COST_DATA_URI (Campaign target URL), - HIT_TYPE, - INTERNAL_SEARCH_TERM, -
@@ -10024,21 +10024,21 @@ namespace Google.Apis.Analytics.v3.Data
         /// SOCIAL_ACTION, - SOCIAL_ACTION_TARGET, - Custom dimension - CUSTOM_DIMENSION (See accompanying field
         /// index),</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual string Field { get; set; } 
+        public virtual string Field { get; set; }
 
         /// <summary>The Index of the custom dimension. Set only if the field is a is CUSTOM_DIMENSION.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldIndex")]
-        public virtual System.Nullable<int> FieldIndex { get; set; } 
+        public virtual System.Nullable<int> FieldIndex { get; set; }
 
         /// <summary>Kind value for filter expression</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Match type for this filter. Possible values are BEGINS_WITH, EQUAL, ENDS_WITH, CONTAINS, or
         /// MATCHES. GEO_DOMAIN, GEO_IP_ADDRESS, PAGE_REQUEST_URI, or PAGE_HOSTNAME filters can use any match type; all
         /// other filters must use MATCHES.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchType")]
-        public virtual string MatchType { get; set; } 
+        public virtual string MatchType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10049,23 +10049,23 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>Account ID to which this filter belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual string AccountId { get; set; } 
+        public virtual string AccountId { get; set; }
 
         /// <summary>Link for this filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("href")]
-        public virtual string Href { get; set; } 
+        public virtual string Href { get; set; }
 
         /// <summary>Filter ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Kind value for filter reference.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10077,39 +10077,39 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>A list of filters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Filter> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Filter> Items { get; set; }
 
         /// <summary>The maximum number of resources the response can contain, regardless of the actual number of
         /// resources returned. Its value ranges from 1 to 1,000 with a value of 1000 by default, or otherwise specified
         /// by the max-results query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemsPerPage")]
-        public virtual System.Nullable<int> ItemsPerPage { get; set; } 
+        public virtual System.Nullable<int> ItemsPerPage { get; set; }
 
         /// <summary>Collection type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Link to next page for this filter collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextLink")]
-        public virtual string NextLink { get; set; } 
+        public virtual string NextLink { get; set; }
 
         /// <summary>Link to previous page for this filter collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousLink")]
-        public virtual string PreviousLink { get; set; } 
+        public virtual string PreviousLink { get; set; }
 
         /// <summary>The starting index of the resources, which is 1 by default or otherwise specified by the start-
         /// index query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-        public virtual System.Nullable<int> StartIndex { get; set; } 
+        public virtual System.Nullable<int> StartIndex { get; set; }
 
         /// <summary>The total number of results for the query, regardless of the number of results in the
         /// response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-        public virtual System.Nullable<int> TotalResults { get; set; } 
+        public virtual System.Nullable<int> TotalResults { get; set; }
 
         /// <summary>Email ID of the authenticated user</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; } 
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10121,74 +10121,74 @@ namespace Google.Apis.Analytics.v3.Data
         /// <summary>Column headers that list dimension names followed by the metric names. The order of dimensions and
         /// metrics is same as specified in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnHeaders")]
-        public virtual System.Collections.Generic.IList<ColumnHeadersData> ColumnHeaders { get; set; } 
+        public virtual System.Collections.Generic.IList<ColumnHeadersData> ColumnHeaders { get; set; }
 
         /// <summary>Determines if Analytics data contains samples.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containsSampledData")]
-        public virtual System.Nullable<bool> ContainsSampledData { get; set; } 
+        public virtual System.Nullable<bool> ContainsSampledData { get; set; }
 
         /// <summary>The last refreshed time in seconds for Analytics data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataLastRefreshed")]
-        public virtual System.Nullable<long> DataLastRefreshed { get; set; } 
+        public virtual System.Nullable<long> DataLastRefreshed { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("dataTable")]
-        public virtual DataTableData DataTable { get; set; } 
+        public virtual DataTableData DataTable { get; set; }
 
         /// <summary>Unique ID for this data response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The maximum number of rows the response can contain, regardless of the actual number of rows
         /// returned. Its value ranges from 1 to 10,000 with a value of 1000 by default, or otherwise specified by the
         /// max-results query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemsPerPage")]
-        public virtual System.Nullable<int> ItemsPerPage { get; set; } 
+        public virtual System.Nullable<int> ItemsPerPage { get; set; }
 
         /// <summary>Resource type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Link to next page for this Analytics data query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextLink")]
-        public virtual string NextLink { get; set; } 
+        public virtual string NextLink { get; set; }
 
         /// <summary>Link to previous page for this Analytics data query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousLink")]
-        public virtual string PreviousLink { get; set; } 
+        public virtual string PreviousLink { get; set; }
 
         /// <summary>Information for the view (profile), for which the Analytics data was requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileInfo")]
-        public virtual ProfileInfoData ProfileInfo { get; set; } 
+        public virtual ProfileInfoData ProfileInfo { get; set; }
 
         /// <summary>Analytics data request query parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
-        public virtual QueryData Query { get; set; } 
+        public virtual QueryData Query { get; set; }
 
         /// <summary>Analytics data rows, where each row contains a list of dimension values followed by the metric
         /// values. The order of dimensions and metrics is same as specified in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IList<string>> Rows { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IList<string>> Rows { get; set; }
 
         /// <summary>The number of samples used to calculate the result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleSize")]
-        public virtual System.Nullable<long> SampleSize { get; set; } 
+        public virtual System.Nullable<long> SampleSize { get; set; }
 
         /// <summary>Total size of the sample space from which the samples were selected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleSpace")]
-        public virtual System.Nullable<long> SampleSpace { get; set; } 
+        public virtual System.Nullable<long> SampleSpace { get; set; }
 
         /// <summary>Link to this page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>The total number of rows for the query, regardless of the number of rows in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-        public virtual System.Nullable<int> TotalResults { get; set; } 
+        public virtual System.Nullable<int> TotalResults { get; set; }
 
         /// <summary>Total values for the requested metrics over all the results, not just the results returned in this
         /// response. The order of the metric totals is same as the metric order specified in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalsForAllResults")]
-        public virtual System.Collections.Generic.IDictionary<string,string> TotalsForAllResults { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> TotalsForAllResults { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10198,53 +10198,53 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Column Type. Either DIMENSION or METRIC.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("columnType")]
-            public virtual string ColumnType { get; set; } 
+            public virtual string ColumnType { get; set; }
 
             /// <summary>Data type. Dimension column headers have only STRING as the data type. Metric column headers
             /// have data types for metric values such as INTEGER, DOUBLE, CURRENCY etc.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
-            public virtual string DataType { get; set; } 
+            public virtual string DataType { get; set; }
 
             /// <summary>Column name.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("name")]
-            public virtual string Name { get; set; } 
+            public virtual string Name { get; set; }
 
         }    
 
         public class DataTableData
         {
             [Newtonsoft.Json.JsonPropertyAttribute("cols")]
-            public virtual System.Collections.Generic.IList<ColsData> Cols { get; set; } 
+            public virtual System.Collections.Generic.IList<ColsData> Cols { get; set; }
 
             [Newtonsoft.Json.JsonPropertyAttribute("rows")]
-            public virtual System.Collections.Generic.IList<RowsData> Rows { get; set; } 
+            public virtual System.Collections.Generic.IList<RowsData> Rows { get; set; }
 
             
 
             public class ColsData
             {
                 [Newtonsoft.Json.JsonPropertyAttribute("id")]
-                public virtual string Id { get; set; } 
+                public virtual string Id { get; set; }
 
                 [Newtonsoft.Json.JsonPropertyAttribute("label")]
-                public virtual string Label { get; set; } 
+                public virtual string Label { get; set; }
 
                 [Newtonsoft.Json.JsonPropertyAttribute("type")]
-                public virtual string Type { get; set; } 
+                public virtual string Type { get; set; }
 
             }    
 
             public class RowsData
             {
                 [Newtonsoft.Json.JsonPropertyAttribute("c")]
-                public virtual System.Collections.Generic.IList<CData> C { get; set; } 
+                public virtual System.Collections.Generic.IList<CData> C { get; set; }
 
                 
 
                 public class CData
                 {
                     [Newtonsoft.Json.JsonPropertyAttribute("v")]
-                    public virtual string V { get; set; } 
+                    public virtual string V { get; set; }
 
                 }
             }
@@ -10255,27 +10255,27 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Account ID to which this view (profile) belongs.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-            public virtual string AccountId { get; set; } 
+            public virtual string AccountId { get; set; }
 
             /// <summary>Internal ID for the web property to which this view (profile) belongs.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("internalWebPropertyId")]
-            public virtual string InternalWebPropertyId { get; set; } 
+            public virtual string InternalWebPropertyId { get; set; }
 
             /// <summary>View (Profile) ID.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("profileId")]
-            public virtual string ProfileId { get; set; } 
+            public virtual string ProfileId { get; set; }
 
             /// <summary>View (Profile) name.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("profileName")]
-            public virtual string ProfileName { get; set; } 
+            public virtual string ProfileName { get; set; }
 
             /// <summary>Table ID for view (profile).</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
-            public virtual string TableId { get; set; } 
+            public virtual string TableId { get; set; }
 
             /// <summary>Web Property ID to which this view (profile) belongs.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("webPropertyId")]
-            public virtual string WebPropertyId { get; set; } 
+            public virtual string WebPropertyId { get; set; }
 
         }    
 
@@ -10284,47 +10284,47 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>List of analytics dimensions.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
-            public virtual string Dimensions { get; set; } 
+            public virtual string Dimensions { get; set; }
 
             /// <summary>End date.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("end-date")]
-            public virtual string EndDate { get; set; } 
+            public virtual string EndDate { get; set; }
 
             /// <summary>Comma-separated list of dimension or metric filters.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("filters")]
-            public virtual string Filters { get; set; } 
+            public virtual string Filters { get; set; }
 
             /// <summary>Unique table ID.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("ids")]
-            public virtual string Ids { get; set; } 
+            public virtual string Ids { get; set; }
 
             /// <summary>Maximum results per page.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("max-results")]
-            public virtual System.Nullable<int> MaxResults { get; set; } 
+            public virtual System.Nullable<int> MaxResults { get; set; }
 
             /// <summary>List of analytics metrics.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
-            public virtual System.Collections.Generic.IList<string> Metrics { get; set; } 
+            public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
 
             /// <summary>Desired sampling level</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("samplingLevel")]
-            public virtual string SamplingLevel { get; set; } 
+            public virtual string SamplingLevel { get; set; }
 
             /// <summary>Analytics advanced segment.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("segment")]
-            public virtual string Segment { get; set; } 
+            public virtual string Segment { get; set; }
 
             /// <summary>List of dimensions or metrics based on which Analytics data is sorted.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("sort")]
-            public virtual System.Collections.Generic.IList<string> Sort { get; set; } 
+            public virtual System.Collections.Generic.IList<string> Sort { get; set; }
 
             /// <summary>Start date.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("start-date")]
-            public virtual string StartDate { get; set; } 
+            public virtual string StartDate { get; set; }
 
             /// <summary>Start index.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("start-index")]
-            public virtual System.Nullable<int> StartIndex { get; set; } 
+            public virtual System.Nullable<int> StartIndex { get; set; }
 
         }
     }    
@@ -10334,11 +10334,11 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>Account ID to which this goal belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual string AccountId { get; set; } 
+        public virtual string AccountId { get; set; }
 
         /// <summary>Determines whether this goal is active.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("active")]
-        public virtual System.Nullable<bool> Active { get; set; } 
+        public virtual System.Nullable<bool> Active { get; set; }
 
         /// <summary>Time this goal was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("created")]
@@ -10354,40 +10354,40 @@ namespace Google.Apis.Analytics.v3.Data
 
         /// <summary>Details for the goal of the type EVENT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventDetails")]
-        public virtual EventDetailsData EventDetails { get; set; } 
+        public virtual EventDetailsData EventDetails { get; set; }
 
         /// <summary>Goal ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Internal ID for the web property to which this goal belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalWebPropertyId")]
-        public virtual string InternalWebPropertyId { get; set; } 
+        public virtual string InternalWebPropertyId { get; set; }
 
         /// <summary>Resource type for an Analytics goal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Goal name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Parent link for a goal. Points to the view (profile) to which this goal belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentLink")]
-        public virtual ParentLinkData ParentLink { get; set; } 
+        public virtual ParentLinkData ParentLink { get; set; }
 
         /// <summary>View (Profile) ID to which this goal belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileId")]
-        public virtual string ProfileId { get; set; } 
+        public virtual string ProfileId { get; set; }
 
         /// <summary>Link for this goal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>Goal type. Possible values are URL_DESTINATION, VISIT_TIME_ON_SITE, VISIT_NUM_PAGES, AND
         /// EVENT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>Time this goal was last modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]
@@ -10403,24 +10403,24 @@ namespace Google.Apis.Analytics.v3.Data
 
         /// <summary>Details for the goal of the type URL_DESTINATION.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlDestinationDetails")]
-        public virtual UrlDestinationDetailsData UrlDestinationDetails { get; set; } 
+        public virtual UrlDestinationDetailsData UrlDestinationDetails { get; set; }
 
         /// <summary>Goal value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual System.Nullable<float> Value { get; set; } 
+        public virtual System.Nullable<float> Value { get; set; }
 
         /// <summary>Details for the goal of the type VISIT_NUM_PAGES.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitNumPagesDetails")]
-        public virtual VisitNumPagesDetailsData VisitNumPagesDetails { get; set; } 
+        public virtual VisitNumPagesDetailsData VisitNumPagesDetails { get; set; }
 
         /// <summary>Details for the goal of the type VISIT_TIME_ON_SITE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitTimeOnSiteDetails")]
-        public virtual VisitTimeOnSiteDetailsData VisitTimeOnSiteDetails { get; set; } 
+        public virtual VisitTimeOnSiteDetailsData VisitTimeOnSiteDetails { get; set; }
 
         /// <summary>Web property ID to which this goal belongs. The web property ID is of the form UA-XXXXX-
         /// YY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webPropertyId")]
-        public virtual string WebPropertyId { get; set; } 
+        public virtual string WebPropertyId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10431,11 +10431,11 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>List of event conditions.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("eventConditions")]
-            public virtual System.Collections.Generic.IList<EventConditionsData> EventConditions { get; set; } 
+            public virtual System.Collections.Generic.IList<EventConditionsData> EventConditions { get; set; }
 
             /// <summary>Determines if the event value should be used as the value for this goal.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("useEventValue")]
-            public virtual System.Nullable<bool> UseEventValue { get; set; } 
+            public virtual System.Nullable<bool> UseEventValue { get; set; }
 
             
 
@@ -10443,25 +10443,25 @@ namespace Google.Apis.Analytics.v3.Data
             {
                 /// <summary>Type of comparison. Possible values are LESS_THAN, GREATER_THAN or EQUAL.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("comparisonType")]
-                public virtual string ComparisonType { get; set; } 
+                public virtual string ComparisonType { get; set; }
 
                 /// <summary>Value used for this comparison.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("comparisonValue")]
-                public virtual System.Nullable<long> ComparisonValue { get; set; } 
+                public virtual System.Nullable<long> ComparisonValue { get; set; }
 
                 /// <summary>Expression used for this match.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-                public virtual string Expression { get; set; } 
+                public virtual string Expression { get; set; }
 
                 /// <summary>Type of the match to be performed. Possible values are REGEXP, BEGINS_WITH, or
                 /// EXACT.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("matchType")]
-                public virtual string MatchType { get; set; } 
+                public virtual string MatchType { get; set; }
 
                 /// <summary>Type of this event condition. Possible values are CATEGORY, ACTION, LABEL, or
                 /// VALUE.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("type")]
-                public virtual string Type { get; set; } 
+                public virtual string Type { get; set; }
 
             }
         }    
@@ -10471,11 +10471,11 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Link to the view (profile) to which this goal belongs.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("href")]
-            public virtual string Href { get; set; } 
+            public virtual string Href { get; set; }
 
             /// <summary>Value is "analytics#profile".</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
-            public virtual string Type { get; set; } 
+            public virtual string Type { get; set; }
 
         }    
 
@@ -10484,23 +10484,23 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Determines if the goal URL must exactly match the capitalization of visited URLs.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("caseSensitive")]
-            public virtual System.Nullable<bool> CaseSensitive { get; set; } 
+            public virtual System.Nullable<bool> CaseSensitive { get; set; }
 
             /// <summary>Determines if the first step in this goal is required.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("firstStepRequired")]
-            public virtual System.Nullable<bool> FirstStepRequired { get; set; } 
+            public virtual System.Nullable<bool> FirstStepRequired { get; set; }
 
             /// <summary>Match type for the goal URL. Possible values are HEAD, EXACT, or REGEX.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("matchType")]
-            public virtual string MatchType { get; set; } 
+            public virtual string MatchType { get; set; }
 
             /// <summary>List of steps configured for this goal funnel.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("steps")]
-            public virtual System.Collections.Generic.IList<StepsData> Steps { get; set; } 
+            public virtual System.Collections.Generic.IList<StepsData> Steps { get; set; }
 
             /// <summary>URL for this goal.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("url")]
-            public virtual string Url { get; set; } 
+            public virtual string Url { get; set; }
 
             
 
@@ -10508,15 +10508,15 @@ namespace Google.Apis.Analytics.v3.Data
             {
                 /// <summary>Step name.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("name")]
-                public virtual string Name { get; set; } 
+                public virtual string Name { get; set; }
 
                 /// <summary>Step number.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("number")]
-                public virtual System.Nullable<int> Number { get; set; } 
+                public virtual System.Nullable<int> Number { get; set; }
 
                 /// <summary>URL for this step.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("url")]
-                public virtual string Url { get; set; } 
+                public virtual string Url { get; set; }
 
             }
         }    
@@ -10526,11 +10526,11 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Type of comparison. Possible values are LESS_THAN, GREATER_THAN, or EQUAL.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("comparisonType")]
-            public virtual string ComparisonType { get; set; } 
+            public virtual string ComparisonType { get; set; }
 
             /// <summary>Value used for this comparison.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("comparisonValue")]
-            public virtual System.Nullable<long> ComparisonValue { get; set; } 
+            public virtual System.Nullable<long> ComparisonValue { get; set; }
 
         }    
 
@@ -10539,11 +10539,11 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Type of comparison. Possible values are LESS_THAN or GREATER_THAN.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("comparisonType")]
-            public virtual string ComparisonType { get; set; } 
+            public virtual string ComparisonType { get; set; }
 
             /// <summary>Value used for this comparison.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("comparisonValue")]
-            public virtual System.Nullable<long> ComparisonValue { get; set; } 
+            public virtual System.Nullable<long> ComparisonValue { get; set; }
 
         }
     }    
@@ -10554,39 +10554,39 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>A list of goals.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Goal> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Goal> Items { get; set; }
 
         /// <summary>The maximum number of resources the response can contain, regardless of the actual number of
         /// resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified
         /// by the max-results query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemsPerPage")]
-        public virtual System.Nullable<int> ItemsPerPage { get; set; } 
+        public virtual System.Nullable<int> ItemsPerPage { get; set; }
 
         /// <summary>Collection type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Link to next page for this goal collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextLink")]
-        public virtual string NextLink { get; set; } 
+        public virtual string NextLink { get; set; }
 
         /// <summary>Link to previous page for this goal collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousLink")]
-        public virtual string PreviousLink { get; set; } 
+        public virtual string PreviousLink { get; set; }
 
         /// <summary>The starting index of the resources, which is 1 by default or otherwise specified by the start-
         /// index query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-        public virtual System.Nullable<int> StartIndex { get; set; } 
+        public virtual System.Nullable<int> StartIndex { get; set; }
 
         /// <summary>The total number of results for the query, regardless of the number of resources in the
         /// result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-        public virtual System.Nullable<int> TotalResults { get; set; } 
+        public virtual System.Nullable<int> TotalResults { get; set; }
 
         /// <summary>Email ID of the authenticated user</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; } 
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10596,13 +10596,13 @@ namespace Google.Apis.Analytics.v3.Data
     public class HashClientIdRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
-        public virtual string ClientId { get; set; } 
+        public virtual string ClientId { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("webPropertyId")]
-        public virtual string WebPropertyId { get; set; } 
+        public virtual string WebPropertyId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10612,16 +10612,16 @@ namespace Google.Apis.Analytics.v3.Data
     public class HashClientIdResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
-        public virtual string ClientId { get; set; } 
+        public virtual string ClientId { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("hashedClientId")]
-        public virtual string HashedClientId { get; set; } 
+        public virtual string HashedClientId { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("webPropertyId")]
-        public virtual string WebPropertyId { get; set; } 
+        public virtual string WebPropertyId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10635,24 +10635,24 @@ namespace Google.Apis.Analytics.v3.Data
         /// than 2, and you set the look-back window to 14 days, then any user from Central Asia whose cumulative
         /// transactions exceed 2 during the last 14 days is added to the audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("daysToLookBack")]
-        public virtual System.Nullable<int> DaysToLookBack { get; set; } 
+        public virtual System.Nullable<int> DaysToLookBack { get; set; }
 
         /// <summary>Boolean indicating whether this segment is a smart list.
         /// https://support.google.com/analytics/answer/4628577</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isSmartList")]
-        public virtual System.Nullable<bool> IsSmartList { get; set; } 
+        public virtual System.Nullable<bool> IsSmartList { get; set; }
 
         /// <summary>Resource type for include conditions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Number of days (in the range 1 to 540) a user remains in the audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membershipDurationDays")]
-        public virtual System.Nullable<int> MembershipDurationDays { get; set; } 
+        public virtual System.Nullable<int> MembershipDurationDays { get; set; }
 
         /// <summary>The segment condition that will cause a user to be added to an audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segment")]
-        public virtual string Segment { get; set; } 
+        public virtual string Segment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10663,45 +10663,45 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>Account ID to which this linked foreign account belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual string AccountId { get; set; } 
+        public virtual string AccountId { get; set; }
 
         /// <summary>Boolean indicating whether this is eligible for search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eligibleForSearch")]
-        public virtual System.Nullable<bool> EligibleForSearch { get; set; } 
+        public virtual System.Nullable<bool> EligibleForSearch { get; set; }
 
         /// <summary>Entity ad account link ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Internal ID for the web property to which this linked foreign account belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalWebPropertyId")]
-        public virtual string InternalWebPropertyId { get; set; } 
+        public virtual string InternalWebPropertyId { get; set; }
 
         /// <summary>Resource type for linked foreign account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The foreign account ID. For example the an Google Ads `linkedAccountId` has the following format
         /// XXX-XXX-XXXX.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedAccountId")]
-        public virtual string LinkedAccountId { get; set; } 
+        public virtual string LinkedAccountId { get; set; }
 
         /// <summary>Remarketing audience ID to which this linked foreign account belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remarketingAudienceId")]
-        public virtual string RemarketingAudienceId { get; set; } 
+        public virtual string RemarketingAudienceId { get; set; }
 
         /// <summary>The status of this foreign account link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The type of the foreign account. For example, `ADWORDS_LINKS`, `DBM_LINKS`, `MCC_LINKS` or
         /// `OPTIMIZE`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>Web property ID of the form UA-XXXXX-YY to which this linked foreign account belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webPropertyId")]
-        public virtual string WebPropertyId { get; set; } 
+        public virtual string WebPropertyId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10713,67 +10713,67 @@ namespace Google.Apis.Analytics.v3.Data
         /// <summary>Column headers that list dimension names followed by the metric names. The order of dimensions and
         /// metrics is same as specified in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnHeaders")]
-        public virtual System.Collections.Generic.IList<ColumnHeadersData> ColumnHeaders { get; set; } 
+        public virtual System.Collections.Generic.IList<ColumnHeadersData> ColumnHeaders { get; set; }
 
         /// <summary>Determines if the Analytics data contains sampled data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containsSampledData")]
-        public virtual System.Nullable<bool> ContainsSampledData { get; set; } 
+        public virtual System.Nullable<bool> ContainsSampledData { get; set; }
 
         /// <summary>Unique ID for this data response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The maximum number of rows the response can contain, regardless of the actual number of rows
         /// returned. Its value ranges from 1 to 10,000 with a value of 1000 by default, or otherwise specified by the
         /// max-results query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemsPerPage")]
-        public virtual System.Nullable<int> ItemsPerPage { get; set; } 
+        public virtual System.Nullable<int> ItemsPerPage { get; set; }
 
         /// <summary>Resource type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Link to next page for this Analytics data query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextLink")]
-        public virtual string NextLink { get; set; } 
+        public virtual string NextLink { get; set; }
 
         /// <summary>Link to previous page for this Analytics data query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousLink")]
-        public virtual string PreviousLink { get; set; } 
+        public virtual string PreviousLink { get; set; }
 
         /// <summary>Information for the view (profile), for which the Analytics data was requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileInfo")]
-        public virtual ProfileInfoData ProfileInfo { get; set; } 
+        public virtual ProfileInfoData ProfileInfo { get; set; }
 
         /// <summary>Analytics data request query parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
-        public virtual QueryData Query { get; set; } 
+        public virtual QueryData Query { get; set; }
 
         /// <summary>Analytics data rows, where each row contains a list of dimension values followed by the metric
         /// values. The order of dimensions and metrics is same as specified in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IList<RowsData>> Rows { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IList<RowsData>> Rows { get; set; }
 
         /// <summary>The number of samples used to calculate the result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleSize")]
-        public virtual System.Nullable<long> SampleSize { get; set; } 
+        public virtual System.Nullable<long> SampleSize { get; set; }
 
         /// <summary>Total size of the sample space from which the samples were selected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleSpace")]
-        public virtual System.Nullable<long> SampleSpace { get; set; } 
+        public virtual System.Nullable<long> SampleSpace { get; set; }
 
         /// <summary>Link to this page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>The total number of rows for the query, regardless of the number of rows in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-        public virtual System.Nullable<int> TotalResults { get; set; } 
+        public virtual System.Nullable<int> TotalResults { get; set; }
 
         /// <summary>Total values for the requested metrics over all the results, not just the results returned in this
         /// response. The order of the metric totals is same as the metric order specified in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalsForAllResults")]
-        public virtual System.Collections.Generic.IDictionary<string,string> TotalsForAllResults { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> TotalsForAllResults { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10783,16 +10783,16 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Column Type. Either DIMENSION or METRIC.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("columnType")]
-            public virtual string ColumnType { get; set; } 
+            public virtual string ColumnType { get; set; }
 
             /// <summary>Data type. Dimension and metric values data types such as INTEGER, DOUBLE, CURRENCY,
             /// MCF_SEQUENCE etc.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
-            public virtual string DataType { get; set; } 
+            public virtual string DataType { get; set; }
 
             /// <summary>Column name.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("name")]
-            public virtual string Name { get; set; } 
+            public virtual string Name { get; set; }
 
         }    
 
@@ -10801,27 +10801,27 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Account ID to which this view (profile) belongs.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-            public virtual string AccountId { get; set; } 
+            public virtual string AccountId { get; set; }
 
             /// <summary>Internal ID for the web property to which this view (profile) belongs.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("internalWebPropertyId")]
-            public virtual string InternalWebPropertyId { get; set; } 
+            public virtual string InternalWebPropertyId { get; set; }
 
             /// <summary>View (Profile) ID.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("profileId")]
-            public virtual string ProfileId { get; set; } 
+            public virtual string ProfileId { get; set; }
 
             /// <summary>View (Profile) name.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("profileName")]
-            public virtual string ProfileName { get; set; } 
+            public virtual string ProfileName { get; set; }
 
             /// <summary>Table ID for view (profile).</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
-            public virtual string TableId { get; set; } 
+            public virtual string TableId { get; set; }
 
             /// <summary>Web Property ID to which this view (profile) belongs.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("webPropertyId")]
-            public virtual string WebPropertyId { get; set; } 
+            public virtual string WebPropertyId { get; set; }
 
         }    
 
@@ -10830,47 +10830,47 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>List of analytics dimensions.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
-            public virtual string Dimensions { get; set; } 
+            public virtual string Dimensions { get; set; }
 
             /// <summary>End date.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("end-date")]
-            public virtual string EndDate { get; set; } 
+            public virtual string EndDate { get; set; }
 
             /// <summary>Comma-separated list of dimension or metric filters.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("filters")]
-            public virtual string Filters { get; set; } 
+            public virtual string Filters { get; set; }
 
             /// <summary>Unique table ID.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("ids")]
-            public virtual string Ids { get; set; } 
+            public virtual string Ids { get; set; }
 
             /// <summary>Maximum results per page.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("max-results")]
-            public virtual System.Nullable<int> MaxResults { get; set; } 
+            public virtual System.Nullable<int> MaxResults { get; set; }
 
             /// <summary>List of analytics metrics.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
-            public virtual System.Collections.Generic.IList<string> Metrics { get; set; } 
+            public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
 
             /// <summary>Desired sampling level</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("samplingLevel")]
-            public virtual string SamplingLevel { get; set; } 
+            public virtual string SamplingLevel { get; set; }
 
             /// <summary>Analytics advanced segment.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("segment")]
-            public virtual string Segment { get; set; } 
+            public virtual string Segment { get; set; }
 
             /// <summary>List of dimensions or metrics based on which Analytics data is sorted.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("sort")]
-            public virtual System.Collections.Generic.IList<string> Sort { get; set; } 
+            public virtual System.Collections.Generic.IList<string> Sort { get; set; }
 
             /// <summary>Start date.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("start-date")]
-            public virtual string StartDate { get; set; } 
+            public virtual string StartDate { get; set; }
 
             /// <summary>Start index.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("start-index")]
-            public virtual System.Nullable<int> StartIndex { get; set; } 
+            public virtual System.Nullable<int> StartIndex { get; set; }
 
         }    
 
@@ -10881,11 +10881,11 @@ namespace Google.Apis.Analytics.v3.Data
             /// <summary>A conversion path dimension value, containing a list of interactions with their
             /// attributes.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("conversionPathValue")]
-            public virtual System.Collections.Generic.IList<ConversionPathValueData> ConversionPathValue { get; set; } 
+            public virtual System.Collections.Generic.IList<ConversionPathValueData> ConversionPathValue { get; set; }
 
             /// <summary>A primitive dimension value. A primitive metric value.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("primitiveValue")]
-            public virtual string PrimitiveValue { get; set; } 
+            public virtual string PrimitiveValue { get; set; }
 
             
 
@@ -10893,11 +10893,11 @@ namespace Google.Apis.Analytics.v3.Data
             {
                 /// <summary>Type of an interaction on conversion path. Such as CLICK, IMPRESSION etc.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("interactionType")]
-                public virtual string InteractionType { get; set; } 
+                public virtual string InteractionType { get; set; }
 
                 /// <summary>Node value of an interaction on conversion path. Such as source, medium etc.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("nodeValue")]
-                public virtual string NodeValue { get; set; } 
+                public virtual string NodeValue { get; set; }
 
             }
         }
@@ -10908,15 +10908,15 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>Account ID to which this view (profile) belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual string AccountId { get; set; } 
+        public virtual string AccountId { get; set; }
 
         /// <summary>Indicates whether bot filtering is enabled for this view (profile).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("botFilteringEnabled")]
-        public virtual System.Nullable<bool> BotFilteringEnabled { get; set; } 
+        public virtual System.Nullable<bool> BotFilteringEnabled { get; set; }
 
         /// <summary>Child link for this view (profile). Points to the list of goals for this view (profile).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("childLink")]
-        public virtual ChildLinkData ChildLink { get; set; } 
+        public virtual ChildLinkData ChildLink { get; set; }
 
         /// <summary>Time this view (profile) was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("created")]
@@ -10935,84 +10935,84 @@ namespace Google.Apis.Analytics.v3.Data
         /// PHP, INR, CHF, CAD, CZK, NZD, HUF, BGN, LTL, ZAR, UAH, AED, BOB, CLP, COP, EGP, HRK, ILS, MAD, MYR, PEN,
         /// PKR, RON, RSD, SAR, SGD, VEF, LVL</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currency")]
-        public virtual string Currency { get; set; } 
+        public virtual string Currency { get; set; }
 
         /// <summary>Default page for this view (profile).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultPage")]
-        public virtual string DefaultPage { get; set; } 
+        public virtual string DefaultPage { get; set; }
 
         /// <summary>Indicates whether ecommerce tracking is enabled for this view (profile).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eCommerceTracking")]
-        public virtual System.Nullable<bool> ECommerceTracking { get; set; } 
+        public virtual System.Nullable<bool> ECommerceTracking { get; set; }
 
         /// <summary>Indicates whether enhanced ecommerce tracking is enabled for this view (profile). This property can
         /// only be enabled if ecommerce tracking is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enhancedECommerceTracking")]
-        public virtual System.Nullable<bool> EnhancedECommerceTracking { get; set; } 
+        public virtual System.Nullable<bool> EnhancedECommerceTracking { get; set; }
 
         /// <summary>The query parameters that are excluded from this view (profile).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeQueryParameters")]
-        public virtual string ExcludeQueryParameters { get; set; } 
+        public virtual string ExcludeQueryParameters { get; set; }
 
         /// <summary>View (Profile) ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Internal ID for the web property to which this view (profile) belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalWebPropertyId")]
-        public virtual string InternalWebPropertyId { get; set; } 
+        public virtual string InternalWebPropertyId { get; set; }
 
         /// <summary>Resource type for Analytics view (profile).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this view (profile).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Parent link for this view (profile). Points to the web property to which this view (profile)
         /// belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentLink")]
-        public virtual ParentLinkData ParentLink { get; set; } 
+        public virtual ParentLinkData ParentLink { get; set; }
 
         /// <summary>Permissions the user has for this view (profile).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual PermissionsData Permissions { get; set; } 
+        public virtual PermissionsData Permissions { get; set; }
 
         /// <summary>Link for this view (profile).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>Site search category parameters for this view (profile).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteSearchCategoryParameters")]
-        public virtual string SiteSearchCategoryParameters { get; set; } 
+        public virtual string SiteSearchCategoryParameters { get; set; }
 
         /// <summary>The site search query parameters for this view (profile).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteSearchQueryParameters")]
-        public virtual string SiteSearchQueryParameters { get; set; } 
+        public virtual string SiteSearchQueryParameters { get; set; }
 
         /// <summary>Indicates whether this view (profile) is starred or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("starred")]
-        public virtual System.Nullable<bool> Starred { get; set; } 
+        public virtual System.Nullable<bool> Starred { get; set; }
 
         /// <summary>Whether or not Analytics will strip search category parameters from the URLs in your
         /// reports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stripSiteSearchCategoryParameters")]
-        public virtual System.Nullable<bool> StripSiteSearchCategoryParameters { get; set; } 
+        public virtual System.Nullable<bool> StripSiteSearchCategoryParameters { get; set; }
 
         /// <summary>Whether or not Analytics will strip search query parameters from the URLs in your
         /// reports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stripSiteSearchQueryParameters")]
-        public virtual System.Nullable<bool> StripSiteSearchQueryParameters { get; set; } 
+        public virtual System.Nullable<bool> StripSiteSearchQueryParameters { get; set; }
 
         /// <summary>Time zone for which this view (profile) has been configured. Time zones are identified by strings
         /// from the TZ database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timezone")]
-        public virtual string Timezone { get; set; } 
+        public virtual string Timezone { get; set; }
 
         /// <summary>View (Profile) type. Supported types: WEB or APP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>Time this view (profile) was last modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]
@@ -11028,11 +11028,11 @@ namespace Google.Apis.Analytics.v3.Data
 
         /// <summary>Web property ID of the form UA-XXXXX-YY to which this view (profile) belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webPropertyId")]
-        public virtual string WebPropertyId { get; set; } 
+        public virtual string WebPropertyId { get; set; }
 
         /// <summary>Website URL for this view (profile).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("websiteUrl")]
-        public virtual string WebsiteUrl { get; set; } 
+        public virtual string WebsiteUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11043,11 +11043,11 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Link to the list of goals for this view (profile).</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("href")]
-            public virtual string Href { get; set; } 
+            public virtual string Href { get; set; }
 
             /// <summary>Value is "analytics#goals".</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
-            public virtual string Type { get; set; } 
+            public virtual string Type { get; set; }
 
         }    
 
@@ -11057,11 +11057,11 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Link to the web property to which this view (profile) belongs.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("href")]
-            public virtual string Href { get; set; } 
+            public virtual string Href { get; set; }
 
             /// <summary>Value is "analytics#webproperty".</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
-            public virtual string Type { get; set; } 
+            public virtual string Type { get; set; }
 
         }    
 
@@ -11071,7 +11071,7 @@ namespace Google.Apis.Analytics.v3.Data
             /// <summary>All the permissions that the user has for this view (profile). These include any implied
             /// permissions (e.g., EDIT implies VIEW) or inherited permissions from the parent web property.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("effective")]
-            public virtual System.Collections.Generic.IList<string> Effective { get; set; } 
+            public virtual System.Collections.Generic.IList<string> Effective { get; set; }
 
         }
     }    
@@ -11081,19 +11081,19 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>Filter for this link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterRef")]
-        public virtual FilterRef FilterRef { get; set; } 
+        public virtual FilterRef FilterRef { get; set; }
 
         /// <summary>Profile filter link ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Resource type for Analytics filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>View (Profile) for this link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileRef")]
-        public virtual ProfileRef ProfileRef { get; set; } 
+        public virtual ProfileRef ProfileRef { get; set; }
 
         /// <summary>The rank of this profile filter link relative to the other filters linked to the same profile. For
         /// readonly (i.e., list and get) operations, the rank always starts at 1. For write (i.e., create, update, or
@@ -11103,11 +11103,11 @@ namespace Google.Apis.Analytics.v3.Data
         /// equal to 1. The new link will move all existing filters with the same or lower rank down the list. After the
         /// link is inserted/updated/deleted all profile filter links will be renumbered starting at 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rank")]
-        public virtual System.Nullable<int> Rank { get; set; } 
+        public virtual System.Nullable<int> Rank { get; set; }
 
         /// <summary>Link for this profile filter link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11119,39 +11119,39 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>A list of profile filter links.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<ProfileFilterLink> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<ProfileFilterLink> Items { get; set; }
 
         /// <summary>The maximum number of resources the response can contain, regardless of the actual number of
         /// resources returned. Its value ranges from 1 to 1,000 with a value of 1000 by default, or otherwise specified
         /// by the max-results query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemsPerPage")]
-        public virtual System.Nullable<int> ItemsPerPage { get; set; } 
+        public virtual System.Nullable<int> ItemsPerPage { get; set; }
 
         /// <summary>Collection type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Link to next page for this profile filter link collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextLink")]
-        public virtual string NextLink { get; set; } 
+        public virtual string NextLink { get; set; }
 
         /// <summary>Link to previous page for this profile filter link collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousLink")]
-        public virtual string PreviousLink { get; set; } 
+        public virtual string PreviousLink { get; set; }
 
         /// <summary>The starting index of the resources, which is 1 by default or otherwise specified by the start-
         /// index query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-        public virtual System.Nullable<int> StartIndex { get; set; } 
+        public virtual System.Nullable<int> StartIndex { get; set; }
 
         /// <summary>The total number of results for the query, regardless of the number of results in the
         /// response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-        public virtual System.Nullable<int> TotalResults { get; set; } 
+        public virtual System.Nullable<int> TotalResults { get; set; }
 
         /// <summary>Email ID of the authenticated user</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; } 
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11162,31 +11162,31 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>Account ID to which this view (profile) belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual string AccountId { get; set; } 
+        public virtual string AccountId { get; set; }
 
         /// <summary>Link for this view (profile).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("href")]
-        public virtual string Href { get; set; } 
+        public virtual string Href { get; set; }
 
         /// <summary>View (Profile) ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Internal ID for the web property to which this view (profile) belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalWebPropertyId")]
-        public virtual string InternalWebPropertyId { get; set; } 
+        public virtual string InternalWebPropertyId { get; set; }
 
         /// <summary>Analytics view (profile) reference.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this view (profile).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Web property ID of the form UA-XXXXX-YY to which this view (profile) belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webPropertyId")]
-        public virtual string WebPropertyId { get; set; } 
+        public virtual string WebPropertyId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11198,23 +11198,23 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>View (profile) ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Resource type for Analytics ProfileSummary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>View (profile) name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Indicates whether this view (profile) is starred or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("starred")]
-        public virtual System.Nullable<bool> Starred { get; set; } 
+        public virtual System.Nullable<bool> Starred { get; set; }
 
         /// <summary>View (Profile) type. Supported types: WEB or APP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11226,39 +11226,39 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>A list of views (profiles).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Profile> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Profile> Items { get; set; }
 
         /// <summary>The maximum number of resources the response can contain, regardless of the actual number of
         /// resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified
         /// by the max-results query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemsPerPage")]
-        public virtual System.Nullable<int> ItemsPerPage { get; set; } 
+        public virtual System.Nullable<int> ItemsPerPage { get; set; }
 
         /// <summary>Collection type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Link to next page for this view (profile) collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextLink")]
-        public virtual string NextLink { get; set; } 
+        public virtual string NextLink { get; set; }
 
         /// <summary>Link to previous page for this view (profile) collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousLink")]
-        public virtual string PreviousLink { get; set; } 
+        public virtual string PreviousLink { get; set; }
 
         /// <summary>The starting index of the resources, which is 1 by default or otherwise specified by the start-
         /// index query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-        public virtual System.Nullable<int> StartIndex { get; set; } 
+        public virtual System.Nullable<int> StartIndex { get; set; }
 
         /// <summary>The total number of results for the query, regardless of the number of results in the
         /// response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-        public virtual System.Nullable<int> TotalResults { get; set; } 
+        public virtual System.Nullable<int> TotalResults { get; set; }
 
         /// <summary>Email ID of the authenticated user</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; } 
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11270,41 +11270,41 @@ namespace Google.Apis.Analytics.v3.Data
         /// <summary>Column headers that list dimension names followed by the metric names. The order of dimensions and
         /// metrics is same as specified in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnHeaders")]
-        public virtual System.Collections.Generic.IList<ColumnHeadersData> ColumnHeaders { get; set; } 
+        public virtual System.Collections.Generic.IList<ColumnHeadersData> ColumnHeaders { get; set; }
 
         /// <summary>Unique ID for this data response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Resource type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Information for the view (profile), for which the real time data was requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileInfo")]
-        public virtual ProfileInfoData ProfileInfo { get; set; } 
+        public virtual ProfileInfoData ProfileInfo { get; set; }
 
         /// <summary>Real time data request query parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
-        public virtual QueryData Query { get; set; } 
+        public virtual QueryData Query { get; set; }
 
         /// <summary>Real time data rows, where each row contains a list of dimension values followed by the metric
         /// values. The order of dimensions and metrics is same as specified in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IList<string>> Rows { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IList<string>> Rows { get; set; }
 
         /// <summary>Link to this page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>The total number of rows for the query, regardless of the number of rows in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-        public virtual System.Nullable<int> TotalResults { get; set; } 
+        public virtual System.Nullable<int> TotalResults { get; set; }
 
         /// <summary>Total values for the requested metrics over all the results, not just the results returned in this
         /// response. The order of the metric totals is same as the metric order specified in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalsForAllResults")]
-        public virtual System.Collections.Generic.IDictionary<string,string> TotalsForAllResults { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> TotalsForAllResults { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11314,16 +11314,16 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Column Type. Either DIMENSION or METRIC.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("columnType")]
-            public virtual string ColumnType { get; set; } 
+            public virtual string ColumnType { get; set; }
 
             /// <summary>Data type. Dimension column headers have only STRING as the data type. Metric column headers
             /// have data types for metric values such as INTEGER, DOUBLE, CURRENCY etc.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
-            public virtual string DataType { get; set; } 
+            public virtual string DataType { get; set; }
 
             /// <summary>Column name.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("name")]
-            public virtual string Name { get; set; } 
+            public virtual string Name { get; set; }
 
         }    
 
@@ -11332,27 +11332,27 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Account ID to which this view (profile) belongs.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-            public virtual string AccountId { get; set; } 
+            public virtual string AccountId { get; set; }
 
             /// <summary>Internal ID for the web property to which this view (profile) belongs.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("internalWebPropertyId")]
-            public virtual string InternalWebPropertyId { get; set; } 
+            public virtual string InternalWebPropertyId { get; set; }
 
             /// <summary>View (Profile) ID.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("profileId")]
-            public virtual string ProfileId { get; set; } 
+            public virtual string ProfileId { get; set; }
 
             /// <summary>View (Profile) name.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("profileName")]
-            public virtual string ProfileName { get; set; } 
+            public virtual string ProfileName { get; set; }
 
             /// <summary>Table ID for view (profile).</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
-            public virtual string TableId { get; set; } 
+            public virtual string TableId { get; set; }
 
             /// <summary>Web Property ID to which this view (profile) belongs.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("webPropertyId")]
-            public virtual string WebPropertyId { get; set; } 
+            public virtual string WebPropertyId { get; set; }
 
         }    
 
@@ -11361,27 +11361,27 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>List of real time dimensions.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
-            public virtual string Dimensions { get; set; } 
+            public virtual string Dimensions { get; set; }
 
             /// <summary>Comma-separated list of dimension or metric filters.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("filters")]
-            public virtual string Filters { get; set; } 
+            public virtual string Filters { get; set; }
 
             /// <summary>Unique table ID.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("ids")]
-            public virtual string Ids { get; set; } 
+            public virtual string Ids { get; set; }
 
             /// <summary>Maximum results per page.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("max-results")]
-            public virtual System.Nullable<int> MaxResults { get; set; } 
+            public virtual System.Nullable<int> MaxResults { get; set; }
 
             /// <summary>List of real time metrics.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
-            public virtual System.Collections.Generic.IList<string> Metrics { get; set; } 
+            public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
 
             /// <summary>List of dimensions or metrics based on which real time data is sorted.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("sort")]
-            public virtual System.Collections.Generic.IList<string> Sort { get; set; } 
+            public virtual System.Collections.Generic.IList<string> Sort { get; set; }
 
         }
     }    
@@ -11391,15 +11391,15 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>Account ID to which this remarketing audience belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual string AccountId { get; set; } 
+        public virtual string AccountId { get; set; }
 
         /// <summary>The simple audience definition that will cause a user to be added to an audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audienceDefinition")]
-        public virtual AudienceDefinitionData AudienceDefinition { get; set; } 
+        public virtual AudienceDefinitionData AudienceDefinition { get; set; }
 
         /// <summary>The type of audience, either SIMPLE or STATE_BASED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audienceType")]
-        public virtual string AudienceType { get; set; } 
+        public virtual string AudienceType { get; set; }
 
         /// <summary>Time this remarketing audience was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("created")]
@@ -11415,37 +11415,37 @@ namespace Google.Apis.Analytics.v3.Data
 
         /// <summary>The description of this remarketing audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Remarketing Audience ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Internal ID for the web property to which this remarketing audience belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalWebPropertyId")]
-        public virtual string InternalWebPropertyId { get; set; } 
+        public virtual string InternalWebPropertyId { get; set; }
 
         /// <summary>Collection type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The linked ad accounts associated with this remarketing audience. A remarketing audience can have
         /// only one linkedAdAccount currently.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedAdAccounts")]
-        public virtual System.Collections.Generic.IList<LinkedForeignAccount> LinkedAdAccounts { get; set; } 
+        public virtual System.Collections.Generic.IList<LinkedForeignAccount> LinkedAdAccounts { get; set; }
 
         /// <summary>The views (profiles) that this remarketing audience is linked to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedViews")]
-        public virtual System.Collections.Generic.IList<string> LinkedViews { get; set; } 
+        public virtual System.Collections.Generic.IList<string> LinkedViews { get; set; }
 
         /// <summary>The name of this remarketing audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>A state based audience definition that will cause a user to be added or removed from an
         /// audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateBasedAudienceDefinition")]
-        public virtual StateBasedAudienceDefinitionData StateBasedAudienceDefinition { get; set; } 
+        public virtual StateBasedAudienceDefinitionData StateBasedAudienceDefinition { get; set; }
 
         /// <summary>Time this remarketing audience was last modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]
@@ -11461,7 +11461,7 @@ namespace Google.Apis.Analytics.v3.Data
 
         /// <summary>Web property ID of the form UA-XXXXX-YY to which this remarketing audience belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webPropertyId")]
-        public virtual string WebPropertyId { get; set; } 
+        public virtual string WebPropertyId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11472,7 +11472,7 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Defines the conditions to include users to the audience.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("includeConditions")]
-            public virtual IncludeConditions IncludeConditions { get; set; } 
+            public virtual IncludeConditions IncludeConditions { get; set; }
 
         }    
 
@@ -11482,11 +11482,11 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Defines the conditions to exclude users from the audience.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("excludeConditions")]
-            public virtual ExcludeConditionsData ExcludeConditions { get; set; } 
+            public virtual ExcludeConditionsData ExcludeConditions { get; set; }
 
             /// <summary>Defines the conditions to include users to the audience.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("includeConditions")]
-            public virtual IncludeConditions IncludeConditions { get; set; } 
+            public virtual IncludeConditions IncludeConditions { get; set; }
 
             
 
@@ -11495,11 +11495,11 @@ namespace Google.Apis.Analytics.v3.Data
             {
                 /// <summary>Whether to make the exclusion TEMPORARY or PERMANENT.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("exclusionDuration")]
-                public virtual string ExclusionDuration { get; set; } 
+                public virtual string ExclusionDuration { get; set; }
 
                 /// <summary>The segment condition that will cause a user to be removed from an audience.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("segment")]
-                public virtual string Segment { get; set; } 
+                public virtual string Segment { get; set; }
 
             }
         }
@@ -11511,39 +11511,39 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>A list of remarketing audiences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<RemarketingAudience> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<RemarketingAudience> Items { get; set; }
 
         /// <summary>The maximum number of resources the response can contain, regardless of the actual number of
         /// resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified
         /// by the max-results query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemsPerPage")]
-        public virtual System.Nullable<int> ItemsPerPage { get; set; } 
+        public virtual System.Nullable<int> ItemsPerPage { get; set; }
 
         /// <summary>Collection type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Link to next page for this remarketing audience collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextLink")]
-        public virtual string NextLink { get; set; } 
+        public virtual string NextLink { get; set; }
 
         /// <summary>Link to previous page for this view (profile) collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousLink")]
-        public virtual string PreviousLink { get; set; } 
+        public virtual string PreviousLink { get; set; }
 
         /// <summary>The starting index of the resources, which is 1 by default or otherwise specified by the start-
         /// index query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-        public virtual System.Nullable<int> StartIndex { get; set; } 
+        public virtual System.Nullable<int> StartIndex { get; set; }
 
         /// <summary>The total number of results for the query, regardless of the number of results in the
         /// response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-        public virtual System.Nullable<int> TotalResults { get; set; } 
+        public virtual System.Nullable<int> TotalResults { get; set; }
 
         /// <summary>Email ID of the authenticated user</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; } 
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11566,31 +11566,31 @@ namespace Google.Apis.Analytics.v3.Data
 
         /// <summary>Segment definition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("definition")]
-        public virtual string Definition { get; set; } 
+        public virtual string Definition { get; set; }
 
         /// <summary>Segment ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Resource type for Analytics segment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Segment name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Segment ID. Can be used with the 'segment' parameter in Core Reporting API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentId")]
-        public virtual string SegmentId { get; set; } 
+        public virtual string SegmentId { get; set; }
 
         /// <summary>Link for this segment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>Type for a segment. Possible values are "BUILT_IN" or "CUSTOM".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>Time the segment was last modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]
@@ -11614,39 +11614,39 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>A list of segments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Segment> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Segment> Items { get; set; }
 
         /// <summary>The maximum number of resources the response can contain, regardless of the actual number of
         /// resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified
         /// by the max-results query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemsPerPage")]
-        public virtual System.Nullable<int> ItemsPerPage { get; set; } 
+        public virtual System.Nullable<int> ItemsPerPage { get; set; }
 
         /// <summary>Collection type for segments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Link to next page for this segment collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextLink")]
-        public virtual string NextLink { get; set; } 
+        public virtual string NextLink { get; set; }
 
         /// <summary>Link to previous page for this segment collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousLink")]
-        public virtual string PreviousLink { get; set; } 
+        public virtual string PreviousLink { get; set; }
 
         /// <summary>The starting index of the resources, which is 1 by default or otherwise specified by the start-
         /// index query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-        public virtual System.Nullable<int> StartIndex { get; set; } 
+        public virtual System.Nullable<int> StartIndex { get; set; }
 
         /// <summary>The total number of results for the query, regardless of the number of results in the
         /// response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-        public virtual System.Nullable<int> TotalResults { get; set; } 
+        public virtual System.Nullable<int> TotalResults { get; set; }
 
         /// <summary>Email ID of the authenticated user</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; } 
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11657,11 +11657,11 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>Account ID to which this unsampled report belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual string AccountId { get; set; } 
+        public virtual string AccountId { get; set; }
 
         /// <summary>Download details for a file stored in Google Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageDownloadDetails")]
-        public virtual CloudStorageDownloadDetailsData CloudStorageDownloadDetails { get; set; } 
+        public virtual CloudStorageDownloadDetailsData CloudStorageDownloadDetails { get; set; }
 
         /// <summary>Time this unsampled report was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("created")]
@@ -11677,61 +11677,61 @@ namespace Google.Apis.Analytics.v3.Data
 
         /// <summary>The dimensions for the unsampled report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
-        public virtual string Dimensions { get; set; } 
+        public virtual string Dimensions { get; set; }
 
         /// <summary>The type of download you need to use for the report data file. Possible values include
         /// `GOOGLE_DRIVE` and `GOOGLE_CLOUD_STORAGE`. If the value is `GOOGLE_DRIVE`, see the `driveDownloadDetails`
         /// field. If the value is `GOOGLE_CLOUD_STORAGE`, see the `cloudStorageDownloadDetails` field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("downloadType")]
-        public virtual string DownloadType { get; set; } 
+        public virtual string DownloadType { get; set; }
 
         /// <summary>Download details for a file stored in Google Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveDownloadDetails")]
-        public virtual DriveDownloadDetailsData DriveDownloadDetails { get; set; } 
+        public virtual DriveDownloadDetailsData DriveDownloadDetails { get; set; }
 
         /// <summary>The end date for the unsampled report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("end-date")]
-        public virtual string EndDate { get; set; } 
+        public virtual string EndDate { get; set; }
 
         /// <summary>The filters for the unsampled report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filters")]
-        public virtual string Filters { get; set; } 
+        public virtual string Filters { get; set; }
 
         /// <summary>Unsampled report ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Resource type for an Analytics unsampled report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The metrics for the unsampled report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
-        public virtual string Metrics { get; set; } 
+        public virtual string Metrics { get; set; }
 
         /// <summary>View (Profile) ID to which this unsampled report belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileId")]
-        public virtual string ProfileId { get; set; } 
+        public virtual string ProfileId { get; set; }
 
         /// <summary>The segment for the unsampled report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segment")]
-        public virtual string Segment { get; set; } 
+        public virtual string Segment { get; set; }
 
         /// <summary>Link for this unsampled report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>The start date for the unsampled report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("start-date")]
-        public virtual string StartDate { get; set; } 
+        public virtual string StartDate { get; set; }
 
         /// <summary>Status of this unsampled report. Possible values are PENDING, COMPLETED, or FAILED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>Title of the unsampled report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>Time this unsampled report was last modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]
@@ -11748,7 +11748,7 @@ namespace Google.Apis.Analytics.v3.Data
         /// <summary>Web property ID to which this unsampled report belongs. The web property ID is of the form UA-
         /// XXXXX-YY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webPropertyId")]
-        public virtual string WebPropertyId { get; set; } 
+        public virtual string WebPropertyId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11759,11 +11759,11 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Id of the bucket the file object is stored in.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("bucketId")]
-            public virtual string BucketId { get; set; } 
+            public virtual string BucketId { get; set; }
 
             /// <summary>Id of the file object containing the report data.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
-            public virtual string ObjectId { get; set; } 
+            public virtual string ObjectId { get; set; }
 
         }    
 
@@ -11772,7 +11772,7 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Id of the document/file containing the report data.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
-            public virtual string DocumentId { get; set; } 
+            public virtual string DocumentId { get; set; }
 
         }
     }    
@@ -11784,39 +11784,39 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>A list of unsampled reports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<UnsampledReport> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<UnsampledReport> Items { get; set; }
 
         /// <summary>The maximum number of resources the response can contain, regardless of the actual number of
         /// resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified
         /// by the max-results query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemsPerPage")]
-        public virtual System.Nullable<int> ItemsPerPage { get; set; } 
+        public virtual System.Nullable<int> ItemsPerPage { get; set; }
 
         /// <summary>Collection type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Link to next page for this unsampled report collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextLink")]
-        public virtual string NextLink { get; set; } 
+        public virtual string NextLink { get; set; }
 
         /// <summary>Link to previous page for this unsampled report collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousLink")]
-        public virtual string PreviousLink { get; set; } 
+        public virtual string PreviousLink { get; set; }
 
         /// <summary>The starting index of the resources, which is 1 by default or otherwise specified by the start-
         /// index query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-        public virtual System.Nullable<int> StartIndex { get; set; } 
+        public virtual System.Nullable<int> StartIndex { get; set; }
 
         /// <summary>The total number of results for the query, regardless of the number of resources in the
         /// result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-        public virtual System.Nullable<int> TotalResults { get; set; } 
+        public virtual System.Nullable<int> TotalResults { get; set; }
 
         /// <summary>Email ID of the authenticated user</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; } 
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11827,27 +11827,27 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>Account Id to which this upload belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>Custom data source Id to which this data import belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customDataSourceId")]
-        public virtual string CustomDataSourceId { get; set; } 
+        public virtual string CustomDataSourceId { get; set; }
 
         /// <summary>Data import errors collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual System.Collections.Generic.IList<string> Errors { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Errors { get; set; }
 
         /// <summary>A unique ID for this upload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Resource type for Analytics upload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Upload status. Possible values: PENDING, COMPLETED, FAILED, DELETING, DELETED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>Time this file is uploaded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadTime")]
@@ -11872,35 +11872,35 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>A list of uploads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Upload> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Upload> Items { get; set; }
 
         /// <summary>The maximum number of resources the response can contain, regardless of the actual number of
         /// resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified
         /// by the max-results query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemsPerPage")]
-        public virtual System.Nullable<int> ItemsPerPage { get; set; } 
+        public virtual System.Nullable<int> ItemsPerPage { get; set; }
 
         /// <summary>Collection type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Link to next page for this upload collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextLink")]
-        public virtual string NextLink { get; set; } 
+        public virtual string NextLink { get; set; }
 
         /// <summary>Link to previous page for this upload collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousLink")]
-        public virtual string PreviousLink { get; set; } 
+        public virtual string PreviousLink { get; set; }
 
         /// <summary>The starting index of the resources, which is 1 by default or otherwise specified by the start-
         /// index query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-        public virtual System.Nullable<int> StartIndex { get; set; } 
+        public virtual System.Nullable<int> StartIndex { get; set; }
 
         /// <summary>The total number of results for the query, regardless of the number of resources in the
         /// result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-        public virtual System.Nullable<int> TotalResults { get; set; } 
+        public virtual System.Nullable<int> TotalResults { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11923,23 +11923,23 @@ namespace Google.Apis.Analytics.v3.Data
 
         /// <summary>Firebase Project Id</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firebaseProjectId")]
-        public virtual string FirebaseProjectId { get; set; } 
+        public virtual string FirebaseProjectId { get; set; }
 
         /// <summary>User ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual IdData Id { get; set; } 
+        public virtual IdData Id { get; set; }
 
         /// <summary>Value is "analytics#userDeletionRequest".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Property ID</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("propertyId")]
-        public virtual string PropertyId { get; set; } 
+        public virtual string PropertyId { get; set; }
 
         /// <summary>Web property ID of the form UA-XXXXX-YY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webPropertyId")]
-        public virtual string WebPropertyId { get; set; } 
+        public virtual string WebPropertyId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11950,11 +11950,11 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Type of user</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
-            public virtual string Type { get; set; } 
+            public virtual string Type { get; set; }
 
             /// <summary>The User's id</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("userId")]
-            public virtual string UserId { get; set; } 
+            public virtual string UserId { get; set; }
 
         }
     }    
@@ -11964,14 +11964,14 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>Email ID of this user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; } 
+        public virtual string Email { get; set; }
 
         /// <summary>User ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11982,27 +11982,27 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>Account ID to which this web property belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual string AccountId { get; set; } 
+        public virtual string AccountId { get; set; }
 
         /// <summary>Link for this web property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("href")]
-        public virtual string Href { get; set; } 
+        public virtual string Href { get; set; }
 
         /// <summary>Web property ID of the form UA-XXXXX-YY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Internal ID for this web property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalWebPropertyId")]
-        public virtual string InternalWebPropertyId { get; set; } 
+        public virtual string InternalWebPropertyId { get; set; }
 
         /// <summary>Analytics web property reference.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this web property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12014,35 +12014,35 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>Web property ID of the form UA-XXXXX-YY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Internal ID for this web property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalWebPropertyId")]
-        public virtual string InternalWebPropertyId { get; set; } 
+        public virtual string InternalWebPropertyId { get; set; }
 
         /// <summary>Resource type for Analytics WebPropertySummary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Level for this web property. Possible values are STANDARD or PREMIUM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("level")]
-        public virtual string Level { get; set; } 
+        public virtual string Level { get; set; }
 
         /// <summary>Web property name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>List of profiles under this web property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profiles")]
-        public virtual System.Collections.Generic.IList<ProfileSummary> Profiles { get; set; } 
+        public virtual System.Collections.Generic.IList<ProfileSummary> Profiles { get; set; }
 
         /// <summary>Indicates whether this web property is starred or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("starred")]
-        public virtual System.Nullable<bool> Starred { get; set; } 
+        public virtual System.Nullable<bool> Starred { get; set; }
 
         /// <summary>Website url for this web property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("websiteUrl")]
-        public virtual string WebsiteUrl { get; set; } 
+        public virtual string WebsiteUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12054,39 +12054,39 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>A list of web properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Webproperty> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Webproperty> Items { get; set; }
 
         /// <summary>The maximum number of resources the response can contain, regardless of the actual number of
         /// resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified
         /// by the max-results query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemsPerPage")]
-        public virtual System.Nullable<int> ItemsPerPage { get; set; } 
+        public virtual System.Nullable<int> ItemsPerPage { get; set; }
 
         /// <summary>Collection type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Link to next page for this web property collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextLink")]
-        public virtual string NextLink { get; set; } 
+        public virtual string NextLink { get; set; }
 
         /// <summary>Link to previous page for this web property collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousLink")]
-        public virtual string PreviousLink { get; set; } 
+        public virtual string PreviousLink { get; set; }
 
         /// <summary>The starting index of the resources, which is 1 by default or otherwise specified by the start-
         /// index query parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-        public virtual System.Nullable<int> StartIndex { get; set; } 
+        public virtual System.Nullable<int> StartIndex { get; set; }
 
         /// <summary>The total number of results for the query, regardless of the number of results in the
         /// response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-        public virtual System.Nullable<int> TotalResults { get; set; } 
+        public virtual System.Nullable<int> TotalResults { get; set; }
 
         /// <summary>Email ID of the authenticated user</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; } 
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12097,12 +12097,12 @@ namespace Google.Apis.Analytics.v3.Data
     {
         /// <summary>Account ID to which this web property belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual string AccountId { get; set; } 
+        public virtual string AccountId { get; set; }
 
         /// <summary>Child link for this web property. Points to the list of views (profiles) for this web
         /// property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("childLink")]
-        public virtual ChildLinkData ChildLink { get; set; } 
+        public virtual ChildLinkData ChildLink { get; set; }
 
         /// <summary>Time this web property was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("created")]
@@ -12121,61 +12121,61 @@ namespace Google.Apis.Analytics.v3.Data
         /// associated with the user identifier automatically after the rentention period. This property cannot be set
         /// on insert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataRetentionResetOnNewActivity")]
-        public virtual System.Nullable<bool> DataRetentionResetOnNewActivity { get; set; } 
+        public virtual System.Nullable<bool> DataRetentionResetOnNewActivity { get; set; }
 
         /// <summary>The length of time for which user and event data is retained. This property cannot be set on
         /// insert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataRetentionTtl")]
-        public virtual string DataRetentionTtl { get; set; } 
+        public virtual string DataRetentionTtl { get; set; }
 
         /// <summary>Default view (profile) ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultProfileId")]
-        public virtual System.Nullable<long> DefaultProfileId { get; set; } 
+        public virtual System.Nullable<long> DefaultProfileId { get; set; }
 
         /// <summary>Web property ID of the form UA-XXXXX-YY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The industry vertical/category selected for this web property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
-        public virtual string IndustryVertical { get; set; } 
+        public virtual string IndustryVertical { get; set; }
 
         /// <summary>Internal ID for this web property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalWebPropertyId")]
-        public virtual string InternalWebPropertyId { get; set; } 
+        public virtual string InternalWebPropertyId { get; set; }
 
         /// <summary>Resource type for Analytics WebProperty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Level for this web property. Possible values are STANDARD or PREMIUM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("level")]
-        public virtual string Level { get; set; } 
+        public virtual string Level { get; set; }
 
         /// <summary>Name of this web property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Parent link for this web property. Points to the account to which this web property
         /// belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentLink")]
-        public virtual ParentLinkData ParentLink { get; set; } 
+        public virtual ParentLinkData ParentLink { get; set; }
 
         /// <summary>Permissions the user has for this web property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual PermissionsData Permissions { get; set; } 
+        public virtual PermissionsData Permissions { get; set; }
 
         /// <summary>View (Profile) count for this web property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileCount")]
-        public virtual System.Nullable<int> ProfileCount { get; set; } 
+        public virtual System.Nullable<int> ProfileCount { get; set; }
 
         /// <summary>Link for this web property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>Indicates whether this web property is starred or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("starred")]
-        public virtual System.Nullable<bool> Starred { get; set; } 
+        public virtual System.Nullable<bool> Starred { get; set; }
 
         /// <summary>Time this web property was last modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]
@@ -12191,7 +12191,7 @@ namespace Google.Apis.Analytics.v3.Data
 
         /// <summary>Website url for this web property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("websiteUrl")]
-        public virtual string WebsiteUrl { get; set; } 
+        public virtual string WebsiteUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12203,11 +12203,11 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Link to the list of views (profiles) for this web property.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("href")]
-            public virtual string Href { get; set; } 
+            public virtual string Href { get; set; }
 
             /// <summary>Type of the parent link. Its value is "analytics#profiles".</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
-            public virtual string Type { get; set; } 
+            public virtual string Type { get; set; }
 
         }    
 
@@ -12217,11 +12217,11 @@ namespace Google.Apis.Analytics.v3.Data
         {
             /// <summary>Link to the account for this web property.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("href")]
-            public virtual string Href { get; set; } 
+            public virtual string Href { get; set; }
 
             /// <summary>Type of the parent link. Its value is "analytics#account".</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
-            public virtual string Type { get; set; } 
+            public virtual string Type { get; set; }
 
         }    
 
@@ -12231,7 +12231,7 @@ namespace Google.Apis.Analytics.v3.Data
             /// <summary>All the permissions that the user has for this web property. These include any implied
             /// permissions (e.g., EDIT implies VIEW) or inherited permissions from the parent account.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("effective")]
-            public virtual System.Collections.Generic.IList<string> Effective { get; set; } 
+            public virtual System.Collections.Generic.IList<string> Effective { get; set; }
 
         }
     }

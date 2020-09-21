@@ -464,11 +464,11 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta1.Data
     {
         /// <summary>Input document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("document")]
-        public virtual Document Document { get; set; } 
+        public virtual Document Document { get; set; }
 
         /// <summary>The encoding type used by the API to calculate offsets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encodingType")]
-        public virtual string EncodingType { get; set; } 
+        public virtual string EncodingType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -479,12 +479,12 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta1.Data
     {
         /// <summary>The recognized entities in the input document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entities")]
-        public virtual System.Collections.Generic.IList<Entity> Entities { get; set; } 
+        public virtual System.Collections.Generic.IList<Entity> Entities { get; set; }
 
         /// <summary>The language of the text, which will be the same as the language specified in the request or, if
         /// not specified, the automatically-detected language. See Document.language field for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
-        public virtual string Language { get; set; } 
+        public virtual string Language { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -495,12 +495,12 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta1.Data
     {
         /// <summary>Input document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("document")]
-        public virtual Document Document { get; set; } 
+        public virtual Document Document { get; set; }
 
         /// <summary>The encoding type used by the API to calculate sentence offsets for the sentence
         /// sentiment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encodingType")]
-        public virtual string EncodingType { get; set; } 
+        public virtual string EncodingType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -511,16 +511,16 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta1.Data
     {
         /// <summary>The overall sentiment of the input document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentSentiment")]
-        public virtual Sentiment DocumentSentiment { get; set; } 
+        public virtual Sentiment DocumentSentiment { get; set; }
 
         /// <summary>The language of the text, which will be the same as the language specified in the request or, if
         /// not specified, the automatically-detected language. See Document.language field for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
-        public virtual string Language { get; set; } 
+        public virtual string Language { get; set; }
 
         /// <summary>The sentiment for all the sentences in the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sentences")]
-        public virtual System.Collections.Generic.IList<Sentence> Sentences { get; set; } 
+        public virtual System.Collections.Generic.IList<Sentence> Sentences { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -531,11 +531,11 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta1.Data
     {
         /// <summary>Input document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("document")]
-        public virtual Document Document { get; set; } 
+        public virtual Document Document { get; set; }
 
         /// <summary>The encoding type used by the API to calculate offsets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encodingType")]
-        public virtual string EncodingType { get; set; } 
+        public virtual string EncodingType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -547,15 +547,15 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta1.Data
         /// <summary>The language of the text, which will be the same as the language specified in the request or, if
         /// not specified, the automatically-detected language. See Document.language field for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
-        public virtual string Language { get; set; } 
+        public virtual string Language { get; set; }
 
         /// <summary>Sentences in the input document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sentences")]
-        public virtual System.Collections.Generic.IList<Sentence> Sentences { get; set; } 
+        public virtual System.Collections.Generic.IList<Sentence> Sentences { get; set; }
 
         /// <summary>Tokens, along with their syntactic information, in the input document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokens")]
-        public virtual System.Collections.Generic.IList<Token> Tokens { get; set; } 
+        public virtual System.Collections.Generic.IList<Token> Tokens { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -567,15 +567,15 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta1.Data
     {
         /// <summary>Input document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("document")]
-        public virtual Document Document { get; set; } 
+        public virtual Document Document { get; set; }
 
         /// <summary>The encoding type used by the API to calculate offsets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encodingType")]
-        public virtual string EncodingType { get; set; } 
+        public virtual string EncodingType { get; set; }
 
         /// <summary>The enabled features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
-        public virtual Features Features { get; set; } 
+        public virtual Features Features { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -587,27 +587,27 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta1.Data
         /// <summary>The overall sentiment for the document. Populated if the user enables
         /// AnnotateTextRequest.Features.extract_document_sentiment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentSentiment")]
-        public virtual Sentiment DocumentSentiment { get; set; } 
+        public virtual Sentiment DocumentSentiment { get; set; }
 
         /// <summary>Entities, along with their semantic information, in the input document. Populated if the user
         /// enables AnnotateTextRequest.Features.extract_entities.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entities")]
-        public virtual System.Collections.Generic.IList<Entity> Entities { get; set; } 
+        public virtual System.Collections.Generic.IList<Entity> Entities { get; set; }
 
         /// <summary>The language of the text, which will be the same as the language specified in the request or, if
         /// not specified, the automatically-detected language. See Document.language field for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
-        public virtual string Language { get; set; } 
+        public virtual string Language { get; set; }
 
         /// <summary>Sentences in the input document. Populated if the user enables
         /// AnnotateTextRequest.Features.extract_syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sentences")]
-        public virtual System.Collections.Generic.IList<Sentence> Sentences { get; set; } 
+        public virtual System.Collections.Generic.IList<Sentence> Sentences { get; set; }
 
         /// <summary>Tokens, along with their syntactic information, in the input document. Populated if the user
         /// enables AnnotateTextRequest.Features.extract_syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokens")]
-        public virtual System.Collections.Generic.IList<Token> Tokens { get; set; } 
+        public virtual System.Collections.Generic.IList<Token> Tokens { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -620,11 +620,11 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta1.Data
         /// an arc going to this token. The index is the position of the token in the array of tokens returned by the
         /// API method. If this token is a root token, then the `head_token_index` is its own index.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headTokenIndex")]
-        public virtual System.Nullable<int> HeadTokenIndex { get; set; } 
+        public virtual System.Nullable<int> HeadTokenIndex { get; set; }
 
         /// <summary>The parse label for the token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual string Label { get; set; } 
+        public virtual string Label { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -637,13 +637,13 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta1.Data
         /// <summary>The content of the input in string format. Cloud audit logging exempt since it is based on user
         /// data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual string Content { get; set; } 
+        public virtual string Content { get; set; }
 
         /// <summary>The Google Cloud Storage URI where the file content is located. This URI must be of the form:
         /// gs://bucket_name/object_name. For more details, see https://cloud.google.com/storage/docs/reference-uris.
         /// NOTE: Cloud Storage object versioning is not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsContentUri")]
-        public virtual string GcsContentUri { get; set; } 
+        public virtual string GcsContentUri { get; set; }
 
         /// <summary>The language of the document (if not specified, the language is automatically detected). Both ISO
         /// and BCP-47 language codes are accepted. [Language Support](https://cloud.google.com/natural-
@@ -651,12 +651,12 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta1.Data
         /// specified by the caller or automatically detected) is not supported by the called API method, an
         /// `INVALID_ARGUMENT` error is returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
-        public virtual string Language { get; set; } 
+        public virtual string Language { get; set; }
 
         /// <summary>Required. If the type is not set or is `TYPE_UNSPECIFIED`, returns an `INVALID_ARGUMENT`
         /// error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -669,26 +669,26 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta1.Data
         /// <summary>The mentions of this entity in the input document. The API currently supports proper noun
         /// mentions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mentions")]
-        public virtual System.Collections.Generic.IList<EntityMention> Mentions { get; set; } 
+        public virtual System.Collections.Generic.IList<EntityMention> Mentions { get; set; }
 
         /// <summary>Metadata associated with the entity. Currently, Wikipedia URLs and Knowledge Graph MIDs are
         /// provided, if available. The associated keys are "wikipedia_url" and "mid", respectively.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
         /// <summary>The representative name for the entity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The salience score associated with the entity in the [0, 1.0] range. The salience score for an
         /// entity provides information about the importance or centrality of that entity to the entire document text.
         /// Scores closer to 0 are less salient, while scores closer to 1.0 are highly salient.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salience")]
-        public virtual System.Nullable<float> Salience { get; set; } 
+        public virtual System.Nullable<float> Salience { get; set; }
 
         /// <summary>The entity type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -700,11 +700,11 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta1.Data
     {
         /// <summary>The mention text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual TextSpan Text { get; set; } 
+        public virtual TextSpan Text { get; set; }
 
         /// <summary>The type of the entity mention.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -716,15 +716,15 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta1.Data
     {
         /// <summary>Extract document-level sentiment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extractDocumentSentiment")]
-        public virtual System.Nullable<bool> ExtractDocumentSentiment { get; set; } 
+        public virtual System.Nullable<bool> ExtractDocumentSentiment { get; set; }
 
         /// <summary>Extract entities.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extractEntities")]
-        public virtual System.Nullable<bool> ExtractEntities { get; set; } 
+        public virtual System.Nullable<bool> ExtractEntities { get; set; }
 
         /// <summary>Extract syntax information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extractSyntax")]
-        public virtual System.Nullable<bool> ExtractSyntax { get; set; } 
+        public virtual System.Nullable<bool> ExtractSyntax { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -735,51 +735,51 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta1.Data
     {
         /// <summary>The grammatical aspect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aspect")]
-        public virtual string Aspect { get; set; } 
+        public virtual string Aspect { get; set; }
 
         /// <summary>The grammatical case.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("case")]
-        public virtual string Case__ { get; set; } 
+        public virtual string Case__ { get; set; }
 
         /// <summary>The grammatical form.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("form")]
-        public virtual string Form { get; set; } 
+        public virtual string Form { get; set; }
 
         /// <summary>The grammatical gender.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gender")]
-        public virtual string Gender { get; set; } 
+        public virtual string Gender { get; set; }
 
         /// <summary>The grammatical mood.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mood")]
-        public virtual string Mood { get; set; } 
+        public virtual string Mood { get; set; }
 
         /// <summary>The grammatical number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("number")]
-        public virtual string Number { get; set; } 
+        public virtual string Number { get; set; }
 
         /// <summary>The grammatical person.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("person")]
-        public virtual string Person { get; set; } 
+        public virtual string Person { get; set; }
 
         /// <summary>The grammatical properness.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proper")]
-        public virtual string Proper { get; set; } 
+        public virtual string Proper { get; set; }
 
         /// <summary>The grammatical reciprocity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reciprocity")]
-        public virtual string Reciprocity { get; set; } 
+        public virtual string Reciprocity { get; set; }
 
         /// <summary>The part of speech tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
-        public virtual string Tag { get; set; } 
+        public virtual string Tag { get; set; }
 
         /// <summary>The grammatical tense.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tense")]
-        public virtual string Tense { get; set; } 
+        public virtual string Tense { get; set; }
 
         /// <summary>The grammatical voice.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("voice")]
-        public virtual string Voice { get; set; } 
+        public virtual string Voice { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -791,11 +791,11 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta1.Data
         /// <summary>For calls to AnalyzeSentiment or if AnnotateTextRequest.Features.extract_document_sentiment is set
         /// to true, this field will contain the sentiment for the sentence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sentiment")]
-        public virtual Sentiment Sentiment { get; set; } 
+        public virtual Sentiment Sentiment { get; set; }
 
         /// <summary>The sentence text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual TextSpan Text { get; set; } 
+        public virtual TextSpan Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -807,16 +807,16 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta1.Data
         /// <summary>A non-negative number in the [0, +inf) range, which represents the absolute magnitude of sentiment
         /// regardless of score (positive or negative).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("magnitude")]
-        public virtual System.Nullable<float> Magnitude { get; set; } 
+        public virtual System.Nullable<float> Magnitude { get; set; }
 
         /// <summary>DEPRECATED FIELD - This field is being deprecated in favor of score. Please refer to our
         /// documentation at https://cloud.google.com/natural-language/docs for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("polarity")]
-        public virtual System.Nullable<float> Polarity { get; set; } 
+        public virtual System.Nullable<float> Polarity { get; set; }
 
         /// <summary>Sentiment score between -1.0 (negative sentiment) and 1.0 (positive sentiment).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
-        public virtual System.Nullable<float> Score { get; set; } 
+        public virtual System.Nullable<float> Score { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -831,17 +831,17 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -853,11 +853,11 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta1.Data
         /// <summary>The API calculates the beginning offset of the content in the original document according to the
         /// EncodingType specified in the API request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("beginOffset")]
-        public virtual System.Nullable<int> BeginOffset { get; set; } 
+        public virtual System.Nullable<int> BeginOffset { get; set; }
 
         /// <summary>The content of the output text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual string Content { get; set; } 
+        public virtual string Content { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -868,19 +868,19 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta1.Data
     {
         /// <summary>Dependency tree parse for this token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dependencyEdge")]
-        public virtual DependencyEdge DependencyEdge { get; set; } 
+        public virtual DependencyEdge DependencyEdge { get; set; }
 
         /// <summary>[Lemma](https://en.wikipedia.org/wiki/Lemma_%28morphology%29) of the token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lemma")]
-        public virtual string Lemma { get; set; } 
+        public virtual string Lemma { get; set; }
 
         /// <summary>Parts of speech tag for this token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partOfSpeech")]
-        public virtual PartOfSpeech PartOfSpeech { get; set; } 
+        public virtual PartOfSpeech PartOfSpeech { get; set; }
 
         /// <summary>The token text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual TextSpan Text { get; set; } 
+        public virtual TextSpan Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

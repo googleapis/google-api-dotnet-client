@@ -8681,14 +8681,14 @@ namespace Google.Apis.Logging.v2.Data
         /// (https://cloud.google.com/bigquery/docs/querying-partitioned-tables) has to be used instead. In both cases,
         /// tables are sharded based on UTC timezone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usePartitionedTables")]
-        public virtual System.Nullable<bool> UsePartitionedTables { get; set; } 
+        public virtual System.Nullable<bool> UsePartitionedTables { get; set; }
 
         /// <summary>Output only. True if new timestamp column based partitioning is in use, false if legacy ingestion-
         /// time partitioning is in use. All new sinks will have this field set true and will use timestamp column based
         /// partitioning. If use_partitioned_tables is false, this value has no meaning and will be false. Legacy sinks
         /// using partitioned tables will have this field set to false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usesTimestampColumnPartitioning")]
-        public virtual System.Nullable<bool> UsesTimestampColumnPartitioning { get; set; } 
+        public virtual System.Nullable<bool> UsesTimestampColumnPartitioning { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8708,15 +8708,15 @@ namespace Google.Apis.Logging.v2.Data
     {
         /// <summary>The explicit buckets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("explicitBuckets")]
-        public virtual Explicit ExplicitBuckets { get; set; } 
+        public virtual Explicit ExplicitBuckets { get; set; }
 
         /// <summary>The exponential buckets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exponentialBuckets")]
-        public virtual Exponential ExponentialBuckets { get; set; } 
+        public virtual Exponential ExponentialBuckets { get; set; }
 
         /// <summary>The linear bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linearBuckets")]
-        public virtual Linear LinearBuckets { get; set; } 
+        public virtual Linear LinearBuckets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8740,11 +8740,11 @@ namespace Google.Apis.Logging.v2.Data
         /// revoked.To disable CMEK for the Logs Router, set this field to an empty string.See Enabling CMEK for Logs
         /// Router (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
-        public virtual string KmsKeyName { get; set; } 
+        public virtual string KmsKeyName { get; set; }
 
         /// <summary>Output only. The resource name of the CMEK settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The service account that will be used by the Logs Router to access your Cloud KMS
         /// key.Before enabling CMEK for Logs Router, you must first assign the role
@@ -8752,7 +8752,7 @@ namespace Google.Apis.Logging.v2.Data
         /// your Cloud KMS key. Use GetCmekSettings to obtain the service account ID.See Enabling CMEK for Logs Router
         /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountId")]
-        public virtual string ServiceAccountId { get; set; } 
+        public virtual string ServiceAccountId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8776,7 +8776,7 @@ namespace Google.Apis.Logging.v2.Data
     {
         /// <summary>The values must be monotonically increasing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bounds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<double>> Bounds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> Bounds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8790,15 +8790,15 @@ namespace Google.Apis.Logging.v2.Data
     {
         /// <summary>Must be greater than 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("growthFactor")]
-        public virtual System.Nullable<double> GrowthFactor { get; set; } 
+        public virtual System.Nullable<double> GrowthFactor { get; set; }
 
         /// <summary>Must be greater than 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numFiniteBuckets")]
-        public virtual System.Nullable<int> NumFiniteBuckets { get; set; } 
+        public virtual System.Nullable<int> NumFiniteBuckets { get; set; }
 
         /// <summary>Must be greater than 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scale")]
-        public virtual System.Nullable<double> Scale { get; set; } 
+        public virtual System.Nullable<double> Scale { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8811,71 +8811,71 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>The number of HTTP response bytes inserted into cache. Set only when a cache fill was
         /// attempted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cacheFillBytes")]
-        public virtual System.Nullable<long> CacheFillBytes { get; set; } 
+        public virtual System.Nullable<long> CacheFillBytes { get; set; }
 
         /// <summary>Whether or not an entity was served from cache (with or without validation).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cacheHit")]
-        public virtual System.Nullable<bool> CacheHit { get; set; } 
+        public virtual System.Nullable<bool> CacheHit { get; set; }
 
         /// <summary>Whether or not a cache lookup was attempted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cacheLookup")]
-        public virtual System.Nullable<bool> CacheLookup { get; set; } 
+        public virtual System.Nullable<bool> CacheLookup { get; set; }
 
         /// <summary>Whether or not the response was validated with the origin server before being served from cache.
         /// This field is only meaningful if cache_hit is True.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cacheValidatedWithOriginServer")]
-        public virtual System.Nullable<bool> CacheValidatedWithOriginServer { get; set; } 
+        public virtual System.Nullable<bool> CacheValidatedWithOriginServer { get; set; }
 
         /// <summary>The request processing latency on the server, from the time the request was received until the
         /// response was sent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latency")]
-        public virtual object Latency { get; set; } 
+        public virtual object Latency { get; set; }
 
         /// <summary>Protocol used for the request. Examples: "HTTP/1.1", "HTTP/2", "websocket"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
-        public virtual string Protocol { get; set; } 
+        public virtual string Protocol { get; set; }
 
         /// <summary>The referer URL of the request, as defined in HTTP/1.1 Header Field Definitions
         /// (http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referer")]
-        public virtual string Referer { get; set; } 
+        public virtual string Referer { get; set; }
 
         /// <summary>The IP address (IPv4 or IPv6) of the client that issued the HTTP request. Examples: "192.168.1.1",
         /// "FE80::0202:B3FF:FE1E:8329".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remoteIp")]
-        public virtual string RemoteIp { get; set; } 
+        public virtual string RemoteIp { get; set; }
 
         /// <summary>The request method. Examples: "GET", "HEAD", "PUT", "POST".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestMethod")]
-        public virtual string RequestMethod { get; set; } 
+        public virtual string RequestMethod { get; set; }
 
         /// <summary>The size of the HTTP request message in bytes, including the request headers and the request
         /// body.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestSize")]
-        public virtual System.Nullable<long> RequestSize { get; set; } 
+        public virtual System.Nullable<long> RequestSize { get; set; }
 
         /// <summary>The scheme (http, https), the host name, the path and the query portion of the URL that was
         /// requested. Example: "http://example.com/some/info?color=red".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestUrl")]
-        public virtual string RequestUrl { get; set; } 
+        public virtual string RequestUrl { get; set; }
 
         /// <summary>The size of the HTTP response message sent back to the client, in bytes, including the response
         /// headers and the response body.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseSize")]
-        public virtual System.Nullable<long> ResponseSize { get; set; } 
+        public virtual System.Nullable<long> ResponseSize { get; set; }
 
         /// <summary>The IP address (IPv4 or IPv6) of the origin server that the request was sent to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serverIp")]
-        public virtual string ServerIp { get; set; } 
+        public virtual string ServerIp { get; set; }
 
         /// <summary>The response code indicating the status of response. Examples: 200, 404.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual System.Nullable<int> Status { get; set; } 
+        public virtual System.Nullable<int> Status { get; set; }
 
         /// <summary>The user agent sent by the client. Example: "Mozilla/4.0 (compatible; MSIE 6.0; Windows 98;
         /// Q312461; .NET CLR 1.0.3705)".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
-        public virtual string UserAgent { get; set; } 
+        public virtual string UserAgent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8886,15 +8886,15 @@ namespace Google.Apis.Logging.v2.Data
     {
         /// <summary>A human-readable description for the label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The label key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         /// <summary>The type of data that can be assigned to the label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
-        public virtual string ValueType { get; set; } 
+        public virtual string ValueType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8908,15 +8908,15 @@ namespace Google.Apis.Logging.v2.Data
     {
         /// <summary>Must be greater than 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numFiniteBuckets")]
-        public virtual System.Nullable<int> NumFiniteBuckets { get; set; } 
+        public virtual System.Nullable<int> NumFiniteBuckets { get; set; }
 
         /// <summary>Lower bound of the first bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offset")]
-        public virtual System.Nullable<double> Offset { get; set; } 
+        public virtual System.Nullable<double> Offset { get; set; }
 
         /// <summary>Must be greater than 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
-        public virtual System.Nullable<double> Width { get; set; } 
+        public virtual System.Nullable<double> Width { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8927,12 +8927,12 @@ namespace Google.Apis.Logging.v2.Data
     {
         /// <summary>A list of buckets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buckets")]
-        public virtual System.Collections.Generic.IList<LogBucket> Buckets { get; set; } 
+        public virtual System.Collections.Generic.IList<LogBucket> Buckets { get; set; }
 
         /// <summary>If there might be more results than appear in this response, then nextPageToken is included. To get
         /// the next set of results, call the same method again using the value of nextPageToken as pageToken.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8943,12 +8943,12 @@ namespace Google.Apis.Logging.v2.Data
     {
         /// <summary>A list of exclusions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusions")]
-        public virtual System.Collections.Generic.IList<LogExclusion> Exclusions { get; set; } 
+        public virtual System.Collections.Generic.IList<LogExclusion> Exclusions { get; set; }
 
         /// <summary>If there might be more results than appear in this response, then nextPageToken is included. To get
         /// the next set of results, call the same method again using the value of nextPageToken as pageToken.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8963,37 +8963,37 @@ namespace Google.Apis.Logging.v2.Data
         /// parent resource that is not listed in resource_names will cause the filter to return no results. The maximum
         /// length of the filter is 20000 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual string Filter { get; set; } 
+        public virtual string Filter { get; set; }
 
         /// <summary>Optional. How the results should be sorted. Presently, the only permitted values are "timestamp
         /// asc" (default) and "timestamp desc". The first option returns entries in order of increasing values of
         /// LogEntry.timestamp (oldest first), and the second option returns entries in order of decreasing timestamps
         /// (newest first). Entries with equal timestamps are returned in order of their insert_id values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
-        public virtual string OrderBy { get; set; } 
+        public virtual string OrderBy { get; set; }
 
         /// <summary>Optional. The maximum number of results to return from this request. Default is 50. If the value is
         /// negative or exceeds 1000, the request is rejected. The presence of next_page_token in the response indicates
         /// that more results might be available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
-        public virtual System.Nullable<int> PageSize { get; set; } 
+        public virtual System.Nullable<int> PageSize { get; set; }
 
         /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to this
         /// method. page_token must be the value of next_page_token from the previous response. The values of other
         /// method parameters should be identical to those in the previous call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
-        public virtual string PageToken { get; set; } 
+        public virtual string PageToken { get; set; }
 
         /// <summary>Optional. Deprecated. Use resource_names instead. One or more project identifiers or project
         /// numbers from which to retrieve log entries. Example: "my-project-1A".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectIds")]
-        public virtual System.Collections.Generic.IList<string> ProjectIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ProjectIds { get; set; }
 
         /// <summary>Required. Names of one or more parent resources from which to retrieve log entries:
         /// "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]"
         /// "folders/[FOLDER_ID]" Projects listed in the project_ids field are added to this list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceNames")]
-        public virtual System.Collections.Generic.IList<string> ResourceNames { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ResourceNames { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9005,7 +9005,7 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>A list of log entries. If entries is empty, nextPageToken may still be returned, indicating that
         /// more entries may exist. See nextPageToken for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<LogEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<LogEntry> Entries { get; set; }
 
         /// <summary>If there might be more results than those appearing in this response, then nextPageToken is
         /// included. To get the next set of results, call this method again using the value of nextPageToken as
@@ -9015,7 +9015,7 @@ namespace Google.Apis.Logging.v2.Data
         /// by changing your filter to specify a single log name or resource type, or to narrow the time range of the
         /// search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9026,12 +9026,12 @@ namespace Google.Apis.Logging.v2.Data
     {
         /// <summary>A list of logs-based metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
-        public virtual System.Collections.Generic.IList<LogMetric> Metrics { get; set; } 
+        public virtual System.Collections.Generic.IList<LogMetric> Metrics { get; set; }
 
         /// <summary>If there might be more results than appear in this response, then nextPageToken is included. To get
         /// the next set of results, call this method again using the value of nextPageToken as pageToken.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9043,13 +9043,13 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>A list of log names. For example, "projects/my-project/logs/syslog" or
         /// "organizations/123/logs/cloudresourcemanager.googleapis.com%2Factivity".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logNames")]
-        public virtual System.Collections.Generic.IList<string> LogNames { get; set; } 
+        public virtual System.Collections.Generic.IList<string> LogNames { get; set; }
 
         /// <summary>If there might be more results than those appearing in this response, then nextPageToken is
         /// included. To get the next set of results, call this method again using the value of nextPageToken as
         /// pageToken.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9062,11 +9062,11 @@ namespace Google.Apis.Logging.v2.Data
         /// included. To get the next set of results, call this method again using the value of nextPageToken as
         /// pageToken.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of resource descriptors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceDescriptors")]
-        public virtual System.Collections.Generic.IList<MonitoredResourceDescriptor> ResourceDescriptors { get; set; } 
+        public virtual System.Collections.Generic.IList<MonitoredResourceDescriptor> ResourceDescriptors { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9078,11 +9078,11 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>If there might be more results than appear in this response, then nextPageToken is included. To get
         /// the next set of results, call the same method again using the value of nextPageToken as pageToken.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of sinks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sinks")]
-        public virtual System.Collections.Generic.IList<LogSink> Sinks { get; set; } 
+        public virtual System.Collections.Generic.IList<LogSink> Sinks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9094,36 +9094,36 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>Output only. The creation timestamp of the bucket. This is not set for any of the default
         /// buckets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Describes this bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Output only. The bucket lifecycle state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
-        public virtual string LifecycleState { get; set; } 
+        public virtual string LifecycleState { get; set; }
 
         /// <summary>Whether the bucket has been locked. The retention period on a locked bucket may not be changed.
         /// Locked buckets may only be deleted if they are empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locked")]
-        public virtual System.Nullable<bool> Locked { get; set; } 
+        public virtual System.Nullable<bool> Locked { get; set; }
 
         /// <summary>The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets
         /// /my-bucket-id The supported locations are: "global"For the location of global it is unspecified where logs
         /// are actually stored. Once a bucket has been created, the location can not be changed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Logs will be retained by default for this amount of time, after which they will automatically be
         /// deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the
         /// default time of 30 days will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retentionDays")]
-        public virtual System.Nullable<int> RetentionDays { get; set; } 
+        public virtual System.Nullable<int> RetentionDays { get; set; }
 
         /// <summary>Output only. The last update timestamp of the bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9135,7 +9135,7 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>Optional. Information about the HTTP request associated with this log entry, if
         /// applicable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpRequest")]
-        public virtual HttpRequest HttpRequest { get; set; } 
+        public virtual HttpRequest HttpRequest { get; set; }
 
         /// <summary>Optional. A unique identifier for the log entry. If you provide a value, then Logging considers
         /// other log entries in the same project, with the same timestamp, and with the same insert_id to be duplicates
@@ -9144,16 +9144,16 @@ namespace Google.Apis.Logging.v2.Data
         /// identifier in this field.In queries, the insert_id is also used to order log entries that have the same
         /// log_name and timestamp values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertId")]
-        public virtual string InsertId { get; set; } 
+        public virtual string InsertId { get; set; }
 
         /// <summary>The log entry payload, represented as a structure that is expressed as a JSON object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jsonPayload")]
-        public virtual System.Collections.Generic.IDictionary<string,object> JsonPayload { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> JsonPayload { get; set; }
 
         /// <summary>Optional. A set of user-defined (key, value) data that provides additional information about the
         /// log entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Required. The resource name of the log to which this log entry belongs:
         /// "projects/[PROJECT_ID]/logs/[LOG_ID]" "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
@@ -9168,7 +9168,7 @@ namespace Google.Apis.Logging.v2.Data
         /// is removed. Listing the log entry will not show the leading slash and filtering for a log name with a
         /// leading slash will never return any results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logName")]
-        public virtual string LogName { get; set; } 
+        public virtual string LogName { get; set; }
 
         /// <summary>Output only. Deprecated. Additional metadata about the monitored resource.Only k8s_container,
         /// k8s_pod, and k8s_node MonitoredResources have this field populated for GKE versions older than 1.12.6. For
@@ -9177,46 +9177,46 @@ namespace Google.Apis.Logging.v2.Data
         /// system labels that were present in the metadata.systemLabels field will no longer be available in the
         /// LogEntry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual MonitoredResourceMetadata Metadata { get; set; } 
+        public virtual MonitoredResourceMetadata Metadata { get; set; }
 
         /// <summary>Optional. Information about an operation associated with the log entry, if applicable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
-        public virtual LogEntryOperation Operation { get; set; } 
+        public virtual LogEntryOperation Operation { get; set; }
 
         /// <summary>The log entry payload, represented as a protocol buffer. Some Google Cloud Platform services use
         /// this field for their log entry payloads.The following protocol buffer types are supported; user-defined
         /// types are not supported:"type.googleapis.com/google.cloud.audit.AuditLog"
         /// "type.googleapis.com/google.appengine.logging.v1.RequestLog"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protoPayload")]
-        public virtual System.Collections.Generic.IDictionary<string,object> ProtoPayload { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> ProtoPayload { get; set; }
 
         /// <summary>Output only. The time the log entry was received by Logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("receiveTimestamp")]
-        public virtual object ReceiveTimestamp { get; set; } 
+        public virtual object ReceiveTimestamp { get; set; }
 
         /// <summary>Required. The monitored resource that produced this log entry.Example: a log entry that reports a
         /// database error would be associated with the monitored resource designating the particular database that
         /// reported the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
-        public virtual MonitoredResource Resource { get; set; } 
+        public virtual MonitoredResource Resource { get; set; }
 
         /// <summary>Optional. The severity of the log entry. The default value is LogSeverity.DEFAULT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
-        public virtual string Severity { get; set; } 
+        public virtual string Severity { get; set; }
 
         /// <summary>Optional. Source code location information associated with the log entry, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceLocation")]
-        public virtual LogEntrySourceLocation SourceLocation { get; set; } 
+        public virtual LogEntrySourceLocation SourceLocation { get; set; }
 
         /// <summary>Optional. The span ID within the trace associated with the log entry.For Trace spans, this is the
         /// same format that the Trace API v2 uses: a 16-character hexadecimal encoding of an 8-byte array, such as
         /// 000000000000004a.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spanId")]
-        public virtual string SpanId { get; set; } 
+        public virtual string SpanId { get; set; }
 
         /// <summary>The log entry payload, represented as a Unicode string (UTF-8).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textPayload")]
-        public virtual string TextPayload { get; set; } 
+        public virtual string TextPayload { get; set; }
 
         /// <summary>Optional. The time the event described by the log entry occurred. This time is used to compute the
         /// log entry's age and to enforce the logs retention period. If this field is omitted in a new log entry, then
@@ -9226,13 +9226,13 @@ namespace Google.Apis.Logging.v2.Data
         /// (https://cloud.google.com/logging/quotas#logs_retention_periods) in the past, and that don't exceed 24 hours
         /// in the future. Log entries outside those time boundaries aren't ingested by Logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
-        public virtual object Timestamp { get; set; } 
+        public virtual object Timestamp { get; set; }
 
         /// <summary>Optional. Resource name of the trace associated with the log entry, if any. If it contains a
         /// relative resource name, the name is assumed to be relative to //tracing.googleapis.com. Example: projects
         /// /my-projectid/traces/06796866738c859f2f19b7cfb3214824</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trace")]
-        public virtual string Trace { get; set; } 
+        public virtual string Trace { get; set; }
 
         /// <summary>Optional. The sampling decision of the trace associated with the log entry.True means that the
         /// trace resource name in the trace field was sampled for storage in a trace backend. False means that the
@@ -9240,7 +9240,7 @@ namespace Google.Apis.Logging.v2.Data
         /// the time. A non-sampled trace value is still useful as a request correlation identifier. The default is
         /// False.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("traceSampled")]
-        public virtual System.Nullable<bool> TraceSampled { get; set; } 
+        public virtual System.Nullable<bool> TraceSampled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9252,22 +9252,22 @@ namespace Google.Apis.Logging.v2.Data
     {
         /// <summary>Optional. Set this to True if this is the first log entry in the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("first")]
-        public virtual System.Nullable<bool> First { get; set; } 
+        public virtual System.Nullable<bool> First { get; set; }
 
         /// <summary>Optional. An arbitrary operation identifier. Log entries with the same identifier are assumed to be
         /// part of the same operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Optional. Set this to True if this is the last log entry in the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("last")]
-        public virtual System.Nullable<bool> Last { get; set; } 
+        public virtual System.Nullable<bool> Last { get; set; }
 
         /// <summary>Optional. An arbitrary producer identifier. The combination of id and producer must be globally
         /// unique. Examples for producer: "MyDivision.MyBigCompany.com",
         /// "github.com/MyProject/MyApplication".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("producer")]
-        public virtual string Producer { get; set; } 
+        public virtual string Producer { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9279,18 +9279,18 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>Optional. Source file name. Depending on the runtime environment, this might be a simple name or a
         /// fully-qualified name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("file")]
-        public virtual string File { get; set; } 
+        public virtual string File { get; set; }
 
         /// <summary>Optional. Human-readable name of the function or method being invoked, with optional context such
         /// as the class or package name. This information may be used in contexts such as the logs viewer, where a file
         /// and line number are less meaningful. The format can vary by language. For example: qual.if.ied.Class.method
         /// (Java), dir/package.func (Go), function (Python).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("function")]
-        public virtual string Function { get; set; } 
+        public virtual string Function { get; set; }
 
         /// <summary>Optional. Line within the source file. 1-based; 0 indicates no line number available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("line")]
-        public virtual System.Nullable<long> Line { get; set; } 
+        public virtual System.Nullable<long> Line { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9305,16 +9305,16 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>Output only. The creation timestamp of the exclusion.This field may not be present for older
         /// exclusions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Optional. A description of this exclusion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries.
         /// You can update an exclusion to change the value of this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
-        public virtual System.Nullable<bool> Disabled { get; set; } 
+        public virtual System.Nullable<bool> Disabled { get; set; }
 
         /// <summary>Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries)
         /// that matches the log entries to be excluded. By using the sample function
@@ -9322,18 +9322,18 @@ namespace Google.Apis.Logging.v2.Data
         /// matching log entries. For example, the following query matches 99% of low-severity log entries from Google
         /// Cloud Storage buckets:"resource.type=gcs_bucket severity</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual string Filter { get; set; } 
+        public virtual string Filter { get; set; }
 
         /// <summary>Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited
         /// to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character
         /// has to be alphanumeric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The last update timestamp of the exclusion.This field may not be present for older
         /// exclusions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9344,19 +9344,19 @@ namespace Google.Apis.Logging.v2.Data
     {
         /// <summary>App-provided log message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logMessage")]
-        public virtual string LogMessage { get; set; } 
+        public virtual string LogMessage { get; set; }
 
         /// <summary>Severity of this log entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
-        public virtual string Severity { get; set; } 
+        public virtual string Severity { get; set; }
 
         /// <summary>Where in the source code this log message was written.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceLocation")]
-        public virtual SourceLocation SourceLocation { get; set; } 
+        public virtual SourceLocation SourceLocation { get; set; }
 
         /// <summary>Approximate time when this log entry was made.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("time")]
-        public virtual object Time { get; set; } 
+        public virtual object Time { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9371,23 +9371,23 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>Optional. The bucket_options are required when the logs-based metric is using a DISTRIBUTION value
         /// type and it describes the bucket boundaries used to create a histogram of the extracted values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketOptions")]
-        public virtual BucketOptions BucketOptions { get; set; } 
+        public virtual BucketOptions BucketOptions { get; set; }
 
         /// <summary>Output only. The creation timestamp of the metric.This field may not be present for older
         /// metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Optional. A description of this metric, which is used in documentation. The maximum length of the
         /// description is 8000 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced_filters)
         /// which is used to match log entries. Example: "resource.type=gae_app AND severity>=ERROR" The maximum length
         /// of the filter is 20000 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual string Filter { get; set; } 
+        public virtual string Filter { get; set; }
 
         /// <summary>Optional. A map from a label key string to an extractor expression which is used to extract data
         /// from a log entry field and assign as the label value. Each label key specified in the LabelDescriptor must
@@ -9398,7 +9398,7 @@ namespace Google.Apis.Logging.v2.Data
         /// false.Note that there are upper bounds on the maximum number of labels and the number of active time series
         /// that are allowed in a project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelExtractors")]
-        public virtual System.Collections.Generic.IDictionary<string,string> LabelExtractors { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> LabelExtractors { get; set; }
 
         /// <summary>Optional. The metric descriptor associated with the logs-based metric. If unspecified, it uses a
         /// default metric descriptor with a DELTA metric kind, INT64 value type, with no labels and a unit of "1". Such
@@ -9411,7 +9411,7 @@ namespace Google.Apis.Logging.v2.Data
         /// updated once initially configured. New labels can be added in the metric_descriptor, but existing labels
         /// cannot be modified except for their description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricDescriptor")]
-        public virtual MetricDescriptor MetricDescriptor { get; set; } 
+        public virtual MetricDescriptor MetricDescriptor { get; set; }
 
         /// <summary>Required. The client-assigned metric identifier. Examples: "error_count", "nginx/requests".Metric
         /// identifiers are limited to 100 characters and can include only the following characters: A-Z, a-z, 0-9, and
@@ -9421,12 +9421,12 @@ namespace Google.Apis.Logging.v2.Data
         /// [METRIC_ID] part of a metric_name API parameter, then the metric identifier must be URL-encoded. Example:
         /// "projects/my-project/metrics/nginx%2Frequests".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The last update timestamp of the metric.This field may not be present for older
         /// metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>Optional. A value_extractor is required when using a distribution logs-based metric to extract the
         /// values to record from a log entry. Two functions are supported for value extraction: EXTRACT(field) or
@@ -9439,12 +9439,12 @@ namespace Google.Apis.Logging.v2.Data
         /// the conversion to double fails, then those values are not recorded in the distribution.Example:
         /// REGEXP_EXTRACT(jsonPayload.request, ".*quantity=(\d+).*")</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueExtractor")]
-        public virtual string ValueExtractor { get; set; } 
+        public virtual string ValueExtractor { get; set; }
 
         /// <summary>Deprecated. The API version that created or updated this metric. The v2 format is used by default
         /// and cannot be changed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9457,17 +9457,17 @@ namespace Google.Apis.Logging.v2.Data
     {
         /// <summary>Optional. Options that affect sinks exporting data to BigQuery.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryOptions")]
-        public virtual BigQueryOptions BigqueryOptions { get; set; } 
+        public virtual BigQueryOptions BigqueryOptions { get; set; }
 
         /// <summary>Output only. The creation timestamp of the sink.This field may not be present for older
         /// sinks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Optional. A description of this sink. The maximum length of the description is 8000
         /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Required. The export destination: "storage.googleapis.com/[GCS_BUCKET]"
         /// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
@@ -9476,23 +9476,23 @@ namespace Google.Apis.Logging.v2.Data
         /// For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks
         /// /exporting-logs).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
-        public virtual string Destination { get; set; } 
+        public virtual string Destination { get; set; }
 
         /// <summary>Optional. If set to True, then this sink is disabled and it does not export any log
         /// entries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
-        public virtual System.Nullable<bool> Disabled { get; set; } 
+        public virtual System.Nullable<bool> Disabled { get; set; }
 
         /// <summary>Optional. Log entries that match any of the exclusion filters will not be exported. If a log entry
         /// is matched by both filter and one of exclusion_filters it will not be exported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusions")]
-        public virtual System.Collections.Generic.IList<LogExclusion> Exclusions { get; set; } 
+        public virtual System.Collections.Generic.IList<LogExclusion> Exclusions { get; set; }
 
         /// <summary>Optional. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries).
         /// The only exported log entries are those that are in the resource owning the sink and that match the filter.
         /// For example: logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERROR </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual string Filter { get; set; } 
+        public virtual string Filter { get; set; }
 
         /// <summary>Optional. This field applies only to sinks owned by organizations and folders. If the field is
         /// false, the default, only the logs owned by the sink's parent resource are available for export. If the field
@@ -9504,23 +9504,23 @@ namespace Google.Apis.Logging.v2.Data
         /// name: logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeChildren")]
-        public virtual System.Nullable<bool> IncludeChildren { get; set; } 
+        public virtual System.Nullable<bool> IncludeChildren { get; set; }
 
         /// <summary>Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-
         /// errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following
         /// characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character
         /// has to be alphanumeric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Deprecated. This field is unused.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputVersionFormat")]
-        public virtual string OutputVersionFormat { get; set; } 
+        public virtual string OutputVersionFormat { get; set; }
 
         /// <summary>Output only. The last update timestamp of the sink.This field may not be present for older
         /// sinks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>Output only. An IAM identity—a service account or group—under which Logging writes the exported log
         /// entries to the sink's destination. This field is set by sinks.create and sinks.update based on the value of
@@ -9530,7 +9530,7 @@ namespace Google.Apis.Logging.v2.Data
         /// accounts#granting_access_to_a_service_account_for_a_resource). Consult the destination service's
         /// documentation to determine the appropriate IAM roles to assign to the identity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writerIdentity")]
-        public virtual string WriterIdentity { get; set; } 
+        public virtual string WriterIdentity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9547,13 +9547,13 @@ namespace Google.Apis.Logging.v2.Data
     {
         /// <summary>A detailed description of the metric, which can be used in documentation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>A concise name for the metric, which can be displayed in user interfaces. Use sentence case without
         /// an ending period, for example "Request count". This field is optional but it is recommended to be set for
         /// any metrics associated with user-visible concepts, such as Quota.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The set of labels that can be used to describe a specific instance of this metric type.The label
         /// key name must follow: Only upper and lower-case letters, digits and underscores (_) are allowed. Label name
@@ -9562,30 +9562,30 @@ namespace Google.Apis.Logging.v2.Data
         /// response_code, so you can look at latencies for successful responses or just for responses that
         /// failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; } 
+        public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; }
 
         /// <summary>Optional. The launch stage of the metric definition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
-        public virtual string LaunchStage { get; set; } 
+        public virtual string LaunchStage { get; set; }
 
         /// <summary>Optional. Metadata which can be used to guide usage of the metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual MetricDescriptorMetadata Metadata { get; set; } 
+        public virtual MetricDescriptorMetadata Metadata { get; set; }
 
         /// <summary>Whether the metric records instantaneous values, changes to a value, etc. Some combinations of
         /// metric_kind and value_type might not be supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricKind")]
-        public virtual string MetricKind { get; set; } 
+        public virtual string MetricKind { get; set; }
 
         /// <summary>Read-only. If present, then a time series, which is identified partially by a metric type and a
         /// MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the
         /// monitored resource types listed here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitoredResourceTypes")]
-        public virtual System.Collections.Generic.IList<string> MonitoredResourceTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> MonitoredResourceTypes { get; set; }
 
         /// <summary>The resource name of the metric descriptor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The metric type, including its DNS name prefix. The type is not URL-encoded.All service defined
         /// metrics must be prefixed with the service name, in the format of {service name}/{relative metric name}, such
@@ -9596,7 +9596,7 @@ namespace Google.Apis.Logging.v2.Data
         /// grouping. For example: "custom.googleapis.com/invoice/paid/amount" "external.googleapis.com/prometheus/up"
         /// "appengine.googleapis.com/http/server/response_latencies" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The units in which the metric value is reported. It is only applicable if the value_type is INT64,
         /// DOUBLE, or DISTRIBUTION. The unit defines the representation of the stored metric values.Different systems
@@ -9630,12 +9630,12 @@ namespace Google.Apis.Logging.v2.Data
         /// indicates a metric contains a ratio, typically in the range 0..1, that will be multiplied by 100 and
         /// displayed as a percentage (so a metric value 0.03 means "3 percent").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
-        public virtual string Unit { get; set; } 
+        public virtual string Unit { get; set; }
 
         /// <summary>Whether the measurement is an integer, a floating-point number, etc. Some combinations of
         /// metric_kind and value_type might not be supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
-        public virtual string ValueType { get; set; } 
+        public virtual string ValueType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9647,17 +9647,17 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>The delay of data points caused by ingestion. Data points older than this age are guaranteed to be
         /// ingested and available to be read, excluding data loss due to errors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ingestDelay")]
-        public virtual object IngestDelay { get; set; } 
+        public virtual object IngestDelay { get; set; }
 
         /// <summary>Deprecated. Must use the MetricDescriptor.launch_stage instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
-        public virtual string LaunchStage { get; set; } 
+        public virtual string LaunchStage { get; set; }
 
         /// <summary>The sampling period of metric data points. For metrics which are written periodically, consecutive
         /// data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher
         /// granularity have a smaller sampling period.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("samplePeriod")]
-        public virtual object SamplePeriod { get; set; } 
+        public virtual object SamplePeriod { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9675,13 +9675,13 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>Required. Values for all of the labels listed in the associated monitored resource descriptor. For
         /// example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Required. The monitored resource type. This field must match the type field of a
         /// MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is
         /// gce_instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9702,13 +9702,13 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>Optional. A detailed description of the monitored resource type that might be used in
         /// documentation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Optional. A concise name for the monitored resource type that might be displayed in user
         /// interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example,
         /// "Google Cloud SQL Database".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Required. A set of labels used to describe instances of this monitored resource type. The label key
         /// name must follow: Only upper and lower-case letters, digits and underscores (_) are allowed. Label name must
@@ -9716,11 +9716,11 @@ namespace Google.Apis.Logging.v2.Data
         /// individual Google Cloud SQL database is identified by values for the labels database_id and
         /// location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; } 
+        public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; }
 
         /// <summary>Optional. The launch stage of the monitored resource definition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
-        public virtual string LaunchStage { get; set; } 
+        public virtual string LaunchStage { get; set; }
 
         /// <summary>Optional. The resource name of the monitored resource descriptor:
         /// "projects/{project_id}/monitoredResourceDescriptors/{type}" where {type} is the value of the type field in
@@ -9728,7 +9728,7 @@ namespace Google.Apis.Logging.v2.Data
         /// that do not use project information can use the resource name format
         /// "monitoredResourceDescriptors/{type}".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. The monitored resource type. For example, the type cloudsql_database represents databases
         /// in Google Cloud SQL.All service defined monitored resource types must be prefixed with the service name, in
@@ -9737,7 +9737,7 @@ namespace Google.Apis.Logging.v2.Data
         /// use Upper Camel Case style. The maximum number of characters allowed for the relative_resource_name is
         /// 100.Note there are legacy service monitored resources not following this rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9754,11 +9754,11 @@ namespace Google.Apis.Logging.v2.Data
         /// label values can be only strings, Boolean values, or a list of strings. For example: { "name": "my-test-
         /// instance", "security_group": ["a", "b", "c"], "spot_instance": false } </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("systemLabels")]
-        public virtual System.Collections.Generic.IDictionary<string,object> SystemLabels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> SystemLabels { get; set; }
 
         /// <summary>Output only. A map of user-defined metadata labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> UserLabels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9769,145 +9769,145 @@ namespace Google.Apis.Logging.v2.Data
     {
         /// <summary>App Engine release version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appEngineRelease")]
-        public virtual string AppEngineRelease { get; set; } 
+        public virtual string AppEngineRelease { get; set; }
 
         /// <summary>Application that handled this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appId")]
-        public virtual string AppId { get; set; } 
+        public virtual string AppId { get; set; }
 
         /// <summary>An indication of the relative cost of serving this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cost")]
-        public virtual System.Nullable<double> Cost { get; set; } 
+        public virtual System.Nullable<double> Cost { get; set; }
 
         /// <summary>Time when the request finished.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Whether this request is finished or active.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finished")]
-        public virtual System.Nullable<bool> Finished { get; set; } 
+        public virtual System.Nullable<bool> Finished { get; set; }
 
         /// <summary>Whether this is the first RequestLog entry for this request. If an active request has several
         /// RequestLog entries written to Stackdriver Logging, then this field will be set for one of them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("first")]
-        public virtual System.Nullable<bool> First { get; set; } 
+        public virtual System.Nullable<bool> First { get; set; }
 
         /// <summary>Internet host and port number of the resource being requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
-        public virtual string Host { get; set; } 
+        public virtual string Host { get; set; }
 
         /// <summary>HTTP version of request. Example: "HTTP/1.1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpVersion")]
-        public virtual string HttpVersion { get; set; } 
+        public virtual string HttpVersion { get; set; }
 
         /// <summary>An identifier for the instance that handled the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
-        public virtual string InstanceId { get; set; } 
+        public virtual string InstanceId { get; set; }
 
         /// <summary>If the instance processing this request belongs to a manually scaled module, then this is the
         /// 0-based index of the instance. Otherwise, this value is -1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceIndex")]
-        public virtual System.Nullable<int> InstanceIndex { get; set; } 
+        public virtual System.Nullable<int> InstanceIndex { get; set; }
 
         /// <summary>Origin IP address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ip")]
-        public virtual string Ip { get; set; } 
+        public virtual string Ip { get; set; }
 
         /// <summary>Latency of the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latency")]
-        public virtual object Latency { get; set; } 
+        public virtual object Latency { get; set; }
 
         /// <summary>A list of log lines emitted by the application while serving this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("line")]
-        public virtual System.Collections.Generic.IList<LogLine> Line { get; set; } 
+        public virtual System.Collections.Generic.IList<LogLine> Line { get; set; }
 
         /// <summary>Number of CPU megacycles used to process request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("megaCycles")]
-        public virtual System.Nullable<long> MegaCycles { get; set; } 
+        public virtual System.Nullable<long> MegaCycles { get; set; }
 
         /// <summary>Request method. Example: "GET", "HEAD", "PUT", "POST", "DELETE".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
-        public virtual string Method { get; set; } 
+        public virtual string Method { get; set; }
 
         /// <summary>Module of the application that handled this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("moduleId")]
-        public virtual string ModuleId { get; set; } 
+        public virtual string ModuleId { get; set; }
 
         /// <summary>The logged-in user who made the request.Most likely, this is the part of the user's email before
         /// the @ sign. The field value is the same for different requests from the same user, but different users can
         /// have similar names. This information is also available to the application via the App Engine Users API.This
         /// field will be populated starting with App Engine 1.9.21.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nickname")]
-        public virtual string Nickname { get; set; } 
+        public virtual string Nickname { get; set; }
 
         /// <summary>Time this request spent in the pending request queue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pendingTime")]
-        public virtual object PendingTime { get; set; } 
+        public virtual object PendingTime { get; set; }
 
         /// <summary>Referrer URL of request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referrer")]
-        public virtual string Referrer { get; set; } 
+        public virtual string Referrer { get; set; }
 
         /// <summary>Globally unique identifier for a request, which is based on the request start time. Request IDs for
         /// requests which started later will compare greater as strings than those for requests which started
         /// earlier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; } 
+        public virtual string RequestId { get; set; }
 
         /// <summary>Contains the path and query portion of the URL that was requested. For example, if the URL was
         /// "http://example.com/app?name=val", the resource would be "/app?name=val". The fragment identifier, which is
         /// identified by the # character, is not included.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
-        public virtual string Resource { get; set; } 
+        public virtual string Resource { get; set; }
 
         /// <summary>Size in bytes sent back to client by request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseSize")]
-        public virtual System.Nullable<long> ResponseSize { get; set; } 
+        public virtual System.Nullable<long> ResponseSize { get; set; }
 
         /// <summary>Source code for the application that handled this request. There can be more than one source
         /// reference per deployed application if source code is distributed among multiple repositories.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceReference")]
-        public virtual System.Collections.Generic.IList<SourceReference> SourceReference { get; set; } 
+        public virtual System.Collections.Generic.IList<SourceReference> SourceReference { get; set; }
 
         /// <summary>Time when the request started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>HTTP response status code. Example: 200, 404.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual System.Nullable<int> Status { get; set; } 
+        public virtual System.Nullable<int> Status { get; set; }
 
         /// <summary>Task name of the request, in the case of an offline request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taskName")]
-        public virtual string TaskName { get; set; } 
+        public virtual string TaskName { get; set; }
 
         /// <summary>Queue name of the request, in the case of an offline request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taskQueueName")]
-        public virtual string TaskQueueName { get; set; } 
+        public virtual string TaskQueueName { get; set; }
 
         /// <summary>Stackdriver Trace identifier for this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("traceId")]
-        public virtual string TraceId { get; set; } 
+        public virtual string TraceId { get; set; }
 
         /// <summary>If true, the value in the 'trace_id' field was sampled for storage in a trace backend.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("traceSampled")]
-        public virtual System.Nullable<bool> TraceSampled { get; set; } 
+        public virtual System.Nullable<bool> TraceSampled { get; set; }
 
         /// <summary>File or class that handled the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlMapEntry")]
-        public virtual string UrlMapEntry { get; set; } 
+        public virtual string UrlMapEntry { get; set; }
 
         /// <summary>User agent that made the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
-        public virtual string UserAgent { get; set; } 
+        public virtual string UserAgent { get; set; }
 
         /// <summary>Version of the application that handled this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionId")]
-        public virtual string VersionId { get; set; } 
+        public virtual string VersionId { get; set; }
 
         /// <summary>Whether this was a loading request for the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wasLoadingRequest")]
-        public virtual System.Nullable<bool> WasLoadingRequest { get; set; } 
+        public virtual System.Nullable<bool> WasLoadingRequest { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9919,18 +9919,18 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>Source file name. Depending on the runtime environment, this might be a simple name or a fully-
         /// qualified name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("file")]
-        public virtual string File { get; set; } 
+        public virtual string File { get; set; }
 
         /// <summary>Human-readable name of the function or method being invoked, with optional context such as the
         /// class or package name. This information is used in contexts such as the logs viewer, where a file and line
         /// number are less meaningful. The format can vary by language. For example: qual.if.ied.Class.method (Java),
         /// dir/package.func (Go), function (Python).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionName")]
-        public virtual string FunctionName { get; set; } 
+        public virtual string FunctionName { get; set; }
 
         /// <summary>Line within the source file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("line")]
-        public virtual System.Nullable<long> Line { get; set; } 
+        public virtual System.Nullable<long> Line { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9943,12 +9943,12 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>Optional. A URI string identifying the repository. Example:
         /// "https://github.com/GoogleCloudPlatform/kubernetes.git"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repository")]
-        public virtual string Repository { get; set; } 
+        public virtual string Repository { get; set; }
 
         /// <summary>The canonical and persistent identifier of the deployed revision. Example (git):
         /// "0035781c50ec7aa23385dc841529ce8a4b70db1b"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
-        public virtual string RevisionId { get; set; } 
+        public virtual string RevisionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9968,7 +9968,7 @@ namespace Google.Apis.Logging.v2.Data
         /// nor exported. Useful for checking whether the logging API endpoints are working properly before sending
         /// valuable data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dryRun")]
-        public virtual System.Nullable<bool> DryRun { get; set; } 
+        public virtual System.Nullable<bool> DryRun { get; set; }
 
         /// <summary>Required. The log entries to send to Logging. The order of log entries in this list does not
         /// matter. Values supplied in this method's log_name, resource, and labels fields are copied into those log
@@ -9984,13 +9984,13 @@ namespace Google.Apis.Logging.v2.Data
         /// you should try to include several log entries in this list, rather than calling this method for each
         /// individual log entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<LogEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<LogEntry> Entries { get; set; }
 
         /// <summary>Optional. Default labels that are added to the labels field of all log entries in entries. If a log
         /// entry already has a label with the same key as a label in this parameter, then the log entry's label is not
         /// changed. See LogEntry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Optional. A default log resource name that is assigned to all log entries in entries that do not
         /// specify a value for log_name: "projects/[PROJECT_ID]/logs/[LOG_ID]"
@@ -10001,20 +10001,20 @@ namespace Google.Apis.Logging.v2.Data
         /// that is receiving new log entries, whether the resource is specified in logName or in an individual log
         /// entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logName")]
-        public virtual string LogName { get; set; } 
+        public virtual string LogName { get; set; }
 
         /// <summary>Optional. Whether valid entries should be written even if some other entries fail due to
         /// INVALID_ARGUMENT or PERMISSION_DENIED errors. If any entry is not written, then the response status is the
         /// error associated with one of the failed entries and the response includes error details keyed by the
         /// entries' zero-based index in the entries.write method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partialSuccess")]
-        public virtual System.Nullable<bool> PartialSuccess { get; set; } 
+        public virtual System.Nullable<bool> PartialSuccess { get; set; }
 
         /// <summary>Optional. A default monitored resource object that is assigned to all log entries in entries that
         /// do not specify a value for resource. Example: { "type": "gce_instance", "labels": { "zone": "us-central1-a",
         /// "instance_id": "00000000000000000000" }} See LogEntry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
-        public virtual MonitoredResource Resource { get; set; } 
+        public virtual MonitoredResource Resource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

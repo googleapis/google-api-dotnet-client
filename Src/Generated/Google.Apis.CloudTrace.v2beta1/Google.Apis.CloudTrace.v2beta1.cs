@@ -652,11 +652,11 @@ namespace Google.Apis.CloudTrace.v2beta1.Data
         /// get the next set of results, call the same method again using the value of `nextPageToken` as
         /// `pageToken`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of sinks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sinks")]
-        public virtual System.Collections.Generic.IList<TraceSink> Sinks { get; set; } 
+        public virtual System.Collections.Generic.IList<TraceSink> Sinks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -668,7 +668,7 @@ namespace Google.Apis.CloudTrace.v2beta1.Data
         /// <summary>The destination for writing trace data. Currently only BigQuery is supported. E.g.:
         /// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
-        public virtual string Destination { get; set; } 
+        public virtual string Destination { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -683,11 +683,11 @@ namespace Google.Apis.CloudTrace.v2beta1.Data
         /// Sink identifiers are limited to 256 characters and can include only the following characters: upper and
         /// lower-case alphanumeric characters, underscores, hyphens, and periods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. The export destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
-        public virtual OutputConfig OutputConfig { get; set; } 
+        public virtual OutputConfig OutputConfig { get; set; }
 
         /// <summary>Output only. A service account name for exporting the data. This field is set by sinks.create and
         /// sinks.update. The service account will need to be granted write access to the destination specified in the
@@ -697,7 +697,7 @@ namespace Google.Apis.CloudTrace.v2beta1.Data
         /// documentation](https://cloud.google.com/bigquery/docs/access-control). E.g.:
         /// "service-00000001@00000002.iam.gserviceaccount.com"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writerIdentity")]
-        public virtual string WriterIdentity { get; set; } 
+        public virtual string WriterIdentity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

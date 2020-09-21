@@ -5801,12 +5801,12 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>The number of the accelerator cards exposed to an instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorCount")]
-        public virtual System.Nullable<long> AcceleratorCount { get; set; } 
+        public virtual System.Nullable<long> AcceleratorCount { get; set; }
 
         /// <summary>The accelerator type resource name. List of supported accelerators
         /// [here](https://cloud.google.com/compute/docs/gpus)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
-        public virtual string AcceleratorType { get; set; } 
+        public virtual string AcceleratorType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5819,50 +5819,50 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Configuration for the Cloud Run addon. The `IstioConfig` addon must be enabled in order to enable
         /// Cloud Run addon. This option can only be enabled at cluster creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudRunConfig")]
-        public virtual CloudRunConfig CloudRunConfig { get; set; } 
+        public virtual CloudRunConfig CloudRunConfig { get; set; }
 
         /// <summary>Configuration for the ConfigConnector add-on, a Kubernetes extension to manage hosted GCP services
         /// through the Kubernetes API</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configConnectorConfig")]
-        public virtual ConfigConnectorConfig ConfigConnectorConfig { get; set; } 
+        public virtual ConfigConnectorConfig ConfigConnectorConfig { get; set; }
 
         /// <summary>Configuration for NodeLocalDNS, a dns cache running on cluster nodes</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dnsCacheConfig")]
-        public virtual DnsCacheConfig DnsCacheConfig { get; set; } 
+        public virtual DnsCacheConfig DnsCacheConfig { get; set; }
 
         /// <summary>Configuration for the Compute Engine Persistent Disk CSI driver.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcePersistentDiskCsiDriverConfig")]
-        public virtual GcePersistentDiskCsiDriverConfig GcePersistentDiskCsiDriverConfig { get; set; } 
+        public virtual GcePersistentDiskCsiDriverConfig GcePersistentDiskCsiDriverConfig { get; set; }
 
         /// <summary>Configuration for the horizontal pod autoscaling feature, which increases or decreases the number
         /// of replica pods a replication controller has based on the resource usage of the existing pods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("horizontalPodAutoscaling")]
-        public virtual HorizontalPodAutoscaling HorizontalPodAutoscaling { get; set; } 
+        public virtual HorizontalPodAutoscaling HorizontalPodAutoscaling { get; set; }
 
         /// <summary>Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP
         /// load balancers for services in a cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpLoadBalancing")]
-        public virtual HttpLoadBalancing HttpLoadBalancing { get; set; } 
+        public virtual HttpLoadBalancing HttpLoadBalancing { get; set; }
 
         /// <summary>Configuration for Istio, an open platform to connect, manage, and secure microservices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("istioConfig")]
-        public virtual IstioConfig IstioConfig { get; set; } 
+        public virtual IstioConfig IstioConfig { get; set; }
 
         /// <summary>Configuration for the KALM addon, which manages the lifecycle of k8s applications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kalmConfig")]
-        public virtual KalmConfig KalmConfig { get; set; } 
+        public virtual KalmConfig KalmConfig { get; set; }
 
         /// <summary>Configuration for the Kubernetes Dashboard. This addon is deprecated, and will be disabled in 1.15.
         /// It is recommended to use the Cloud Console to manage and monitor your Kubernetes clusters, workloads and
         /// applications. For more information, see: https://cloud.google.com/kubernetes-
         /// engine/docs/concepts/dashboards</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kubernetesDashboard")]
-        public virtual KubernetesDashboard KubernetesDashboard { get; set; } 
+        public virtual KubernetesDashboard KubernetesDashboard { get; set; }
 
         /// <summary>Configuration for NetworkPolicy. This only tracks whether the addon is enabled or not on the
         /// Master, it does not track whether network policy is enabled for the nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkPolicyConfig")]
-        public virtual NetworkPolicyConfig NetworkPolicyConfig { get; set; } 
+        public virtual NetworkPolicyConfig NetworkPolicyConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5874,11 +5874,11 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Whether this cluster should return group membership lookups during authentication using a group of
         /// security groups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The name of the security group-of-groups to be used. Only relevant if enabled = true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityGroup")]
-        public virtual string SecurityGroup { get; set; } 
+        public virtual string SecurityGroup { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5891,12 +5891,12 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>[Output only] This field is set when upgrades are about to commence with the approximate start time
         /// for the upgrades, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoUpgradeStartTime")]
-        public virtual string AutoUpgradeStartTime { get; set; } 
+        public virtual string AutoUpgradeStartTime { get; set; }
 
         /// <summary>[Output only] This field is set when upgrades are about to commence with the description of the
         /// upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5911,21 +5911,21 @@ namespace Google.Apis.Container.v1beta1.Data
         /// information about protecting resources with Cloud KMS Keys please see:
         /// https://cloud.google.com/compute/docs/disks/customer-managed-encryption</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootDiskKmsKey")]
-        public virtual string BootDiskKmsKey { get; set; } 
+        public virtual string BootDiskKmsKey { get; set; }
 
         /// <summary>Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If
         /// unspecified, the default disk size is 100GB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
-        public virtual System.Nullable<int> DiskSizeGb { get; set; } 
+        public virtual System.Nullable<int> DiskSizeGb { get; set; }
 
         /// <summary>Type of the disk attached to each node (e.g. 'pd-standard' or 'pd-ssd') If unspecified, the default
         /// disk type is 'pd-standard'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
-        public virtual string DiskType { get; set; } 
+        public virtual string DiskType { get; set; }
 
         /// <summary>NodeManagement configuration for this NodePool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("management")]
-        public virtual NodeManagement Management { get; set; } 
+        public virtual NodeManagement Management { get; set; }
 
         /// <summary>Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or
         /// newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform:
@@ -5933,7 +5933,7 @@ namespace Google.Apis.Container.v1beta1.Data
         /// CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu
         /// platform field pass "automatic" as field value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
-        public virtual string MinCpuPlatform { get; set; } 
+        public virtual string MinCpuPlatform { get; set; }
 
         /// <summary>The set of Google API scopes to be made available on all of the node VMs under the "default"
         /// service account. The following scopes are recommended, but not required, and by default are not included: *
@@ -5943,21 +5943,21 @@ namespace Google.Apis.Container.v1beta1.Data
         /// added, unless Cloud Logging or Cloud Monitoring are enabled, in which case their required scopes will be
         /// added.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauthScopes")]
-        public virtual System.Collections.Generic.IList<string> OauthScopes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> OauthScopes { get; set; }
 
         /// <summary>The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of
         /// the Service Account; otherwise, if no Service Account is specified, the "default" service account is
         /// used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
-        public virtual string ServiceAccount { get; set; } 
+        public virtual string ServiceAccount { get; set; }
 
         /// <summary>Shielded Instance options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceConfig")]
-        public virtual ShieldedInstanceConfig ShieldedInstanceConfig { get; set; } 
+        public virtual ShieldedInstanceConfig ShieldedInstanceConfig { get; set; }
 
         /// <summary>Upgrade settings control disruption and speed of the upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeSettings")]
-        public virtual UpgradeSettings UpgradeSettings { get; set; } 
+        public virtual UpgradeSettings UpgradeSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5968,11 +5968,11 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Reason for availability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>Kubernetes version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5983,7 +5983,7 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>The ID of a BigQuery Dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
-        public virtual string DatasetId { get; set; } 
+        public virtual string DatasetId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5995,7 +5995,7 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Enable Binary Authorization for this cluster. If enabled, all container images will be validated by
         /// Google Binauthz.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6007,24 +6007,24 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>The name (project, location, operation id) of the operation to cancel. Specified in the format
         /// `projects/locations/operations`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. Deprecated. The server-assigned `name` of the operation. This field has been deprecated
         /// and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
-        public virtual string OperationId { get; set; } 
+        public virtual string OperationId { get; set; }
 
         /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Required. Deprecated. The name of the Google Compute Engine
         /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the operation resides. This field has
         /// been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6035,11 +6035,11 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>cidr_block must be specified in CIDR notation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cidrBlock")]
-        public virtual string CidrBlockValue { get; set; } 
+        public virtual string CidrBlockValue { get; set; }
 
         /// <summary>display_name is an optional field for users to identify CIDR blocks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6050,7 +6050,7 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Issue a client certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issueClientCertificate")]
-        public virtual System.Nullable<bool> IssueClientCertificate { get; set; } 
+        public virtual System.Nullable<bool> IssueClientCertificate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6061,11 +6061,11 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Whether Cloud Run addon is enabled for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
-        public virtual System.Nullable<bool> Disabled { get; set; } 
+        public virtual System.Nullable<bool> Disabled { get; set; }
 
         /// <summary>Which load balancer type is installed for Cloud Run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loadBalancerType")]
-        public virtual string LoadBalancerType { get; set; } 
+        public virtual string LoadBalancerType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6076,94 +6076,94 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Configurations for the various addons available to run in the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addonsConfig")]
-        public virtual AddonsConfig AddonsConfig { get; set; } 
+        public virtual AddonsConfig AddonsConfig { get; set; }
 
         /// <summary>Configuration controlling RBAC group membership information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authenticatorGroupsConfig")]
-        public virtual AuthenticatorGroupsConfig AuthenticatorGroupsConfig { get; set; } 
+        public virtual AuthenticatorGroupsConfig AuthenticatorGroupsConfig { get; set; }
 
         /// <summary>Cluster-level autoscaling configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoscaling")]
-        public virtual ClusterAutoscaling Autoscaling { get; set; } 
+        public virtual ClusterAutoscaling Autoscaling { get; set; }
 
         /// <summary>Configuration for Binary Authorization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binaryAuthorization")]
-        public virtual BinaryAuthorization BinaryAuthorization { get; set; } 
+        public virtual BinaryAuthorization BinaryAuthorization { get; set; }
 
         /// <summary>The IP address range of the container pods in this cluster, in [CIDR](http://en.wikipedia.org/wiki
         /// /Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`). Leave blank to have one automatically
         /// chosen or specify a `/14` block in `10.0.0.0/8`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterIpv4Cidr")]
-        public virtual string ClusterIpv4Cidr { get; set; } 
+        public virtual string ClusterIpv4Cidr { get; set; }
 
         /// <summary>Telemetry integration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterTelemetry")]
-        public virtual ClusterTelemetry ClusterTelemetry { get; set; } 
+        public virtual ClusterTelemetry ClusterTelemetry { get; set; }
 
         /// <summary>Which conditions caused the current cluster state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
-        public virtual System.Collections.Generic.IList<StatusCondition> Conditions { get; set; } 
+        public virtual System.Collections.Generic.IList<StatusCondition> Conditions { get; set; }
 
         /// <summary>Configuration of Confidential Nodes</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidentialNodes")]
-        public virtual ConfidentialNodes ConfidentialNodes { get; set; } 
+        public virtual ConfidentialNodes ConfidentialNodes { get; set; }
 
         /// <summary>[Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
         /// text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTime { get; set; } 
+        public virtual string CreateTime { get; set; }
 
         /// <summary>[Output only] The current software version of the master endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentMasterVersion")]
-        public virtual string CurrentMasterVersion { get; set; } 
+        public virtual string CurrentMasterVersion { get; set; }
 
         /// <summary>[Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API
         /// directly to retrieve node information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentNodeCount")]
-        public virtual System.Nullable<int> CurrentNodeCount { get; set; } 
+        public virtual System.Nullable<int> CurrentNodeCount { get; set; }
 
         /// <summary>[Output only] Deprecated, use [NodePool.version](https://cloud.google.com/kubernetes-
         /// engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools) instead. The current version of
         /// the node software components. If they are currently at multiple versions because they're in the process of
         /// being upgraded, this reflects the minimum version of all nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentNodeVersion")]
-        public virtual string CurrentNodeVersion { get; set; } 
+        public virtual string CurrentNodeVersion { get; set; }
 
         /// <summary>Configuration of etcd encryption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseEncryption")]
-        public virtual DatabaseEncryption DatabaseEncryption { get; set; } 
+        public virtual DatabaseEncryption DatabaseEncryption { get; set; }
 
         /// <summary>The default constraint on the maximum number of pods that can be run simultaneously on a node in
         /// the node pool of this cluster. Only honored if cluster created with IP Alias support.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultMaxPodsConstraint")]
-        public virtual MaxPodsConstraint DefaultMaxPodsConstraint { get; set; } 
+        public virtual MaxPodsConstraint DefaultMaxPodsConstraint { get; set; }
 
         /// <summary>An optional description of this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g.
         /// v1beta1) and features that may not be production ready in the kubernetes version of the master and nodes.
         /// The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are
         /// automatically deleted thirty days after creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableKubernetesAlpha")]
-        public virtual System.Nullable<bool> EnableKubernetesAlpha { get; set; } 
+        public virtual System.Nullable<bool> EnableKubernetesAlpha { get; set; }
 
         /// <summary>Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use
         /// tpu_config.enabled instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableTpu")]
-        public virtual System.Nullable<bool> EnableTpu { get; set; } 
+        public virtual System.Nullable<bool> EnableTpu { get; set; }
 
         /// <summary>[Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from
         /// the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for
         /// username and password information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
-        public virtual string Endpoint { get; set; } 
+        public virtual string Endpoint { get; set; }
 
         /// <summary>[Output only] The time the cluster will be automatically deleted in
         /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual string ExpireTime { get; set; } 
+        public virtual string ExpireTime { get; set; }
 
         /// <summary>The initial Kubernetes version for this cluster. Valid versions are those found in
         /// validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are
@@ -6173,7 +6173,7 @@ namespace Google.Apis.Container.v1beta1.Data
         /// picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes
         /// version - "","-": picks the default Kubernetes version</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialClusterVersion")]
-        public virtual string InitialClusterVersion { get; set; } 
+        public virtual string InitialClusterVersion { get; set; }
 
         /// <summary>The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource
         /// quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also
@@ -6182,34 +6182,34 @@ namespace Google.Apis.Container.v1beta1.Data
         /// "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field
         /// is deprecated, use node_pool.initial_node_count instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialNodeCount")]
-        public virtual System.Nullable<int> InitialNodeCount { get; set; } 
+        public virtual System.Nullable<int> InitialNodeCount { get; set; }
 
         /// <summary>Deprecated. Use node_pools.instance_group_urls.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceGroupUrls")]
-        public virtual System.Collections.Generic.IList<string> InstanceGroupUrls { get; set; } 
+        public virtual System.Collections.Generic.IList<string> InstanceGroupUrls { get; set; }
 
         /// <summary>Configuration for cluster IP allocation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAllocationPolicy")]
-        public virtual IPAllocationPolicy IpAllocationPolicy { get; set; } 
+        public virtual IPAllocationPolicy IpAllocationPolicy { get; set; }
 
         /// <summary>The fingerprint of the set of labels for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
-        public virtual string LabelFingerprint { get; set; } 
+        public virtual string LabelFingerprint { get; set; }
 
         /// <summary>Configuration for the legacy ABAC authorization mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("legacyAbac")]
-        public virtual LegacyAbac LegacyAbac { get; set; } 
+        public virtual LegacyAbac LegacyAbac { get; set; }
 
         /// <summary>[Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs
         /// /regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones
         /// /regions-zones#available) in which the cluster resides.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in
         /// which the cluster's nodes should be located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<string> Locations { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Locations { get; set; }
 
         /// <summary>The logging service the cluster should use to write logs. Currently available options: *
         /// `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model *
@@ -6217,31 +6217,31 @@ namespace Google.Apis.Container.v1beta1.Data
         /// no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes`
         /// will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loggingService")]
-        public virtual string LoggingService { get; set; } 
+        public virtual string LoggingService { get; set; }
 
         /// <summary>Configure the maintenance policy for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicy")]
-        public virtual MaintenancePolicy MaintenancePolicy { get; set; } 
+        public virtual MaintenancePolicy MaintenancePolicy { get; set; }
 
         /// <summary>Configuration for master components.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("master")]
-        public virtual Master Master { get; set; } 
+        public virtual Master Master { get; set; }
 
         /// <summary>The authentication information for accessing the master endpoint. If unspecified, the defaults are
         /// used: For clusters before v1.12, if master_auth is unspecified, `username` will be set to "admin", a random
         /// password will be generated, and a client certificate will be issued.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterAuth")]
-        public virtual MasterAuth MasterAuth { get; set; } 
+        public virtual MasterAuth MasterAuth { get; set; }
 
         /// <summary>The configuration options for master authorized networks feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterAuthorizedNetworksConfig")]
-        public virtual MasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfig { get; set; } 
+        public virtual MasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfig { get; set; }
 
         /// <summary>The IP prefix in CIDR notation to use for the hosted master network. This prefix will be used for
         /// assigning private IP addresses to the master or set of masters, as well as the ILB VIP. This field is
         /// deprecated, use private_cluster_config.master_ipv4_cidr_block instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterIpv4CidrBlock")]
-        public virtual string MasterIpv4CidrBlock { get; set; } 
+        public virtual string MasterIpv4CidrBlock { get; set; }
 
         /// <summary>The monitoring service the cluster should use to write metrics. Currently available options: *
         /// "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource
@@ -6250,27 +6250,27 @@ namespace Google.Apis.Container.v1beta1.Data
         /// string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for
         /// earlier versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitoringService")]
-        public virtual string MonitoringService { get; set; } 
+        public virtual string MonitoringService { get; set; }
 
         /// <summary>The name of this cluster. The name must be unique within this project and location (e.g. zone or
         /// region), and can be up to 40 characters with the following restrictions: * Lowercase letters, numbers, and
         /// hyphens only. * Must start with a letter. * Must end with a number or a letter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-
         /// firewalls#networks) to which the cluster is connected. If left unspecified, the `default` network will be
         /// used. On output this shows the network ID instead of the name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
-        public virtual string Network { get; set; } 
+        public virtual string Network { get; set; }
 
         /// <summary>Configuration for cluster networking.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkConfig")]
-        public virtual NetworkConfig NetworkConfig { get; set; } 
+        public virtual NetworkConfig NetworkConfig { get; set; }
 
         /// <summary>Configuration options for the NetworkPolicy feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkPolicy")]
-        public virtual NetworkPolicy NetworkPolicy { get; set; } 
+        public virtual NetworkPolicy NetworkPolicy { get; set; }
 
         /// <summary>Parameters used in creating the cluster's nodes. For requests, this field should only be used in
         /// lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to
@@ -6279,102 +6279,102 @@ namespace Google.Apis.Container.v1beta1.Data
         /// configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field
         /// is deprecated, use node_pool.config instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeConfig")]
-        public virtual NodeConfig NodeConfig { get; set; } 
+        public virtual NodeConfig NodeConfig { get; set; }
 
         /// <summary>[Output only] The size of the address space on each node for hosting containers. This is
         /// provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in
         /// route-based network mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeIpv4CidrSize")]
-        public virtual System.Nullable<int> NodeIpv4CidrSize { get; set; } 
+        public virtual System.Nullable<int> NodeIpv4CidrSize { get; set; }
 
         /// <summary>The node pools associated with this cluster. This field should not be set if "node_config" or
         /// "initial_node_count" are specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodePools")]
-        public virtual System.Collections.Generic.IList<NodePool> NodePools { get; set; } 
+        public virtual System.Collections.Generic.IList<NodePool> NodePools { get; set; }
 
         /// <summary>Notification configuration of the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationConfig")]
-        public virtual NotificationConfig NotificationConfig { get; set; } 
+        public virtual NotificationConfig NotificationConfig { get; set; }
 
         /// <summary>Configuration for the PodSecurityPolicy feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("podSecurityPolicyConfig")]
-        public virtual PodSecurityPolicyConfig PodSecurityPolicyConfig { get; set; } 
+        public virtual PodSecurityPolicyConfig PodSecurityPolicyConfig { get; set; }
 
         /// <summary>If this is a private cluster setup. Private clusters are clusters that, by default have no external
         /// IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field
         /// is deprecated, use private_cluster_config.enable_private_nodes instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateCluster")]
-        public virtual System.Nullable<bool> PrivateCluster { get; set; } 
+        public virtual System.Nullable<bool> PrivateCluster { get; set; }
 
         /// <summary>Configuration for private cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateClusterConfig")]
-        public virtual PrivateClusterConfig PrivateClusterConfig { get; set; } 
+        public virtual PrivateClusterConfig PrivateClusterConfig { get; set; }
 
         /// <summary>Release channel configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("releaseChannel")]
-        public virtual ReleaseChannel ReleaseChannel { get; set; } 
+        public virtual ReleaseChannel ReleaseChannel { get; set; }
 
         /// <summary>The resource labels for the cluster to use to annotate any related Google Compute Engine
         /// resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceLabels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> ResourceLabels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> ResourceLabels { get; set; }
 
         /// <summary>Configuration for exporting resource usages. Resource usage export is disabled when this config
         /// unspecified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUsageExportConfig")]
-        public virtual ResourceUsageExportConfig ResourceUsageExportConfig { get; set; } 
+        public virtual ResourceUsageExportConfig ResourceUsageExportConfig { get; set; }
 
         /// <summary>[Output only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>[Output only] The IP address range of the Kubernetes services in this cluster, in
         /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`). Service
         /// addresses are typically put in the last `/16` from the container CIDR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicesIpv4Cidr")]
-        public virtual string ServicesIpv4Cidr { get; set; } 
+        public virtual string ServicesIpv4Cidr { get; set; }
 
         /// <summary>Shielded Nodes configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shieldedNodes")]
-        public virtual ShieldedNodes ShieldedNodes { get; set; } 
+        public virtual ShieldedNodes ShieldedNodes { get; set; }
 
         /// <summary>[Output only] The current status of this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>[Output only] Additional information about the current status of this cluster, if
         /// available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
-        public virtual string StatusMessage { get; set; } 
+        public virtual string StatusMessage { get; set; }
 
         /// <summary>The name of the Google Compute Engine
         /// [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected. On output
         /// this shows the subnetwork ID instead of the name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
-        public virtual string Subnetwork { get; set; } 
+        public virtual string Subnetwork { get; set; }
 
         /// <summary>Configuration for Cloud TPU support;</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tpuConfig")]
-        public virtual TpuConfig TpuConfig { get; set; } 
+        public virtual TpuConfig TpuConfig { get; set; }
 
         /// <summary>[Output only] The IP address range of the Cloud TPUs in this cluster, in
         /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tpuIpv4CidrBlock")]
-        public virtual string TpuIpv4CidrBlock { get; set; } 
+        public virtual string TpuIpv4CidrBlock { get; set; }
 
         /// <summary>Cluster-level Vertical Pod Autoscaling configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verticalPodAutoscaling")]
-        public virtual VerticalPodAutoscaling VerticalPodAutoscaling { get; set; } 
+        public virtual VerticalPodAutoscaling VerticalPodAutoscaling { get; set; }
 
         /// <summary>Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloadIdentityConfig")]
-        public virtual WorkloadIdentityConfig WorkloadIdentityConfig { get; set; } 
+        public virtual WorkloadIdentityConfig WorkloadIdentityConfig { get; set; }
 
         /// <summary>[Output only] The name of the Google Compute Engine
         /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is
         /// deprecated, use location instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6387,24 +6387,24 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in
         /// which the NodePool's nodes can be created by NAP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoprovisioningLocations")]
-        public virtual System.Collections.Generic.IList<string> AutoprovisioningLocations { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AutoprovisioningLocations { get; set; }
 
         /// <summary>AutoprovisioningNodePoolDefaults contains defaults for a node pool created by NAP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoprovisioningNodePoolDefaults")]
-        public virtual AutoprovisioningNodePoolDefaults AutoprovisioningNodePoolDefaults { get; set; } 
+        public virtual AutoprovisioningNodePoolDefaults AutoprovisioningNodePoolDefaults { get; set; }
 
         /// <summary>Defines autoscaling behaviour.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoscalingProfile")]
-        public virtual string AutoscalingProfile { get; set; } 
+        public virtual string AutoscalingProfile { get; set; }
 
         /// <summary>Enables automatic node pool creation and deletion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableNodeAutoprovisioning")]
-        public virtual System.Nullable<bool> EnableNodeAutoprovisioning { get; set; } 
+        public virtual System.Nullable<bool> EnableNodeAutoprovisioning { get; set; }
 
         /// <summary>Contains global constraints regarding minimum and maximum amount of resources in the
         /// cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceLimits")]
-        public virtual System.Collections.Generic.IList<ResourceLimit> ResourceLimits { get; set; } 
+        public virtual System.Collections.Generic.IList<ResourceLimit> ResourceLimits { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6415,7 +6415,7 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Type of the integration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6427,40 +6427,40 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Configurations for the various addons available to run in the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredAddonsConfig")]
-        public virtual AddonsConfig DesiredAddonsConfig { get; set; } 
+        public virtual AddonsConfig DesiredAddonsConfig { get; set; }
 
         /// <summary>The desired configuration options for the Binary Authorization feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredBinaryAuthorization")]
-        public virtual BinaryAuthorization DesiredBinaryAuthorization { get; set; } 
+        public virtual BinaryAuthorization DesiredBinaryAuthorization { get; set; }
 
         /// <summary>Cluster-level autoscaling configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredClusterAutoscaling")]
-        public virtual ClusterAutoscaling DesiredClusterAutoscaling { get; set; } 
+        public virtual ClusterAutoscaling DesiredClusterAutoscaling { get; set; }
 
         /// <summary>The desired telemetry integration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredClusterTelemetry")]
-        public virtual ClusterTelemetry DesiredClusterTelemetry { get; set; } 
+        public virtual ClusterTelemetry DesiredClusterTelemetry { get; set; }
 
         /// <summary>Configuration of etcd encryption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredDatabaseEncryption")]
-        public virtual DatabaseEncryption DesiredDatabaseEncryption { get; set; } 
+        public virtual DatabaseEncryption DesiredDatabaseEncryption { get; set; }
 
         /// <summary>The desired datapath provider for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredDatapathProvider")]
-        public virtual string DesiredDatapathProvider { get; set; } 
+        public virtual string DesiredDatapathProvider { get; set; }
 
         /// <summary>The desired status of whether to disable default sNAT for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredDefaultSnatStatus")]
-        public virtual DefaultSnatStatus DesiredDefaultSnatStatus { get; set; } 
+        public virtual DefaultSnatStatus DesiredDefaultSnatStatus { get; set; }
 
         /// <summary>The desired image type for the node pool. NOTE: Set the "desired_node_pool" field as
         /// well.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredImageType")]
-        public virtual string DesiredImageType { get; set; } 
+        public virtual string DesiredImageType { get; set; }
 
         /// <summary>The desired config of Intra-node visibility.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredIntraNodeVisibilityConfig")]
-        public virtual IntraNodeVisibilityConfig DesiredIntraNodeVisibilityConfig { get; set; } 
+        public virtual IntraNodeVisibilityConfig DesiredIntraNodeVisibilityConfig { get; set; }
 
         /// <summary>The desired list of Google Compute Engine
         /// [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be
@@ -6468,7 +6468,7 @@ namespace Google.Apis.Container.v1beta1.Data
         /// the cluster, depending on whether locations are being added or removed. This list must always include the
         /// cluster's primary zone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredLocations")]
-        public virtual System.Collections.Generic.IList<string> DesiredLocations { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DesiredLocations { get; set; }
 
         /// <summary>The logging service the cluster should use to write logs. Currently available options: *
         /// `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model *
@@ -6476,15 +6476,15 @@ namespace Google.Apis.Container.v1beta1.Data
         /// no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes`
         /// will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredLoggingService")]
-        public virtual string DesiredLoggingService { get; set; } 
+        public virtual string DesiredLoggingService { get; set; }
 
         /// <summary>Configuration for master components.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredMaster")]
-        public virtual Master DesiredMaster { get; set; } 
+        public virtual Master DesiredMaster { get; set; }
 
         /// <summary>The desired configuration options for master authorized networks feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredMasterAuthorizedNetworksConfig")]
-        public virtual MasterAuthorizedNetworksConfig DesiredMasterAuthorizedNetworksConfig { get; set; } 
+        public virtual MasterAuthorizedNetworksConfig DesiredMasterAuthorizedNetworksConfig { get; set; }
 
         /// <summary>The Kubernetes version to change the master to. The only valid value is the latest supported
         /// version. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which
@@ -6493,7 +6493,7 @@ namespace Google.Apis.Container.v1beta1.Data
         /// 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "-": picks the default Kubernetes
         /// version</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredMasterVersion")]
-        public virtual string DesiredMasterVersion { get; set; } 
+        public virtual string DesiredMasterVersion { get; set; }
 
         /// <summary>The monitoring service the cluster should use to write metrics. Currently available options: *
         /// "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource
@@ -6502,19 +6502,19 @@ namespace Google.Apis.Container.v1beta1.Data
         /// string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for
         /// earlier versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredMonitoringService")]
-        public virtual string DesiredMonitoringService { get; set; } 
+        public virtual string DesiredMonitoringService { get; set; }
 
         /// <summary>Autoscaler configuration for the node pool specified in desired_node_pool_id. If there is only one
         /// pool in the cluster and desired_node_pool_id is not provided then the change applies to that single node
         /// pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredNodePoolAutoscaling")]
-        public virtual NodePoolAutoscaling DesiredNodePoolAutoscaling { get; set; } 
+        public virtual NodePoolAutoscaling DesiredNodePoolAutoscaling { get; set; }
 
         /// <summary>The node pool to be upgraded. This field is mandatory if "desired_node_version",
         /// "desired_image_family", "desired_node_pool_autoscaling", or "desired_workload_metadata_config" is specified
         /// and there is more than one node pool on the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredNodePoolId")]
-        public virtual string DesiredNodePoolId { get; set; } 
+        public virtual string DesiredNodePoolId { get; set; }
 
         /// <summary>The Kubernetes version to change the nodes to (typically an upgrade). Users may specify either
         /// explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: -
@@ -6522,43 +6522,43 @@ namespace Google.Apis.Container.v1beta1.Data
         /// the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks
         /// an explicit Kubernetes version - "-": picks the Kubernetes master version</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredNodeVersion")]
-        public virtual string DesiredNodeVersion { get; set; } 
+        public virtual string DesiredNodeVersion { get; set; }
 
         /// <summary>The desired notification configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredNotificationConfig")]
-        public virtual NotificationConfig DesiredNotificationConfig { get; set; } 
+        public virtual NotificationConfig DesiredNotificationConfig { get; set; }
 
         /// <summary>The desired configuration options for the PodSecurityPolicy feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredPodSecurityPolicyConfig")]
-        public virtual PodSecurityPolicyConfig DesiredPodSecurityPolicyConfig { get; set; } 
+        public virtual PodSecurityPolicyConfig DesiredPodSecurityPolicyConfig { get; set; }
 
         /// <summary>The desired private cluster configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredPrivateClusterConfig")]
-        public virtual PrivateClusterConfig DesiredPrivateClusterConfig { get; set; } 
+        public virtual PrivateClusterConfig DesiredPrivateClusterConfig { get; set; }
 
         /// <summary>The desired release channel configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredReleaseChannel")]
-        public virtual ReleaseChannel DesiredReleaseChannel { get; set; } 
+        public virtual ReleaseChannel DesiredReleaseChannel { get; set; }
 
         /// <summary>The desired configuration for exporting resource usage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredResourceUsageExportConfig")]
-        public virtual ResourceUsageExportConfig DesiredResourceUsageExportConfig { get; set; } 
+        public virtual ResourceUsageExportConfig DesiredResourceUsageExportConfig { get; set; }
 
         /// <summary>Configuration for Shielded Nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredShieldedNodes")]
-        public virtual ShieldedNodes DesiredShieldedNodes { get; set; } 
+        public virtual ShieldedNodes DesiredShieldedNodes { get; set; }
 
         /// <summary>The desired Cloud TPU configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredTpuConfig")]
-        public virtual TpuConfig DesiredTpuConfig { get; set; } 
+        public virtual TpuConfig DesiredTpuConfig { get; set; }
 
         /// <summary>Cluster-level Vertical Pod Autoscaling configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredVerticalPodAutoscaling")]
-        public virtual VerticalPodAutoscaling DesiredVerticalPodAutoscaling { get; set; } 
+        public virtual VerticalPodAutoscaling DesiredVerticalPodAutoscaling { get; set; }
 
         /// <summary>Configuration for Workload Identity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredWorkloadIdentityConfig")]
-        public virtual WorkloadIdentityConfig DesiredWorkloadIdentityConfig { get; set; } 
+        public virtual WorkloadIdentityConfig DesiredWorkloadIdentityConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6570,24 +6570,24 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Required. Deprecated. The name of the cluster. This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
-        public virtual string ClusterId { get; set; } 
+        public virtual string ClusterId { get; set; }
 
         /// <summary>The name (project, location, cluster id) of the cluster to complete IP rotation. Specified in the
         /// format `projects/locations/clusters`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and
         /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Required. Deprecated. The name of the Google Compute Engine
         /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has
         /// been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6599,7 +6599,7 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Whether Confidential Nodes feature is enabled for all nodes in this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6610,7 +6610,7 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Whether Cloud Connector is enabled for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6622,7 +6622,7 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Whether to enable consumption metering for this cluster. If enabled, a second BigQuery table will
         /// be created to hold resource consumption records.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6634,24 +6634,24 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Required. A [cluster resource](https://cloud.google.com/container-
         /// engine/reference/rest/v1beta1/projects.locations.clusters)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
-        public virtual Cluster Cluster { get; set; } 
+        public virtual Cluster Cluster { get; set; }
 
         /// <summary>The parent (project and location) where the cluster will be created. Specified in the format
         /// `projects/locations`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
-        public virtual string Parent { get; set; } 
+        public virtual string Parent { get; set; }
 
         /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// parent field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Required. Deprecated. The name of the Google Compute Engine
         /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has
         /// been deprecated and replaced by the parent field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6663,28 +6663,28 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Required. Deprecated. The name of the cluster. This field has been deprecated and replaced by the
         /// parent field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
-        public virtual string ClusterId { get; set; } 
+        public virtual string ClusterId { get; set; }
 
         /// <summary>Required. The node pool to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodePool")]
-        public virtual NodePool NodePool { get; set; } 
+        public virtual NodePool NodePool { get; set; }
 
         /// <summary>The parent (project, location, cluster id) where the node pool will be created. Specified in the
         /// format `projects/locations/clusters`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
-        public virtual string Parent { get; set; } 
+        public virtual string Parent { get; set; }
 
         /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and
         /// replaced by the parent field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Required. Deprecated. The name of the Google Compute Engine
         /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has
         /// been deprecated and replaced by the parent field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6696,12 +6696,12 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>[Output only] Duration of the time window, automatically chosen to be smallest possible in the
         /// given scenario.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
-        public virtual string Duration { get; set; } 
+        public virtual string Duration { get; set; }
 
         /// <summary>Time within the maintenance window to start the maintenance operations. It must be in format
         /// "HH:MM", where HH : [00-23] and MM : [00-59] GMT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTime { get; set; } 
+        public virtual string StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6713,11 +6713,11 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-
         /// project/locations/global/keyRings/my-ring/cryptoKeys/my-key</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyName")]
-        public virtual string KeyName { get; set; } 
+        public virtual string KeyName { get; set; }
 
         /// <summary>Denotes the state of etcd encryption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6729,7 +6729,7 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Disables cluster default sNAT rules.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
-        public virtual System.Nullable<bool> Disabled { get; set; } 
+        public virtual System.Nullable<bool> Disabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6740,7 +6740,7 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Whether NodeLocal DNSCache is enabled for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6762,7 +6762,7 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Whether the Compute Engine PD CSI driver is enabled for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6774,11 +6774,11 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>OnePlatform automatically extracts this field and uses it to set the HTTP Cache-Control
         /// header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cacheHeader")]
-        public virtual HttpCacheControlResponseHeader CacheHeader { get; set; } 
+        public virtual HttpCacheControlResponseHeader CacheHeader { get; set; }
 
         /// <summary>The public component of the keys used by the cluster to sign token requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keys")]
-        public virtual System.Collections.Generic.IList<Jwk> Keys { get; set; } 
+        public virtual System.Collections.Generic.IList<Jwk> Keys { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6791,35 +6791,35 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>OnePlatform automatically extracts this field and uses it to set the HTTP Cache-Control
         /// header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cacheHeader")]
-        public virtual HttpCacheControlResponseHeader CacheHeader { get; set; } 
+        public virtual HttpCacheControlResponseHeader CacheHeader { get; set; }
 
         /// <summary>Supported claims.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claims_supported")]
-        public virtual System.Collections.Generic.IList<string> ClaimsSupported { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ClaimsSupported { get; set; }
 
         /// <summary>Supported grant types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("grant_types")]
-        public virtual System.Collections.Generic.IList<string> GrantTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> GrantTypes { get; set; }
 
         /// <summary>supported ID Token signing Algorithms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id_token_signing_alg_values_supported")]
-        public virtual System.Collections.Generic.IList<string> IdTokenSigningAlgValuesSupported { get; set; } 
+        public virtual System.Collections.Generic.IList<string> IdTokenSigningAlgValuesSupported { get; set; }
 
         /// <summary>OIDC Issuer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issuer")]
-        public virtual string Issuer { get; set; } 
+        public virtual string Issuer { get; set; }
 
         /// <summary>JSON Web Key uri.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jwks_uri")]
-        public virtual string JwksUri { get; set; } 
+        public virtual string JwksUri { get; set; }
 
         /// <summary>Supported response types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response_types_supported")]
-        public virtual System.Collections.Generic.IList<string> ResponseTypesSupported { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ResponseTypesSupported { get; set; }
 
         /// <summary>Supported subject types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subject_types_supported")]
-        public virtual System.Collections.Generic.IList<string> SubjectTypesSupported { get; set; } 
+        public virtual System.Collections.Generic.IList<string> SubjectTypesSupported { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6832,7 +6832,7 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Whether the Horizontal Pod Autoscaling feature is enabled in the cluster. When enabled, it ensures
         /// that metrics are collected into Stackdriver Monitoring.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
-        public virtual System.Nullable<bool> Disabled { get; set; } 
+        public virtual System.Nullable<bool> Disabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6843,15 +6843,15 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>14.6 response cache age, in seconds since the response is generated</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("age")]
-        public virtual System.Nullable<long> Age { get; set; } 
+        public virtual System.Nullable<long> Age { get; set; }
 
         /// <summary>14.9 request and response directives</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directive")]
-        public virtual string Directive { get; set; } 
+        public virtual string Directive { get; set; }
 
         /// <summary>14.21 response cache expires, in RFC 1123 date format</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expires")]
-        public virtual string Expires { get; set; } 
+        public virtual string Expires { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6864,7 +6864,7 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Whether the HTTP Load Balancing controller is enabled in the cluster. When enabled, it runs a small
         /// pod in the cluster that manages the load balancers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
-        public virtual System.Nullable<bool> Disabled { get; set; } 
+        public virtual System.Nullable<bool> Disabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6881,11 +6881,11 @@ namespace Google.Apis.Container.v1beta1.Data
         /// `services_ipv4_cidr_block` must be fully-specified. 2) When `use_ip_aliases` is false,
         /// `cluster.cluster_ipv4_cidr` muse be fully-specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowRouteOverlap")]
-        public virtual System.Nullable<bool> AllowRouteOverlap { get; set; } 
+        public virtual System.Nullable<bool> AllowRouteOverlap { get; set; }
 
         /// <summary>This field is deprecated, use cluster_ipv4_cidr_block.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterIpv4Cidr")]
-        public virtual string ClusterIpv4Cidr { get; set; } 
+        public virtual string ClusterIpv4Cidr { get; set; }
 
         /// <summary>The IP address range for the cluster pod IPs. If this field is set, then
         /// `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true.
@@ -6894,22 +6894,22 @@ namespace Google.Apis.Container.v1beta1.Data
         /// notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`,
         /// `192.168.0.0/16`) to pick a specific range to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterIpv4CidrBlock")]
-        public virtual string ClusterIpv4CidrBlock { get; set; } 
+        public virtual string ClusterIpv4CidrBlock { get; set; }
 
         /// <summary>The name of the secondary range to be used for the cluster CIDR block. The secondary range will be
         /// used for pod IP addresses. This must be an existing secondary range associated with the cluster subnetwork.
         /// This field is only applicable with use_ip_aliases and create_subnetwork is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterSecondaryRangeName")]
-        public virtual string ClusterSecondaryRangeName { get; set; } 
+        public virtual string ClusterSecondaryRangeName { get; set; }
 
         /// <summary>Whether a new subnetwork will be created automatically for the cluster. This field is only
         /// applicable when `use_ip_aliases` is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createSubnetwork")]
-        public virtual System.Nullable<bool> CreateSubnetwork { get; set; } 
+        public virtual System.Nullable<bool> CreateSubnetwork { get; set; }
 
         /// <summary>This field is deprecated, use node_ipv4_cidr_block.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeIpv4Cidr")]
-        public virtual string NodeIpv4Cidr { get; set; } 
+        public virtual string NodeIpv4Cidr { get; set; }
 
         /// <summary>The IP address range of the instance IPs in this cluster. This is applicable only if
         /// `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask
@@ -6917,11 +6917,11 @@ namespace Google.Apis.Container.v1beta1.Data
         /// /Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.
         /// `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeIpv4CidrBlock")]
-        public virtual string NodeIpv4CidrBlock { get; set; } 
+        public virtual string NodeIpv4CidrBlock { get; set; }
 
         /// <summary>This field is deprecated, use services_ipv4_cidr_block.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicesIpv4Cidr")]
-        public virtual string ServicesIpv4Cidr { get; set; } 
+        public virtual string ServicesIpv4Cidr { get; set; }
 
         /// <summary>The IP address range of the services IPs in this cluster. If blank, a range will be automatically
         /// chosen with the default size. This field is only applicable when `use_ip_aliases` is true. Set to blank to
@@ -6930,18 +6930,18 @@ namespace Google.Apis.Container.v1beta1.Data
         /// (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`,
         /// `192.168.0.0/16`) to pick a specific range to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicesIpv4CidrBlock")]
-        public virtual string ServicesIpv4CidrBlock { get; set; } 
+        public virtual string ServicesIpv4CidrBlock { get; set; }
 
         /// <summary>The name of the secondary range to be used as for the services CIDR block. The secondary range will
         /// be used for service ClusterIPs. This must be an existing secondary range associated with the cluster
         /// subnetwork. This field is only applicable with use_ip_aliases and create_subnetwork is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicesSecondaryRangeName")]
-        public virtual string ServicesSecondaryRangeName { get; set; } 
+        public virtual string ServicesSecondaryRangeName { get; set; }
 
         /// <summary>A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an
         /// automatic name will be chosen for the new subnetwork.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetworkName")]
-        public virtual string SubnetworkName { get; set; } 
+        public virtual string SubnetworkName { get; set; }
 
         /// <summary>The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be
         /// automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If
@@ -6951,19 +6951,19 @@ namespace Google.Apis.Container.v1beta1.Data
         /// `192.168.0.0/16`) to pick a specific range to use. This field is deprecated, use
         /// cluster.tpu_config.ipv4_cidr_block instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tpuIpv4CidrBlock")]
-        public virtual string TpuIpv4CidrBlock { get; set; } 
+        public virtual string TpuIpv4CidrBlock { get; set; }
 
         /// <summary>Whether alias IPs will be used for pod IPs in the cluster. This is used in conjunction with
         /// use_routes. It cannot be true if use_routes is true. If both use_ip_aliases and use_routes are false, then
         /// the server picks the default IP allocation mode</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useIpAliases")]
-        public virtual System.Nullable<bool> UseIpAliases { get; set; } 
+        public virtual System.Nullable<bool> UseIpAliases { get; set; }
 
         /// <summary>Whether routes will be used for pod IPs in the cluster. This is used in conjunction with
         /// use_ip_aliases. It cannot be true if use_ip_aliases is true. If both use_ip_aliases and use_routes are
         /// false, then the server picks the default IP allocation mode</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useRoutes")]
-        public virtual System.Nullable<bool> UseRoutes { get; set; } 
+        public virtual System.Nullable<bool> UseRoutes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6975,7 +6975,7 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Enables intra node visibility for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6986,11 +6986,11 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>The specified Istio auth mode, either none, or mutual TLS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auth")]
-        public virtual string Auth { get; set; } 
+        public virtual string Auth { get; set; }
 
         /// <summary>Whether Istio is enabled for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
-        public virtual System.Nullable<bool> Disabled { get; set; } 
+        public virtual System.Nullable<bool> Disabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7001,39 +7001,39 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Algorithm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alg")]
-        public virtual string Alg { get; set; } 
+        public virtual string Alg { get; set; }
 
         /// <summary>Used for ECDSA keys.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crv")]
-        public virtual string Crv { get; set; } 
+        public virtual string Crv { get; set; }
 
         /// <summary>Used for RSA keys.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("e")]
-        public virtual string E { get; set; } 
+        public virtual string E { get; set; }
 
         /// <summary>Key ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kid")]
-        public virtual string Kid { get; set; } 
+        public virtual string Kid { get; set; }
 
         /// <summary>Key Type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kty")]
-        public virtual string Kty { get; set; } 
+        public virtual string Kty { get; set; }
 
         /// <summary>Used for RSA keys.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("n")]
-        public virtual string N { get; set; } 
+        public virtual string N { get; set; }
 
         /// <summary>Permitted uses for the public keys.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("use")]
-        public virtual string Use { get; set; } 
+        public virtual string Use { get; set; }
 
         /// <summary>Used for ECDSA keys.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("x")]
-        public virtual string X { get; set; } 
+        public virtual string X { get; set; }
 
         /// <summary>Used for ECDSA keys.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("y")]
-        public virtual string Y { get; set; } 
+        public virtual string Y { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7044,7 +7044,7 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Whether KALM is enabled for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7055,7 +7055,7 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Whether the Kubernetes Dashboard is enabled for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
-        public virtual System.Nullable<bool> Disabled { get; set; } 
+        public virtual System.Nullable<bool> Disabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7068,7 +7068,7 @@ namespace Google.Apis.Container.v1beta1.Data
         /// including service accounts, nodes, and controllers, will have statically granted permissions beyond those
         /// provided by the RBAC configuration or IAM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7082,7 +7082,7 @@ namespace Google.Apis.Container.v1beta1.Data
         /// net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem
         /// net.ipv4.tcp_tw_reuse</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sysctls")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Sysctls { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Sysctls { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7093,11 +7093,11 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>A list of clusters in the project in the specified zone, or across all ones.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusters")]
-        public virtual System.Collections.Generic.IList<Cluster> Clusters { get; set; } 
+        public virtual System.Collections.Generic.IList<Cluster> Clusters { get; set; }
 
         /// <summary>If any zones are listed here, the list of clusters returned may be missing those zones.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("missingZones")]
-        public virtual System.Collections.Generic.IList<string> MissingZones { get; set; } 
+        public virtual System.Collections.Generic.IList<string> MissingZones { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7108,13 +7108,13 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>A full list of GKE locations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
+        public virtual System.Collections.Generic.IList<Location> Locations { get; set; }
 
         /// <summary>Only return ListLocationsResponse that occur after the page_token. This value should be populated
         /// from the ListLocationsResponse.next_page_token if that response token was set (which happens when listing
         /// more Locations than fit in a single ListLocationsResponse).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7125,7 +7125,7 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>A list of node pools for a cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodePools")]
-        public virtual System.Collections.Generic.IList<NodePool> NodePools { get; set; } 
+        public virtual System.Collections.Generic.IList<NodePool> NodePools { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7137,11 +7137,11 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>If any zones are listed here, the list of operations returned may be missing the operations from
         /// those zones.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("missingZones")]
-        public virtual System.Collections.Generic.IList<string> MissingZones { get; set; } 
+        public virtual System.Collections.Generic.IList<string> MissingZones { get; set; }
 
         /// <summary>A list of operations in the project in the specified zone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7154,11 +7154,11 @@ namespace Google.Apis.Container.v1beta1.Data
         /// is larger than `page_size`, use the `next_page_token` as a value for the query parameter `page_token` in the
         /// next request. The value will become empty when there are no more pages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of usable subnetworks in the specified network project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetworks")]
-        public virtual System.Collections.Generic.IList<UsableSubnetwork> Subnetworks { get; set; } 
+        public virtual System.Collections.Generic.IList<UsableSubnetwork> Subnetworks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7171,15 +7171,15 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Contains the name of the resource requested. Specified in the format
         /// `projects/locations`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Whether the location is recomended for GKE cluster scheduling.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommended")]
-        public virtual System.Nullable<bool> Recommended { get; set; } 
+        public virtual System.Nullable<bool> Recommended { get; set; }
 
         /// <summary>Contains the type of location this Location is for. Regional or Zonal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7193,11 +7193,11 @@ namespace Google.Apis.Container.v1beta1.Data
         /// accidentally remove other fields). Make a `get()` request to the cluster to get the current resource version
         /// and include it with requests to set the policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceVersion")]
-        public virtual string ResourceVersion { get; set; } 
+        public virtual string ResourceVersion { get; set; }
 
         /// <summary>Specifies the maintenance window in which maintenance may be performed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("window")]
-        public virtual MaintenanceWindow Window { get; set; } 
+        public virtual MaintenanceWindow Window { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7208,17 +7208,17 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>DailyMaintenanceWindow specifies a daily maintenance operation window.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dailyMaintenanceWindow")]
-        public virtual DailyMaintenanceWindow DailyMaintenanceWindow { get; set; } 
+        public virtual DailyMaintenanceWindow DailyMaintenanceWindow { get; set; }
 
         /// <summary>Exceptions to maintenance window. Non-emergency maintenance should not occur in these
         /// windows.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceExclusions")]
-        public virtual System.Collections.Generic.IDictionary<string,TimeWindow> MaintenanceExclusions { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, TimeWindow> MaintenanceExclusions { get; set; }
 
         /// <summary>RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time
         /// windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recurringWindow")]
-        public virtual RecurringTimeWindow RecurringWindow { get; set; } 
+        public virtual RecurringTimeWindow RecurringWindow { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7238,20 +7238,20 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>[Output only] Base64-encoded public certificate used by clients to authenticate to the cluster
         /// endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientCertificate")]
-        public virtual string ClientCertificate { get; set; } 
+        public virtual string ClientCertificate { get; set; }
 
         /// <summary>Configuration for client certificate authentication on the cluster. For clusters before v1.12, if
         /// no configuration is specified, a client certificate is issued.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientCertificateConfig")]
-        public virtual ClientCertificateConfig ClientCertificateConfig { get; set; } 
+        public virtual ClientCertificateConfig ClientCertificateConfig { get; set; }
 
         /// <summary>[Output only] Base64-encoded private key used by clients to authenticate to the cluster
         /// endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientKey")]
-        public virtual string ClientKey { get; set; } 
+        public virtual string ClientKey { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("clusterCaCertificate")]
-        public virtual string ClusterCaCertificate { get; set; } 
+        public virtual string ClusterCaCertificate { get; set; }
 
         /// <summary>The password to use for HTTP basic authentication to the master endpoint. Because the master
         /// endpoint is open to the Internet, you should create a strong password. If a password is provided for cluster
@@ -7259,7 +7259,7 @@ namespace Google.Apis.Container.v1beta1.Data
         /// GKE control plane versions 1.19 and newer. For a list of recommended authentication methods, see:
         /// https://cloud.google.com/kubernetes-engine/docs/how-to/api-server-authentication</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
-        public virtual string Password { get; set; } 
+        public virtual string Password { get; set; }
 
         /// <summary>The username to use for HTTP basic authentication to the master endpoint. For clusters v1.6.0 and
         /// later, basic authentication can be disabled by leaving username unspecified (or setting it to the empty
@@ -7267,7 +7267,7 @@ namespace Google.Apis.Container.v1beta1.Data
         /// and newer. For a list of recommended authentication methods, see: https://cloud.google.com/kubernetes-
         /// engine/docs/how-to/api-server-authentication</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; } 
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7281,11 +7281,11 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>cidr_blocks define up to 10 external networks that could access Kubernetes master through
         /// HTTPS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cidrBlocks")]
-        public virtual System.Collections.Generic.IList<CidrBlock> CidrBlocks { get; set; } 
+        public virtual System.Collections.Generic.IList<CidrBlock> CidrBlocks { get; set; }
 
         /// <summary>Whether or not master authorized networks is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7296,7 +7296,7 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Constraint enforced on the max num of pods per node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxPodsPerNode")]
-        public virtual System.Nullable<long> MaxPodsPerNode { get; set; } 
+        public virtual System.Nullable<long> MaxPodsPerNode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7307,19 +7307,19 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>For metrics with floating point value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
-        public virtual System.Nullable<double> DoubleValue { get; set; } 
+        public virtual System.Nullable<double> DoubleValue { get; set; }
 
         /// <summary>For metrics with integer value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intValue")]
-        public virtual System.Nullable<long> IntValue { get; set; } 
+        public virtual System.Nullable<long> IntValue { get; set; }
 
         /// <summary>Required. Metric name, e.g., "nodes total", "percent done".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>For metrics with custom values (ratios, visual progress, etc.).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
-        public virtual string StringValue { get; set; } 
+        public virtual string StringValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7331,30 +7331,30 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy
         /// implementation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datapathProvider")]
-        public virtual string DatapathProvider { get; set; } 
+        public virtual string DatapathProvider { get; set; }
 
         /// <summary>Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when
         /// default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied
         /// to the nodes to prevent sNAT on cluster internal traffic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultSnatStatus")]
-        public virtual DefaultSnatStatus DefaultSnatStatus { get; set; } 
+        public virtual DefaultSnatStatus DefaultSnatStatus { get; set; }
 
         /// <summary>Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic
         /// visible for VPC network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableIntraNodeVisibility")]
-        public virtual System.Nullable<bool> EnableIntraNodeVisibility { get; set; } 
+        public virtual System.Nullable<bool> EnableIntraNodeVisibility { get; set; }
 
         /// <summary>Output only. The relative name of the Google Compute Engine
         /// network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is
         /// connected. Example: projects/my-project/global/networks/my-network</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
-        public virtual string Network { get; set; } 
+        public virtual string Network { get; set; }
 
         /// <summary>Output only. The relative name of the Google Compute Engine
         /// [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects
         /// /my-project/regions/us-central1/subnetworks/my-subnet</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
-        public virtual string Subnetwork { get; set; } 
+        public virtual string Subnetwork { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7366,11 +7366,11 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Whether network policy is enabled on the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The selected network policy provider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provider")]
-        public virtual string Provider { get; set; } 
+        public virtual string Provider { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7382,7 +7382,7 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Whether NetworkPolicy is enabled for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
-        public virtual System.Nullable<bool> Disabled { get; set; } 
+        public virtual System.Nullable<bool> Disabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7394,7 +7394,7 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>A list of hardware accelerators to be attached to each node. See
         /// https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accelerators")]
-        public virtual System.Collections.Generic.IList<AcceleratorConfig> Accelerators { get; set; } 
+        public virtual System.Collections.Generic.IList<AcceleratorConfig> Accelerators { get; set; }
 
         /// <summary> The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the
         /// node pool. This should be of the form
@@ -7402,26 +7402,26 @@ namespace Google.Apis.Container.v1beta1.Data
         /// information about protecting resources with Cloud KMS Keys please see:
         /// https://cloud.google.com/compute/docs/disks/customer-managed-encryption</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootDiskKmsKey")]
-        public virtual string BootDiskKmsKey { get; set; } 
+        public virtual string BootDiskKmsKey { get; set; }
 
         /// <summary>Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If
         /// unspecified, the default disk size is 100GB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
-        public virtual System.Nullable<int> DiskSizeGb { get; set; } 
+        public virtual System.Nullable<int> DiskSizeGb { get; set; }
 
         /// <summary>Type of the disk attached to each node (e.g. 'pd-standard' or 'pd-ssd') If unspecified, the default
         /// disk type is 'pd-standard'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
-        public virtual string DiskType { get; set; } 
+        public virtual string DiskType { get; set; }
 
         /// <summary>The image type to use for this node. Note that for a given image type, the latest version of it
         /// will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
-        public virtual string ImageType { get; set; } 
+        public virtual string ImageType { get; set; }
 
         /// <summary>Node kubelet configs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kubeletConfig")]
-        public virtual NodeKubeletConfig KubeletConfig { get; set; } 
+        public virtual NodeKubeletConfig KubeletConfig { get; set; }
 
         /// <summary>The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in
         /// addition to any default label(s) that Kubernetes may apply to the node. In case of conflict in label keys,
@@ -7429,22 +7429,22 @@ namespace Google.Apis.Container.v1beta1.Data
         /// undefined and conflicts should be avoided. For more information, including usage and the valid values, see:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Parameters that can be configured on Linux nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linuxNodeConfig")]
-        public virtual LinuxNodeConfig LinuxNodeConfig { get; set; } 
+        public virtual LinuxNodeConfig LinuxNodeConfig { get; set; }
 
         /// <summary>The number of local SSD disks to be attached to the node. The limit for this value is dependent
         /// upon the maximum number of disks available on a machine per zone. See:
         /// https://cloud.google.com/compute/docs/disks/local-ssd for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localSsdCount")]
-        public virtual System.Nullable<int> LocalSsdCount { get; set; } 
+        public virtual System.Nullable<int> LocalSsdCount { get; set; }
 
         /// <summary>The name of a Google Compute Engine [machine type](https://cloud.google.com/compute/docs/machine-
         /// types). If unspecified, the default machine type is `e2-medium`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
-        public virtual string MachineType { get; set; } 
+        public virtual string MachineType { get; set; }
 
         /// <summary>The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp
         /// `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata
@@ -7458,20 +7458,20 @@ namespace Google.Apis.Container.v1beta1.Data
         /// size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512
         /// KB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
         /// <summary>Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or
         /// newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform:
         /// "Intel Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min
         /// CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
-        public virtual string MinCpuPlatform { get; set; } 
+        public virtual string MinCpuPlatform { get; set; }
 
         /// <summary>Setting this field will assign instances of this pool to run on the specified node group. This is
         /// useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-
         /// nodes).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeGroup")]
-        public virtual string NodeGroup { get; set; } 
+        public virtual string NodeGroup { get; set; }
 
         /// <summary>The set of Google API scopes to be made available on all of the node VMs under the "default"
         /// service account. The following scopes are recommended, but not required, and by default are not included: *
@@ -7481,48 +7481,48 @@ namespace Google.Apis.Container.v1beta1.Data
         /// added, unless Cloud Logging or Cloud Monitoring are enabled, in which case their required scopes will be
         /// added.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauthScopes")]
-        public virtual System.Collections.Generic.IList<string> OauthScopes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> OauthScopes { get; set; }
 
         /// <summary>Whether the nodes are created as preemptible VM instances. See:
         /// https://cloud.google.com/compute/docs/instances/preemptible for more inforamtion about preemptible VM
         /// instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preemptible")]
-        public virtual System.Nullable<bool> Preemptible { get; set; } 
+        public virtual System.Nullable<bool> Preemptible { get; set; }
 
         /// <summary>The optional reservation affinity. Setting this field will apply the specified [Zonal Compute
         /// Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this node
         /// pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservationAffinity")]
-        public virtual ReservationAffinity ReservationAffinity { get; set; } 
+        public virtual ReservationAffinity ReservationAffinity { get; set; }
 
         /// <summary>Sandbox configuration for this node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sandboxConfig")]
-        public virtual SandboxConfig SandboxConfig { get; set; } 
+        public virtual SandboxConfig SandboxConfig { get; set; }
 
         /// <summary>The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of
         /// the Service Account; otherwise, if no Service Account is specified, the "default" service account is
         /// used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
-        public virtual string ServiceAccount { get; set; } 
+        public virtual string ServiceAccount { get; set; }
 
         /// <summary>Shielded Instance options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceConfig")]
-        public virtual ShieldedInstanceConfig ShieldedInstanceConfig { get; set; } 
+        public virtual ShieldedInstanceConfig ShieldedInstanceConfig { get; set; }
 
         /// <summary>The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets
         /// for network firewalls and are specified by the client during cluster or node pool creation. Each tag within
         /// the list must comply with RFC1035.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
-        public virtual System.Collections.Generic.IList<string> Tags { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
         /// <summary>List of kubernetes taints to be applied to each node. For more information, including usage and the
         /// valid values, see: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taints")]
-        public virtual System.Collections.Generic.IList<NodeTaint> Taints { get; set; } 
+        public virtual System.Collections.Generic.IList<NodeTaint> Taints { get; set; }
 
         /// <summary>The workload metadata configuration for this node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloadMetadataConfig")]
-        public virtual WorkloadMetadataConfig WorkloadMetadataConfig { get; set; } 
+        public virtual WorkloadMetadataConfig WorkloadMetadataConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7537,13 +7537,13 @@ namespace Google.Apis.Container.v1beta1.Data
         /// mitigate CPU throttling problems while still having your pods to be in Guaranteed QoS class by specifying
         /// the CPU limits. The default value is 'true' if unspecified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuCfsQuota")]
-        public virtual System.Nullable<bool> CpuCfsQuota { get; set; } 
+        public virtual System.Nullable<bool> CpuCfsQuota { get; set; }
 
         /// <summary>Set the CPU CFS quota period value 'cpu.cfs_period_us'. The string must be a sequence of decimal
         /// numbers, each with optional fraction and a unit suffix, such as "300ms". Valid time units are "ns", "us" (or
         /// "µs"), "ms", "s", "m", "h". The value must be a positive duration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuCfsQuotaPeriod")]
-        public virtual string CpuCfsQuotaPeriod { get; set; } 
+        public virtual string CpuCfsQuotaPeriod { get; set; }
 
         /// <summary>Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-
         /// cluster/cpu-management-policies/ The following values are allowed. - "none": the default, which represents
@@ -7551,7 +7551,7 @@ namespace Google.Apis.Container.v1beta1.Data
         /// granted increased CPU affinity and exclusivity on the node. The default value is 'none' if
         /// unspecified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuManagerPolicy")]
-        public virtual string CpuManagerPolicy { get; set; } 
+        public virtual string CpuManagerPolicy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7562,15 +7562,15 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Whether the nodes will be automatically repaired.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoRepair")]
-        public virtual System.Nullable<bool> AutoRepair { get; set; } 
+        public virtual System.Nullable<bool> AutoRepair { get; set; }
 
         /// <summary>Whether the nodes will be automatically upgraded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoUpgrade")]
-        public virtual System.Nullable<bool> AutoUpgrade { get; set; } 
+        public virtual System.Nullable<bool> AutoUpgrade { get; set; }
 
         /// <summary>Specifies the Auto Upgrade knobs for the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeOptions")]
-        public virtual AutoUpgradeOptions UpgradeOptions { get; set; } 
+        public virtual AutoUpgradeOptions UpgradeOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7585,70 +7585,70 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is
         /// present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoscaling")]
-        public virtual NodePoolAutoscaling Autoscaling { get; set; } 
+        public virtual NodePoolAutoscaling Autoscaling { get; set; }
 
         /// <summary>Which conditions caused the current node pool state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
-        public virtual System.Collections.Generic.IList<StatusCondition> Conditions { get; set; } 
+        public virtual System.Collections.Generic.IList<StatusCondition> Conditions { get; set; }
 
         /// <summary>The node configuration of the pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
-        public virtual NodeConfig Config { get; set; } 
+        public virtual NodeConfig Config { get; set; }
 
         /// <summary>The initial node count for the pool. You must ensure that your Compute Engine [resource
         /// quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also
         /// have available firewall and routes quota.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialNodeCount")]
-        public virtual System.Nullable<int> InitialNodeCount { get; set; } 
+        public virtual System.Nullable<int> InitialNodeCount { get; set; }
 
         /// <summary>[Output only] The resource URLs of the [managed instance
         /// groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances)
         /// associated with this node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceGroupUrls")]
-        public virtual System.Collections.Generic.IList<string> InstanceGroupUrls { get; set; } 
+        public virtual System.Collections.Generic.IList<string> InstanceGroupUrls { get; set; }
 
         /// <summary>The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in
         /// which the NodePool's nodes should be located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<string> Locations { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Locations { get; set; }
 
         /// <summary>NodeManagement configuration for this NodePool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("management")]
-        public virtual NodeManagement Management { get; set; } 
+        public virtual NodeManagement Management { get; set; }
 
         /// <summary>The constraint on the maximum number of pods that can be run simultaneously on a node in the node
         /// pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxPodsConstraint")]
-        public virtual MaxPodsConstraint MaxPodsConstraint { get; set; } 
+        public virtual MaxPodsConstraint MaxPodsConstraint { get; set; }
 
         /// <summary>The name of the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>[Output only] The pod CIDR block size per node in this node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("podIpv4CidrSize")]
-        public virtual System.Nullable<int> PodIpv4CidrSize { get; set; } 
+        public virtual System.Nullable<int> PodIpv4CidrSize { get; set; }
 
         /// <summary>[Output only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>[Output only] The status of the nodes in this pool instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>[Output only] Additional information about the current status of this node pool instance, if
         /// available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
-        public virtual string StatusMessage { get; set; } 
+        public virtual string StatusMessage { get; set; }
 
         /// <summary>Upgrade settings control disruption and speed of the upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeSettings")]
-        public virtual UpgradeSettings UpgradeSettings { get; set; } 
+        public virtual UpgradeSettings UpgradeSettings { get; set; }
 
         /// <summary>The version of the Kubernetes of this node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7660,20 +7660,20 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Can this node pool be deleted automatically.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoprovisioned")]
-        public virtual System.Nullable<bool> Autoprovisioned { get; set; } 
+        public virtual System.Nullable<bool> Autoprovisioned { get; set; }
 
         /// <summary>Is autoscaling enabled for this node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to enough quota to
         /// scale up the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxNodeCount")]
-        public virtual System.Nullable<int> MaxNodeCount { get; set; } 
+        public virtual System.Nullable<int> MaxNodeCount { get; set; }
 
         /// <summary>Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minNodeCount")]
-        public virtual System.Nullable<int> MinNodeCount { get; set; } 
+        public virtual System.Nullable<int> MinNodeCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7686,15 +7686,15 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Effect for taint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effect")]
-        public virtual string Effect { get; set; } 
+        public virtual string Effect { get; set; }
 
         /// <summary>Key for taint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         /// <summary>Value for taint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7705,7 +7705,7 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Notification config for Pub/Sub.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsub")]
-        public virtual PubSub Pubsub { get; set; } 
+        public virtual PubSub Pubsub { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7717,69 +7717,69 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Which conditions caused the current cluster state. Deprecated. Use field error instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterConditions")]
-        public virtual System.Collections.Generic.IList<StatusCondition> ClusterConditions { get; set; } 
+        public virtual System.Collections.Generic.IList<StatusCondition> ClusterConditions { get; set; }
 
         /// <summary>Detailed operation progress, if available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detail")]
-        public virtual string Detail { get; set; } 
+        public virtual string Detail { get; set; }
 
         /// <summary>[Output only] The time the operation completed, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
         /// text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTime { get; set; } 
+        public virtual string EndTime { get; set; }
 
         /// <summary>The error result of the operation in case of failure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>[Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs
         /// /regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones
         /// /regions-zones#available) in which the cluster resides.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>The server-assigned ID for the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Which conditions caused the current node pool state. Deprecated. Use field error instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodepoolConditions")]
-        public virtual System.Collections.Generic.IList<StatusCondition> NodepoolConditions { get; set; } 
+        public virtual System.Collections.Generic.IList<StatusCondition> NodepoolConditions { get; set; }
 
         /// <summary>The operation type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
-        public virtual string OperationType { get; set; } 
+        public virtual string OperationType { get; set; }
 
         /// <summary>Output only. [Output only] Progress information for an operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
-        public virtual OperationProgress Progress { get; set; } 
+        public virtual OperationProgress Progress { get; set; }
 
         /// <summary>Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>[Output only] The time the operation started, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
         /// text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTime { get; set; } 
+        public virtual string StartTime { get; set; }
 
         /// <summary>The current status of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>Output only. If an error has occurred, a textual description of the error. Deprecated. Use field
         /// error instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
-        public virtual string StatusMessage { get; set; } 
+        public virtual string StatusMessage { get; set; }
 
         /// <summary>Server-defined URL for the target of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetLink")]
-        public virtual string TargetLink { get; set; } 
+        public virtual string TargetLink { get; set; }
 
         /// <summary>The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available)
         /// in which the operation is taking place. This field is deprecated, use location instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7792,20 +7792,20 @@ namespace Google.Apis.Container.v1beta1.Data
         /// total", int_value: 32}] or metrics: [{name: "progress", double_value: 0.56}, {name: "progress scale",
         /// double_value: 1.0}]</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
-        public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; } 
+        public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; }
 
         /// <summary>A non-parameterized string describing an operation stage. Unset for single-stage
         /// operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Substages of an operation or a stage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stages")]
-        public virtual System.Collections.Generic.IList<OperationProgress> Stages { get; set; } 
+        public virtual System.Collections.Generic.IList<OperationProgress> Stages { get; set; }
 
         /// <summary>Status of an operation stage. Unset for single-stage operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7817,7 +7817,7 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Enable the PodSecurityPolicy controller for this cluster. If enabled, pods must be valid under a
         /// PodSecurityPolicy to be created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7828,34 +7828,34 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Whether the master's internal IP address is used as the cluster endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateEndpoint")]
-        public virtual System.Nullable<bool> EnablePrivateEndpoint { get; set; } 
+        public virtual System.Nullable<bool> EnablePrivateEndpoint { get; set; }
 
         /// <summary>Whether nodes have internal IP addresses only. If enabled, all nodes are given only RFC 1918
         /// private addresses and communicate with the master via private networking.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateNodes")]
-        public virtual System.Nullable<bool> EnablePrivateNodes { get; set; } 
+        public virtual System.Nullable<bool> EnablePrivateNodes { get; set; }
 
         /// <summary>Controls master global access settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterGlobalAccessConfig")]
-        public virtual PrivateClusterMasterGlobalAccessConfig MasterGlobalAccessConfig { get; set; } 
+        public virtual PrivateClusterMasterGlobalAccessConfig MasterGlobalAccessConfig { get; set; }
 
         /// <summary>The IP range in CIDR notation to use for the hosted master network. This range will be used for
         /// assigning internal IP addresses to the master or set of masters, as well as the ILB VIP. This range must not
         /// overlap with any other ranges in use within the cluster's network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterIpv4CidrBlock")]
-        public virtual string MasterIpv4CidrBlock { get; set; } 
+        public virtual string MasterIpv4CidrBlock { get; set; }
 
         /// <summary>Output only. The peering name in the customer VPC used by this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peeringName")]
-        public virtual string PeeringName { get; set; } 
+        public virtual string PeeringName { get; set; }
 
         /// <summary>Output only. The internal IP address of this cluster's master endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateEndpoint")]
-        public virtual string PrivateEndpoint { get; set; } 
+        public virtual string PrivateEndpoint { get; set; }
 
         /// <summary>Output only. The external IP address of this cluster's master endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicEndpoint")]
-        public virtual string PublicEndpoint { get; set; } 
+        public virtual string PublicEndpoint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7866,7 +7866,7 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Whenever master is accessible globally or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7877,12 +7877,12 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Enable notifications for Pub/Sub.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The desired Pub/Sub topic to which notifications will be sent by GKE. Format is
         /// `projects/{project}/topics/{topic}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topic")]
-        public virtual string Topic { get; set; } 
+        public virtual string Topic { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7904,11 +7904,11 @@ namespace Google.Apis.Container.v1beta1.Data
         /// specify duration of the window and when it first starts. The FREQ values of HOURLY, MINUTELY, and SECONDLY
         /// are not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recurrence")]
-        public virtual string Recurrence { get; set; } 
+        public virtual string Recurrence { get; set; }
 
         /// <summary>The window of the first recurrence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("window")]
-        public virtual TimeWindow Window { get; set; } 
+        public virtual TimeWindow Window { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7921,7 +7921,7 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>channel specifies which release channel the cluster is subscribed to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channel")]
-        public virtual string Channel { get; set; } 
+        public virtual string Channel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7932,19 +7932,19 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Deprecated. This field has been deprecated and replaced with the valid_versions field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availableVersions")]
-        public virtual System.Collections.Generic.IList<AvailableVersion> AvailableVersions { get; set; } 
+        public virtual System.Collections.Generic.IList<AvailableVersion> AvailableVersions { get; set; }
 
         /// <summary>The release channel this configuration applies to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channel")]
-        public virtual string Channel { get; set; } 
+        public virtual string Channel { get; set; }
 
         /// <summary>The default version for newly created clusters on the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultVersion")]
-        public virtual string DefaultVersion { get; set; } 
+        public virtual string DefaultVersion { get; set; }
 
         /// <summary>List of valid versions for the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validVersions")]
-        public virtual System.Collections.Generic.IList<string> ValidVersions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ValidVersions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7956,17 +7956,17 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Corresponds to the type of reservation consumption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumeReservationType")]
-        public virtual string ConsumeReservationType { get; set; } 
+        public virtual string ConsumeReservationType { get; set; }
 
         /// <summary>Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name,
         /// specify "googleapis.com/reservation-name" as the key and specify the name of your reservation as its
         /// value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         /// <summary>Corresponds to the label value(s) of reservation resource(s).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<string> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7978,15 +7978,15 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Maximum amount of the resource in the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximum")]
-        public virtual System.Nullable<long> Maximum { get; set; } 
+        public virtual System.Nullable<long> Maximum { get; set; }
 
         /// <summary>Minimum amount of the resource in the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimum")]
-        public virtual System.Nullable<long> Minimum { get; set; } 
+        public virtual System.Nullable<long> Minimum { get; set; }
 
         /// <summary>Resource name "cpu", "memory" or gpu-specific string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
-        public virtual string ResourceType { get; set; } 
+        public virtual string ResourceType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7997,16 +7997,16 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Configuration to use BigQuery as usage export destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
-        public virtual BigQueryDestination BigqueryDestination { get; set; } 
+        public virtual BigQueryDestination BigqueryDestination { get; set; }
 
         /// <summary>Configuration to enable resource consumption metering.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumptionMeteringConfig")]
-        public virtual ConsumptionMeteringConfig ConsumptionMeteringConfig { get; set; } 
+        public virtual ConsumptionMeteringConfig ConsumptionMeteringConfig { get; set; }
 
         /// <summary>Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created
         /// in the cluster to meter network egress traffic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableNetworkEgressMetering")]
-        public virtual System.Nullable<bool> EnableNetworkEgressMetering { get; set; } 
+        public virtual System.Nullable<bool> EnableNetworkEgressMetering { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8019,29 +8019,29 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Required. Deprecated. The name of the cluster to rollback. This field has been deprecated and
         /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
-        public virtual string ClusterId { get; set; } 
+        public virtual string ClusterId { get; set; }
 
         /// <summary>The name (project, location, cluster, node pool id) of the node poll to rollback upgrade. Specified
         /// in the format `projects/locations/clusters/nodePools`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. Deprecated. The name of the node pool to rollback. This field has been deprecated and
         /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodePoolId")]
-        public virtual string NodePoolId { get; set; } 
+        public virtual string NodePoolId { get; set; }
 
         /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Required. Deprecated. The name of the Google Compute Engine
         /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has
         /// been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8052,11 +8052,11 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Type of the sandbox to use for the node (e.g. 'gvisor')</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sandboxType")]
-        public virtual string SandboxType { get; set; } 
+        public virtual string SandboxType { get; set; }
 
         /// <summary>Type of the sandbox to use for the node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8067,27 +8067,27 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>List of release channel configurations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channels")]
-        public virtual System.Collections.Generic.IList<ReleaseChannelConfig> Channels { get; set; } 
+        public virtual System.Collections.Generic.IList<ReleaseChannelConfig> Channels { get; set; }
 
         /// <summary>Version of Kubernetes the service deploys by default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultClusterVersion")]
-        public virtual string DefaultClusterVersion { get; set; } 
+        public virtual string DefaultClusterVersion { get; set; }
 
         /// <summary>Default image type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultImageType")]
-        public virtual string DefaultImageType { get; set; } 
+        public virtual string DefaultImageType { get; set; }
 
         /// <summary>List of valid image types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validImageTypes")]
-        public virtual System.Collections.Generic.IList<string> ValidImageTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ValidImageTypes { get; set; }
 
         /// <summary>List of valid master versions, in descending order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validMasterVersions")]
-        public virtual System.Collections.Generic.IList<string> ValidMasterVersions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ValidMasterVersions { get; set; }
 
         /// <summary>List of valid node upgrade target versions, in descending order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validNodeVersions")]
-        public virtual System.Collections.Generic.IList<string> ValidNodeVersions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ValidNodeVersions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8099,29 +8099,29 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Required. The desired configurations for the various addons available to run in the
         /// cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addonsConfig")]
-        public virtual AddonsConfig AddonsConfig { get; set; } 
+        public virtual AddonsConfig AddonsConfig { get; set; }
 
         /// <summary>Required. Deprecated. The name of the cluster to upgrade. This field has been deprecated and
         /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
-        public virtual string ClusterId { get; set; } 
+        public virtual string ClusterId { get; set; }
 
         /// <summary>The name (project, location, cluster) of the cluster to set addons. Specified in the format
         /// `projects/locations/clusters`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Required. Deprecated. The name of the Google Compute Engine
         /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has
         /// been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8134,35 +8134,35 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Required. Deprecated. The name of the cluster. This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
-        public virtual string ClusterId { get; set; } 
+        public virtual string ClusterId { get; set; }
 
         /// <summary>Required. The fingerprint of the previous set of labels for this resource, used to detect
         /// conflicts. The fingerprint is initially generated by Kubernetes Engine and changes after every request to
         /// modify or update labels. You must always provide an up-to-date fingerprint hash when updating or changing
         /// labels. Make a `get()` request to the resource to get the latest fingerprint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
-        public virtual string LabelFingerprint { get; set; } 
+        public virtual string LabelFingerprint { get; set; }
 
         /// <summary>The name (project, location, cluster id) of the cluster to set labels. Specified in the format
         /// `projects/locations/clusters`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and
         /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Required. The labels to set for that cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceLabels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> ResourceLabels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> ResourceLabels { get; set; }
 
         /// <summary>Required. Deprecated. The name of the Google Compute Engine
         /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has
         /// been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8174,28 +8174,28 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Required. Deprecated. The name of the cluster to update. This field has been deprecated and
         /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
-        public virtual string ClusterId { get; set; } 
+        public virtual string ClusterId { get; set; }
 
         /// <summary>Required. Whether ABAC authorization will be enabled in the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The name (project, location, cluster id) of the cluster to set legacy abac. Specified in the format
         /// `projects/locations/clusters`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Required. Deprecated. The name of the Google Compute Engine
         /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has
         /// been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8207,7 +8207,7 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Required. Deprecated. The name of the cluster to upgrade. This field has been deprecated and
         /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
-        public virtual string ClusterId { get; set; } 
+        public virtual string ClusterId { get; set; }
 
         /// <summary>Required. The desired list of Google Compute Engine
         /// [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be
@@ -8215,24 +8215,24 @@ namespace Google.Apis.Container.v1beta1.Data
         /// the cluster, depending on whether locations are being added or removed. This list must always include the
         /// cluster's primary zone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<string> Locations { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Locations { get; set; }
 
         /// <summary>The name (project, location, cluster) of the cluster to set locations. Specified in the format
         /// `projects/locations/clusters`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Required. Deprecated. The name of the Google Compute Engine
         /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has
         /// been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8244,7 +8244,7 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Required. Deprecated. The name of the cluster to upgrade. This field has been deprecated and
         /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
-        public virtual string ClusterId { get; set; } 
+        public virtual string ClusterId { get; set; }
 
         /// <summary>Required. The logging service the cluster should use to write logs. Currently available options: *
         /// `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model *
@@ -8252,24 +8252,24 @@ namespace Google.Apis.Container.v1beta1.Data
         /// no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes`
         /// will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loggingService")]
-        public virtual string LoggingService { get; set; } 
+        public virtual string LoggingService { get; set; }
 
         /// <summary>The name (project, location, cluster) of the cluster to set logging. Specified in the format
         /// `projects/locations/clusters`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Required. Deprecated. The name of the Google Compute Engine
         /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has
         /// been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8280,27 +8280,27 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Required. The name of the cluster to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
-        public virtual string ClusterId { get; set; } 
+        public virtual string ClusterId { get; set; }
 
         /// <summary>Required. The maintenance policy to be set for the cluster. An empty field clears the existing
         /// maintenance policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicy")]
-        public virtual MaintenancePolicy MaintenancePolicy { get; set; } 
+        public virtual MaintenancePolicy MaintenancePolicy { get; set; }
 
         /// <summary>The name (project, location, cluster id) of the cluster to set maintenance policy. Specified in the
         /// format `projects/locations/clusters`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Required. The name of the Google Compute Engine
         /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8311,33 +8311,33 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Required. The exact form of action to be taken on the master auth.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual string Action { get; set; } 
+        public virtual string Action { get; set; }
 
         /// <summary>Required. Deprecated. The name of the cluster to upgrade. This field has been deprecated and
         /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
-        public virtual string ClusterId { get; set; } 
+        public virtual string ClusterId { get; set; }
 
         /// <summary>The name (project, location, cluster) of the cluster to set auth. Specified in the format
         /// `projects/locations/clusters`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Required. A description of the update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("update")]
-        public virtual MasterAuth Update { get; set; } 
+        public virtual MasterAuth Update { get; set; }
 
         /// <summary>Required. Deprecated. The name of the Google Compute Engine
         /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has
         /// been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8349,7 +8349,7 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Required. Deprecated. The name of the cluster to upgrade. This field has been deprecated and
         /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
-        public virtual string ClusterId { get; set; } 
+        public virtual string ClusterId { get; set; }
 
         /// <summary>Required. The monitoring service the cluster should use to write metrics. Currently available
         /// options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native
@@ -8358,24 +8358,24 @@ namespace Google.Apis.Container.v1beta1.Data
         /// string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for
         /// earlier versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitoringService")]
-        public virtual string MonitoringService { get; set; } 
+        public virtual string MonitoringService { get; set; }
 
         /// <summary>The name (project, location, cluster) of the cluster to set monitoring. Specified in the format
         /// `projects/locations/clusters`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Required. Deprecated. The name of the Google Compute Engine
         /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has
         /// been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8387,28 +8387,28 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Required. Deprecated. The name of the cluster. This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
-        public virtual string ClusterId { get; set; } 
+        public virtual string ClusterId { get; set; }
 
         /// <summary>The name (project, location, cluster id) of the cluster to set networking policy. Specified in the
         /// format `projects/locations/clusters`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. Configuration options for the NetworkPolicy feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkPolicy")]
-        public virtual NetworkPolicy NetworkPolicy { get; set; } 
+        public virtual NetworkPolicy NetworkPolicy { get; set; }
 
         /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and
         /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Required. Deprecated. The name of the Google Compute Engine
         /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has
         /// been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8419,34 +8419,34 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Required. Autoscaling configuration for the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoscaling")]
-        public virtual NodePoolAutoscaling Autoscaling { get; set; } 
+        public virtual NodePoolAutoscaling Autoscaling { get; set; }
 
         /// <summary>Required. Deprecated. The name of the cluster to upgrade. This field has been deprecated and
         /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
-        public virtual string ClusterId { get; set; } 
+        public virtual string ClusterId { get; set; }
 
         /// <summary>The name (project, location, cluster, node pool) of the node pool to set autoscaler settings.
         /// Specified in the format `projects/locations/clusters/nodePools`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. Deprecated. The name of the node pool to upgrade. This field has been deprecated and
         /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodePoolId")]
-        public virtual string NodePoolId { get; set; } 
+        public virtual string NodePoolId { get; set; }
 
         /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Required. Deprecated. The name of the Google Compute Engine
         /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has
         /// been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8458,33 +8458,33 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Required. Deprecated. The name of the cluster to update. This field has been deprecated and
         /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
-        public virtual string ClusterId { get; set; } 
+        public virtual string ClusterId { get; set; }
 
         /// <summary>Required. NodeManagement configuration for the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("management")]
-        public virtual NodeManagement Management { get; set; } 
+        public virtual NodeManagement Management { get; set; }
 
         /// <summary>The name (project, location, cluster, node pool id) of the node pool to set management properties.
         /// Specified in the format `projects/locations/clusters/nodePools`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. Deprecated. The name of the node pool to update. This field has been deprecated and
         /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodePoolId")]
-        public virtual string NodePoolId { get; set; } 
+        public virtual string NodePoolId { get; set; }
 
         /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Required. Deprecated. The name of the Google Compute Engine
         /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has
         /// been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8496,33 +8496,33 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Required. Deprecated. The name of the cluster to update. This field has been deprecated and
         /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
-        public virtual string ClusterId { get; set; } 
+        public virtual string ClusterId { get; set; }
 
         /// <summary>The name (project, location, cluster, node pool id) of the node pool to set size. Specified in the
         /// format `projects/locations/clusters/nodePools`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. The desired node count for the pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
-        public virtual System.Nullable<int> NodeCount { get; set; } 
+        public virtual System.Nullable<int> NodeCount { get; set; }
 
         /// <summary>Required. Deprecated. The name of the node pool to update. This field has been deprecated and
         /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodePoolId")]
-        public virtual string NodePoolId { get; set; } 
+        public virtual string NodePoolId { get; set; }
 
         /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Required. Deprecated. The name of the Google Compute Engine
         /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has
         /// been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8536,13 +8536,13 @@ namespace Google.Apis.Container.v1beta1.Data
         /// This baseline is initially derived from the implicitly trusted boot image when the instance is
         /// created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableIntegrityMonitoring")]
-        public virtual System.Nullable<bool> EnableIntegrityMonitoring { get; set; } 
+        public virtual System.Nullable<bool> EnableIntegrityMonitoring { get; set; }
 
         /// <summary>Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only
         /// runs authentic software by verifying the digital signature of all boot components, and halting the boot
         /// process if signature verification fails.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableSecureBoot")]
-        public virtual System.Nullable<bool> EnableSecureBoot { get; set; } 
+        public virtual System.Nullable<bool> EnableSecureBoot { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8553,7 +8553,7 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Whether Shielded Nodes features are enabled on all nodes in this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8566,28 +8566,28 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Required. Deprecated. The name of the cluster. This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
-        public virtual string ClusterId { get; set; } 
+        public virtual string ClusterId { get; set; }
 
         /// <summary>The name (project, location, cluster id) of the cluster to start IP rotation. Specified in the
         /// format `projects/locations/clusters`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and
         /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Whether to rotate credentials during IP rotation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rotateCredentials")]
-        public virtual System.Nullable<bool> RotateCredentials { get; set; } 
+        public virtual System.Nullable<bool> RotateCredentials { get; set; }
 
         /// <summary>Required. Deprecated. The name of the Google Compute Engine
         /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has
         /// been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8602,17 +8602,17 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8624,15 +8624,15 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Canonical code of the condition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canonicalCode")]
-        public virtual string CanonicalCode { get; set; } 
+        public virtual string CanonicalCode { get; set; }
 
         /// <summary>Machine-friendly representation of the condition Deprecated. Use canonical_code instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual string Code { get; set; } 
+        public virtual string Code { get; set; }
 
         /// <summary>Human-friendly representation of the condition</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8643,11 +8643,11 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>The time that the window ends. The end time should take place after the start time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>The time that the window first starts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8658,15 +8658,15 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Whether Cloud TPU integration is enabled or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>IPv4 CIDR block reserved for Cloud TPU in the VPC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipv4CidrBlock")]
-        public virtual string Ipv4CidrBlock { get; set; } 
+        public virtual string Ipv4CidrBlock { get; set; }
 
         /// <summary>Whether to use service networking for Cloud TPU or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useServiceNetworking")]
-        public virtual System.Nullable<bool> UseServiceNetworking { get; set; } 
+        public virtual System.Nullable<bool> UseServiceNetworking { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8678,28 +8678,28 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Required. Deprecated. The name of the cluster to upgrade. This field has been deprecated and
         /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
-        public virtual string ClusterId { get; set; } 
+        public virtual string ClusterId { get; set; }
 
         /// <summary>The name (project, location, cluster) of the cluster to update. Specified in the format
         /// `projects/locations/clusters`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Required. A description of the update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("update")]
-        public virtual ClusterUpdate Update { get; set; } 
+        public virtual ClusterUpdate Update { get; set; }
 
         /// <summary>Required. Deprecated. The name of the Google Compute Engine
         /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has
         /// been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8711,7 +8711,7 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Required. Deprecated. The name of the cluster to upgrade. This field has been deprecated and
         /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
-        public virtual string ClusterId { get; set; } 
+        public virtual string ClusterId { get; set; }
 
         /// <summary>Required. The Kubernetes version to change the master to. Users may specify either explicit
         /// versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest":
@@ -8719,24 +8719,24 @@ namespace Google.Apis.Container.v1beta1.Data
         /// version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an
         /// explicit Kubernetes version - "-": picks the default Kubernetes version</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterVersion")]
-        public virtual string MasterVersion { get; set; } 
+        public virtual string MasterVersion { get; set; }
 
         /// <summary>The name (project, location, cluster) of the cluster to update. Specified in the format
         /// `projects/locations/clusters`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Required. Deprecated. The name of the Google Compute Engine
         /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has
         /// been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8748,36 +8748,36 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Required. Deprecated. The name of the cluster to upgrade. This field has been deprecated and
         /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
-        public virtual string ClusterId { get; set; } 
+        public virtual string ClusterId { get; set; }
 
         /// <summary>Required. The desired image type for the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
-        public virtual string ImageType { get; set; } 
+        public virtual string ImageType { get; set; }
 
         /// <summary>Node kubelet configs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kubeletConfig")]
-        public virtual NodeKubeletConfig KubeletConfig { get; set; } 
+        public virtual NodeKubeletConfig KubeletConfig { get; set; }
 
         /// <summary>Parameters that can be configured on Linux nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linuxNodeConfig")]
-        public virtual LinuxNodeConfig LinuxNodeConfig { get; set; } 
+        public virtual LinuxNodeConfig LinuxNodeConfig { get; set; }
 
         /// <summary>The desired list of Google Compute Engine
         /// [zones](https://cloud.google.com/compute/docs/zones#available) in which the node pool's nodes should be
         /// located. Changing the locations for a node pool will result in nodes being either created or removed from
         /// the node pool, depending on whether locations are being added or removed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<string> Locations { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Locations { get; set; }
 
         /// <summary>The name (project, location, cluster, node pool) of the node pool to update. Specified in the
         /// format `projects/locations/clusters/nodePools`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. Deprecated. The name of the node pool to upgrade. This field has been deprecated and
         /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodePoolId")]
-        public virtual string NodePoolId { get; set; } 
+        public virtual string NodePoolId { get; set; }
 
         /// <summary>Required. The Kubernetes version to change the nodes to (typically an upgrade). Users may specify
         /// either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior:
@@ -8785,27 +8785,27 @@ namespace Google.Apis.Container.v1beta1.Data
         /// the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks
         /// an explicit Kubernetes version - "-": picks the Kubernetes master version</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeVersion")]
-        public virtual string NodeVersion { get; set; } 
+        public virtual string NodeVersion { get; set; }
 
         /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Upgrade settings control disruption and speed of the upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeSettings")]
-        public virtual UpgradeSettings UpgradeSettings { get; set; } 
+        public virtual UpgradeSettings UpgradeSettings { get; set; }
 
         /// <summary>The desired workload metadata config for the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloadMetadataConfig")]
-        public virtual WorkloadMetadataConfig WorkloadMetadataConfig { get; set; } 
+        public virtual WorkloadMetadataConfig WorkloadMetadataConfig { get; set; }
 
         /// <summary>Required. Deprecated. The name of the Google Compute Engine
         /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has
         /// been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8817,28 +8817,28 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Required. The current version before the upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentVersion")]
-        public virtual string CurrentVersion { get; set; } 
+        public virtual string CurrentVersion { get; set; }
 
         /// <summary>Required. The operation associated with this upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
-        public virtual string Operation { get; set; } 
+        public virtual string Operation { get; set; }
 
         /// <summary>Required. The time when the operation was started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationStartTime")]
-        public virtual object OperationStartTime { get; set; } 
+        public virtual object OperationStartTime { get; set; }
 
         /// <summary>Optional. Optional relative path to the resource. For example in node pool upgrades, the relative
         /// path of the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
-        public virtual string Resource { get; set; } 
+        public virtual string Resource { get; set; }
 
         /// <summary>Required. The resource type that is upgrading.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
-        public virtual string ResourceType { get; set; } 
+        public virtual string ResourceType { get; set; }
 
         /// <summary>Required. The target version for the upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetVersion")]
-        public virtual string TargetVersion { get; set; } 
+        public virtual string TargetVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8859,12 +8859,12 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>The maximum number of nodes that can be created beyond the current size of the node pool during the
         /// upgrade process.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxSurge")]
-        public virtual System.Nullable<int> MaxSurge { get; set; } 
+        public virtual System.Nullable<int> MaxSurge { get; set; }
 
         /// <summary>The maximum number of nodes that can be simultaneously unavailable during the upgrade process. A
         /// node is considered available if its status is Ready.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxUnavailable")]
-        public virtual System.Nullable<int> MaxUnavailable { get; set; } 
+        public virtual System.Nullable<int> MaxUnavailable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8876,25 +8876,25 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>The range of internal addresses that are owned by this subnetwork.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
-        public virtual string IpCidrRange { get; set; } 
+        public virtual string IpCidrRange { get; set; }
 
         /// <summary>Network Name. Example: projects/my-project/global/networks/my-network</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
-        public virtual string Network { get; set; } 
+        public virtual string Network { get; set; }
 
         /// <summary>Secondary IP ranges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryIpRanges")]
-        public virtual System.Collections.Generic.IList<UsableSubnetworkSecondaryRange> SecondaryIpRanges { get; set; } 
+        public virtual System.Collections.Generic.IList<UsableSubnetworkSecondaryRange> SecondaryIpRanges { get; set; }
 
         /// <summary>A human readable status message representing the reasons for cases where the caller cannot use the
         /// secondary ranges under the subnet. For example if the secondary_ip_ranges is empty due to a permission
         /// issue, an insufficient permission message will be given by status_message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
-        public virtual string StatusMessage { get; set; } 
+        public virtual string StatusMessage { get; set; }
 
         /// <summary>Subnetwork Name. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
-        public virtual string Subnetwork { get; set; } 
+        public virtual string Subnetwork { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8905,16 +8905,16 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>The range of IP addresses belonging to this subnetwork secondary range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
-        public virtual string IpCidrRange { get; set; } 
+        public virtual string IpCidrRange { get; set; }
 
         /// <summary>The name associated with this subnetwork secondary range, used when adding an alias IP range to a
         /// VM instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rangeName")]
-        public virtual string RangeName { get; set; } 
+        public virtual string RangeName { get; set; }
 
         /// <summary>This field is to determine the status of the secondary range programmably.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8926,7 +8926,7 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>Enables vertical pod autoscaling.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8937,15 +8937,15 @@ namespace Google.Apis.Container.v1beta1.Data
     {
         /// <summary>IAM Identity Namespace to attach all Kubernetes Service Accounts to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identityNamespace")]
-        public virtual string IdentityNamespace { get; set; } 
+        public virtual string IdentityNamespace { get; set; }
 
         /// <summary>identity provider is the third party identity provider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identityProvider")]
-        public virtual string IdentityProvider { get; set; } 
+        public virtual string IdentityProvider { get; set; }
 
         /// <summary>The workload pool to attach all Kubernetes service accounts to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloadPool")]
-        public virtual string WorkloadPool { get; set; } 
+        public virtual string WorkloadPool { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8958,12 +8958,12 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Mode is the configuration for how to expose metadata to workloads running on the node
         /// pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
-        public virtual string Mode { get; set; } 
+        public virtual string Mode { get; set; }
 
         /// <summary>NodeMetadata is the configuration for how to expose metadata to the workloads running on the
         /// node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeMetadata")]
-        public virtual string NodeMetadata { get; set; } 
+        public virtual string NodeMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

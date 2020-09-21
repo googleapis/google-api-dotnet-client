@@ -490,15 +490,15 @@ namespace Google.Apis.Playcustomapp.v1.Data
     {
         /// <summary>Default listing language in BCP 47 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; } 
+        public virtual string LanguageCode { get; set; }
 
         /// <summary>Output only. Package name of the created Android app. Only present in the API response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
-        public virtual string PackageName { get; set; } 
+        public virtual string PackageName { get; set; }
 
         /// <summary>Title for the Android app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

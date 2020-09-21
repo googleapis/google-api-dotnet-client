@@ -977,12 +977,12 @@ namespace Google.Apis.CloudScheduler.v1.Data
     {
         /// <summary>App Engine Routing setting for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appEngineRouting")]
-        public virtual AppEngineRouting AppEngineRouting { get; set; } 
+        public virtual AppEngineRouting AppEngineRouting { get; set; }
 
         /// <summary>Body. HTTP request body. A request body is allowed only if the HTTP method is POST or PUT. It will
         /// result in invalid argument error to set a body on a job with an incompatible HttpMethod.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("body")]
-        public virtual string Body { get; set; } 
+        public virtual string Body { get; set; }
 
         /// <summary>HTTP request headers. This map contains the header field names and values. Headers can be set when
         /// the job is created. Cloud Scheduler sets some headers to default values: * `User-Agent`: By default, this
@@ -997,17 +997,17 @@ namespace Google.Apis.CloudScheduler.v1.Data
         /// `X-AppEngine-*`: For Google internal use only. In addition, some App Engine headers, which contain job-
         /// specific information, are also be sent to the job handler.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Headers { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Headers { get; set; }
 
         /// <summary>The HTTP method to use for the request. PATCH and OPTIONS are not permitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpMethod")]
-        public virtual string HttpMethod { get; set; } 
+        public virtual string HttpMethod { get; set; }
 
         /// <summary>The relative URI. The relative URL must begin with "/" and must be a valid HTTP relative URL. It
         /// can contain a path, query string arguments, and `#` fragments. If the relative URL is empty, then the root
         /// path "/" will be used. No spaces are allowed, and the maximum length allowed is 2083 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relativeUri")]
-        public virtual string RelativeUri { get; set; } 
+        public virtual string RelativeUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1038,7 +1038,7 @@ namespace Google.Apis.CloudScheduler.v1.Data
         /// If service, version, or instance is invalid, then the job will be sent to the default version of the default
         /// service when the job is attempted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
-        public virtual string Host { get; set; } 
+        public virtual string Host { get; set; }
 
         /// <summary>App instance. By default, the job is sent to an instance which is available when the job is
         /// attempted. Requests can only be sent to a specific instance if [manual scaling is used in App Engine
@@ -1049,17 +1049,17 @@ namespace Google.Apis.CloudScheduler.v1.Data
         /// Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-
         /// routed).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
-        public virtual string Instance { get; set; } 
+        public virtual string Instance { get; set; }
 
         /// <summary>App service. By default, the job is sent to the service which is the default service when the job
         /// is attempted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual string Service { get; set; } 
+        public virtual string Service { get; set; }
 
         /// <summary>App version. By default, the job is sent to the version which is the default version when the job
         /// is attempted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1084,7 +1084,7 @@ namespace Google.Apis.CloudScheduler.v1.Data
         /// <summary>HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is
         /// an error to set body on a job with an incompatible HttpMethod.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("body")]
-        public virtual string Body { get; set; } 
+        public virtual string Body { get; set; }
 
         /// <summary>The user can specify HTTP request headers to send with the job's HTTP request. This map contains
         /// the header field names and values. Repeated headers are not supported, but a header value can contain
@@ -1095,31 +1095,31 @@ namespace Google.Apis.CloudScheduler.v1.Data
         /// `X-Google-*`: Google internal use only. * `X-AppEngine-*`: Google internal use only. The total size of
         /// headers must be less than 80KB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Headers { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Headers { get; set; }
 
         /// <summary>Which HTTP method to use for the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpMethod")]
-        public virtual string HttpMethod { get; set; } 
+        public virtual string HttpMethod { get; set; }
 
         /// <summary>If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be
         /// generated and attached as an `Authorization` header in the HTTP request. This type of authorization should
         /// generally only be used when calling Google APIs hosted on *.googleapis.com.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauthToken")]
-        public virtual OAuthToken OauthToken { get; set; } 
+        public virtual OAuthToken OauthToken { get; set; }
 
         /// <summary>If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will
         /// be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can
         /// be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token
         /// yourself.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oidcToken")]
-        public virtual OidcToken OidcToken { get; set; } 
+        public virtual OidcToken OidcToken { get; set; }
 
         /// <summary>Required. The full URI path that the request will be sent to. This string must begin with either
         /// "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and
         /// `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The
         /// maximum allowed URL length is 2083 characters after encoding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1130,7 +1130,7 @@ namespace Google.Apis.CloudScheduler.v1.Data
     {
         /// <summary>App Engine HTTP target.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appEngineHttpTarget")]
-        public virtual AppEngineHttpTarget AppEngineHttpTarget { get; set; } 
+        public virtual AppEngineHttpTarget AppEngineHttpTarget { get; set; }
 
         /// <summary>The deadline for job attempts. If the request handler does not respond by this deadline then the
         /// request is cancelled and the attempt is marked as a `DEADLINE_EXCEEDED` failure. The failed attempt can be
@@ -1138,20 +1138,20 @@ namespace Google.Apis.CloudScheduler.v1.Data
         /// duration for this deadline is: * For HTTP targets, between 15 seconds and 30 minutes. * For App Engine HTTP
         /// targets, between 15 seconds and 24 hours.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attemptDeadline")]
-        public virtual object AttemptDeadline { get; set; } 
+        public virtual object AttemptDeadline { get; set; }
 
         /// <summary>Optionally caller-specified in CreateJob or UpdateJob. A human-readable description for the job.
         /// This string must not contain more than 500 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>HTTP target.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpTarget")]
-        public virtual HttpTarget HttpTarget { get; set; } 
+        public virtual HttpTarget HttpTarget { get; set; }
 
         /// <summary>Output only. The time the last job attempt started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastAttemptTime")]
-        public virtual object LastAttemptTime { get; set; } 
+        public virtual object LastAttemptTime { get; set; }
 
         /// <summary>Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For
         /// example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain letters
@@ -1162,15 +1162,15 @@ namespace Google.Apis.CloudScheduler.v1.Data
         /// contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500
         /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Pub/Sub target.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTarget")]
-        public virtual PubsubTarget PubsubTarget { get; set; } 
+        public virtual PubsubTarget PubsubTarget { get; set; }
 
         /// <summary>Settings that determine the retry behavior.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retryConfig")]
-        public virtual RetryConfig RetryConfig { get; set; } 
+        public virtual RetryConfig RetryConfig { get; set; }
 
         /// <summary>Required, except when used with UpdateJob. Describes the schedule on which the job will be
         /// executed. The schedule can be either of the following types: *
@@ -1183,20 +1183,20 @@ namespace Google.Apis.CloudScheduler.v1.Data
         /// scheduled time occurs. If retry_count > 0 and a job attempt fails, the job will be tried a total of
         /// retry_count times, with exponential backoff, until the next scheduled start time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
-        public virtual string Schedule { get; set; } 
+        public virtual string Schedule { get; set; }
 
         /// <summary>Output only. The next time the job is scheduled. Note that this may be a retry of a previously
         /// failed attempt or the next execution time according to the schedule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]
-        public virtual object ScheduleTime { get; set; } 
+        public virtual object ScheduleTime { get; set; }
 
         /// <summary>Output only. State of the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Output only. The response from the target for the last attempted execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual Status Status { get; set; } 
+        public virtual Status Status { get; set; }
 
         /// <summary>Specifies the time zone to be used in interpreting schedule. The value of this field must be a time
         /// zone name from the [tz database](http://en.wikipedia.org/wiki/Tz_database). Note that some time zones
@@ -1204,11 +1204,11 @@ namespace Google.Apis.CloudScheduler.v1.Data
         /// chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also
         /// known as GMT).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
-        public virtual string TimeZone { get; set; } 
+        public virtual string TimeZone { get; set; }
 
         /// <summary>Output only. The creation time of the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userUpdateTime")]
-        public virtual object UserUpdateTime { get; set; } 
+        public virtual object UserUpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1219,13 +1219,13 @@ namespace Google.Apis.CloudScheduler.v1.Data
     {
         /// <summary>The list of jobs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobs")]
-        public virtual System.Collections.Generic.IList<Job> Jobs { get; set; } 
+        public virtual System.Collections.Generic.IList<Job> Jobs { get; set; }
 
         /// <summary>A token to retrieve next page of results. Pass this value in the page_token field in the subsequent
         /// call to ListJobs to retrieve the next page of results. If this is empty it indicates that there are no more
         /// results through which to paginate. The page token is valid for only 2 hours.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1236,11 +1236,11 @@ namespace Google.Apis.CloudScheduler.v1.Data
     {
         /// <summary>A list of locations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
+        public virtual System.Collections.Generic.IList<Location> Locations { get; set; }
 
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1251,25 +1251,25 @@ namespace Google.Apis.CloudScheduler.v1.Data
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-
         /// east1"}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The canonical id for this location. For example: `"us-east1"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>Service-specific metadata. For example the available capacity at the given location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>Resource name for the location, which may vary between implementations. For example: `"projects
         /// /example-project/locations/us-east1"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1283,13 +1283,13 @@ namespace Google.Apis.CloudScheduler.v1.Data
         /// <summary>OAuth scope to be used for generating OAuth access token. If not specified,
         /// "https://www.googleapis.com/auth/cloud-platform" will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
-        public virtual string Scope { get; set; } 
+        public virtual string Scope { get; set; }
 
         /// <summary>[Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for
         /// generating OAuth token. The service account must be within the same project as the job. The caller must have
         /// iam.serviceAccounts.actAs permission for the service account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
-        public virtual string ServiceAccountEmail { get; set; } 
+        public virtual string ServiceAccountEmail { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1304,13 +1304,13 @@ namespace Google.Apis.CloudScheduler.v1.Data
         /// <summary>Audience to be used when generating OIDC token. If not specified, the URI specified in target will
         /// be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audience")]
-        public virtual string Audience { get; set; } 
+        public virtual string Audience { get; set; }
 
         /// <summary>[Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for
         /// generating OIDC token. The service account must be within the same project as the job. The caller must have
         /// iam.serviceAccounts.actAs permission for the service account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
-        public virtual string ServiceAccountEmail { get; set; } 
+        public virtual string ServiceAccountEmail { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1333,18 +1333,18 @@ namespace Google.Apis.CloudScheduler.v1.Data
         /// <summary>Attributes for this message. If this field is empty, the message must contain non-empty data. This
         /// can be used to filter messages on the subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Attributes { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Attributes { get; set; }
 
         /// <summary>The message data field. If this field is empty, the message must contain at least one
         /// attribute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual string Data { get; set; } 
+        public virtual string Data { get; set; }
 
         /// <summary>ID of this message, assigned by the server when the message is published. Guaranteed to be unique
         /// within the topic. This value may be read by a subscriber that receives a `PubsubMessage` via a `Pull` call
         /// or a push delivery. It must not be populated by the publisher in a `Publish` call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
-        public virtual string MessageId { get; set; } 
+        public virtual string MessageId { get; set; }
 
         /// <summary>If non-empty, identifies related messages for which publish order should be respected. If a
         /// `Subscription` has `enable_message_ordering` set to `true`, messages published with the same non-empty
@@ -1352,12 +1352,12 @@ namespace Google.Apis.CloudScheduler.v1.Data
         /// system. All `PubsubMessage`s published in a given `PublishRequest` must specify the same `ordering_key`
         /// value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderingKey")]
-        public virtual string OrderingKey { get; set; } 
+        public virtual string OrderingKey { get; set; }
 
         /// <summary>The time at which the message was published, populated by the server when it receives the `Publish`
         /// call. It must not be populated by the publisher in a `Publish` call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishTime")]
-        public virtual object PublishTime { get; set; } 
+        public virtual object PublishTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1369,12 +1369,12 @@ namespace Google.Apis.CloudScheduler.v1.Data
         /// <summary>Attributes for PubsubMessage. Pubsub message must contain either non-empty data, or at least one
         /// attribute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Attributes { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Attributes { get; set; }
 
         /// <summary>The message payload for PubsubMessage. Pubsub message must contain either non-empty data, or at
         /// least one attribute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual string Data { get; set; } 
+        public virtual string Data { get; set; }
 
         /// <summary>Required. The name of the Cloud Pub/Sub topic to which messages will be published when a job is
         /// delivered. The topic name must be in the same format as required by PubSub's
@@ -1382,7 +1382,7 @@ namespace Google.Apis.CloudScheduler.v1.Data
         /// for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud
         /// Scheduler job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topicName")]
-        public virtual string TopicName { get; set; } 
+        public virtual string TopicName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1403,7 +1403,7 @@ namespace Google.Apis.CloudScheduler.v1.Data
         /// <summary>The maximum amount of time to wait before retrying a job after it fails. The default value of this
         /// field is 1 hour.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxBackoffDuration")]
-        public virtual object MaxBackoffDuration { get; set; } 
+        public virtual object MaxBackoffDuration { get; set; }
 
         /// <summary>The time between retries will double `max_doublings` times. A job's retry interval starts at
         /// min_backoff_duration, then doubles `max_doublings` times, then increases linearly, and finally retries at
@@ -1414,18 +1414,18 @@ namespace Google.Apis.CloudScheduler.v1.Data
         /// will retry at 10s, 20s, 40s, 80s, 160s, 240s, 300s, 300s, .... The default value of this field is
         /// 5.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxDoublings")]
-        public virtual System.Nullable<int> MaxDoublings { get; set; } 
+        public virtual System.Nullable<int> MaxDoublings { get; set; }
 
         /// <summary>The time limit for retrying a failed job, measured from time when an execution was first attempted.
         /// If specified with retry_count, the job will be retried until both limits are reached. The default value for
         /// max_retry_duration is zero, which means retry duration is unlimited.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRetryDuration")]
-        public virtual object MaxRetryDuration { get; set; } 
+        public virtual object MaxRetryDuration { get; set; }
 
         /// <summary>The minimum amount of time to wait before retrying a job after it fails. The default value of this
         /// field is 5 seconds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minBackoffDuration")]
-        public virtual object MinBackoffDuration { get; set; } 
+        public virtual object MinBackoffDuration { get; set; }
 
         /// <summary>The number of attempts that the system will make to run a job using the exponential backoff
         /// procedure described by max_doublings. The default value of retry_count is zero. If retry_count is zero, a
@@ -1434,7 +1434,7 @@ namespace Google.Apis.CloudScheduler.v1.Data
         /// attempts, using exponential backoff, retry_count times, or until the next scheduled execution time,
         /// whichever comes first. Values greater than 5 and negative values are not allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retryCount")]
-        public virtual System.Nullable<int> RetryCount { get; set; } 
+        public virtual System.Nullable<int> RetryCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1456,17 +1456,17 @@ namespace Google.Apis.CloudScheduler.v1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -432,12 +432,12 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// <summary>Please also refer to the [access level user guide](https://cloud.google.com/access-context-
         /// manager/docs/overview#access-levels).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessLevel")]
-        public virtual GoogleIdentityAccesscontextmanagerV1AccessLevel AccessLevel { get; set; } 
+        public virtual GoogleIdentityAccesscontextmanagerV1AccessLevel AccessLevel { get; set; }
 
         /// <summary>Please also refer to the [access policy user guide](https://cloud.google.com/access-context-
         /// manager/docs/overview#access-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessPolicy")]
-        public virtual GoogleIdentityAccesscontextmanagerV1AccessPolicy AccessPolicy { get; set; } 
+        public virtual GoogleIdentityAccesscontextmanagerV1AccessPolicy AccessPolicy { get; set; }
 
         /// <summary>The ancestry path of an asset in Google Cloud [resource hierarchy](https://cloud.google.com
         /// /resource-manager/docs/cloud-platform-resource-hierarchy), represented as a list of relative resource names.
@@ -445,12 +445,12 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// project, folder, or organization, the ancestry path starts from the asset itself. Example:
         /// `["projects/123456789", "folders/5432", "organizations/1234"]`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ancestors")]
-        public virtual System.Collections.Generic.IList<string> Ancestors { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Ancestors { get; set; }
 
         /// <summary>The type of the asset. Example: `compute.googleapis.com/Disk` See [Supported asset
         /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
-        public virtual string AssetType { get; set; } 
+        public virtual string AssetType { get; set; }
 
         /// <summary>A representation of the Cloud IAM policy set on a Google Cloud resource. There can be a maximum of
         /// one Cloud IAM policy set on any given resource. In addition, Cloud IAM policies inherit their granted access
@@ -459,29 +459,29 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// resource levels in the hierarchy. See [this topic](https://cloud.google.com/iam/docs/policies#inheritance)
         /// for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iamPolicy")]
-        public virtual Policy IamPolicy { get; set; } 
+        public virtual Policy IamPolicy { get; set; }
 
         /// <summary>The full name of the asset. Example:
         /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1` See [Resource
         /// names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more
         /// information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>A representation of an [organization policy](https://cloud.google.com/resource-manager/docs
         /// /organization-policy/overview#organization_policy). There can be more than one organization policy with
         /// different constraints set on a given resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgPolicy")]
-        public virtual System.Collections.Generic.IList<GoogleCloudOrgpolicyV1Policy> OrgPolicy { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudOrgpolicyV1Policy> OrgPolicy { get; set; }
 
         /// <summary>A representation of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
-        public virtual Resource Resource { get; set; } 
+        public virtual Resource Resource { get; set; }
 
         /// <summary>Please also refer to the [service perimeter user guide](https://cloud.google.com/vpc-service-
         /// controls/docs/overview).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicePerimeter")]
-        public virtual GoogleIdentityAccesscontextmanagerV1ServicePerimeter ServicePerimeter { get; set; } 
+        public virtual GoogleIdentityAccesscontextmanagerV1ServicePerimeter ServicePerimeter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -502,12 +502,12 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
-        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; }
 
         /// <summary>Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
         /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual string Service { get; set; } 
+        public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -522,11 +522,11 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// <summary>Specifies the identities that do not cause logging for this type of permission. Follows the same
         /// format of Binding.members.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
-        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; }
 
         /// <summary>The log type that this config enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logType")]
-        public virtual string LogType { get; set; } 
+        public virtual string LogType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -541,7 +541,7 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; } 
+        public virtual Expr Condition { get; set; }
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
@@ -563,12 +563,12 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
         /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -590,21 +590,21 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
         /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -631,7 +631,7 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// with: {RestoreDefault: {}} The constraint at `organizations/foo` is enforced. The constraint at
         /// `projects/bar` is not enforced, because `constraint_default` for the `Constraint` is `ALLOW`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enforced")]
-        public virtual System.Nullable<bool> Enforced { get; set; } 
+        public virtual System.Nullable<bool> Enforced { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -652,17 +652,17 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
     {
         /// <summary>The policy all_values state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allValues")]
-        public virtual string AllValues { get; set; } 
+        public virtual string AllValues { get; set; }
 
         /// <summary>List of values allowed at this resource. Can only be set if `all_values` is set to
         /// `ALL_VALUES_UNSPECIFIED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedValues")]
-        public virtual System.Collections.Generic.IList<string> AllowedValues { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AllowedValues { get; set; }
 
         /// <summary>List of values denied at this resource. Can only be set if `all_values` is set to
         /// `ALL_VALUES_UNSPECIFIED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deniedValues")]
-        public virtual System.Collections.Generic.IList<string> DeniedValues { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DeniedValues { get; set; }
 
         /// <summary>Determines the inheritance behavior for this `Policy`. By default, a `ListPolicy` set at a resource
         /// supersedes any `Policy` set anywhere up the resource hierarchy. However, if `inherit_from_parent` is set to
@@ -706,13 +706,13 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// `folders/F2`, `projects/P1`, `projects/P2`, `projects/P3`. The accepted values at `projects/bar` are
         /// `organizations/O1`, `folders/F1`, `projects/P1`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inheritFromParent")]
-        public virtual System.Nullable<bool> InheritFromParent { get; set; } 
+        public virtual System.Nullable<bool> InheritFromParent { get; set; }
 
         /// <summary>Optional. The Google Cloud Console will try to default to a configuration that matches the value
         /// specified in this `Policy`. If `suggested_value` is not set, it will inherit the value specified higher in
         /// the hierarchy, unless `inherit_from_parent` is `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestedValue")]
-        public virtual string SuggestedValue { get; set; } 
+        public virtual string SuggestedValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -724,13 +724,13 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
     {
         /// <summary>For boolean `Constraints`, whether to enforce the `Constraint` or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("booleanPolicy")]
-        public virtual GoogleCloudOrgpolicyV1BooleanPolicy BooleanPolicy { get; set; } 
+        public virtual GoogleCloudOrgpolicyV1BooleanPolicy BooleanPolicy { get; set; }
 
         /// <summary>The name of the `Constraint` the `Policy` is configuring, for example,
         /// `constraints/serviceuser.services`. A [list of available constraints](/resource-manager/docs/organization-
         /// policy/org-policy-constraints) is available. Immutable after creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("constraint")]
-        public virtual string Constraint { get; set; } 
+        public virtual string Constraint { get; set; }
 
         /// <summary>An opaque tag indicating the current version of the `Policy`, used for concurrency control. When
         /// the `Policy` is returned from either a `GetPolicy` or a `ListOrgPolicy` request, this `etag` indicates the
@@ -740,25 +740,25 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// read-modify-write loop for concurrency control. Not setting the `etag`in a `SetOrgPolicy` request will
         /// result in an unconditional write of the `Policy`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>List of values either allowed or disallowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listPolicy")]
-        public virtual GoogleCloudOrgpolicyV1ListPolicy ListPolicy { get; set; } 
+        public virtual GoogleCloudOrgpolicyV1ListPolicy ListPolicy { get; set; }
 
         /// <summary>Restores the default behavior of the constraint; independent of `Constraint` type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restoreDefault")]
-        public virtual GoogleCloudOrgpolicyV1RestoreDefault RestoreDefault { get; set; } 
+        public virtual GoogleCloudOrgpolicyV1RestoreDefault RestoreDefault { get; set; }
 
         /// <summary>The time stamp the `Policy` was previously updated. This is set by the server, not specified by the
         /// caller, and represents the last time a call to `SetOrgPolicy` was made for that `Policy`. Any value set by
         /// the client will be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>Version of the `Policy`. Default version is 0;</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
     }    
 
@@ -781,25 +781,25 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
     {
         /// <summary>A `BasicLevel` composed of `Conditions`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("basic")]
-        public virtual GoogleIdentityAccesscontextmanagerV1BasicLevel Basic { get; set; } 
+        public virtual GoogleIdentityAccesscontextmanagerV1BasicLevel Basic { get; set; }
 
         /// <summary>A `CustomLevel` written in the Common Expression Language.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("custom")]
-        public virtual GoogleIdentityAccesscontextmanagerV1CustomLevel Custom { get; set; } 
+        public virtual GoogleIdentityAccesscontextmanagerV1CustomLevel Custom { get; set; }
 
         /// <summary>Description of the `AccessLevel` and its use. Does not affect behavior.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Required. Resource name for the Access Level. The `short_name` component must begin with a letter
         /// and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/accessLevels/{short_name}`. The
         /// maximum length of the `short_name` component is 50 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Human readable title. Must be unique within the Policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -815,20 +815,20 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// be a strongly validated etag, meaning that two Access Polices will be identical if and only if their etags
         /// are identical. Clients should not expect this to be in any specific format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable
         /// once created. Format: `organizations/{organization_id}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
-        public virtual string Parent { get; set; } 
+        public virtual string Parent { get; set; }
 
         /// <summary>Required. Human readable title. Does not affect behavior.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
     }    
 
@@ -840,11 +840,11 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel`
         /// to be applied. Default behavior is AND.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("combiningFunction")]
-        public virtual string CombiningFunction { get; set; } 
+        public virtual string CombiningFunction { get; set; }
 
         /// <summary>Required. A list of requirements for the `AccessLevel` to be granted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
-        public virtual System.Collections.Generic.IList<GoogleIdentityAccesscontextmanagerV1Condition> Conditions { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleIdentityAccesscontextmanagerV1Condition> Conditions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -859,7 +859,7 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// <summary>Device specific restrictions, all restrictions must hold for the Condition to be true. If not
         /// specified, all devices are allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("devicePolicy")]
-        public virtual GoogleIdentityAccesscontextmanagerV1DevicePolicy DevicePolicy { get; set; } 
+        public virtual GoogleIdentityAccesscontextmanagerV1DevicePolicy DevicePolicy { get; set; }
 
         /// <summary>CIDR block IP subnetwork specification. May be IPv4 or IPv6. Note that for a CIDR IP address block,
         /// the specified IP address portion must be properly truncated (i.e. all the host bits must be zero) or the
@@ -868,29 +868,29 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// be in one of the listed subnets in order for this Condition to be true. If empty, all IP addresses are
         /// allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipSubnetworks")]
-        public virtual System.Collections.Generic.IList<string> IpSubnetworks { get; set; } 
+        public virtual System.Collections.Generic.IList<string> IpSubnetworks { get; set; }
 
         /// <summary>The request must be made by one of the provided user or service accounts. Groups are not supported.
         /// Syntax: `user:{emailid}` `serviceAccount:{emailid}` If not specified, a request may come from any
         /// user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields,
         /// each field must be false for the Condition overall to be satisfied. Defaults to false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negate")]
-        public virtual System.Nullable<bool> Negate { get; set; } 
+        public virtual System.Nullable<bool> Negate { get; set; }
 
         /// <summary>The request must originate from one of the provided countries/regions. Must be valid ISO 3166-1
         /// alpha-2 codes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regions")]
-        public virtual System.Collections.Generic.IList<string> Regions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Regions { get; set; }
 
         /// <summary>A list of other access levels defined in the same `Policy`, referenced by resource name.
         /// Referencing an `AccessLevel` which does not exist is an error. All access levels listed must be granted for
         /// the Condition to be true. Example: "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiredAccessLevels")]
-        public virtual System.Collections.Generic.IList<string> RequiredAccessLevels { get; set; } 
+        public virtual System.Collections.Generic.IList<string> RequiredAccessLevels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -902,7 +902,7 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
     {
         /// <summary>Required. A Cloud CEL expression evaluating to a boolean.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expr")]
-        public virtual Expr Expr { get; set; } 
+        public virtual Expr Expr { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -918,28 +918,28 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
     {
         /// <summary>Allowed device management levels, an empty list allows all management levels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedDeviceManagementLevels")]
-        public virtual System.Collections.Generic.IList<string> AllowedDeviceManagementLevels { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AllowedDeviceManagementLevels { get; set; }
 
         /// <summary>Allowed encryptions statuses, an empty list allows all statuses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedEncryptionStatuses")]
-        public virtual System.Collections.Generic.IList<string> AllowedEncryptionStatuses { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AllowedEncryptionStatuses { get; set; }
 
         /// <summary>Allowed OS versions, an empty list allows all types and all versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("osConstraints")]
-        public virtual System.Collections.Generic.IList<GoogleIdentityAccesscontextmanagerV1OsConstraint> OsConstraints { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleIdentityAccesscontextmanagerV1OsConstraint> OsConstraints { get; set; }
 
         /// <summary>Whether the device needs to be approved by the customer admin.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireAdminApproval")]
-        public virtual System.Nullable<bool> RequireAdminApproval { get; set; } 
+        public virtual System.Nullable<bool> RequireAdminApproval { get; set; }
 
         /// <summary>Whether the device needs to be corp owned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireCorpOwned")]
-        public virtual System.Nullable<bool> RequireCorpOwned { get; set; } 
+        public virtual System.Nullable<bool> RequireCorpOwned { get; set; }
 
         /// <summary>Whether or not screenlock is required for the DevicePolicy to be true. Defaults to
         /// `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireScreenlock")]
-        public virtual System.Nullable<bool> RequireScreenlock { get; set; } 
+        public virtual System.Nullable<bool> RequireScreenlock { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -951,17 +951,17 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// <summary>The minimum allowed OS version. If not set, any version of this OS satisfies the constraint.
         /// Format: `"major.minor.patch"`. Examples: `"10.5.301"`, `"9.2.1"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumVersion")]
-        public virtual string MinimumVersion { get; set; } 
+        public virtual string MinimumVersion { get; set; }
 
         /// <summary>Required. The allowed OS type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("osType")]
-        public virtual string OsType { get; set; } 
+        public virtual string OsType { get; set; }
 
         /// <summary>Only allows requests from devices with a verified Chrome OS. Verifications includes requirements
         /// that the device is enterprise-managed, conformant to domain policies, and the caller has permission to call
         /// the API targeted by the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireVerifiedChromeOs")]
-        public virtual System.Nullable<bool> RequireVerifiedChromeOs { get; set; } 
+        public virtual System.Nullable<bool> RequireVerifiedChromeOs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -978,35 +978,35 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
     {
         /// <summary>Description of the `ServicePerimeter` and its use. Does not affect behavior.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Required. Resource name for the ServicePerimeter. The `short_name` component must begin with a
         /// letter and only include alphanumeric and '_'. Format:
         /// `accessPolicies/{policy_id}/servicePerimeters/{short_name}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Perimeter type indicator. A single project is allowed to be a member of single regular perimeter,
         /// but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being
         /// included in regular perimeter. For perimeter bridges, the restricted service list as well as access level
         /// lists must be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("perimeterType")]
-        public virtual string PerimeterType { get; set; } 
+        public virtual string PerimeterType { get; set; }
 
         /// <summary>Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test
         /// ServicePerimeter configuration without enforcing actual access restrictions. Only allowed to be set when the
         /// "use_explicit_dry_run_spec" flag is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
-        public virtual GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig Spec { get; set; } 
+        public virtual GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig Spec { get; set; }
 
         /// <summary>Current ServicePerimeter configuration. Specifies sets of resources, restricted services and access
         /// levels that determine perimeter content and boundaries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig Status { get; set; } 
+        public virtual GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig Status { get; set; }
 
         /// <summary>Human readable title. Must be unique within the Policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists for all Service
         /// Perimeters, and that spec is identical to the status for those Service Perimeters. When this flag is set, it
@@ -1016,7 +1016,7 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// analyzing the differences between currently enforced and suggested restrictions. use_explicit_dry_run_spec
         /// must bet set to True if any of the fields in the spec are set to non-default values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useExplicitDryRunSpec")]
-        public virtual System.Nullable<bool> UseExplicitDryRunSpec { get; set; } 
+        public virtual System.Nullable<bool> UseExplicitDryRunSpec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1033,22 +1033,22 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// Example: `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`. For Service Perimeter Bridge, must be
         /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessLevels")]
-        public virtual System.Collections.Generic.IList<string> AccessLevels { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AccessLevels { get; set; }
 
         /// <summary>A list of Google Cloud resources that are inside of the service perimeter. Currently only projects
         /// are allowed. Format: `projects/{project_number}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<string> Resources { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Resources { get; set; }
 
         /// <summary>Google Cloud services that are subject to the Service Perimeter restrictions. For example, if
         /// `storage.googleapis.com` is specified, access to the storage buckets inside the perimeter must meet the
         /// perimeter's access restrictions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedServices")]
-        public virtual System.Collections.Generic.IList<string> RestrictedServices { get; set; } 
+        public virtual System.Collections.Generic.IList<string> RestrictedServices { get; set; }
 
         /// <summary>Configuration for APIs allowed within Perimeter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcAccessibleServices")]
-        public virtual GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices VpcAccessibleServices { get; set; } 
+        public virtual GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices VpcAccessibleServices { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1061,12 +1061,12 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// True. You can specify a list of individual services, as well as include the 'RESTRICTED-SERVICES' value,
         /// which automatically includes all of the services protected by the perimeter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedServices")]
-        public virtual System.Collections.Generic.IList<string> AllowedServices { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AllowedServices { get; set; }
 
         /// <summary>Whether to restrict API calls within the Service Perimeter to the list of APIs specified in
         /// 'allowed_services'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableRestriction")]
-        public virtual System.Nullable<bool> EnableRestriction { get; set; } 
+        public virtual System.Nullable<bool> EnableRestriction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1077,16 +1077,16 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
     {
         /// <summary>Assets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assets")]
-        public virtual System.Collections.Generic.IList<Asset> Assets { get; set; } 
+        public virtual System.Collections.Generic.IList<Asset> Assets { get; set; }
 
         /// <summary>Token to retrieve the next page of results. Set to empty if there are no remaining
         /// results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Time the snapshot was taken.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
-        public virtual object ReadTime { get; set; } 
+        public virtual object ReadTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1116,12 +1116,12 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
     {
         /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
-        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; }
 
         /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
         /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
         /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
@@ -1132,7 +1132,7 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
         /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
         /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
@@ -1146,7 +1146,7 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
     }    
 
@@ -1156,18 +1156,18 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// <summary>The content of the resource, in which some sensitive fields are removed and may not be
         /// present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Data { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Data { get; set; }
 
         /// <summary>The URL of the discovery document containing the resource's JSON schema. Example:
         /// `https://www.googleapis.com/discovery/v1/apis/compute/v1/rest` This value is unspecified for resources that
         /// do not have an API based on a discovery document, such as Cloud Bigtable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discoveryDocumentUri")]
-        public virtual string DiscoveryDocumentUri { get; set; } 
+        public virtual string DiscoveryDocumentUri { get; set; }
 
         /// <summary>The JSON schema name listed in the discovery document. Example: `Project` This value is unspecified
         /// for resources that do not have an API based on a discovery document, such as Cloud Bigtable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discoveryName")]
-        public virtual string DiscoveryName { get; set; } 
+        public virtual string DiscoveryName { get; set; }
 
         /// <summary>The full name of the immediate parent of this resource. See [Resource
         /// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more information. For
@@ -1176,17 +1176,17 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// `//cloudresourcemanager.googleapis.com/projects/my_project_123` For third-party assets, this field may be
         /// set differently.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
-        public virtual string Parent { get; set; } 
+        public virtual string Parent { get; set; }
 
         /// <summary>The REST URL for accessing the resource. An HTTP `GET` request using this URL returns the resource
         /// itself. Example: `https://cloudresourcemanager.googleapis.com/v1/projects/my-project-123` This value is
         /// unspecified for resources without a REST API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUrl")]
-        public virtual string ResourceUrl { get; set; } 
+        public virtual string ResourceUrl { get; set; }
 
         /// <summary>The API version. Example: "v1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

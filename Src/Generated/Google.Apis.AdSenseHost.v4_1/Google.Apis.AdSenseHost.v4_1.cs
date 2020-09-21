@@ -2384,19 +2384,19 @@ namespace Google.Apis.AdSenseHost.v4_1.Data
     {
         /// <summary>Unique identifier of this account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Kind of resource this is, in this case adsensehost#account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Approval status of this account. One of: PENDING, APPROVED, DISABLED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2406,15 +2406,15 @@ namespace Google.Apis.AdSenseHost.v4_1.Data
     {
         /// <summary>ETag of this response for caching purposes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The accounts returned in this list response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Account> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Account> Items { get; set; }
 
         /// <summary>Kind of list this is, in this case adsensehost#accounts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
     }    
 
@@ -2422,23 +2422,23 @@ namespace Google.Apis.AdSenseHost.v4_1.Data
     {
         /// <summary>Whether this ad client is opted in to ARC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("arcOptIn")]
-        public virtual System.Nullable<bool> ArcOptIn { get; set; } 
+        public virtual System.Nullable<bool> ArcOptIn { get; set; }
 
         /// <summary>Unique identifier of this ad client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Kind of resource this is, in this case adsensehost#adClient.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>This ad client's product code, which corresponds to the PRODUCT_CODE report dimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productCode")]
-        public virtual string ProductCode { get; set; } 
+        public virtual string ProductCode { get; set; }
 
         /// <summary>Whether this ad client supports being reported on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportsReporting")]
-        public virtual System.Nullable<bool> SupportsReporting { get; set; } 
+        public virtual System.Nullable<bool> SupportsReporting { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2448,20 +2448,20 @@ namespace Google.Apis.AdSenseHost.v4_1.Data
     {
         /// <summary>ETag of this response for caching purposes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The ad clients returned in this list response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<AdClient> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<AdClient> Items { get; set; }
 
         /// <summary>Kind of list this is, in this case adsensehost#adClients.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Continuation token used to page through ad clients. To retrieve the next page of results, set the
         /// next request's "pageToken" value to this.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
     }    
 
@@ -2469,11 +2469,11 @@ namespace Google.Apis.AdSenseHost.v4_1.Data
     {
         /// <summary>The ad code snippet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adCode")]
-        public virtual string AdCodeValue { get; set; } 
+        public virtual string AdCodeValue { get; set; }
 
         /// <summary>Kind this is, in this case adsensehost#adCode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2484,19 +2484,19 @@ namespace Google.Apis.AdSenseHost.v4_1.Data
         /// <summary>The colors included in the style. These are represented as six hexadecimal characters, similar to
         /// HTML color codes, but without the leading hash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("colors")]
-        public virtual ColorsData Colors { get; set; } 
+        public virtual ColorsData Colors { get; set; }
 
         /// <summary>The style of the corners in the ad (deprecated: never populated, ignored).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("corners")]
-        public virtual string Corners { get; set; } 
+        public virtual string Corners { get; set; }
 
         /// <summary>The font which is included in the style.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("font")]
-        public virtual FontData Font { get; set; } 
+        public virtual FontData Font { get; set; }
 
         /// <summary>Kind this is, in this case adsensehost#adStyle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2508,23 +2508,23 @@ namespace Google.Apis.AdSenseHost.v4_1.Data
         {
             /// <summary>The color of the ad background.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("background")]
-            public virtual string Background { get; set; } 
+            public virtual string Background { get; set; }
 
             /// <summary>The color of the ad border.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("border")]
-            public virtual string Border { get; set; } 
+            public virtual string Border { get; set; }
 
             /// <summary>The color of the ad text.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("text")]
-            public virtual string Text { get; set; } 
+            public virtual string Text { get; set; }
 
             /// <summary>The color of the ad title.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("title")]
-            public virtual string Title { get; set; } 
+            public virtual string Title { get; set; }
 
             /// <summary>The color of the ad url.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("url")]
-            public virtual string Url { get; set; } 
+            public virtual string Url { get; set; }
 
         }    
 
@@ -2534,12 +2534,12 @@ namespace Google.Apis.AdSenseHost.v4_1.Data
             /// <summary>The family of the font. Possible values are: ACCOUNT_DEFAULT_FAMILY, ADSENSE_DEFAULT_FAMILY,
             /// ARIAL, TIMES and VERDANA.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("family")]
-            public virtual string Family { get; set; } 
+            public virtual string Family { get; set; }
 
             /// <summary>The size of the font. Possible values are: ACCOUNT_DEFAULT_SIZE, ADSENSE_DEFAULT_SIZE, SMALL,
             /// MEDIUM and LARGE.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("size")]
-            public virtual string Size { get; set; } 
+            public virtual string Size { get; set; }
 
         }
     }    
@@ -2548,33 +2548,33 @@ namespace Google.Apis.AdSenseHost.v4_1.Data
     {
         /// <summary>Identity code of this ad unit, not necessarily unique across ad clients.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual string Code { get; set; } 
+        public virtual string Code { get; set; }
 
         /// <summary>Settings specific to content ads (AFC) and highend mobile content ads (AFMC -
         /// deprecated).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentAdsSettings")]
-        public virtual ContentAdsSettingsData ContentAdsSettings { get; set; } 
+        public virtual ContentAdsSettingsData ContentAdsSettings { get; set; }
 
         /// <summary>Custom style information specific to this ad unit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customStyle")]
-        public virtual AdStyle CustomStyle { get; set; } 
+        public virtual AdStyle CustomStyle { get; set; }
 
         /// <summary>Unique identifier of this ad unit. This should be considered an opaque identifier; it is not safe
         /// to rely on it being in any particular format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Kind of resource this is, in this case adsensehost#adUnit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Settings specific to WAP mobile content ads (AFMC - deprecated).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileContentAdsSettings")]
-        public virtual MobileContentAdsSettingsData MobileContentAdsSettings { get; set; } 
+        public virtual MobileContentAdsSettingsData MobileContentAdsSettings { get; set; }
 
         /// <summary>Name of this ad unit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Status of this ad unit. Possible values are: NEW: Indicates that the ad unit was created within the
         /// last seven days and does not yet have any activity associated with it.
@@ -2583,7 +2583,7 @@ namespace Google.Apis.AdSenseHost.v4_1.Data
         ///
         /// INACTIVE: Indicates that there has been no activity on this ad unit in the last seven days.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2595,15 +2595,15 @@ namespace Google.Apis.AdSenseHost.v4_1.Data
         {
             /// <summary>The backup option to be used in instances where no ad is available.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("backupOption")]
-            public virtual BackupOptionData BackupOption { get; set; } 
+            public virtual BackupOptionData BackupOption { get; set; }
 
             /// <summary>Size of this ad unit. Size values are in the form SIZE_{width}_{height}.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("size")]
-            public virtual string Size { get; set; } 
+            public virtual string Size { get; set; }
 
             /// <summary>Type of this ad unit. Possible values are TEXT, TEXT_IMAGE, IMAGE and LINK.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
-            public virtual string Type { get; set; } 
+            public virtual string Type { get; set; }
 
             
 
@@ -2613,15 +2613,15 @@ namespace Google.Apis.AdSenseHost.v4_1.Data
                 /// <summary>Color to use when type is set to COLOR. These are represented as six hexadecimal
                 /// characters, similar to HTML color codes, but without the leading hash.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("color")]
-                public virtual string Color { get; set; } 
+                public virtual string Color { get; set; }
 
                 /// <summary>Type of the backup option. Possible values are BLANK, COLOR and URL.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("type")]
-                public virtual string Type { get; set; } 
+                public virtual string Type { get; set; }
 
                 /// <summary>URL to use when type is set to URL.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("url")]
-                public virtual string Url { get; set; } 
+                public virtual string Url { get; set; }
 
             }
         }    
@@ -2631,19 +2631,19 @@ namespace Google.Apis.AdSenseHost.v4_1.Data
         {
             /// <summary>The markup language to use for this ad unit.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("markupLanguage")]
-            public virtual string MarkupLanguage { get; set; } 
+            public virtual string MarkupLanguage { get; set; }
 
             /// <summary>The scripting language to use for this ad unit.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("scriptingLanguage")]
-            public virtual string ScriptingLanguage { get; set; } 
+            public virtual string ScriptingLanguage { get; set; }
 
             /// <summary>Size of this ad unit.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("size")]
-            public virtual string Size { get; set; } 
+            public virtual string Size { get; set; }
 
             /// <summary>Type of this ad unit.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
-            public virtual string Type { get; set; } 
+            public virtual string Type { get; set; }
 
         }
     }    
@@ -2652,20 +2652,20 @@ namespace Google.Apis.AdSenseHost.v4_1.Data
     {
         /// <summary>ETag of this response for caching purposes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The ad units returned in this list response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<AdUnit> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<AdUnit> Items { get; set; }
 
         /// <summary>Kind of list this is, in this case adsensehost#adUnits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Continuation token used to page through ad units. To retrieve the next page of results, set the
         /// next request's "pageToken" value to this.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
     }    
 
@@ -2674,43 +2674,43 @@ namespace Google.Apis.AdSenseHost.v4_1.Data
         /// <summary>Hosted account id of the associated publisher after association. Present if status is
         /// ACCEPTED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual string AccountId { get; set; } 
+        public virtual string AccountId { get; set; }
 
         /// <summary>Unique identifier of this association session.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Kind of resource this is, in this case adsensehost#associationSession.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The products to associate with the user. Options: AFC, AFG, AFV, AFS (deprecated), AFMC
         /// (deprecated)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productCodes")]
-        public virtual System.Collections.Generic.IList<string> ProductCodes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ProductCodes { get; set; }
 
         /// <summary>Redirect URL of this association session. Used to redirect users into the AdSense association
         /// flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirectUrl")]
-        public virtual string RedirectUrl { get; set; } 
+        public virtual string RedirectUrl { get; set; }
 
         /// <summary>Status of the completed association, available once the association callback token has been
         /// verified. One of ACCEPTED, REJECTED, or ERROR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The preferred locale of the user themselves when going through the AdSense association
         /// flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userLocale")]
-        public virtual string UserLocale { get; set; } 
+        public virtual string UserLocale { get; set; }
 
         /// <summary>The locale of the user's hosted website.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("websiteLocale")]
-        public virtual string WebsiteLocale { get; set; } 
+        public virtual string WebsiteLocale { get; set; }
 
         /// <summary>The URL of the user's hosted website.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("websiteUrl")]
-        public virtual string WebsiteUrl { get; set; } 
+        public virtual string WebsiteUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2720,20 +2720,20 @@ namespace Google.Apis.AdSenseHost.v4_1.Data
     {
         /// <summary>Code of this custom channel, not necessarily unique across ad clients.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual string Code { get; set; } 
+        public virtual string Code { get; set; }
 
         /// <summary>Unique identifier of this custom channel. This should be considered an opaque identifier; it is not
         /// safe to rely on it being in any particular format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Kind of resource this is, in this case adsensehost#customChannel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this custom channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2743,20 +2743,20 @@ namespace Google.Apis.AdSenseHost.v4_1.Data
     {
         /// <summary>ETag of this response for caching purposes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The custom channels returned in this list response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<CustomChannel> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<CustomChannel> Items { get; set; }
 
         /// <summary>Kind of list this is, in this case adsensehost#customChannels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Continuation token used to page through custom channels. To retrieve the next page of results, set
         /// the next request's "pageToken" value to this.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
     }    
 
@@ -2765,36 +2765,36 @@ namespace Google.Apis.AdSenseHost.v4_1.Data
         /// <summary>The averages of the report. This is the same length as any other row in the report; cells
         /// corresponding to dimension columns are empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averages")]
-        public virtual System.Collections.Generic.IList<string> Averages { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Averages { get; set; }
 
         /// <summary>The header information of the columns requested in the report. This is a list of headers; one for
         /// each dimension in the request, followed by one for each metric in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
-        public virtual System.Collections.Generic.IList<HeadersData> Headers { get; set; } 
+        public virtual System.Collections.Generic.IList<HeadersData> Headers { get; set; }
 
         /// <summary>Kind this is, in this case adsensehost#report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The output rows of the report. Each row is a list of cells; one for each dimension in the request,
         /// followed by one for each metric in the request. The dimension cells contain strings, and the metric cells
         /// contain numbers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IList<string>> Rows { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IList<string>> Rows { get; set; }
 
         /// <summary>The total number of rows matched by the report request. Fewer rows may be returned in the response
         /// due to being limited by the row count requested or the report row limit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalMatchedRows")]
-        public virtual System.Nullable<long> TotalMatchedRows { get; set; } 
+        public virtual System.Nullable<long> TotalMatchedRows { get; set; }
 
         /// <summary>The totals of the report. This is the same length as any other row in the report; cells
         /// corresponding to dimension columns are empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totals")]
-        public virtual System.Collections.Generic.IList<string> Totals { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Totals { get; set; }
 
         /// <summary>Any warnings associated with generation of the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
-        public virtual System.Collections.Generic.IList<string> Warnings { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Warnings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2804,16 +2804,16 @@ namespace Google.Apis.AdSenseHost.v4_1.Data
         {
             /// <summary>The currency of this column. Only present if the header type is METRIC_CURRENCY.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("currency")]
-            public virtual string Currency { get; set; } 
+            public virtual string Currency { get; set; }
 
             /// <summary>The name of the header.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("name")]
-            public virtual string Name { get; set; } 
+            public virtual string Name { get; set; }
 
             /// <summary>The type of the header; one of DIMENSION, METRIC_TALLY, METRIC_RATIO, or
             /// METRIC_CURRENCY.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
-            public virtual string Type { get; set; } 
+            public virtual string Type { get; set; }
 
         }
     }    
@@ -2823,16 +2823,16 @@ namespace Google.Apis.AdSenseHost.v4_1.Data
         /// <summary>Unique identifier of this URL channel. This should be considered an opaque identifier; it is not
         /// safe to rely on it being in any particular format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Kind of resource this is, in this case adsensehost#urlChannel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>URL Pattern of this URL channel. Does not include "http://" or "https://". Example:
         /// www.example.com/home</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlPattern")]
-        public virtual string UrlPattern { get; set; } 
+        public virtual string UrlPattern { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2842,20 +2842,20 @@ namespace Google.Apis.AdSenseHost.v4_1.Data
     {
         /// <summary>ETag of this response for caching purposes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The URL channels returned in this list response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<UrlChannel> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<UrlChannel> Items { get; set; }
 
         /// <summary>Kind of list this is, in this case adsensehost#urlChannels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Continuation token used to page through URL channels. To retrieve the next page of results, set the
         /// next request's "pageToken" value to this.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
     }
 }

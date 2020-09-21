@@ -628,11 +628,11 @@ namespace Google.Apis.CloudTrace.v1.Data
         /// <summary>If defined, indicates that there are more traces that match the request and that this value should
         /// be passed to the next request to continue retrieving additional traces.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>List of trace records as specified by the view parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("traces")]
-        public virtual System.Collections.Generic.IList<Trace> Traces { get; set; } 
+        public virtual System.Collections.Generic.IList<Trace> Traces { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -644,17 +644,17 @@ namespace Google.Apis.CloudTrace.v1.Data
     {
         /// <summary>Project ID of the Cloud project where the trace data is stored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Collection of spans in the trace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spans")]
-        public virtual System.Collections.Generic.IList<TraceSpan> Spans { get; set; } 
+        public virtual System.Collections.Generic.IList<TraceSpan> Spans { get; set; }
 
         /// <summary>Globally unique identifier for the trace. This identifier is a 128-bit numeric value formatted as a
         /// 32-byte hex string. For example, `382d4f4c6b7bb2f4a972559d9085001d`. The numeric value should not be
         /// zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("traceId")]
-        public virtual string TraceId { get; set; } 
+        public virtual string TraceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -668,13 +668,13 @@ namespace Google.Apis.CloudTrace.v1.Data
     {
         /// <summary>End time of the span in nanoseconds from the UNIX epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Distinguishes between spans generated in a particular context. For example, two spans with the same
         /// name may be distinguished using `RPC_CLIENT` and `RPC_SERVER` to identify queueing latency associated with
         /// the span.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Collection of labels associated with the span. Label keys must be less than 128 bytes. Label values
         /// must be less than 16 kilobytes (10MB for `/stacktrace` values). Some predefined label keys exist, or you may
@@ -686,27 +686,27 @@ namespace Google.Apis.CloudTrace.v1.Data
         /// `/http/request/size` * `/http/response/size` * `/http/route` * `/http/status_code` * `/http/url` *
         /// `/http/user_agent` * `/pid` * `/stacktrace` * `/tid`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Name of the span. Must be less than 128 bytes. The span name is sanitized and displayed in the
         /// Trace tool in the Google Cloud Platform Console. The name may be a method name or some other per-call site
         /// name. For the same executable and the same call point, a best practice is to use a consistent name, which
         /// makes it easier to correlate cross-trace spans.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Optional. ID of the parent span, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentSpanId")]
-        public virtual System.Nullable<ulong> ParentSpanId { get; set; } 
+        public virtual System.Nullable<ulong> ParentSpanId { get; set; }
 
         /// <summary>Identifier for the span. Must be a 64-bit integer other than 0 and unique within a trace. For
         /// example, `2205310701640571284`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spanId")]
-        public virtual System.Nullable<ulong> SpanId { get; set; } 
+        public virtual System.Nullable<ulong> SpanId { get; set; }
 
         /// <summary>Start time of the span in nanoseconds from the UNIX epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -717,7 +717,7 @@ namespace Google.Apis.CloudTrace.v1.Data
     {
         /// <summary>List of traces.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("traces")]
-        public virtual System.Collections.Generic.IList<Trace> TracesValue { get; set; } 
+        public virtual System.Collections.Generic.IList<Trace> TracesValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

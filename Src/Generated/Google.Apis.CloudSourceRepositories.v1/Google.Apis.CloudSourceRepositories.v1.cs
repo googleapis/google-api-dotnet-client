@@ -990,12 +990,12 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
-        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; }
 
         /// <summary>Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
         /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual string Service { get; set; } 
+        public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1013,11 +1013,11 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         /// <summary>Specifies the identities that do not cause logging for this type of permission. Follows the same
         /// format of Binding.members.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
-        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; }
 
         /// <summary>The log type that this config enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logType")]
-        public virtual string LogType { get; set; } 
+        public virtual string LogType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1036,7 +1036,7 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         /// To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; } 
+        public virtual Expr Condition { get; set; }
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values:
@@ -1074,12 +1074,12 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         ///
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1127,21 +1127,21 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
         /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1153,11 +1153,11 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         /// <summary>If non-empty, additional repositories exist within the project. These can be retrieved by including
         /// this value in the next ListReposRequest's page_token field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The listed repos.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repos")]
-        public virtual System.Collections.Generic.IList<Repo> Repos { get; set; } 
+        public virtual System.Collections.Generic.IList<Repo> Repos { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1170,17 +1170,17 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         /// <summary>ID of the SSH deploy key at the other hosting service. Removing this key from the other service
         /// would deauthorize Google Cloud Source Repositories from mirroring.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployKeyId")]
-        public virtual string DeployKeyId { get; set; } 
+        public virtual string DeployKeyId { get; set; }
 
         /// <summary>URL of the main repository at the other hosting service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>ID of the webhook listening to updates to trigger mirroring. Removing this webhook from the other
         /// hosting service will stop Google Cloud Source Repositories from receiving notifications, and thereby
         /// disabling mirroring.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookId")]
-        public virtual string WebhookId { get; set; } 
+        public virtual string WebhookId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1192,23 +1192,23 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
         /// information and common metadata such as create time. Some services might not provide such metadata.  Any
         /// method that returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
@@ -1216,7 +1216,7 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
         /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1257,12 +1257,12 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
     {
         /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
-        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; }
 
         /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
         /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
         /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
@@ -1274,7 +1274,7 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
         /// `1` policy, and all of the conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Specifies the format of the policy.
         ///
@@ -1297,7 +1297,7 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         /// To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
     }    
 
@@ -1306,16 +1306,16 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
     {
         /// <summary>Reject a Git push that contains a private key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateKeyCheck")]
-        public virtual System.Nullable<bool> EnablePrivateKeyCheck { get; set; } 
+        public virtual System.Nullable<bool> EnablePrivateKeyCheck { get; set; }
 
         /// <summary>The name of the project. Values are of the form `projects/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>How this project publishes a change in the repositories through Cloud Pub/Sub. Keyed by the topic
         /// names.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubConfigs")]
-        public virtual System.Collections.Generic.IDictionary<string,PubsubConfig> PubsubConfigs { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, PubsubConfig> PubsubConfigs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1326,19 +1326,19 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
     {
         /// <summary>The format of the Cloud Pub/Sub messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageFormat")]
-        public virtual string MessageFormat { get; set; } 
+        public virtual string MessageFormat { get; set; }
 
         /// <summary>Email address of the service account used for publishing Cloud Pub/Sub messages. This service
         /// account needs to be in the same project as the PubsubConfig. When added, the caller needs to have
         /// iam.serviceAccounts.actAs permission on this service account. If unspecified, it defaults to the compute
         /// engine default service account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
-        public virtual string ServiceAccountEmail { get; set; } 
+        public virtual string ServiceAccountEmail { get; set; }
 
         /// <summary>A topic of Cloud Pub/Sub. Values are of the form `projects//topics/`. The project needs to be the
         /// same project as this config is in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topic")]
-        public virtual string Topic { get; set; } 
+        public virtual string Topic { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1349,25 +1349,25 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
     {
         /// <summary>How this repository mirrors a repository managed by another service. Read-only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mirrorConfig")]
-        public virtual MirrorConfig MirrorConfig { get; set; } 
+        public virtual MirrorConfig MirrorConfig { get; set; }
 
         /// <summary>Resource name of the repository, of the form `projects//repos/`.  The repo name may contain
         /// slashes. eg, `projects/myproject/repos/name/with/slash`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic
         /// names.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubConfigs")]
-        public virtual System.Collections.Generic.IDictionary<string,PubsubConfig> PubsubConfigs { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, PubsubConfig> PubsubConfigs { get; set; }
 
         /// <summary>The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
-        public virtual System.Nullable<long> Size { get; set; } 
+        public virtual System.Nullable<long> Size { get; set; }
 
         /// <summary>URL to clone the repository from Google Cloud Source Repositories. Read-only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1380,14 +1380,14 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         /// a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
         /// might reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual Policy Policy { get; set; } 
+        public virtual Policy Policy { get; set; }
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
         /// will be modified. If no mask is provided, the following default mask is used:
         ///
         /// `paths: "bindings, etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1403,17 +1403,17 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
         /// to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1426,19 +1426,19 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
     {
         /// <summary>The name of the repo being synchronized. Values are of the form `projects//repos/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The time this operation is started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The latest status message on syncing the repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
-        public virtual string StatusMessage { get; set; } 
+        public virtual string StatusMessage { get; set; }
 
         /// <summary>The time this operation's status message is updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1458,7 +1458,7 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         /// 'storage.*') are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1469,7 +1469,7 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
     {
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1480,12 +1480,12 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
     {
         /// <summary>The new configuration for the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectConfig")]
-        public virtual ProjectConfig ProjectConfig { get; set; } 
+        public virtual ProjectConfig ProjectConfig { get; set; }
 
         /// <summary>A FieldMask specifying which fields of the project_config to modify. Only the fields in the mask
         /// will be modified. If no mask is provided, this request is no-op.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1496,12 +1496,12 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
     {
         /// <summary>The new configuration for the repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repo")]
-        public virtual Repo Repo { get; set; } 
+        public virtual Repo Repo { get; set; }
 
         /// <summary>A FieldMask specifying which fields of the repo to modify. Only the fields in the mask will be
         /// modified. If no mask is provided, this request is no-op.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

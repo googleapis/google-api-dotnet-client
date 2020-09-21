@@ -2424,35 +2424,35 @@ namespace Google.Apis.Apigateway.v1beta.Data
     {
         /// <summary>Output only. Created time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Optional. Display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on
         /// labels for more details. https://cloud.google.com/compute/docs/labeling-resources</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-
         /// infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the
         /// same project as this API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedService")]
-        public virtual string ManagedService { get; set; } 
+        public virtual string ManagedService { get; set; }
 
         /// <summary>Output only. Resource name of the API. Format:
         /// projects/{project}/locations/global/apis/{api}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. State of the API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Output only. Updated time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2465,26 +2465,26 @@ namespace Google.Apis.Apigateway.v1beta.Data
     {
         /// <summary>Output only. Created time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Optional. Display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Immutable. Gateway specific configuration. If not specified, backend authentication will be set to
         /// use OIDC authentication using the default compute service account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gatewayConfig")]
-        public virtual ApigatewayGatewayConfig GatewayConfig { get; set; } 
+        public virtual ApigatewayGatewayConfig GatewayConfig { get; set; }
 
         /// <summary>Optional. gRPC service definition files. If specified, openapi_documents must not be
         /// included.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("grpcServices")]
-        public virtual System.Collections.Generic.IList<ApigatewayApiConfigGrpcServiceDefinition> GrpcServices { get; set; } 
+        public virtual System.Collections.Generic.IList<ApigatewayApiConfigGrpcServiceDefinition> GrpcServices { get; set; }
 
         /// <summary>Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on
         /// labels for more details. https://cloud.google.com/compute/docs/labeling-resources</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Optional. Service Configuration files. At least one must be included when using gRPC service
         /// definitions. See https: //cloud.google.com/endpoints/docs/grpc/g // rpc-service-
@@ -2493,30 +2493,30 @@ namespace Google.Apis.Apigateway.v1beta.Data
         /// semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded
         /// messages are merged using these rules for nested fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedServiceConfigs")]
-        public virtual System.Collections.Generic.IList<ApigatewayApiConfigFile> ManagedServiceConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<ApigatewayApiConfigFile> ManagedServiceConfigs { get; set; }
 
         /// <summary>Output only. Resource name of the API Config. Format:
         /// projects/{project}/locations/global/apis/{api}/configs/{api_config}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_config
         /// must not be included.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openapiDocuments")]
-        public virtual System.Collections.Generic.IList<ApigatewayApiConfigOpenApiDocument> OpenapiDocuments { get; set; } 
+        public virtual System.Collections.Generic.IList<ApigatewayApiConfigOpenApiDocument> OpenapiDocuments { get; set; }
 
         /// <summary>Output only. The ID of the associated Service Config ( https://cloud.google.com/service-
         /// infrastructure/docs/glossary#config).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceConfigId")]
-        public virtual string ServiceConfigId { get; set; } 
+        public virtual string ServiceConfigId { get; set; }
 
         /// <summary>Output only. State of the API Config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Output only. Updated time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2527,12 +2527,12 @@ namespace Google.Apis.Apigateway.v1beta.Data
     {
         /// <summary>The bytes that constitute the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contents")]
-        public virtual string Contents { get; set; } 
+        public virtual string Contents { get; set; }
 
         /// <summary>The file path (full or relative path). This is typically the path of the file when it is
         /// uploaded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual string Path { get; set; } 
+        public virtual string Path { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2545,13 +2545,13 @@ namespace Google.Apis.Apigateway.v1beta.Data
         /// source info included. For an example test.proto file, the following command would put the value in a new
         /// file named out.pb. $ protoc --include_imports --include_source_info test.proto -o out.pb</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileDescriptorSet")]
-        public virtual ApigatewayApiConfigFile FileDescriptorSet { get; set; } 
+        public virtual ApigatewayApiConfigFile FileDescriptorSet { get; set; }
 
         /// <summary>Optional. Uncompiled proto files associated with the descriptor set, used for display purposes
         /// (server-side compilation is not supported). These should match the inputs to 'protoc' command used to
         /// generate file_descriptor_set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual System.Collections.Generic.IList<ApigatewayApiConfigFile> Source { get; set; } 
+        public virtual System.Collections.Generic.IList<ApigatewayApiConfigFile> Source { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2562,7 +2562,7 @@ namespace Google.Apis.Apigateway.v1beta.Data
     {
         /// <summary>The OpenAPI Specification document file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("document")]
-        public virtual ApigatewayApiConfigFile Document { get; set; } 
+        public virtual ApigatewayApiConfigFile Document { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2583,12 +2583,12 @@ namespace Google.Apis.Apigateway.v1beta.Data
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
-        public virtual System.Collections.Generic.IList<ApigatewayAuditLogConfig> AuditLogConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<ApigatewayAuditLogConfig> AuditLogConfigs { get; set; }
 
         /// <summary>Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
         /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual string Service { get; set; } 
+        public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2603,11 +2603,11 @@ namespace Google.Apis.Apigateway.v1beta.Data
         /// <summary>Specifies the identities that do not cause logging for this type of permission. Follows the same
         /// format of Binding.members.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
-        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; }
 
         /// <summary>The log type that this config enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logType")]
-        public virtual string LogType { get; set; } 
+        public virtual string LogType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2626,7 +2626,7 @@ namespace Google.Apis.Apigateway.v1beta.Data
         /// BackendRule option (https: //github.com/googleapis/googleapis/blob/ //
         /// master/google/api/backend.proto#L125).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleServiceAccount")]
-        public virtual string GoogleServiceAccount { get; set; } 
+        public virtual string GoogleServiceAccount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2641,7 +2641,7 @@ namespace Google.Apis.Apigateway.v1beta.Data
         /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual ApigatewayExpr Condition { get; set; } 
+        public virtual ApigatewayExpr Condition { get; set; }
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
@@ -2663,12 +2663,12 @@ namespace Google.Apis.Apigateway.v1beta.Data
         /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
         /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2697,21 +2697,21 @@ namespace Google.Apis.Apigateway.v1beta.Data
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
         /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2724,38 +2724,38 @@ namespace Google.Apis.Apigateway.v1beta.Data
         /// <summary>Required. Resource name of the API Config for this Gateway. Format:
         /// projects/{project}/locations/global/apis/{api}/configs/{apiConfig}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiConfig")]
-        public virtual string ApiConfig { get; set; } 
+        public virtual string ApiConfig { get; set; }
 
         /// <summary>Output only. Created time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. The default API Gateway host name of the form
         /// `{gateway_id}-{hash}.{region_code}.gateway.dev`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultHostname")]
-        public virtual string DefaultHostname { get; set; } 
+        public virtual string DefaultHostname { get; set; }
 
         /// <summary>Optional. Display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on
         /// labels for more details. https://cloud.google.com/compute/docs/labeling-resources</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Output only. Resource name of the Gateway. Format:
         /// projects/{project}/locations/{location}/gateways/{gateway}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The current state of the Gateway.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Output only. Updated time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2766,7 +2766,7 @@ namespace Google.Apis.Apigateway.v1beta.Data
     {
         /// <summary>Required. Backend settings that are applied to all backends of the Gateway.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backendConfig")]
-        public virtual ApigatewayBackendConfig BackendConfig { get; set; } 
+        public virtual ApigatewayBackendConfig BackendConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2777,15 +2777,15 @@ namespace Google.Apis.Apigateway.v1beta.Data
     {
         /// <summary>API Configs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiConfigs")]
-        public virtual System.Collections.Generic.IList<ApigatewayApiConfig> ApiConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<ApigatewayApiConfig> ApiConfigs { get; set; }
 
         /// <summary>Next page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachableLocations")]
-        public virtual System.Collections.Generic.IList<string> UnreachableLocations { get; set; } 
+        public virtual System.Collections.Generic.IList<string> UnreachableLocations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2796,15 +2796,15 @@ namespace Google.Apis.Apigateway.v1beta.Data
     {
         /// <summary>APIs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apis")]
-        public virtual System.Collections.Generic.IList<ApigatewayApi> Apis { get; set; } 
+        public virtual System.Collections.Generic.IList<ApigatewayApi> Apis { get; set; }
 
         /// <summary>Next page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachableLocations")]
-        public virtual System.Collections.Generic.IList<string> UnreachableLocations { get; set; } 
+        public virtual System.Collections.Generic.IList<string> UnreachableLocations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2815,15 +2815,15 @@ namespace Google.Apis.Apigateway.v1beta.Data
     {
         /// <summary>Gateways.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gateways")]
-        public virtual System.Collections.Generic.IList<ApigatewayGateway> Gateways { get; set; } 
+        public virtual System.Collections.Generic.IList<ApigatewayGateway> Gateways { get; set; }
 
         /// <summary>Next page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachableLocations")]
-        public virtual System.Collections.Generic.IList<string> UnreachableLocations { get; set; } 
+        public virtual System.Collections.Generic.IList<string> UnreachableLocations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2834,11 +2834,11 @@ namespace Google.Apis.Apigateway.v1beta.Data
     {
         /// <summary>A list of locations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<ApigatewayLocation> Locations { get; set; } 
+        public virtual System.Collections.Generic.IList<ApigatewayLocation> Locations { get; set; }
 
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2849,11 +2849,11 @@ namespace Google.Apis.Apigateway.v1beta.Data
     {
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<ApigatewayOperation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<ApigatewayOperation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2864,25 +2864,25 @@ namespace Google.Apis.Apigateway.v1beta.Data
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-
         /// east1"}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The canonical id for this location. For example: `"us-east1"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>Service-specific metadata. For example the available capacity at the given location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>Resource name for the location, which may vary between implementations. For example: `"projects
         /// /example-project/locations/us-east1"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2894,23 +2894,23 @@ namespace Google.Apis.Apigateway.v1beta.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual ApigatewayStatus Error { get; set; } 
+        public virtual ApigatewayStatus Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -2918,7 +2918,7 @@ namespace Google.Apis.Apigateway.v1beta.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2929,37 +2929,37 @@ namespace Google.Apis.Apigateway.v1beta.Data
     {
         /// <summary>Output only. API version used to start the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; } 
+        public virtual string ApiVersion { get; set; }
 
         /// <summary>Output only. The time the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. Diagnostics generated during processing of configuration source files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diagnostics")]
-        public virtual System.Collections.Generic.IList<ApigatewayOperationMetadataDiagnostic> Diagnostics { get; set; } 
+        public virtual System.Collections.Generic.IList<ApigatewayOperationMetadataDiagnostic> Diagnostics { get; set; }
 
         /// <summary>Output only. The time the operation finished running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Output only. Identifies whether the user has requested cancellation of the operation. Operations
         /// that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1,
         /// corresponding to `Code.CANCELLED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
-        public virtual System.Nullable<bool> RequestedCancellation { get; set; } 
+        public virtual System.Nullable<bool> RequestedCancellation { get; set; }
 
         /// <summary>Output only. Human-readable status of the operation, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
-        public virtual string StatusMessage { get; set; } 
+        public virtual string StatusMessage { get; set; }
 
         /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; } 
+        public virtual string Target { get; set; }
 
         /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
-        public virtual string Verb { get; set; } 
+        public virtual string Verb { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2970,11 +2970,11 @@ namespace Google.Apis.Apigateway.v1beta.Data
     {
         /// <summary>Location of the diagnostic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>The diagnostic message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3004,12 +3004,12 @@ namespace Google.Apis.Apigateway.v1beta.Data
     {
         /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
-        public virtual System.Collections.Generic.IList<ApigatewayAuditConfig> AuditConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<ApigatewayAuditConfig> AuditConfigs { get; set; }
 
         /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
         /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<ApigatewayBinding> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<ApigatewayBinding> Bindings { get; set; }
 
         /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
@@ -3020,7 +3020,7 @@ namespace Google.Apis.Apigateway.v1beta.Data
         /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
         /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
         /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
@@ -3034,7 +3034,7 @@ namespace Google.Apis.Apigateway.v1beta.Data
         /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
     }    
 
@@ -3045,13 +3045,13 @@ namespace Google.Apis.Apigateway.v1beta.Data
         /// a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
         /// might reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual ApigatewayPolicy Policy { get; set; } 
+        public virtual ApigatewayPolicy Policy { get; set; }
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
         /// will be modified. If no mask is provided, the following default mask is used: `paths: "bindings,
         /// etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3066,17 +3066,17 @@ namespace Google.Apis.Apigateway.v1beta.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3089,7 +3089,7 @@ namespace Google.Apis.Apigateway.v1beta.Data
         /// 'storage.*') are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3100,7 +3100,7 @@ namespace Google.Apis.Apigateway.v1beta.Data
     {
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

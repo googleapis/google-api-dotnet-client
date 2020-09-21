@@ -2757,7 +2757,7 @@ namespace Google.Apis.CloudKMS.v1.Data
     {
         /// <summary>Required. The data encrypted with the named CryptoKeyVersion's public key using OAEP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ciphertext")]
-        public virtual string Ciphertext { get; set; } 
+        public virtual string Ciphertext { get; set; }
 
         /// <summary>Optional. An optional CRC32C checksum of the AsymmetricDecryptRequest.ciphertext. If specified,
         /// KeyManagementService will verify the integrity of the received AsymmetricDecryptRequest.ciphertext using
@@ -2769,7 +2769,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type.
         /// NOTE: This field is in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ciphertextCrc32c")]
-        public virtual System.Nullable<long> CiphertextCrc32c { get; set; } 
+        public virtual System.Nullable<long> CiphertextCrc32c { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2780,7 +2780,7 @@ namespace Google.Apis.CloudKMS.v1.Data
     {
         /// <summary>The decrypted data originally encrypted with the matching public key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plaintext")]
-        public virtual string Plaintext { get; set; } 
+        public virtual string Plaintext { get; set; }
 
         /// <summary>Integrity verification field. A CRC32C checksum of the returned
         /// AsymmetricDecryptResponse.plaintext. An integrity check of AsymmetricDecryptResponse.plaintext can be
@@ -2791,7 +2791,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages
         /// that support this type. NOTE: This field is in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plaintextCrc32c")]
-        public virtual System.Nullable<long> PlaintextCrc32c { get; set; } 
+        public virtual System.Nullable<long> PlaintextCrc32c { get; set; }
 
         /// <summary>Integrity verification field. A flag indicating whether AsymmetricDecryptRequest.ciphertext_crc32c
         /// was received by KeyManagementService and used for the integrity verification of the ciphertext. A false
@@ -2800,7 +2800,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// this field is still false, discard the response and perform a limited number of retries. NOTE: This field is
         /// in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifiedCiphertextCrc32c")]
-        public virtual System.Nullable<bool> VerifiedCiphertextCrc32c { get; set; } 
+        public virtual System.Nullable<bool> VerifiedCiphertextCrc32c { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2812,7 +2812,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>Required. The digest of the data to sign. The digest must be produced with the same digest
         /// algorithm as specified by the key version's algorithm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("digest")]
-        public virtual Digest Digest { get; set; } 
+        public virtual Digest Digest { get; set; }
 
         /// <summary>Optional. An optional CRC32C checksum of the AsymmetricSignRequest.digest. If specified,
         /// KeyManagementService will verify the integrity of the received AsymmetricSignRequest.digest using this
@@ -2824,7 +2824,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE: This
         /// field is in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("digestCrc32c")]
-        public virtual System.Nullable<long> DigestCrc32c { get; set; } 
+        public virtual System.Nullable<long> DigestCrc32c { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2836,11 +2836,11 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>The resource name of the CryptoKeyVersion used for signing. Check this field to verify that the
         /// intended resource was used for signing. NOTE: This field is in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The created signature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]
-        public virtual string Signature { get; set; } 
+        public virtual string Signature { get; set; }
 
         /// <summary>Integrity verification field. A CRC32C checksum of the returned AsymmetricSignResponse.signature.
         /// An integrity check of AsymmetricSignResponse.signature can be performed by computing the CRC32C checksum of
@@ -2851,7 +2851,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE: This field is
         /// in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signatureCrc32c")]
-        public virtual System.Nullable<long> SignatureCrc32c { get; set; } 
+        public virtual System.Nullable<long> SignatureCrc32c { get; set; }
 
         /// <summary>Integrity verification field. A flag indicating whether AsymmetricSignRequest.digest_crc32c was
         /// received by KeyManagementService and used for the integrity verification of the digest. A false value of
@@ -2859,7 +2859,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// delivered to KeyManagementService. If you've set AsymmetricSignRequest.digest_crc32c but this field is still
         /// false, discard the response and perform a limited number of retries. NOTE: This field is in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifiedDigestCrc32c")]
-        public virtual System.Nullable<bool> VerifiedDigestCrc32c { get; set; } 
+        public virtual System.Nullable<bool> VerifiedDigestCrc32c { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2880,12 +2880,12 @@ namespace Google.Apis.CloudKMS.v1.Data
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
-        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; }
 
         /// <summary>Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
         /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual string Service { get; set; } 
+        public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2900,11 +2900,11 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>Specifies the identities that do not cause logging for this type of permission. Follows the same
         /// format of Binding.members.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
-        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; }
 
         /// <summary>The log type that this config enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logType")]
-        public virtual string LogType { get; set; } 
+        public virtual string LogType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2916,7 +2916,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>A client-specified ID for this binding. Expected to be globally unique to support the internal
         /// bindings-by-ID API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; } 
+        public virtual string BindingId { get; set; }
 
         /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
         /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
@@ -2924,7 +2924,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; } 
+        public virtual Expr Condition { get; set; }
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
@@ -2946,12 +2946,12 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
         /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2963,15 +2963,15 @@ namespace Google.Apis.CloudKMS.v1.Data
     {
         /// <summary>Cavium certificate chain corresponding to the attestation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("caviumCerts")]
-        public virtual System.Collections.Generic.IList<string> CaviumCerts { get; set; } 
+        public virtual System.Collections.Generic.IList<string> CaviumCerts { get; set; }
 
         /// <summary>Google card certificate chain corresponding to the attestation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleCardCerts")]
-        public virtual System.Collections.Generic.IList<string> GoogleCardCerts { get; set; } 
+        public virtual System.Collections.Generic.IList<string> GoogleCardCerts { get; set; }
 
         /// <summary>Google partition certificate chain corresponding to the attestation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googlePartitionCerts")]
-        public virtual System.Collections.Generic.IList<string> GooglePartitionCerts { get; set; } 
+        public virtual System.Collections.Generic.IList<string> GooglePartitionCerts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2983,48 +2983,48 @@ namespace Google.Apis.CloudKMS.v1.Data
     {
         /// <summary>Output only. The time at which this CryptoKey was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Labels with user-defined metadata. For more information, see [Labeling
         /// Keys](https://cloud.google.com/kms/docs/labeling-keys).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Output only. The resource name for this CryptoKey in the format
         /// `projects/locations/keyRings/cryptoKeys`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of
         /// this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via
         /// CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose
         /// ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextRotationTime")]
-        public virtual object NextRotationTime { get; set; } 
+        public virtual object NextRotationTime { get; set; }
 
         /// <summary>Output only. A copy of the "primary" CryptoKeyVersion that will be used by Encrypt when this
         /// CryptoKey is given in EncryptRequest.name. The CryptoKey's primary version can be updated via
         /// UpdateCryptoKeyPrimaryVersion. Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this
         /// field will be omitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primary")]
-        public virtual CryptoKeyVersion Primary { get; set; } 
+        public virtual CryptoKeyVersion Primary { get; set; }
 
         /// <summary>Immutable. The immutable purpose of this CryptoKey.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purpose")]
-        public virtual string Purpose { get; set; } 
+        public virtual string Purpose { get; set; }
 
         /// <summary>next_rotation_time will be advanced by this period when the service automatically rotates a key.
         /// Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also
         /// be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be
         /// omitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rotationPeriod")]
-        public virtual object RotationPeriod { get; set; } 
+        public virtual object RotationPeriod { get; set; }
 
         /// <summary>A template describing settings for new CryptoKeyVersion instances. The properties of new
         /// CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this
         /// template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionTemplate")]
-        public virtual CryptoKeyVersionTemplate VersionTemplate { get; set; } 
+        public virtual CryptoKeyVersionTemplate VersionTemplate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3038,63 +3038,63 @@ namespace Google.Apis.CloudKMS.v1.Data
     {
         /// <summary>Output only. The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("algorithm")]
-        public virtual string Algorithm { get; set; } 
+        public virtual string Algorithm { get; set; }
 
         /// <summary>Output only. Statement that was generated and signed by the HSM at key creation time. Use this
         /// statement to verify attributes of the key as stored on the HSM, independently of Google. Only provided for
         /// key versions with protection_level HSM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attestation")]
-        public virtual KeyOperationAttestation Attestation { get; set; } 
+        public virtual KeyOperationAttestation Attestation { get; set; }
 
         /// <summary>Output only. The time at which this CryptoKeyVersion was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. The time this CryptoKeyVersion's key material was destroyed. Only present if state is
         /// DESTROYED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destroyEventTime")]
-        public virtual object DestroyEventTime { get; set; } 
+        public virtual object DestroyEventTime { get; set; }
 
         /// <summary>Output only. The time this CryptoKeyVersion's key material is scheduled for destruction. Only
         /// present if state is DESTROY_SCHEDULED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destroyTime")]
-        public virtual object DestroyTime { get; set; } 
+        public virtual object DestroyTime { get; set; }
 
         /// <summary>ExternalProtectionLevelOptions stores a group of additional fields for configuring a
         /// CryptoKeyVersion that are specific to the EXTERNAL protection level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalProtectionLevelOptions")]
-        public virtual ExternalProtectionLevelOptions ExternalProtectionLevelOptions { get; set; } 
+        public virtual ExternalProtectionLevelOptions ExternalProtectionLevelOptions { get; set; }
 
         /// <summary>Output only. The time this CryptoKeyVersion's key material was generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generateTime")]
-        public virtual object GenerateTime { get; set; } 
+        public virtual object GenerateTime { get; set; }
 
         /// <summary>Output only. The root cause of an import failure. Only present if state is IMPORT_FAILED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importFailureReason")]
-        public virtual string ImportFailureReason { get; set; } 
+        public virtual string ImportFailureReason { get; set; }
 
         /// <summary>Output only. The name of the ImportJob used to import this CryptoKeyVersion. Only present if the
         /// underlying key material was imported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importJob")]
-        public virtual string ImportJob { get; set; } 
+        public virtual string ImportJob { get; set; }
 
         /// <summary>Output only. The time at which this CryptoKeyVersion's key material was imported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importTime")]
-        public virtual object ImportTime { get; set; } 
+        public virtual object ImportTime { get; set; }
 
         /// <summary>Output only. The resource name for this CryptoKeyVersion in the format
         /// `projects/locations/keyRings/cryptoKeys/cryptoKeyVersions`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The ProtectionLevel describing how crypto operations are performed with this
         /// CryptoKeyVersion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protectionLevel")]
-        public virtual string ProtectionLevel { get; set; } 
+        public virtual string ProtectionLevel { get; set; }
 
         /// <summary>The current state of the CryptoKeyVersion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3108,12 +3108,12 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is
         /// ENCRYPT_DECRYPT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("algorithm")]
-        public virtual string Algorithm { get; set; } 
+        public virtual string Algorithm { get; set; }
 
         /// <summary>ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults
         /// to SOFTWARE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protectionLevel")]
-        public virtual string ProtectionLevel { get; set; } 
+        public virtual string ProtectionLevel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3125,7 +3125,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>Optional. Optional data that must match the data originally supplied in
         /// EncryptRequest.additional_authenticated_data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalAuthenticatedData")]
-        public virtual string AdditionalAuthenticatedData { get; set; } 
+        public virtual string AdditionalAuthenticatedData { get; set; }
 
         /// <summary>Optional. An optional CRC32C checksum of the DecryptRequest.additional_authenticated_data. If
         /// specified, KeyManagementService will verify the integrity of the received
@@ -3138,11 +3138,11 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support
         /// this type. NOTE: This field is in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalAuthenticatedDataCrc32c")]
-        public virtual System.Nullable<long> AdditionalAuthenticatedDataCrc32c { get; set; } 
+        public virtual System.Nullable<long> AdditionalAuthenticatedDataCrc32c { get; set; }
 
         /// <summary>Required. The encrypted data originally returned in EncryptResponse.ciphertext.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ciphertext")]
-        public virtual string Ciphertext { get; set; } 
+        public virtual string Ciphertext { get; set; }
 
         /// <summary>Optional. An optional CRC32C checksum of the DecryptRequest.ciphertext. If specified,
         /// KeyManagementService will verify the integrity of the received DecryptRequest.ciphertext using this
@@ -3154,7 +3154,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE: This
         /// field is in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ciphertextCrc32c")]
-        public virtual System.Nullable<long> CiphertextCrc32c { get; set; } 
+        public virtual System.Nullable<long> CiphertextCrc32c { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3165,7 +3165,7 @@ namespace Google.Apis.CloudKMS.v1.Data
     {
         /// <summary>The decrypted data originally supplied in EncryptRequest.plaintext.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plaintext")]
-        public virtual string Plaintext { get; set; } 
+        public virtual string Plaintext { get; set; }
 
         /// <summary>Integrity verification field. A CRC32C checksum of the returned DecryptResponse.plaintext. An
         /// integrity check of DecryptResponse.plaintext can be performed by computing the CRC32C checksum of
@@ -3177,7 +3177,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE:
         /// This field is in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plaintextCrc32c")]
-        public virtual System.Nullable<long> PlaintextCrc32c { get; set; } 
+        public virtual System.Nullable<long> PlaintextCrc32c { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3195,15 +3195,15 @@ namespace Google.Apis.CloudKMS.v1.Data
     {
         /// <summary>A message digest produced with the SHA-256 algorithm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha256")]
-        public virtual string Sha256 { get; set; } 
+        public virtual string Sha256 { get; set; }
 
         /// <summary>A message digest produced with the SHA-384 algorithm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha384")]
-        public virtual string Sha384 { get; set; } 
+        public virtual string Sha384 { get; set; }
 
         /// <summary>A message digest produced with the SHA-512 algorithm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha512")]
-        public virtual string Sha512 { get; set; } 
+        public virtual string Sha512 { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3217,7 +3217,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// protection_level. For SOFTWARE keys, the AAD must be no larger than 64KiB. For HSM keys, the combined length
         /// of the plaintext and additional_authenticated_data fields must be no larger than 8KiB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalAuthenticatedData")]
-        public virtual string AdditionalAuthenticatedData { get; set; } 
+        public virtual string AdditionalAuthenticatedData { get; set; }
 
         /// <summary>Optional. An optional CRC32C checksum of the EncryptRequest.additional_authenticated_data. If
         /// specified, KeyManagementService will verify the integrity of the received
@@ -3230,14 +3230,14 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support
         /// this type. NOTE: This field is in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalAuthenticatedDataCrc32c")]
-        public virtual System.Nullable<long> AdditionalAuthenticatedDataCrc32c { get; set; } 
+        public virtual System.Nullable<long> AdditionalAuthenticatedDataCrc32c { get; set; }
 
         /// <summary>Required. The data to encrypt. Must be no larger than 64KiB. The maximum size depends on the key
         /// version's protection_level. For SOFTWARE keys, the plaintext must be no larger than 64KiB. For HSM keys, the
         /// combined length of the plaintext and additional_authenticated_data fields must be no larger than
         /// 8KiB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plaintext")]
-        public virtual string Plaintext { get; set; } 
+        public virtual string Plaintext { get; set; }
 
         /// <summary>Optional. An optional CRC32C checksum of the EncryptRequest.plaintext. If specified,
         /// KeyManagementService will verify the integrity of the received EncryptRequest.plaintext using this checksum.
@@ -3249,7 +3249,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE: This
         /// field is in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plaintextCrc32c")]
-        public virtual System.Nullable<long> PlaintextCrc32c { get; set; } 
+        public virtual System.Nullable<long> PlaintextCrc32c { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3260,7 +3260,7 @@ namespace Google.Apis.CloudKMS.v1.Data
     {
         /// <summary>The encrypted data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ciphertext")]
-        public virtual string Ciphertext { get; set; } 
+        public virtual string Ciphertext { get; set; }
 
         /// <summary>Integrity verification field. A CRC32C checksum of the returned EncryptResponse.ciphertext. An
         /// integrity check of EncryptResponse.ciphertext can be performed by computing the CRC32C checksum of
@@ -3271,12 +3271,12 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE: This field is
         /// in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ciphertextCrc32c")]
-        public virtual System.Nullable<long> CiphertextCrc32c { get; set; } 
+        public virtual System.Nullable<long> CiphertextCrc32c { get; set; }
 
         /// <summary>The resource name of the CryptoKeyVersion used in encryption. Check this field to verify that the
         /// intended resource was used for encryption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Integrity verification field. A flag indicating whether
         /// EncryptRequest.additional_authenticated_data_crc32c was received by KeyManagementService and used for the
@@ -3286,7 +3286,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// still false, discard the response and perform a limited number of retries. NOTE: This field is in
         /// Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifiedAdditionalAuthenticatedDataCrc32c")]
-        public virtual System.Nullable<bool> VerifiedAdditionalAuthenticatedDataCrc32c { get; set; } 
+        public virtual System.Nullable<bool> VerifiedAdditionalAuthenticatedDataCrc32c { get; set; }
 
         /// <summary>Integrity verification field. A flag indicating whether EncryptRequest.plaintext_crc32c was
         /// received by KeyManagementService and used for the integrity verification of the plaintext. A false value of
@@ -3294,7 +3294,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// to KeyManagementService. If you've set EncryptRequest.plaintext_crc32c but this field is still false,
         /// discard the response and perform a limited number of retries. NOTE: This field is in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifiedPlaintextCrc32c")]
-        public virtual System.Nullable<bool> VerifiedPlaintextCrc32c { get; set; } 
+        public virtual System.Nullable<bool> VerifiedPlaintextCrc32c { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3316,21 +3316,21 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
         /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3342,7 +3342,7 @@ namespace Google.Apis.CloudKMS.v1.Data
     {
         /// <summary>The URI for an external resource that this CryptoKeyVersion represents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalKeyUri")]
-        public virtual string ExternalKeyUri { get; set; } 
+        public virtual string ExternalKeyUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3354,11 +3354,11 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>Required. The algorithm of the key being imported. This does not need to match the version_template
         /// of the CryptoKey this version imports into.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("algorithm")]
-        public virtual string Algorithm { get; set; } 
+        public virtual string Algorithm { get; set; }
 
         /// <summary>Required. The name of the ImportJob that was used to wrap this key material.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importJob")]
-        public virtual string ImportJob { get; set; } 
+        public virtual string ImportJob { get; set; }
 
         /// <summary>Wrapped key material produced with RSA_OAEP_3072_SHA1_AES_256 or RSA_OAEP_4096_SHA1_AES_256. This
         /// field contains the concatenation of two wrapped keys: 1. An ephemeral AES-256 wrapping key wrapped with the
@@ -3368,7 +3368,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// that the unwrapped key is in PKCS#8-encoded DER format (the PrivateKeyInfo structure from RFC 5208). This
         /// format is the same as the format produced by PKCS#11 mechanism CKM_RSA_AES_KEY_WRAP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rsaAesWrappedKey")]
-        public virtual string RsaAesWrappedKey { get; set; } 
+        public virtual string RsaAesWrappedKey { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3392,47 +3392,47 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of
         /// Google. Only present if the chosen ImportMethod is one with a protection level of HSM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attestation")]
-        public virtual KeyOperationAttestation Attestation { get; set; } 
+        public virtual KeyOperationAttestation Attestation { get; set; }
 
         /// <summary>Output only. The time at which this ImportJob was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. The time this ImportJob expired. Only present if state is EXPIRED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireEventTime")]
-        public virtual object ExpireEventTime { get; set; } 
+        public virtual object ExpireEventTime { get; set; }
 
         /// <summary>Output only. The time at which this ImportJob is scheduled for expiration and can no longer be used
         /// to import key material.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; } 
+        public virtual object ExpireTime { get; set; }
 
         /// <summary>Output only. The time this ImportJob's key material was generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generateTime")]
-        public virtual object GenerateTime { get; set; } 
+        public virtual object GenerateTime { get; set; }
 
         /// <summary>Required. Immutable. The wrapping method to be used for incoming key material.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importMethod")]
-        public virtual string ImportMethod { get; set; } 
+        public virtual string ImportMethod { get; set; }
 
         /// <summary>Output only. The resource name for this ImportJob in the format
         /// `projects/locations/keyRings/importJobs`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. Immutable. The protection level of the ImportJob. This must match the protection_level of
         /// the version_template on the CryptoKey you attempt to import into.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protectionLevel")]
-        public virtual string ProtectionLevel { get; set; } 
+        public virtual string ProtectionLevel { get; set; }
 
         /// <summary>Output only. The public key with which to wrap key material prior to import. Only returned if state
         /// is ACTIVE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicKey")]
-        public virtual WrappingPublicKey PublicKey { get; set; } 
+        public virtual WrappingPublicKey PublicKey { get; set; }
 
         /// <summary>Output only. The current state of the ImportJob, indicating if it can be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3444,16 +3444,16 @@ namespace Google.Apis.CloudKMS.v1.Data
     {
         /// <summary>Output only. The certificate chains needed to validate the attestation</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certChains")]
-        public virtual CertificateChains CertChains { get; set; } 
+        public virtual CertificateChains CertChains { get; set; }
 
         /// <summary>Output only. The attestation data provided by the HSM when the key operation was
         /// performed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual string Content { get; set; } 
+        public virtual string Content { get; set; }
 
         /// <summary>Output only. The format of the attestation data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
-        public virtual string Format { get; set; } 
+        public virtual string Format { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3464,12 +3464,12 @@ namespace Google.Apis.CloudKMS.v1.Data
     {
         /// <summary>Output only. The time at which this KeyRing was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. The resource name for the KeyRing in the format
         /// `projects/locations/keyRings`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3480,16 +3480,16 @@ namespace Google.Apis.CloudKMS.v1.Data
     {
         /// <summary>The list of CryptoKeyVersions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyVersions")]
-        public virtual System.Collections.Generic.IList<CryptoKeyVersion> CryptoKeyVersions { get; set; } 
+        public virtual System.Collections.Generic.IList<CryptoKeyVersion> CryptoKeyVersions { get; set; }
 
         /// <summary>A token to retrieve next page of results. Pass this value in
         /// ListCryptoKeyVersionsRequest.page_token to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The total number of CryptoKeyVersions that matched the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
-        public virtual System.Nullable<int> TotalSize { get; set; } 
+        public virtual System.Nullable<int> TotalSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3500,16 +3500,16 @@ namespace Google.Apis.CloudKMS.v1.Data
     {
         /// <summary>The list of CryptoKeys.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeys")]
-        public virtual System.Collections.Generic.IList<CryptoKey> CryptoKeys { get; set; } 
+        public virtual System.Collections.Generic.IList<CryptoKey> CryptoKeys { get; set; }
 
         /// <summary>A token to retrieve next page of results. Pass this value in ListCryptoKeysRequest.page_token to
         /// retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The total number of CryptoKeys that matched the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
-        public virtual System.Nullable<int> TotalSize { get; set; } 
+        public virtual System.Nullable<int> TotalSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3520,16 +3520,16 @@ namespace Google.Apis.CloudKMS.v1.Data
     {
         /// <summary>The list of ImportJobs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importJobs")]
-        public virtual System.Collections.Generic.IList<ImportJob> ImportJobs { get; set; } 
+        public virtual System.Collections.Generic.IList<ImportJob> ImportJobs { get; set; }
 
         /// <summary>A token to retrieve next page of results. Pass this value in ListImportJobsRequest.page_token to
         /// retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The total number of ImportJobs that matched the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
-        public virtual System.Nullable<int> TotalSize { get; set; } 
+        public virtual System.Nullable<int> TotalSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3540,16 +3540,16 @@ namespace Google.Apis.CloudKMS.v1.Data
     {
         /// <summary>The list of KeyRings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyRings")]
-        public virtual System.Collections.Generic.IList<KeyRing> KeyRings { get; set; } 
+        public virtual System.Collections.Generic.IList<KeyRing> KeyRings { get; set; }
 
         /// <summary>A token to retrieve next page of results. Pass this value in ListKeyRingsRequest.page_token to
         /// retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The total number of KeyRings that matched the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
-        public virtual System.Nullable<int> TotalSize { get; set; } 
+        public virtual System.Nullable<int> TotalSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3560,11 +3560,11 @@ namespace Google.Apis.CloudKMS.v1.Data
     {
         /// <summary>A list of locations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
+        public virtual System.Collections.Generic.IList<Location> Locations { get; set; }
 
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3575,25 +3575,25 @@ namespace Google.Apis.CloudKMS.v1.Data
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-
         /// east1"}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The canonical id for this location. For example: `"us-east1"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>Service-specific metadata. For example the available capacity at the given location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>Resource name for the location, which may vary between implementations. For example: `"projects
         /// /example-project/locations/us-east1"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3605,11 +3605,11 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>Indicates whether CryptoKeys with protection_level EXTERNAL can be created in this
         /// location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ekmAvailable")]
-        public virtual System.Nullable<bool> EkmAvailable { get; set; } 
+        public virtual System.Nullable<bool> EkmAvailable { get; set; }
 
         /// <summary>Indicates whether CryptoKeys with protection_level HSM can be created in this location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hsmAvailable")]
-        public virtual System.Nullable<bool> HsmAvailable { get; set; } 
+        public virtual System.Nullable<bool> HsmAvailable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3639,12 +3639,12 @@ namespace Google.Apis.CloudKMS.v1.Data
     {
         /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
-        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; }
 
         /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
         /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
         /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
@@ -3655,7 +3655,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
         /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
         /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
@@ -3669,7 +3669,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
     }    
 
@@ -3678,19 +3678,19 @@ namespace Google.Apis.CloudKMS.v1.Data
     {
         /// <summary>The Algorithm associated with this key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("algorithm")]
-        public virtual string Algorithm { get; set; } 
+        public virtual string Algorithm { get; set; }
 
         /// <summary>The name of the CryptoKeyVersion public key. Provided here for verification. NOTE: This field is in
         /// Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The public key, encoded in PEM format. For more information, see the [RFC
         /// 7468](https://tools.ietf.org/html/rfc7468) sections for [General
         /// Considerations](https://tools.ietf.org/html/rfc7468#section-2) and [Textual Encoding of Subject Public Key
         /// Info] (https://tools.ietf.org/html/rfc7468#section-13).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pem")]
-        public virtual string Pem { get; set; } 
+        public virtual string Pem { get; set; }
 
         /// <summary>Integrity verification field. A CRC32C checksum of the returned PublicKey.pem. An integrity check
         /// of PublicKey.pem can be performed by computing the CRC32C checksum of PublicKey.pem and comparing your
@@ -3700,7 +3700,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in
         /// languages that support this type. NOTE: This field is in Beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pemCrc32c")]
-        public virtual System.Nullable<long> PemCrc32c { get; set; } 
+        public virtual System.Nullable<long> PemCrc32c { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3720,13 +3720,13 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
         /// might reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual Policy Policy { get; set; } 
+        public virtual Policy Policy { get; set; }
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
         /// will be modified. If no mask is provided, the following default mask is used: `paths: "bindings,
         /// etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3739,7 +3739,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// 'storage.*') are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3750,7 +3750,7 @@ namespace Google.Apis.CloudKMS.v1.Data
     {
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3761,7 +3761,7 @@ namespace Google.Apis.CloudKMS.v1.Data
     {
         /// <summary>Required. The id of the child CryptoKeyVersion to use as primary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyVersionId")]
-        public virtual string CryptoKeyVersionId { get; set; } 
+        public virtual string CryptoKeyVersionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3776,7 +3776,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// Considerations](https://tools.ietf.org/html/rfc7468#section-2) and [Textual Encoding of Subject Public Key
         /// Info] (https://tools.ietf.org/html/rfc7468#section-13).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pem")]
-        public virtual string Pem { get; set; } 
+        public virtual string Pem { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

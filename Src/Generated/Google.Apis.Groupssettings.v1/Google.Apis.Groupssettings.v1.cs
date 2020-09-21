@@ -383,19 +383,19 @@ namespace Google.Apis.Groupssettings.v1.Data
         /// true: G Suite users external to your organization can become members of this group. - false: Users not
         /// belonging to the organization are not allowed to become members of this group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowExternalMembers")]
-        public virtual string AllowExternalMembers { get; set; } 
+        public virtual string AllowExternalMembers { get; set; }
 
         /// <summary>Deprecated. Allows Google to contact administrator of the group. - true: Allow Google to contact
         /// managers of this group. Occasionally Google may send updates on the latest features, ask for input on new
         /// features, or ask for permission to highlight your group. - false: Google can not contact managers of this
         /// group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowGoogleCommunication")]
-        public virtual string AllowGoogleCommunication { get; set; } 
+        public virtual string AllowGoogleCommunication { get; set; }
 
         /// <summary>Allows posting from web. Possible values are: - true: Allows any member to post to the group forum.
         /// - false: Members only use Gmail to communicate with the group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowWebPosting")]
-        public virtual string AllowWebPosting { get; set; } 
+        public virtual string AllowWebPosting { get; set; }
 
         /// <summary>Allows the group to be archived only. Possible values are: - true: Group is archived and the group
         /// is inactive. New messages to this group are rejected. The older archived messages are browseable and
@@ -403,11 +403,11 @@ namespace Google.Apis.Groupssettings.v1.Data
         /// false, whoCanPostMessages is set to ALL_MANAGERS_CAN_POST. - false: The group is active and can receive
         /// messages. - When false, updating whoCanPostMessage to NONE_CAN_POST, results in an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("archiveOnly")]
-        public virtual string ArchiveOnly { get; set; } 
+        public virtual string ArchiveOnly { get; set; }
 
         /// <summary>Set the content of custom footer text. The maximum number of characters is 1,000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customFooterText")]
-        public virtual string CustomFooterText { get; set; } 
+        public virtual string CustomFooterText { get; set; }
 
         /// <summary>An email address used when replying to a message if the replyTo property is set to REPLY_TO_CUSTOM.
         /// This address is defined by an account administrator. - When the group's ReplyTo property is set to
@@ -415,25 +415,25 @@ namespace Google.Apis.Groupssettings.v1.Data
         /// If the group's ReplyTo property is set to REPLY_TO_CUSTOM, the customReplyTo property must have a text value
         /// or an error is returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customReplyTo")]
-        public virtual string CustomReplyTo { get; set; } 
+        public virtual string CustomReplyTo { get; set; }
 
         /// <summary>Specifies whether the group has a custom role that's included in one of the settings being merged.
         /// This field is read-only and update/patch requests to it are ignored. Possible values are: - true -
         /// false</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customRolesEnabledForSettingsToBeMerged")]
-        public virtual string CustomRolesEnabledForSettingsToBeMerged { get; set; } 
+        public virtual string CustomRolesEnabledForSettingsToBeMerged { get; set; }
 
         /// <summary>When a message is rejected, this is text for the rejection notification sent to the message's
         /// author. By default, this property is empty and has no value in the API's response body. The maximum
         /// notification text size is 10,000 characters. Note: Requires sendMessageDenyNotification property to be
         /// true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultMessageDenyNotificationText")]
-        public virtual string DefaultMessageDenyNotificationText { get; set; } 
+        public virtual string DefaultMessageDenyNotificationText { get; set; }
 
         /// <summary>Description of the group. This property value may be an empty string if no group description has
         /// been entered. If entered, the maximum group description is no more than 300 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The group's email address. This property can be updated using the Directory API. Note: Only a group
         /// owner can change a group's email address. A group manager can't do this. When you change your group's
@@ -441,42 +441,42 @@ namespace Google.Apis.Groupssettings.v1.Data
         /// send email and the web address people use to access your group. People can't reach your group by visiting
         /// the old address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; } 
+        public virtual string Email { get; set; }
 
         /// <summary>Specifies whether a collaborative inbox will remain turned on for the group. Possible values are: -
         /// true - false</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableCollaborativeInbox")]
-        public virtual string EnableCollaborativeInbox { get; set; } 
+        public virtual string EnableCollaborativeInbox { get; set; }
 
         /// <summary>Indicates if favorite replies should be displayed above other replies. - true: Favorite replies
         /// will be displayed above other replies. - false: Favorite replies will not be displayed above other
         /// replies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("favoriteRepliesOnTop")]
-        public virtual string FavoriteRepliesOnTop { get; set; } 
+        public virtual string FavoriteRepliesOnTop { get; set; }
 
         /// <summary>Whether to include custom footer. Possible values are: - true - false</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeCustomFooter")]
-        public virtual string IncludeCustomFooter { get; set; } 
+        public virtual string IncludeCustomFooter { get; set; }
 
         /// <summary>Enables the group to be included in the Global Address List. For more information, see the help
         /// center. Possible values are: - true: Group is included in the Global Address List. - false: Group is not
         /// included in the Global Address List.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeInGlobalAddressList")]
-        public virtual string IncludeInGlobalAddressList { get; set; } 
+        public virtual string IncludeInGlobalAddressList { get; set; }
 
         /// <summary>Allows the Group contents to be archived. Possible values are: - true: Archive messages sent to the
         /// group. - false: Do not keep an archive of messages sent to this group. If false, previously archived
         /// messages remain in the archive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isArchived")]
-        public virtual string IsArchived { get; set; } 
+        public virtual string IsArchived { get; set; }
 
         /// <summary>The type of the resource. It is always groupsSettings#groups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Deprecated. The maximum size of a message is 25Mb.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxMessageBytes")]
-        public virtual System.Nullable<int> MaxMessageBytes { get; set; } 
+        public virtual System.Nullable<int> MaxMessageBytes { get; set; }
 
         /// <summary>Enables members to post messages as the group. Possible values are: - true: Group member can post
         /// messages using the group's email address instead of their own email address. Message appear to originate
@@ -484,11 +484,11 @@ namespace Google.Apis.Groupssettings.v1.Data
         /// do not apply to posts made on behalf of the group. - false: Members can not post in behalf of the group's
         /// email address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membersCanPostAsTheGroup")]
-        public virtual string MembersCanPostAsTheGroup { get; set; } 
+        public virtual string MembersCanPostAsTheGroup { get; set; }
 
         /// <summary>Deprecated. The default message display font always has a value of "DEFAULT_FONT".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageDisplayFont")]
-        public virtual string MessageDisplayFont { get; set; } 
+        public virtual string MessageDisplayFont { get; set; }
 
         /// <summary>Moderation level of incoming messages. Possible values are: - MODERATE_ALL_MESSAGES: All messages
         /// are sent to the group owner's email address for approval. If approved, the message is sent to the group. -
@@ -501,16 +501,16 @@ namespace Google.Apis.Groupssettings.v1.Data
         /// message moderation settings on individual users or new members will not apply to posts made on behalf of the
         /// group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageModerationLevel")]
-        public virtual string MessageModerationLevel { get; set; } 
+        public virtual string MessageModerationLevel { get; set; }
 
         /// <summary>Name of the group, which has a maximum size of 75 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The primary language for group. For a group's primary language use the language tags from the G
         /// Suite languages found at G Suite Email Settings API Email Language Tags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryLanguage")]
-        public virtual string PrimaryLanguage { get; set; } 
+        public virtual string PrimaryLanguage { get; set; }
 
         /// <summary>Specifies who receives the default reply. Possible values are: - REPLY_TO_CUSTOM: For replies to
         /// messages, use the group's custom email address. When the group's ReplyTo property is set to REPLY_TO_CUSTOM,
@@ -524,7 +524,7 @@ namespace Google.Apis.Groupssettings.v1.Data
         /// REPLY_TO_MANAGERS: This reply message is sent to the group's managers, which includes all managers and the
         /// group owner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replyTo")]
-        public virtual string ReplyTo { get; set; } 
+        public virtual string ReplyTo { get; set; }
 
         /// <summary>Allows a member to be notified if the member's message to the group is denied by the group owner.
         /// Possible values are: - true: When a message is rejected, send the deny message notification to the message
@@ -533,20 +533,20 @@ namespace Google.Apis.Groupssettings.v1.Data
         ///
         /// - false: When a message is rejected, no notification is sent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sendMessageDenyNotification")]
-        public virtual string SendMessageDenyNotification { get; set; } 
+        public virtual string SendMessageDenyNotification { get; set; }
 
         /// <summary>Deprecated. This is merged into the new whoCanDiscoverGroup setting. Allows the group to be visible
         /// in the Groups Directory. Possible values are: - true: All groups in the account are listed in the Groups
         /// directory. - false: All groups in the account are not listed in the directory.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("showInGroupDirectory")]
-        public virtual string ShowInGroupDirectory { get; set; } 
+        public virtual string ShowInGroupDirectory { get; set; }
 
         /// <summary>Specifies moderation levels for messages detected as spam. Possible values are: - ALLOW: Post the
         /// message to the group. - MODERATE: Send the message to the moderation queue. This is the default. -
         /// SILENTLY_MODERATE: Send the message to the moderation queue, but do not send notification to moderators. -
         /// REJECT: Immediately reject the message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spamModerationLevel")]
-        public virtual string SpamModerationLevel { get; set; } 
+        public virtual string SpamModerationLevel { get; set; }
 
         /// <summary>Deprecated. This is merged into the new whoCanModerateMembers setting. Permissions to add members.
         /// Possible values are: - ALL_MEMBERS_CAN_ADD: Managers and members can directly add new members. -
@@ -554,75 +554,75 @@ namespace Google.Apis.Groupssettings.v1.Data
         /// ALL_OWNERS_CAN_ADD: Only owners can directly add new members. - NONE_CAN_ADD: No one can directly add new
         /// members.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanAdd")]
-        public virtual string WhoCanAdd { get; set; } 
+        public virtual string WhoCanAdd { get; set; }
 
         /// <summary>Deprecated. This functionality is no longer supported in the Google Groups UI. The value is always
         /// "NONE".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanAddReferences")]
-        public virtual string WhoCanAddReferences { get; set; } 
+        public virtual string WhoCanAddReferences { get; set; }
 
         /// <summary>Specifies who can approve members who ask to join groups. This permission will be deprecated once
         /// it is merged into the new whoCanModerateMembers setting. Possible values are: - ALL_MEMBERS_CAN_APPROVE -
         /// ALL_MANAGERS_CAN_APPROVE - ALL_OWNERS_CAN_APPROVE - NONE_CAN_APPROVE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanApproveMembers")]
-        public virtual string WhoCanApproveMembers { get; set; } 
+        public virtual string WhoCanApproveMembers { get; set; }
 
         /// <summary>Deprecated. This is merged into the new whoCanModerateContent setting. Specifies who can approve
         /// pending messages in the moderation queue. Possible values are: - ALL_MEMBERS - OWNERS_AND_MANAGERS -
         /// OWNERS_ONLY - NONE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanApproveMessages")]
-        public virtual string WhoCanApproveMessages { get; set; } 
+        public virtual string WhoCanApproveMessages { get; set; }
 
         /// <summary>Deprecated. This is merged into the new whoCanAssistContent setting. Permission to assign topics in
         /// a forum to another user. Possible values are: - ALL_MEMBERS - OWNERS_AND_MANAGERS - MANAGERS_ONLY -
         /// OWNERS_ONLY - NONE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanAssignTopics")]
-        public virtual string WhoCanAssignTopics { get; set; } 
+        public virtual string WhoCanAssignTopics { get; set; }
 
         /// <summary>Specifies who can moderate metadata. Possible values are: - ALL_MEMBERS - OWNERS_AND_MANAGERS -
         /// MANAGERS_ONLY - OWNERS_ONLY - NONE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanAssistContent")]
-        public virtual string WhoCanAssistContent { get; set; } 
+        public virtual string WhoCanAssistContent { get; set; }
 
         /// <summary>Specifies who can deny membership to users. This permission will be deprecated once it is merged
         /// into the new whoCanModerateMembers setting. Possible values are: - ALL_MEMBERS - OWNERS_AND_MANAGERS -
         /// OWNERS_ONLY - NONE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanBanUsers")]
-        public virtual string WhoCanBanUsers { get; set; } 
+        public virtual string WhoCanBanUsers { get; set; }
 
         /// <summary>Permission to contact owner of the group via web UI. Possible values are: -
         /// ALL_IN_DOMAIN_CAN_CONTACT - ALL_MANAGERS_CAN_CONTACT - ALL_MEMBERS_CAN_CONTACT -
         /// ANYONE_CAN_CONTACT</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanContactOwner")]
-        public virtual string WhoCanContactOwner { get; set; } 
+        public virtual string WhoCanContactOwner { get; set; }
 
         /// <summary>Deprecated. This is merged into the new whoCanModerateContent setting. Specifies who can delete
         /// replies to topics. (Authors can always delete their own posts). Possible values are: - ALL_MEMBERS -
         /// OWNERS_AND_MANAGERS - OWNERS_ONLY - NONE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanDeleteAnyPost")]
-        public virtual string WhoCanDeleteAnyPost { get; set; } 
+        public virtual string WhoCanDeleteAnyPost { get; set; }
 
         /// <summary>Deprecated. This is merged into the new whoCanModerateContent setting. Specifies who can delete
         /// topics. Possible values are: - ALL_MEMBERS - OWNERS_AND_MANAGERS - OWNERS_ONLY - NONE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanDeleteTopics")]
-        public virtual string WhoCanDeleteTopics { get; set; } 
+        public virtual string WhoCanDeleteTopics { get; set; }
 
         /// <summary>Specifies the set of users for whom this group is discoverable. Possible values are: -
         /// ANYONE_CAN_DISCOVER - ALL_IN_DOMAIN_CAN_DISCOVER - ALL_MEMBERS_CAN_DISCOVER</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanDiscoverGroup")]
-        public virtual string WhoCanDiscoverGroup { get; set; } 
+        public virtual string WhoCanDiscoverGroup { get; set; }
 
         /// <summary>Deprecated. This is merged into the new whoCanAssistContent setting. Permission to enter free form
         /// tags for topics in a forum. Possible values are: - ALL_MEMBERS - OWNERS_AND_MANAGERS - MANAGERS_ONLY -
         /// OWNERS_ONLY - NONE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanEnterFreeFormTags")]
-        public virtual string WhoCanEnterFreeFormTags { get; set; } 
+        public virtual string WhoCanEnterFreeFormTags { get; set; }
 
         /// <summary>Deprecated. This is merged into the new whoCanModerateContent setting. Specifies who can hide posts
         /// by reporting them as abuse. Possible values are: - ALL_MEMBERS - OWNERS_AND_MANAGERS - OWNERS_ONLY -
         /// NONE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanHideAbuse")]
-        public virtual string WhoCanHideAbuse { get; set; } 
+        public virtual string WhoCanHideAbuse { get; set; }
 
         /// <summary>Deprecated. This is merged into the new whoCanModerateMembers setting. Permissions to invite new
         /// members. Possible values are: - ALL_MEMBERS_CAN_INVITE: Managers and members can invite a new member
@@ -630,7 +630,7 @@ namespace Google.Apis.Groupssettings.v1.Data
         /// owner. - ALL_OWNERS_CAN_INVITE: Only owners can invite a new member. - NONE_CAN_INVITE: No one can invite a
         /// new member candidate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanInvite")]
-        public virtual string WhoCanInvite { get; set; } 
+        public virtual string WhoCanInvite { get; set; }
 
         /// <summary>Permission to join group. Possible values are: - ANYONE_CAN_JOIN: Anyone in the account domain can
         /// join. This includes accounts with multiple domains. - ALL_IN_DOMAIN_CAN_JOIN: Any Internet user who is
@@ -641,88 +641,88 @@ namespace Google.Apis.Groupssettings.v1.Data
         /// membership can be invited to join. - CAN_REQUEST_TO_JOIN: Non members can request an invitation to
         /// join.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanJoin")]
-        public virtual string WhoCanJoin { get; set; } 
+        public virtual string WhoCanJoin { get; set; }
 
         /// <summary>Permission to leave the group. Possible values are: - ALL_MANAGERS_CAN_LEAVE -
         /// ALL_MEMBERS_CAN_LEAVE - NONE_CAN_LEAVE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanLeaveGroup")]
-        public virtual string WhoCanLeaveGroup { get; set; } 
+        public virtual string WhoCanLeaveGroup { get; set; }
 
         /// <summary>Deprecated. This is merged into the new whoCanModerateContent setting. Specifies who can prevent
         /// users from posting replies to topics. Possible values are: - ALL_MEMBERS - OWNERS_AND_MANAGERS - OWNERS_ONLY
         /// - NONE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanLockTopics")]
-        public virtual string WhoCanLockTopics { get; set; } 
+        public virtual string WhoCanLockTopics { get; set; }
 
         /// <summary>Deprecated. This is merged into the new whoCanModerateContent setting. Specifies who can make
         /// topics appear at the top of the topic list. Possible values are: - ALL_MEMBERS - OWNERS_AND_MANAGERS -
         /// OWNERS_ONLY - NONE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanMakeTopicsSticky")]
-        public virtual string WhoCanMakeTopicsSticky { get; set; } 
+        public virtual string WhoCanMakeTopicsSticky { get; set; }
 
         /// <summary>Deprecated. This is merged into the new whoCanAssistContent setting. Permission to mark a topic as
         /// a duplicate of another topic. Possible values are: - ALL_MEMBERS - OWNERS_AND_MANAGERS - MANAGERS_ONLY -
         /// OWNERS_ONLY - NONE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanMarkDuplicate")]
-        public virtual string WhoCanMarkDuplicate { get; set; } 
+        public virtual string WhoCanMarkDuplicate { get; set; }
 
         /// <summary>Deprecated. This is merged into the new whoCanAssistContent setting. Permission to mark any other
         /// user's post as a favorite reply. Possible values are: - ALL_MEMBERS - OWNERS_AND_MANAGERS - MANAGERS_ONLY -
         /// OWNERS_ONLY - NONE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanMarkFavoriteReplyOnAnyTopic")]
-        public virtual string WhoCanMarkFavoriteReplyOnAnyTopic { get; set; } 
+        public virtual string WhoCanMarkFavoriteReplyOnAnyTopic { get; set; }
 
         /// <summary>Deprecated. This is merged into the new whoCanAssistContent setting. Permission to mark a post for
         /// a topic they started as a favorite reply. Possible values are: - ALL_MEMBERS - OWNERS_AND_MANAGERS -
         /// MANAGERS_ONLY - OWNERS_ONLY - NONE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanMarkFavoriteReplyOnOwnTopic")]
-        public virtual string WhoCanMarkFavoriteReplyOnOwnTopic { get; set; } 
+        public virtual string WhoCanMarkFavoriteReplyOnOwnTopic { get; set; }
 
         /// <summary>Deprecated. This is merged into the new whoCanAssistContent setting. Permission to mark a topic as
         /// not needing a response. Possible values are: - ALL_MEMBERS - OWNERS_AND_MANAGERS - MANAGERS_ONLY -
         /// OWNERS_ONLY - NONE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanMarkNoResponseNeeded")]
-        public virtual string WhoCanMarkNoResponseNeeded { get; set; } 
+        public virtual string WhoCanMarkNoResponseNeeded { get; set; }
 
         /// <summary>Specifies who can moderate content. Possible values are: - ALL_MEMBERS - OWNERS_AND_MANAGERS -
         /// OWNERS_ONLY - NONE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanModerateContent")]
-        public virtual string WhoCanModerateContent { get; set; } 
+        public virtual string WhoCanModerateContent { get; set; }
 
         /// <summary>Specifies who can manage members. Possible values are: - ALL_MEMBERS - OWNERS_AND_MANAGERS -
         /// OWNERS_ONLY - NONE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanModerateMembers")]
-        public virtual string WhoCanModerateMembers { get; set; } 
+        public virtual string WhoCanModerateMembers { get; set; }
 
         /// <summary>Deprecated. This is merged into the new whoCanModerateMembers setting. Specifies who can change
         /// group members' roles. Possible values are: - ALL_MEMBERS - OWNERS_AND_MANAGERS - OWNERS_ONLY -
         /// NONE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanModifyMembers")]
-        public virtual string WhoCanModifyMembers { get; set; } 
+        public virtual string WhoCanModifyMembers { get; set; }
 
         /// <summary>Deprecated. This is merged into the new whoCanAssistContent setting. Permission to change tags and
         /// categories. Possible values are: - ALL_MEMBERS - OWNERS_AND_MANAGERS - MANAGERS_ONLY - OWNERS_ONLY -
         /// NONE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanModifyTagsAndCategories")]
-        public virtual string WhoCanModifyTagsAndCategories { get; set; } 
+        public virtual string WhoCanModifyTagsAndCategories { get; set; }
 
         /// <summary>Deprecated. This is merged into the new whoCanModerateContent setting. Specifies who can move
         /// topics into the group or forum. Possible values are: - ALL_MEMBERS - OWNERS_AND_MANAGERS - OWNERS_ONLY -
         /// NONE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanMoveTopicsIn")]
-        public virtual string WhoCanMoveTopicsIn { get; set; } 
+        public virtual string WhoCanMoveTopicsIn { get; set; }
 
         /// <summary>Deprecated. This is merged into the new whoCanModerateContent setting. Specifies who can move
         /// topics out of the group or forum. Possible values are: - ALL_MEMBERS - OWNERS_AND_MANAGERS - OWNERS_ONLY -
         /// NONE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanMoveTopicsOut")]
-        public virtual string WhoCanMoveTopicsOut { get; set; } 
+        public virtual string WhoCanMoveTopicsOut { get; set; }
 
         /// <summary>Deprecated. This is merged into the new whoCanModerateContent setting. Specifies who can post
         /// announcements, a special topic type. Possible values are: - ALL_MEMBERS - OWNERS_AND_MANAGERS - OWNERS_ONLY
         /// - NONE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanPostAnnouncements")]
-        public virtual string WhoCanPostAnnouncements { get; set; } 
+        public virtual string WhoCanPostAnnouncements { get; set; }
 
         /// <summary>Permissions to post messages. Possible values are: - NONE_CAN_POST: The group is disabled and
         /// archived. No one can post a message to this group. - When archiveOnly is false, updating whoCanPostMessage
@@ -734,32 +734,32 @@ namespace Google.Apis.Groupssettings.v1.Data
         /// message. Note: When whoCanPostMessage is set to ANYONE_CAN_POST, we recommend the messageModerationLevel be
         /// set to MODERATE_NON_MEMBERS to protect the group from possible spam.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanPostMessage")]
-        public virtual string WhoCanPostMessage { get; set; } 
+        public virtual string WhoCanPostMessage { get; set; }
 
         /// <summary>Deprecated. This is merged into the new whoCanAssistContent setting. Permission to take topics in a
         /// forum. Possible values are: - ALL_MEMBERS - OWNERS_AND_MANAGERS - MANAGERS_ONLY - OWNERS_ONLY -
         /// NONE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanTakeTopics")]
-        public virtual string WhoCanTakeTopics { get; set; } 
+        public virtual string WhoCanTakeTopics { get; set; }
 
         /// <summary>Deprecated. This is merged into the new whoCanAssistContent setting. Permission to unassign any
         /// topic in a forum. Possible values are: - ALL_MEMBERS - OWNERS_AND_MANAGERS - MANAGERS_ONLY - OWNERS_ONLY -
         /// NONE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanUnassignTopic")]
-        public virtual string WhoCanUnassignTopic { get; set; } 
+        public virtual string WhoCanUnassignTopic { get; set; }
 
         /// <summary>Deprecated. This is merged into the new whoCanAssistContent setting. Permission to unmark any post
         /// from a favorite reply. Possible values are: - ALL_MEMBERS - OWNERS_AND_MANAGERS - MANAGERS_ONLY -
         /// OWNERS_ONLY - NONE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanUnmarkFavoriteReplyOnAnyTopic")]
-        public virtual string WhoCanUnmarkFavoriteReplyOnAnyTopic { get; set; } 
+        public virtual string WhoCanUnmarkFavoriteReplyOnAnyTopic { get; set; }
 
         /// <summary>Permissions to view group messages. Possible values are: - ANYONE_CAN_VIEW: Any Internet user can
         /// view the group's messages. - ALL_IN_DOMAIN_CAN_VIEW: Anyone in your account can view this group's messages.
         /// - ALL_MEMBERS_CAN_VIEW: All group members can view the group's messages. - ALL_MANAGERS_CAN_VIEW: Any group
         /// manager can view this group's messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanViewGroup")]
-        public virtual string WhoCanViewGroup { get; set; } 
+        public virtual string WhoCanViewGroup { get; set; }
 
         /// <summary>Permissions to view membership. Possible values are: - ALL_IN_DOMAIN_CAN_VIEW: Anyone in the
         /// account can view the group members list. If a group already has external members, those members can still
@@ -768,7 +768,7 @@ namespace Google.Apis.Groupssettings.v1.Data
         /// - ALL_MEMBERS_CAN_VIEW: The group members can view the group members list. - ALL_MANAGERS_CAN_VIEW: The
         /// group managers can view group members list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanViewMembership")]
-        public virtual string WhoCanViewMembership { get; set; } 
+        public virtual string WhoCanViewMembership { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

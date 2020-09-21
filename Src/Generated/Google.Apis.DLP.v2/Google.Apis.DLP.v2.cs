@@ -7879,27 +7879,27 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Enable email notification for project owners and editors on job's completion/failure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobNotificationEmails")]
-        public virtual GooglePrivacyDlpV2JobNotificationEmails JobNotificationEmails { get; set; } 
+        public virtual GooglePrivacyDlpV2JobNotificationEmails JobNotificationEmails { get; set; }
 
         /// <summary>Publish a notification to a pubsub topic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubSub")]
-        public virtual GooglePrivacyDlpV2PublishToPubSub PubSub { get; set; } 
+        public virtual GooglePrivacyDlpV2PublishToPubSub PubSub { get; set; }
 
         /// <summary>Publish findings to Cloud Datahub.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishFindingsToCloudDataCatalog")]
-        public virtual GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog PublishFindingsToCloudDataCatalog { get; set; } 
+        public virtual GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog PublishFindingsToCloudDataCatalog { get; set; }
 
         /// <summary>Publish summary to Cloud Security Command Center (Alpha).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishSummaryToCscc")]
-        public virtual GooglePrivacyDlpV2PublishSummaryToCscc PublishSummaryToCscc { get; set; } 
+        public virtual GooglePrivacyDlpV2PublishSummaryToCscc PublishSummaryToCscc { get; set; }
 
         /// <summary>Enable Stackdriver metric dlp.googleapis.com/finding_count.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishToStackdriver")]
-        public virtual GooglePrivacyDlpV2PublishToStackdriver PublishToStackdriver { get; set; } 
+        public virtual GooglePrivacyDlpV2PublishToStackdriver PublishToStackdriver { get; set; }
 
         /// <summary>Save resulting findings in a provided location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("saveFindings")]
-        public virtual GooglePrivacyDlpV2SaveFindings SaveFindings { get; set; } 
+        public virtual GooglePrivacyDlpV2SaveFindings SaveFindings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7917,35 +7917,35 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Categorical stats result</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoricalStatsResult")]
-        public virtual GooglePrivacyDlpV2CategoricalStatsResult CategoricalStatsResult { get; set; } 
+        public virtual GooglePrivacyDlpV2CategoricalStatsResult CategoricalStatsResult { get; set; }
 
         /// <summary>Delta-presence result</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deltaPresenceEstimationResult")]
-        public virtual GooglePrivacyDlpV2DeltaPresenceEstimationResult DeltaPresenceEstimationResult { get; set; } 
+        public virtual GooglePrivacyDlpV2DeltaPresenceEstimationResult DeltaPresenceEstimationResult { get; set; }
 
         /// <summary>K-anonymity result</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kAnonymityResult")]
-        public virtual GooglePrivacyDlpV2KAnonymityResult KAnonymityResult { get; set; } 
+        public virtual GooglePrivacyDlpV2KAnonymityResult KAnonymityResult { get; set; }
 
         /// <summary>K-map result</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kMapEstimationResult")]
-        public virtual GooglePrivacyDlpV2KMapEstimationResult KMapEstimationResult { get; set; } 
+        public virtual GooglePrivacyDlpV2KMapEstimationResult KMapEstimationResult { get; set; }
 
         /// <summary>L-divesity result</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lDiversityResult")]
-        public virtual GooglePrivacyDlpV2LDiversityResult LDiversityResult { get; set; } 
+        public virtual GooglePrivacyDlpV2LDiversityResult LDiversityResult { get; set; }
 
         /// <summary>Numerical stats result</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numericalStatsResult")]
-        public virtual GooglePrivacyDlpV2NumericalStatsResult NumericalStatsResult { get; set; } 
+        public virtual GooglePrivacyDlpV2NumericalStatsResult NumericalStatsResult { get; set; }
 
         /// <summary>Privacy metric to compute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPrivacyMetric")]
-        public virtual GooglePrivacyDlpV2PrivacyMetric RequestedPrivacyMetric { get; set; } 
+        public virtual GooglePrivacyDlpV2PrivacyMetric RequestedPrivacyMetric { get; set; }
 
         /// <summary>Input dataset to compute metrics over.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedSourceTable")]
-        public virtual GooglePrivacyDlpV2BigQueryTable RequestedSourceTable { get; set; } 
+        public virtual GooglePrivacyDlpV2BigQueryTable RequestedSourceTable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7959,16 +7959,16 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Required. Quasi-identifier columns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quasiIds")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2QuasiIdField> QuasiIds { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2QuasiIdField> QuasiIds { get; set; }
 
         /// <summary>Required. The relative frequency column must contain a floating-point number between 0 and 1
         /// (inclusive). Null values are assumed to be zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relativeFrequency")]
-        public virtual GooglePrivacyDlpV2FieldId RelativeFrequency { get; set; } 
+        public virtual GooglePrivacyDlpV2FieldId RelativeFrequency { get; set; }
 
         /// <summary>Required. Auxiliary table location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
-        public virtual GooglePrivacyDlpV2BigQueryTable Table { get; set; } 
+        public virtual GooglePrivacyDlpV2BigQueryTable Table { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7979,11 +7979,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Designated field in the BigQuery table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual GooglePrivacyDlpV2FieldId Field { get; set; } 
+        public virtual GooglePrivacyDlpV2FieldId Field { get; set; }
 
         /// <summary>Source table of the field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
-        public virtual GooglePrivacyDlpV2BigQueryTable Table { get; set; } 
+        public virtual GooglePrivacyDlpV2BigQueryTable Table { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7996,11 +7996,11 @@ namespace Google.Apis.DLP.v2.Data
         /// queried, and may be null for inspection jobs. To locate findings within a table, specify
         /// `inspect_job.storage_config.big_query_options.identifying_fields` in `CreateDlpJobRequest`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowNumber")]
-        public virtual System.Nullable<long> RowNumber { get; set; } 
+        public virtual System.Nullable<long> RowNumber { get; set; }
 
         /// <summary>Complete BigQuery table reference.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableReference")]
-        public virtual GooglePrivacyDlpV2BigQueryTable TableReference { get; set; } 
+        public virtual GooglePrivacyDlpV2BigQueryTable TableReference { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8012,33 +8012,33 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>References to fields excluded from scanning. This allows you to skip inspection of entire columns
         /// which you know have no findings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedFields")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldId> ExcludedFields { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldId> ExcludedFields { get; set; }
 
         /// <summary>Table fields that may uniquely identify a row within the table. When
         /// `actions.saveFindings.outputConfig.table` is specified, the values of columns specified here are available
         /// in the output table under `location.content_locations.record_location.record_key.id_values`. Nested fields
         /// such as `person.birthdate.year` are allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identifyingFields")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldId> IdentifyingFields { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldId> IdentifyingFields { get; set; }
 
         /// <summary>Max number of rows to scan. If the table has more rows than this value, the rest of the rows are
         /// omitted. If not set, or if set to 0, all rows will be scanned. Only one of rows_limit and rows_limit_percent
         /// can be specified. Cannot be used in conjunction with TimespanConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowsLimit")]
-        public virtual System.Nullable<long> RowsLimit { get; set; } 
+        public virtual System.Nullable<long> RowsLimit { get; set; }
 
         /// <summary>Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down.
         /// Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit
         /// and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowsLimitPercent")]
-        public virtual System.Nullable<int> RowsLimitPercent { get; set; } 
+        public virtual System.Nullable<int> RowsLimitPercent { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("sampleMethod")]
-        public virtual string SampleMethod { get; set; } 
+        public virtual string SampleMethod { get; set; }
 
         /// <summary>Complete BigQuery table reference.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableReference")]
-        public virtual GooglePrivacyDlpV2BigQueryTable TableReference { get; set; } 
+        public virtual GooglePrivacyDlpV2BigQueryTable TableReference { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8051,16 +8051,16 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Dataset ID of the table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
-        public virtual string DatasetId { get; set; } 
+        public virtual string DatasetId { get; set; }
 
         /// <summary>The Google Cloud Platform project ID of the project containing the table. If omitted, project ID is
         /// inferred from the API call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Name of the table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
-        public virtual string TableId { get; set; } 
+        public virtual string TableId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8071,19 +8071,19 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Height of the bounding box in pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
-        public virtual System.Nullable<int> Height { get; set; } 
+        public virtual System.Nullable<int> Height { get; set; }
 
         /// <summary>Left coordinate of the bounding box. (0,0) is upper left.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("left")]
-        public virtual System.Nullable<int> Left { get; set; } 
+        public virtual System.Nullable<int> Left { get; set; }
 
         /// <summary>Top coordinate of the bounding box. (0,0) is upper left.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("top")]
-        public virtual System.Nullable<int> Top { get; set; } 
+        public virtual System.Nullable<int> Top { get; set; }
 
         /// <summary>Width of the bounding box in pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
-        public virtual System.Nullable<int> Width { get; set; } 
+        public virtual System.Nullable<int> Width { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8094,15 +8094,15 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Upper bound of the range, exclusive; type must match min.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("max")]
-        public virtual GooglePrivacyDlpV2Value Max { get; set; } 
+        public virtual GooglePrivacyDlpV2Value Max { get; set; }
 
         /// <summary>Lower bound of the range, inclusive. Type should be the same as max if used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("min")]
-        public virtual GooglePrivacyDlpV2Value Min { get; set; } 
+        public virtual GooglePrivacyDlpV2Value Min { get; set; }
 
         /// <summary>Required. Replacement value for this bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replacementValue")]
-        public virtual GooglePrivacyDlpV2Value ReplacementValue { get; set; } 
+        public virtual GooglePrivacyDlpV2Value ReplacementValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8118,7 +8118,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Set of buckets. Ranges must be non-overlapping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buckets")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Bucket> Buckets { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Bucket> Buckets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8129,11 +8129,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Content data to inspect or redact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual string Data { get; set; } 
+        public virtual string Data { get; set; }
 
         /// <summary>The type of data stored in the bytes string. Default will be TEXT_UTF8.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8154,7 +8154,7 @@ namespace Google.Apis.DLP.v2.Data
         /// structs. However, it may be more informative to use NumericalStats when the field type is supported,
         /// depending on the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual GooglePrivacyDlpV2FieldId Field { get; set; } 
+        public virtual GooglePrivacyDlpV2FieldId Field { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8165,24 +8165,24 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Total number of values in this bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketSize")]
-        public virtual System.Nullable<long> BucketSize { get; set; } 
+        public virtual System.Nullable<long> BucketSize { get; set; }
 
         /// <summary>Total number of distinct values in this bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketValueCount")]
-        public virtual System.Nullable<long> BucketValueCount { get; set; } 
+        public virtual System.Nullable<long> BucketValueCount { get; set; }
 
         /// <summary>Sample of value frequencies in this bucket. The total number of values returned per bucket is
         /// capped at 20.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketValues")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2ValueFrequency> BucketValues { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2ValueFrequency> BucketValues { get; set; }
 
         /// <summary>Lower bound on the value frequency of the values in this bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueFrequencyLowerBound")]
-        public virtual System.Nullable<long> ValueFrequencyLowerBound { get; set; } 
+        public virtual System.Nullable<long> ValueFrequencyLowerBound { get; set; }
 
         /// <summary>Upper bound on the value frequency of the values in this bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueFrequencyUpperBound")]
-        public virtual System.Nullable<long> ValueFrequencyUpperBound { get; set; } 
+        public virtual System.Nullable<long> ValueFrequencyUpperBound { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8193,7 +8193,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Histogram of value frequencies in the column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueFrequencyHistogramBuckets")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2CategoricalStatsHistogramBucket> ValueFrequencyHistogramBuckets { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2CategoricalStatsHistogramBucket> ValueFrequencyHistogramBuckets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8209,25 +8209,25 @@ namespace Google.Apis.DLP.v2.Data
         /// if the input string is `555-555-5555` and you instruct Cloud DLP to skip `-` and mask 5 characters with `*`,
         /// Cloud DLP returns `***-**5-5555`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("charactersToIgnore")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2CharsToIgnore> CharactersToIgnore { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2CharsToIgnore> CharactersToIgnore { get; set; }
 
         /// <summary>Character to use to mask the sensitive values—for example, `*` for an alphabetic string such as a
         /// name, or `0` for a numeric string such as ZIP code or credit card number. This string must have a length of
         /// 1. If not supplied, this value defaults to `*` for strings, and `0` for digits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maskingCharacter")]
-        public virtual string MaskingCharacter { get; set; } 
+        public virtual string MaskingCharacter { get; set; }
 
         /// <summary>Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do
         /// not count towards this tally.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numberToMask")]
-        public virtual System.Nullable<int> NumberToMask { get; set; } 
+        public virtual System.Nullable<int> NumberToMask { get; set; }
 
         /// <summary>Mask characters in reverse order. For example, if `masking_character` is `0`, `number_to_mask` is
         /// `14`, and `reverse_order` is `false`, then the input string `1234-5678-9012-3456` is masked as
         /// `00000000000000-3456`. If `masking_character` is `*`, `number_to_mask` is `3`, and `reverse_order` is
         /// `true`, then the string `12345` is masked as `12***`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reverseOrder")]
-        public virtual System.Nullable<bool> ReverseOrder { get; set; } 
+        public virtual System.Nullable<bool> ReverseOrder { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8239,11 +8239,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Characters to not transform when masking.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("charactersToSkip")]
-        public virtual string CharactersToSkip { get; set; } 
+        public virtual string CharactersToSkip { get; set; }
 
         /// <summary>Common characters to not transform when masking. Useful to avoid removing punctuation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonCharactersToIgnore")]
-        public virtual string CommonCharactersToIgnore { get; set; } 
+        public virtual string CommonCharactersToIgnore { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8254,7 +8254,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>The url, in the format `gs:`. Trailing wildcard in the path is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8267,33 +8267,33 @@ namespace Google.Apis.DLP.v2.Data
         /// the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be
         /// specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bytesLimitPerFile")]
-        public virtual System.Nullable<long> BytesLimitPerFile { get; set; } 
+        public virtual System.Nullable<long> BytesLimitPerFile { get; set; }
 
         /// <summary>Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is
         /// rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one
         /// of bytes_limit_per_file and bytes_limit_per_file_percent can be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bytesLimitPerFilePercent")]
-        public virtual System.Nullable<int> BytesLimitPerFilePercent { get; set; } 
+        public virtual System.Nullable<int> BytesLimitPerFilePercent { get; set; }
 
         /// <summary>The set of one or more files to scan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileSet")]
-        public virtual GooglePrivacyDlpV2FileSet FileSet { get; set; } 
+        public virtual GooglePrivacyDlpV2FileSet FileSet { get; set; }
 
         /// <summary>List of file type groups to include in the scan. If empty, all files are scanned and available data
         /// format processors are applied. In addition, the binary content of the selected files is always scanned as
         /// well. Images are scanned only as binary if the specified region does not support image inspection and no
         /// file_types were specified. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileTypes")]
-        public virtual System.Collections.Generic.IList<string> FileTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> FileTypes { get; set; }
 
         /// <summary>Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned
         /// is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to
         /// 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filesLimitPercent")]
-        public virtual System.Nullable<int> FilesLimitPercent { get; set; } 
+        public virtual System.Nullable<int> FilesLimitPercent { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("sampleMethod")]
-        public virtual string SampleMethod { get; set; } 
+        public virtual string SampleMethod { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8305,7 +8305,7 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>A url representing a file or path (no wildcards) in Cloud Storage. Example:
         /// gs://[BUCKET_NAME]/dictionary.txt</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual string Path { get; set; } 
+        public virtual string Path { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8329,14 +8329,14 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>The name of a Cloud Storage bucket. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketName")]
-        public virtual string BucketName { get; set; } 
+        public virtual string BucketName { get; set; }
 
         /// <summary>A list of regular expressions matching file paths to exclude. All files in the bucket that match at
         /// least one of these regular expressions will be excluded from the scan. Regular expressions use RE2
         /// [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found under the google/re2 repository on
         /// GitHub.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeRegex")]
-        public virtual System.Collections.Generic.IList<string> ExcludeRegex { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExcludeRegex { get; set; }
 
         /// <summary>A list of regular expressions matching file paths to include. All files in the bucket that match at
         /// least one of these regular expressions will be included in the set of files, except for those that also
@@ -8345,7 +8345,7 @@ namespace Google.Apis.DLP.v2.Data
         /// [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found under the google/re2 repository on
         /// GitHub.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeRegex")]
-        public virtual System.Collections.Generic.IList<string> IncludeRegex { get; set; } 
+        public virtual System.Collections.Generic.IList<string> IncludeRegex { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8356,15 +8356,15 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>The amount of blue in the color as a value in the interval [0, 1].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blue")]
-        public virtual System.Nullable<float> Blue { get; set; } 
+        public virtual System.Nullable<float> Blue { get; set; }
 
         /// <summary>The amount of green in the color as a value in the interval [0, 1].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("green")]
-        public virtual System.Nullable<float> Green { get; set; } 
+        public virtual System.Nullable<float> Green { get; set; }
 
         /// <summary>The amount of red in the color as a value in the interval [0, 1].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("red")]
-        public virtual System.Nullable<float> Red { get; set; } 
+        public virtual System.Nullable<float> Red { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8382,15 +8382,15 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Required. Field within the record this condition is evaluated against.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual GooglePrivacyDlpV2FieldId Field { get; set; } 
+        public virtual GooglePrivacyDlpV2FieldId Field { get; set; }
 
         /// <summary>Required. Operator used to compare the field or infoType to the value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operator")]
-        public virtual string Operator__ { get; set; } 
+        public virtual string Operator__ { get; set; }
 
         /// <summary>Value to compare against. [Mandatory, except for `EXISTS` tests.]</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual GooglePrivacyDlpV2Value Value { get; set; } 
+        public virtual GooglePrivacyDlpV2Value Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8401,7 +8401,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>A collection of conditions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Condition> Conditions { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Condition> Conditions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8414,38 +8414,38 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>A string representation of the full container name. Examples: - BigQuery:
         /// 'Project:DataSetId.TableId' - Google Cloud Storage: 'gs://Bucket/folders/filename.txt'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullPath")]
-        public virtual string FullPath { get; set; } 
+        public virtual string FullPath { get; set; }
 
         /// <summary>Project where the finding was found. Can be different from the project that owns the
         /// finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>The rest of the path after the root. Examples: - For BigQuery table
         /// `project_id:dataset_id.table_id`, the relative path is `table_id` - Google Cloud Storage file
         /// `gs://bucket/folder/filename.txt`, the relative path is `folder/filename.txt`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relativePath")]
-        public virtual string RelativePath { get; set; } 
+        public virtual string RelativePath { get; set; }
 
         /// <summary>The root of the container. Examples: - For BigQuery table `project_id:dataset_id.table_id`, the
         /// root is `dataset_id` - For Google Cloud Storage file `gs://bucket/folder/filename.txt`, the root is
         /// `gs://bucket`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootPath")]
-        public virtual string RootPath { get; set; } 
+        public virtual string RootPath { get; set; }
 
         /// <summary>Container type, for example BigQuery or Google Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>Findings container modification timestamp, if applicable. For Google Cloud Storage contains last
         /// file modification timestamp. For BigQuery table contains last_modified_time property. For Datastore - not
         /// populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>Findings container version, if available ("generation" for Google Cloud Storage).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8456,16 +8456,16 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Content data to inspect or redact. Replaces `type` and `data`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("byteItem")]
-        public virtual GooglePrivacyDlpV2ByteContentItem ByteItem { get; set; } 
+        public virtual GooglePrivacyDlpV2ByteContentItem ByteItem { get; set; }
 
         /// <summary>Structured content for inspection. See https://cloud.google.com/dlp/docs/inspecting-
         /// text#inspecting_a_table to learn more.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
-        public virtual GooglePrivacyDlpV2Table Table { get; set; } 
+        public virtual GooglePrivacyDlpV2Table Table { get; set; }
 
         /// <summary>String data to inspect or redact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8480,33 +8480,33 @@ namespace Google.Apis.DLP.v2.Data
         /// {namespace} Nested names could be absent if the embedded object has no string identifier (for an example an
         /// image contained within a document).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerName")]
-        public virtual string ContainerName { get; set; } 
+        public virtual string ContainerName { get; set; }
 
         /// <summary>Findings container modification timestamp, if applicable. For Google Cloud Storage contains last
         /// file modification timestamp. For BigQuery table contains last_modified_time property. For Datastore - not
         /// populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerTimestamp")]
-        public virtual object ContainerTimestamp { get; set; } 
+        public virtual object ContainerTimestamp { get; set; }
 
         /// <summary>Findings container version, if available ("generation" for Google Cloud Storage).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerVersion")]
-        public virtual string ContainerVersion { get; set; } 
+        public virtual string ContainerVersion { get; set; }
 
         /// <summary>Location data for document files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentLocation")]
-        public virtual GooglePrivacyDlpV2DocumentLocation DocumentLocation { get; set; } 
+        public virtual GooglePrivacyDlpV2DocumentLocation DocumentLocation { get; set; }
 
         /// <summary>Location within an image's pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageLocation")]
-        public virtual GooglePrivacyDlpV2ImageLocation ImageLocation { get; set; } 
+        public virtual GooglePrivacyDlpV2ImageLocation ImageLocation { get; set; }
 
         /// <summary>Location within the metadata for inspected content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadataLocation")]
-        public virtual GooglePrivacyDlpV2MetadataLocation MetadataLocation { get; set; } 
+        public virtual GooglePrivacyDlpV2MetadataLocation MetadataLocation { get; set; }
 
         /// <summary>Location within a row or record of a database table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordLocation")]
-        public virtual GooglePrivacyDlpV2RecordLocation RecordLocation { get; set; } 
+        public virtual GooglePrivacyDlpV2RecordLocation RecordLocation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8517,17 +8517,17 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Required. The DeidentifyTemplate to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deidentifyTemplate")]
-        public virtual GooglePrivacyDlpV2DeidentifyTemplate DeidentifyTemplate { get; set; } 
+        public virtual GooglePrivacyDlpV2DeidentifyTemplate DeidentifyTemplate { get; set; }
 
         /// <summary>Deprecated. This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must
         /// match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow
         /// the system to generate one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("templateId")]
-        public virtual string TemplateId { get; set; } 
+        public virtual string TemplateId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8539,21 +8539,21 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Set to control what and how to inspect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectJob")]
-        public virtual GooglePrivacyDlpV2InspectJobConfig InspectJob { get; set; } 
+        public virtual GooglePrivacyDlpV2InspectJobConfig InspectJob { get; set; }
 
         /// <summary>The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must
         /// match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow
         /// the system to generate one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
-        public virtual string JobId { get; set; } 
+        public virtual string JobId { get; set; }
 
         /// <summary>Deprecated. This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>Set to choose what metric to calculate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("riskJob")]
-        public virtual GooglePrivacyDlpV2RiskAnalysisJobConfig RiskJob { get; set; } 
+        public virtual GooglePrivacyDlpV2RiskAnalysisJobConfig RiskJob { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8564,17 +8564,17 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Required. The InspectTemplate to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplate")]
-        public virtual GooglePrivacyDlpV2InspectTemplate InspectTemplate { get; set; } 
+        public virtual GooglePrivacyDlpV2InspectTemplate InspectTemplate { get; set; }
 
         /// <summary>Deprecated. This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must
         /// match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow
         /// the system to generate one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("templateId")]
-        public virtual string TemplateId { get; set; } 
+        public virtual string TemplateId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8585,17 +8585,17 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Required. The JobTrigger to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobTrigger")]
-        public virtual GooglePrivacyDlpV2JobTrigger JobTrigger { get; set; } 
+        public virtual GooglePrivacyDlpV2JobTrigger JobTrigger { get; set; }
 
         /// <summary>Deprecated. This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must
         /// match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow
         /// the system to generate one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggerId")]
-        public virtual string TriggerId { get; set; } 
+        public virtual string TriggerId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8606,17 +8606,17 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Required. Configuration of the storedInfoType to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
-        public virtual GooglePrivacyDlpV2StoredInfoTypeConfig Config { get; set; } 
+        public virtual GooglePrivacyDlpV2StoredInfoTypeConfig Config { get; set; }
 
         /// <summary>Deprecated. This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is,
         /// it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to
         /// allow the system to generate one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storedInfoTypeId")]
-        public virtual string StoredInfoTypeId { get; set; } 
+        public virtual string StoredInfoTypeId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8637,11 +8637,11 @@ namespace Google.Apis.DLP.v2.Data
         /// expected when an `InfoTypeTransformation` is applied to both structured and non-structured
         /// `ContentItem`s.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
-        public virtual GooglePrivacyDlpV2FieldId Context { get; set; } 
+        public virtual GooglePrivacyDlpV2FieldId Context { get; set; }
 
         /// <summary>The key used by the encryption function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKey")]
-        public virtual GooglePrivacyDlpV2CryptoKey CryptoKey { get; set; } 
+        public virtual GooglePrivacyDlpV2CryptoKey CryptoKey { get; set; }
 
         /// <summary>The custom info type to annotate the surrogate with. This annotation will be applied to the
         /// surrogate by prefixing it with the name of the custom info type followed by the number of characters
@@ -8660,7 +8660,7 @@ namespace Google.Apis.DLP.v2.Data
         /// entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so:
         /// ⧝MY_TOKEN_TYPE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("surrogateInfoType")]
-        public virtual GooglePrivacyDlpV2InfoType SurrogateInfoType { get; set; } 
+        public virtual GooglePrivacyDlpV2InfoType SurrogateInfoType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8674,7 +8674,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>The key used by the hash function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKey")]
-        public virtual GooglePrivacyDlpV2CryptoKey CryptoKey { get; set; } 
+        public virtual GooglePrivacyDlpV2CryptoKey CryptoKey { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8687,15 +8687,15 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Kms wrapped key</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsWrapped")]
-        public virtual GooglePrivacyDlpV2KmsWrappedCryptoKey KmsWrapped { get; set; } 
+        public virtual GooglePrivacyDlpV2KmsWrappedCryptoKey KmsWrapped { get; set; }
 
         /// <summary>Transient crypto key</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transient")]
-        public virtual GooglePrivacyDlpV2TransientCryptoKey Transient { get; set; } 
+        public virtual GooglePrivacyDlpV2TransientCryptoKey Transient { get; set; }
 
         /// <summary>Unwrapped crypto key</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unwrapped")]
-        public virtual GooglePrivacyDlpV2UnwrappedCryptoKey Unwrapped { get; set; } 
+        public virtual GooglePrivacyDlpV2UnwrappedCryptoKey Unwrapped { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8713,7 +8713,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Common alphabets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonAlphabet")]
-        public virtual string CommonAlphabet { get; set; } 
+        public virtual string CommonAlphabet { get; set; }
 
         /// <summary>The 'tweak', a context may be used for higher security since the same identifier in two different
         /// contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the
@@ -8724,11 +8724,11 @@ namespace Google.Apis.DLP.v2.Data
         /// big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a
         /// string is encoded in UTF-8 format followed by a single byte of value 2</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
-        public virtual GooglePrivacyDlpV2FieldId Context { get; set; } 
+        public virtual GooglePrivacyDlpV2FieldId Context { get; set; }
 
         /// <summary>Required. The key used by the encryption algorithm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKey")]
-        public virtual GooglePrivacyDlpV2CryptoKey CryptoKey { get; set; } 
+        public virtual GooglePrivacyDlpV2CryptoKey CryptoKey { get; set; }
 
         /// <summary>This is supported by mapping these to the alphanumeric characters that the FFX mode natively
         /// supports. This happens before/after encryption/decryption. Each character listed must appear only once.
@@ -8736,11 +8736,11 @@ namespace Google.Apis.DLP.v2.Data
         /// does not matter. The full list of allowed characters is:
         /// 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|\:;"'<,>.?/</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customAlphabet")]
-        public virtual string CustomAlphabet { get; set; } 
+        public virtual string CustomAlphabet { get; set; }
 
         /// <summary>The native way to select the alphabet. Must be in the range [2, 95].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("radix")]
-        public virtual System.Nullable<int> Radix { get; set; } 
+        public virtual System.Nullable<int> Radix { get; set; }
 
         /// <summary>The custom infoType to annotate the surrogate with. This annotation will be applied to the
         /// surrogate by prefixing it with the name of the custom infoType followed by the number of characters
@@ -8758,7 +8758,7 @@ namespace Google.Apis.DLP.v2.Data
         /// in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the
         /// hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("surrogateInfoType")]
-        public virtual GooglePrivacyDlpV2InfoType SurrogateInfoType { get; set; } 
+        public virtual GooglePrivacyDlpV2InfoType SurrogateInfoType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8771,42 +8771,42 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Set of detection rules to apply to all findings of this CustomInfoType. Rules are applied in order
         /// that they are specified. Not supported for the `surrogate_type` CustomInfoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectionRules")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2DetectionRule> DetectionRules { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2DetectionRule> DetectionRules { get; set; }
 
         /// <summary>A list of phrases to detect as a CustomInfoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dictionary")]
-        public virtual GooglePrivacyDlpV2Dictionary Dictionary { get; set; } 
+        public virtual GooglePrivacyDlpV2Dictionary Dictionary { get; set; }
 
         /// <summary>If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still
         /// can be used for rules matching.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusionType")]
-        public virtual string ExclusionType { get; set; } 
+        public virtual string ExclusionType { get; set; }
 
         /// <summary>CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name
         /// matches one of existing infoTypes and that infoType is specified in `InspectContent.info_types` field.
         /// Specifying the latter adds findings to the one detected by the system. If built-in info type is not
         /// specified in `InspectContent.info_types` list then the name is treated as a custom info type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
-        public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; } 
+        public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; }
 
         /// <summary>Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if
         /// the finding meets the criteria specified by the rule. Defaults to `VERY_LIKELY` if not specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("likelihood")]
-        public virtual string Likelihood { get; set; } 
+        public virtual string Likelihood { get; set; }
 
         /// <summary>Regular expression based CustomInfoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regex")]
-        public virtual GooglePrivacyDlpV2Regex Regex { get; set; } 
+        public virtual GooglePrivacyDlpV2Regex Regex { get; set; }
 
         /// <summary>Load an existing `StoredInfoType` resource for use in `InspectDataSource`. Not currently supported
         /// in `InspectContent`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storedType")]
-        public virtual GooglePrivacyDlpV2StoredType StoredType { get; set; } 
+        public virtual GooglePrivacyDlpV2StoredType StoredType { get; set; }
 
         /// <summary>Message for detecting output from deidentification transformations that support
         /// reversing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("surrogateType")]
-        public virtual GooglePrivacyDlpV2SurrogateType SurrogateType { get; set; } 
+        public virtual GooglePrivacyDlpV2SurrogateType SurrogateType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8817,7 +8817,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Datastore entity key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityKey")]
-        public virtual GooglePrivacyDlpV2Key EntityKey { get; set; } 
+        public virtual GooglePrivacyDlpV2Key EntityKey { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8828,12 +8828,12 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>The kind to process.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual GooglePrivacyDlpV2KindExpression Kind { get; set; } 
+        public virtual GooglePrivacyDlpV2KindExpression Kind { get; set; }
 
         /// <summary>A partition ID identifies a grouping of entities. The grouping is always by project and namespace,
         /// however the namespace ID may be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partitionId")]
-        public virtual GooglePrivacyDlpV2PartitionId PartitionId { get; set; } 
+        public virtual GooglePrivacyDlpV2PartitionId PartitionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8846,23 +8846,23 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Points to the field that contains the context, for example, an entity id. If set, must also set
         /// cryptoKey. If set, shift will be consistent for the given context.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
-        public virtual GooglePrivacyDlpV2FieldId Context { get; set; } 
+        public virtual GooglePrivacyDlpV2FieldId Context { get; set; }
 
         /// <summary>Causes the shift to be computed based on this key and the context. This results in the same shift
         /// for the same context and crypto_key. If set, must also set context. Can only be applied to table
         /// items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKey")]
-        public virtual GooglePrivacyDlpV2CryptoKey CryptoKey { get; set; } 
+        public virtual GooglePrivacyDlpV2CryptoKey CryptoKey { get; set; }
 
         /// <summary>Required. For example, -5 means shift date to at most 5 days back in the past.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lowerBoundDays")]
-        public virtual System.Nullable<int> LowerBoundDays { get; set; } 
+        public virtual System.Nullable<int> LowerBoundDays { get; set; }
 
         /// <summary>Required. Range of shift in days. Actual shift will be selected at random within this range
         /// (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years)
         /// each direction. For example, 3 means shift date to at most 3 days into the future.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upperBoundDays")]
-        public virtual System.Nullable<int> UpperBoundDays { get; set; } 
+        public virtual System.Nullable<int> UpperBoundDays { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8873,19 +8873,19 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>One or more of the following must be set. Must be a valid date or time value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
-        public virtual GoogleTypeDate Date { get; set; } 
+        public virtual GoogleTypeDate Date { get; set; }
 
         /// <summary>Day of week</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dayOfWeek")]
-        public virtual string DayOfWeek { get; set; } 
+        public virtual string DayOfWeek { get; set; }
 
         /// <summary>Time of day</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("time")]
-        public virtual GoogleTypeTimeOfDay Time { get; set; } 
+        public virtual GoogleTypeTimeOfDay Time { get; set; }
 
         /// <summary>Time zone</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
-        public virtual GooglePrivacyDlpV2TimeZone TimeZone { get; set; } 
+        public virtual GooglePrivacyDlpV2TimeZone TimeZone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8897,17 +8897,17 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Treat the dataset as free-form text and apply the same free text transformation
         /// everywhere.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoTypeTransformations")]
-        public virtual GooglePrivacyDlpV2InfoTypeTransformations InfoTypeTransformations { get; set; } 
+        public virtual GooglePrivacyDlpV2InfoTypeTransformations InfoTypeTransformations { get; set; }
 
         /// <summary>Treat the dataset as structured. Transformations can be applied to specific locations within
         /// structured datasets, such as transforming a column within a table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordTransformations")]
-        public virtual GooglePrivacyDlpV2RecordTransformations RecordTransformations { get; set; } 
+        public virtual GooglePrivacyDlpV2RecordTransformations RecordTransformations { get; set; }
 
         /// <summary>Mode for handling transformation errors. If left unspecified, the default mode is
         /// `TransformationErrorHandling.ThrowError`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transformationErrorHandling")]
-        public virtual GooglePrivacyDlpV2TransformationErrorHandling TransformationErrorHandling { get; set; } 
+        public virtual GooglePrivacyDlpV2TransformationErrorHandling TransformationErrorHandling { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8919,32 +8919,32 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Configuration for the de-identification of the content item. Items specified here will override the
         /// template referenced by the deidentify_template_name argument.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deidentifyConfig")]
-        public virtual GooglePrivacyDlpV2DeidentifyConfig DeidentifyConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2DeidentifyConfig DeidentifyConfig { get; set; }
 
         /// <summary>Template to use. Any configuration directly specified in deidentify_config will override those set
         /// in the template. Singular fields that are set in this request will replace their corresponding fields in the
         /// template. Repeated fields are appended. Singular sub-messages and groups are recursively merged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deidentifyTemplateName")]
-        public virtual string DeidentifyTemplateName { get; set; } 
+        public virtual string DeidentifyTemplateName { get; set; }
 
         /// <summary>Configuration for the inspector. Items specified here will override the template referenced by the
         /// inspect_template_name argument.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectConfig")]
-        public virtual GooglePrivacyDlpV2InspectConfig InspectConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2InspectConfig InspectConfig { get; set; }
 
         /// <summary>Template to use. Any configuration directly specified in inspect_config will override those set in
         /// the template. Singular fields that are set in this request will replace their corresponding fields in the
         /// template. Repeated fields are appended. Singular sub-messages and groups are recursively merged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplateName")]
-        public virtual string InspectTemplateName { get; set; } 
+        public virtual string InspectTemplateName { get; set; }
 
         /// <summary>The item to de-identify. Will be treated as text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("item")]
-        public virtual GooglePrivacyDlpV2ContentItem Item { get; set; } 
+        public virtual GooglePrivacyDlpV2ContentItem Item { get; set; }
 
         /// <summary>Deprecated. This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8955,11 +8955,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>The de-identified item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("item")]
-        public virtual GooglePrivacyDlpV2ContentItem Item { get; set; } 
+        public virtual GooglePrivacyDlpV2ContentItem Item { get; set; }
 
         /// <summary>An overview of the changes that were made on the `item`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overview")]
-        public virtual GooglePrivacyDlpV2TransformationOverview Overview { get; set; } 
+        public virtual GooglePrivacyDlpV2TransformationOverview Overview { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8971,29 +8971,29 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Output only. The creation timestamp of an inspectTemplate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>/ // The core content of the template // </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deidentifyConfig")]
-        public virtual GooglePrivacyDlpV2DeidentifyConfig DeidentifyConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2DeidentifyConfig DeidentifyConfig { get; set; }
 
         /// <summary>Short description (max 256 chars).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Display name (max 256 chars).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Output only. The template name. The template will have one of the following formats:
         /// `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR
         /// `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The last update timestamp of an inspectTemplate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9007,16 +9007,16 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-
         /// identifiers field must appear in exactly one field of one auxiliary table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auxiliaryTables")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2StatisticalTable> AuxiliaryTables { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2StatisticalTable> AuxiliaryTables { get; set; }
 
         /// <summary>Required. Fields considered to be quasi-identifiers. No two fields can have the same tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quasiIds")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2QuasiId> QuasiIds { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2QuasiId> QuasiIds { get; set; }
 
         /// <summary>ISO 3166-1 alpha-2 region code to use in the statistical modeling. Set if no column is tagged with
         /// a region-specific InfoType (like US_ZIP_5) or a region code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
-        public virtual string RegionCode { get; set; } 
+        public virtual string RegionCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9030,24 +9030,24 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Number of records within these probability bounds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketSize")]
-        public virtual System.Nullable<long> BucketSize { get; set; } 
+        public virtual System.Nullable<long> BucketSize { get; set; }
 
         /// <summary>Total number of distinct quasi-identifier tuple values in this bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketValueCount")]
-        public virtual System.Nullable<long> BucketValueCount { get; set; } 
+        public virtual System.Nullable<long> BucketValueCount { get; set; }
 
         /// <summary>Sample of quasi-identifier tuple values in this bucket. The total number of classes returned per
         /// bucket is capped at 20.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketValues")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues> BucketValues { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues> BucketValues { get; set; }
 
         /// <summary>Always greater than or equal to min_probability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxProbability")]
-        public virtual System.Nullable<double> MaxProbability { get; set; } 
+        public virtual System.Nullable<double> MaxProbability { get; set; }
 
         /// <summary>Between 0 and 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minProbability")]
-        public virtual System.Nullable<double> MinProbability { get; set; } 
+        public virtual System.Nullable<double> MinProbability { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9063,11 +9063,11 @@ namespace Google.Apis.DLP.v2.Data
         /// quasi-identifier values, and an estimated 100 people in the entire population with these values, then δ is
         /// 0.15.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("estimatedProbability")]
-        public virtual System.Nullable<double> EstimatedProbability { get; set; } 
+        public virtual System.Nullable<double> EstimatedProbability { get; set; }
 
         /// <summary>The quasi-identifier values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quasiIdsValues")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Value> QuasiIdsValues { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Value> QuasiIdsValues { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9083,7 +9083,7 @@ namespace Google.Apis.DLP.v2.Data
         /// {min_probability: 0.3, max_probability: 0.4, frequency: 99} mean that there are no record with an estimated
         /// probability in [0.1, 0.2) nor larger or equal to 0.4.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deltaPresenceEstimationHistogram")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket> DeltaPresenceEstimationHistogram { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket> DeltaPresenceEstimationHistogram { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9096,7 +9096,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Hotword-based detection rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hotwordRule")]
-        public virtual GooglePrivacyDlpV2HotwordRule HotwordRule { get; set; } 
+        public virtual GooglePrivacyDlpV2HotwordRule HotwordRule { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9119,11 +9119,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Newline-delimited file of words in Cloud Storage. Only a single file is accepted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudStoragePath")]
-        public virtual GooglePrivacyDlpV2CloudStoragePath CloudStoragePath { get; set; } 
+        public virtual GooglePrivacyDlpV2CloudStoragePath CloudStoragePath { get; set; }
 
         /// <summary>List of words or phrases to search for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wordList")]
-        public virtual GooglePrivacyDlpV2WordList WordList { get; set; } 
+        public virtual GooglePrivacyDlpV2WordList WordList { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9134,43 +9134,43 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Time when the job was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Time when the job finished.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>A stream of errors encountered running the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Error> Errors { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Error> Errors { get; set; }
 
         /// <summary>Results from inspecting a data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectDetails")]
-        public virtual GooglePrivacyDlpV2InspectDataSourceDetails InspectDetails { get; set; } 
+        public virtual GooglePrivacyDlpV2InspectDataSourceDetails InspectDetails { get; set; }
 
         /// <summary>If created by a job trigger, the resource name of the trigger that instantiated the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobTriggerName")]
-        public virtual string JobTriggerName { get; set; } 
+        public virtual string JobTriggerName { get; set; }
 
         /// <summary>The server-assigned name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Results from analyzing risk of a data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("riskDetails")]
-        public virtual GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails RiskDetails { get; set; } 
+        public virtual GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails RiskDetails { get; set; }
 
         /// <summary>Time when the job started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>State of a job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The type of job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9181,7 +9181,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Offset of the line, from the beginning of the file, where the finding is located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileOffset")]
-        public virtual System.Nullable<long> FileOffset { get; set; } 
+        public virtual System.Nullable<long> FileOffset { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9195,7 +9195,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Composite key indicating which field contains the entity identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual GooglePrivacyDlpV2FieldId Field { get; set; } 
+        public virtual GooglePrivacyDlpV2FieldId Field { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9207,11 +9207,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Detailed error codes and messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual GoogleRpcStatus Details { get; set; } 
+        public virtual GoogleRpcStatus Details { get; set; }
 
         /// <summary>The times the error occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamps")]
-        public virtual System.Collections.Generic.IList<object> Timestamps { get; set; } 
+        public virtual System.Collections.Generic.IList<object> Timestamps { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9226,7 +9226,7 @@ namespace Google.Apis.DLP.v2.Data
         /// phone number findings are dropped if they overlap with EMAIL_ADDRESS finding. That leads to
         /// "555-222-2222@example.org" to generate only a single finding, namely email address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoTypes")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoType> InfoTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoType> InfoTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9238,19 +9238,19 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Dictionary which defines the rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dictionary")]
-        public virtual GooglePrivacyDlpV2Dictionary Dictionary { get; set; } 
+        public virtual GooglePrivacyDlpV2Dictionary Dictionary { get; set; }
 
         /// <summary>Set of infoTypes for which findings would affect this rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeInfoTypes")]
-        public virtual GooglePrivacyDlpV2ExcludeInfoTypes ExcludeInfoTypes { get; set; } 
+        public virtual GooglePrivacyDlpV2ExcludeInfoTypes ExcludeInfoTypes { get; set; }
 
         /// <summary>How the rule is applied, see MatchingType documentation for details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchingType")]
-        public virtual string MatchingType { get; set; } 
+        public virtual string MatchingType { get; set; }
 
         /// <summary>Regular expression which defines the rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regex")]
-        public virtual GooglePrivacyDlpV2Regex Regex { get; set; } 
+        public virtual GooglePrivacyDlpV2Regex Regex { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9261,12 +9261,12 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Conditions to apply to the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
-        public virtual GooglePrivacyDlpV2Conditions Conditions { get; set; } 
+        public virtual GooglePrivacyDlpV2Conditions Conditions { get; set; }
 
         /// <summary>The operator to apply to the result of conditions. Default and currently only supported value is
         /// `AND`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logicalOperator")]
-        public virtual string LogicalOperator { get; set; } 
+        public virtual string LogicalOperator { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9277,7 +9277,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Name describing the field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9291,20 +9291,20 @@ namespace Google.Apis.DLP.v2.Data
         /// Cases: - Apply a different bucket transformation to an age column if the zip code column for the same record
         /// is within a specific range. - Redact a field if the date of birth field is greater than 85.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual GooglePrivacyDlpV2RecordCondition Condition { get; set; } 
+        public virtual GooglePrivacyDlpV2RecordCondition Condition { get; set; }
 
         /// <summary>Required. Input field(s) to apply the transformation to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldId> Fields { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldId> Fields { get; set; }
 
         /// <summary>Treat the contents of the field as free text, and selectively transform content that matches an
         /// `InfoType`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoTypeTransformations")]
-        public virtual GooglePrivacyDlpV2InfoTypeTransformations InfoTypeTransformations { get; set; } 
+        public virtual GooglePrivacyDlpV2InfoTypeTransformations InfoTypeTransformations { get; set; }
 
         /// <summary>Apply the transformation to the entire field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primitiveTransformation")]
-        public virtual GooglePrivacyDlpV2PrimitiveTransformation PrimitiveTransformation { get; set; } 
+        public virtual GooglePrivacyDlpV2PrimitiveTransformation PrimitiveTransformation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9316,7 +9316,7 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>The regex-filtered set of files to scan. Exactly one of `url` or `regex_file_set` must be
         /// set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regexFileSet")]
-        public virtual GooglePrivacyDlpV2CloudStorageRegexFileSet RegexFileSet { get; set; } 
+        public virtual GooglePrivacyDlpV2CloudStorageRegexFileSet RegexFileSet { get; set; }
 
         /// <summary>The Cloud Storage url of the file(s) to scan, in the format `gs:`. Trailing wildcard in the path is
         /// allowed. If the url ends in a trailing slash, the bucket or directory represented by the url will be scanned
@@ -9324,7 +9324,7 @@ namespace Google.Apis.DLP.v2.Data
         /// equivalent to `gs://mybucket`, and `gs://mybucket/directory/` is equivalent to `gs://mybucket/directory`.
         /// Exactly one of `url` or `regex_file_set` must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9335,19 +9335,19 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Timestamp when finding was detected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The type of content that might have been found. Provided if `excluded_types` is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
-        public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; } 
+        public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; }
 
         /// <summary>Time the job started that produced this finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobCreateTime")]
-        public virtual object JobCreateTime { get; set; } 
+        public virtual object JobCreateTime { get; set; }
 
         /// <summary>The job that stored the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobName")]
-        public virtual string JobName { get; set; } 
+        public virtual string JobName { get; set; }
 
         /// <summary>The labels associated with this `Finding`. Label keys must be between 1 and 63 characters long and
         /// must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. Label values must be between
@@ -9355,39 +9355,39 @@ namespace Google.Apis.DLP.v2.Data
         /// than 10 labels can be associated with a given finding. Examples: * `"environment" : "production"` *
         /// `"pipeline" : "etl"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Confidence of how likely it is that the `info_type` is correct.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("likelihood")]
-        public virtual string Likelihood { get; set; } 
+        public virtual string Likelihood { get; set; }
 
         /// <summary>Where the content was found.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual GooglePrivacyDlpV2Location Location { get; set; } 
+        public virtual GooglePrivacyDlpV2Location Location { get; set; }
 
         /// <summary>Resource name in format projects/{project}/locations/{location}/findings/{finding} Populated only
         /// when viewing persisted findings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The content that was found. Even if the content is not textual, it may be converted to a textual
         /// representation here. Provided if `include_quote` is true and the finding is less than or equal to 4096 bytes
         /// long. If the finding exceeds 4096 bytes in length, the quote may be omitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quote")]
-        public virtual string Quote { get; set; } 
+        public virtual string Quote { get; set; }
 
         /// <summary>Contains data parsed from quotes. Only populated if include_quote was set to true and a supported
         /// infoType was requested. Currently supported infoTypes: DATE, DATE_OF_BIRTH and TIME.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quoteInfo")]
-        public virtual GooglePrivacyDlpV2QuoteInfo QuoteInfo { get; set; } 
+        public virtual GooglePrivacyDlpV2QuoteInfo QuoteInfo { get; set; }
 
         /// <summary>The job that stored the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
-        public virtual string ResourceName { get; set; } 
+        public virtual string ResourceName { get; set; }
 
         /// <summary>Job trigger name, if applicable, for this finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggerName")]
-        public virtual string TriggerName { get; set; } 
+        public virtual string TriggerName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9398,18 +9398,18 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Configuration of findings limit given for specified infoTypes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxFindingsPerInfoType")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoTypeLimit> MaxFindingsPerInfoType { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoTypeLimit> MaxFindingsPerInfoType { get; set; }
 
         /// <summary>Max number of findings that will be returned for each item scanned. When set within
         /// `InspectJobConfig`, the maximum returned is 2000 regardless if this is set higher. When set within
         /// `InspectContentRequest`, this field is ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxFindingsPerItem")]
-        public virtual System.Nullable<int> MaxFindingsPerItem { get; set; } 
+        public virtual System.Nullable<int> MaxFindingsPerItem { get; set; }
 
         /// <summary>Max number of findings that will be returned per request/job. When set within
         /// `InspectContentRequest`, the maximum returned is 2000 regardless if this is set higher.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxFindingsPerRequest")]
-        public virtual System.Nullable<int> MaxFindingsPerRequest { get; set; } 
+        public virtual System.Nullable<int> MaxFindingsPerRequest { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9435,19 +9435,19 @@ namespace Google.Apis.DLP.v2.Data
         /// `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30,
         /// 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketSize")]
-        public virtual System.Nullable<double> BucketSize { get; set; } 
+        public virtual System.Nullable<double> BucketSize { get; set; }
 
         /// <summary>Required. Lower bound value of buckets. All values less than `lower_bound` are grouped together
         /// into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the
         /// value "-10".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lowerBound")]
-        public virtual GooglePrivacyDlpV2Value LowerBound { get; set; } 
+        public virtual GooglePrivacyDlpV2Value LowerBound { get; set; }
 
         /// <summary>Required. Upper bound value of buckets. All values greater than upper_bound are grouped together
         /// into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with
         /// the value "89+".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upperBound")]
-        public virtual GooglePrivacyDlpV2Value UpperBound { get; set; } 
+        public virtual GooglePrivacyDlpV2Value UpperBound { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9458,11 +9458,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Regular expression pattern defining what qualifies as a hotword.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hotwordRegex")]
-        public virtual GooglePrivacyDlpV2Regex HotwordRegex { get; set; } 
+        public virtual GooglePrivacyDlpV2Regex HotwordRegex { get; set; }
 
         /// <summary>Likelihood adjustment to apply to all matching findings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("likelihoodAdjustment")]
-        public virtual GooglePrivacyDlpV2LikelihoodAdjustment LikelihoodAdjustment { get; set; } 
+        public virtual GooglePrivacyDlpV2LikelihoodAdjustment LikelihoodAdjustment { get; set; }
 
         /// <summary>Proximity of the finding within which the entire hotword must reside. The total length of the
         /// window cannot exceed 1000 characters. Note that the finding itself will be included in the window, so that
@@ -9470,7 +9470,7 @@ namespace Google.Apis.DLP.v2.Data
         /// regex "\(\d{3}\) \d{3}-\d{4}" could be adjusted upwards if the area code is known to be the local area code
         /// of a company office using the hotword regex "\(xxx\)", where "xxx" is the area code in question.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proximity")]
-        public virtual GooglePrivacyDlpV2Proximity Proximity { get; set; } 
+        public virtual GooglePrivacyDlpV2Proximity Proximity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9481,11 +9481,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Supplementary information that will be added to each finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("findingDetails")]
-        public virtual GooglePrivacyDlpV2HybridFindingDetails FindingDetails { get; set; } 
+        public virtual GooglePrivacyDlpV2HybridFindingDetails FindingDetails { get; set; }
 
         /// <summary>The item to inspect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("item")]
-        public virtual GooglePrivacyDlpV2ContentItem Item { get; set; } 
+        public virtual GooglePrivacyDlpV2ContentItem Item { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9496,13 +9496,13 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Details about the container where the content being inspected is from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerDetails")]
-        public virtual GooglePrivacyDlpV2Container ContainerDetails { get; set; } 
+        public virtual GooglePrivacyDlpV2Container ContainerDetails { get; set; }
 
         /// <summary>Offset in bytes of the line, from the beginning of the file, where the finding is located. Populate
         /// if the item being scanned is only part of a bigger item, such as a shard of a file and you want to track the
         /// absolute position of the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileOffset")]
-        public virtual System.Nullable<long> FileOffset { get; set; } 
+        public virtual System.Nullable<long> FileOffset { get; set; }
 
         /// <summary>Labels to represent user provided metadata about the data being inspected. If configured by the
         /// job, some key values may be required. The labels associated with `Finding`'s produced by hybrid inspection.
@@ -9511,19 +9511,19 @@ namespace Google.Apis.DLP.v2.Data
         /// regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. No more than 10 labels can be associated with a given
         /// finding. Examples: * `"environment" : "production"` * `"pipeline" : "etl"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Offset of the row for tables. Populate if the row(s) being scanned are part of a bigger dataset and
         /// you want to keep track of their absolute position.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowOffset")]
-        public virtual System.Nullable<long> RowOffset { get; set; } 
+        public virtual System.Nullable<long> RowOffset { get; set; }
 
         /// <summary>If the container is a table, additional information to make findings meaningful such as the columns
         /// that are primary keys. If not known ahead of time, can also be set within each inspect hybrid call and the
         /// two will be merged. Note that identifying_fields will only be stored to BigQuery, and only if the BigQuery
         /// action has been included.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableOptions")]
-        public virtual GooglePrivacyDlpV2TableOptions TableOptions { get; set; } 
+        public virtual GooglePrivacyDlpV2TableOptions TableOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9534,7 +9534,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>The item to inspect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hybridItem")]
-        public virtual GooglePrivacyDlpV2HybridContentItem HybridItem { get; set; } 
+        public virtual GooglePrivacyDlpV2HybridContentItem HybridItem { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9545,7 +9545,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>The item to inspect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hybridItem")]
-        public virtual GooglePrivacyDlpV2HybridContentItem HybridItem { get; set; } 
+        public virtual GooglePrivacyDlpV2HybridContentItem HybridItem { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9564,17 +9564,17 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>The number of hybrid inspection requests aborted because the job ran out of quota or was ended
         /// before they could be processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("abortedCount")]
-        public virtual System.Nullable<long> AbortedCount { get; set; } 
+        public virtual System.Nullable<long> AbortedCount { get; set; }
 
         /// <summary>The number of hybrid requests currently being processed. Only populated when called via method
         /// `getDlpJob`. A burst of traffic may cause hybrid inspect requests to be enqueued. Processing will take place
         /// as quickly as possible, but resource limitations may impact how long a request is enqueued for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pendingCount")]
-        public virtual System.Nullable<long> PendingCount { get; set; } 
+        public virtual System.Nullable<long> PendingCount { get; set; }
 
         /// <summary>The number of hybrid inspection requests processed within this job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processedCount")]
-        public virtual System.Nullable<long> ProcessedCount { get; set; } 
+        public virtual System.Nullable<long> ProcessedCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9587,7 +9587,7 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>A short description of where the data is coming from. Will be stored once in the job. 256 max
         /// length.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>To organize findings, these labels will be added to each finding. Label keys must be between 1 and
         /// 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. Label
@@ -9595,19 +9595,19 @@ namespace Google.Apis.DLP.v2.Data
         /// `([a-z]([-a-z0-9]*[a-z0-9])?)?`. No more than 10 labels can be associated with a given finding. Examples: *
         /// `"environment" : "production"` * `"pipeline" : "etl"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>These are labels that each inspection request must include within their 'finding_labels' map.
         /// Request may contain others, but any missing one of these will be rejected. Label keys must be between 1 and
         /// 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. No
         /// more than 10 keys can be required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiredFindingLabelKeys")]
-        public virtual System.Collections.Generic.IList<string> RequiredFindingLabelKeys { get; set; } 
+        public virtual System.Collections.Generic.IList<string> RequiredFindingLabelKeys { get; set; }
 
         /// <summary>If the container is a table, additional information to make findings meaningful such as the columns
         /// that are primary keys.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableOptions")]
-        public virtual GooglePrivacyDlpV2TableOptions TableOptions { get; set; } 
+        public virtual GooglePrivacyDlpV2TableOptions TableOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9618,7 +9618,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Bounding boxes locating the pixels within the image containing the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBoxes")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2BoundingBox> BoundingBoxes { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2BoundingBox> BoundingBoxes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9631,17 +9631,17 @@ namespace Google.Apis.DLP.v2.Data
         /// false, the DLP API will redact all text that it matches against all info_types that are found, but not
         /// specified in another ImageRedactionConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
-        public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; } 
+        public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; }
 
         /// <summary>If true, all text found in the image, regardless whether it matches an info_type, is redacted. Only
         /// one should be provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redactAllText")]
-        public virtual System.Nullable<bool> RedactAllText { get; set; } 
+        public virtual System.Nullable<bool> RedactAllText { get; set; }
 
         /// <summary>The color to use when redacting content from an image. If not specified, the default is
         /// black.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redactionColor")]
-        public virtual GooglePrivacyDlpV2Color RedactionColor { get; set; } 
+        public virtual GooglePrivacyDlpV2Color RedactionColor { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9655,7 +9655,7 @@ namespace Google.Apis.DLP.v2.Data
         /// type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern
         /// `[A-Za-z0-9$-_]{1,64}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9666,19 +9666,19 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Description of the infotype. Translated when language is provided in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Human readable form of the infoType name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Internal name of the infoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Which parts of the API supports this InfoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedBy")]
-        public virtual System.Collections.Generic.IList<string> SupportedBy { get; set; } 
+        public virtual System.Collections.Generic.IList<string> SupportedBy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9691,11 +9691,11 @@ namespace Google.Apis.DLP.v2.Data
         /// If InfoTypeLimit does not have an info_type, the DLP API applies the limit against all info_types that are
         /// found but not specified in another InfoTypeLimit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
-        public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; } 
+        public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; }
 
         /// <summary>Max findings limit for the given infoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxFindings")]
-        public virtual System.Nullable<int> MaxFindings { get; set; } 
+        public virtual System.Nullable<int> MaxFindings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9706,11 +9706,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Number of findings for this infoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
-        public virtual System.Nullable<long> Count { get; set; } 
+        public virtual System.Nullable<long> Count { get; set; }
 
         /// <summary>The type of finding this stat is for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
-        public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; } 
+        public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9722,11 +9722,11 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>InfoTypes to apply the transformation to. An empty list will cause this transformation to apply to
         /// all findings that correspond to infoTypes that were requested in `InspectConfig`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoTypes")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoType> InfoTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoType> InfoTypes { get; set; }
 
         /// <summary>Required. Primitive transformation to apply to the infoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primitiveTransformation")]
-        public virtual GooglePrivacyDlpV2PrimitiveTransformation PrimitiveTransformation { get; set; } 
+        public virtual GooglePrivacyDlpV2PrimitiveTransformation PrimitiveTransformation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9740,7 +9740,7 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Required. Transformation for each infoType. Cannot specify more than one for a given
         /// infoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transformations")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoTypeTransformation> Transformations { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoTypeTransformation> Transformations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9753,21 +9753,21 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>List of options defining data content to scan. If empty, text, images, and other content will be
         /// included.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentOptions")]
-        public virtual System.Collections.Generic.IList<string> ContentOptions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ContentOptions { get; set; }
 
         /// <summary>CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-
         /// infotypes to learn more.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customInfoTypes")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2CustomInfoType> CustomInfoTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2CustomInfoType> CustomInfoTypes { get; set; }
 
         /// <summary>When true, excludes type information of the findings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeInfoTypes")]
-        public virtual System.Nullable<bool> ExcludeInfoTypes { get; set; } 
+        public virtual System.Nullable<bool> ExcludeInfoTypes { get; set; }
 
         /// <summary>When true, a contextual quote from the data that triggered a finding is included in the response;
         /// see Finding.quote.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeQuote")]
-        public virtual System.Nullable<bool> IncludeQuote { get; set; } 
+        public virtual System.Nullable<bool> IncludeQuote { get; set; }
 
         /// <summary>Restricts what info_types to look for. The values must correspond to InfoType values returned by
         /// ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or
@@ -9776,22 +9776,22 @@ namespace Google.Apis.DLP.v2.Data
         /// control and predictability as to what detectors are run you should specify specific InfoTypes listed in the
         /// reference, otherwise a default list will be used, which may change over time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoTypes")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoType> InfoTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoType> InfoTypes { get; set; }
 
         /// <summary>Configuration to control the number of findings returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limits")]
-        public virtual GooglePrivacyDlpV2FindingLimits Limits { get; set; } 
+        public virtual GooglePrivacyDlpV2FindingLimits Limits { get; set; }
 
         /// <summary>Only returns findings equal or above this threshold. The default is POSSIBLE. See
         /// https://cloud.google.com/dlp/docs/likelihood to learn more.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minLikelihood")]
-        public virtual string MinLikelihood { get; set; } 
+        public virtual string MinLikelihood { get; set; }
 
         /// <summary>Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set
         /// are executed in the end, other rules are executed in the order they are specified for each info
         /// type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ruleSet")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InspectionRuleSet> RuleSet { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InspectionRuleSet> RuleSet { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9803,21 +9803,21 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Configuration for the inspector. What specified here will override the template referenced by the
         /// inspect_template_name argument.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectConfig")]
-        public virtual GooglePrivacyDlpV2InspectConfig InspectConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2InspectConfig InspectConfig { get; set; }
 
         /// <summary>Template to use. Any configuration directly specified in inspect_config will override those set in
         /// the template. Singular fields that are set in this request will replace their corresponding fields in the
         /// template. Repeated fields are appended. Singular sub-messages and groups are recursively merged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplateName")]
-        public virtual string InspectTemplateName { get; set; } 
+        public virtual string InspectTemplateName { get; set; }
 
         /// <summary>The item to inspect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("item")]
-        public virtual GooglePrivacyDlpV2ContentItem Item { get; set; } 
+        public virtual GooglePrivacyDlpV2ContentItem Item { get; set; }
 
         /// <summary>Deprecated. This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9828,7 +9828,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>The findings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
-        public virtual GooglePrivacyDlpV2InspectResult Result { get; set; } 
+        public virtual GooglePrivacyDlpV2InspectResult Result { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9839,11 +9839,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>The configuration used for this job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedOptions")]
-        public virtual GooglePrivacyDlpV2RequestedOptions RequestedOptions { get; set; } 
+        public virtual GooglePrivacyDlpV2RequestedOptions RequestedOptions { get; set; }
 
         /// <summary>A summary of the outcome of this inspect job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
-        public virtual GooglePrivacyDlpV2Result Result { get; set; } 
+        public virtual GooglePrivacyDlpV2Result Result { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9854,20 +9854,20 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Actions to execute at the completion of the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actions")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Action> Actions { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Action> Actions { get; set; }
 
         /// <summary>How and what to scan for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectConfig")]
-        public virtual GooglePrivacyDlpV2InspectConfig InspectConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2InspectConfig InspectConfig { get; set; }
 
         /// <summary>If provided, will be used as the default for all values in InspectConfig. `inspect_config` will be
         /// merged into the values persisted as part of the template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplateName")]
-        public virtual string InspectTemplateName { get; set; } 
+        public virtual string InspectTemplateName { get; set; }
 
         /// <summary>The data to scan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageConfig")]
-        public virtual GooglePrivacyDlpV2StorageConfig StorageConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2StorageConfig StorageConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9878,14 +9878,14 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>List of findings for an item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("findings")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Finding> Findings { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Finding> Findings { get; set; }
 
         /// <summary>If true, then this item might have more findings than were returned, and the findings returned are
         /// an arbitrary subset of all findings. The findings list might be truncated because the input items were too
         /// large, or because the server reached the maximum amount of resources allowed for a single API call. For best
         /// results, divide the input into smaller batches.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("findingsTruncated")]
-        public virtual System.Nullable<bool> FindingsTruncated { get; set; } 
+        public virtual System.Nullable<bool> FindingsTruncated { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9898,29 +9898,29 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Output only. The creation timestamp of an inspectTemplate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Short description (max 256 chars).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Display name (max 256 chars).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The core content of the template. Configuration of the scanning process.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectConfig")]
-        public virtual GooglePrivacyDlpV2InspectConfig InspectConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2InspectConfig InspectConfig { get; set; }
 
         /// <summary>Output only. The template name. The template will have one of the following formats:
         /// `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR
         /// `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The last update timestamp of an inspectTemplate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9931,11 +9931,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Exclusion rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusionRule")]
-        public virtual GooglePrivacyDlpV2ExclusionRule ExclusionRule { get; set; } 
+        public virtual GooglePrivacyDlpV2ExclusionRule ExclusionRule { get; set; }
 
         /// <summary>Hotword-based detection rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hotwordRule")]
-        public virtual GooglePrivacyDlpV2HotwordRule HotwordRule { get; set; } 
+        public virtual GooglePrivacyDlpV2HotwordRule HotwordRule { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9947,11 +9947,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>List of infoTypes this rule set is applied to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoTypes")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoType> InfoTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoType> InfoTypes { get; set; }
 
         /// <summary>Set of rules to be applied to infoTypes. The rules are applied in order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InspectionRule> Rules { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InspectionRule> Rules { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9970,47 +9970,47 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Output only. The creation timestamp of a triggeredJob.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>User provided description (max 256 chars)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Display name (max 100 chars)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Output only. A stream of errors encountered when the trigger was activated. Repeated errors may
         /// result in the JobTrigger automatically being paused. Will return the last 100 errors. Whenever the
         /// JobTrigger is modified this list will be cleared.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Error> Errors { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Error> Errors { get; set; }
 
         /// <summary>For inspect jobs, a snapshot of the configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectJob")]
-        public virtual GooglePrivacyDlpV2InspectJobConfig InspectJob { get; set; } 
+        public virtual GooglePrivacyDlpV2InspectJobConfig InspectJob { get; set; }
 
         /// <summary>Output only. The timestamp of the last time this trigger executed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastRunTime")]
-        public virtual object LastRunTime { get; set; } 
+        public virtual object LastRunTime { get; set; }
 
         /// <summary>Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is
         /// created, for example `projects/dlp-test-project/jobTriggers/53234423`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. A status for this trigger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to
         /// be started. The list may contain only a single Schedule trigger and must have at least one object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggers")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Trigger> Triggers { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Trigger> Triggers { get; set; }
 
         /// <summary>Output only. The last update timestamp of a triggeredJob.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10026,13 +10026,13 @@ namespace Google.Apis.DLP.v2.Data
         /// note: a maximum of 1000 rows can be associated to a single entity ID. If more rows are associated with the
         /// same entity ID, some might be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
-        public virtual GooglePrivacyDlpV2EntityId EntityId { get; set; } 
+        public virtual GooglePrivacyDlpV2EntityId EntityId { get; set; }
 
         /// <summary>Set of fields to compute k-anonymity over. When multiple fields are specified, they are considered
         /// a single composite key. Structs and repeated data types are not supported; however, nested fields are
         /// supported so long as they are not structs themselves or nested within a repeated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quasiIds")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldId> QuasiIds { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldId> QuasiIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10043,12 +10043,12 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Size of the equivalence class, for example number of rows with the above set of values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("equivalenceClassSize")]
-        public virtual System.Nullable<long> EquivalenceClassSize { get; set; } 
+        public virtual System.Nullable<long> EquivalenceClassSize { get; set; }
 
         /// <summary>Set of values defining the equivalence class. One value per quasi-identifier column in the original
         /// KAnonymity metric message. The order is always the same as the original request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quasiIdsValues")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Value> QuasiIdsValues { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Value> QuasiIdsValues { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10059,24 +10059,24 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Total number of equivalence classes in this bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketSize")]
-        public virtual System.Nullable<long> BucketSize { get; set; } 
+        public virtual System.Nullable<long> BucketSize { get; set; }
 
         /// <summary>Total number of distinct equivalence classes in this bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketValueCount")]
-        public virtual System.Nullable<long> BucketValueCount { get; set; } 
+        public virtual System.Nullable<long> BucketValueCount { get; set; }
 
         /// <summary>Sample of equivalence classes in this bucket. The total number of classes returned per bucket is
         /// capped at 20.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketValues")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2KAnonymityEquivalenceClass> BucketValues { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2KAnonymityEquivalenceClass> BucketValues { get; set; }
 
         /// <summary>Lower bound on the size of the equivalence classes in this bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("equivalenceClassSizeLowerBound")]
-        public virtual System.Nullable<long> EquivalenceClassSizeLowerBound { get; set; } 
+        public virtual System.Nullable<long> EquivalenceClassSizeLowerBound { get; set; }
 
         /// <summary>Upper bound on the size of the equivalence classes in this bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("equivalenceClassSizeUpperBound")]
-        public virtual System.Nullable<long> EquivalenceClassSizeUpperBound { get; set; } 
+        public virtual System.Nullable<long> EquivalenceClassSizeUpperBound { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10087,7 +10087,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Histogram of k-anonymity equivalence classes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("equivalenceClassHistogramBuckets")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2KAnonymityHistogramBucket> EquivalenceClassHistogramBuckets { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2KAnonymityHistogramBucket> EquivalenceClassHistogramBuckets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10103,17 +10103,17 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-
         /// identifiers column must appear in exactly one column of one auxiliary table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auxiliaryTables")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2AuxiliaryTable> AuxiliaryTables { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2AuxiliaryTable> AuxiliaryTables { get; set; }
 
         /// <summary>Required. Fields considered to be quasi-identifiers. No two columns can have the same
         /// tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quasiIds")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2TaggedField> QuasiIds { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2TaggedField> QuasiIds { get; set; }
 
         /// <summary>ISO 3166-1 alpha-2 region code to use in the statistical modeling. Set if no column is tagged with
         /// a region-specific InfoType (like US_ZIP_5) or a region code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
-        public virtual string RegionCode { get; set; } 
+        public virtual string RegionCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10127,24 +10127,24 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Number of records within these anonymity bounds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketSize")]
-        public virtual System.Nullable<long> BucketSize { get; set; } 
+        public virtual System.Nullable<long> BucketSize { get; set; }
 
         /// <summary>Total number of distinct quasi-identifier tuple values in this bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketValueCount")]
-        public virtual System.Nullable<long> BucketValueCount { get; set; } 
+        public virtual System.Nullable<long> BucketValueCount { get; set; }
 
         /// <summary>Sample of quasi-identifier tuple values in this bucket. The total number of classes returned per
         /// bucket is capped at 20.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketValues")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2KMapEstimationQuasiIdValues> BucketValues { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2KMapEstimationQuasiIdValues> BucketValues { get; set; }
 
         /// <summary>Always greater than or equal to min_anonymity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxAnonymity")]
-        public virtual System.Nullable<long> MaxAnonymity { get; set; } 
+        public virtual System.Nullable<long> MaxAnonymity { get; set; }
 
         /// <summary>Always positive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minAnonymity")]
-        public virtual System.Nullable<long> MinAnonymity { get; set; } 
+        public virtual System.Nullable<long> MinAnonymity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10155,11 +10155,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>The estimated anonymity for these quasi-identifier values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("estimatedAnonymity")]
-        public virtual System.Nullable<long> EstimatedAnonymity { get; set; } 
+        public virtual System.Nullable<long> EstimatedAnonymity { get; set; }
 
         /// <summary>The quasi-identifier values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quasiIdsValues")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Value> QuasiIdsValues { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Value> QuasiIdsValues { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10175,7 +10175,7 @@ namespace Google.Apis.DLP.v2.Data
         /// max_anonymity: 10, frequency: 99} mean that there are no record with an estimated anonymity of 4, 5, or
         /// larger than 10.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kMapEstimationHistogram")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2KMapEstimationHistogramBucket> KMapEstimationHistogram { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2KMapEstimationHistogramBucket> KMapEstimationHistogram { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10189,7 +10189,7 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Entities are partitioned into subsets, currently identified by a project ID and namespace ID.
         /// Queries are scoped to a single partition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partitionId")]
-        public virtual GooglePrivacyDlpV2PartitionId PartitionId { get; set; } 
+        public virtual GooglePrivacyDlpV2PartitionId PartitionId { get; set; }
 
         /// <summary>The entity path. An entity path consists of one or more elements composed of a kind and a string or
         /// numerical identifier, which identify entities. The first element identifies a _root entity_, the second
@@ -10197,7 +10197,7 @@ namespace Google.Apis.DLP.v2.Data
         /// and so forth. The entities identified by all prefixes of the path are called the element's _ancestors_. A
         /// path can never be empty, and a path can have at most 100 elements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2PathElement> Path { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2PathElement> Path { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10208,7 +10208,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>The name of the kind.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10221,11 +10221,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Required. The resource name of the KMS CryptoKey to use for unwrapping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyName")]
-        public virtual string CryptoKeyName { get; set; } 
+        public virtual string CryptoKeyName { get; set; }
 
         /// <summary>Required. The wrapped data crypto key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wrappedKey")]
-        public virtual string WrappedKey { get; set; } 
+        public virtual string WrappedKey { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10237,11 +10237,11 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Set of quasi-identifiers indicating how equivalence classes are defined for the l-diversity
         /// computation. When multiple fields are specified, they are considered a single composite key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quasiIds")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldId> QuasiIds { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldId> QuasiIds { get; set; }
 
         /// <summary>Sensitive field for computing the l-value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitiveAttribute")]
-        public virtual GooglePrivacyDlpV2FieldId SensitiveAttribute { get; set; } 
+        public virtual GooglePrivacyDlpV2FieldId SensitiveAttribute { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10252,20 +10252,20 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Size of the k-anonymity equivalence class.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("equivalenceClassSize")]
-        public virtual System.Nullable<long> EquivalenceClassSize { get; set; } 
+        public virtual System.Nullable<long> EquivalenceClassSize { get; set; }
 
         /// <summary>Number of distinct sensitive values in this equivalence class.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numDistinctSensitiveValues")]
-        public virtual System.Nullable<long> NumDistinctSensitiveValues { get; set; } 
+        public virtual System.Nullable<long> NumDistinctSensitiveValues { get; set; }
 
         /// <summary>Quasi-identifier values defining the k-anonymity equivalence class. The order is always the same as
         /// the original request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quasiIdsValues")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Value> QuasiIdsValues { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Value> QuasiIdsValues { get; set; }
 
         /// <summary>Estimated frequencies of top sensitive values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topSensitiveValues")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2ValueFrequency> TopSensitiveValues { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2ValueFrequency> TopSensitiveValues { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10276,24 +10276,24 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Total number of equivalence classes in this bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketSize")]
-        public virtual System.Nullable<long> BucketSize { get; set; } 
+        public virtual System.Nullable<long> BucketSize { get; set; }
 
         /// <summary>Total number of distinct equivalence classes in this bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketValueCount")]
-        public virtual System.Nullable<long> BucketValueCount { get; set; } 
+        public virtual System.Nullable<long> BucketValueCount { get; set; }
 
         /// <summary>Sample of equivalence classes in this bucket. The total number of classes returned per bucket is
         /// capped at 20.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketValues")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2LDiversityEquivalenceClass> BucketValues { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2LDiversityEquivalenceClass> BucketValues { get; set; }
 
         /// <summary>Lower bound on the sensitive value frequencies of the equivalence classes in this bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitiveValueFrequencyLowerBound")]
-        public virtual System.Nullable<long> SensitiveValueFrequencyLowerBound { get; set; } 
+        public virtual System.Nullable<long> SensitiveValueFrequencyLowerBound { get; set; }
 
         /// <summary>Upper bound on the sensitive value frequencies of the equivalence classes in this bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitiveValueFrequencyUpperBound")]
-        public virtual System.Nullable<long> SensitiveValueFrequencyUpperBound { get; set; } 
+        public virtual System.Nullable<long> SensitiveValueFrequencyUpperBound { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10304,7 +10304,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Histogram of l-diversity equivalence class sensitive value frequencies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitiveValueFrequencyHistogramBuckets")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2LDiversityHistogramBucket> SensitiveValueFrequencyHistogramBuckets { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2LDiversityHistogramBucket> SensitiveValueFrequencyHistogramBuckets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10318,17 +10318,17 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Field in a BigQuery table where each cell represents a dictionary phrase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigQueryField")]
-        public virtual GooglePrivacyDlpV2BigQueryField BigQueryField { get; set; } 
+        public virtual GooglePrivacyDlpV2BigQueryField BigQueryField { get; set; }
 
         /// <summary>Set of files containing newline-delimited lists of dictionary phrases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageFileSet")]
-        public virtual GooglePrivacyDlpV2CloudStorageFileSet CloudStorageFileSet { get; set; } 
+        public virtual GooglePrivacyDlpV2CloudStorageFileSet CloudStorageFileSet { get; set; }
 
         /// <summary>Location to store dictionary artifacts in Google Cloud Storage. These files will only be accessible
         /// by project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered
         /// invalid and can no longer be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputPath")]
-        public virtual GooglePrivacyDlpV2CloudStoragePath OutputPath { get; set; } 
+        public virtual GooglePrivacyDlpV2CloudStoragePath OutputPath { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10339,7 +10339,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Approximate number of distinct phrases in the dictionary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approxNumPhrases")]
-        public virtual System.Nullable<long> ApproxNumPhrases { get; set; } 
+        public virtual System.Nullable<long> ApproxNumPhrases { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10360,7 +10360,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Set the likelihood of a finding to a fixed value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixedLikelihood")]
-        public virtual string FixedLikelihood { get; set; } 
+        public virtual string FixedLikelihood { get; set; }
 
         /// <summary>Increase or decrease the likelihood by the specified number of levels. For example, if a finding
         /// would be `POSSIBLE` without the detection rule and `relative_likelihood` is 1, then it is upgraded to
@@ -10368,7 +10368,7 @@ namespace Google.Apis.DLP.v2.Data
         /// `VERY_UNLIKELY` or exceed `VERY_LIKELY`, so applying an adjustment of 1 followed by an adjustment of -1 when
         /// base likelihood is `VERY_LIKELY` will result in a final likelihood of `LIKELY`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relativeLikelihood")]
-        public virtual System.Nullable<int> RelativeLikelihood { get; set; } 
+        public virtual System.Nullable<int> RelativeLikelihood { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10379,12 +10379,12 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>List of deidentify templates, up to page_size in ListDeidentifyTemplatesRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deidentifyTemplates")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2DeidentifyTemplate> DeidentifyTemplates { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2DeidentifyTemplate> DeidentifyTemplates { get; set; }
 
         /// <summary>If the next page is available then the next page token to be used in following
         /// ListDeidentifyTemplates request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10395,11 +10395,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>A list of DlpJobs that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobs")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2DlpJob> Jobs { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2DlpJob> Jobs { get; set; }
 
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10410,7 +10410,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Set of sensitive infoTypes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoTypes")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoTypeDescription> InfoTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoTypeDescription> InfoTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10421,12 +10421,12 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>List of inspectTemplates, up to page_size in ListInspectTemplatesRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplates")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InspectTemplate> InspectTemplates { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InspectTemplate> InspectTemplates { get; set; }
 
         /// <summary>If the next page is available then the next page token to be used in following ListInspectTemplates
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10437,12 +10437,12 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>List of triggeredJobs, up to page_size in ListJobTriggersRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobTriggers")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2JobTrigger> JobTriggers { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2JobTrigger> JobTriggers { get; set; }
 
         /// <summary>If the next page is available then the next page token to be used in following ListJobTriggers
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10454,11 +10454,11 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>If the next page is available then the next page token to be used in following ListStoredInfoTypes
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>List of storedInfoTypes, up to page_size in ListStoredInfoTypesRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storedInfoTypes")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2StoredInfoType> StoredInfoTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2StoredInfoType> StoredInfoTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10471,21 +10471,21 @@ namespace Google.Apis.DLP.v2.Data
         /// element. Note that when the content is not textual, this references the UTF-8 encoded textual representation
         /// of the content. Omitted if content is an image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("byteRange")]
-        public virtual GooglePrivacyDlpV2Range ByteRange { get; set; } 
+        public virtual GooglePrivacyDlpV2Range ByteRange { get; set; }
 
         /// <summary>Unicode character offsets delimiting the finding. These are relative to the finding's containing
         /// element. Provided when the content is text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("codepointRange")]
-        public virtual GooglePrivacyDlpV2Range CodepointRange { get; set; } 
+        public virtual GooglePrivacyDlpV2Range CodepointRange { get; set; }
 
         /// <summary>Information about the container where this finding occurred, if available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("container")]
-        public virtual GooglePrivacyDlpV2Container Container { get; set; } 
+        public virtual GooglePrivacyDlpV2Container Container { get; set; }
 
         /// <summary>List of nested objects pointing to the precise location of the finding within the file or
         /// record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentLocations")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2ContentLocation> ContentLocations { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2ContentLocation> ContentLocations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10503,11 +10503,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Storage metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageLabel")]
-        public virtual GooglePrivacyDlpV2StorageMetadataLabel StorageLabel { get; set; } 
+        public virtual GooglePrivacyDlpV2StorageMetadataLabel StorageLabel { get; set; }
 
         /// <summary>Type of metadata containing the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10519,7 +10519,7 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Field to compute numerical stats on. Supported types are integer, float, date, datetime, timestamp,
         /// time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual GooglePrivacyDlpV2FieldId Field { get; set; } 
+        public virtual GooglePrivacyDlpV2FieldId Field { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10530,15 +10530,15 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Maximum value appearing in the column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxValue")]
-        public virtual GooglePrivacyDlpV2Value MaxValue { get; set; } 
+        public virtual GooglePrivacyDlpV2Value MaxValue { get; set; }
 
         /// <summary>Minimum value appearing in the column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minValue")]
-        public virtual GooglePrivacyDlpV2Value MinValue { get; set; } 
+        public virtual GooglePrivacyDlpV2Value MinValue { get; set; }
 
         /// <summary>List of 99 values that partition the set of field values into 100 equal sized buckets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantileValues")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Value> QuantileValues { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Value> QuantileValues { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10554,7 +10554,7 @@ namespace Google.Apis.DLP.v2.Data
         /// (existing) table with no schema, and no changes will be made to an existing table that has a schema. Only
         /// for use with external storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputSchema")]
-        public virtual string OutputSchema { get; set; } 
+        public virtual string OutputSchema { get; set; }
 
         /// <summary>Store findings in an existing table or a new table in an existing dataset. If table_id is not set a
         /// new one will be generated for you with the following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific
@@ -10564,7 +10564,7 @@ namespace Google.Apis.DLP.v2.Data
         /// privacy metric and quasi-identifiers. Risk jobs that analyze the same table but compute a different privacy
         /// metric, or use different sets of quasi-identifiers, cannot store their results in the same table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
-        public virtual GooglePrivacyDlpV2BigQueryTable Table { get; set; } 
+        public virtual GooglePrivacyDlpV2BigQueryTable Table { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10577,11 +10577,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>If not empty, the ID of the namespace to which the entities belong.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespaceId")]
-        public virtual string NamespaceId { get; set; } 
+        public virtual string NamespaceId { get; set; }
 
         /// <summary>The ID of the project to which the entities belong.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10594,17 +10594,17 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>The auto-allocated ID of the entity. Never equal to zero. Values less than zero are discouraged and
         /// may not be supported in the future.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>The kind of the entity. A kind matching regex `__.*__` is reserved/read-only. A kind must not
         /// contain more than 1500 bytes when UTF-8 encoded. Cannot be `""`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The name of the entity. A name matching regex `__.*__` is reserved/read-only. A name must not be
         /// more than 1500 bytes when UTF-8 encoded. Cannot be `""`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10615,47 +10615,47 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Bucketing</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketingConfig")]
-        public virtual GooglePrivacyDlpV2BucketingConfig BucketingConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2BucketingConfig BucketingConfig { get; set; }
 
         /// <summary>Mask</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("characterMaskConfig")]
-        public virtual GooglePrivacyDlpV2CharacterMaskConfig CharacterMaskConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2CharacterMaskConfig CharacterMaskConfig { get; set; }
 
         /// <summary>Deterministic Crypto</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoDeterministicConfig")]
-        public virtual GooglePrivacyDlpV2CryptoDeterministicConfig CryptoDeterministicConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2CryptoDeterministicConfig CryptoDeterministicConfig { get; set; }
 
         /// <summary>Crypto</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoHashConfig")]
-        public virtual GooglePrivacyDlpV2CryptoHashConfig CryptoHashConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2CryptoHashConfig CryptoHashConfig { get; set; }
 
         /// <summary>Ffx-Fpe</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoReplaceFfxFpeConfig")]
-        public virtual GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig CryptoReplaceFfxFpeConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig CryptoReplaceFfxFpeConfig { get; set; }
 
         /// <summary>Date Shift</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateShiftConfig")]
-        public virtual GooglePrivacyDlpV2DateShiftConfig DateShiftConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2DateShiftConfig DateShiftConfig { get; set; }
 
         /// <summary>Fixed size bucketing</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixedSizeBucketingConfig")]
-        public virtual GooglePrivacyDlpV2FixedSizeBucketingConfig FixedSizeBucketingConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2FixedSizeBucketingConfig FixedSizeBucketingConfig { get; set; }
 
         /// <summary>Redact</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redactConfig")]
-        public virtual GooglePrivacyDlpV2RedactConfig RedactConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2RedactConfig RedactConfig { get; set; }
 
         /// <summary>Replace</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replaceConfig")]
-        public virtual GooglePrivacyDlpV2ReplaceValueConfig ReplaceConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2ReplaceValueConfig ReplaceConfig { get; set; }
 
         /// <summary>Replace with infotype</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replaceWithInfoTypeConfig")]
-        public virtual GooglePrivacyDlpV2ReplaceWithInfoTypeConfig ReplaceWithInfoTypeConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2ReplaceWithInfoTypeConfig ReplaceWithInfoTypeConfig { get; set; }
 
         /// <summary>Time extraction</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timePartConfig")]
-        public virtual GooglePrivacyDlpV2TimePartConfig TimePartConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2TimePartConfig TimePartConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10666,27 +10666,27 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Categorical stats</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoricalStatsConfig")]
-        public virtual GooglePrivacyDlpV2CategoricalStatsConfig CategoricalStatsConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2CategoricalStatsConfig CategoricalStatsConfig { get; set; }
 
         /// <summary>delta-presence</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deltaPresenceEstimationConfig")]
-        public virtual GooglePrivacyDlpV2DeltaPresenceEstimationConfig DeltaPresenceEstimationConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2DeltaPresenceEstimationConfig DeltaPresenceEstimationConfig { get; set; }
 
         /// <summary>K-anonymity</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kAnonymityConfig")]
-        public virtual GooglePrivacyDlpV2KAnonymityConfig KAnonymityConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2KAnonymityConfig KAnonymityConfig { get; set; }
 
         /// <summary>k-map</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kMapEstimationConfig")]
-        public virtual GooglePrivacyDlpV2KMapEstimationConfig KMapEstimationConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2KMapEstimationConfig KMapEstimationConfig { get; set; }
 
         /// <summary>l-diversity</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lDiversityConfig")]
-        public virtual GooglePrivacyDlpV2LDiversityConfig LDiversityConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2LDiversityConfig LDiversityConfig { get; set; }
 
         /// <summary>Numerical stats</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numericalStatsConfig")]
-        public virtual GooglePrivacyDlpV2NumericalStatsConfig NumericalStatsConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2NumericalStatsConfig NumericalStatsConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10697,11 +10697,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Number of characters after the finding to consider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("windowAfter")]
-        public virtual System.Nullable<int> WindowAfter { get; set; } 
+        public virtual System.Nullable<int> WindowAfter { get; set; }
 
         /// <summary>Number of characters before the finding to consider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("windowBefore")]
-        public virtual System.Nullable<int> WindowBefore { get; set; } 
+        public virtual System.Nullable<int> WindowBefore { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10740,7 +10740,7 @@ namespace Google.Apis.DLP.v2.Data
         /// the DLP API service account executing the long running DlpJob sending the notifications. Format is
         /// projects/{project}/topics/{topic}.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topic")]
-        public virtual string Topic { get; set; } 
+        public virtual string Topic { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10761,23 +10761,23 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table
         /// that contains statistical information on the possible values of this column (below).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customTag")]
-        public virtual string CustomTag { get; set; } 
+        public virtual string CustomTag { get; set; }
 
         /// <summary>Required. Identifies the column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual GooglePrivacyDlpV2FieldId Field { get; set; } 
+        public virtual GooglePrivacyDlpV2FieldId Field { get; set; }
 
         /// <summary>If no semantic tag is indicated, we infer the statistical model from the distribution of values in
         /// the input data</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inferred")]
-        public virtual GoogleProtobufEmpty Inferred { get; set; } 
+        public virtual GoogleProtobufEmpty Inferred { get; set; }
 
         /// <summary>A column can be tagged with a InfoType to use the relevant public dataset as a statistical model of
         /// population, if available. We currently support US ZIP codes, region codes, ages and genders. To
         /// programmatically obtain the list of supported InfoTypes, use ListInfoTypes with the
         /// supported_by=RISK_ANALYSIS filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
-        public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; } 
+        public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10789,11 +10789,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>A auxiliary field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customTag")]
-        public virtual string CustomTag { get; set; } 
+        public virtual string CustomTag { get; set; }
 
         /// <summary>Identifies the column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual GooglePrivacyDlpV2FieldId Field { get; set; } 
+        public virtual GooglePrivacyDlpV2FieldId Field { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10806,11 +10806,11 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table
         /// that contains statistical information on the possible values of this column (below).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customTag")]
-        public virtual string CustomTag { get; set; } 
+        public virtual string CustomTag { get; set; }
 
         /// <summary>Identifies the column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual GooglePrivacyDlpV2FieldId Field { get; set; } 
+        public virtual GooglePrivacyDlpV2FieldId Field { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10821,7 +10821,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>The date time indicated by the quote.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateTime")]
-        public virtual GooglePrivacyDlpV2DateTime DateTime { get; set; } 
+        public virtual GooglePrivacyDlpV2DateTime DateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10832,11 +10832,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Index of the last character of the range (exclusive).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("end")]
-        public virtual System.Nullable<long> End { get; set; } 
+        public virtual System.Nullable<long> End { get; set; }
 
         /// <summary>Index of the first character of the range (inclusive).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("start")]
-        public virtual System.Nullable<long> Start { get; set; } 
+        public virtual System.Nullable<long> Start { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10847,7 +10847,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>An expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expressions")]
-        public virtual GooglePrivacyDlpV2Expressions Expressions { get; set; } 
+        public virtual GooglePrivacyDlpV2Expressions Expressions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10857,15 +10857,15 @@ namespace Google.Apis.DLP.v2.Data
     public class GooglePrivacyDlpV2RecordKey : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("bigQueryKey")]
-        public virtual GooglePrivacyDlpV2BigQueryKey BigQueryKey { get; set; } 
+        public virtual GooglePrivacyDlpV2BigQueryKey BigQueryKey { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("datastoreKey")]
-        public virtual GooglePrivacyDlpV2DatastoreKey DatastoreKey { get; set; } 
+        public virtual GooglePrivacyDlpV2DatastoreKey DatastoreKey { get; set; }
 
         /// <summary>Values of identifying columns in the given row. Order of values matches the order of
         /// `identifying_fields` specified in the scanning request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idValues")]
-        public virtual System.Collections.Generic.IList<string> IdValues { get; set; } 
+        public virtual System.Collections.Generic.IList<string> IdValues { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10876,15 +10876,15 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Field id of the field containing the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldId")]
-        public virtual GooglePrivacyDlpV2FieldId FieldId { get; set; } 
+        public virtual GooglePrivacyDlpV2FieldId FieldId { get; set; }
 
         /// <summary>Key of the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordKey")]
-        public virtual GooglePrivacyDlpV2RecordKey RecordKey { get; set; } 
+        public virtual GooglePrivacyDlpV2RecordKey RecordKey { get; set; }
 
         /// <summary>Location within a `ContentItem.Table`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableLocation")]
-        public virtual GooglePrivacyDlpV2TableLocation TableLocation { get; set; } 
+        public virtual GooglePrivacyDlpV2TableLocation TableLocation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10896,7 +10896,7 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>A condition that when it evaluates to true will result in the record being evaluated to be
         /// suppressed from the transformed content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual GooglePrivacyDlpV2RecordCondition Condition { get; set; } 
+        public virtual GooglePrivacyDlpV2RecordCondition Condition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10907,12 +10907,12 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Transform the record by applying various field transformations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldTransformations")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldTransformation> FieldTransformations { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldTransformation> FieldTransformations { get; set; }
 
         /// <summary>Configuration defining which records get suppressed entirely. Records that match any suppression
         /// rule are omitted from the output.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordSuppressions")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2RecordSuppression> RecordSuppressions { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2RecordSuppression> RecordSuppressions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10932,23 +10932,23 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>The content must be PNG, JPEG, SVG or BMP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("byteItem")]
-        public virtual GooglePrivacyDlpV2ByteContentItem ByteItem { get; set; } 
+        public virtual GooglePrivacyDlpV2ByteContentItem ByteItem { get; set; }
 
         /// <summary>The configuration for specifying what content to redact from images.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageRedactionConfigs")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2ImageRedactionConfig> ImageRedactionConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2ImageRedactionConfig> ImageRedactionConfigs { get; set; }
 
         /// <summary>Whether the response should include findings along with the redacted image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeFindings")]
-        public virtual System.Nullable<bool> IncludeFindings { get; set; } 
+        public virtual System.Nullable<bool> IncludeFindings { get; set; }
 
         /// <summary>Configuration for the inspector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectConfig")]
-        public virtual GooglePrivacyDlpV2InspectConfig InspectConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2InspectConfig InspectConfig { get; set; }
 
         /// <summary>Deprecated. This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10960,15 +10960,15 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>If an image was being inspected and the InspectConfig's include_quote was set to true, then this
         /// field will include all text, if any, that was found in the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extractedText")]
-        public virtual string ExtractedText { get; set; } 
+        public virtual string ExtractedText { get; set; }
 
         /// <summary>The findings. Populated when include_findings in the request is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectResult")]
-        public virtual GooglePrivacyDlpV2InspectResult InspectResult { get; set; } 
+        public virtual GooglePrivacyDlpV2InspectResult InspectResult { get; set; }
 
         /// <summary>The redacted image. The type will be the same as the original image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redactedImage")]
-        public virtual string RedactedImage { get; set; } 
+        public virtual string RedactedImage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10980,12 +10980,12 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>The index of the submatch to extract as findings. When not specified, the entire match is returned.
         /// No more than 3 may be included.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupIndexes")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> GroupIndexes { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> GroupIndexes { get; set; }
 
         /// <summary>Pattern defining the regular expression. Its syntax (https://github.com/google/re2/wiki/Syntax) can
         /// be found under the google/re2 repository on GitHub.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pattern")]
-        public virtual string Pattern { get; set; } 
+        public virtual string Pattern { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10996,21 +10996,21 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Configuration for the inspector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectConfig")]
-        public virtual GooglePrivacyDlpV2InspectConfig InspectConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2InspectConfig InspectConfig { get; set; }
 
         /// <summary>Template to use. Any configuration directly specified in `inspect_config` will override those set
         /// in the template. Singular fields that are set in this request will replace their corresponding fields in the
         /// template. Repeated fields are appended. Singular sub-messages and groups are recursively merged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplateName")]
-        public virtual string InspectTemplateName { get; set; } 
+        public virtual string InspectTemplateName { get; set; }
 
         /// <summary>The item to re-identify. Will be treated as text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("item")]
-        public virtual GooglePrivacyDlpV2ContentItem Item { get; set; } 
+        public virtual GooglePrivacyDlpV2ContentItem Item { get; set; }
 
         /// <summary>Deprecated. This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>Configuration for the re-identification of the content item. This field shares the same proto
         /// message type that is used for de-identification, however its usage here is for the reversal of the previous
@@ -11018,7 +11018,7 @@ namespace Google.Apis.DLP.v2.Data
         /// items and executing the reverse. This requires that only reversible transformations be provided here. The
         /// reversible transformations are: - `CryptoDeterministicConfig` - `CryptoReplaceFfxFpeConfig`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reidentifyConfig")]
-        public virtual GooglePrivacyDlpV2DeidentifyConfig ReidentifyConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2DeidentifyConfig ReidentifyConfig { get; set; }
 
         /// <summary>Template to use. References an instance of `DeidentifyTemplate`. Any configuration directly
         /// specified in `reidentify_config` or `inspect_config` will override those set in the template. The
@@ -11026,7 +11026,7 @@ namespace Google.Apis.DLP.v2.Data
         /// request will replace their corresponding fields in the template. Repeated fields are appended. Singular sub-
         /// messages and groups are recursively merged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reidentifyTemplateName")]
-        public virtual string ReidentifyTemplateName { get; set; } 
+        public virtual string ReidentifyTemplateName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11037,11 +11037,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>The re-identified item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("item")]
-        public virtual GooglePrivacyDlpV2ContentItem Item { get; set; } 
+        public virtual GooglePrivacyDlpV2ContentItem Item { get; set; }
 
         /// <summary>An overview of the changes that were made to the `item`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overview")]
-        public virtual GooglePrivacyDlpV2TransformationOverview Overview { get; set; } 
+        public virtual GooglePrivacyDlpV2TransformationOverview Overview { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11052,7 +11052,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Value to replace it with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newValue")]
-        public virtual GooglePrivacyDlpV2Value NewValue { get; set; } 
+        public virtual GooglePrivacyDlpV2Value NewValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11070,11 +11070,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Inspect config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobConfig")]
-        public virtual GooglePrivacyDlpV2InspectJobConfig JobConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2InspectJobConfig JobConfig { get; set; }
 
         /// <summary>If run with an InspectTemplate, a snapshot of its state at the time of this run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotInspectTemplate")]
-        public virtual GooglePrivacyDlpV2InspectTemplate SnapshotInspectTemplate { get; set; } 
+        public virtual GooglePrivacyDlpV2InspectTemplate SnapshotInspectTemplate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11087,19 +11087,19 @@ namespace Google.Apis.DLP.v2.Data
         /// state and might change or have limited support. For more information, see https://cloud.google.com/products
         /// #product-launch-stages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hybridStats")]
-        public virtual GooglePrivacyDlpV2HybridInspectStatistics HybridStats { get; set; } 
+        public virtual GooglePrivacyDlpV2HybridInspectStatistics HybridStats { get; set; }
 
         /// <summary>Statistics of how many instances of each info type were found during inspect job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoTypeStats")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoTypeStats> InfoTypeStats { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoTypeStats> InfoTypeStats { get; set; }
 
         /// <summary>Total size in bytes that were processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processedBytes")]
-        public virtual System.Nullable<long> ProcessedBytes { get; set; } 
+        public virtual System.Nullable<long> ProcessedBytes { get; set; }
 
         /// <summary>Estimate of the number of bytes to process.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalEstimatedBytes")]
-        public virtual System.Nullable<long> TotalEstimatedBytes { get; set; } 
+        public virtual System.Nullable<long> TotalEstimatedBytes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11111,15 +11111,15 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Actions to execute at the completion of the job. Are executed in the order provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actions")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Action> Actions { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Action> Actions { get; set; }
 
         /// <summary>Privacy metric to compute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privacyMetric")]
-        public virtual GooglePrivacyDlpV2PrivacyMetric PrivacyMetric { get; set; } 
+        public virtual GooglePrivacyDlpV2PrivacyMetric PrivacyMetric { get; set; }
 
         /// <summary>Input dataset to compute metrics over.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceTable")]
-        public virtual GooglePrivacyDlpV2BigQueryTable SourceTable { get; set; } 
+        public virtual GooglePrivacyDlpV2BigQueryTable SourceTable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11130,7 +11130,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Individual cells.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Value> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Value> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11142,7 +11142,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Location to store findings outside of DLP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
-        public virtual GooglePrivacyDlpV2OutputStorageConfig OutputConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2OutputStorageConfig OutputConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11156,7 +11156,7 @@ namespace Google.Apis.DLP.v2.Data
         /// occurs. This value must be set to a time duration greater than or equal to 1 day and can be no longer than
         /// 60 days.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recurrencePeriodDuration")]
-        public virtual object RecurrencePeriodDuration { get; set; } 
+        public virtual object RecurrencePeriodDuration { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11170,16 +11170,16 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Required. Quasi-identifier columns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quasiIds")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2QuasiIdentifierField> QuasiIds { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2QuasiIdentifierField> QuasiIds { get; set; }
 
         /// <summary>Required. The relative frequency column must contain a floating-point number between 0 and 1
         /// (inclusive). Null values are assumed to be zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relativeFrequency")]
-        public virtual GooglePrivacyDlpV2FieldId RelativeFrequency { get; set; } 
+        public virtual GooglePrivacyDlpV2FieldId RelativeFrequency { get; set; }
 
         /// <summary>Required. Auxiliary table location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
-        public virtual GooglePrivacyDlpV2BigQueryTable Table { get; set; } 
+        public virtual GooglePrivacyDlpV2BigQueryTable Table { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11190,24 +11190,24 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>BigQuery options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigQueryOptions")]
-        public virtual GooglePrivacyDlpV2BigQueryOptions BigQueryOptions { get; set; } 
+        public virtual GooglePrivacyDlpV2BigQueryOptions BigQueryOptions { get; set; }
 
         /// <summary>Google Cloud Storage options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageOptions")]
-        public virtual GooglePrivacyDlpV2CloudStorageOptions CloudStorageOptions { get; set; } 
+        public virtual GooglePrivacyDlpV2CloudStorageOptions CloudStorageOptions { get; set; }
 
         /// <summary>Google Cloud Datastore options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datastoreOptions")]
-        public virtual GooglePrivacyDlpV2DatastoreOptions DatastoreOptions { get; set; } 
+        public virtual GooglePrivacyDlpV2DatastoreOptions DatastoreOptions { get; set; }
 
         /// <summary>Hybrid inspection options. Early access feature is in a pre-release state and might change or have
         /// limited support. For more information, see https://cloud.google.com/products#product-launch-
         /// stages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hybridOptions")]
-        public virtual GooglePrivacyDlpV2HybridOptions HybridOptions { get; set; } 
+        public virtual GooglePrivacyDlpV2HybridOptions HybridOptions { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("timespanConfig")]
-        public virtual GooglePrivacyDlpV2TimespanConfig TimespanConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2TimespanConfig TimespanConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11217,7 +11217,7 @@ namespace Google.Apis.DLP.v2.Data
     public class GooglePrivacyDlpV2StorageMetadataLabel : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11229,15 +11229,15 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Current version of the stored info type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentVersion")]
-        public virtual GooglePrivacyDlpV2StoredInfoTypeVersion CurrentVersion { get; set; } 
+        public virtual GooglePrivacyDlpV2StoredInfoTypeVersion CurrentVersion { get; set; }
 
         /// <summary>Resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Pending versions of the stored info type. Empty if no versions are pending.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pendingVersions")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2StoredInfoTypeVersion> PendingVersions { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2StoredInfoTypeVersion> PendingVersions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11249,23 +11249,23 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Description of the StoredInfoType (max 256 characters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Store dictionary-based CustomInfoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dictionary")]
-        public virtual GooglePrivacyDlpV2Dictionary Dictionary { get; set; } 
+        public virtual GooglePrivacyDlpV2Dictionary Dictionary { get; set; }
 
         /// <summary>Display name of the StoredInfoType (max 256 characters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>StoredInfoType where findings are defined by a dictionary of phrases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("largeCustomDictionary")]
-        public virtual GooglePrivacyDlpV2LargeCustomDictionaryConfig LargeCustomDictionary { get; set; } 
+        public virtual GooglePrivacyDlpV2LargeCustomDictionaryConfig LargeCustomDictionary { get; set; }
 
         /// <summary>Store regular expression-based StoredInfoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regex")]
-        public virtual GooglePrivacyDlpV2Regex Regex { get; set; } 
+        public virtual GooglePrivacyDlpV2Regex Regex { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11276,7 +11276,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>StoredInfoType where findings are defined by a dictionary of phrases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("largeCustomDictionary")]
-        public virtual GooglePrivacyDlpV2LargeCustomDictionaryStats LargeCustomDictionary { get; set; } 
+        public virtual GooglePrivacyDlpV2LargeCustomDictionaryStats LargeCustomDictionary { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11288,12 +11288,12 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>StoredInfoType configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
-        public virtual GooglePrivacyDlpV2StoredInfoTypeConfig Config { get; set; } 
+        public virtual GooglePrivacyDlpV2StoredInfoTypeConfig Config { get; set; }
 
         /// <summary>Create timestamp of the version. Read-only, determined by the system when the version is
         /// created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Errors that occurred when creating this storedInfoType version, or anomalies detected in the
         /// storedInfoType data that render it unusable. Only the five most recent errors will be displayed, with the
@@ -11303,16 +11303,16 @@ namespace Google.Apis.DLP.v2.Data
         /// and use the UpdateStoredInfoType API method to create another version of the storedInfoType to continue
         /// using it, reusing the same `config` if it was not the source of the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Error> Errors { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Error> Errors { get; set; }
 
         /// <summary>Stored info type version state. Read-only, updated by the system during dictionary
         /// creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Statistics about this storedInfoType version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stats")]
-        public virtual GooglePrivacyDlpV2StoredInfoTypeStats Stats { get; set; } 
+        public virtual GooglePrivacyDlpV2StoredInfoTypeStats Stats { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11324,13 +11324,13 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Timestamp indicating when the version of the `StoredInfoType` used for inspection was created.
         /// Output-only field, populated by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Resource name of the requested `StoredInfoType`, for example
         /// `organizations/433245324/storedInfoTypes/432452342` or `projects/project-
         /// id/storedInfoTypes/432452342`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11342,15 +11342,15 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Outcome of the transformation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual string Code { get; set; } 
+        public virtual string Code { get; set; }
 
         /// <summary>Number of transformations counted by this result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
-        public virtual System.Nullable<long> Count { get; set; } 
+        public virtual System.Nullable<long> Count { get; set; }
 
         /// <summary>A place for warnings or errors to show up if a transformation didn't work as expected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual string Details { get; set; } 
+        public virtual string Details { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11373,11 +11373,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Headers of the table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldId> Headers { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldId> Headers { get; set; }
 
         /// <summary>Rows of the table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Row> Rows { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Row> Rows { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11391,7 +11391,7 @@ namespace Google.Apis.DLP.v2.Data
         /// BigQueryOptions.identifying_fields with your primary key column names and when you store the findings the
         /// value of those columns will be stored inside of Finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowIndex")]
-        public virtual System.Nullable<long> RowIndex { get; set; } 
+        public virtual System.Nullable<long> RowIndex { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11404,7 +11404,7 @@ namespace Google.Apis.DLP.v2.Data
         /// cell's value will stored alongside alongside each finding so that the finding can be traced to the specific
         /// row it came from. No more than 3 may be provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identifyingFields")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldId> IdentifyingFields { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldId> IdentifyingFields { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11416,23 +11416,23 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table
         /// that contains statistical information on the possible values of this column (below).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customTag")]
-        public virtual string CustomTag { get; set; } 
+        public virtual string CustomTag { get; set; }
 
         /// <summary>Required. Identifies the column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual GooglePrivacyDlpV2FieldId Field { get; set; } 
+        public virtual GooglePrivacyDlpV2FieldId Field { get; set; }
 
         /// <summary>If no semantic tag is indicated, we infer the statistical model from the distribution of values in
         /// the input data</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inferred")]
-        public virtual GoogleProtobufEmpty Inferred { get; set; } 
+        public virtual GoogleProtobufEmpty Inferred { get; set; }
 
         /// <summary>A column can be tagged with a InfoType to use the relevant public dataset as a statistical model of
         /// population, if available. We currently support US ZIP codes, region codes, ages and genders. To
         /// programmatically obtain the list of supported InfoTypes, use ListInfoTypes with the
         /// supported_by=RISK_ANALYSIS filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
-        public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; } 
+        public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11451,7 +11451,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>The part of the time to keep.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partToExtract")]
-        public virtual string PartToExtract { get; set; } 
+        public virtual string PartToExtract { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11463,7 +11463,7 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Set only if the offset can be determined. Positive for time ahead of UTC. E.g. For "UTC-9", this
         /// value is -540.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offsetMinutes")]
-        public virtual System.Nullable<int> OffsetMinutes { get; set; } 
+        public virtual System.Nullable<int> OffsetMinutes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11477,16 +11477,16 @@ namespace Google.Apis.DLP.v2.Data
         /// avoid scanning files that have not been modified since the last time the JobTrigger executed. This will be
         /// based on the time of the execution of the last run of the JobTrigger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableAutoPopulationOfTimespanConfig")]
-        public virtual System.Nullable<bool> EnableAutoPopulationOfTimespanConfig { get; set; } 
+        public virtual System.Nullable<bool> EnableAutoPopulationOfTimespanConfig { get; set; }
 
         /// <summary>Exclude files or rows newer than this value. If set to zero, no upper time limit is
         /// applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Exclude files or rows older than this value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>Specification of the field containing the timestamp of scanned items. Used for data sources like
         /// Datastore and BigQuery. For BigQuery: Required to filter out rows based on the given start and end times. If
@@ -11495,7 +11495,7 @@ namespace Google.Apis.DLP.v2.Data
         /// BigQuery column. For Datastore. Valid data types of the timestamp field are: `TIMESTAMP`. Datastore entity
         /// will be scanned if the timestamp property does not exist or its value is empty or invalid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestampField")]
-        public virtual GooglePrivacyDlpV2FieldId TimestampField { get; set; } 
+        public virtual GooglePrivacyDlpV2FieldId TimestampField { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11510,11 +11510,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Ignore errors</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("leaveUntransformed")]
-        public virtual GooglePrivacyDlpV2LeaveUntransformed LeaveUntransformed { get; set; } 
+        public virtual GooglePrivacyDlpV2LeaveUntransformed LeaveUntransformed { get; set; }
 
         /// <summary>Throw an error</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("throwError")]
-        public virtual GooglePrivacyDlpV2ThrowError ThrowError { get; set; } 
+        public virtual GooglePrivacyDlpV2ThrowError ThrowError { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11525,11 +11525,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Transformations applied to the dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transformationSummaries")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2TransformationSummary> TransformationSummaries { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2TransformationSummary> TransformationSummaries { get; set; }
 
         /// <summary>Total size in bytes that were transformed in some way.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transformedBytes")]
-        public virtual System.Nullable<long> TransformedBytes { get; set; } 
+        public virtual System.Nullable<long> TransformedBytes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11541,32 +11541,32 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Set if the transformation was limited to a specific FieldId.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual GooglePrivacyDlpV2FieldId Field { get; set; } 
+        public virtual GooglePrivacyDlpV2FieldId Field { get; set; }
 
         /// <summary>The field transformation that was applied. If multiple field transformations are requested for a
         /// single field, this list will contain all of them; otherwise, only one is supplied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldTransformations")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldTransformation> FieldTransformations { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldTransformation> FieldTransformations { get; set; }
 
         /// <summary>Set if the transformation was limited to a specific InfoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
-        public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; } 
+        public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; }
 
         /// <summary>The specific suppression option these stats apply to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordSuppress")]
-        public virtual GooglePrivacyDlpV2RecordSuppression RecordSuppress { get; set; } 
+        public virtual GooglePrivacyDlpV2RecordSuppression RecordSuppress { get; set; }
 
         /// <summary>Collection of all transformations that took place or had an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2SummaryResult> Results { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2SummaryResult> Results { get; set; }
 
         /// <summary>The specific transformation these stats apply to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transformation")]
-        public virtual GooglePrivacyDlpV2PrimitiveTransformation Transformation { get; set; } 
+        public virtual GooglePrivacyDlpV2PrimitiveTransformation Transformation { get; set; }
 
         /// <summary>Total size in bytes that were transformed in some way.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transformedBytes")]
-        public virtual System.Nullable<long> TransformedBytes { get; set; } 
+        public virtual System.Nullable<long> TransformedBytes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11581,7 +11581,7 @@ namespace Google.Apis.DLP.v2.Data
         /// their names are the same. When the data crypto key is generated, this name is not used in any way (repeating
         /// the api call will result in a different key being generated).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11594,11 +11594,11 @@ namespace Google.Apis.DLP.v2.Data
         /// pre-release state and might change or have limited support. For more information, see
         /// https://cloud.google.com/products#product-launch-stages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manual")]
-        public virtual GooglePrivacyDlpV2Manual Manual { get; set; } 
+        public virtual GooglePrivacyDlpV2Manual Manual { get; set; }
 
         /// <summary>Create a job on a repeating basis based on the elapse of time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
-        public virtual GooglePrivacyDlpV2Schedule Schedule { get; set; } 
+        public virtual GooglePrivacyDlpV2Schedule Schedule { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11610,7 +11610,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>Required. A 128/192/256 bit key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11621,11 +11621,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>New DeidentifyTemplate value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deidentifyTemplate")]
-        public virtual GooglePrivacyDlpV2DeidentifyTemplate DeidentifyTemplate { get; set; } 
+        public virtual GooglePrivacyDlpV2DeidentifyTemplate DeidentifyTemplate { get; set; }
 
         /// <summary>Mask to control which fields get updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11636,11 +11636,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>New InspectTemplate value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplate")]
-        public virtual GooglePrivacyDlpV2InspectTemplate InspectTemplate { get; set; } 
+        public virtual GooglePrivacyDlpV2InspectTemplate InspectTemplate { get; set; }
 
         /// <summary>Mask to control which fields get updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11651,11 +11651,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>New JobTrigger value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobTrigger")]
-        public virtual GooglePrivacyDlpV2JobTrigger JobTrigger { get; set; } 
+        public virtual GooglePrivacyDlpV2JobTrigger JobTrigger { get; set; }
 
         /// <summary>Mask to control which fields get updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11667,11 +11667,11 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Updated configuration for the storedInfoType. If not provided, a new version of the storedInfoType
         /// will be created with the existing configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
-        public virtual GooglePrivacyDlpV2StoredInfoTypeConfig Config { get; set; } 
+        public virtual GooglePrivacyDlpV2StoredInfoTypeConfig Config { get; set; }
 
         /// <summary>Mask to control which fields get updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11685,35 +11685,35 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>boolean</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("booleanValue")]
-        public virtual System.Nullable<bool> BooleanValue { get; set; } 
+        public virtual System.Nullable<bool> BooleanValue { get; set; }
 
         /// <summary>date</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateValue")]
-        public virtual GoogleTypeDate DateValue { get; set; } 
+        public virtual GoogleTypeDate DateValue { get; set; }
 
         /// <summary>day of week</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dayOfWeekValue")]
-        public virtual string DayOfWeekValue { get; set; } 
+        public virtual string DayOfWeekValue { get; set; }
 
         /// <summary>float</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floatValue")]
-        public virtual System.Nullable<double> FloatValue { get; set; } 
+        public virtual System.Nullable<double> FloatValue { get; set; }
 
         /// <summary>integer</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integerValue")]
-        public virtual System.Nullable<long> IntegerValue { get; set; } 
+        public virtual System.Nullable<long> IntegerValue { get; set; }
 
         /// <summary>string</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
-        public virtual string StringValue { get; set; } 
+        public virtual string StringValue { get; set; }
 
         /// <summary>time of day</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeValue")]
-        public virtual GoogleTypeTimeOfDay TimeValue { get; set; } 
+        public virtual GoogleTypeTimeOfDay TimeValue { get; set; }
 
         /// <summary>timestamp</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestampValue")]
-        public virtual object TimestampValue { get; set; } 
+        public virtual object TimestampValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11724,11 +11724,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>How many times the value is contained in the field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
-        public virtual System.Nullable<long> Count { get; set; } 
+        public virtual System.Nullable<long> Count { get; set; }
 
         /// <summary>A value contained in the field in question.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual GooglePrivacyDlpV2Value Value { get; set; } 
+        public virtual GooglePrivacyDlpV2Value Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11740,7 +11740,7 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Words or phrases defining the dictionary. The dictionary must contain at least one phrase and every
         /// phrase must contain at least 2 characters that are letters or digits. [required]</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("words")]
-        public virtual System.Collections.Generic.IList<string> Words { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Words { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11765,17 +11765,17 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11792,15 +11792,15 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by
         /// itself or a year and month where the day is not significant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
-        public virtual System.Nullable<int> Day { get; set; } 
+        public virtual System.Nullable<int> Day { get; set; }
 
         /// <summary>Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("month")]
-        public virtual System.Nullable<int> Month { get; set; } 
+        public virtual System.Nullable<int> Month { get; set; }
 
         /// <summary>Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("year")]
-        public virtual System.Nullable<int> Year { get; set; } 
+        public virtual System.Nullable<int> Year { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11814,20 +11814,20 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value
         /// "24:00:00" for scenarios like business closing time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hours")]
-        public virtual System.Nullable<int> Hours { get; set; } 
+        public virtual System.Nullable<int> Hours { get; set; }
 
         /// <summary>Minutes of hour of day. Must be from 0 to 59.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
-        public virtual System.Nullable<int> Minutes { get; set; } 
+        public virtual System.Nullable<int> Minutes { get; set; }
 
         /// <summary>Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
-        public virtual System.Nullable<int> Nanos { get; set; } 
+        public virtual System.Nullable<int> Nanos { get; set; }
 
         /// <summary>Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it
         /// allows leap-seconds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
-        public virtual System.Nullable<int> Seconds { get; set; } 
+        public virtual System.Nullable<int> Seconds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

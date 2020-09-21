@@ -1824,7 +1824,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         /// <summary>A client-specified ID for this binding. Expected to be globally unique to support the internal
         /// bindings-by-ID API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; } 
+        public virtual string BindingId { get; set; }
 
         /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
         /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
@@ -1832,7 +1832,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; } 
+        public virtual Expr Condition { get; set; }
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
@@ -1854,12 +1854,12 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
         /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1877,11 +1877,11 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         /// <summary>The number variables under the `path` that must exist to meet this condition. Defaults to 1 if not
         /// specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("number")]
-        public virtual System.Nullable<int> Number { get; set; } 
+        public virtual System.Nullable<int> Number { get; set; }
 
         /// <summary>The root of the variable subtree to monitor. For example, `/foo`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual string Path { get; set; } 
+        public virtual string Path { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1902,7 +1902,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
     {
         /// <summary>The cardinality of the `EndCondition`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cardinality")]
-        public virtual Cardinality Cardinality { get; set; } 
+        public virtual Cardinality Cardinality { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1924,21 +1924,21 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
         /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1951,14 +1951,14 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         /// <summary>A list of the configurations in the project. The order of returned objects is arbitrary; that is,
         /// it is not ordered in any particular way.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configs")]
-        public virtual System.Collections.Generic.IList<RuntimeConfig> Configs { get; set; } 
+        public virtual System.Collections.Generic.IList<RuntimeConfig> Configs { get; set; }
 
         /// <summary>This token allows you to get the next page of results for list requests. If the number of results
         /// is larger than `pageSize`, use the `nextPageToken` as a value for the query parameter `pageToken` in the
         /// next list request. Subsequent list requests will have their own `nextPageToken` to continue paging through
         /// the results</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1972,12 +1972,12 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         /// next list request. Subsequent list requests will have their own `nextPageToken` to continue paging through
         /// the results</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of variables and their values. The order of returned variable objects is
         /// arbitrary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variables")]
-        public virtual System.Collections.Generic.IList<Variable> Variables { get; set; } 
+        public virtual System.Collections.Generic.IList<Variable> Variables { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1991,11 +1991,11 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         /// next list request. Subsequent list requests will have their own `nextPageToken` to continue paging through
         /// the results</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Found waiters in the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("waiters")]
-        public virtual System.Collections.Generic.IList<Waiter> Waiters { get; set; } 
+        public virtual System.Collections.Generic.IList<Waiter> Waiters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2007,23 +2007,23 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -2031,7 +2031,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2062,7 +2062,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
         /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
         /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
@@ -2073,7 +2073,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
         /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
         /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
@@ -2087,7 +2087,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
     }    
 
@@ -2097,7 +2097,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
     {
         /// <summary>An optional description of the RuntimeConfig object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The resource name of a runtime config. The name must have the format:
         /// projects/[PROJECT_ID]/configs/[CONFIG_NAME] The `[PROJECT_ID]` must be a valid project ID, and
@@ -2106,7 +2106,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         /// RuntimeConfig resource name, but the server will validate that the name adheres to this format. After you
         /// create the resource, you cannot change the resource's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2119,7 +2119,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         /// a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
         /// might reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual Policy Policy { get; set; } 
+        public virtual Policy Policy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2134,17 +2134,17 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2157,7 +2157,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         /// 'storage.*') are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2168,7 +2168,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
     {
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2189,27 +2189,27 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         /// expression. The length of a `[VARIABLE_NAME]` must be less than 256 characters. Once you create a variable,
         /// you cannot change the variable name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The current state of the variable. The variable state indicates the outcome of the
         /// `variables().watch` call and is visible through the `get` and `list` calls.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The string value of the variable. The length of the value must be less than 4096 bytes. Empty
         /// values are also accepted. For example, `text: "my text value"`. The string must be valid UTF-8.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; } 
+        public virtual string Text { get; set; }
 
         /// <summary>Output only. The time of the last variable update. Timestamp will be UTC timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The binary value of the variable. The length of the value must be less than 4096 bytes. Empty
         /// values are also accepted. The value must be base64 encoded, and must comply with IETF RFC4648
         /// (https://www.ietf.org/rfc/rfc4648.txt). Only one of `value` or `text` can be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2227,24 +2227,24 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         /// <summary>Output only. The instant at which this Waiter resource was created. Adding the value of `timeout`
         /// to this instant yields the timeout deadline for the waiter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. If the value is `false`, it means the waiter is still waiting for one of its
         /// conditions to be met. If true, the waiter has finished. If the waiter finished due to a timeout or failure,
         /// `error` will be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>Output only. If the waiter ended due to a failure or timeout, this value will be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>[Optional] The failure condition of this waiter. If this condition is met, `done` will be set to
         /// `true` and the `error` code will be set to `ABORTED`. The failure condition takes precedence over the
         /// success condition. If both conditions are met, a failure will be indicated. This value is optional; if no
         /// failure condition is set, the only failure scenario will be a timeout.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failure")]
-        public virtual EndCondition Failure { get; set; } 
+        public virtual EndCondition Failure { get; set; }
 
         /// <summary>The name of the Waiter resource, in the format:
         /// projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME] The `[PROJECT_ID]` must be a valid Google
@@ -2252,19 +2252,19 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         /// RFC 1035 segment specification, and the length of `[WAITER_NAME]` must be less than 64 bytes. After you
         /// create a Waiter resource, you cannot change the resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>[Required] The success condition. If this condition is met, `done` will be set to `true` and the
         /// `error` value will remain unset. The failure condition takes precedence over the success condition. If both
         /// conditions are met, a failure will be indicated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("success")]
-        public virtual EndCondition Success { get; set; } 
+        public virtual EndCondition Success { get; set; }
 
         /// <summary>[Required] Specifies the timeout of the waiter in seconds, beginning from the instant that
         /// `waiters().create` method is called. If this time elapses before the success or failure conditions are met,
         /// the waiter fails and sets the `error` code to `DEADLINE_EXCEEDED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
-        public virtual object Timeout { get; set; } 
+        public virtual object Timeout { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2277,7 +2277,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         /// than `newerThan` timestamp, the method returns immediately. If not specified or the variable has an older
         /// timestamp, the watcher waits for a the value to change before returning.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newerThan")]
-        public virtual object NewerThan { get; set; } 
+        public virtual object NewerThan { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

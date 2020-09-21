@@ -831,16 +831,16 @@ namespace Google.Apis.DomainsRDAP.v1.Data
     {
         /// <summary>The HTTP Content-Type header value specifying the content type of the body.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
-        public virtual string ContentType { get; set; } 
+        public virtual string ContentType { get; set; }
 
         /// <summary>The HTTP request/response body as raw binary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual string Data { get; set; } 
+        public virtual string Data { get; set; }
 
         /// <summary>Application specific response metadata. Must be set in the first response for streaming
         /// APIs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Extensions { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Extensions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -852,31 +852,31 @@ namespace Google.Apis.DomainsRDAP.v1.Data
     {
         /// <summary>Target URL of a link. Example: "http://example.com/previous".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("href")]
-        public virtual string Href { get; set; } 
+        public virtual string Href { get; set; }
 
         /// <summary>Language code of a link. Example: "en".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hreflang")]
-        public virtual string Hreflang { get; set; } 
+        public virtual string Hreflang { get; set; }
 
         /// <summary>Media type of the link destination. Example: "screen".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("media")]
-        public virtual string Media { get; set; } 
+        public virtual string Media { get; set; }
 
         /// <summary>Relation type of a link. Example: "previous".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rel")]
-        public virtual string Rel { get; set; } 
+        public virtual string Rel { get; set; }
 
         /// <summary>Title of this link. Example: "title".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>Content type of the link. Example: "application/json".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>URL giving context for the link. Example: "http://example.com/current".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -888,22 +888,22 @@ namespace Google.Apis.DomainsRDAP.v1.Data
     {
         /// <summary>Description of the notice.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual System.Collections.Generic.IList<string> Description { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Description { get; set; }
 
         /// <summary>Link to a document containing more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("links")]
-        public virtual System.Collections.Generic.IList<Link> Links { get; set; } 
+        public virtual System.Collections.Generic.IList<Link> Links { get; set; }
 
         /// <summary>Title of a notice. Example: "Terms of Service".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>Type values defined in [section 10.2.1 of RFC
         /// 7483](https://tools.ietf.org/html/rfc7483#section-10.2.1) specific to a whole response: "result set
         /// truncated due to authorization", "result set truncated due to excessive load", "result set truncated due to
         /// unexplainable reasons".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -914,32 +914,32 @@ namespace Google.Apis.DomainsRDAP.v1.Data
     {
         /// <summary>Error description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual System.Collections.Generic.IList<string> Description { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Description { get; set; }
 
         /// <summary>Error HTTP code. Example: "501".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
-        public virtual System.Nullable<int> ErrorCode { get; set; } 
+        public virtual System.Nullable<int> ErrorCode { get; set; }
 
         /// <summary>HTTP response with content type set to "application/json+rdap".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jsonResponse")]
-        public virtual HttpBody JsonResponse { get; set; } 
+        public virtual HttpBody JsonResponse { get; set; }
 
         /// <summary>Error language code. Error response info fields are defined in [section 6 of RFC
         /// 7483](https://tools.ietf.org/html/rfc7483#section-6).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lang")]
-        public virtual string Lang { get; set; } 
+        public virtual string Lang { get; set; }
 
         /// <summary>Notices applying to this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notices")]
-        public virtual System.Collections.Generic.IList<Notice> Notices { get; set; } 
+        public virtual System.Collections.Generic.IList<Notice> Notices { get; set; }
 
         /// <summary>RDAP conformance level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rdapConformance")]
-        public virtual System.Collections.Generic.IList<string> RdapConformance { get; set; } 
+        public virtual System.Collections.Generic.IList<string> RdapConformance { get; set; }
 
         /// <summary>Error title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

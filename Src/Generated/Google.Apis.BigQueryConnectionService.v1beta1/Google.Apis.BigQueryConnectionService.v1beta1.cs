@@ -903,12 +903,12 @@ namespace Google.Apis.BigQueryConnectionService.v1beta1.Data
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
-        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; }
 
         /// <summary>Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
         /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual string Service { get; set; } 
+        public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -923,11 +923,11 @@ namespace Google.Apis.BigQueryConnectionService.v1beta1.Data
         /// <summary>Specifies the identities that do not cause logging for this type of permission. Follows the same
         /// format of Binding.members.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
-        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; }
 
         /// <summary>The log type that this config enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logType")]
-        public virtual string LogType { get; set; } 
+        public virtual string LogType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -942,7 +942,7 @@ namespace Google.Apis.BigQueryConnectionService.v1beta1.Data
         /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; } 
+        public virtual Expr Condition { get; set; }
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
@@ -964,12 +964,12 @@ namespace Google.Apis.BigQueryConnectionService.v1beta1.Data
         /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
         /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -980,11 +980,11 @@ namespace Google.Apis.BigQueryConnectionService.v1beta1.Data
     {
         /// <summary>The password for the credential.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
-        public virtual string Password { get; set; } 
+        public virtual string Password { get; set; }
 
         /// <summary>The username for the credential.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; } 
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -995,19 +995,19 @@ namespace Google.Apis.BigQueryConnectionService.v1beta1.Data
     {
         /// <summary>Input only. Cloud SQL credential.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("credential")]
-        public virtual CloudSqlCredential Credential { get; set; } 
+        public virtual CloudSqlCredential Credential { get; set; }
 
         /// <summary>Database name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
-        public virtual string Database { get; set; } 
+        public virtual string Database { get; set; }
 
         /// <summary>Cloud SQL instance ID in the form `project:location:instance`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
-        public virtual string InstanceId { get; set; } 
+        public virtual string InstanceId { get; set; }
 
         /// <summary>Type of the Cloud SQL database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1019,32 +1019,32 @@ namespace Google.Apis.BigQueryConnectionService.v1beta1.Data
     {
         /// <summary>Cloud SQL properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudSql")]
-        public virtual CloudSqlProperties CloudSql { get; set; } 
+        public virtual CloudSqlProperties CloudSql { get; set; }
 
         /// <summary>Output only. The creation timestamp of the connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual System.Nullable<long> CreationTime { get; set; } 
+        public virtual System.Nullable<long> CreationTime { get; set; }
 
         /// <summary>User provided description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>User provided display name for the connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("friendlyName")]
-        public virtual string FriendlyName { get; set; } 
+        public virtual string FriendlyName { get; set; }
 
         /// <summary>Output only. True, if credential is configured for this connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasCredential")]
-        public virtual System.Nullable<bool> HasCredential { get; set; } 
+        public virtual System.Nullable<bool> HasCredential { get; set; }
 
         /// <summary>Output only. The last update timestamp of the connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
-        public virtual System.Nullable<long> LastModifiedTime { get; set; } 
+        public virtual System.Nullable<long> LastModifiedTime { get; set; }
 
         /// <summary>The resource name of the connection in the form of:
         /// `projects/{project_id}/locations/{location_id}/connections/{connection_id}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1055,7 +1055,7 @@ namespace Google.Apis.BigQueryConnectionService.v1beta1.Data
     {
         /// <summary>Credential for Cloud SQL database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudSql")]
-        public virtual CloudSqlCredential CloudSql { get; set; } 
+        public virtual CloudSqlCredential CloudSql { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1087,21 +1087,21 @@ namespace Google.Apis.BigQueryConnectionService.v1beta1.Data
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
         /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1112,7 +1112,7 @@ namespace Google.Apis.BigQueryConnectionService.v1beta1.Data
     {
         /// <summary>OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
-        public virtual GetPolicyOptions Options { get; set; } 
+        public virtual GetPolicyOptions Options { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1127,7 +1127,7 @@ namespace Google.Apis.BigQueryConnectionService.v1beta1.Data
         /// unset. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
-        public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
+        public virtual System.Nullable<int> RequestedPolicyVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1138,11 +1138,11 @@ namespace Google.Apis.BigQueryConnectionService.v1beta1.Data
     {
         /// <summary>List of connections.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connections")]
-        public virtual System.Collections.Generic.IList<Connection> Connections { get; set; } 
+        public virtual System.Collections.Generic.IList<Connection> Connections { get; set; }
 
         /// <summary>Next page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1172,12 +1172,12 @@ namespace Google.Apis.BigQueryConnectionService.v1beta1.Data
     {
         /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
-        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; }
 
         /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
         /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
         /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
@@ -1188,7 +1188,7 @@ namespace Google.Apis.BigQueryConnectionService.v1beta1.Data
         /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
         /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
         /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
@@ -1202,7 +1202,7 @@ namespace Google.Apis.BigQueryConnectionService.v1beta1.Data
         /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
     }    
 
@@ -1213,13 +1213,13 @@ namespace Google.Apis.BigQueryConnectionService.v1beta1.Data
         /// a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
         /// might reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual Policy Policy { get; set; } 
+        public virtual Policy Policy { get; set; }
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
         /// will be modified. If no mask is provided, the following default mask is used: `paths: "bindings,
         /// etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1232,7 +1232,7 @@ namespace Google.Apis.BigQueryConnectionService.v1beta1.Data
         /// 'storage.*') are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1243,7 +1243,7 @@ namespace Google.Apis.BigQueryConnectionService.v1beta1.Data
     {
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

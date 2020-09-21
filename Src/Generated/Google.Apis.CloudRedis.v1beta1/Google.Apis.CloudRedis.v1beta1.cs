@@ -1367,7 +1367,7 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
     {
         /// <summary>Required. Specify data to be exported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
-        public virtual OutputConfig OutputConfig { get; set; } 
+        public virtual OutputConfig OutputConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1379,7 +1379,7 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// <summary>Optional. Available data protection modes that the user can choose. If it's unspecified, data
         /// protection mode will be LIMITED_DATA_LOSS by default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataProtectionMode")]
-        public virtual string DataProtectionMode { get; set; } 
+        public virtual string DataProtectionMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1391,7 +1391,7 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// <summary>Required. Data destination URI (e.g. 'gs://my_bucket/my_object'). Existing files will be
         /// overwritten.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1402,7 +1402,7 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
     {
         /// <summary>Required. Source data URI. (e.g. 'gs://my_bucket/my_object').</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1413,33 +1413,33 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
     {
         /// <summary>[Output only] API version used to start the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; } 
+        public virtual string ApiVersion { get; set; }
 
         /// <summary>[Output only] Identifies whether the user has requested cancellation of the operation. Operations
         /// that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1,
         /// corresponding to `Code.CANCELLED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
-        public virtual System.Nullable<bool> CancelRequested { get; set; } 
+        public virtual System.Nullable<bool> CancelRequested { get; set; }
 
         /// <summary>[Output only] The time the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>[Output only] The time the operation finished running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>[Output only] Human-readable status of the operation, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusDetail")]
-        public virtual string StatusDetail { get; set; } 
+        public virtual string StatusDetail { get; set; }
 
         /// <summary>[Output only] Server-defined resource path for the target of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; } 
+        public virtual string Target { get; set; }
 
         /// <summary>[Output only] Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
-        public virtual string Verb { get; set; } 
+        public virtual string Verb { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1454,7 +1454,7 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// each zone, as defined by GCE. These keys can be specified in `location_id` or `alternative_location_id`
         /// fields when creating a Redis instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availableZones")]
-        public virtual System.Collections.Generic.IDictionary<string,GoogleCloudRedisV1beta1ZoneMetadata> AvailableZones { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudRedisV1beta1ZoneMetadata> AvailableZones { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1473,7 +1473,7 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
     {
         /// <summary>Required. Specify data to be imported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputConfig")]
-        public virtual InputConfig InputConfig { get; set; } 
+        public virtual InputConfig InputConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1484,7 +1484,7 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
     {
         /// <summary>Google Cloud Storage location where input content is located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
-        public virtual GcsSource GcsSource { get; set; } 
+        public virtual GcsSource GcsSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1497,53 +1497,53 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// provisioning it across two zones. If provided, it must be a different zone from the one provided in
         /// location_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternativeLocationId")]
-        public virtual string AlternativeLocationId { get; set; } 
+        public virtual string AlternativeLocationId { get; set; }
 
         /// <summary>Optional. The full name of the Google Compute Engine
         /// [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified,
         /// the `default` network will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizedNetwork")]
-        public virtual string AuthorizedNetwork { get; set; } 
+        public virtual string AuthorizedNetwork { get; set; }
 
         /// <summary>Optional. The network connect mode of the Redis instance. If not provided, the connect mode
         /// defaults to DIRECT_PEERING.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectMode")]
-        public virtual string ConnectMode { get; set; } 
+        public virtual string ConnectMode { get; set; }
 
         /// <summary>Output only. The time the instance was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. The current zone where the Redis endpoint is placed. For Basic Tier instances, this
         /// will always be the same as the location_id provided by the user at creation time. For Standard Tier
         /// instances, this can be either location_id or alternative_location_id and can change after a failover
         /// event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentLocationId")]
-        public virtual string CurrentLocationId { get; set; } 
+        public virtual string CurrentLocationId { get; set; }
 
         /// <summary>An arbitrary and optional user-provided name for the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Output only. Hostname or IP address of the exposed Redis endpoint used by clients to connect to the
         /// service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
-        public virtual string Host { get; set; } 
+        public virtual string Host { get; set; }
 
         /// <summary>Resource labels to represent user provided metadata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Optional. The zone where the instance will be provisioned. If not provided, the service will choose
         /// a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection
         /// against zonal failures. If alternative_location_id is also provided, it must be different from
         /// location_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>Required. Redis memory size in GiB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memorySizeGb")]
-        public virtual System.Nullable<int> MemorySizeGb { get; set; } 
+        public virtual System.Nullable<int> MemorySizeGb { get; set; }
 
         /// <summary>Required. Unique name of the resource in this scope including project and location using the form:
         /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed
@@ -1551,49 +1551,49 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer
         /// to location_id and alternative_location_id fields for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud
         /// Storage. Format is "serviceAccount:". The value may change over time for a given instance so should be
         /// checked before each import/export operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("persistenceIamIdentity")]
-        public virtual string PersistenceIamIdentity { get; set; } 
+        public virtual string PersistenceIamIdentity { get; set; }
 
         /// <summary>Output only. The port number of the exposed Redis endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
-        public virtual System.Nullable<int> Port { get; set; } 
+        public virtual System.Nullable<int> Port { get; set; }
 
         /// <summary>Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently,
         /// the only supported parameters are: Redis version 3.2 and newer: * maxmemory-policy * notify-keyspace-events
         /// Redis version 4.0 and newer: * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version
         /// 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redisConfigs")]
-        public virtual System.Collections.Generic.IDictionary<string,string> RedisConfigs { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> RedisConfigs { get; set; }
 
         /// <summary>Optional. The version of Redis software. If not provided, latest supported version will be used.
         /// Currently, the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0
         /// compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redisVersion")]
-        public virtual string RedisVersion { get; set; } 
+        public virtual string RedisVersion { get; set; }
 
         /// <summary>Optional. The CIDR range of internal addresses that are reserved for this instance. If not
         /// provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges
         /// must be unique and non-overlapping with existing subnets in an authorized network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservedIpRange")]
-        public virtual string ReservedIpRange { get; set; } 
+        public virtual string ReservedIpRange { get; set; }
 
         /// <summary>Output only. The current state of this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Output only. Additional information about the current status of this instance, if
         /// available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
-        public virtual string StatusMessage { get; set; } 
+        public virtual string StatusMessage { get; set; }
 
         /// <summary>Required. The service tier of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]
-        public virtual string Tier { get; set; } 
+        public virtual string Tier { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1609,16 +1609,16 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// `projects/{project_id}/locations/{location_id}/instances/`- and the `status` field set to ERROR and
         /// `status_message` field set to "location not available for ListInstances".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
-        public virtual System.Collections.Generic.IList<Instance> Instances { get; set; } 
+        public virtual System.Collections.Generic.IList<Instance> Instances { get; set; }
 
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1629,11 +1629,11 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
     {
         /// <summary>A list of locations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
+        public virtual System.Collections.Generic.IList<Location> Locations { get; set; }
 
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1644,11 +1644,11 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
     {
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1659,27 +1659,27 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-
         /// east1"}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Resource ID for the region. For example: "us-east1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>Output only. The set of available zones in the location. The map is keyed by the lowercase ID of
         /// each zone, as defined by Compute Engine. These keys can be specified in `location_id` or
         /// `alternative_location_id` fields when creating a Redis instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>Full resource name for the region. For example: "projects/example-project/locations/us-
         /// east1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1691,11 +1691,11 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>{ `createTime`: The time the operation was created. `endTime`: The time the operation finished
         /// running. `target`: Server-defined resource path for the target of the operation. `verb`: Name of the verb
@@ -1704,13 +1704,13 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1,
         /// corresponding to `Code.CANCELLED`. `apiVersion`: API version used to start the operation. }</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -1718,7 +1718,7 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1729,7 +1729,7 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
     {
         /// <summary>Google Cloud Storage destination for output content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
-        public virtual GcsDestination GcsDestination { get; set; } 
+        public virtual GcsDestination GcsDestination { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1744,17 +1744,17 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1765,7 +1765,7 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
     {
         /// <summary>Required. Specifies the target version of Redis software to upgrade to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redisVersion")]
-        public virtual string RedisVersion { get; set; } 
+        public virtual string RedisVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

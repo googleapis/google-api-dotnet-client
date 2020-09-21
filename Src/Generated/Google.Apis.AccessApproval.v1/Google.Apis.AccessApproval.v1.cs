@@ -1735,7 +1735,7 @@ namespace Google.Apis.AccessApproval.v1.Data
         /// more ancestors of the Project or Folder (this field will always be unset for the organization since
         /// organizations do not have ancestors).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enrolledAncestor")]
-        public virtual System.Nullable<bool> EnrolledAncestor { get; set; } 
+        public virtual System.Nullable<bool> EnrolledAncestor { get; set; }
 
         /// <summary>A list of Google Cloud Services for which the given resource has Access Approval enrolled. Access
         /// requests for the resource given by name against any of these services contained here will be required to
@@ -1745,19 +1745,19 @@ namespace Google.Apis.AccessApproval.v1.Data
         /// discarded. A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported
         /// services is expanded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enrolledServices")]
-        public virtual System.Collections.Generic.IList<EnrolledService> EnrolledServices { get; set; } 
+        public virtual System.Collections.Generic.IList<EnrolledService> EnrolledServices { get; set; }
 
         /// <summary>The resource name of the settings. Format is one of: 1.
         /// "projects/{project_id}/accessApprovalSettings" 2. "folders/{folder_id}/accessApprovalSettings" 3.
         /// "organizations/{organization_id}/accessApprovalSettings" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>A list of email addresses to which notifications relating to approval requests should be sent.
         /// Notifications relating to a resource will be sent to all emails in the settings of ancestor resources of
         /// that resource. A maximum of 50 email addresses are allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationEmails")]
-        public virtual System.Collections.Generic.IList<string> NotificationEmails { get; set; } 
+        public virtual System.Collections.Generic.IList<string> NotificationEmails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1771,7 +1771,7 @@ namespace Google.Apis.AccessApproval.v1.Data
         /// region code instead of a country code. Possible Region Codes: 1. ASI: Asia 2. EUR: Europe 3. OCE: Oceania 4.
         /// AFR: Africa 5. NAM: North America 6. SAM: South America 7. ANT: Antarctica 8. ANY: Any location </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principalOfficeCountry")]
-        public virtual string PrincipalOfficeCountry { get; set; } 
+        public virtual string PrincipalOfficeCountry { get; set; }
 
         /// <summary>Physical location of the principal at the time of the access. A two-letter country code (ISO 3166-1
         /// alpha-2), such as "US", "DE" or "GB" or a region code. In some limited situations Google systems may refer
@@ -1779,7 +1779,7 @@ namespace Google.Apis.AccessApproval.v1.Data
         /// Oceania 4. AFR: Africa 5. NAM: North America 6. SAM: South America 7. ANT: Antarctica 8. ANY: Any location
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principalPhysicalLocationCountry")]
-        public virtual string PrincipalPhysicalLocationCountry { get; set; } 
+        public virtual string PrincipalPhysicalLocationCountry { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1789,11 +1789,11 @@ namespace Google.Apis.AccessApproval.v1.Data
     {
         /// <summary>More detail about certain reason types. See comments for each type above.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detail")]
-        public virtual string Detail { get; set; } 
+        public virtual string Detail { get; set; }
 
         /// <summary>Type of access justification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1804,44 +1804,44 @@ namespace Google.Apis.AccessApproval.v1.Data
     {
         /// <summary>Access was approved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approve")]
-        public virtual ApproveDecision Approve { get; set; } 
+        public virtual ApproveDecision Approve { get; set; }
 
         /// <summary>The request was dismissed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dismiss")]
-        public virtual DismissDecision Dismiss { get; set; } 
+        public virtual DismissDecision Dismiss { get; set; }
 
         /// <summary>The resource name of the request. Format is
         /// "{projects|folders|organizations}/{id}/approvalRequests/{approval_request_id}".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The time at which approval was requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestTime")]
-        public virtual object RequestTime { get; set; } 
+        public virtual object RequestTime { get; set; }
 
         /// <summary>The requested expiration for the approval. If the request is approved, access will be granted from
         /// the time of approval until the expiration time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedExpiration")]
-        public virtual object RequestedExpiration { get; set; } 
+        public virtual object RequestedExpiration { get; set; }
 
         /// <summary>The locations for which approval is being requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedLocations")]
-        public virtual AccessLocations RequestedLocations { get; set; } 
+        public virtual AccessLocations RequestedLocations { get; set; }
 
         /// <summary>The justification for which approval is being requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedReason")]
-        public virtual AccessReason RequestedReason { get; set; } 
+        public virtual AccessReason RequestedReason { get; set; }
 
         /// <summary>The resource for which approval is being requested. The format of the resource name is defined at
         /// https://cloud.google.com/apis/design/resource_names. The resource name here may either be a "full" resource
         /// name (e.g. "//library.googleapis.com/shelves/shelf1/books/book2") or a "relative" resource name (e.g.
         /// "shelves/shelf1/books/book2") as described in the resource name specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedResourceName")]
-        public virtual string RequestedResourceName { get; set; } 
+        public virtual string RequestedResourceName { get; set; }
 
         /// <summary>Properties related to the resource represented by requested_resource_name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedResourceProperties")]
-        public virtual ResourceProperties RequestedResourceProperties { get; set; } 
+        public virtual ResourceProperties RequestedResourceProperties { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1852,7 +1852,7 @@ namespace Google.Apis.AccessApproval.v1.Data
     {
         /// <summary>The expiration time of this approval.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; } 
+        public virtual object ExpireTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1863,11 +1863,11 @@ namespace Google.Apis.AccessApproval.v1.Data
     {
         /// <summary>The time at which approval was granted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approveTime")]
-        public virtual object ApproveTime { get; set; } 
+        public virtual object ApproveTime { get; set; }
 
         /// <summary>The time at which the approval expires.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; } 
+        public virtual object ExpireTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1885,13 +1885,13 @@ namespace Google.Apis.AccessApproval.v1.Data
     {
         /// <summary>The time at which the approval request was dismissed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dismissTime")]
-        public virtual object DismissTime { get; set; } 
+        public virtual object DismissTime { get; set; }
 
         /// <summary>This field will be true if the ApprovalRequest was implcitly dismissed due to inaction by the
         /// access approval approvers (the request is not acted on by the approvers before the exiration
         /// time).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("implicit")]
-        public virtual System.Nullable<bool> Implicit__ { get; set; } 
+        public virtual System.Nullable<bool> Implicit__ { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1917,11 +1917,11 @@ namespace Google.Apis.AccessApproval.v1.Data
         /// in all products supported at both 'GA' and 'Preview' levels. 'ga-only' will only enroll the resource in
         /// products supported at 'GA' level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudProduct")]
-        public virtual string CloudProduct { get; set; } 
+        public virtual string CloudProduct { get; set; }
 
         /// <summary>The enrollment level of the service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enrollmentLevel")]
-        public virtual string EnrollmentLevel { get; set; } 
+        public virtual string EnrollmentLevel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1932,11 +1932,11 @@ namespace Google.Apis.AccessApproval.v1.Data
     {
         /// <summary>Approval request details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approvalRequests")]
-        public virtual System.Collections.Generic.IList<ApprovalRequest> ApprovalRequests { get; set; } 
+        public virtual System.Collections.Generic.IList<ApprovalRequest> ApprovalRequests { get; set; }
 
         /// <summary>Token to retrieve the next page of results, or empty if there are no more.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1947,7 +1947,7 @@ namespace Google.Apis.AccessApproval.v1.Data
     {
         /// <summary>Whether an approval will exclude the descendants of the resource being requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludesDescendants")]
-        public virtual System.Nullable<bool> ExcludesDescendants { get; set; } 
+        public virtual System.Nullable<bool> ExcludesDescendants { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -3623,23 +3623,23 @@ namespace Google.Apis.Appengine.v1.Data
         /// <summary>Action to take when users access resources that require authentication. Defaults to
         /// redirect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authFailAction")]
-        public virtual string AuthFailAction { get; set; } 
+        public virtual string AuthFailAction { get; set; }
 
         /// <summary>Level of login required to access this resource. Defaults to optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("login")]
-        public virtual string Login { get; set; } 
+        public virtual string Login { get; set; }
 
         /// <summary>Path to the script from the application root directory.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("script")]
-        public virtual string Script { get; set; } 
+        public virtual string Script { get; set; }
 
         /// <summary>Security (HTTPS) enforcement for this URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityLevel")]
-        public virtual string SecurityLevel { get; set; } 
+        public virtual string SecurityLevel { get; set; }
 
         /// <summary>URL to serve the endpoint at.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3650,7 +3650,7 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>Path to the script from the application root directory.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scriptPath")]
-        public virtual string ScriptPath { get; set; } 
+        public virtual string ScriptPath { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3662,67 +3662,67 @@ namespace Google.Apis.Appengine.v1.Data
         /// <summary>Google Apps authentication domain that controls which users can access this application.Defaults to
         /// open access for any Google Account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authDomain")]
-        public virtual string AuthDomain { get; set; } 
+        public virtual string AuthDomain { get; set; }
 
         /// <summary>Google Cloud Storage bucket that can be used for storing files associated with this application.
         /// This bucket is associated with the application and can be used by the gcloud deployment
         /// commands.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("codeBucket")]
-        public virtual string CodeBucket { get; set; } 
+        public virtual string CodeBucket { get; set; }
 
         /// <summary>The type of the Cloud Firestore or Cloud Datastore database associated with this
         /// application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseType")]
-        public virtual string DatabaseType { get; set; } 
+        public virtual string DatabaseType { get; set; }
 
         /// <summary>Google Cloud Storage bucket that can be used by this application to store
         /// content.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultBucket")]
-        public virtual string DefaultBucket { get; set; } 
+        public virtual string DefaultBucket { get; set; }
 
         /// <summary>Cookie expiration policy for this application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultCookieExpiration")]
-        public virtual object DefaultCookieExpiration { get; set; } 
+        public virtual object DefaultCookieExpiration { get; set; }
 
         /// <summary>Hostname used to reach this application, as resolved by App Engine.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultHostname")]
-        public virtual string DefaultHostname { get; set; } 
+        public virtual string DefaultHostname { get; set; }
 
         /// <summary>HTTP path dispatch rules for requests to the application that do not explicitly target a service or
         /// version. Rules are order-dependent. Up to 20 dispatch rules can be supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dispatchRules")]
-        public virtual System.Collections.Generic.IList<UrlDispatchRule> DispatchRules { get; set; } 
+        public virtual System.Collections.Generic.IList<UrlDispatchRule> DispatchRules { get; set; }
 
         /// <summary>The feature specific settings to be used in the application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("featureSettings")]
-        public virtual FeatureSettings FeatureSettings { get; set; } 
+        public virtual FeatureSettings FeatureSettings { get; set; }
 
         /// <summary>The Google Container Registry domain used for storing managed build docker images for this
         /// application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcrDomain")]
-        public virtual string GcrDomain { get; set; } 
+        public virtual string GcrDomain { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("iap")]
-        public virtual IdentityAwareProxy Iap { get; set; } 
+        public virtual IdentityAwareProxy Iap { get; set; }
 
         /// <summary>Identifier of the Application resource. This identifier is equivalent to the project ID of the
         /// Google Cloud Platform project where you want to deploy your application. Example: myapp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Location from which this application runs. Application instances run out of the data centers in the
         /// specified location, which is also where all of the application's end user content is stored.Defaults to us-
         /// central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Serving status of this application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingStatus")]
-        public virtual string ServingStatus { get; set; } 
+        public virtual string ServingStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3735,45 +3735,45 @@ namespace Google.Apis.Appengine.v1.Data
         /// <summary>The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently
         /// from a certificate authority.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certificateRawData")]
-        public virtual CertificateRawData CertificateRawData { get; set; } 
+        public virtual CertificateRawData CertificateRawData { get; set; }
 
         /// <summary>The user-specified display name of the certificate. This is not guaranteed to be unique. Example:
         /// My Certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Aggregate count of the domain mappings with this certificate mapped. This count includes domain
         /// mappings on applications for which the user does not have VIEWER permissions.Only returned by GET or LIST
         /// requests when specifically requested by the view=FULL_CERTIFICATE option.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainMappingsCount")]
-        public virtual System.Nullable<int> DomainMappingsCount { get; set; } 
+        public virtual System.Nullable<int> DomainMappingsCount { get; set; }
 
         /// <summary>Topmost applicable domains of this certificate. This certificate applies to these domains and their
         /// subdomains. Example: example.com.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainNames")]
-        public virtual System.Collections.Generic.IList<string> DomainNames { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DomainNames { get; set; }
 
         /// <summary>The time when this certificate expires. To update the renewal time on this certificate, upload an
         /// SSL certificate with a different expiration time using
         /// AuthorizedCertificates.UpdateAuthorizedCertificate.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; } 
+        public virtual object ExpireTime { get; set; }
 
         /// <summary>Relative name of the certificate. This is a unique value autogenerated on AuthorizedCertificate
         /// resource creation. Example: 12345.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Only applicable if this certificate is managed by App Engine. Managed certificates are tied to the
         /// lifecycle of a DomainMapping and cannot be updated or deleted via the AuthorizedCertificates API. If this
         /// certificate is manually administered by the user, this field will be empty.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedCertificate")]
-        public virtual ManagedCertificate ManagedCertificate { get; set; } 
+        public virtual ManagedCertificate ManagedCertificate { get; set; }
 
         /// <summary>Full path to the AuthorizedCertificate resource in the API. Example:
         /// apps/myapp/authorizedCertificates/12345.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The full paths to user visible Domain Mapping resources that have this certificate mapped. Example:
         /// apps/myapp/domainMappings/example.com.This may not represent the full list of mapped domain mappings if the
@@ -3781,7 +3781,7 @@ namespace Google.Apis.Appengine.v1.Data
         /// domain_mappings_count for a complete count.Only returned by GET or LIST requests when specifically requested
         /// by the view=FULL_CERTIFICATE option.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibleDomainMappings")]
-        public virtual System.Collections.Generic.IList<string> VisibleDomainMappings { get; set; } 
+        public virtual System.Collections.Generic.IList<string> VisibleDomainMappings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3793,12 +3793,12 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>Fully qualified domain name of the domain authorized for use. Example: example.com.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Full path to the AuthorizedDomain resource in the API. Example:
         /// apps/myapp/authorizedDomains/example.com.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3813,59 +3813,59 @@ namespace Google.Apis.Appengine.v1.Data
         /// information when the instance is initializing, during which the collected usage would not be reliable. Only
         /// applicable in the App Engine flexible environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("coolDownPeriod")]
-        public virtual object CoolDownPeriod { get; set; } 
+        public virtual object CoolDownPeriod { get; set; }
 
         /// <summary>Target scaling by CPU usage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuUtilization")]
-        public virtual CpuUtilization CpuUtilization { get; set; } 
+        public virtual CpuUtilization CpuUtilization { get; set; }
 
         /// <summary>Target scaling by disk usage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskUtilization")]
-        public virtual DiskUtilization DiskUtilization { get; set; } 
+        public virtual DiskUtilization DiskUtilization { get; set; }
 
         /// <summary>Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns
         /// a new instance.Defaults to a runtime-specific value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentRequests")]
-        public virtual System.Nullable<int> MaxConcurrentRequests { get; set; } 
+        public virtual System.Nullable<int> MaxConcurrentRequests { get; set; }
 
         /// <summary>Maximum number of idle instances that should be maintained for this version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxIdleInstances")]
-        public virtual System.Nullable<int> MaxIdleInstances { get; set; } 
+        public virtual System.Nullable<int> MaxIdleInstances { get; set; }
 
         /// <summary>Maximum amount of time that a request should wait in the pending queue before starting a new
         /// instance to handle it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxPendingLatency")]
-        public virtual object MaxPendingLatency { get; set; } 
+        public virtual object MaxPendingLatency { get; set; }
 
         /// <summary>Maximum number of instances that should be started to handle requests for this version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxTotalInstances")]
-        public virtual System.Nullable<int> MaxTotalInstances { get; set; } 
+        public virtual System.Nullable<int> MaxTotalInstances { get; set; }
 
         /// <summary>Minimum number of idle instances that should be maintained for this version. Only applicable for
         /// the default version of a service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minIdleInstances")]
-        public virtual System.Nullable<int> MinIdleInstances { get; set; } 
+        public virtual System.Nullable<int> MinIdleInstances { get; set; }
 
         /// <summary>Minimum amount of time a request should wait in the pending queue before starting a new instance to
         /// handle it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minPendingLatency")]
-        public virtual object MinPendingLatency { get; set; } 
+        public virtual object MinPendingLatency { get; set; }
 
         /// <summary>Minimum number of running instances that should be maintained for this version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minTotalInstances")]
-        public virtual System.Nullable<int> MinTotalInstances { get; set; } 
+        public virtual System.Nullable<int> MinTotalInstances { get; set; }
 
         /// <summary>Target scaling by network usage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUtilization")]
-        public virtual NetworkUtilization NetworkUtilization { get; set; } 
+        public virtual NetworkUtilization NetworkUtilization { get; set; }
 
         /// <summary>Target scaling by request utilization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestUtilization")]
-        public virtual RequestUtilization RequestUtilization { get; set; } 
+        public virtual RequestUtilization RequestUtilization { get; set; }
 
         /// <summary>Scheduler settings for standard environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("standardSchedulerSettings")]
-        public virtual StandardSchedulerSettings StandardSchedulerSettings { get; set; } 
+        public virtual StandardSchedulerSettings StandardSchedulerSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3879,11 +3879,11 @@ namespace Google.Apis.Appengine.v1.Data
         /// <summary>Duration of time after the last request that an instance must wait before the instance is shut
         /// down.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idleTimeout")]
-        public virtual object IdleTimeout { get; set; } 
+        public virtual object IdleTimeout { get; set; }
 
         /// <summary>Maximum number of instances to create for this version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxInstances")]
-        public virtual System.Nullable<int> MaxInstances { get; set; } 
+        public virtual System.Nullable<int> MaxInstances { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3894,7 +3894,7 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>A list of FirewallRules to replace the existing set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ingressRules")]
-        public virtual System.Collections.Generic.IList<FirewallRule> IngressRules { get; set; } 
+        public virtual System.Collections.Generic.IList<FirewallRule> IngressRules { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3905,7 +3905,7 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>The full list of ingress FirewallRules for this application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ingressRules")]
-        public virtual System.Collections.Generic.IList<FirewallRule> IngressRules { get; set; } 
+        public virtual System.Collections.Generic.IList<FirewallRule> IngressRules { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3918,12 +3918,12 @@ namespace Google.Apis.Appengine.v1.Data
         /// encrypted. The key size must be 2048 bits or fewer. Must include the header and footer. Example: -----BEGIN
         /// RSA PRIVATE KEY----- -----END RSA PRIVATE KEY----- @InputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateKey")]
-        public virtual string PrivateKey { get; set; } 
+        public virtual string PrivateKey { get; set; }
 
         /// <summary>PEM encoded x.509 public key certificate. This field is set once on certificate creation. Must
         /// include the header and footer. Example: -----BEGIN CERTIFICATE----- -----END CERTIFICATE----- </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicCertificate")]
-        public virtual string PublicCertificate { get; set; } 
+        public virtual string PublicCertificate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3937,12 +3937,12 @@ namespace Google.Apis.Appengine.v1.Data
         /// for flexible environment builds.See https://cloud.google.com/appengine/docs/standard/python/config/appref
         /// for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appYamlPath")]
-        public virtual string AppYamlPath { get; set; } 
+        public virtual string AppYamlPath { get; set; }
 
         /// <summary>The Cloud Build timeout used as part of any dependent builds performed by version creation.
         /// Defaults to 10 minutes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudBuildTimeout")]
-        public virtual object CloudBuildTimeout { get; set; } 
+        public virtual object CloudBuildTimeout { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3956,7 +3956,7 @@ namespace Google.Apis.Appengine.v1.Data
         /// include a tag or digest. Examples: "gcr.io/my-project/image:tag" or "gcr.io/my-
         /// project/image@digest"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual string Image { get; set; } 
+        public virtual string Image { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3967,11 +3967,11 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>Period of time over which CPU utilization is calculated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aggregationWindowLength")]
-        public virtual object AggregationWindowLength { get; set; } 
+        public virtual object AggregationWindowLength { get; set; }
 
         /// <summary>Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetUtilization")]
-        public virtual System.Nullable<double> TargetUtilization { get; set; } 
+        public virtual System.Nullable<double> TargetUtilization { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3983,7 +3983,7 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>The Cloud Build ID if one was created as part of the version create. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudBuildId")]
-        public virtual string CloudBuildId { get; set; } 
+        public virtual string CloudBuildId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3995,7 +3995,7 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>The Cloud Build ID if one was created as part of the version create. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudBuildId")]
-        public virtual string CloudBuildId { get; set; } 
+        public virtual string CloudBuildId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4007,7 +4007,7 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>The Cloud Build ID if one was created as part of the version create. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudBuildId")]
-        public virtual string CloudBuildId { get; set; } 
+        public virtual string CloudBuildId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4021,7 +4021,7 @@ namespace Google.Apis.Appengine.v1.Data
         /// information, see Adding and Removing SSH Keys (https://cloud.google.com/compute/docs/instances/adding-
         /// removing-ssh-keys).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sshKey")]
-        public virtual string SshKey { get; set; } 
+        public virtual string SshKey { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4034,21 +4034,21 @@ namespace Google.Apis.Appengine.v1.Data
         /// only be used if a new build is created, such as when deploying to the App Engine flexible environment using
         /// files or zip.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudBuildOptions")]
-        public virtual CloudBuildOptions CloudBuildOptions { get; set; } 
+        public virtual CloudBuildOptions CloudBuildOptions { get; set; }
 
         /// <summary>The Docker image for the container that runs the version. Only applicable for instances running in
         /// the App Engine flexible environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("container")]
-        public virtual ContainerInfo Container { get; set; } 
+        public virtual ContainerInfo Container { get; set; }
 
         /// <summary>Manifest of the files stored in Google Cloud Storage that are included as part of this version. All
         /// files must be readable using the credentials supplied with this call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("files")]
-        public virtual System.Collections.Generic.IDictionary<string,FileInfo> Files { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, FileInfo> Files { get; set; }
 
         /// <summary>The zip file for this deployment, if this is a zip deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zip")]
-        public virtual ZipInfo Zip { get; set; } 
+        public virtual ZipInfo Zip { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4059,19 +4059,19 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>Target bytes read per second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetReadBytesPerSecond")]
-        public virtual System.Nullable<int> TargetReadBytesPerSecond { get; set; } 
+        public virtual System.Nullable<int> TargetReadBytesPerSecond { get; set; }
 
         /// <summary>Target ops read per seconds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetReadOpsPerSecond")]
-        public virtual System.Nullable<int> TargetReadOpsPerSecond { get; set; } 
+        public virtual System.Nullable<int> TargetReadOpsPerSecond { get; set; }
 
         /// <summary>Target bytes written per second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetWriteBytesPerSecond")]
-        public virtual System.Nullable<int> TargetWriteBytesPerSecond { get; set; } 
+        public virtual System.Nullable<int> TargetWriteBytesPerSecond { get; set; }
 
         /// <summary>Target ops written per second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetWriteOpsPerSecond")]
-        public virtual System.Nullable<int> TargetWriteOpsPerSecond { get; set; } 
+        public virtual System.Nullable<int> TargetWriteOpsPerSecond { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4082,21 +4082,21 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>Relative name of the domain serving the application. Example: example.com.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Full path to the DomainMapping resource in the API. Example:
         /// apps/myapp/domainMapping/example.com.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The resource records required to configure this domain mapping. These records must be added to the
         /// domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceRecords")]
-        public virtual System.Collections.Generic.IList<ResourceRecord> ResourceRecords { get; set; } 
+        public virtual System.Collections.Generic.IList<ResourceRecord> ResourceRecords { get; set; }
 
         /// <summary>SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslSettings")]
-        public virtual SslSettings SslSettings { get; set; } 
+        public virtual SslSettings SslSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4126,21 +4126,21 @@ namespace Google.Apis.Appengine.v1.Data
         /// Endpoints fetches the latest configuration and does not need the configuration ID. In this case, config_id
         /// must be omitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configId")]
-        public virtual string ConfigId { get; set; } 
+        public virtual string ConfigId { get; set; }
 
         /// <summary>Enable or disable trace sampling. By default, this is set to false for enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableTraceSampling")]
-        public virtual System.Nullable<bool> DisableTraceSampling { get; set; } 
+        public virtual System.Nullable<bool> DisableTraceSampling { get; set; }
 
         /// <summary>Endpoints service name which is the name of the "service" resource in the Service Management API.
         /// For example "myapi.endpoints.myproject.cloud.goog"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Endpoints rollout strategy. If FIXED, config_id must be specified. If MANAGED, config_id must be
         /// omitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rolloutStrategy")]
-        public virtual string RolloutStrategy { get; set; } 
+        public virtual string RolloutStrategy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4151,7 +4151,7 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>The format should be a shell command that can be fed to bash -c.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shell")]
-        public virtual string Shell { get; set; } 
+        public virtual string Shell { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4162,15 +4162,15 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>Error condition this handler applies to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
-        public virtual string ErrorCode { get; set; } 
+        public virtual string ErrorCode { get; set; }
 
         /// <summary>MIME type of file. Defaults to text/html.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-        public virtual string MimeType { get; set; } 
+        public virtual string MimeType { get; set; }
 
         /// <summary>Static file content to be served for this error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("staticFile")]
-        public virtual string StaticFile { get; set; } 
+        public virtual string StaticFile { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4185,12 +4185,12 @@ namespace Google.Apis.Appengine.v1.Data
         /// 'health_check' ones. Once the legacy 'health_check' behavior is deprecated, and this value is always true,
         /// this setting can be removed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("splitHealthChecks")]
-        public virtual System.Nullable<bool> SplitHealthChecks { get; set; } 
+        public virtual System.Nullable<bool> SplitHealthChecks { get; set; }
 
         /// <summary>If true, use Container-Optimized OS (https://cloud.google.com/container-optimized-os/) base image
         /// for VMs, rather than a base Debian image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useContainerOptimizedOs")]
-        public virtual System.Nullable<bool> UseContainerOptimizedOs { get; set; } 
+        public virtual System.Nullable<bool> UseContainerOptimizedOs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4202,16 +4202,16 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>The MIME type of the file.Defaults to the value from Google Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-        public virtual string MimeType { get; set; } 
+        public virtual string MimeType { get; set; }
 
         /// <summary>The SHA1 hash of the file, in hex.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha1Sum")]
-        public virtual string Sha1Sum { get; set; } 
+        public virtual string Sha1Sum { get; set; }
 
         /// <summary>URL source to use to fetch this file. Must be a URL to a resource in Google Cloud Storage in the
         /// form 'http(s)://storage.googleapis.com//'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceUrl")]
-        public virtual string SourceUrl { get; set; } 
+        public virtual string SourceUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4223,19 +4223,19 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>The action to take on matched requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual string Action { get; set; } 
+        public virtual string Action { get; set; }
 
         /// <summary>An optional string description of this rule. This field has a maximum length of 100
         /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>A positive integer between 1, Int32.MaxValue-1 that defines the order of rule evaluation. Rules
         /// with the lowest priority are evaluated first.A default rule at priority Int32.MaxValue matches all IPv4 and
         /// IPv6 traffic when no previous rule matches. Only the action of this rule can be modified by the
         /// user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
-        public virtual System.Nullable<int> Priority { get; set; } 
+        public virtual System.Nullable<int> Priority { get; set; }
 
         /// <summary>IP address or range, defined using CIDR notation, of requests that this rule applies to. You can
         /// use the wildcard character "*" to match all IPs equivalent to "0/0" and "::/0" together. Examples:
@@ -4244,7 +4244,7 @@ namespace Google.Apis.Appengine.v1.Data
         /// the same address as 1.2.3.0/24. Similarly, for IPv6, 2001:db8::1/32 is accepted as the same address as
         /// 2001:db8::/32.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceRange")]
-        public virtual string SourceRange { get; set; } 
+        public virtual string SourceRange { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4256,31 +4256,31 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>Interval between health checks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("checkInterval")]
-        public virtual object CheckInterval { get; set; } 
+        public virtual object CheckInterval { get; set; }
 
         /// <summary>Whether to explicitly disable health checks for this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableHealthCheck")]
-        public virtual System.Nullable<bool> DisableHealthCheck { get; set; } 
+        public virtual System.Nullable<bool> DisableHealthCheck { get; set; }
 
         /// <summary>Number of consecutive successful health checks required before receiving traffic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthyThreshold")]
-        public virtual System.Nullable<long> HealthyThreshold { get; set; } 
+        public virtual System.Nullable<long> HealthyThreshold { get; set; }
 
         /// <summary>Host header to send when performing an HTTP health check. Example: "myapp.appspot.com"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
-        public virtual string Host { get; set; } 
+        public virtual string Host { get; set; }
 
         /// <summary>Number of consecutive failed health checks required before an instance is restarted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restartThreshold")]
-        public virtual System.Nullable<long> RestartThreshold { get; set; } 
+        public virtual System.Nullable<long> RestartThreshold { get; set; }
 
         /// <summary>Time before the health check is considered failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
-        public virtual object Timeout { get; set; } 
+        public virtual object Timeout { get; set; }
 
         /// <summary>Number of consecutive failed health checks required before removing traffic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unhealthyThreshold")]
-        public virtual System.Nullable<long> UnhealthyThreshold { get; set; } 
+        public virtual System.Nullable<long> UnhealthyThreshold { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4292,21 +4292,21 @@ namespace Google.Apis.Appengine.v1.Data
         /// <summary>Whether the serving infrastructure will authenticate and authorize all incoming requests.If true,
         /// the oauth2_client_id and oauth2_client_secret fields must be non-empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>OAuth2 client ID to use for the authentication flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientId")]
-        public virtual string Oauth2ClientId { get; set; } 
+        public virtual string Oauth2ClientId { get; set; }
 
         /// <summary>OAuth2 client secret to use for the authentication flow.For security reasons, this value cannot be
         /// retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2_client_secret_sha256
         /// field.@InputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientSecret")]
-        public virtual string Oauth2ClientSecret { get; set; } 
+        public virtual string Oauth2ClientSecret { get; set; }
 
         /// <summary>Hex-encoded SHA-256 hash of the client secret.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientSecretSha256")]
-        public virtual string Oauth2ClientSecretSha256 { get; set; } 
+        public virtual string Oauth2ClientSecretSha256 { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4318,74 +4318,74 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>Output only. App Engine release this instance is running on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appEngineRelease")]
-        public virtual string AppEngineRelease { get; set; } 
+        public virtual string AppEngineRelease { get; set; }
 
         /// <summary>Output only. Availability of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availability")]
-        public virtual string Availability { get; set; } 
+        public virtual string Availability { get; set; }
 
         /// <summary>Output only. Average latency (ms) over the last minute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averageLatency")]
-        public virtual System.Nullable<int> AverageLatency { get; set; } 
+        public virtual System.Nullable<int> AverageLatency { get; set; }
 
         /// <summary>Output only. Number of errors since this instance was started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual System.Nullable<int> Errors { get; set; } 
+        public virtual System.Nullable<int> Errors { get; set; }
 
         /// <summary>Output only. Relative name of the instance within the version. Example: instance-1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Output only. Total memory in use (bytes).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memoryUsage")]
-        public virtual System.Nullable<long> MemoryUsage { get; set; } 
+        public virtual System.Nullable<long> MemoryUsage { get; set; }
 
         /// <summary>Output only. Full path to the Instance resource in the API. Example:
         /// apps/myapp/services/default/versions/v1/instances/instance-1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. Average queries per second (QPS) over the last minute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qps")]
-        public virtual System.Nullable<float> Qps { get; set; } 
+        public virtual System.Nullable<float> Qps { get; set; }
 
         /// <summary>Output only. Number of requests since this instance was started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
-        public virtual System.Nullable<int> Requests { get; set; } 
+        public virtual System.Nullable<int> Requests { get; set; }
 
         /// <summary>Output only. Time that this instance was started.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>Output only. Whether this instance is in debug mode. Only applicable for instances in App Engine
         /// flexible environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmDebugEnabled")]
-        public virtual System.Nullable<bool> VmDebugEnabled { get; set; } 
+        public virtual System.Nullable<bool> VmDebugEnabled { get; set; }
 
         /// <summary>Output only. Virtual machine ID of this instance. Only applicable for instances in App Engine
         /// flexible environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmId")]
-        public virtual string VmId { get; set; } 
+        public virtual string VmId { get; set; }
 
         /// <summary>Output only. The IP address of this instance. Only applicable for instances in App Engine flexible
         /// environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmIp")]
-        public virtual string VmIp { get; set; } 
+        public virtual string VmIp { get; set; }
 
         /// <summary>Output only. Name of the virtual machine where this instance lives. Only applicable for instances
         /// in App Engine flexible environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmName")]
-        public virtual string VmName { get; set; } 
+        public virtual string VmName { get; set; }
 
         /// <summary>Output only. Status of the virtual machine where this instance lives. Only applicable for instances
         /// in App Engine flexible environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmStatus")]
-        public virtual string VmStatus { get; set; } 
+        public virtual string VmStatus { get; set; }
 
         /// <summary>Output only. Zone where the virtual machine is located. Only applicable for instances in App Engine
         /// flexible environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmZoneName")]
-        public virtual string VmZoneName { get; set; } 
+        public virtual string VmZoneName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4396,11 +4396,11 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>Name of the library. Example: "django".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Version of the library to select, or "latest".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4411,11 +4411,11 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>The SSL certificates the user is authorized to administer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certificates")]
-        public virtual System.Collections.Generic.IList<AuthorizedCertificate> Certificates { get; set; } 
+        public virtual System.Collections.Generic.IList<AuthorizedCertificate> Certificates { get; set; }
 
         /// <summary>Continuation token for fetching the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4426,11 +4426,11 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>The authorized domains belonging to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domains")]
-        public virtual System.Collections.Generic.IList<AuthorizedDomain> Domains { get; set; } 
+        public virtual System.Collections.Generic.IList<AuthorizedDomain> Domains { get; set; }
 
         /// <summary>Continuation token for fetching the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4441,11 +4441,11 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>The domain mappings for the application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainMappings")]
-        public virtual System.Collections.Generic.IList<DomainMapping> DomainMappings { get; set; } 
+        public virtual System.Collections.Generic.IList<DomainMapping> DomainMappings { get; set; }
 
         /// <summary>Continuation token for fetching the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4456,11 +4456,11 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>The ingress FirewallRules for this application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ingressRules")]
-        public virtual System.Collections.Generic.IList<FirewallRule> IngressRules { get; set; } 
+        public virtual System.Collections.Generic.IList<FirewallRule> IngressRules { get; set; }
 
         /// <summary>Continuation token for fetching the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4471,11 +4471,11 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>The instances belonging to the requested version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
-        public virtual System.Collections.Generic.IList<Instance> Instances { get; set; } 
+        public virtual System.Collections.Generic.IList<Instance> Instances { get; set; }
 
         /// <summary>Continuation token for fetching the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4486,11 +4486,11 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>A list of locations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
+        public virtual System.Collections.Generic.IList<Location> Locations { get; set; }
 
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4501,11 +4501,11 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4516,11 +4516,11 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>Continuation token for fetching the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The services belonging to the requested application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
-        public virtual System.Collections.Generic.IList<Service> Services { get; set; } 
+        public virtual System.Collections.Generic.IList<Service> Services { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4531,11 +4531,11 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>Continuation token for fetching the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The versions belonging to the requested service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versions")]
-        public virtual System.Collections.Generic.IList<Version> Versions { get; set; } 
+        public virtual System.Collections.Generic.IList<Version> Versions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4547,31 +4547,31 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>Interval between health checks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("checkInterval")]
-        public virtual object CheckInterval { get; set; } 
+        public virtual object CheckInterval { get; set; }
 
         /// <summary>Number of consecutive failed checks required before considering the VM unhealthy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureThreshold")]
-        public virtual System.Nullable<long> FailureThreshold { get; set; } 
+        public virtual System.Nullable<long> FailureThreshold { get; set; }
 
         /// <summary>Host header to send when performing a HTTP Liveness check. Example: "myapp.appspot.com"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
-        public virtual string Host { get; set; } 
+        public virtual string Host { get; set; }
 
         /// <summary>The initial delay before starting to execute the checks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialDelay")]
-        public virtual object InitialDelay { get; set; } 
+        public virtual object InitialDelay { get; set; }
 
         /// <summary>The request path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual string Path { get; set; } 
+        public virtual string Path { get; set; }
 
         /// <summary>Number of consecutive successful checks required before considering the VM healthy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("successThreshold")]
-        public virtual System.Nullable<long> SuccessThreshold { get; set; } 
+        public virtual System.Nullable<long> SuccessThreshold { get; set; }
 
         /// <summary>Time before the check is considered failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
-        public virtual object Timeout { get; set; } 
+        public virtual object Timeout { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4582,25 +4582,25 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The canonical id for this location. For example: "us-east1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>Service-specific metadata. For example the available capacity at the given location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>Resource name for the location, which may vary between implementations. For example: "projects
         /// /example-project/locations/us-east1"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4611,11 +4611,11 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>App Engine flexible environment is available in the given location.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flexibleEnvironmentAvailable")]
-        public virtual System.Nullable<bool> FlexibleEnvironmentAvailable { get; set; } 
+        public virtual System.Nullable<bool> FlexibleEnvironmentAvailable { get; set; }
 
         /// <summary>App Engine standard environment is available in the given location.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("standardEnvironmentAvailable")]
-        public virtual System.Nullable<bool> StandardEnvironmentAvailable { get; set; } 
+        public virtual System.Nullable<bool> StandardEnvironmentAvailable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4628,12 +4628,12 @@ namespace Google.Apis.Appengine.v1.Data
         /// renewal will automatically occur before the certificate expires. Renewal errors can be tracked via
         /// ManagementStatus.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastRenewalTime")]
-        public virtual object LastRenewalTime { get; set; } 
+        public virtual object LastRenewalTime { get; set; }
 
         /// <summary>Status of certificate management. Refers to the most recent certificate acquisition or renewal
         /// attempt.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4647,7 +4647,7 @@ namespace Google.Apis.Appengine.v1.Data
         /// using the Modules API (https://cloud.google.com/appengine/docs/python/modules/functions) set_num_instances()
         /// function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
-        public virtual System.Nullable<int> Instances { get; set; } 
+        public virtual System.Nullable<int> Instances { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4659,21 +4659,21 @@ namespace Google.Apis.Appengine.v1.Data
         /// <summary>List of ports, or port pairs, to forward from the virtual machine to the application container.
         /// Only applicable in the App Engine flexible environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardedPorts")]
-        public virtual System.Collections.Generic.IList<string> ForwardedPorts { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ForwardedPorts { get; set; }
 
         /// <summary>Tag to apply to the instance during creation. Only applicable in the App Engine flexible
         /// environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceTag")]
-        public virtual string InstanceTag { get; set; } 
+        public virtual string InstanceTag { get; set; }
 
         /// <summary>Google Compute Engine network where the virtual machines are created. Specify the short name, not
         /// the resource path.Defaults to default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Enable session affinity. Only applicable in the App Engine flexible environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionAffinity")]
-        public virtual System.Nullable<bool> SessionAffinity { get; set; } 
+        public virtual System.Nullable<bool> SessionAffinity { get; set; }
 
         /// <summary>Google Cloud Platform sub-network where the virtual machines are created. Specify the short name,
         /// not the resource path.If a subnetwork name is specified, a network name will also be required unless it is
@@ -4685,7 +4685,7 @@ namespace Google.Apis.Appengine.v1.Data
         /// specified and the IP address is created from the IPCidrRange of the subnetwork.If specified, the subnetwork
         /// must exist in the same region as the App Engine flexible environment application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetworkName")]
-        public virtual string SubnetworkName { get; set; } 
+        public virtual string SubnetworkName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4696,7 +4696,7 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>The ingress settings for version or service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ingressTrafficAllowed")]
-        public virtual string IngressTrafficAllowed { get; set; } 
+        public virtual string IngressTrafficAllowed { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4707,19 +4707,19 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>Target bytes received per second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetReceivedBytesPerSecond")]
-        public virtual System.Nullable<int> TargetReceivedBytesPerSecond { get; set; } 
+        public virtual System.Nullable<int> TargetReceivedBytesPerSecond { get; set; }
 
         /// <summary>Target packets received per second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetReceivedPacketsPerSecond")]
-        public virtual System.Nullable<int> TargetReceivedPacketsPerSecond { get; set; } 
+        public virtual System.Nullable<int> TargetReceivedPacketsPerSecond { get; set; }
 
         /// <summary>Target bytes sent per second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetSentBytesPerSecond")]
-        public virtual System.Nullable<int> TargetSentBytesPerSecond { get; set; } 
+        public virtual System.Nullable<int> TargetSentBytesPerSecond { get; set; }
 
         /// <summary>Target packets sent per second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetSentPacketsPerSecond")]
-        public virtual System.Nullable<int> TargetSentPacketsPerSecond { get; set; } 
+        public virtual System.Nullable<int> TargetSentPacketsPerSecond { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4731,23 +4731,23 @@ namespace Google.Apis.Appengine.v1.Data
         /// <summary>If the value is false, it means the operation is still in progress. If true, the operation is
         /// completed, and either error or response is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the name should be a resource name ending with
         /// operations/{unique_id}.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as Delete, the response is google.protobuf.Empty. If the original method is standard
@@ -4755,7 +4755,7 @@ namespace Google.Apis.Appengine.v1.Data
         /// XxxResponse, where Xxx is the original method name. For example, if the original method name is
         /// TakeSnapshot(), the inferred response type is TakeSnapshotResponse.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4765,37 +4765,37 @@ namespace Google.Apis.Appengine.v1.Data
     public class OperationMetadataV1 : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("createVersionMetadata")]
-        public virtual CreateVersionMetadataV1 CreateVersionMetadata { get; set; } 
+        public virtual CreateVersionMetadataV1 CreateVersionMetadata { get; set; }
 
         /// <summary>Time that this operation completed.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Ephemeral message that may change every time the operation is polled. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ephemeralMessage")]
-        public virtual string EphemeralMessage { get; set; } 
+        public virtual string EphemeralMessage { get; set; }
 
         /// <summary>Time that this operation was created.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
-        public virtual object InsertTime { get; set; } 
+        public virtual object InsertTime { get; set; }
 
         /// <summary>API method that initiated this operation. Example:
         /// google.appengine.v1.Versions.CreateVersion.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
-        public virtual string Method { get; set; } 
+        public virtual string Method { get; set; }
 
         /// <summary>Name of the resource that this operation is acting on. Example:
         /// apps/myapp/services/default.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; } 
+        public virtual string Target { get; set; }
 
         /// <summary>User who requested this operation.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
-        public virtual string User { get; set; } 
+        public virtual string User { get; set; }
 
         /// <summary>Durable messages that persist on every operation poll. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual System.Collections.Generic.IList<string> Warning { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Warning { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4805,37 +4805,37 @@ namespace Google.Apis.Appengine.v1.Data
     public class OperationMetadataV1Alpha : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("createVersionMetadata")]
-        public virtual CreateVersionMetadataV1Alpha CreateVersionMetadata { get; set; } 
+        public virtual CreateVersionMetadataV1Alpha CreateVersionMetadata { get; set; }
 
         /// <summary>Time that this operation completed.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Ephemeral message that may change every time the operation is polled. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ephemeralMessage")]
-        public virtual string EphemeralMessage { get; set; } 
+        public virtual string EphemeralMessage { get; set; }
 
         /// <summary>Time that this operation was created.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
-        public virtual object InsertTime { get; set; } 
+        public virtual object InsertTime { get; set; }
 
         /// <summary>API method that initiated this operation. Example:
         /// google.appengine.v1alpha.Versions.CreateVersion.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
-        public virtual string Method { get; set; } 
+        public virtual string Method { get; set; }
 
         /// <summary>Name of the resource that this operation is acting on. Example:
         /// apps/myapp/services/default.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; } 
+        public virtual string Target { get; set; }
 
         /// <summary>User who requested this operation.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
-        public virtual string User { get; set; } 
+        public virtual string User { get; set; }
 
         /// <summary>Durable messages that persist on every operation poll. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual System.Collections.Generic.IList<string> Warning { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Warning { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4845,37 +4845,37 @@ namespace Google.Apis.Appengine.v1.Data
     public class OperationMetadataV1Beta : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("createVersionMetadata")]
-        public virtual CreateVersionMetadataV1Beta CreateVersionMetadata { get; set; } 
+        public virtual CreateVersionMetadataV1Beta CreateVersionMetadata { get; set; }
 
         /// <summary>Time that this operation completed.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Ephemeral message that may change every time the operation is polled. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ephemeralMessage")]
-        public virtual string EphemeralMessage { get; set; } 
+        public virtual string EphemeralMessage { get; set; }
 
         /// <summary>Time that this operation was created.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
-        public virtual object InsertTime { get; set; } 
+        public virtual object InsertTime { get; set; }
 
         /// <summary>API method that initiated this operation. Example:
         /// google.appengine.v1beta.Versions.CreateVersion.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
-        public virtual string Method { get; set; } 
+        public virtual string Method { get; set; }
 
         /// <summary>Name of the resource that this operation is acting on. Example:
         /// apps/myapp/services/default.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; } 
+        public virtual string Target { get; set; }
 
         /// <summary>User who requested this operation.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
-        public virtual string User { get; set; } 
+        public virtual string User { get; set; }
 
         /// <summary>Durable messages that persist on every operation poll. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual System.Collections.Generic.IList<string> Warning { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Warning { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4888,31 +4888,31 @@ namespace Google.Apis.Appengine.v1.Data
         /// <summary>A maximum time limit on application initialization, measured from moment the application
         /// successfully replies to a healthcheck until it is ready to serve traffic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appStartTimeout")]
-        public virtual object AppStartTimeout { get; set; } 
+        public virtual object AppStartTimeout { get; set; }
 
         /// <summary>Interval between health checks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("checkInterval")]
-        public virtual object CheckInterval { get; set; } 
+        public virtual object CheckInterval { get; set; }
 
         /// <summary>Number of consecutive failed checks required before removing traffic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureThreshold")]
-        public virtual System.Nullable<long> FailureThreshold { get; set; } 
+        public virtual System.Nullable<long> FailureThreshold { get; set; }
 
         /// <summary>Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
-        public virtual string Host { get; set; } 
+        public virtual string Host { get; set; }
 
         /// <summary>The request path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual string Path { get; set; } 
+        public virtual string Path { get; set; }
 
         /// <summary>Number of consecutive successful checks required before receiving traffic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("successThreshold")]
-        public virtual System.Nullable<long> SuccessThreshold { get; set; } 
+        public virtual System.Nullable<long> SuccessThreshold { get; set; }
 
         /// <summary>Time before the check is considered failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
-        public virtual object Timeout { get; set; } 
+        public virtual object Timeout { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4931,11 +4931,11 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>Target number of concurrent requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetConcurrentRequests")]
-        public virtual System.Nullable<int> TargetConcurrentRequests { get; set; } 
+        public virtual System.Nullable<int> TargetConcurrentRequests { get; set; }
 
         /// <summary>Target requests per second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetRequestCountPerSecond")]
-        public virtual System.Nullable<int> TargetRequestCountPerSecond { get; set; } 
+        public virtual System.Nullable<int> TargetRequestCountPerSecond { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4947,16 +4947,16 @@ namespace Google.Apis.Appengine.v1.Data
         /// <summary>Relative name of the object affected by this record. Only applicable for CNAME records. Example:
         /// 'www'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034
         /// (section 3.6.1).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rrdata")]
-        public virtual string Rrdata { get; set; } 
+        public virtual string Rrdata { get; set; }
 
         /// <summary>Resource record type. Example: AAAA.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4967,24 +4967,24 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>Number of CPU cores needed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpu")]
-        public virtual System.Nullable<double> Cpu { get; set; } 
+        public virtual System.Nullable<double> Cpu { get; set; }
 
         /// <summary>Disk size (GB) needed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskGb")]
-        public virtual System.Nullable<double> DiskGb { get; set; } 
+        public virtual System.Nullable<double> DiskGb { get; set; }
 
         /// <summary>The name of the encryption key that is stored in Google Cloud KMS. Only should be used by Cloud
         /// Composer to encrypt the vm disk</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyReference")]
-        public virtual string KmsKeyReference { get; set; } 
+        public virtual string KmsKeyReference { get; set; }
 
         /// <summary>Memory (GB) needed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memoryGb")]
-        public virtual System.Nullable<double> MemoryGb { get; set; } 
+        public virtual System.Nullable<double> MemoryGb { get; set; }
 
         /// <summary>User specified volumes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
-        public virtual System.Collections.Generic.IList<Volume> Volumes { get; set; } 
+        public virtual System.Collections.Generic.IList<Volume> Volumes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4995,7 +4995,7 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>Path to the script from the application root directory.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scriptPath")]
-        public virtual string ScriptPath { get; set; } 
+        public virtual string ScriptPath { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5010,21 +5010,21 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>Relative name of the service within the application. Example: default.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Full path to the Service resource in the API. Example:
         /// apps/myapp/services/default.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Ingress settings for this service. Will apply to all versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkSettings")]
-        public virtual NetworkSettings NetworkSettings { get; set; } 
+        public virtual NetworkSettings NetworkSettings { get; set; }
 
         /// <summary>Mapping that defines fractional HTTP traffic diversion to different versions within the
         /// service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("split")]
-        public virtual TrafficSplit Split { get; set; } 
+        public virtual TrafficSplit Split { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5039,7 +5039,7 @@ namespace Google.Apis.Appengine.v1.Data
         /// request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a
         /// DomainMapping resource. Example: 12345.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certificateId")]
-        public virtual string CertificateId { get; set; } 
+        public virtual string CertificateId { get; set; }
 
         /// <summary>ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until
         /// the new managed certificate has been successfully provisioned, the previous SSL state will be preserved.
@@ -5047,13 +5047,13 @@ namespace Google.Apis.Appengine.v1.Data
         /// and this field will be left empty. To remove SSL support while there is still a pending managed certificate,
         /// clear the certificate_id field with an UpdateDomainMappingRequest.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pendingManagedCertificateId")]
-        public virtual string PendingManagedCertificateId { get; set; } 
+        public virtual string PendingManagedCertificateId { get; set; }
 
         /// <summary>SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically
         /// provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this
         /// domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslManagementType")]
-        public virtual string SslManagementType { get; set; } 
+        public virtual string SslManagementType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5065,20 +5065,20 @@ namespace Google.Apis.Appengine.v1.Data
         /// <summary>Maximum number of instances to run for this version. Set to zero to disable max_instances
         /// configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxInstances")]
-        public virtual System.Nullable<int> MaxInstances { get; set; } 
+        public virtual System.Nullable<int> MaxInstances { get; set; }
 
         /// <summary>Minimum number of instances to run for this version. Set to zero to disable min_instances
         /// configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minInstances")]
-        public virtual System.Nullable<int> MinInstances { get; set; } 
+        public virtual System.Nullable<int> MinInstances { get; set; }
 
         /// <summary>Target CPU utilization ratio to maintain when scaling.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetCpuUtilization")]
-        public virtual System.Nullable<double> TargetCpuUtilization { get; set; } 
+        public virtual System.Nullable<double> TargetCpuUtilization { get; set; }
 
         /// <summary>Target throughput utilization ratio to maintain when scaling</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetThroughputUtilization")]
-        public virtual System.Nullable<double> TargetThroughputUtilization { get; set; } 
+        public virtual System.Nullable<double> TargetThroughputUtilization { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5094,35 +5094,35 @@ namespace Google.Apis.Appengine.v1.Data
         /// application. If enabled, uploads are charged against both your code and static data storage resource
         /// quotas.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicationReadable")]
-        public virtual System.Nullable<bool> ApplicationReadable { get; set; } 
+        public virtual System.Nullable<bool> ApplicationReadable { get; set; }
 
         /// <summary>Time a static file served by this handler should be cached by web proxies and browsers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expiration")]
-        public virtual object Expiration { get; set; } 
+        public virtual object Expiration { get; set; }
 
         /// <summary>HTTP headers to use for all responses from these URLs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpHeaders")]
-        public virtual System.Collections.Generic.IDictionary<string,string> HttpHeaders { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> HttpHeaders { get; set; }
 
         /// <summary>MIME type used to serve all files served by this handler.Defaults to file-specific MIME types,
         /// which are derived from each file's filename extension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-        public virtual string MimeType { get; set; } 
+        public virtual string MimeType { get; set; }
 
         /// <summary>Path to the static files matched by the URL pattern, from the application root directory. The path
         /// can refer to text matched in groupings in the URL pattern.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual string Path { get; set; } 
+        public virtual string Path { get; set; }
 
         /// <summary>Whether this handler should match the request if the file referenced by the handler does not
         /// exist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireMatchingFile")]
-        public virtual System.Nullable<bool> RequireMatchingFile { get; set; } 
+        public virtual System.Nullable<bool> RequireMatchingFile { get; set; }
 
         /// <summary>Regular expression that matches the file paths for all files that should be referenced by this
         /// handler.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadPathRegex")]
-        public virtual string UploadPathRegex { get; set; } 
+        public virtual string UploadPathRegex { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5136,17 +5136,17 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5163,12 +5163,12 @@ namespace Google.Apis.Appengine.v1.Data
         /// is supported for IP-based splits and up to three decimal places is supported for cookie-based
         /// splits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allocations")]
-        public virtual System.Collections.Generic.IDictionary<string,System.Nullable<double>> Allocations { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<double>> Allocations { get; set; }
 
         /// <summary>Mechanism used to determine which version a request is sent to. The traffic selection algorithm
         /// will be stable for either type until allocations are changed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shardBy")]
-        public virtual string ShardBy { get; set; } 
+        public virtual string ShardBy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5180,17 +5180,17 @@ namespace Google.Apis.Appengine.v1.Data
         /// <summary>Domain name to match against. The wildcard "*" is supported if specified before a period:
         /// "*.".Defaults to matching all domains: "*".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
-        public virtual string Domain { get; set; } 
+        public virtual string Domain { get; set; }
 
         /// <summary>Pathname within the host. Must start with a "/". A single "*" can be included at the end of the
         /// path.The sum of the lengths of the domain and path may not exceed 100 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual string Path { get; set; } 
+        public virtual string Path { get; set; }
 
         /// <summary>Resource ID of a service in this application that should serve the matched request. The service
         /// must already exist. Example: default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual string Service { get; set; } 
+        public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5203,40 +5203,40 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>Uses API Endpoints to handle requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiEndpoint")]
-        public virtual ApiEndpointHandler ApiEndpoint { get; set; } 
+        public virtual ApiEndpointHandler ApiEndpoint { get; set; }
 
         /// <summary>Action to take when users access resources that require authentication. Defaults to
         /// redirect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authFailAction")]
-        public virtual string AuthFailAction { get; set; } 
+        public virtual string AuthFailAction { get; set; }
 
         /// <summary>Level of login required to access this resource. Not supported for Node.js in the App Engine
         /// standard environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("login")]
-        public virtual string Login { get; set; } 
+        public virtual string Login { get; set; }
 
         /// <summary>30x code to use when performing redirects for the secure field. Defaults to 302.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirectHttpResponseCode")]
-        public virtual string RedirectHttpResponseCode { get; set; } 
+        public virtual string RedirectHttpResponseCode { get; set; }
 
         /// <summary>Executes a script to handle the requests that match this URL pattern. Only the auto value is
         /// supported for Node.js in the App Engine standard environment, for example "script": "auto".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("script")]
-        public virtual ScriptHandler Script { get; set; } 
+        public virtual ScriptHandler Script { get; set; }
 
         /// <summary>Security (HTTPS) enforcement for this URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityLevel")]
-        public virtual string SecurityLevel { get; set; } 
+        public virtual string SecurityLevel { get; set; }
 
         /// <summary>Returns the contents of a file, such as an image, as the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("staticFiles")]
-        public virtual StaticFilesHandler StaticFiles { get; set; } 
+        public virtual StaticFilesHandler StaticFiles { get; set; }
 
         /// <summary>URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped,
         /// but should not contain groupings. All URLs that begin with this prefix are handled by this handler, using
         /// the portion of the URL after the prefix as part of the file path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlRegex")]
-        public virtual string UrlRegex { get; set; } 
+        public virtual string UrlRegex { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5250,189 +5250,189 @@ namespace Google.Apis.Appengine.v1.Data
         /// (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is
         /// set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiConfig")]
-        public virtual ApiConfigHandler ApiConfig { get; set; } 
+        public virtual ApiConfigHandler ApiConfig { get; set; }
 
         /// <summary>Automatic scaling is based on request rate, response latencies, and other application metrics.
         /// Instances are dynamically created and destroyed as needed in order to handle traffic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("automaticScaling")]
-        public virtual AutomaticScaling AutomaticScaling { get; set; } 
+        public virtual AutomaticScaling AutomaticScaling { get; set; }
 
         /// <summary>A service with basic scaling will create an instance when the application receives a request. The
         /// instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent
         /// or driven by user activity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("basicScaling")]
-        public virtual BasicScaling BasicScaling { get; set; } 
+        public virtual BasicScaling BasicScaling { get; set; }
 
         /// <summary>Metadata settings that are supplied to this version to enable beta runtime features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("betaSettings")]
-        public virtual System.Collections.Generic.IDictionary<string,string> BetaSettings { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> BetaSettings { get; set; }
 
         /// <summary>Environment variables available to the build environment.Only returned in GET requests if view=FULL
         /// is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildEnvVariables")]
-        public virtual System.Collections.Generic.IDictionary<string,string> BuildEnvVariables { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> BuildEnvVariables { get; set; }
 
         /// <summary>Time that this version was created.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Email address of the user who created this version.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdBy")]
-        public virtual string CreatedBy { get; set; } 
+        public virtual string CreatedBy { get; set; }
 
         /// <summary>Duration that static files should be cached by web proxies and browsers. Only applicable if the
         /// corresponding StaticFilesHandler (https://cloud.google.com/appengine/docs/admin-
         /// api/reference/rest/v1/apps.services.versions#StaticFilesHandler) does not specify its own expiration
         /// time.Only returned in GET requests if view=FULL is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultExpiration")]
-        public virtual object DefaultExpiration { get; set; } 
+        public virtual object DefaultExpiration { get; set; }
 
         /// <summary>Code and application artifacts that make up this version.Only returned in GET requests if view=FULL
         /// is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
-        public virtual Deployment Deployment { get; set; } 
+        public virtual Deployment Deployment { get; set; }
 
         /// <summary>Total size in bytes of all the files that are included in this version and currently hosted on the
         /// App Engine disk.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskUsageBytes")]
-        public virtual System.Nullable<long> DiskUsageBytes { get; set; } 
+        public virtual System.Nullable<long> DiskUsageBytes { get; set; }
 
         /// <summary>Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible
         /// Service Proxy will be provided to serve the API implemented by the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpointsApiService")]
-        public virtual EndpointsApiService EndpointsApiService { get; set; } 
+        public virtual EndpointsApiService EndpointsApiService { get; set; }
 
         /// <summary>The entrypoint for the application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entrypoint")]
-        public virtual Entrypoint Entrypoint { get; set; } 
+        public virtual Entrypoint Entrypoint { get; set; }
 
         /// <summary>App Engine execution environment for this version.Defaults to standard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
-        public virtual string Env { get; set; } 
+        public virtual string Env { get; set; }
 
         /// <summary>Environment variables available to the application.Only returned in GET requests if view=FULL is
         /// set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("envVariables")]
-        public virtual System.Collections.Generic.IDictionary<string,string> EnvVariables { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> EnvVariables { get; set; }
 
         /// <summary>Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is
         /// set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorHandlers")]
-        public virtual System.Collections.Generic.IList<ErrorHandler> ErrorHandlers { get; set; } 
+        public virtual System.Collections.Generic.IList<ErrorHandler> ErrorHandlers { get; set; }
 
         /// <summary>An ordered list of URL-matching patterns that should be applied to incoming requests. The first
         /// matching URL handles the request and other request handlers are not attempted.Only returned in GET requests
         /// if view=FULL is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("handlers")]
-        public virtual System.Collections.Generic.IList<UrlMap> Handlers { get; set; } 
+        public virtual System.Collections.Generic.IList<UrlMap> Handlers { get; set; }
 
         /// <summary>Configures health checking for instances. Unhealthy instances are stopped and replaced with new
         /// instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL
         /// is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthCheck")]
-        public virtual HealthCheck HealthCheck { get; set; } 
+        public virtual HealthCheck HealthCheck { get; set; }
 
         /// <summary>Relative name of the version within the service. Example: v1. Version names can contain only
         /// lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix
         /// "ah-".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Before an application can receive email or XMPP messages, the application must be configured to
         /// enable the service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inboundServices")]
-        public virtual System.Collections.Generic.IList<string> InboundServices { get; set; } 
+        public virtual System.Collections.Generic.IList<string> InboundServices { get; set; }
 
         /// <summary>Instance class that is used to run this version. Valid values are: AutomaticScaling: F1, F2, F4,
         /// F4_1G ManualScaling or BasicScaling: B1, B2, B4, B8, B4_1GDefaults to F1 for AutomaticScaling and B1 for
         /// ManualScaling or BasicScaling.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceClass")]
-        public virtual string InstanceClass { get; set; } 
+        public virtual string InstanceClass { get; set; }
 
         /// <summary>Configuration for third-party Python runtime libraries that are required by the application.Only
         /// returned in GET requests if view=FULL is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("libraries")]
-        public virtual System.Collections.Generic.IList<Library> Libraries { get; set; } 
+        public virtual System.Collections.Generic.IList<Library> Libraries { get; set; }
 
         /// <summary>Configures liveness health checking for instances. Unhealthy instances are stopped and replaced
         /// with new instancesOnly returned in GET requests if view=FULL is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("livenessCheck")]
-        public virtual LivenessCheck LivenessCheck { get; set; } 
+        public virtual LivenessCheck LivenessCheck { get; set; }
 
         /// <summary>A service with manual scaling runs continuously, allowing you to perform complex initialization and
         /// rely on the state of its memory over time. Manually scaled versions are sometimes referred to as
         /// "backends".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manualScaling")]
-        public virtual ManualScaling ManualScaling { get; set; } 
+        public virtual ManualScaling ManualScaling { get; set; }
 
         /// <summary>Full path to the Version resource in the API. Example:
         /// apps/myapp/services/default/versions/v1.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Extra network settings. Only applicable in the App Engine flexible environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
-        public virtual Network Network { get; set; } 
+        public virtual Network Network { get; set; }
 
         /// <summary>Files that match this pattern will not be built into this version. Only applicable for Go
         /// runtimes.Only returned in GET requests if view=FULL is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nobuildFilesRegex")]
-        public virtual string NobuildFilesRegex { get; set; } 
+        public virtual string NobuildFilesRegex { get; set; }
 
         /// <summary>Configures readiness health checking for instances. Unhealthy instances are not put into the
         /// backend traffic rotation.Only returned in GET requests if view=FULL is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readinessCheck")]
-        public virtual ReadinessCheck ReadinessCheck { get; set; } 
+        public virtual ReadinessCheck ReadinessCheck { get; set; }
 
         /// <summary>Machine resources for this version. Only applicable in the App Engine flexible
         /// environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual Resources Resources { get; set; } 
+        public virtual Resources Resources { get; set; }
 
         /// <summary>Desired runtime. Example: python27.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtime")]
-        public virtual string Runtime { get; set; } 
+        public virtual string Runtime { get; set; }
 
         /// <summary>The version of the API in the given runtime environment. Please see the app.yaml reference for
         /// valid values at https://cloud.google.com/appengine/docs/standard//config/appref</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeApiVersion")]
-        public virtual string RuntimeApiVersion { get; set; } 
+        public virtual string RuntimeApiVersion { get; set; }
 
         /// <summary>The channel of the runtime to use. Only available for some runtimes. Defaults to the default
         /// channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeChannel")]
-        public virtual string RuntimeChannel { get; set; } 
+        public virtual string RuntimeChannel { get; set; }
 
         /// <summary>The path or name of the app's main executable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeMainExecutablePath")]
-        public virtual string RuntimeMainExecutablePath { get; set; } 
+        public virtual string RuntimeMainExecutablePath { get; set; }
 
         /// <summary>Current serving status of this version. Only the versions with a SERVING status create instances
         /// and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingStatus")]
-        public virtual string ServingStatus { get; set; } 
+        public virtual string ServingStatus { get; set; }
 
         /// <summary>Whether multiple requests can be dispatched to this version at once.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threadsafe")]
-        public virtual System.Nullable<bool> Threadsafe { get; set; } 
+        public virtual System.Nullable<bool> Threadsafe { get; set; }
 
         /// <summary>Serving URL for this version. Example: "https://myversion-dot-myservice-dot-
         /// myapp.appspot.com"@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionUrl")]
-        public virtual string VersionUrl { get; set; } 
+        public virtual string VersionUrl { get; set; }
 
         /// <summary>Whether to deploy this version in a container on a virtual machine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vm")]
-        public virtual System.Nullable<bool> Vm { get; set; } 
+        public virtual System.Nullable<bool> Vm { get; set; }
 
         /// <summary>Enables VPC connectivity for standard apps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcAccessConnector")]
-        public virtual VpcAccessConnector VpcAccessConnector { get; set; } 
+        public virtual VpcAccessConnector VpcAccessConnector { get; set; }
 
         /// <summary>The Google Compute Engine zones that are supported by this version in the App Engine flexible
         /// environment. Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zones")]
-        public virtual System.Collections.Generic.IList<string> Zones { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Zones { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5444,15 +5444,15 @@ namespace Google.Apis.Appengine.v1.Data
     {
         /// <summary>Unique name for the volume.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Volume size in gigabytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
-        public virtual System.Nullable<double> SizeGb { get; set; } 
+        public virtual System.Nullable<double> SizeGb { get; set; }
 
         /// <summary>Underlying volume type, e.g. 'tmpfs'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeType")]
-        public virtual string VolumeType { get; set; } 
+        public virtual string VolumeType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5464,7 +5464,7 @@ namespace Google.Apis.Appengine.v1.Data
         /// <summary>Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-
         /// central1/connectors/c1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5477,12 +5477,12 @@ namespace Google.Apis.Appengine.v1.Data
         /// equal to the actual number of files. Used for optimizing performance; if not provided, deployment may be
         /// slow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filesCount")]
-        public virtual System.Nullable<int> FilesCount { get; set; } 
+        public virtual System.Nullable<int> FilesCount { get; set; }
 
         /// <summary>URL of the zip file to deploy from. Must be a URL to a resource in Google Cloud Storage in the form
         /// 'http(s)://storage.googleapis.com//'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceUrl")]
-        public virtual string SourceUrl { get; set; } 
+        public virtual string SourceUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

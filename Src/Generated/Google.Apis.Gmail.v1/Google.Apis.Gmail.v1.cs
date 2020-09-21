@@ -6257,16 +6257,16 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>The state that a message should be left in after it has been forwarded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disposition")]
-        public virtual string Disposition { get; set; } 
+        public virtual string Disposition { get; set; }
 
         /// <summary>Email address to which all incoming messages are forwarded. This email address must be a verified
         /// member of the forwarding addresses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
-        public virtual string EmailAddress { get; set; } 
+        public virtual string EmailAddress { get; set; }
 
         /// <summary>Whether all incoming mail is automatically forwarded to another address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6276,7 +6276,7 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>The IDs of the messages to delete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ids")]
-        public virtual System.Collections.Generic.IList<string> Ids { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Ids { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6286,15 +6286,15 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>A list of label IDs to add to messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addLabelIds")]
-        public virtual System.Collections.Generic.IList<string> AddLabelIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AddLabelIds { get; set; }
 
         /// <summary>The IDs of the messages to modify. There is a limit of 1000 ids per request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ids")]
-        public virtual System.Collections.Generic.IList<string> Ids { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Ids { get; set; }
 
         /// <summary>A list of label IDs to remove from messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removeLabelIds")]
-        public virtual System.Collections.Generic.IList<string> RemoveLabelIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> RemoveLabelIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6307,12 +6307,12 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>The email address of the delegate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delegateEmail")]
-        public virtual string DelegateEmail { get; set; } 
+        public virtual string DelegateEmail { get; set; }
 
         /// <summary>Indicates whether this address has been verified and can act as a delegate for the account. Read-
         /// only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verificationStatus")]
-        public virtual string VerificationStatus { get; set; } 
+        public virtual string VerificationStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6323,11 +6323,11 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>The immutable ID of the draft.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The message content of the draft.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual Message Message { get; set; } 
+        public virtual Message Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6339,15 +6339,15 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>Action that the filter performs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual FilterAction Action { get; set; } 
+        public virtual FilterAction Action { get; set; }
 
         /// <summary>Matching criteria for the filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("criteria")]
-        public virtual FilterCriteria Criteria { get; set; } 
+        public virtual FilterCriteria Criteria { get; set; }
 
         /// <summary>The server assigned ID of the filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6358,15 +6358,15 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>List of labels to add to the message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addLabelIds")]
-        public virtual System.Collections.Generic.IList<string> AddLabelIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AddLabelIds { get; set; }
 
         /// <summary>Email address that the message should be forwarded to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forward")]
-        public virtual string Forward { get; set; } 
+        public virtual string Forward { get; set; }
 
         /// <summary>List of labels to remove from the message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removeLabelIds")]
-        public virtual System.Collections.Generic.IList<string> RemoveLabelIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> RemoveLabelIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6377,44 +6377,44 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>Whether the response should exclude chats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeChats")]
-        public virtual System.Nullable<bool> ExcludeChats { get; set; } 
+        public virtual System.Nullable<bool> ExcludeChats { get; set; }
 
         /// <summary>The sender's display name or email address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("from")]
-        public virtual string From { get; set; } 
+        public virtual string From { get; set; }
 
         /// <summary>Whether the message has any attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasAttachment")]
-        public virtual System.Nullable<bool> HasAttachment { get; set; } 
+        public virtual System.Nullable<bool> HasAttachment { get; set; }
 
         /// <summary>Only return messages not matching the specified query. Supports the same query format as the Gmail
         /// search box. For example, `"from:someuser@example.com rfc822msgid: is:unread"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negatedQuery")]
-        public virtual string NegatedQuery { get; set; } 
+        public virtual string NegatedQuery { get; set; }
 
         /// <summary>Only return messages matching the specified query. Supports the same query format as the Gmail
         /// search box. For example, `"from:someuser@example.com rfc822msgid: is:unread"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
-        public virtual string Query { get; set; } 
+        public virtual string Query { get; set; }
 
         /// <summary>The size of the entire RFC822 message in bytes, including all headers and attachments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
-        public virtual System.Nullable<int> Size { get; set; } 
+        public virtual System.Nullable<int> Size { get; set; }
 
         /// <summary>How the message size in bytes should be in relation to the size field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeComparison")]
-        public virtual string SizeComparison { get; set; } 
+        public virtual string SizeComparison { get; set; }
 
         /// <summary>Case-insensitive phrase found in the message's subject. Trailing and leading whitespace are be
         /// trimmed and adjacent spaces are collapsed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subject")]
-        public virtual string Subject { get; set; } 
+        public virtual string Subject { get; set; }
 
         /// <summary>The recipient's display name or email address. Includes recipients in the "to", "cc", and "bcc"
         /// header fields. You can use simply the local part of the email address. For example, "example" and "example@"
         /// both match "example@gmail.com". This field is case-insensitive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("to")]
-        public virtual string To { get; set; } 
+        public virtual string To { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6425,11 +6425,11 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>An email address to which messages can be forwarded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingEmail")]
-        public virtual string ForwardingEmail { get; set; } 
+        public virtual string ForwardingEmail { get; set; }
 
         /// <summary>Indicates whether this address has been verified and is usable for forwarding. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verificationStatus")]
-        public virtual string VerificationStatus { get; set; } 
+        public virtual string VerificationStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6441,29 +6441,29 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>The mailbox sequence ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<ulong> Id { get; set; } 
+        public virtual System.Nullable<ulong> Id { get; set; }
 
         /// <summary>Labels added to messages in this history record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelsAdded")]
-        public virtual System.Collections.Generic.IList<HistoryLabelAdded> LabelsAdded { get; set; } 
+        public virtual System.Collections.Generic.IList<HistoryLabelAdded> LabelsAdded { get; set; }
 
         /// <summary>Labels removed from messages in this history record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelsRemoved")]
-        public virtual System.Collections.Generic.IList<HistoryLabelRemoved> LabelsRemoved { get; set; } 
+        public virtual System.Collections.Generic.IList<HistoryLabelRemoved> LabelsRemoved { get; set; }
 
         /// <summary>List of messages changed in this history record. The fields for specific change types, such as
         /// `messagesAdded` may duplicate messages in this field. We recommend using the specific change-type fields
         /// instead of this.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
-        public virtual System.Collections.Generic.IList<Message> Messages { get; set; } 
+        public virtual System.Collections.Generic.IList<Message> Messages { get; set; }
 
         /// <summary>Messages added to the mailbox in this history record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messagesAdded")]
-        public virtual System.Collections.Generic.IList<HistoryMessageAdded> MessagesAdded { get; set; } 
+        public virtual System.Collections.Generic.IList<HistoryMessageAdded> MessagesAdded { get; set; }
 
         /// <summary>Messages deleted (not Trashed) from the mailbox in this history record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messagesDeleted")]
-        public virtual System.Collections.Generic.IList<HistoryMessageDeleted> MessagesDeleted { get; set; } 
+        public virtual System.Collections.Generic.IList<HistoryMessageDeleted> MessagesDeleted { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6473,10 +6473,10 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>Label IDs added to the message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelIds")]
-        public virtual System.Collections.Generic.IList<string> LabelIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> LabelIds { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual Message Message { get; set; } 
+        public virtual Message Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6486,10 +6486,10 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>Label IDs removed from the message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelIds")]
-        public virtual System.Collections.Generic.IList<string> LabelIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> LabelIds { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual Message Message { get; set; } 
+        public virtual Message Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6498,7 +6498,7 @@ namespace Google.Apis.Gmail.v1.Data
     public class HistoryMessageAdded : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual Message Message { get; set; } 
+        public virtual Message Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6507,7 +6507,7 @@ namespace Google.Apis.Gmail.v1.Data
     public class HistoryMessageDeleted : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual Message Message { get; set; } 
+        public virtual Message Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6520,21 +6520,21 @@ namespace Google.Apis.Gmail.v1.Data
         /// IMAP. Otherwise, Gmail will wait for an update from the client before expunging messages marked as
         /// deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoExpunge")]
-        public virtual System.Nullable<bool> AutoExpunge { get; set; } 
+        public virtual System.Nullable<bool> AutoExpunge { get; set; }
 
         /// <summary>Whether IMAP is enabled for the account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The action that will be executed on a message when it is marked as deleted and expunged from the
         /// last visible IMAP folder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expungeBehavior")]
-        public virtual string ExpungeBehavior { get; set; } 
+        public virtual string ExpungeBehavior { get; set; }
 
         /// <summary>An optional limit on the number of messages that an IMAP folder may contain. Legal values are 0,
         /// 1000, 2000, 5000 or 10000. A value of zero is interpreted to mean that there is no limit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxFolderSize")]
-        public virtual System.Nullable<int> MaxFolderSize { get; set; } 
+        public virtual System.Nullable<int> MaxFolderSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6546,40 +6546,40 @@ namespace Google.Apis.Gmail.v1.Data
         /// <summary>The color to assign to the label. Color is only available for labels that have their `type` set to
         /// `user`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
-        public virtual LabelColor Color { get; set; } 
+        public virtual LabelColor Color { get; set; }
 
         /// <summary>The immutable ID of the label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The visibility of the label in the label list in the Gmail web interface.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelListVisibility")]
-        public virtual string LabelListVisibility { get; set; } 
+        public virtual string LabelListVisibility { get; set; }
 
         /// <summary>The visibility of messages with this label in the message list in the Gmail web
         /// interface.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageListVisibility")]
-        public virtual string MessageListVisibility { get; set; } 
+        public virtual string MessageListVisibility { get; set; }
 
         /// <summary>The total number of messages with the label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messagesTotal")]
-        public virtual System.Nullable<int> MessagesTotal { get; set; } 
+        public virtual System.Nullable<int> MessagesTotal { get; set; }
 
         /// <summary>The number of unread messages with the label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messagesUnread")]
-        public virtual System.Nullable<int> MessagesUnread { get; set; } 
+        public virtual System.Nullable<int> MessagesUnread { get; set; }
 
         /// <summary>The display name of the label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The total number of threads with the label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threadsTotal")]
-        public virtual System.Nullable<int> ThreadsTotal { get; set; } 
+        public virtual System.Nullable<int> ThreadsTotal { get; set; }
 
         /// <summary>The number of unread threads with the label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threadsUnread")]
-        public virtual System.Nullable<int> ThreadsUnread { get; set; } 
+        public virtual System.Nullable<int> ThreadsUnread { get; set; }
 
         /// <summary>The owner type for the label. User labels are created by the user and can be modified and deleted
         /// by the user and can be applied to any message or thread. System labels are internally created and cannot be
@@ -6588,7 +6588,7 @@ namespace Google.Apis.Gmail.v1.Data
         /// `UNREAD` labels from messages and threads, but cannot apply or remove the `DRAFTS` or `SENT` labels from
         /// messages or threads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6608,7 +6608,7 @@ namespace Google.Apis.Gmail.v1.Data
         /// #fbe983, #684e07, #fdedc1, #0b4f30, #b3efd3, #04502e, #a2dcc1, \#c2c2c2, #4986e7, #2da2bb, #b99aff, #994a64,
         /// #f691b2, #ff7537, #ffad46, \#662e37, #ebdbde, #cca6ac, #094228, #42d692, #16a765</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
-        public virtual string BackgroundColor { get; set; } 
+        public virtual string BackgroundColor { get; set; }
 
         /// <summary>The text color of the label, represented as hex string. This field is required in order to set the
         /// color of a label. Only the following predefined set of color values are allowed: \#000000, #434343, #666666,
@@ -6622,7 +6622,7 @@ namespace Google.Apis.Gmail.v1.Data
         /// #b3efd3, #04502e, #a2dcc1, \#c2c2c2, #4986e7, #2da2bb, #b99aff, #994a64, #f691b2, #ff7537, #ffad46,
         /// \#662e37, #ebdbde, #cca6ac, #094228, #42d692, #16a765</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textColor")]
-        public virtual string TextColor { get; set; } 
+        public virtual string TextColor { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6640,7 +6640,7 @@ namespace Google.Apis.Gmail.v1.Data
         /// case that a user's display language is not available for use on a particular client, said client
         /// automatically chooses to display in the closest supported variant (or a reasonable default).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayLanguage")]
-        public virtual string DisplayLanguage { get; set; } 
+        public virtual string DisplayLanguage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6652,7 +6652,7 @@ namespace Google.Apis.Gmail.v1.Data
         /// <summary>List of the user's delegates (with any verification status). If an account doesn't have delegates,
         /// this field doesn't appear.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delegates")]
-        public virtual System.Collections.Generic.IList<Delegate> Delegates { get; set; } 
+        public virtual System.Collections.Generic.IList<Delegate> Delegates { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6663,15 +6663,15 @@ namespace Google.Apis.Gmail.v1.Data
         /// <summary>List of drafts. Note that the `Message` property in each `Draft` resource only contains an `id` and
         /// a `threadId`. The messages.get method can fetch additional message details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("drafts")]
-        public virtual System.Collections.Generic.IList<Draft> Drafts { get; set; } 
+        public virtual System.Collections.Generic.IList<Draft> Drafts { get; set; }
 
         /// <summary>Token to retrieve the next page of results in the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Estimated total number of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultSizeEstimate")]
-        public virtual System.Nullable<long> ResultSizeEstimate { get; set; } 
+        public virtual System.Nullable<long> ResultSizeEstimate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6682,7 +6682,7 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>List of a user's filters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual System.Collections.Generic.IList<Filter> Filter { get; set; } 
+        public virtual System.Collections.Generic.IList<Filter> Filter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6693,7 +6693,7 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>List of addresses that may be used for forwarding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingAddresses")]
-        public virtual System.Collections.Generic.IList<ForwardingAddress> ForwardingAddresses { get; set; } 
+        public virtual System.Collections.Generic.IList<ForwardingAddress> ForwardingAddresses { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6704,15 +6704,15 @@ namespace Google.Apis.Gmail.v1.Data
         /// <summary>List of history records. Any `messages` contained in the response will typically only have `id` and
         /// `threadId` fields populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("history")]
-        public virtual System.Collections.Generic.IList<History> History { get; set; } 
+        public virtual System.Collections.Generic.IList<History> History { get; set; }
 
         /// <summary>The ID of the mailbox's current history record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("historyId")]
-        public virtual System.Nullable<ulong> HistoryId { get; set; } 
+        public virtual System.Nullable<ulong> HistoryId { get; set; }
 
         /// <summary>Page token to retrieve the next page of results in the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6724,7 +6724,7 @@ namespace Google.Apis.Gmail.v1.Data
         /// `messageListVisibility`, `labelListVisibility`, and `type`. The labels.get method can fetch additional label
         /// details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IList<Label> Labels { get; set; } 
+        public virtual System.Collections.Generic.IList<Label> Labels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6735,15 +6735,15 @@ namespace Google.Apis.Gmail.v1.Data
         /// <summary>List of messages. Note that each message resource contains only an `id` and a `threadId`.
         /// Additional message details can be fetched using the messages.get method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
-        public virtual System.Collections.Generic.IList<Message> Messages { get; set; } 
+        public virtual System.Collections.Generic.IList<Message> Messages { get; set; }
 
         /// <summary>Token to retrieve the next page of results in the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Estimated total number of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultSizeEstimate")]
-        public virtual System.Nullable<long> ResultSizeEstimate { get; set; } 
+        public virtual System.Nullable<long> ResultSizeEstimate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6754,7 +6754,7 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>List of send-as aliases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sendAs")]
-        public virtual System.Collections.Generic.IList<SendAs> SendAs { get; set; } 
+        public virtual System.Collections.Generic.IList<SendAs> SendAs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6764,7 +6764,7 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>List of SmimeInfo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("smimeInfo")]
-        public virtual System.Collections.Generic.IList<SmimeInfo> SmimeInfo { get; set; } 
+        public virtual System.Collections.Generic.IList<SmimeInfo> SmimeInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6774,16 +6774,16 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>Page token to retrieve the next page of results in the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Estimated total number of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultSizeEstimate")]
-        public virtual System.Nullable<long> ResultSizeEstimate { get; set; } 
+        public virtual System.Nullable<long> ResultSizeEstimate { get; set; }
 
         /// <summary>List of threads. Note that each thread resource does not contain a list of `messages`. The list of
         /// `messages` for a given thread can be fetched using the threads.get method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threads")]
-        public virtual System.Collections.Generic.IList<Thread> Threads { get; set; } 
+        public virtual System.Collections.Generic.IList<Thread> Threads { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6794,46 +6794,46 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>The ID of the last history record that modified this message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("historyId")]
-        public virtual System.Nullable<ulong> HistoryId { get; set; } 
+        public virtual System.Nullable<ulong> HistoryId { get; set; }
 
         /// <summary>The immutable ID of the message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The internal message creation timestamp (epoch ms), which determines ordering in the inbox. For
         /// normal SMTP-received email, this represents the time the message was originally accepted by Google, which is
         /// more reliable than the `Date` header. However, for API-migrated mail, it can be configured by client to be
         /// based on the `Date` header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalDate")]
-        public virtual System.Nullable<long> InternalDate { get; set; } 
+        public virtual System.Nullable<long> InternalDate { get; set; }
 
         /// <summary>List of IDs of labels applied to this message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelIds")]
-        public virtual System.Collections.Generic.IList<string> LabelIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> LabelIds { get; set; }
 
         /// <summary>The parsed email structure in the message parts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual MessagePart Payload { get; set; } 
+        public virtual MessagePart Payload { get; set; }
 
         /// <summary>The entire email message in an RFC 2822 formatted and base64url encoded string. Returned in
         /// `messages.get` and `drafts.get` responses when the `format=RAW` parameter is supplied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("raw")]
-        public virtual string Raw { get; set; } 
+        public virtual string Raw { get; set; }
 
         /// <summary>Estimated size in bytes of the message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeEstimate")]
-        public virtual System.Nullable<int> SizeEstimate { get; set; } 
+        public virtual System.Nullable<int> SizeEstimate { get; set; }
 
         /// <summary>A short part of the message text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual string Snippet { get; set; } 
+        public virtual string Snippet { get; set; }
 
         /// <summary>The ID of the thread the message belongs to. To add a message or draft to a thread, the following
         /// criteria must be met: 1. The requested `threadId` must be specified on the `Message` or `Draft.Message` you
         /// supply with your request. 2. The `References` and `In-Reply-To` headers must be set in compliance with the
         /// [RFC 2822](https://tools.ietf.org/html/rfc2822) standard. 3. The `Subject` headers must match. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threadId")]
-        public virtual string ThreadId { get; set; } 
+        public virtual string ThreadId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6844,32 +6844,32 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>The message part body for this part, which may be empty for container MIME message parts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("body")]
-        public virtual MessagePartBody Body { get; set; } 
+        public virtual MessagePartBody Body { get; set; }
 
         /// <summary>The filename of the attachment. Only present if this message part represents an
         /// attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filename")]
-        public virtual string Filename { get; set; } 
+        public virtual string Filename { get; set; }
 
         /// <summary>List of headers on this message part. For the top-level message part, representing the entire
         /// message payload, it will contain the standard RFC 2822 email headers such as `To`, `From`, and
         /// `Subject`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
-        public virtual System.Collections.Generic.IList<MessagePartHeader> Headers { get; set; } 
+        public virtual System.Collections.Generic.IList<MessagePartHeader> Headers { get; set; }
 
         /// <summary>The MIME type of the message part.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-        public virtual string MimeType { get; set; } 
+        public virtual string MimeType { get; set; }
 
         /// <summary>The immutable ID of the message part.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partId")]
-        public virtual string PartId { get; set; } 
+        public virtual string PartId { get; set; }
 
         /// <summary>The child MIME message parts of this part. This only applies to container MIME message parts, for
         /// example `multipart`. For non- container MIME message part types, such as `text/plain`, this field is empty.
         /// For more information, see RFC 1521.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parts")]
-        public virtual System.Collections.Generic.IList<MessagePart> Parts { get; set; } 
+        public virtual System.Collections.Generic.IList<MessagePart> Parts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6882,17 +6882,17 @@ namespace Google.Apis.Gmail.v1.Data
         /// `messages.attachments.get` request. When not present, the entire content of the message part body is
         /// contained in the data field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachmentId")]
-        public virtual string AttachmentId { get; set; } 
+        public virtual string AttachmentId { get; set; }
 
         /// <summary>The body data of a MIME message part as a base64url encoded string. May be empty for MIME container
         /// types that have no message body or when the body data is sent as a separate attachment. An attachment ID is
         /// present if the body data is contained in a separate attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual string Data { get; set; } 
+        public virtual string Data { get; set; }
 
         /// <summary>Number of bytes for the message part data (encoding notwithstanding).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
-        public virtual System.Nullable<int> Size { get; set; } 
+        public virtual System.Nullable<int> Size { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6902,11 +6902,11 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>The name of the header before the `:` separator. For example, `To`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The value of the header after the `:` separator. For example, `someuser@example.com`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6916,11 +6916,11 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>A list of IDs of labels to add to this message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addLabelIds")]
-        public virtual System.Collections.Generic.IList<string> AddLabelIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AddLabelIds { get; set; }
 
         /// <summary>A list IDs of labels to remove from this message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removeLabelIds")]
-        public virtual System.Collections.Generic.IList<string> RemoveLabelIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> RemoveLabelIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6930,11 +6930,11 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>A list of IDs of labels to add to this thread.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addLabelIds")]
-        public virtual System.Collections.Generic.IList<string> AddLabelIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AddLabelIds { get; set; }
 
         /// <summary>A list of IDs of labels to remove from this thread.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removeLabelIds")]
-        public virtual System.Collections.Generic.IList<string> RemoveLabelIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> RemoveLabelIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6945,11 +6945,11 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>The range of messages which are accessible via POP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessWindow")]
-        public virtual string AccessWindow { get; set; } 
+        public virtual string AccessWindow { get; set; }
 
         /// <summary>The action that will be executed on a message after it has been fetched via POP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disposition")]
-        public virtual string Disposition { get; set; } 
+        public virtual string Disposition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6960,19 +6960,19 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>The user's email address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
-        public virtual string EmailAddress { get; set; } 
+        public virtual string EmailAddress { get; set; }
 
         /// <summary>The ID of the mailbox's current history record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("historyId")]
-        public virtual System.Nullable<ulong> HistoryId { get; set; } 
+        public virtual System.Nullable<ulong> HistoryId { get; set; }
 
         /// <summary>The total number of messages in the mailbox.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messagesTotal")]
-        public virtual System.Nullable<int> MessagesTotal { get; set; } 
+        public virtual System.Nullable<int> MessagesTotal { get; set; }
 
         /// <summary>The total number of threads in the mailbox.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threadsTotal")]
-        public virtual System.Nullable<int> ThreadsTotal { get; set; } 
+        public virtual System.Nullable<int> ThreadsTotal { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6988,51 +6988,51 @@ namespace Google.Apis.Gmail.v1.Data
         /// primary address associated with the account. If the admin has disabled the ability for users to update their
         /// name format, requests to update this field for the primary login will silently fail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Whether this address is selected as the default "From:" address in situations such as composing a
         /// new message or sending a vacation auto-reply. Every Gmail account has exactly one default send-as address,
         /// so the only legal value that clients may write to this field is `true`. Changing this from `false` to `true`
         /// for an address will result in this field becoming `false` for the other previous default address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
-        public virtual System.Nullable<bool> IsDefault { get; set; } 
+        public virtual System.Nullable<bool> IsDefault { get; set; }
 
         /// <summary>Whether this address is the primary address used to login to the account. Every Gmail account has
         /// exactly one primary address, and it cannot be deleted from the collection of send-as aliases. This field is
         /// read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isPrimary")]
-        public virtual System.Nullable<bool> IsPrimary { get; set; } 
+        public virtual System.Nullable<bool> IsPrimary { get; set; }
 
         /// <summary>An optional email address that is included in a "Reply-To:" header for mail sent using this alias.
         /// If this is empty, Gmail will not generate a "Reply-To:" header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replyToAddress")]
-        public virtual string ReplyToAddress { get; set; } 
+        public virtual string ReplyToAddress { get; set; }
 
         /// <summary>The email address that appears in the "From:" header for mail sent using this alias. This is read-
         /// only for all operations except create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sendAsEmail")]
-        public virtual string SendAsEmail { get; set; } 
+        public virtual string SendAsEmail { get; set; }
 
         /// <summary>An optional HTML signature that is included in messages composed with this alias in the Gmail web
         /// UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]
-        public virtual string Signature { get; set; } 
+        public virtual string Signature { get; set; }
 
         /// <summary>An optional SMTP service that will be used as an outbound relay for mail sent using this alias. If
         /// this is empty, outbound mail will be sent directly from Gmail's servers to the destination SMTP service.
         /// This setting only applies to custom "from" aliases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("smtpMsa")]
-        public virtual SmtpMsa SmtpMsa { get; set; } 
+        public virtual SmtpMsa SmtpMsa { get; set; }
 
         /// <summary>Whether Gmail should treat this address as an alias for the user's primary email address. This
         /// setting only applies to custom "from" aliases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("treatAsAlias")]
-        public virtual System.Nullable<bool> TreatAsAlias { get; set; } 
+        public virtual System.Nullable<bool> TreatAsAlias { get; set; }
 
         /// <summary>Indicates whether this address has been verified for use as a send-as alias. Read-only. This
         /// setting only applies to custom "from" aliases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verificationStatus")]
-        public virtual string VerificationStatus { get; set; } 
+        public virtual string VerificationStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7043,35 +7043,35 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>Encrypted key password, when key is encrypted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptedKeyPassword")]
-        public virtual string EncryptedKeyPassword { get; set; } 
+        public virtual string EncryptedKeyPassword { get; set; }
 
         /// <summary>When the certificate expires (in milliseconds since epoch).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expiration")]
-        public virtual System.Nullable<long> Expiration { get; set; } 
+        public virtual System.Nullable<long> Expiration { get; set; }
 
         /// <summary>The immutable ID for the SmimeInfo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Whether this SmimeInfo is the default one for this user's send-as address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
-        public virtual System.Nullable<bool> IsDefault { get; set; } 
+        public virtual System.Nullable<bool> IsDefault { get; set; }
 
         /// <summary>The S/MIME certificate issuer's common name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issuerCn")]
-        public virtual string IssuerCn { get; set; } 
+        public virtual string IssuerCn { get; set; }
 
         /// <summary>PEM formatted X509 concatenated certificate string (standard base64 encoding). Format used for
         /// returning key, which includes public key as well as certificate chain (not private key).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pem")]
-        public virtual string Pem { get; set; } 
+        public virtual string Pem { get; set; }
 
         /// <summary>PKCS#12 format containing a single private/public key pair and certificate chain. This format is
         /// only accepted from client for creating a new SmimeInfo and is never returned, because the private key is not
         /// intended to be exported. PKCS#12 may be encrypted, in which case encryptedKeyPassword should be set
         /// appropriately.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pkcs12")]
-        public virtual string Pkcs12 { get; set; } 
+        public virtual string Pkcs12 { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7082,27 +7082,27 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>The hostname of the SMTP service. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
-        public virtual string Host { get; set; } 
+        public virtual string Host { get; set; }
 
         /// <summary>The password that will be used for authentication with the SMTP service. This is a write-only field
         /// that can be specified in requests to create or update SendAs settings; it is never populated in
         /// responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
-        public virtual string Password { get; set; } 
+        public virtual string Password { get; set; }
 
         /// <summary>The port of the SMTP service. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
-        public virtual System.Nullable<int> Port { get; set; } 
+        public virtual System.Nullable<int> Port { get; set; }
 
         /// <summary>The protocol that will be used to secure communication with the SMTP service. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityMode")]
-        public virtual string SecurityMode { get; set; } 
+        public virtual string SecurityMode { get; set; }
 
         /// <summary>The username that will be used for authentication with the SMTP service. This is a write-only field
         /// that can be specified in requests to create or update SendAs settings; it is never populated in
         /// responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; } 
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7113,19 +7113,19 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>The ID of the last history record that modified this thread.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("historyId")]
-        public virtual System.Nullable<ulong> HistoryId { get; set; } 
+        public virtual System.Nullable<ulong> HistoryId { get; set; }
 
         /// <summary>The unique ID of the thread.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The list of messages in the thread.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
-        public virtual System.Collections.Generic.IList<Message> Messages { get; set; } 
+        public virtual System.Collections.Generic.IList<Message> Messages { get; set; }
 
         /// <summary>A short part of the message text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual string Snippet { get; set; } 
+        public virtual string Snippet { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7137,45 +7137,45 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>Flag that controls whether Gmail automatically replies to messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableAutoReply")]
-        public virtual System.Nullable<bool> EnableAutoReply { get; set; } 
+        public virtual System.Nullable<bool> EnableAutoReply { get; set; }
 
         /// <summary>An optional end time for sending auto-replies (epoch ms). When this is specified, Gmail will
         /// automatically reply only to messages that it receives before the end time. If both `startTime` and `endTime`
         /// are specified, `startTime` must precede `endTime`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual System.Nullable<long> EndTime { get; set; } 
+        public virtual System.Nullable<long> EndTime { get; set; }
 
         /// <summary>Response body in HTML format. Gmail will sanitize the HTML before storing it. If both
         /// `response_body_plain_text` and `response_body_html` are specified, `response_body_html` will be
         /// used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseBodyHtml")]
-        public virtual string ResponseBodyHtml { get; set; } 
+        public virtual string ResponseBodyHtml { get; set; }
 
         /// <summary>Response body in plain text format. If both `response_body_plain_text` and `response_body_html` are
         /// specified, `response_body_html` will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseBodyPlainText")]
-        public virtual string ResponseBodyPlainText { get; set; } 
+        public virtual string ResponseBodyPlainText { get; set; }
 
         /// <summary>Optional text to prepend to the subject line in vacation responses. In order to enable auto-
         /// replies, either the response subject or the response body must be nonempty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseSubject")]
-        public virtual string ResponseSubject { get; set; } 
+        public virtual string ResponseSubject { get; set; }
 
         /// <summary>Flag that determines whether responses are sent to recipients who are not in the user's list of
         /// contacts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictToContacts")]
-        public virtual System.Nullable<bool> RestrictToContacts { get; set; } 
+        public virtual System.Nullable<bool> RestrictToContacts { get; set; }
 
         /// <summary>Flag that determines whether responses are sent to recipients who are outside of the user's domain.
         /// This feature is only available for G Suite users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictToDomain")]
-        public virtual System.Nullable<bool> RestrictToDomain { get; set; } 
+        public virtual System.Nullable<bool> RestrictToDomain { get; set; }
 
         /// <summary>An optional start time for sending auto-replies (epoch ms). When this is specified, Gmail will
         /// automatically reply only to messages that it receives after the start time. If both `startTime` and
         /// `endTime` are specified, `startTime` must precede `endTime`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual System.Nullable<long> StartTime { get; set; } 
+        public virtual System.Nullable<long> StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7186,13 +7186,13 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>Filtering behavior of labelIds list specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelFilterAction")]
-        public virtual string LabelFilterAction { get; set; } 
+        public virtual string LabelFilterAction { get; set; }
 
         /// <summary>List of label_ids to restrict notifications about. By default, if unspecified, all changes are
         /// pushed out. If specified then dictates which labels are required for a push notification to be
         /// generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelIds")]
-        public virtual System.Collections.Generic.IList<string> LabelIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> LabelIds { get; set; }
 
         /// <summary>A fully qualified Google Cloud Pub/Sub API topic name to publish the events to. This topic name
         /// **must** already exist in Cloud Pub/Sub and you **must** have already granted gmail "publish" permission on
@@ -7200,7 +7200,7 @@ namespace Google.Apis.Gmail.v1.Data
         /// naming format). Note that the "my-project-identifier" portion must exactly match your Google developer
         /// project id (the one executing this watch request).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topicName")]
-        public virtual string TopicName { get; set; } 
+        public virtual string TopicName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7212,11 +7212,11 @@ namespace Google.Apis.Gmail.v1.Data
         /// <summary>When Gmail will stop sending notifications for mailbox updates (epoch millis). Call `watch` again
         /// before this time to renew the watch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expiration")]
-        public virtual System.Nullable<long> Expiration { get; set; } 
+        public virtual System.Nullable<long> Expiration { get; set; }
 
         /// <summary>The ID of the mailbox's current history record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("historyId")]
-        public virtual System.Nullable<ulong> HistoryId { get; set; } 
+        public virtual System.Nullable<ulong> HistoryId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -716,11 +716,11 @@ namespace Google.Apis.CloudOSLogin.v1.Data
     {
         /// <summary>Detailed information about import results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual string Details { get; set; } 
+        public virtual string Details { get; set; }
 
         /// <summary>The login profile information for the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loginProfile")]
-        public virtual LoginProfile LoginProfile { get; set; } 
+        public virtual LoginProfile LoginProfile { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -732,15 +732,15 @@ namespace Google.Apis.CloudOSLogin.v1.Data
     {
         /// <summary>Required. A unique user ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The list of POSIX accounts associated with the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("posixAccounts")]
-        public virtual System.Collections.Generic.IList<PosixAccount> PosixAccounts { get; set; } 
+        public virtual System.Collections.Generic.IList<PosixAccount> PosixAccounts { get; set; }
 
         /// <summary>A map from SSH public key fingerprint to the associated key object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sshPublicKeys")]
-        public virtual System.Collections.Generic.IDictionary<string,SshPublicKey> SshPublicKeys { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, SshPublicKey> SshPublicKeys { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -751,48 +751,48 @@ namespace Google.Apis.CloudOSLogin.v1.Data
     {
         /// <summary>Output only. A POSIX account identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual string AccountId { get; set; } 
+        public virtual string AccountId { get; set; }
 
         /// <summary>The GECOS (user information) entry for this account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gecos")]
-        public virtual string Gecos { get; set; } 
+        public virtual string Gecos { get; set; }
 
         /// <summary>The default group ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gid")]
-        public virtual System.Nullable<long> Gid { get; set; } 
+        public virtual System.Nullable<long> Gid { get; set; }
 
         /// <summary>The path to the home directory for this account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("homeDirectory")]
-        public virtual string HomeDirectory { get; set; } 
+        public virtual string HomeDirectory { get; set; }
 
         /// <summary>Output only. The canonical resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The operating system type where this account applies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatingSystemType")]
-        public virtual string OperatingSystemType { get; set; } 
+        public virtual string OperatingSystemType { get; set; }
 
         /// <summary>Only one POSIX account can be marked as primary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primary")]
-        public virtual System.Nullable<bool> Primary { get; set; } 
+        public virtual System.Nullable<bool> Primary { get; set; }
 
         /// <summary>The path to the logic shell for this account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shell")]
-        public virtual string Shell { get; set; } 
+        public virtual string Shell { get; set; }
 
         /// <summary>System identifier for which account the username or uid applies to. By default, the empty value is
         /// used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("systemId")]
-        public virtual string SystemId { get; set; } 
+        public virtual string SystemId { get; set; }
 
         /// <summary>The user ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
-        public virtual System.Nullable<long> Uid { get; set; } 
+        public virtual System.Nullable<long> Uid { get; set; }
 
         /// <summary>The username of the POSIX account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; } 
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -803,19 +803,19 @@ namespace Google.Apis.CloudOSLogin.v1.Data
     {
         /// <summary>An expiration time in microseconds since epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTimeUsec")]
-        public virtual System.Nullable<long> ExpirationTimeUsec { get; set; } 
+        public virtual System.Nullable<long> ExpirationTimeUsec { get; set; }
 
         /// <summary>Output only. The SHA-256 fingerprint of the SSH public key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
-        public virtual string Fingerprint { get; set; } 
+        public virtual string Fingerprint { get; set; }
 
         /// <summary>Public key text in SSH format, defined by RFC4253 section 6.6.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         /// <summary>Output only. The canonical resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

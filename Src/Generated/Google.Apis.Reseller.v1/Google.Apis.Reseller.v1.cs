@@ -1454,45 +1454,45 @@ namespace Google.Apis.Reseller.v1.Data
         /// <summary>A customer's physical address. An address can be composed of one to three lines. The addressline2
         /// and addressLine3 are optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addressLine1")]
-        public virtual string AddressLine1 { get; set; } 
+        public virtual string AddressLine1 { get; set; }
 
         /// <summary>Line 2 of the address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addressLine2")]
-        public virtual string AddressLine2 { get; set; } 
+        public virtual string AddressLine2 { get; set; }
 
         /// <summary>Line 3 of the address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addressLine3")]
-        public virtual string AddressLine3 { get; set; } 
+        public virtual string AddressLine3 { get; set; }
 
         /// <summary>The customer contact's name. This is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactName")]
-        public virtual string ContactName { get; set; } 
+        public virtual string ContactName { get; set; }
 
         /// <summary>For countryCode information, see the ISO 3166 country code elements. Verify that country is
         /// approved for resale of Google products. This property is required when creating a new customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
-        public virtual string CountryCode { get; set; } 
+        public virtual string CountryCode { get; set; }
 
         /// <summary>Identifies the resource as a customer address. Value: customers#address</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>An example of a locality value is the city of San Francisco.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locality")]
-        public virtual string Locality { get; set; } 
+        public virtual string Locality { get; set; }
 
         /// <summary>The company or company division name. This is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("organizationName")]
-        public virtual string OrganizationName { get; set; } 
+        public virtual string OrganizationName { get; set; }
 
         /// <summary>A postalCode example is a postal zip code such as 94043. This property is required when creating a
         /// new customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
-        public virtual string PostalCode { get; set; } 
+        public virtual string PostalCode { get; set; }
 
         /// <summary>An example of a region value is CA for the state of California.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
-        public virtual string Region { get; set; } 
+        public virtual string Region { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1508,12 +1508,12 @@ namespace Google.Apis.Reseller.v1.Data
         /// subscription). If a deal code has never been added to a subscription and this property is left blank,
         /// regular pricing will apply.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dealCode")]
-        public virtual string DealCode { get; set; } 
+        public virtual string DealCode { get; set; }
 
         /// <summary>Identifies the resource as a subscription change plan request. Value:
         /// subscriptions#changePlanRequest</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The planName property is required. This is the name of the subscription's payment plan. For more
         /// information about the Google payment plans, see API concepts.
@@ -1522,17 +1522,17 @@ namespace Google.Apis.Reseller.v1.Data
         /// ANNUAL_MONTHLY_PAY is returned as ANNUAL in all API responses. - ANNUAL_YEARLY_PAY - The annual commitment
         /// plan with yearly payments - FLEXIBLE - The flexible plan - TRIAL - The 30-day free trial plan</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("planName")]
-        public virtual string PlanName { get; set; } 
+        public virtual string PlanName { get; set; }
 
         /// <summary>This is an optional property. This purchase order (PO) information is for resellers to use for
         /// their company tracking usage. If a purchaseOrderId value is given it appears in the API responses and shows
         /// up in the invoice. The property accepts up to 80 plain text characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseOrderId")]
-        public virtual string PurchaseOrderId { get; set; } 
+        public virtual string PurchaseOrderId { get; set; }
 
         /// <summary>This is a required property. The seats property is the number of user seat licenses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seats")]
-        public virtual Seats Seats { get; set; } 
+        public virtual Seats Seats { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1545,41 +1545,41 @@ namespace Google.Apis.Reseller.v1.Data
         /// something happens to the customer's service such as service outage or a security issue. This property is
         /// required when creating a new customer and should not use the same domain as customerDomain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternateEmail")]
-        public virtual string AlternateEmail { get; set; } 
+        public virtual string AlternateEmail { get; set; }
 
         /// <summary>The customer's primary domain name string. customerDomain is required when creating a new customer.
         /// Do not include the www prefix in the domain when adding a customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerDomain")]
-        public virtual string CustomerDomain { get; set; } 
+        public virtual string CustomerDomain { get; set; }
 
         /// <summary>Whether the customer's primary domain has been verified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerDomainVerified")]
-        public virtual System.Nullable<bool> CustomerDomainVerified { get; set; } 
+        public virtual System.Nullable<bool> CustomerDomainVerified { get; set; }
 
         /// <summary>This property will always be returned in a response as the unique identifier generated by Google.
         /// In a request, this property can be either the primary domain or the unique identifier generated by
         /// Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
-        public virtual string CustomerId { get; set; } 
+        public virtual string CustomerId { get; set; }
 
         /// <summary>Identifies the resource as a customer. Value: reseller#customer</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Customer contact phone number. Must start with "+" followed by the country code. The rest of the
         /// number can be contiguous numbers or respect the phone local format conventions, but it must be a real phone
         /// number and not, for example, "123". This field is silently ignored if invalid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
-        public virtual string PhoneNumber { get; set; } 
+        public virtual string PhoneNumber { get; set; }
 
         /// <summary>A customer's address information. Each field has a limit of 255 charcters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalAddress")]
-        public virtual Address PostalAddress { get; set; } 
+        public virtual Address PostalAddress { get; set; }
 
         /// <summary>URL to customer's Admin console dashboard. The read-only URL is generated by the API service. This
         /// is used if your client application requires the customer to complete a task in the Admin console.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUiUrl")]
-        public virtual string ResourceUiUrl { get; set; } 
+        public virtual string ResourceUiUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1591,13 +1591,13 @@ namespace Google.Apis.Reseller.v1.Data
         /// <summary>Identifies the resource as a subscription renewal setting. Value:
         /// subscriptions#renewalSettings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Renewal settings for the annual commitment plan. For more detailed information, see renewal options
         /// in the administrator help center. When renewing a subscription, the renewalType is a required
         /// property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("renewalType")]
-        public virtual string RenewalType { get; set; } 
+        public virtual string RenewalType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1608,11 +1608,11 @@ namespace Google.Apis.Reseller.v1.Data
     {
         /// <summary>List of registered service accounts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmailAddresses")]
-        public virtual System.Collections.Generic.IList<string> ServiceAccountEmailAddresses { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ServiceAccountEmailAddresses { get; set; }
 
         /// <summary>Topic name of the PubSub</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topicName")]
-        public virtual string TopicName { get; set; } 
+        public virtual string TopicName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1623,7 +1623,7 @@ namespace Google.Apis.Reseller.v1.Data
     {
         /// <summary>Topic name of the PubSub</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topicName")]
-        public virtual string TopicName { get; set; } 
+        public virtual string TopicName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1634,13 +1634,13 @@ namespace Google.Apis.Reseller.v1.Data
     {
         /// <summary>Identifies the resource as a subscription seat setting. Value: subscriptions#seats</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Read-only field containing the current number of users that are assigned a license for the product
         /// defined in skuId. This field's value is equivalent to the numerical count of users returned by the
         /// Enterprise License Manager API method: listForProductAndSku</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licensedNumberOfSeats")]
-        public virtual System.Nullable<int> LicensedNumberOfSeats { get; set; } 
+        public virtual System.Nullable<int> LicensedNumberOfSeats { get; set; }
 
         /// <summary>This is a required property and is exclusive to subscriptions with FLEXIBLE or TRIAL plans. This
         /// property sets the maximum number of licensed users allowed on a subscription. This quantity can be increased
@@ -1648,7 +1648,7 @@ namespace Google.Apis.Reseller.v1.Data
         /// users in the customer account. Note: G Suite subscriptions automatically assign a license to every
         /// user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximumNumberOfSeats")]
-        public virtual System.Nullable<int> MaximumNumberOfSeats { get; set; } 
+        public virtual System.Nullable<int> MaximumNumberOfSeats { get; set; }
 
         /// <summary>This is a required property and is exclusive to subscriptions with ANNUAL_MONTHLY_PAY and
         /// ANNUAL_YEARLY_PAY plans. This property sets the maximum number of licenses assignable to users on a
@@ -1656,7 +1656,7 @@ namespace Google.Apis.Reseller.v1.Data
         /// renewal. The reseller is invoiced based on the numberOfSeats value regardless of how many of these user
         /// licenses are assigned. Note: G Suite subscriptions automatically assign a license to every user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numberOfSeats")]
-        public virtual System.Nullable<int> NumberOfSeats { get; set; } 
+        public virtual System.Nullable<int> NumberOfSeats { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1667,82 +1667,82 @@ namespace Google.Apis.Reseller.v1.Data
     {
         /// <summary>Read-only field that returns the current billing method for a subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingMethod")]
-        public virtual string BillingMethod { get; set; } 
+        public virtual string BillingMethod { get; set; }
 
         /// <summary>The creationTime property is the date when subscription was created. It is in milliseconds using
         /// the Epoch format. See an example Epoch converter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual System.Nullable<long> CreationTime { get; set; } 
+        public virtual System.Nullable<long> CreationTime { get; set; }
 
         /// <summary>Primary domain name of the customer</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerDomain")]
-        public virtual string CustomerDomain { get; set; } 
+        public virtual string CustomerDomain { get; set; }
 
         /// <summary>This property will always be returned in a response as the unique identifier generated by Google.
         /// In a request, this property can be either the primary domain or the unique identifier generated by
         /// Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
-        public virtual string CustomerId { get; set; } 
+        public virtual string CustomerId { get; set; }
 
         /// <summary>Google-issued code (100 char max) for discounted pricing on subscription plans. Deal code must be
         /// included in insert requests in order to receive discounted rate. This property is optional, regular pricing
         /// applies if left empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dealCode")]
-        public virtual string DealCode { get; set; } 
+        public virtual string DealCode { get; set; }
 
         /// <summary>Identifies the resource as a Subscription. Value: reseller#subscription</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The plan property is required. In this version of the API, the G Suite plans are the flexible plan,
         /// annual commitment plan, and the 30-day free trial plan. For more information about the API"s payment plans,
         /// see the API concepts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plan")]
-        public virtual PlanData Plan { get; set; } 
+        public virtual PlanData Plan { get; set; }
 
         /// <summary>This is an optional property. This purchase order (PO) information is for resellers to use for
         /// their company tracking usage. If a purchaseOrderId value is given it appears in the API responses and shows
         /// up in the invoice. The property accepts up to 80 plain text characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseOrderId")]
-        public virtual string PurchaseOrderId { get; set; } 
+        public virtual string PurchaseOrderId { get; set; }
 
         /// <summary>Renewal settings for the annual commitment plan. For more detailed information, see renewal options
         /// in the administrator help center.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("renewalSettings")]
-        public virtual RenewalSettings RenewalSettings { get; set; } 
+        public virtual RenewalSettings RenewalSettings { get; set; }
 
         /// <summary>URL to customer's Subscriptions page in the Admin console. The read-only URL is generated by the
         /// API service. This is used if your client application requires the customer to complete a task using the
         /// Subscriptions page in the Admin console.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUiUrl")]
-        public virtual string ResourceUiUrl { get; set; } 
+        public virtual string ResourceUiUrl { get; set; }
 
         /// <summary>This is a required property. The number and limit of user seat licenses in the plan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seats")]
-        public virtual Seats Seats { get; set; } 
+        public virtual Seats Seats { get; set; }
 
         /// <summary>A required property. The skuId is a unique system identifier for a product's SKU assigned to a
         /// customer in the subscription. For products and SKUs available in this version of the API, see  Product and
         /// SKU IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skuId")]
-        public virtual string SkuId { get; set; } 
+        public virtual string SkuId { get; set; }
 
         /// <summary>Read-only external display name for a product's SKU assigned to a customer in the subscription. SKU
         /// names are subject to change at Google's discretion. For products and SKUs available in this version of the
         /// API, see  Product and SKU IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skuName")]
-        public virtual string SkuName { get; set; } 
+        public virtual string SkuName { get; set; }
 
         /// <summary>This is an optional property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The subscriptionId is the subscription identifier and is unique for each customer. This is a
         /// required property. Since a subscriptionId changes when a subscription is updated, we recommend not using
         /// this ID as a key for persistent data. Use the subscriptionId as described in retrieve all reseller
         /// subscriptions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptionId")]
-        public virtual string SubscriptionId { get; set; } 
+        public virtual string SubscriptionId { get; set; }
 
         /// <summary>Read-only field containing an enumerable of all the current suspension reasons for a subscription.
         /// It is possible for a subscription to have many concurrent, overlapping suspension reasons. A subscription's
@@ -1754,17 +1754,17 @@ namespace Google.Apis.Reseller.v1.Data
         /// TRIAL_ENDED - The customer's trial expired without a plan selected. - OTHER - The customer is suspended for
         /// an internal Google reason (e.g. abuse or otherwise).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suspensionReasons")]
-        public virtual System.Collections.Generic.IList<string> SuspensionReasons { get; set; } 
+        public virtual System.Collections.Generic.IList<string> SuspensionReasons { get; set; }
 
         /// <summary>Read-only transfer related information for the subscription. For more information, see retrieve
         /// transferable subscriptions for a customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferInfo")]
-        public virtual TransferInfoData TransferInfo { get; set; } 
+        public virtual TransferInfoData TransferInfo { get; set; }
 
         /// <summary>The G Suite annual commitment and flexible payment plans can be in a 30-day free trial. For more
         /// information, see the API concepts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trialSettings")]
-        public virtual TrialSettingsData TrialSettings { get; set; } 
+        public virtual TrialSettingsData TrialSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1779,13 +1779,13 @@ namespace Google.Apis.Reseller.v1.Data
             /// billingMethod value is OFFLINE, the subscription property object plan.commitmentInterval is omitted in
             /// all API responses.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("commitmentInterval")]
-            public virtual CommitmentIntervalData CommitmentInterval { get; set; } 
+            public virtual CommitmentIntervalData CommitmentInterval { get; set; }
 
             /// <summary>The isCommitmentPlan property's boolean value identifies the plan as an annual commitment plan:
             /// - true — The subscription's plan is an annual commitment plan. - false — The plan is not an annual
             /// commitment plan.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("isCommitmentPlan")]
-            public virtual System.Nullable<bool> IsCommitmentPlan { get; set; } 
+            public virtual System.Nullable<bool> IsCommitmentPlan { get; set; }
 
             /// <summary>The planName property is required. This is the name of the subscription's plan. For more
             /// information about the Google payment plans, see the API concepts.
@@ -1799,7 +1799,7 @@ namespace Google.Apis.Reseller.v1.Data
             /// startPaidService. - FREE — The free plan is exclusive to the Cloud Identity SKU and does not incur any
             /// billing.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("planName")]
-            public virtual string PlanName { get; set; } 
+            public virtual string PlanName { get; set; }
 
             
 
@@ -1811,12 +1811,12 @@ namespace Google.Apis.Reseller.v1.Data
                 /// <summary>An annual commitment plan's interval's endTime in milliseconds using the UNIX Epoch format.
                 /// See an example Epoch converter.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-                public virtual System.Nullable<long> EndTime { get; set; } 
+                public virtual System.Nullable<long> EndTime { get; set; }
 
                 /// <summary>An annual commitment plan's interval's startTime in milliseconds using UNIX Epoch format.
                 /// See an example Epoch converter.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-                public virtual System.Nullable<long> StartTime { get; set; } 
+                public virtual System.Nullable<long> StartTime { get; set; }
 
             }
         }    
@@ -1829,12 +1829,12 @@ namespace Google.Apis.Reseller.v1.Data
             /// for this product. For example, if the customer has 20 users, the reseller cannot place a transfer order
             /// of 15 seats. The minimum is 20 seats.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("minimumTransferableSeats")]
-            public virtual System.Nullable<int> MinimumTransferableSeats { get; set; } 
+            public virtual System.Nullable<int> MinimumTransferableSeats { get; set; }
 
             /// <summary>The time when transfer token or intent to transfer will expire. The time is in milliseconds
             /// using UNIX Epoch format.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("transferabilityExpirationTime")]
-            public virtual System.Nullable<long> TransferabilityExpirationTime { get; set; } 
+            public virtual System.Nullable<long> TransferabilityExpirationTime { get; set; }
 
         }    
 
@@ -1845,12 +1845,12 @@ namespace Google.Apis.Reseller.v1.Data
             /// <summary>Determines if a subscription's plan is in a 30-day free trial or not: - true — The plan is in
             /// trial. - false — The plan is not in trial.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("isInTrial")]
-            public virtual System.Nullable<bool> IsInTrial { get; set; } 
+            public virtual System.Nullable<bool> IsInTrial { get; set; }
 
             /// <summary>Date when the trial ends. The value is in milliseconds using the UNIX Epoch format. See an
             /// example Epoch converter.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("trialEndTime")]
-            public virtual System.Nullable<long> TrialEndTime { get; set; } 
+            public virtual System.Nullable<long> TrialEndTime { get; set; }
 
         }
     }    
@@ -1860,16 +1860,16 @@ namespace Google.Apis.Reseller.v1.Data
     {
         /// <summary>Identifies the resource as a collection of subscriptions. Value: reseller#subscriptions</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The continuation token, used to page through large result sets. Provide this value in a subsequent
         /// request to return the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The subscriptions in this page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptions")]
-        public virtual System.Collections.Generic.IList<Subscription> SubscriptionsValue { get; set; } 
+        public virtual System.Collections.Generic.IList<Subscription> SubscriptionsValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

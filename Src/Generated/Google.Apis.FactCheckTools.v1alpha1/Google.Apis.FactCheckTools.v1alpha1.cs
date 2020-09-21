@@ -735,19 +735,19 @@ namespace Google.Apis.FactCheckTools.v1alpha1.Data
     {
         /// <summary>The date that the claim was made.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claimDate")]
-        public virtual object ClaimDate { get; set; } 
+        public virtual object ClaimDate { get; set; }
 
         /// <summary>One or more reviews of this claim (namely, a fact-checking article).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claimReview")]
-        public virtual System.Collections.Generic.IList<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview> ClaimReview { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview> ClaimReview { get; set; }
 
         /// <summary>A person or organization stating the claim. For instance, "John Doe".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claimant")]
-        public virtual string Claimant { get; set; } 
+        public virtual string Claimant { get; set; }
 
         /// <summary>The claim text. For instance, "Crime has doubled in the last 2 years."</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; } 
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -758,20 +758,20 @@ namespace Google.Apis.FactCheckTools.v1alpha1.Data
     {
         /// <summary>Corresponds to `ClaimReview.itemReviewed.author.image`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
-        public virtual string ImageUrl { get; set; } 
+        public virtual string ImageUrl { get; set; }
 
         /// <summary>Corresponds to `ClaimReview.itemReviewed.author.jobTitle`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobTitle")]
-        public virtual string JobTitle { get; set; } 
+        public virtual string JobTitle { get; set; }
 
         /// <summary>A person or organization stating the claim. For instance, "John Doe". Corresponds to
         /// `ClaimReview.itemReviewed.author.name`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Corresponds to `ClaimReview.itemReviewed.author.sameAs`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sameAs")]
-        public virtual string SameAs { get; set; } 
+        public virtual string SameAs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -783,30 +783,30 @@ namespace Google.Apis.FactCheckTools.v1alpha1.Data
         /// <summary>For numeric ratings, the best value possible in the scale from worst to best. Corresponds to
         /// `ClaimReview.reviewRating.bestRating`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bestRating")]
-        public virtual System.Nullable<int> BestRating { get; set; } 
+        public virtual System.Nullable<int> BestRating { get; set; }
 
         /// <summary>Corresponds to `ClaimReview.reviewRating.image`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
-        public virtual string ImageUrl { get; set; } 
+        public virtual string ImageUrl { get; set; }
 
         /// <summary>Corresponds to `ClaimReview.reviewRating.ratingExplanation`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ratingExplanation")]
-        public virtual string RatingExplanation { get; set; } 
+        public virtual string RatingExplanation { get; set; }
 
         /// <summary>A numeric rating of this claim, in the range worstRating — bestRating inclusive. Corresponds to
         /// `ClaimReview.reviewRating.ratingValue`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ratingValue")]
-        public virtual System.Nullable<int> RatingValue { get; set; } 
+        public virtual System.Nullable<int> RatingValue { get; set; }
 
         /// <summary>The truthfulness rating as a human-readible short word or phrase. Corresponds to
         /// `ClaimReview.reviewRating.alternateName`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textualRating")]
-        public virtual string TextualRating { get; set; } 
+        public virtual string TextualRating { get; set; }
 
         /// <summary>For numeric ratings, the worst value possible in the scale from worst to best. Corresponds to
         /// `ClaimReview.reviewRating.worstRating`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("worstRating")]
-        public virtual System.Nullable<int> WorstRating { get; set; } 
+        public virtual System.Nullable<int> WorstRating { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -817,27 +817,27 @@ namespace Google.Apis.FactCheckTools.v1alpha1.Data
     {
         /// <summary>The language this review was written in. For instance, "en" or "de".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; } 
+        public virtual string LanguageCode { get; set; }
 
         /// <summary>The publisher of this claim review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisher")]
-        public virtual GoogleFactcheckingFactchecktoolsV1alpha1Publisher Publisher { get; set; } 
+        public virtual GoogleFactcheckingFactchecktoolsV1alpha1Publisher Publisher { get; set; }
 
         /// <summary>The date the claim was reviewed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviewDate")]
-        public virtual object ReviewDate { get; set; } 
+        public virtual object ReviewDate { get; set; }
 
         /// <summary>Textual rating. For instance, "Mostly false".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textualRating")]
-        public virtual string TextualRating { get; set; } 
+        public virtual string TextualRating { get; set; }
 
         /// <summary>The title of this claim review, if it can be determined.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The URL of this claim review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -848,12 +848,12 @@ namespace Google.Apis.FactCheckTools.v1alpha1.Data
     {
         /// <summary>Corresponds to `ClaimReview.author.image`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
-        public virtual string ImageUrl { get; set; } 
+        public virtual string ImageUrl { get; set; }
 
         /// <summary>Name of the organization that is publishing the fact check. Corresponds to
         /// `ClaimReview.author.name`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -867,39 +867,39 @@ namespace Google.Apis.FactCheckTools.v1alpha1.Data
         /// <summary>A list of links to works in which this claim appears, aside from the one specified in
         /// `claim_first_appearance`. Corresponds to `ClaimReview.itemReviewed[@type=Claim].appearance.url`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claimAppearances")]
-        public virtual System.Collections.Generic.IList<string> ClaimAppearances { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ClaimAppearances { get; set; }
 
         /// <summary>Info about the author of this claim.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claimAuthor")]
-        public virtual GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor ClaimAuthor { get; set; } 
+        public virtual GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor ClaimAuthor { get; set; }
 
         /// <summary>The date when the claim was made or entered public discourse. Corresponds to
         /// `ClaimReview.itemReviewed.datePublished`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claimDate")]
-        public virtual string ClaimDate { get; set; } 
+        public virtual string ClaimDate { get; set; }
 
         /// <summary>A link to a work in which this claim first appears. Corresponds to
         /// `ClaimReview.itemReviewed[@type=Claim].firstAppearance.url`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claimFirstAppearance")]
-        public virtual string ClaimFirstAppearance { get; set; } 
+        public virtual string ClaimFirstAppearance { get; set; }
 
         /// <summary>The location where this claim was made. Corresponds to `ClaimReview.itemReviewed.name`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claimLocation")]
-        public virtual string ClaimLocation { get; set; } 
+        public virtual string ClaimLocation { get; set; }
 
         /// <summary>A short summary of the claim being evaluated. Corresponds to `ClaimReview.claimReviewed`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claimReviewed")]
-        public virtual string ClaimReviewed { get; set; } 
+        public virtual string ClaimReviewed { get; set; }
 
         /// <summary>Info about the rating of this claim review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rating")]
-        public virtual GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating Rating { get; set; } 
+        public virtual GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating Rating { get; set; }
 
         /// <summary>This field is optional, and will default to the page URL. We provide this field to allow you the
         /// override the default value, but the only permitted override is the page URL plus an optional anchor link
         /// ("page jump"). Corresponds to `ClaimReview.url`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -911,34 +911,34 @@ namespace Google.Apis.FactCheckTools.v1alpha1.Data
         /// <summary>Info about the author of this claim review. Similar to the above, semantically these are page-level
         /// fields, and each `ClaimReview` on this page will contain the same values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claimReviewAuthor")]
-        public virtual GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor ClaimReviewAuthor { get; set; } 
+        public virtual GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor ClaimReviewAuthor { get; set; }
 
         /// <summary>A list of individual claim reviews for this page. Each item in the list corresponds to one
         /// `ClaimReview` element.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claimReviewMarkups")]
-        public virtual System.Collections.Generic.IList<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup> ClaimReviewMarkups { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup> ClaimReviewMarkups { get; set; }
 
         /// <summary>The name of this `ClaimReview` markup page resource, in the form of `pages/{page_id}`. Except for
         /// update requests, this field is output-only and should not be set by the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The URL of the page associated with this `ClaimReview` markup. While every individual `ClaimReview`
         /// has its own URL field, semantically this is a page-level field, and each `ClaimReview` on this page will use
         /// this value unless individually overridden. Corresponds to `ClaimReview.url`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageUrl")]
-        public virtual string PageUrl { get; set; } 
+        public virtual string PageUrl { get; set; }
 
         /// <summary>The date when the fact check was published. Similar to the URL, semantically this is a page-level
         /// field, and each `ClaimReview` on this page will contain the same value. Corresponds to
         /// `ClaimReview.datePublished`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishDate")]
-        public virtual string PublishDate { get; set; } 
+        public virtual string PublishDate { get; set; }
 
         /// <summary>The version ID for this markup. Except for update requests, this field is output-only and should
         /// not be set by the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionId")]
-        public virtual string VersionId { get; set; } 
+        public virtual string VersionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -949,12 +949,12 @@ namespace Google.Apis.FactCheckTools.v1alpha1.Data
     {
         /// <summary>The list of claims and all of their associated information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claims")]
-        public virtual System.Collections.Generic.IList<GoogleFactcheckingFactchecktoolsV1alpha1Claim> Claims { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleFactcheckingFactchecktoolsV1alpha1Claim> Claims { get; set; }
 
         /// <summary>The next pagination token in the Search response. It should be used as the `page_token` for the
         /// following request. An empty value means no more results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -965,12 +965,12 @@ namespace Google.Apis.FactCheckTools.v1alpha1.Data
     {
         /// <summary>The result list of pages of `ClaimReview` markup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claimReviewMarkupPages")]
-        public virtual System.Collections.Generic.IList<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage> ClaimReviewMarkupPages { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage> ClaimReviewMarkupPages { get; set; }
 
         /// <summary>The next pagination token in the Search response. It should be used as the `page_token` for the
         /// following request. An empty value means no more results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -981,12 +981,12 @@ namespace Google.Apis.FactCheckTools.v1alpha1.Data
     {
         /// <summary>The name of this publisher. For instance, "Awesome Fact Checks".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Host-level site name, without the protocol or "www" prefix. For instance, "awesomefactchecks.com".
         /// This value of this field is based purely on the claim review URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("site")]
-        public virtual string Site { get; set; } 
+        public virtual string Site { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

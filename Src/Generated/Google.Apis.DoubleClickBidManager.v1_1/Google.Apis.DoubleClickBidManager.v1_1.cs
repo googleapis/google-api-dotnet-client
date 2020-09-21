@@ -831,16 +831,16 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
         /// <summary>The name to apply to an event that does not match any of the rules in the channel
         /// grouping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fallbackName")]
-        public virtual string FallbackName { get; set; } 
+        public virtual string FallbackName { get; set; }
 
         /// <summary>Channel Grouping name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Rules within Channel Grouping. There is a limit of 100 rules that can be set per channel
         /// grouping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
-        public virtual System.Collections.Generic.IList<Rule> Rules { get; set; } 
+        public virtual System.Collections.Generic.IList<Rule> Rules { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -851,7 +851,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
     {
         /// <summary>Filters. There is a limit of 100 filters that can be set per disjunctive match statement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventFilters")]
-        public virtual System.Collections.Generic.IList<EventFilter> EventFilters { get; set; } 
+        public virtual System.Collections.Generic.IList<EventFilter> EventFilters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -863,20 +863,20 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
         /// <summary>File specification (column names, types, order) in which the line items will be returned. Default
         /// to EWF.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileSpec")]
-        public virtual string FileSpec { get; set; } 
+        public virtual string FileSpec { get; set; }
 
         /// <summary>Ids of the specified filter type used to filter line items to fetch. If omitted, all the line items
         /// will be returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> FilterIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> FilterIds { get; set; }
 
         /// <summary>Filter type used to filter line items to fetch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterType")]
-        public virtual string FilterType { get; set; } 
+        public virtual string FilterType { get; set; }
 
         /// <summary>Format in which the line items will be returned. Default to CSV.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
-        public virtual string Format { get; set; } 
+        public virtual string Format { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -888,7 +888,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
         /// <summary>Retrieved line items in CSV format. For more information about file formats, see Entity Write File
         /// Format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
-        public virtual string LineItems { get; set; } 
+        public virtual string LineItems { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -902,22 +902,22 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
         /// requested. Acceptable values are: - "AD" - "AD_GROUP" - "CAMPAIGN" - "INSERTION_ORDER" - "INVENTORY_SOURCE"
         /// - "LINE_ITEM" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileTypes")]
-        public virtual System.Collections.Generic.IList<string> FileTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> FileTypes { get; set; }
 
         /// <summary>The IDs of the specified filter type. This is used to filter entities to fetch. At least one ID
         /// must be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> FilterIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> FilterIds { get; set; }
 
         /// <summary>Filter type used to filter entities to fetch. PARTNER_ID and INVENTORY_SOURCE_ID may only be used
         /// when downloading inventory sources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterType")]
-        public virtual string FilterType { get; set; } 
+        public virtual string FilterType { get; set; }
 
         /// <summary>SDF Version (column names, types, order) in which the entities will be returned. Default to
         /// 5.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -928,26 +928,26 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
     {
         /// <summary>Retrieved ad groups in SDF format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adGroups")]
-        public virtual string AdGroups { get; set; } 
+        public virtual string AdGroups { get; set; }
 
         /// <summary>Retrieved ads in SDF format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ads")]
-        public virtual string Ads { get; set; } 
+        public virtual string Ads { get; set; }
 
         /// <summary>Retrieved campaigns in SDF format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaigns")]
-        public virtual string Campaigns { get; set; } 
+        public virtual string Campaigns { get; set; }
 
         /// <summary>Retrieved insertion orders in SDF format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertionOrders")]
-        public virtual string InsertionOrders { get; set; } 
+        public virtual string InsertionOrders { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySources")]
-        public virtual string InventorySources { get; set; } 
+        public virtual string InventorySources { get; set; }
 
         /// <summary>Retrieved line items in SDF format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
-        public virtual string LineItems { get; set; } 
+        public virtual string LineItems { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -958,7 +958,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
     {
         /// <summary>Filter on a dimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionFilter")]
-        public virtual PathQueryOptionsFilter DimensionFilter { get; set; } 
+        public virtual PathQueryOptionsFilter DimensionFilter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -969,11 +969,11 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
     {
         /// <summary>Filter type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>Filter value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -985,15 +985,15 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "doubleclickbidmanager#listQueriesResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Next page's pagination token if one exists.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Retrieved queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queries")]
-        public virtual System.Collections.Generic.IList<Query> Queries { get; set; } 
+        public virtual System.Collections.Generic.IList<Query> Queries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1005,15 +1005,15 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "doubleclickbidmanager#listReportsResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Next page's pagination token if one exists.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Retrieved reports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reports")]
-        public virtual System.Collections.Generic.IList<Report> Reports { get; set; } 
+        public virtual System.Collections.Generic.IList<Report> Reports { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1025,11 +1025,11 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
         /// <summary>Set to true and filter your report by `FILTER_INSERTION_ORDER` or `FILTER_LINE_ITEM` to include
         /// data for audience lists specifically targeted by those items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeOnlyTargetedUserLists")]
-        public virtual System.Nullable<bool> IncludeOnlyTargetedUserLists { get; set; } 
+        public virtual System.Nullable<bool> IncludeOnlyTargetedUserLists { get; set; }
 
         /// <summary>Options that contain Path Filters and Custom Channel Groupings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathQueryOptions")]
-        public virtual PathQueryOptions PathQueryOptions { get; set; } 
+        public virtual PathQueryOptions PathQueryOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1040,27 +1040,27 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
     {
         /// <summary>Filters used to match traffic data in your report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filters")]
-        public virtual System.Collections.Generic.IList<FilterPair> Filters { get; set; } 
+        public virtual System.Collections.Generic.IList<FilterPair> Filters { get; set; }
 
         /// <summary>Data is grouped by the filters listed in this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupBys")]
-        public virtual System.Collections.Generic.IList<string> GroupBys { get; set; } 
+        public virtual System.Collections.Generic.IList<string> GroupBys { get; set; }
 
         /// <summary>Deprecated. This field is no longer in use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeInviteData")]
-        public virtual System.Nullable<bool> IncludeInviteData { get; set; } 
+        public virtual System.Nullable<bool> IncludeInviteData { get; set; }
 
         /// <summary>Metrics to include as columns in your report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
-        public virtual System.Collections.Generic.IList<string> Metrics { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
 
         /// <summary>Additional query options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
-        public virtual Options Options { get; set; } 
+        public virtual Options Options { get; set; }
 
         /// <summary>Report type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1074,12 +1074,12 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
     {
         /// <summary>Filter on an event to be applied to some part of the path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventFilters")]
-        public virtual System.Collections.Generic.IList<EventFilter> EventFilters { get; set; } 
+        public virtual System.Collections.Generic.IList<EventFilter> EventFilters { get; set; }
 
         /// <summary>Indicates the position of the path the filter should match to (first, last, or any event in
         /// path).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathMatchPosition")]
-        public virtual string PathMatchPosition { get; set; } 
+        public virtual string PathMatchPosition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1090,11 +1090,11 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
     {
         /// <summary>Custom Channel Groupings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelGrouping")]
-        public virtual ChannelGrouping ChannelGrouping { get; set; } 
+        public virtual ChannelGrouping ChannelGrouping { get; set; }
 
         /// <summary>Path Filters. There is a limit of 100 path filters that can be set per report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathFilters")]
-        public virtual System.Collections.Generic.IList<PathFilter> PathFilters { get; set; } 
+        public virtual System.Collections.Generic.IList<PathFilter> PathFilters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1105,15 +1105,15 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
     {
         /// <summary>Dimension the filter is applied to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual string Filter { get; set; } 
+        public virtual string Filter { get; set; }
 
         /// <summary>Indicates how the filter should be matched to the value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("match")]
-        public virtual string Match { get; set; } 
+        public virtual string Match { get; set; }
 
         /// <summary>Value to filter on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<string> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1125,37 +1125,37 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "doubleclickbidmanager#query".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Query metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual QueryMetadata Metadata { get; set; } 
+        public virtual QueryMetadata Metadata { get; set; }
 
         /// <summary>Query parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
-        public virtual Parameters Params__ { get; set; } 
+        public virtual Parameters Params__ { get; set; }
 
         /// <summary>Query ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryId")]
-        public virtual System.Nullable<long> QueryId { get; set; } 
+        public virtual System.Nullable<long> QueryId { get; set; }
 
         /// <summary>The ending time for the data that is shown in the report. Note, reportDataEndTimeMs is required if
         /// metadata.dataRange is CUSTOM_DATES and ignored otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportDataEndTimeMs")]
-        public virtual System.Nullable<long> ReportDataEndTimeMs { get; set; } 
+        public virtual System.Nullable<long> ReportDataEndTimeMs { get; set; }
 
         /// <summary>The starting time for the data that is shown in the report. Note, reportDataStartTimeMs is required
         /// if metadata.dataRange is CUSTOM_DATES and ignored otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportDataStartTimeMs")]
-        public virtual System.Nullable<long> ReportDataStartTimeMs { get; set; } 
+        public virtual System.Nullable<long> ReportDataStartTimeMs { get; set; }
 
         /// <summary>Information on how often and when to run a query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
-        public virtual QuerySchedule Schedule { get; set; } 
+        public virtual QuerySchedule Schedule { get; set; }
 
         /// <summary>Canonical timezone code for report data time. Defaults to America/New_York.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timezoneCode")]
-        public virtual string TimezoneCode { get; set; } 
+        public virtual string TimezoneCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1166,51 +1166,51 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
     {
         /// <summary>Range of report data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataRange")]
-        public virtual string DataRange { get; set; } 
+        public virtual string DataRange { get; set; }
 
         /// <summary>Format of the generated report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
-        public virtual string Format { get; set; } 
+        public virtual string Format { get; set; }
 
         /// <summary>The path to the location in Google Cloud Storage where the latest report is stored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleCloudStoragePathForLatestReport")]
-        public virtual string GoogleCloudStoragePathForLatestReport { get; set; } 
+        public virtual string GoogleCloudStoragePathForLatestReport { get; set; }
 
         /// <summary>The path in Google Drive for the latest report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleDrivePathForLatestReport")]
-        public virtual string GoogleDrivePathForLatestReport { get; set; } 
+        public virtual string GoogleDrivePathForLatestReport { get; set; }
 
         /// <summary>The time when the latest report started to run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestReportRunTimeMs")]
-        public virtual System.Nullable<long> LatestReportRunTimeMs { get; set; } 
+        public virtual System.Nullable<long> LatestReportRunTimeMs { get; set; }
 
         /// <summary>Locale of the generated reports. Valid values are cs CZECH de GERMAN en ENGLISH es SPANISH fr
         /// FRENCH it ITALIAN ja JAPANESE ko KOREAN pl POLISH pt-BR BRAZILIAN_PORTUGUESE ru RUSSIAN tr TURKISH uk
         /// UKRAINIAN zh-CN CHINA_CHINESE zh-TW TAIWAN_CHINESE An locale string not in the list above will generate
         /// reports in English.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locale")]
-        public virtual string Locale { get; set; } 
+        public virtual string Locale { get; set; }
 
         /// <summary>Number of reports that have been generated for the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportCount")]
-        public virtual System.Nullable<int> ReportCount { get; set; } 
+        public virtual System.Nullable<int> ReportCount { get; set; }
 
         /// <summary>Whether the latest report is currently running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("running")]
-        public virtual System.Nullable<bool> Running { get; set; } 
+        public virtual System.Nullable<bool> Running { get; set; }
 
         /// <summary>Whether to send an email notification when a report is ready. Default to false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sendNotification")]
-        public virtual System.Nullable<bool> SendNotification { get; set; } 
+        public virtual System.Nullable<bool> SendNotification { get; set; }
 
         /// <summary>List of email addresses which are sent email notifications when the report is finished. Separate
         /// from sendNotification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shareEmailAddress")]
-        public virtual System.Collections.Generic.IList<string> ShareEmailAddress { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ShareEmailAddress { get; set; }
 
         /// <summary>Query title. It is used to name the reports generated from this query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1221,23 +1221,23 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
     {
         /// <summary>Datetime to periodically run the query until.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTimeMs")]
-        public virtual System.Nullable<long> EndTimeMs { get; set; } 
+        public virtual System.Nullable<long> EndTimeMs { get; set; }
 
         /// <summary>How often the query is run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frequency")]
-        public virtual string Frequency { get; set; } 
+        public virtual string Frequency { get; set; }
 
         /// <summary>Deprecated. This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextRunMinuteOfDay")]
-        public virtual System.Nullable<int> NextRunMinuteOfDay { get; set; } 
+        public virtual System.Nullable<int> NextRunMinuteOfDay { get; set; }
 
         /// <summary>Canonical timezone code for report generation time. Defaults to America/New_York.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextRunTimezoneCode")]
-        public virtual string NextRunTimezoneCode { get; set; } 
+        public virtual string NextRunTimezoneCode { get; set; }
 
         /// <summary>When to start running the query. Not applicable to `ONE_TIME` frequency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTimeMs")]
-        public virtual System.Nullable<long> StartTimeMs { get; set; } 
+        public virtual System.Nullable<long> StartTimeMs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1248,15 +1248,15 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
     {
         /// <summary>Key used to identify a report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual ReportKey Key { get; set; } 
+        public virtual ReportKey Key { get; set; }
 
         /// <summary>Report metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual ReportMetadata Metadata { get; set; } 
+        public virtual ReportMetadata Metadata { get; set; }
 
         /// <summary>Report parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
-        public virtual Parameters Params__ { get; set; } 
+        public virtual Parameters Params__ { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1267,7 +1267,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
     {
         /// <summary>Error code that shows why the report was not created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
-        public virtual string ErrorCode { get; set; } 
+        public virtual string ErrorCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1278,11 +1278,11 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
     {
         /// <summary>Query ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryId")]
-        public virtual System.Nullable<long> QueryId { get; set; } 
+        public virtual System.Nullable<long> QueryId { get; set; }
 
         /// <summary>Report ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportId")]
-        public virtual System.Nullable<long> ReportId { get; set; } 
+        public virtual System.Nullable<long> ReportId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1293,19 +1293,19 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
     {
         /// <summary>The path to the location in Google Cloud Storage where the report is stored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleCloudStoragePath")]
-        public virtual string GoogleCloudStoragePath { get; set; } 
+        public virtual string GoogleCloudStoragePath { get; set; }
 
         /// <summary>The ending time for the data that is shown in the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportDataEndTimeMs")]
-        public virtual System.Nullable<long> ReportDataEndTimeMs { get; set; } 
+        public virtual System.Nullable<long> ReportDataEndTimeMs { get; set; }
 
         /// <summary>The starting time for the data that is shown in the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportDataStartTimeMs")]
-        public virtual System.Nullable<long> ReportDataStartTimeMs { get; set; } 
+        public virtual System.Nullable<long> ReportDataStartTimeMs { get; set; }
 
         /// <summary>Report status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual ReportStatus Status { get; set; } 
+        public virtual ReportStatus Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1316,19 +1316,19 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
     {
         /// <summary>If the report failed, this records the cause.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failure")]
-        public virtual ReportFailure Failure { get; set; } 
+        public virtual ReportFailure Failure { get; set; }
 
         /// <summary>The time when this report either completed successfully or failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finishTimeMs")]
-        public virtual System.Nullable<long> FinishTimeMs { get; set; } 
+        public virtual System.Nullable<long> FinishTimeMs { get; set; }
 
         /// <summary>The file type of the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
-        public virtual string Format { get; set; } 
+        public virtual string Format { get; set; }
 
         /// <summary>The state of the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1339,27 +1339,27 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
     {
         /// <summary>Whether the stored entity is changed as a result of upload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("changed")]
-        public virtual System.Nullable<bool> Changed { get; set; } 
+        public virtual System.Nullable<bool> Changed { get; set; }
 
         /// <summary>Entity Id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
-        public virtual System.Nullable<long> EntityId { get; set; } 
+        public virtual System.Nullable<long> EntityId { get; set; }
 
         /// <summary>Entity name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityName")]
-        public virtual string EntityName { get; set; } 
+        public virtual string EntityName { get; set; }
 
         /// <summary>Reasons why the entity can't be uploaded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual System.Collections.Generic.IList<string> Errors { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Errors { get; set; }
 
         /// <summary>Whether the entity is persisted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("persisted")]
-        public virtual System.Nullable<bool> Persisted { get; set; } 
+        public virtual System.Nullable<bool> Persisted { get; set; }
 
         /// <summary>Row number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowNumber")]
-        public virtual System.Nullable<int> RowNumber { get; set; } 
+        public virtual System.Nullable<int> RowNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1371,11 +1371,11 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
     public class Rule : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("disjunctiveMatchStatements")]
-        public virtual System.Collections.Generic.IList<DisjunctiveMatchStatement> DisjunctiveMatchStatements { get; set; } 
+        public virtual System.Collections.Generic.IList<DisjunctiveMatchStatement> DisjunctiveMatchStatements { get; set; }
 
         /// <summary>Rule name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1386,21 +1386,21 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
     {
         /// <summary>Report data range used to generate the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataRange")]
-        public virtual string DataRange { get; set; } 
+        public virtual string DataRange { get; set; }
 
         /// <summary>The ending time for the data that is shown in the report. Note, reportDataEndTimeMs is required if
         /// dataRange is CUSTOM_DATES and ignored otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportDataEndTimeMs")]
-        public virtual System.Nullable<long> ReportDataEndTimeMs { get; set; } 
+        public virtual System.Nullable<long> ReportDataEndTimeMs { get; set; }
 
         /// <summary>The starting time for the data that is shown in the report. Note, reportDataStartTimeMs is required
         /// if dataRange is CUSTOM_DATES and ignored otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportDataStartTimeMs")]
-        public virtual System.Nullable<long> ReportDataStartTimeMs { get; set; } 
+        public virtual System.Nullable<long> ReportDataStartTimeMs { get; set; }
 
         /// <summary>Canonical timezone code for report data time. Defaults to America/New_York.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timezoneCode")]
-        public virtual string TimezoneCode { get; set; } 
+        public virtual string TimezoneCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1411,16 +1411,16 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
     {
         /// <summary>Set to true to get upload status without actually persisting the line items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dryRun")]
-        public virtual System.Nullable<bool> DryRun { get; set; } 
+        public virtual System.Nullable<bool> DryRun { get; set; }
 
         /// <summary>Format the line items are in. Default to CSV.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
-        public virtual string Format { get; set; } 
+        public virtual string Format { get; set; }
 
         /// <summary>Line items in CSV to upload. Refer to Entity Write File Format for more information on file
         /// format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
-        public virtual string LineItems { get; set; } 
+        public virtual string LineItems { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1431,7 +1431,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
     {
         /// <summary>Status of upload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadStatus")]
-        public virtual UploadStatus UploadStatus { get; set; } 
+        public virtual UploadStatus UploadStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1442,11 +1442,11 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
     {
         /// <summary>Reasons why upload can't be completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual System.Collections.Generic.IList<string> Errors { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Errors { get; set; }
 
         /// <summary>Per-row upload status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowStatus")]
-        public virtual System.Collections.Generic.IList<RowStatus> RowStatus { get; set; } 
+        public virtual System.Collections.Generic.IList<RowStatus> RowStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -569,12 +569,12 @@ namespace Google.Apis.SiteVerification.v1.Data
     {
         /// <summary>The site for which a verification token will be generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("site")]
-        public virtual SiteData Site { get; set; } 
+        public virtual SiteData Site { get; set; }
 
         /// <summary>The verification method that will be used to verify this site. For sites, 'FILE' or 'META' methods
         /// may be used. For domains, only 'DNS' may be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verificationMethod")]
-        public virtual string VerificationMethod { get; set; } 
+        public virtual string VerificationMethod { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -586,11 +586,11 @@ namespace Google.Apis.SiteVerification.v1.Data
             /// <summary>The site identifier. If the type is set to SITE, the identifier is a URL. If the type is set to
             /// INET_DOMAIN, the site identifier is a domain name.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("identifier")]
-            public virtual string Identifier { get; set; } 
+            public virtual string Identifier { get; set; }
 
             /// <summary>The type of resource to be verified. Can be SITE or INET_DOMAIN (domain name).</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
-            public virtual string Type { get; set; } 
+            public virtual string Type { get; set; }
 
         }
     }    
@@ -602,12 +602,12 @@ namespace Google.Apis.SiteVerification.v1.Data
         /// placed in the HEAD tag of the default page that is loaded for the site. For DNS, the token should be placed
         /// in a TXT record of the domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
-        public virtual string Method { get; set; } 
+        public virtual string Method { get; set; }
 
         /// <summary>The verification token. The token must be placed appropriately in order for verification to
         /// succeed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
-        public virtual string Token { get; set; } 
+        public virtual string Token { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -617,7 +617,7 @@ namespace Google.Apis.SiteVerification.v1.Data
     {
         /// <summary>The list of sites that are owned by the authenticated user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<SiteVerificationWebResourceResource> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<SiteVerificationWebResourceResource> Items { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -628,15 +628,15 @@ namespace Google.Apis.SiteVerification.v1.Data
         /// <summary>The string used to identify this site. This value should be used in the "id" portion of the REST
         /// URL for the Get, Update, and Delete operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The email addresses of all verified owners.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("owners")]
-        public virtual System.Collections.Generic.IList<string> Owners { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Owners { get; set; }
 
         /// <summary>The address and type of a site that is verified or will be verified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("site")]
-        public virtual SiteData Site { get; set; } 
+        public virtual SiteData Site { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -648,11 +648,11 @@ namespace Google.Apis.SiteVerification.v1.Data
             /// <summary>The site identifier. If the type is set to SITE, the identifier is a URL. If the type is set to
             /// INET_DOMAIN, the site identifier is a domain name.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("identifier")]
-            public virtual string Identifier { get; set; } 
+            public virtual string Identifier { get; set; }
 
             /// <summary>The site type. Can be SITE or INET_DOMAIN (domain name).</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
-            public virtual string Type { get; set; } 
+            public virtual string Type { get; set; }
 
         }
     }

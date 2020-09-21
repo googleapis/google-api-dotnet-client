@@ -4045,26 +4045,26 @@ namespace Google.Apis.Calendar.v3.Data
     {
         /// <summary>ETag of the collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>List of rules on the access control list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<AclRule> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<AclRule> Items { get; set; }
 
         /// <summary>Type of the collection ("calendar#acl").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Token used to access the next page of this result. Omitted if no further results are available, in
         /// which case nextSyncToken is provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Token used at a later point in time to retrieve only the entries that have changed since this
         /// result was returned. Omitted if further results are available, in which case nextPageToken is
         /// provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextSyncToken")]
-        public virtual string NextSyncToken { get; set; } 
+        public virtual string NextSyncToken { get; set; }
 
     }    
 
@@ -4072,15 +4072,15 @@ namespace Google.Apis.Calendar.v3.Data
     {
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Identifier of the ACL rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Type of the resource ("calendar#aclRule").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The role assigned to the scope. Possible values are: - "none" - Provides no access. -
         /// "freeBusyReader" - Provides read access to free/busy information. - "reader" - Provides read access to the
@@ -4089,11 +4089,11 @@ namespace Google.Apis.Calendar.v3.Data
         /// access, and event details will be visible. - "owner" - Provides ownership of the calendar. This role has all
         /// of the permissions of the writer role with the additional ability to see and manipulate ACLs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The scope of the rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
-        public virtual ScopeData Scope { get; set; } 
+        public virtual ScopeData Scope { get; set; }
 
         
 
@@ -4105,12 +4105,12 @@ namespace Google.Apis.Calendar.v3.Data
             /// - Limits the scope to a domain.  Note: The permissions granted to the "default", or public, scope apply
             /// to any user, authenticated or not.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
-            public virtual string Type { get; set; } 
+            public virtual string Type { get; set; }
 
             /// <summary>The email address of a user or group, or the name of a domain, depending on the scope type.
             /// Omitted for type "default".</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("value")]
-            public virtual string Value { get; set; } 
+            public virtual string Value { get; set; }
 
         }
     }    
@@ -4120,36 +4120,36 @@ namespace Google.Apis.Calendar.v3.Data
         /// <summary>Conferencing properties for this calendar, for example what types of conferences are
         /// allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conferenceProperties")]
-        public virtual ConferenceProperties ConferenceProperties { get; set; } 
+        public virtual ConferenceProperties ConferenceProperties { get; set; }
 
         /// <summary>Description of the calendar. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Identifier of the calendar. To retrieve IDs call the calendarList.list() method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Type of the resource ("calendar#calendar").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Geographic location of the calendar as free-form text. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Title of the calendar.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summary")]
-        public virtual string Summary { get; set; } 
+        public virtual string Summary { get; set; }
 
         /// <summary>The time zone of the calendar. (Formatted as an IANA Time Zone Database name, e.g.
         /// "Europe/Zurich".) Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
-        public virtual string TimeZone { get; set; } 
+        public virtual string TimeZone { get; set; }
 
     }    
 
@@ -4157,26 +4157,26 @@ namespace Google.Apis.Calendar.v3.Data
     {
         /// <summary>ETag of the collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Calendars that are present on the user's calendar list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<CalendarListEntry> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<CalendarListEntry> Items { get; set; }
 
         /// <summary>Type of the collection ("calendar#calendarList").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Token used to access the next page of this result. Omitted if no further results are available, in
         /// which case nextSyncToken is provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Token used at a later point in time to retrieve only the entries that have changed since this
         /// result was returned. Omitted if further results are available, in which case nextPageToken is
         /// provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextSyncToken")]
-        public virtual string NextSyncToken { get; set; } 
+        public virtual string NextSyncToken { get; set; }
 
     }    
 
@@ -4190,89 +4190,89 @@ namespace Google.Apis.Calendar.v3.Data
         /// role has all of the permissions of the writer role with the additional ability to see and manipulate
         /// ACLs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessRole")]
-        public virtual string AccessRole { get; set; } 
+        public virtual string AccessRole { get; set; }
 
         /// <summary>The main color of the calendar in the hexadecimal format "#0088aa". This property supersedes the
         /// index-based colorId property. To set or change this property, you need to specify colorRgbFormat=true in the
         /// parameters of the insert, update and patch methods. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
-        public virtual string BackgroundColor { get; set; } 
+        public virtual string BackgroundColor { get; set; }
 
         /// <summary>The color of the calendar. This is an ID referring to an entry in the calendar section of the
         /// colors definition (see the colors endpoint). This property is superseded by the backgroundColor and
         /// foregroundColor properties and can be ignored when using these properties. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("colorId")]
-        public virtual string ColorId { get; set; } 
+        public virtual string ColorId { get; set; }
 
         /// <summary>Conferencing properties for this calendar, for example what types of conferences are
         /// allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conferenceProperties")]
-        public virtual ConferenceProperties ConferenceProperties { get; set; } 
+        public virtual ConferenceProperties ConferenceProperties { get; set; }
 
         /// <summary>The default reminders that the authenticated user has for this calendar.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultReminders")]
-        public virtual System.Collections.Generic.IList<EventReminder> DefaultReminders { get; set; } 
+        public virtual System.Collections.Generic.IList<EventReminder> DefaultReminders { get; set; }
 
         /// <summary>Whether this calendar list entry has been deleted from the calendar list. Read-only. Optional. The
         /// default is False.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
-        public virtual System.Nullable<bool> Deleted { get; set; } 
+        public virtual System.Nullable<bool> Deleted { get; set; }
 
         /// <summary>Description of the calendar. Optional. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The foreground color of the calendar in the hexadecimal format "#ffffff". This property supersedes
         /// the index-based colorId property. To set or change this property, you need to specify colorRgbFormat=true in
         /// the parameters of the insert, update and patch methods. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("foregroundColor")]
-        public virtual string ForegroundColor { get; set; } 
+        public virtual string ForegroundColor { get; set; }
 
         /// <summary>Whether the calendar has been hidden from the list. Optional. The attribute is only returned when
         /// the calendar is hidden, in which case the value is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hidden")]
-        public virtual System.Nullable<bool> Hidden { get; set; } 
+        public virtual System.Nullable<bool> Hidden { get; set; }
 
         /// <summary>Identifier of the calendar.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Type of the resource ("calendar#calendarListEntry").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Geographic location of the calendar as free-form text. Optional. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>The notifications that the authenticated user is receiving for this calendar.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationSettings")]
-        public virtual NotificationSettingsData NotificationSettings { get; set; } 
+        public virtual NotificationSettingsData NotificationSettings { get; set; }
 
         /// <summary>Whether the calendar is the primary calendar of the authenticated user. Read-only. Optional. The
         /// default is False.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primary")]
-        public virtual System.Nullable<bool> Primary { get; set; } 
+        public virtual System.Nullable<bool> Primary { get; set; }
 
         /// <summary>Whether the calendar content shows up in the calendar UI. Optional. The default is False.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selected")]
-        public virtual System.Nullable<bool> Selected { get; set; } 
+        public virtual System.Nullable<bool> Selected { get; set; }
 
         /// <summary>Title of the calendar. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summary")]
-        public virtual string Summary { get; set; } 
+        public virtual string Summary { get; set; }
 
         /// <summary>The summary that the authenticated user has set for this calendar. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summaryOverride")]
-        public virtual string SummaryOverride { get; set; } 
+        public virtual string SummaryOverride { get; set; }
 
         /// <summary>The time zone of the calendar. Optional. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
-        public virtual string TimeZone { get; set; } 
+        public virtual string TimeZone { get; set; }
 
         
 
@@ -4281,7 +4281,7 @@ namespace Google.Apis.Calendar.v3.Data
         {
             /// <summary>The list of notifications set for this calendar.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("notifications")]
-            public virtual System.Collections.Generic.IList<CalendarNotification> Notifications { get; set; } 
+            public virtual System.Collections.Generic.IList<CalendarNotification> Notifications { get; set; }
 
         }
     }    
@@ -4291,7 +4291,7 @@ namespace Google.Apis.Calendar.v3.Data
         /// <summary>The method used to deliver the notification. The possible value is: - "email" - Notifications are
         /// sent via email. Required when adding a notification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
-        public virtual string Method { get; set; } 
+        public virtual string Method { get; set; }
 
         /// <summary>The type of notification. Possible values are: - "eventCreation" - Notification sent when a new
         /// event is put on the calendar. - "eventChange" - Notification sent when an event is changed. -
@@ -4299,7 +4299,7 @@ namespace Google.Apis.Calendar.v3.Data
         /// when an attendee responds to the event invitation. - "agenda" - An agenda with the events of the day (sent
         /// out in the morning). Required when adding a notification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4309,47 +4309,47 @@ namespace Google.Apis.Calendar.v3.Data
     {
         /// <summary>The address where notifications are delivered for this channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
-        public virtual string Address { get; set; } 
+        public virtual string Address { get; set; }
 
         /// <summary>Date and time of notification channel expiration, expressed as a Unix timestamp, in milliseconds.
         /// Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expiration")]
-        public virtual System.Nullable<long> Expiration { get; set; } 
+        public virtual System.Nullable<long> Expiration { get; set; }
 
         /// <summary>A UUID or similar unique string that identifies this channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies this as a notification channel used to watch for changes to a resource, which is
         /// "api#channel".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Additional parameters controlling delivery channel behavior. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Params__ { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Params__ { get; set; }
 
         /// <summary>A Boolean value to indicate whether payload is wanted. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual System.Nullable<bool> Payload { get; set; } 
+        public virtual System.Nullable<bool> Payload { get; set; }
 
         /// <summary>An opaque ID that identifies the resource being watched on this channel. Stable across different
         /// API versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual string ResourceId { get; set; } 
+        public virtual string ResourceId { get; set; }
 
         /// <summary>A version-specific identifier for the watched resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
-        public virtual string ResourceUri { get; set; } 
+        public virtual string ResourceUri { get; set; }
 
         /// <summary>An arbitrary string delivered to the target address with each notification delivered over this
         /// channel. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
-        public virtual string Token { get; set; } 
+        public virtual string Token { get; set; }
 
         /// <summary>The type of delivery mechanism used for this channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4359,12 +4359,12 @@ namespace Google.Apis.Calendar.v3.Data
     {
         /// <summary>The background color associated with this color definition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("background")]
-        public virtual string Background { get; set; } 
+        public virtual string Background { get; set; }
 
         /// <summary>The foreground color that can be used to write on top of a background with 'background'
         /// color.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("foreground")]
-        public virtual string Foreground { get; set; } 
+        public virtual string Foreground { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4375,16 +4375,16 @@ namespace Google.Apis.Calendar.v3.Data
         /// <summary>A global palette of calendar colors, mapping from the color ID to its definition. A
         /// calendarListEntry resource refers to one of these color IDs in its color field. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("calendar")]
-        public virtual System.Collections.Generic.IDictionary<string,ColorDefinition> Calendar { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, ColorDefinition> Calendar { get; set; }
 
         /// <summary>A global palette of event colors, mapping from the color ID to its definition. An event resource
         /// may refer to one of these color IDs in its color field. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("event")]
-        public virtual System.Collections.Generic.IDictionary<string,ColorDefinition> Event__ { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, ColorDefinition> Event__ { get; set; }
 
         /// <summary>Type of the resource ("calendar#colors").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Last modification time of the color palette (as a RFC3339 timestamp). Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]
@@ -4409,41 +4409,41 @@ namespace Google.Apis.Calendar.v3.Data
         /// the Hangout. - "hangoutsMeet": the 10-letter meeting code, for example "aaa-bbbb-ccc". - "addOn": defined by
         /// 3P conference provider.  Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conferenceId")]
-        public virtual string ConferenceId { get; set; } 
+        public virtual string ConferenceId { get; set; }
 
         /// <summary>The conference solution, such as Hangouts or Google Meet. Unset for a conference with a failed
         /// create request. Either conferenceSolution and at least one entryPoint, or createRequest is
         /// required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conferenceSolution")]
-        public virtual ConferenceSolution ConferenceSolution { get; set; } 
+        public virtual ConferenceSolution ConferenceSolution { get; set; }
 
         /// <summary>A request to generate a new conference and attach it to the event. The data is generated
         /// asynchronously. To see whether the data is present check the status field. Either conferenceSolution and at
         /// least one entryPoint, or createRequest is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createRequest")]
-        public virtual CreateConferenceRequest CreateRequest { get; set; } 
+        public virtual CreateConferenceRequest CreateRequest { get; set; }
 
         /// <summary>Information about individual conference entry points, such as URLs or phone numbers. All of them
         /// must belong to the same conference. Either conferenceSolution and at least one entryPoint, or createRequest
         /// is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entryPoints")]
-        public virtual System.Collections.Generic.IList<EntryPoint> EntryPoints { get; set; } 
+        public virtual System.Collections.Generic.IList<EntryPoint> EntryPoints { get; set; }
 
         /// <summary>Additional notes (such as instructions from the domain administrator, legal notices) to display to
         /// the user. Can contain HTML. The maximum length is 2048 characters. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
-        public virtual string Notes { get; set; } 
+        public virtual string Notes { get; set; }
 
         /// <summary>Additional properties related to a conference. An example would be a solution-specific setting for
         /// enabling video streaming.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual ConferenceParameters Parameters { get; set; } 
+        public virtual ConferenceParameters Parameters { get; set; }
 
         /// <summary>The signature of the conference data. Generated on server side. Must be preserved while copying the
         /// conference data between events, otherwise the conference data will not be copied. Unset for a conference
         /// with a failed create request. Optional for a conference with a pending create request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]
-        public virtual string Signature { get; set; } 
+        public virtual string Signature { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4453,7 +4453,7 @@ namespace Google.Apis.Calendar.v3.Data
     {
         /// <summary>Additional add-on specific data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addOnParameters")]
-        public virtual ConferenceParametersAddOnParameters AddOnParameters { get; set; } 
+        public virtual ConferenceParametersAddOnParameters AddOnParameters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4462,7 +4462,7 @@ namespace Google.Apis.Calendar.v3.Data
     public class ConferenceParametersAddOnParameters : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Parameters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4473,7 +4473,7 @@ namespace Google.Apis.Calendar.v3.Data
         /// <summary>The types of conference solutions that are supported for this calendar. The possible values are: -
         /// "eventHangout" - "eventNamedHangout" - "hangoutsMeet"  Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedConferenceSolutionTypes")]
-        public virtual System.Collections.Generic.IList<string> AllowedConferenceSolutionTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AllowedConferenceSolutionTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4486,7 +4486,7 @@ namespace Google.Apis.Calendar.v3.Data
         /// request succeeded, the entry points are populated. - "failure": the conference create request failed, there
         /// are no entry points.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusCode")]
-        public virtual string StatusCode { get; set; } 
+        public virtual string StatusCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4496,15 +4496,15 @@ namespace Google.Apis.Calendar.v3.Data
     {
         /// <summary>The user-visible icon for this solution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iconUri")]
-        public virtual string IconUri { get; set; } 
+        public virtual string IconUri { get; set; }
 
         /// <summary>The key which can uniquely identify the conference solution for this event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual ConferenceSolutionKey Key { get; set; } 
+        public virtual ConferenceSolutionKey Key { get; set; }
 
         /// <summary>The user-visible name of this solution. Not localized.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4518,7 +4518,7 @@ namespace Google.Apis.Calendar.v3.Data
         /// Hangouts for G Suite users (http://hangouts.google.com) - "hangoutsMeet" for Google Meet
         /// (http://meet.google.com) - "addOn" for 3P conference providers</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4528,16 +4528,16 @@ namespace Google.Apis.Calendar.v3.Data
     {
         /// <summary>The conference solution, such as Hangouts or Google Meet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conferenceSolutionKey")]
-        public virtual ConferenceSolutionKey ConferenceSolutionKey { get; set; } 
+        public virtual ConferenceSolutionKey ConferenceSolutionKey { get; set; }
 
         /// <summary>The client-generated unique ID for this request. Clients should regenerate this ID for every new
         /// request. If an ID provided is the same as for the previous request, the request is ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; } 
+        public virtual string RequestId { get; set; }
 
         /// <summary>The status of the conference create request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual ConferenceRequestStatus Status { get; set; } 
+        public virtual ConferenceRequestStatus Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4550,12 +4550,12 @@ namespace Google.Apis.Calendar.v3.Data
         /// match the terminology that the conference provider uses. Only the populated fields should be displayed.
         /// Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessCode")]
-        public virtual string AccessCode { get; set; } 
+        public virtual string AccessCode { get; set; }
 
         /// <summary>Features of the entry point, such as being toll or toll-free. One entry point can have multiple
         /// features. However, toll and toll-free cannot be both set on the same entry point.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entryPointFeatures")]
-        public virtual System.Collections.Generic.IList<string> EntryPointFeatures { get; set; } 
+        public virtual System.Collections.Generic.IList<string> EntryPointFeatures { get; set; }
 
         /// <summary>The type of the conference entry point. Possible values are: - "video" - joining a conference over
         /// HTTP. A conference can have zero or one video entry point. - "phone" - joining a conference by dialing a
@@ -4564,53 +4564,53 @@ namespace Google.Apis.Calendar.v3.Data
         /// for example additional phone numbers. A conference can have zero or one more entry point. A conference with
         /// only a more entry point is not a valid conference.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entryPointType")]
-        public virtual string EntryPointType { get; set; } 
+        public virtual string EntryPointType { get; set; }
 
         /// <summary>The label for the URI. Visible to end users. Not localized. The maximum length is 512 characters.
         /// Examples: - for video: meet.google.com/aaa-bbbb-ccc - for phone: +1 123 268 2601 - for sip:
         /// 12345678@altostrat.com - for more: should not be filled Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual string Label { get; set; } 
+        public virtual string Label { get; set; }
 
         /// <summary>The meeting code to access the conference. The maximum length is 128 characters. When creating new
         /// conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that
         /// match the terminology that the conference provider uses. Only the populated fields should be displayed.
         /// Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meetingCode")]
-        public virtual string MeetingCode { get; set; } 
+        public virtual string MeetingCode { get; set; }
 
         /// <summary>The passcode to access the conference. The maximum length is 128 characters. When creating new
         /// conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that
         /// match the terminology that the conference provider uses. Only the populated fields should be
         /// displayed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passcode")]
-        public virtual string Passcode { get; set; } 
+        public virtual string Passcode { get; set; }
 
         /// <summary>The password to access the conference. The maximum length is 128 characters. When creating new
         /// conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that
         /// match the terminology that the conference provider uses. Only the populated fields should be displayed.
         /// Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
-        public virtual string Password { get; set; } 
+        public virtual string Password { get; set; }
 
         /// <summary>The PIN to access the conference. The maximum length is 128 characters. When creating new
         /// conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that
         /// match the terminology that the conference provider uses. Only the populated fields should be displayed.
         /// Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pin")]
-        public virtual string Pin { get; set; } 
+        public virtual string Pin { get; set; }
 
         /// <summary>The CLDR/ISO 3166 region code for the country associated with this phone access. Example: "SE" for
         /// Sweden. Calendar backend will populate this field only for EntryPointType.PHONE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
-        public virtual string RegionCode { get; set; } 
+        public virtual string RegionCode { get; set; }
 
         /// <summary>The URI of the entry point. The maximum length is 1300 characters. Format: - for video, http: or
         /// https: schema is required. - for phone, tel: schema is required. The URI should include the entire dial
         /// sequence (e.g., tel:+12345678900,,,123456789;1234). - for sip, sip: schema is required, e.g.,
         /// sip:12345678@myprovider.com. - for more, http: or https: schema is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4620,7 +4620,7 @@ namespace Google.Apis.Calendar.v3.Data
     {
         /// <summary>Domain, or broad category, of the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
-        public virtual string Domain { get; set; } 
+        public virtual string Domain { get; set; }
 
         /// <summary>Specific reason for the error. Some of the possible values are: - "groupTooBig" - The group of
         /// users requested is too large for a single query. - "tooManyCalendarsRequested" - The number of calendars
@@ -4629,7 +4629,7 @@ namespace Google.Apis.Calendar.v3.Data
         /// the future, so clients should gracefully handle additional error statuses not included in this
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4640,35 +4640,35 @@ namespace Google.Apis.Calendar.v3.Data
         /// <summary>Whether anyone can invite themselves to the event (currently works for Google+ events only).
         /// Optional. The default is False.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("anyoneCanAddSelf")]
-        public virtual System.Nullable<bool> AnyoneCanAddSelf { get; set; } 
+        public virtual System.Nullable<bool> AnyoneCanAddSelf { get; set; }
 
         /// <summary>File attachments for the event. Currently only Google Drive attachments are supported. In order to
         /// modify attachments the supportsAttachments request parameter should be set to true. There can be at most 25
         /// attachments per event,</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachments")]
-        public virtual System.Collections.Generic.IList<EventAttachment> Attachments { get; set; } 
+        public virtual System.Collections.Generic.IList<EventAttachment> Attachments { get; set; }
 
         /// <summary>The attendees of the event. See the Events with attendees guide for more information on scheduling
         /// events with other calendar users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attendees")]
-        public virtual System.Collections.Generic.IList<EventAttendee> Attendees { get; set; } 
+        public virtual System.Collections.Generic.IList<EventAttendee> Attendees { get; set; }
 
         /// <summary>Whether attendees may have been omitted from the event's representation. When retrieving an event,
         /// this may be due to a restriction specified by the maxAttendee query parameter. When updating an event, this
         /// can be used to only update the participant's response. Optional. The default is False.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attendeesOmitted")]
-        public virtual System.Nullable<bool> AttendeesOmitted { get; set; } 
+        public virtual System.Nullable<bool> AttendeesOmitted { get; set; }
 
         /// <summary>The color of the event. This is an ID referring to an entry in the event section of the colors
         /// definition (see the  colors endpoint). Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("colorId")]
-        public virtual string ColorId { get; set; } 
+        public virtual string ColorId { get; set; }
 
         /// <summary>The conference-related information, such as details of a Google Meet conference. To create new
         /// conference details use the createRequest field. To persist your changes, remember to set the
         /// conferenceDataVersion request parameter to 1 for all event modification requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conferenceData")]
-        public virtual ConferenceData ConferenceData { get; set; } 
+        public virtual ConferenceData ConferenceData { get; set; }
 
         /// <summary>Creation time of the event (as a RFC3339 timestamp). Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("created")]
@@ -4684,57 +4684,57 @@ namespace Google.Apis.Calendar.v3.Data
 
         /// <summary>The creator of the event. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creator")]
-        public virtual CreatorData Creator { get; set; } 
+        public virtual CreatorData Creator { get; set; }
 
         /// <summary>Description of the event. Can contain HTML. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The (exclusive) end time of the event. For a recurring event, this is the end time of the first
         /// instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("end")]
-        public virtual EventDateTime End { get; set; } 
+        public virtual EventDateTime End { get; set; }
 
         /// <summary>Whether the end time is actually unspecified. An end time is still provided for compatibility
         /// reasons, even if this attribute is set to True. The default is False.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTimeUnspecified")]
-        public virtual System.Nullable<bool> EndTimeUnspecified { get; set; } 
+        public virtual System.Nullable<bool> EndTimeUnspecified { get; set; }
 
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Extended properties of the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extendedProperties")]
-        public virtual ExtendedPropertiesData ExtendedProperties { get; set; } 
+        public virtual ExtendedPropertiesData ExtendedProperties { get; set; }
 
         /// <summary>A gadget that extends this event. Gadgets are deprecated; this structure is instead only used for
         /// returning birthday calendar metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gadget")]
-        public virtual GadgetData Gadget { get; set; } 
+        public virtual GadgetData Gadget { get; set; }
 
         /// <summary>Whether attendees other than the organizer can invite others to the event. Optional. The default is
         /// True.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guestsCanInviteOthers")]
-        public virtual System.Nullable<bool> GuestsCanInviteOthers { get; set; } 
+        public virtual System.Nullable<bool> GuestsCanInviteOthers { get; set; }
 
         /// <summary>Whether attendees other than the organizer can modify the event. Optional. The default is
         /// False.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guestsCanModify")]
-        public virtual System.Nullable<bool> GuestsCanModify { get; set; } 
+        public virtual System.Nullable<bool> GuestsCanModify { get; set; }
 
         /// <summary>Whether attendees other than the organizer can see who the event's attendees are. Optional. The
         /// default is True.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guestsCanSeeOtherGuests")]
-        public virtual System.Nullable<bool> GuestsCanSeeOtherGuests { get; set; } 
+        public virtual System.Nullable<bool> GuestsCanSeeOtherGuests { get; set; }
 
         /// <summary>An absolute link to the Google+ hangout associated with this event. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hangoutLink")]
-        public virtual string HangoutLink { get; set; } 
+        public virtual string HangoutLink { get; set; }
 
         /// <summary>An absolute link to this event in the Google Calendar Web UI. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("htmlLink")]
-        public virtual string HtmlLink { get; set; } 
+        public virtual string HtmlLink { get; set; }
 
         /// <summary>Event unique identifier as defined in RFC5545. It is used to uniquely identify events accross
         /// calendaring systems and must be supplied when importing events via the import method. Note that the icalUID
@@ -4742,7 +4742,7 @@ namespace Google.Apis.Calendar.v3.Data
         /// in their semantics is that in recurring events, all occurrences of one event have different ids while they
         /// all share the same icalUIDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iCalUID")]
-        public virtual string ICalUID { get; set; } 
+        public virtual string ICalUID { get; set; }
 
         /// <summary>Opaque identifier of the event. When creating new single or recurring events, you can specify their
         /// IDs. Provided IDs must follow these rules: - characters allowed in the ID are those used in base32hex
@@ -4755,69 +4755,69 @@ namespace Google.Apis.Calendar.v3.Data
         /// difference in their semantics is that in recurring events, all occurrences of one event have different ids
         /// while they all share the same icalUIDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Type of the resource ("calendar#event").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Geographic location of the event as free-form text. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Whether this is a locked event copy where no changes can be made to the main event fields
         /// "summary", "description", "location", "start", "end" or "recurrence". The default is False. Read-
         /// Only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locked")]
-        public virtual System.Nullable<bool> Locked { get; set; } 
+        public virtual System.Nullable<bool> Locked { get; set; }
 
         /// <summary>The organizer of the event. If the organizer is also an attendee, this is indicated with a separate
         /// entry in attendees with the organizer field set to True. To change the organizer, use the move operation.
         /// Read-only, except when importing an event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("organizer")]
-        public virtual OrganizerData Organizer { get; set; } 
+        public virtual OrganizerData Organizer { get; set; }
 
         /// <summary>For an instance of a recurring event, this is the time at which this event would start according to
         /// the recurrence data in the recurring event identified by recurringEventId. It uniquely identifies the
         /// instance within the recurring event series even if the instance was moved to a different time.
         /// Immutable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalStartTime")]
-        public virtual EventDateTime OriginalStartTime { get; set; } 
+        public virtual EventDateTime OriginalStartTime { get; set; }
 
         /// <summary>If set to True, Event propagation is disabled. Note that it is not the same thing as Private event
         /// properties. Optional. Immutable. The default is False.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateCopy")]
-        public virtual System.Nullable<bool> PrivateCopy { get; set; } 
+        public virtual System.Nullable<bool> PrivateCopy { get; set; }
 
         /// <summary>List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. Note
         /// that DTSTART and DTEND lines are not allowed in this field; event start and end times are specified in the
         /// start and end fields. This field is omitted for single events or instances of recurring events.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recurrence")]
-        public virtual System.Collections.Generic.IList<string> Recurrence { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Recurrence { get; set; }
 
         /// <summary>For an instance of a recurring event, this is the id of the recurring event to which this instance
         /// belongs. Immutable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recurringEventId")]
-        public virtual string RecurringEventId { get; set; } 
+        public virtual string RecurringEventId { get; set; }
 
         /// <summary>Information about the event's reminders for the authenticated user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reminders")]
-        public virtual RemindersData Reminders { get; set; } 
+        public virtual RemindersData Reminders { get; set; }
 
         /// <summary>Sequence number as per iCalendar.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sequence")]
-        public virtual System.Nullable<int> Sequence { get; set; } 
+        public virtual System.Nullable<int> Sequence { get; set; }
 
         /// <summary>Source from which the event was created. For example, a web page, an email message or any document
         /// identifiable by an URL with HTTP or HTTPS scheme. Can only be seen or modified by the creator of the
         /// event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual SourceData Source { get; set; } 
+        public virtual SourceData Source { get; set; }
 
         /// <summary>The (inclusive) start time of the event. For a recurring event, this is the start time of the first
         /// instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("start")]
-        public virtual EventDateTime Start { get; set; } 
+        public virtual EventDateTime Start { get; set; }
 
         /// <summary>Status of the event. Optional. Possible values are: - "confirmed" - The event is confirmed. This is
         /// the default status. - "tentative" - The event is tentatively confirmed. - "cancelled" - The event is
@@ -4837,18 +4837,18 @@ namespace Google.Apis.Calendar.v3.Data
         /// original organizer is not on the attendee list, it will leave behind a cancelled event where only the id
         /// field is guaranteed to be populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>Title of the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summary")]
-        public virtual string Summary { get; set; } 
+        public virtual string Summary { get; set; }
 
         /// <summary>Whether the event blocks time on the calendar. Optional. Possible values are: - "opaque" - Default
         /// value. The event does block time on the calendar. This is equivalent to setting Show me as to Busy in the
         /// Calendar UI. - "transparent" - The event does not block time on the calendar. This is equivalent to setting
         /// Show me as to Available in the Calendar UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transparency")]
-        public virtual string Transparency { get; set; } 
+        public virtual string Transparency { get; set; }
 
         /// <summary>Last modification time of the event (as a RFC3339 timestamp). Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]
@@ -4868,7 +4868,7 @@ namespace Google.Apis.Calendar.v3.Data
         /// view event details. - "confidential" - The event is private. This value is provided for compatibility
         /// reasons.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
-        public virtual string Visibility { get; set; } 
+        public virtual string Visibility { get; set; }
 
         
 
@@ -4877,21 +4877,21 @@ namespace Google.Apis.Calendar.v3.Data
         {
             /// <summary>The creator's name, if available.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-            public virtual string DisplayName { get; set; } 
+            public virtual string DisplayName { get; set; }
 
             /// <summary>The creator's email address, if available.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("email")]
-            public virtual string Email { get; set; } 
+            public virtual string Email { get; set; }
 
             /// <summary>The creator's Profile ID, if available. It corresponds to the id field in the People collection
             /// of the Google+ API</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
-            public virtual string Id { get; set; } 
+            public virtual string Id { get; set; }
 
             /// <summary>Whether the creator corresponds to the calendar on which this copy of the event appears. Read-
             /// only. The default is False.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("self")]
-            public virtual System.Nullable<bool> Self { get; set; } 
+            public virtual System.Nullable<bool> Self { get; set; }
 
         }    
 
@@ -4900,11 +4900,11 @@ namespace Google.Apis.Calendar.v3.Data
         {
             /// <summary>Properties that are private to the copy of the event that appears on this calendar.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("private")]
-            public virtual System.Collections.Generic.IDictionary<string,string> Private__ { get; set; } 
+            public virtual System.Collections.Generic.IDictionary<string, string> Private__ { get; set; }
 
             /// <summary>Properties that are shared between copies of the event on other attendees' calendars.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("shared")]
-            public virtual System.Collections.Generic.IDictionary<string,string> Shared { get; set; } 
+            public virtual System.Collections.Generic.IDictionary<string, string> Shared { get; set; }
 
         }    
 
@@ -4916,37 +4916,37 @@ namespace Google.Apis.Calendar.v3.Data
             /// to the event's title in the calendar view. - "chip" - The gadget displays when the event is
             /// clicked.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("display")]
-            public virtual string Display { get; set; } 
+            public virtual string Display { get; set; }
 
             /// <summary>The gadget's height in pixels. The height must be an integer greater than 0. Optional.
             /// Deprecated.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("height")]
-            public virtual System.Nullable<int> Height { get; set; } 
+            public virtual System.Nullable<int> Height { get; set; }
 
             /// <summary>The gadget's icon URL. The URL scheme must be HTTPS. Deprecated.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("iconLink")]
-            public virtual string IconLink { get; set; } 
+            public virtual string IconLink { get; set; }
 
             /// <summary>The gadget's URL. The URL scheme must be HTTPS. Deprecated.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("link")]
-            public virtual string Link { get; set; } 
+            public virtual string Link { get; set; }
 
             /// <summary>Preferences.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("preferences")]
-            public virtual System.Collections.Generic.IDictionary<string,string> Preferences { get; set; } 
+            public virtual System.Collections.Generic.IDictionary<string, string> Preferences { get; set; }
 
             /// <summary>The gadget's title. Deprecated.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("title")]
-            public virtual string Title { get; set; } 
+            public virtual string Title { get; set; }
 
             /// <summary>The gadget's type. Deprecated.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
-            public virtual string Type { get; set; } 
+            public virtual string Type { get; set; }
 
             /// <summary>The gadget's width in pixels. The width must be an integer greater than 0. Optional.
             /// Deprecated.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("width")]
-            public virtual System.Nullable<int> Width { get; set; } 
+            public virtual System.Nullable<int> Width { get; set; }
 
         }    
 
@@ -4957,22 +4957,22 @@ namespace Google.Apis.Calendar.v3.Data
         {
             /// <summary>The organizer's name, if available.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-            public virtual string DisplayName { get; set; } 
+            public virtual string DisplayName { get; set; }
 
             /// <summary>The organizer's email address, if available. It must be a valid email address as per
             /// RFC5322.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("email")]
-            public virtual string Email { get; set; } 
+            public virtual string Email { get; set; }
 
             /// <summary>The organizer's Profile ID, if available. It corresponds to the id field in the People
             /// collection of the Google+ API</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
-            public virtual string Id { get; set; } 
+            public virtual string Id { get; set; }
 
             /// <summary>Whether the organizer corresponds to the calendar on which this copy of the event appears.
             /// Read-only. The default is False.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("self")]
-            public virtual System.Nullable<bool> Self { get; set; } 
+            public virtual System.Nullable<bool> Self { get; set; }
 
         }    
 
@@ -4983,11 +4983,11 @@ namespace Google.Apis.Calendar.v3.Data
             /// or, if not set, indicates that no reminders are set for this event. The maximum number of override
             /// reminders is 5.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("overrides")]
-            public virtual System.Collections.Generic.IList<EventReminder> Overrides { get; set; } 
+            public virtual System.Collections.Generic.IList<EventReminder> Overrides { get; set; }
 
             /// <summary>Whether the default reminders of the calendar apply to the event.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("useDefault")]
-            public virtual System.Nullable<bool> UseDefault { get; set; } 
+            public virtual System.Nullable<bool> UseDefault { get; set; }
 
         }    
 
@@ -4998,11 +4998,11 @@ namespace Google.Apis.Calendar.v3.Data
         {
             /// <summary>Title of the source; for example a title of a web page or an email subject.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("title")]
-            public virtual string Title { get; set; } 
+            public virtual string Title { get; set; }
 
             /// <summary>URL of the source pointing to a resource. The URL scheme must be HTTP or HTTPS.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("url")]
-            public virtual string Url { get; set; } 
+            public virtual string Url { get; set; }
 
         }
     }    
@@ -5012,24 +5012,24 @@ namespace Google.Apis.Calendar.v3.Data
         /// <summary>ID of the attached file. Read-only. For Google Drive files, this is the ID of the corresponding
         /// Files resource entry in the Drive API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileId")]
-        public virtual string FileId { get; set; } 
+        public virtual string FileId { get; set; }
 
         /// <summary>URL link to the attachment. For adding Google Drive file attachments use the same format as in
         /// alternateLink property of the Files resource in the Drive API. Required when adding an attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileUrl")]
-        public virtual string FileUrl { get; set; } 
+        public virtual string FileUrl { get; set; }
 
         /// <summary>URL link to the attachment's icon. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iconLink")]
-        public virtual string IconLink { get; set; } 
+        public virtual string IconLink { get; set; }
 
         /// <summary>Internet media type (MIME type) of the attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-        public virtual string MimeType { get; set; } 
+        public virtual string MimeType { get; set; }
 
         /// <summary>Attachment title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5039,50 +5039,50 @@ namespace Google.Apis.Calendar.v3.Data
     {
         /// <summary>Number of additional guests. Optional. The default is 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalGuests")]
-        public virtual System.Nullable<int> AdditionalGuests { get; set; } 
+        public virtual System.Nullable<int> AdditionalGuests { get; set; }
 
         /// <summary>The attendee's response comment. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comment")]
-        public virtual string Comment { get; set; } 
+        public virtual string Comment { get; set; }
 
         /// <summary>The attendee's name, if available. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The attendee's email address, if available. This field must be present when adding an attendee. It
         /// must be a valid email address as per RFC5322. Required when adding an attendee.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; } 
+        public virtual string Email { get; set; }
 
         /// <summary>The attendee's Profile ID, if available. It corresponds to the id field in the People collection of
         /// the Google+ API</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Whether this is an optional attendee. Optional. The default is False.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optional")]
-        public virtual System.Nullable<bool> Optional { get; set; } 
+        public virtual System.Nullable<bool> Optional { get; set; }
 
         /// <summary>Whether the attendee is the organizer of the event. Read-only. The default is False.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("organizer")]
-        public virtual System.Nullable<bool> Organizer { get; set; } 
+        public virtual System.Nullable<bool> Organizer { get; set; }
 
         /// <summary>Whether the attendee is a resource. Can only be set when the attendee is added to the event for the
         /// first time. Subsequent modifications are ignored. Optional. The default is False.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
-        public virtual System.Nullable<bool> Resource { get; set; } 
+        public virtual System.Nullable<bool> Resource { get; set; }
 
         /// <summary>The attendee's response status. Possible values are: - "needsAction" - The attendee has not
         /// responded to the invitation. - "declined" - The attendee has declined the invitation. - "tentative" - The
         /// attendee has tentatively accepted the invitation. - "accepted" - The attendee has accepted the
         /// invitation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseStatus")]
-        public virtual string ResponseStatus { get; set; } 
+        public virtual string ResponseStatus { get; set; }
 
         /// <summary>Whether this entry represents the calendar on which this copy of the event appears. Read-only. The
         /// default is False.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("self")]
-        public virtual System.Nullable<bool> Self { get; set; } 
+        public virtual System.Nullable<bool> Self { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5092,7 +5092,7 @@ namespace Google.Apis.Calendar.v3.Data
     {
         /// <summary>The date, in the format "yyyy-mm-dd", if this is an all-day event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
-        public virtual string Date { get; set; } 
+        public virtual string Date { get; set; }
 
         /// <summary>The time, as a combined date-time value (formatted according to RFC3339). A time zone offset is
         /// required unless a time zone is explicitly specified in timeZone.</summary>
@@ -5112,7 +5112,7 @@ namespace Google.Apis.Calendar.v3.Data
         /// recurrence is expanded. For single events this field is optional and indicates a custom time zone for the
         /// event start/end.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
-        public virtual string TimeZone { get; set; } 
+        public virtual string TimeZone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5123,12 +5123,12 @@ namespace Google.Apis.Calendar.v3.Data
         /// <summary>The method used by this reminder. Possible values are: - "email" - Reminders are sent via email. -
         /// "popup" - Reminders are sent via a UI popup. Required when adding a reminder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
-        public virtual string Method { get; set; } 
+        public virtual string Method { get; set; }
 
         /// <summary>Number of minutes before the start of the event when the reminder should trigger. Valid values are
         /// between 0 and 40320 (4 weeks in minutes). Required when adding a reminder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
-        public virtual System.Nullable<int> Minutes { get; set; } 
+        public virtual System.Nullable<int> Minutes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5144,48 +5144,48 @@ namespace Google.Apis.Calendar.v3.Data
         /// calendar. This role has all of the permissions of the writer role with the additional ability to see and
         /// manipulate ACLs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessRole")]
-        public virtual string AccessRole { get; set; } 
+        public virtual string AccessRole { get; set; }
 
         /// <summary>The default reminders on the calendar for the authenticated user. These reminders apply to all
         /// events on this calendar that do not explicitly override them (i.e. do not have reminders.useDefault set to
         /// True).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultReminders")]
-        public virtual System.Collections.Generic.IList<EventReminder> DefaultReminders { get; set; } 
+        public virtual System.Collections.Generic.IList<EventReminder> DefaultReminders { get; set; }
 
         /// <summary>Description of the calendar. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>ETag of the collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>List of events on the calendar.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Event> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Event> Items { get; set; }
 
         /// <summary>Type of the collection ("calendar#events").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Token used to access the next page of this result. Omitted if no further results are available, in
         /// which case nextSyncToken is provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Token used at a later point in time to retrieve only the entries that have changed since this
         /// result was returned. Omitted if further results are available, in which case nextPageToken is
         /// provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextSyncToken")]
-        public virtual string NextSyncToken { get; set; } 
+        public virtual string NextSyncToken { get; set; }
 
         /// <summary>Title of the calendar. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summary")]
-        public virtual string Summary { get; set; } 
+        public virtual string Summary { get; set; }
 
         /// <summary>The time zone of the calendar. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
-        public virtual string TimeZone { get; set; } 
+        public virtual string TimeZone { get; set; }
 
         /// <summary>Last modification time of the calendar (as a RFC3339 timestamp). Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]
@@ -5205,11 +5205,11 @@ namespace Google.Apis.Calendar.v3.Data
     {
         /// <summary>List of time ranges during which this calendar should be regarded as busy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("busy")]
-        public virtual System.Collections.Generic.IList<TimePeriod> Busy { get; set; } 
+        public virtual System.Collections.Generic.IList<TimePeriod> Busy { get; set; }
 
         /// <summary>Optional error(s) (if computation for the calendar failed).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual System.Collections.Generic.IList<Error> Errors { get; set; } 
+        public virtual System.Collections.Generic.IList<Error> Errors { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5219,11 +5219,11 @@ namespace Google.Apis.Calendar.v3.Data
     {
         /// <summary>List of calendars' identifiers within a group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("calendars")]
-        public virtual System.Collections.Generic.IList<string> Calendars { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Calendars { get; set; }
 
         /// <summary>Optional error(s) (if computation for the group failed).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual System.Collections.Generic.IList<Error> Errors { get; set; } 
+        public virtual System.Collections.Generic.IList<Error> Errors { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5234,16 +5234,16 @@ namespace Google.Apis.Calendar.v3.Data
         /// <summary>Maximal number of calendars for which FreeBusy information is to be provided. Optional. Maximum
         /// value is 50.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("calendarExpansionMax")]
-        public virtual System.Nullable<int> CalendarExpansionMax { get; set; } 
+        public virtual System.Nullable<int> CalendarExpansionMax { get; set; }
 
         /// <summary>Maximal number of calendar identifiers to be provided for a single group. Optional. An error is
         /// returned for a group with more members than this value. Maximum value is 100.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupExpansionMax")]
-        public virtual System.Nullable<int> GroupExpansionMax { get; set; } 
+        public virtual System.Nullable<int> GroupExpansionMax { get; set; }
 
         /// <summary>List of calendars and/or groups to query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<FreeBusyRequestItem> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<FreeBusyRequestItem> Items { get; set; }
 
         /// <summary>The end of the interval for the query formatted as per RFC3339.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeMax")]
@@ -5271,7 +5271,7 @@ namespace Google.Apis.Calendar.v3.Data
 
         /// <summary>Time zone used in the response. Optional. The default is UTC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
-        public virtual string TimeZone { get; set; } 
+        public virtual string TimeZone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5281,7 +5281,7 @@ namespace Google.Apis.Calendar.v3.Data
     {
         /// <summary>The identifier of a calendar or a group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5291,15 +5291,15 @@ namespace Google.Apis.Calendar.v3.Data
     {
         /// <summary>List of free/busy information for calendars.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("calendars")]
-        public virtual System.Collections.Generic.IDictionary<string,FreeBusyCalendar> Calendars { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, FreeBusyCalendar> Calendars { get; set; }
 
         /// <summary>Expansion of groups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groups")]
-        public virtual System.Collections.Generic.IDictionary<string,FreeBusyGroup> Groups { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, FreeBusyGroup> Groups { get; set; }
 
         /// <summary>Type of the resource ("calendar#freeBusy").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The end of the interval.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeMax")]
@@ -5333,20 +5333,20 @@ namespace Google.Apis.Calendar.v3.Data
     {
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The id of the user setting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Type of the resource ("calendar#setting").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Value of the user setting. The format of the value depends on the ID of the setting. It must always
         /// be a UTF-8 string of length up to 1024 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
     }    
 
@@ -5354,26 +5354,26 @@ namespace Google.Apis.Calendar.v3.Data
     {
         /// <summary>Etag of the collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>List of user settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Setting> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Setting> Items { get; set; }
 
         /// <summary>Type of the collection ("calendar#settings").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Token used to access the next page of this result. Omitted if no further results are available, in
         /// which case nextSyncToken is provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Token used at a later point in time to retrieve only the entries that have changed since this
         /// result was returned. Omitted if further results are available, in which case nextPageToken is
         /// provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextSyncToken")]
-        public virtual string NextSyncToken { get; set; } 
+        public virtual string NextSyncToken { get; set; }
 
     }    
 

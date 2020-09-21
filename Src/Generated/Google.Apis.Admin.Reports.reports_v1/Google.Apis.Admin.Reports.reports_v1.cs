@@ -1510,20 +1510,20 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
     {
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Each activity record in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Activity> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Activity> Items { get; set; }
 
         /// <summary>The type of API resource. For an activity report, the value is reports#activities.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Token for retrieving the follow-on next page of the report. The nextPageToken value is used in the
         /// request's pageToken query string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
     }    
 
@@ -1532,35 +1532,35 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
     {
         /// <summary>User doing the action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actor")]
-        public virtual ActorData Actor { get; set; } 
+        public virtual ActorData Actor { get; set; }
 
         /// <summary>ETag of the entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Activity events in the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("events")]
-        public virtual System.Collections.Generic.IList<EventsData> Events { get; set; } 
+        public virtual System.Collections.Generic.IList<EventsData> Events { get; set; }
 
         /// <summary>Unique identifier for each activity record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual IdData Id { get; set; } 
+        public virtual IdData Id { get; set; }
 
         /// <summary>IP address of the user doing the action. This is the Internet Protocol (IP) address of the user
         /// when logging into G Suite which may or may not reflect the user's physical location. For example, the IP
         /// address can be the user's proxy server's address or a virtual private network (VPN) address. The API
         /// supports IPv4 and IPv6.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
-        public virtual string IpAddress { get; set; } 
+        public virtual string IpAddress { get; set; }
 
         /// <summary>The type of API resource. For an activity report, the value is audit#activity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>This is the domain that is affected by the report's event. For example domain of Admin console or
         /// the Drive application's document owner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownerDomain")]
-        public virtual string OwnerDomain { get; set; } 
+        public virtual string OwnerDomain { get; set; }
 
         
 
@@ -1569,22 +1569,22 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
         {
             /// <summary>The type of actor.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("callerType")]
-            public virtual string CallerType { get; set; } 
+            public virtual string CallerType { get; set; }
 
             /// <summary>The primary email address of the actor. May be absent if there is no email address associated
             /// with the actor.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("email")]
-            public virtual string Email { get; set; } 
+            public virtual string Email { get; set; }
 
             /// <summary>Only present when callerType is KEY. Can be the consumer_key of the requestor for OAuth 2LO API
             /// requests or an identifier for robot accounts.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("key")]
-            public virtual string Key { get; set; } 
+            public virtual string Key { get; set; }
 
             /// <summary>The unique G Suite profile ID of the actor. May be absent if the actor is not a G Suite
             /// user.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("profileId")]
-            public virtual string ProfileId { get; set; } 
+            public virtual string ProfileId { get; set; }
 
         }    
 
@@ -1598,19 +1598,19 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
             /// eventName properties in addition to the one requested. For more information about eventName properties,
             /// see the list of event names for various applications above in applicationName.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("name")]
-            public virtual string Name { get; set; } 
+            public virtual string Name { get; set; }
 
             /// <summary>Parameter value pairs for various applications. For more information about eventName
             /// parameters, see the list of event names for various applications above in applicationName.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-            public virtual System.Collections.Generic.IList<ParametersData> Parameters { get; set; } 
+            public virtual System.Collections.Generic.IList<ParametersData> Parameters { get; set; }
 
             /// <summary>Type of event. The G Suite service or feature that an administrator changes is identified in
             /// the type property which identifies an event using the eventName property. For a full list of the API's
             /// type categories, see the list of event names for various applications above in
             /// applicationName.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
-            public virtual string Type { get; set; } 
+            public virtual string Type { get; set; }
 
             
 
@@ -1618,37 +1618,37 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
             {
                 /// <summary>Boolean value of the parameter.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
-                public virtual System.Nullable<bool> BoolValue { get; set; } 
+                public virtual System.Nullable<bool> BoolValue { get; set; }
 
                 /// <summary>Integer value of the parameter.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("intValue")]
-                public virtual System.Nullable<long> IntValue { get; set; } 
+                public virtual System.Nullable<long> IntValue { get; set; }
 
                 /// <summary>Nested parameter value pairs associated with this parameter. Complex value type for a
                 /// parameter are returned as a list of parameter values. For example, the address parameter may have a
                 /// value as [{parameter: [{name: city, value: abc}]}]</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("messageValue")]
-                public virtual MessageValueData MessageValue { get; set; } 
+                public virtual MessageValueData MessageValue { get; set; }
 
                 /// <summary>Integer values of the parameter.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("multiIntValue")]
-                public virtual System.Collections.Generic.IList<System.Nullable<long>> MultiIntValue { get; set; } 
+                public virtual System.Collections.Generic.IList<System.Nullable<long>> MultiIntValue { get; set; }
 
                 /// <summary>List of messageValue objects.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("multiMessageValue")]
-                public virtual System.Collections.Generic.IList<MultiMessageValueData> MultiMessageValue { get; set; } 
+                public virtual System.Collections.Generic.IList<MultiMessageValueData> MultiMessageValue { get; set; }
 
                 /// <summary>String values of the parameter.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("multiValue")]
-                public virtual System.Collections.Generic.IList<string> MultiValue { get; set; } 
+                public virtual System.Collections.Generic.IList<string> MultiValue { get; set; }
 
                 /// <summary>The name of the parameter.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("name")]
-                public virtual string Name { get; set; } 
+                public virtual string Name { get; set; }
 
                 /// <summary>String value of the parameter.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("value")]
-                public virtual string Value { get; set; } 
+                public virtual string Value { get; set; }
 
                 
 
@@ -1659,7 +1659,7 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
                 {
                     /// <summary>Parameter values</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
-                    public virtual System.Collections.Generic.IList<NestedParameter> Parameter { get; set; } 
+                    public virtual System.Collections.Generic.IList<NestedParameter> Parameter { get; set; }
 
                 }    
 
@@ -1667,7 +1667,7 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
                 {
                     /// <summary>Parameter values</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
-                    public virtual System.Collections.Generic.IList<NestedParameter> Parameter { get; set; } 
+                    public virtual System.Collections.Generic.IList<NestedParameter> Parameter { get; set; }
 
                 }
             }
@@ -1679,11 +1679,11 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
             /// <summary>Application name to which the event belongs. For possible values see the list of applications
             /// above in applicationName.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("applicationName")]
-            public virtual string ApplicationName { get; set; } 
+            public virtual string ApplicationName { get; set; }
 
             /// <summary>The unique identifier for a G suite account.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
-            public virtual string CustomerId { get; set; } 
+            public virtual string CustomerId { get; set; }
 
             /// <summary>Time of occurrence of the activity. This is in UNIX epoch time in seconds.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("time")]
@@ -1699,7 +1699,7 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
 
             /// <summary>Unique qualifier if multiple events have the same time.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("uniqueQualifier")]
-            public virtual System.Nullable<long> UniqueQualifier { get; set; } 
+            public virtual System.Nullable<long> UniqueQualifier { get; set; }
 
         }
     }    
@@ -1709,47 +1709,47 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
     {
         /// <summary>The address where notifications are delivered for this channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
-        public virtual string Address { get; set; } 
+        public virtual string Address { get; set; }
 
         /// <summary>Date and time of notification channel expiration, expressed as a Unix timestamp, in milliseconds.
         /// Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expiration")]
-        public virtual System.Nullable<long> Expiration { get; set; } 
+        public virtual System.Nullable<long> Expiration { get; set; }
 
         /// <summary>A UUID or similar unique string that identifies this channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies this as a notification channel used to watch for changes to a resource, which is
         /// "api#channel".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Additional parameters controlling delivery channel behavior. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Params__ { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Params__ { get; set; }
 
         /// <summary>A Boolean value to indicate whether payload is wanted. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual System.Nullable<bool> Payload { get; set; } 
+        public virtual System.Nullable<bool> Payload { get; set; }
 
         /// <summary>An opaque ID that identifies the resource being watched on this channel. Stable across different
         /// API versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual string ResourceId { get; set; } 
+        public virtual string ResourceId { get; set; }
 
         /// <summary>A version-specific identifier for the watched resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
-        public virtual string ResourceUri { get; set; } 
+        public virtual string ResourceUri { get; set; }
 
         /// <summary>An arbitrary string delivered to the target address with each notification delivered over this
         /// channel. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
-        public virtual string Token { get; set; } 
+        public virtual string Token { get; set; }
 
         /// <summary>The type of delivery mechanism used for this channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1760,31 +1760,31 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
     {
         /// <summary>Boolean value of the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
-        public virtual System.Nullable<bool> BoolValue { get; set; } 
+        public virtual System.Nullable<bool> BoolValue { get; set; }
 
         /// <summary>Integer value of the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intValue")]
-        public virtual System.Nullable<long> IntValue { get; set; } 
+        public virtual System.Nullable<long> IntValue { get; set; }
 
         /// <summary>Multiple boolean values of the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multiBoolValue")]
-        public virtual System.Collections.Generic.IList<System.Nullable<bool>> MultiBoolValue { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<bool>> MultiBoolValue { get; set; }
 
         /// <summary>Multiple integer values of the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multiIntValue")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> MultiIntValue { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> MultiIntValue { get; set; }
 
         /// <summary>Multiple string values of the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multiValue")]
-        public virtual System.Collections.Generic.IList<string> MultiValue { get; set; } 
+        public virtual System.Collections.Generic.IList<string> MultiValue { get; set; }
 
         /// <summary>The name of the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>String value of the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1795,24 +1795,24 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
     {
         /// <summary>Output only. The date of the report request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
-        public virtual string Date { get; set; } 
+        public virtual string Date { get; set; }
 
         /// <summary>Output only. Information about the type of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entity")]
-        public virtual EntityData Entity { get; set; } 
+        public virtual EntityData Entity { get; set; }
 
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The type of API resource. For a usage report, the value is admin#reports#usageReport.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Output only. Parameter value pairs for various applications. For the Customers usage report
         /// parameters and values, see the customer usage parameters reference.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IList<ParametersData> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IList<ParametersData> Parameters { get; set; }
 
         
 
@@ -1821,24 +1821,24 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
         {
             /// <summary>Output only. The unique identifier of the customer's account.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
-            public virtual string CustomerId { get; set; } 
+            public virtual string CustomerId { get; set; }
 
             /// <summary>Output only. Object key. Only relevant if entity.type = "OBJECT" Note: external-facing name of
             /// report is "Entities" rather than "Objects".</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
-            public virtual string EntityId { get; set; } 
+            public virtual string EntityId { get; set; }
 
             /// <summary>Output only. The user's immutable G Suite profile identifier.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("profileId")]
-            public virtual string ProfileId { get; set; } 
+            public virtual string ProfileId { get; set; }
 
             /// <summary>Output only. The type of item. The value is customer.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
-            public virtual string Type { get; set; } 
+            public virtual string Type { get; set; }
 
             /// <summary>Output only. The user's email address. Only relevant if entity.type = "USER"</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("userEmail")]
-            public virtual string UserEmail { get; set; } 
+            public virtual string UserEmail { get; set; }
 
         }    
 
@@ -1846,7 +1846,7 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
         {
             /// <summary>Output only. Boolean value of the parameter.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
-            public virtual System.Nullable<bool> BoolValue { get; set; } 
+            public virtual System.Nullable<bool> BoolValue { get; set; }
 
             /// <summary>The RFC 3339 formatted value of the parameter, for example 2010-10-28T10:26:35.000Z.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("datetimeValue")]
@@ -1862,19 +1862,19 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
 
             /// <summary>Output only. Integer value of the parameter.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("intValue")]
-            public virtual System.Nullable<long> IntValue { get; set; } 
+            public virtual System.Nullable<long> IntValue { get; set; }
 
             /// <summary>Output only. Nested message value of the parameter.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("msgValue")]
-            public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> MsgValue { get; set; } 
+            public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> MsgValue { get; set; }
 
             /// <summary>Name of the parameter.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("name")]
-            public virtual string Name { get; set; } 
+            public virtual string Name { get; set; }
 
             /// <summary>Output only. String value of the parameter.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
-            public virtual string StringValue { get; set; } 
+            public virtual string StringValue { get; set; }
 
         }
     }    
@@ -1883,25 +1883,25 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
     {
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The type of API resource. For a usage report, the value is admin#reports#usageReports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Token to specify next page. A report with multiple pages has a nextPageToken property in the
         /// response. For your follow-on requests getting all of the report's pages, enter the nextPageToken value in
         /// the pageToken query string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Various application parameter records.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usageReports")]
-        public virtual System.Collections.Generic.IList<UsageReport> UsageReportsValue { get; set; } 
+        public virtual System.Collections.Generic.IList<UsageReport> UsageReportsValue { get; set; }
 
         /// <summary>Warnings, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
-        public virtual System.Collections.Generic.IList<WarningsData> Warnings { get; set; } 
+        public virtual System.Collections.Generic.IList<WarningsData> Warnings { get; set; }
 
         
 
@@ -1909,18 +1909,18 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
         {
             /// <summary>Machine readable code or warning type. The warning code value is 200.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("code")]
-            public virtual string Code { get; set; } 
+            public virtual string Code { get; set; }
 
             /// <summary>Key-value pairs to give detailed information on the warning.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; }
 
             /// <summary>The human readable messages for a warning are: - Data is not available warning - Sorry, data
             /// for date yyyy-mm-dd for application "application name" is not available. - Partial data is available
             /// warning - Data for date yyyy-mm-dd for application "application name" is not available right now, please
             /// try again after a few hours. </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
-            public virtual string Message { get; set; } 
+            public virtual string Message { get; set; }
 
             
 
@@ -1928,12 +1928,12 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
             {
                 /// <summary>Key associated with a key-value pair to give detailed information on the warning.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("key")]
-                public virtual string Key { get; set; } 
+                public virtual string Key { get; set; }
 
                 /// <summary>Value associated with a key-value pair to give detailed information on the
                 /// warning.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("value")]
-                public virtual string Value { get; set; } 
+                public virtual string Value { get; set; }
 
             }
         }

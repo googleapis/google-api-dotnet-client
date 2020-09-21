@@ -1658,27 +1658,27 @@ namespace Google.Apis.Fitness.v1.Data
     {
         /// <summary>Available for Bucket.Type.ACTIVITY_TYPE, Bucket.Type.ACTIVITY_SEGMENT</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activity")]
-        public virtual System.Nullable<int> Activity { get; set; } 
+        public virtual System.Nullable<int> Activity { get; set; }
 
         /// <summary>There will be one dataset per AggregateBy in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
-        public virtual System.Collections.Generic.IList<Dataset> Dataset { get; set; } 
+        public virtual System.Collections.Generic.IList<Dataset> Dataset { get; set; }
 
         /// <summary>The end time for the aggregated data, in milliseconds since epoch, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTimeMillis")]
-        public virtual System.Nullable<long> EndTimeMillis { get; set; } 
+        public virtual System.Nullable<long> EndTimeMillis { get; set; }
 
         /// <summary>Available for Bucket.Type.SESSION</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("session")]
-        public virtual Session Session { get; set; } 
+        public virtual Session Session { get; set; }
 
         /// <summary>The start time for the aggregated data, in milliseconds since epoch, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTimeMillis")]
-        public virtual System.Nullable<long> StartTimeMillis { get; set; } 
+        public virtual System.Nullable<long> StartTimeMillis { get; set; }
 
         /// <summary>The type of a bucket signifies how the data aggregation is performed in the bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1692,7 +1692,7 @@ namespace Google.Apis.Fitness.v1.Data
         /// grant read access to this data type. The dataset in the response will have the same data source ID. Note:
         /// Data can be aggregated by either the dataTypeName or the dataSourceId, not both.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
-        public virtual string DataSourceId { get; set; } 
+        public virtual string DataSourceId { get; set; }
 
         /// <summary>The data type to aggregate. All data sources providing this data type will contribute data to the
         /// aggregation. The response will contain a single dataset for this data type name. The dataset will have a
@@ -1700,7 +1700,7 @@ namespace Google.Apis.Fitness.v1.Data
         /// empty data set will be returned. Note: Data can be aggregated by either the dataTypeName or the
         /// dataSourceId, not both.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataTypeName")]
-        public virtual string DataTypeName { get; set; } 
+        public virtual string DataTypeName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1713,45 +1713,45 @@ namespace Google.Apis.Fitness.v1.Data
         /// data that is specified will be aggregated using the same bucketing criteria. There will be one dataset in
         /// the response for every aggregateBy spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aggregateBy")]
-        public virtual System.Collections.Generic.IList<AggregateBy> AggregateBy { get; set; } 
+        public virtual System.Collections.Generic.IList<AggregateBy> AggregateBy { get; set; }
 
         /// <summary>Specifies that data be aggregated each activity segment recorded for a user. Similar to
         /// bucketByActivitySegment, but bucketing is done for each activity segment rather than all segments of the
         /// same type. Mutually exclusive of other bucketing specifications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketByActivitySegment")]
-        public virtual BucketByActivity BucketByActivitySegment { get; set; } 
+        public virtual BucketByActivity BucketByActivitySegment { get; set; }
 
         /// <summary>Specifies that data be aggregated by the type of activity being performed when the data was
         /// recorded. All data that was recorded during a certain activity type (.for the given time range) will be
         /// aggregated into the same bucket. Data that was recorded while the user was not active will not be included
         /// in the response. Mutually exclusive of other bucketing specifications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketByActivityType")]
-        public virtual BucketByActivity BucketByActivityType { get; set; } 
+        public virtual BucketByActivity BucketByActivityType { get; set; }
 
         /// <summary>Specifies that data be aggregated by user sessions. Data that does not fall within the time range
         /// of a session will not be included in the response. Mutually exclusive of other bucketing
         /// specifications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketBySession")]
-        public virtual BucketBySession BucketBySession { get; set; } 
+        public virtual BucketBySession BucketBySession { get; set; }
 
         /// <summary>Specifies that data be aggregated by a single time interval. Mutually exclusive of other bucketing
         /// specifications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketByTime")]
-        public virtual BucketByTime BucketByTime { get; set; } 
+        public virtual BucketByTime BucketByTime { get; set; }
 
         /// <summary>The end of a window of time. Data that intersects with this time window will be aggregated. The
         /// time is in milliseconds since epoch, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTimeMillis")]
-        public virtual System.Nullable<long> EndTimeMillis { get; set; } 
+        public virtual System.Nullable<long> EndTimeMillis { get; set; }
 
         /// <summary>DO NOT POPULATE THIS FIELD. It is ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filteredDataQualityStandard")]
-        public virtual System.Collections.Generic.IList<string> FilteredDataQualityStandard { get; set; } 
+        public virtual System.Collections.Generic.IList<string> FilteredDataQualityStandard { get; set; }
 
         /// <summary>The start of a window of time. Data that intersects with this time window will be aggregated. The
         /// time is in milliseconds since epoch, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTimeMillis")]
-        public virtual System.Nullable<long> StartTimeMillis { get; set; } 
+        public virtual System.Nullable<long> StartTimeMillis { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1761,7 +1761,7 @@ namespace Google.Apis.Fitness.v1.Data
     {
         /// <summary>A list of buckets containing the aggregated data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
-        public virtual System.Collections.Generic.IList<AggregateBucket> Bucket { get; set; } 
+        public virtual System.Collections.Generic.IList<AggregateBucket> Bucket { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1771,24 +1771,24 @@ namespace Google.Apis.Fitness.v1.Data
     {
         /// <summary>An optional URI that can be used to link back to the application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detailsUrl")]
-        public virtual string DetailsUrl { get; set; } 
+        public virtual string DetailsUrl { get; set; }
 
         /// <summary>The name of this application. This is required for REST clients, but we do not enforce uniqueness
         /// of this name. It is provided as a matter of convenience for other developers who would like to identify
         /// which REST created an Application or Data Source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Package name for this application. This is used as a unique identifier when created by Android
         /// applications, but cannot be specified by REST clients. REST clients will have their developer project number
         /// reflected into the Data Source data stream IDs, instead of the packageName.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
-        public virtual string PackageName { get; set; } 
+        public virtual string PackageName { get; set; }
 
         /// <summary>Version of the application. You should update this field whenever the application changes in a way
         /// that affects the computation of the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1799,12 +1799,12 @@ namespace Google.Apis.Fitness.v1.Data
         /// <summary>The default activity stream will be used if a specific activityDataSourceId is not
         /// specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activityDataSourceId")]
-        public virtual string ActivityDataSourceId { get; set; } 
+        public virtual string ActivityDataSourceId { get; set; }
 
         /// <summary>Specifies that only activity segments of duration longer than minDurationMillis are considered and
         /// used as a container for aggregated data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minDurationMillis")]
-        public virtual System.Nullable<long> MinDurationMillis { get; set; } 
+        public virtual System.Nullable<long> MinDurationMillis { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1815,7 +1815,7 @@ namespace Google.Apis.Fitness.v1.Data
         /// <summary>Specifies that only sessions of duration longer than minDurationMillis are considered and used as a
         /// container for aggregated data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minDurationMillis")]
-        public virtual System.Nullable<long> MinDurationMillis { get; set; } 
+        public virtual System.Nullable<long> MinDurationMillis { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1826,10 +1826,10 @@ namespace Google.Apis.Fitness.v1.Data
         /// <summary>Specifies that result buckets aggregate data by exactly durationMillis time frames. Time frames
         /// that contain no data will be included in the response with an empty dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("durationMillis")]
-        public virtual System.Nullable<long> DurationMillis { get; set; } 
+        public virtual System.Nullable<long> DurationMillis { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("period")]
-        public virtual BucketByTimePeriod Period { get; set; } 
+        public virtual BucketByTimePeriod Period { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1839,13 +1839,13 @@ namespace Google.Apis.Fitness.v1.Data
     {
         /// <summary>org.joda.timezone.DateTimeZone</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZoneId")]
-        public virtual string TimeZoneId { get; set; } 
+        public virtual string TimeZoneId { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual System.Nullable<int> Value { get; set; } 
+        public virtual System.Nullable<int> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1861,43 +1861,43 @@ namespace Google.Apis.Fitness.v1.Data
     {
         /// <summary>DO NOT USE THIS FIELD. It is ignored, and not stored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computationTimeMillis")]
-        public virtual System.Nullable<long> ComputationTimeMillis { get; set; } 
+        public virtual System.Nullable<long> ComputationTimeMillis { get; set; }
 
         /// <summary>The data type defining the format of the values in this data point.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataTypeName")]
-        public virtual string DataTypeName { get; set; } 
+        public virtual string DataTypeName { get; set; }
 
         /// <summary>The end time of the interval represented by this data point, in nanoseconds since epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTimeNanos")]
-        public virtual System.Nullable<long> EndTimeNanos { get; set; } 
+        public virtual System.Nullable<long> EndTimeNanos { get; set; }
 
         /// <summary>Indicates the last time this data point was modified. Useful only in contexts where we are listing
         /// the data changes, rather than representing the current state of the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modifiedTimeMillis")]
-        public virtual System.Nullable<long> ModifiedTimeMillis { get; set; } 
+        public virtual System.Nullable<long> ModifiedTimeMillis { get; set; }
 
         /// <summary>If the data point is contained in a dataset for a derived data source, this field will be populated
         /// with the data source stream ID that created the data point originally. WARNING: do not rely on this field
         /// for anything other than debugging. The value of this field, if it is set at all, is an implementation detail
         /// and is not guaranteed to remain consistent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originDataSourceId")]
-        public virtual string OriginDataSourceId { get; set; } 
+        public virtual string OriginDataSourceId { get; set; }
 
         /// <summary>The raw timestamp from the original SensorEvent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rawTimestampNanos")]
-        public virtual System.Nullable<long> RawTimestampNanos { get; set; } 
+        public virtual System.Nullable<long> RawTimestampNanos { get; set; }
 
         /// <summary>The start time of the interval represented by this data point, in nanoseconds since
         /// epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTimeNanos")]
-        public virtual System.Nullable<long> StartTimeNanos { get; set; } 
+        public virtual System.Nullable<long> StartTimeNanos { get; set; }
 
         /// <summary>Values of each data type field for the data point. It is expected that each value corresponding to
         /// a data type field will occur in the same order that the field is listed with in the data type specified in a
         /// data source. Only one of integer and floating point fields will be populated, depending on the format enum
         /// value within data source's type field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual System.Collections.Generic.IList<Value> Value { get; set; } 
+        public virtual System.Collections.Generic.IList<Value> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1916,12 +1916,12 @@ namespace Google.Apis.Fitness.v1.Data
     {
         /// <summary>Information about an application which feeds sensor data into the platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("application")]
-        public virtual Application Application { get; set; } 
+        public virtual Application Application { get; set; }
 
         /// <summary>DO NOT POPULATE THIS FIELD. It is never populated in responses from the platform, and is ignored in
         /// queries. It will be removed in a future version entirely.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataQualityStandard")]
-        public virtual System.Collections.Generic.IList<string> DataQualityStandard { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DataQualityStandard { get; set; }
 
         /// <summary>A unique identifier for the data stream produced by this data source. The identifier includes: -
         /// The physical device's manufacturer, model, and serial number (UID). - The application's package name or
@@ -1941,33 +1941,33 @@ namespace Google.Apis.Fitness.v1.Data
         /// the data source creator will see the developer project number in clear and normal form. This means a client
         /// will see a different set of data_stream_ids than another client with different credentials.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStreamId")]
-        public virtual string DataStreamId { get; set; } 
+        public virtual string DataStreamId { get; set; }
 
         /// <summary>The stream name uniquely identifies this particular data source among other data sources of the
         /// same type from the same underlying producer. Setting the stream name is optional, but should be done
         /// whenever an application exposes two streams for the same data type, or when a device has two equivalent
         /// sensors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStreamName")]
-        public virtual string DataStreamName { get; set; } 
+        public virtual string DataStreamName { get; set; }
 
         /// <summary>The data type defines the schema for a stream of data being collected by, inserted into, or queried
         /// from the Fitness API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
-        public virtual DataType DataType { get; set; } 
+        public virtual DataType DataType { get; set; }
 
         /// <summary>Representation of an integrated device (such as a phone or a wearable) that can hold
         /// sensors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("device")]
-        public virtual Device Device { get; set; } 
+        public virtual Device Device { get; set; }
 
         /// <summary>An end-user visible name for this data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>A constant describing the type of this data source. Indicates whether this data source produces raw
         /// or derived data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1977,12 +1977,12 @@ namespace Google.Apis.Fitness.v1.Data
     {
         /// <summary>A field represents one dimension of a data type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual System.Collections.Generic.IList<DataTypeField> Field { get; set; } 
+        public virtual System.Collections.Generic.IList<DataTypeField> Field { get; set; }
 
         /// <summary>Each data type has a unique, namespaced, name. All data types in the com.google namespace are
         /// shared as part of the platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1996,15 +1996,15 @@ namespace Google.Apis.Fitness.v1.Data
     {
         /// <summary>The different supported formats for each field in a data type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
-        public virtual string Format { get; set; } 
+        public virtual string Format { get; set; }
 
         /// <summary>Defines the name and format of data. Unlike data type names, field names are not namespaced, and
         /// only need to be unique within the data type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("optional")]
-        public virtual System.Nullable<bool> Optional { get; set; } 
+        public virtual System.Nullable<bool> Optional { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2017,31 +2017,31 @@ namespace Google.Apis.Fitness.v1.Data
     {
         /// <summary>The data stream ID of the data source that created the points in this dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
-        public virtual string DataSourceId { get; set; } 
+        public virtual string DataSourceId { get; set; }
 
         /// <summary>The largest end time of all data points in this possibly partial representation of the dataset.
         /// Time is in nanoseconds from epoch. This should also match the second part of the dataset
         /// identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxEndTimeNs")]
-        public virtual System.Nullable<long> MaxEndTimeNs { get; set; } 
+        public virtual System.Nullable<long> MaxEndTimeNs { get; set; }
 
         /// <summary>The smallest start time of all data points in this possibly partial representation of the dataset.
         /// Time is in nanoseconds from epoch. This should also match the first part of the dataset
         /// identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minStartTimeNs")]
-        public virtual System.Nullable<long> MinStartTimeNs { get; set; } 
+        public virtual System.Nullable<long> MinStartTimeNs { get; set; }
 
         /// <summary>This token will be set when a dataset is received in response to a GET request and the dataset is
         /// too large to be included in a single response. Provide this value in a subsequent GET request to return the
         /// next page of data points within this dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A partial list of data points contained in the dataset, ordered by endTimeNanos. This list is
         /// considered complete when retrieving a small dataset and partial when patching a dataset or retrieving a
         /// dataset that is too large to include in a single response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("point")]
-        public virtual System.Collections.Generic.IList<DataPoint> Point { get; set; } 
+        public virtual System.Collections.Generic.IList<DataPoint> Point { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2058,26 +2058,26 @@ namespace Google.Apis.Fitness.v1.Data
     {
         /// <summary>Manufacturer of the product/hardware.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manufacturer")]
-        public virtual string Manufacturer { get; set; } 
+        public virtual string Manufacturer { get; set; }
 
         /// <summary>End-user visible model name for the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
-        public virtual string Model { get; set; } 
+        public virtual string Model { get; set; }
 
         /// <summary>A constant representing the type of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The serial number or other unique ID for the hardware. This field is obfuscated when read by any
         /// REST or Android client that did not create the data source. Only the data source creator will see the uid
         /// field in clear and normal form. The obfuscation preserves equality; that is, given two IDs, if id1 == id2,
         /// obfuscated(id1) == obfuscated(id2).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
-        public virtual string Uid { get; set; } 
+        public virtual string Uid { get; set; }
 
         /// <summary>Version string for the device hardware/software.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2087,21 +2087,21 @@ namespace Google.Apis.Fitness.v1.Data
     {
         /// <summary>The data stream ID of the data source with data point changes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
-        public virtual string DataSourceId { get; set; } 
+        public virtual string DataSourceId { get; set; }
 
         /// <summary>Deleted data points for the user. Note, for modifications this should be parsed before handling
         /// insertions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletedDataPoint")]
-        public virtual System.Collections.Generic.IList<DataPoint> DeletedDataPoint { get; set; } 
+        public virtual System.Collections.Generic.IList<DataPoint> DeletedDataPoint { get; set; }
 
         /// <summary>Inserted data points for the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertedDataPoint")]
-        public virtual System.Collections.Generic.IList<DataPoint> InsertedDataPoint { get; set; } 
+        public virtual System.Collections.Generic.IList<DataPoint> InsertedDataPoint { get; set; }
 
         /// <summary>The continuation token, which is used to page through large result sets. Provide this value in a
         /// subsequent request to return the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2111,7 +2111,7 @@ namespace Google.Apis.Fitness.v1.Data
     {
         /// <summary>A previously created data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
-        public virtual System.Collections.Generic.IList<DataSource> DataSource { get; set; } 
+        public virtual System.Collections.Generic.IList<DataSource> DataSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2122,21 +2122,21 @@ namespace Google.Apis.Fitness.v1.Data
         /// <summary>If includeDeleted is set to true in the request, and startTime and endTime are omitted, this will
         /// include sessions which were deleted since the last sync.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletedSession")]
-        public virtual System.Collections.Generic.IList<Session> DeletedSession { get; set; } 
+        public virtual System.Collections.Generic.IList<Session> DeletedSession { get; set; }
 
         /// <summary>Flag to indicate server has more data to transfer. DO NOT USE THIS FIELD. It is never populated in
         /// responses from the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasMoreData")]
-        public virtual System.Nullable<bool> HasMoreData { get; set; } 
+        public virtual System.Nullable<bool> HasMoreData { get; set; }
 
         /// <summary>The sync token which is used to sync further changes. This will only be provided if both startTime
         /// and endTime are omitted from the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Sessions with an end time that is between startTime and endTime of the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("session")]
-        public virtual System.Collections.Generic.IList<Session> Session { get; set; } 
+        public virtual System.Collections.Generic.IList<Session> Session { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2148,7 +2148,7 @@ namespace Google.Apis.Fitness.v1.Data
     {
         /// <summary>Floating point value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fpVal")]
-        public virtual System.Nullable<double> FpVal { get; set; } 
+        public virtual System.Nullable<double> FpVal { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2162,40 +2162,40 @@ namespace Google.Apis.Fitness.v1.Data
         /// known, it should also be inserted via a com.google.activity.segment data point with a STILL activity
         /// value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeTimeMillis")]
-        public virtual System.Nullable<long> ActiveTimeMillis { get; set; } 
+        public virtual System.Nullable<long> ActiveTimeMillis { get; set; }
 
         /// <summary>The type of activity this session represents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activityType")]
-        public virtual System.Nullable<int> ActivityType { get; set; } 
+        public virtual System.Nullable<int> ActivityType { get; set; }
 
         /// <summary>The application that created the session.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("application")]
-        public virtual Application Application { get; set; } 
+        public virtual Application Application { get; set; }
 
         /// <summary>A description for this session.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>An end time, in milliseconds since epoch, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTimeMillis")]
-        public virtual System.Nullable<long> EndTimeMillis { get; set; } 
+        public virtual System.Nullable<long> EndTimeMillis { get; set; }
 
         /// <summary>A client-generated identifier that is unique across all sessions owned by this particular
         /// user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>A timestamp that indicates when the session was last modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modifiedTimeMillis")]
-        public virtual System.Nullable<long> ModifiedTimeMillis { get; set; } 
+        public virtual System.Nullable<long> ModifiedTimeMillis { get; set; }
 
         /// <summary>A human readable name of the session.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>A start time, in milliseconds since epoch, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTimeMillis")]
-        public virtual System.Nullable<long> StartTimeMillis { get; set; } 
+        public virtual System.Nullable<long> StartTimeMillis { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2207,22 +2207,22 @@ namespace Google.Apis.Fitness.v1.Data
     {
         /// <summary>Floating point value. When this is set, other values must not be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fpVal")]
-        public virtual System.Nullable<double> FpVal { get; set; } 
+        public virtual System.Nullable<double> FpVal { get; set; }
 
         /// <summary>Integer value. When this is set, other values must not be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intVal")]
-        public virtual System.Nullable<int> IntVal { get; set; } 
+        public virtual System.Nullable<int> IntVal { get; set; }
 
         /// <summary>Map value. The valid key space and units for the corresponding value of each entry should be
         /// documented as part of the data type definition. Keys should be kept small whenever possible. Data streams
         /// with large keys and high data frequency may be down sampled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mapVal")]
-        public virtual System.Collections.Generic.IList<ValueMapValEntry> MapVal { get; set; } 
+        public virtual System.Collections.Generic.IList<ValueMapValEntry> MapVal { get; set; }
 
         /// <summary>String value. When this is set, other values must not be set. Strings should be kept small whenever
         /// possible. Data streams with large string values and high data frequency may be down sampled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringVal")]
-        public virtual string StringVal { get; set; } 
+        public virtual string StringVal { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2231,10 +2231,10 @@ namespace Google.Apis.Fitness.v1.Data
     public class ValueMapValEntry : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual MapValue Value { get; set; } 
+        public virtual MapValue Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

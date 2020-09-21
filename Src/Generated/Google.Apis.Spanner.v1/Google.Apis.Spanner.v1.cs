@@ -4434,20 +4434,20 @@ namespace Google.Apis.Spanner.v1.Data
         /// specified by `create_time`. `create_time` is approximately the time the CreateBackup request is
         /// received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Required for the CreateBackup operation. Name of the database from which this backup was created.
         /// This needs to be in the same instance as the backup. Values are of the form
         /// `projects//instances//databases/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
-        public virtual string Database { get; set; } 
+        public virtual string Database { get; set; }
 
         /// <summary>Required for the CreateBackup operation. The expiration time of the backup, with microseconds
         /// granularity that must be at least 6 hours and at most 366 days from the time the CreateBackup request is
         /// processed. Once the `expire_time` has passed, the backup is eligible to be automatically deleted by Cloud
         /// Spanner to free the resources used by the backup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; } 
+        public virtual object ExpireTime { get; set; }
 
         /// <summary>Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally
         /// unique identifier for the backup which cannot be changed. Values are of the form
@@ -4456,22 +4456,22 @@ namespace Google.Apis.Spanner.v1.Data
         /// instance containing the backup, identified by the prefix of the backup name of the form
         /// `projects//instances/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The names of the restored databases that reference the backup. The database names are
         /// of the form `projects//instances//databases/`. Referencing databases may exist in different instances. The
         /// existence of any referencing database prevents the backup from being deleted. When a restored database from
         /// the backup enters the `READY` state, the reference to the backup is removed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referencingDatabases")]
-        public virtual System.Collections.Generic.IList<string> ReferencingDatabases { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ReferencingDatabases { get; set; }
 
         /// <summary>Output only. Size of the backup in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeBytes")]
-        public virtual System.Nullable<long> SizeBytes { get; set; } 
+        public virtual System.Nullable<long> SizeBytes { get; set; }
 
         /// <summary>Output only. The current state of the backup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4482,16 +4482,16 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>Name of the backup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backup")]
-        public virtual string Backup { get; set; } 
+        public virtual string Backup { get; set; }
 
         /// <summary>The backup contains an externally consistent copy of `source_database` at the timestamp specified
         /// by `create_time`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Name of the database the backup was created from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceDatabase")]
-        public virtual string SourceDatabase { get; set; } 
+        public virtual string SourceDatabase { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4504,11 +4504,11 @@ namespace Google.Apis.Spanner.v1.Data
         /// the requested number of sessions. If a specific number of sessions are desired, the client can make
         /// additional calls to BatchCreateSessions (adjusting session_count as necessary).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionCount")]
-        public virtual System.Nullable<int> SessionCount { get; set; } 
+        public virtual System.Nullable<int> SessionCount { get; set; }
 
         /// <summary>Parameters to be applied to each created session.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionTemplate")]
-        public virtual Session SessionTemplate { get; set; } 
+        public virtual Session SessionTemplate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4519,7 +4519,7 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>The freshly created sessions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("session")]
-        public virtual System.Collections.Generic.IList<Session> Session { get; set; } 
+        public virtual System.Collections.Generic.IList<Session> Session { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4530,7 +4530,7 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>Required. Options for the new transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
-        public virtual TransactionOptions Options { get; set; } 
+        public virtual TransactionOptions Options { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4542,7 +4542,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>A client-specified ID for this binding. Expected to be globally unique to support the internal
         /// bindings-by-ID API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; } 
+        public virtual string BindingId { get; set; }
 
         /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
         /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
@@ -4550,7 +4550,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; } 
+        public virtual Expr Condition { get; set; }
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
@@ -4572,12 +4572,12 @@ namespace Google.Apis.Spanner.v1.Data
         /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
         /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4588,13 +4588,13 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>The node to which the link points.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("childIndex")]
-        public virtual System.Nullable<int> ChildIndex { get; set; } 
+        public virtual System.Nullable<int> ChildIndex { get; set; }
 
         /// <summary>The type of the link. For example, in Hash Joins this could be used to distinguish between the
         /// build child and the probe child, or in the case of the child being an output variable, to represent the tag
         /// associated with the output variable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>Only present if the child node is SCALAR and corresponds to an output variable of the parent node.
         /// The field carries the name of the output variable. For example, a `TableScan` operator that reads rows from
@@ -4602,7 +4602,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// column that is read by the operator. The corresponding `variable` fields will be set to the variable names
         /// assigned to the columns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variable")]
-        public virtual string Variable { get; set; } 
+        public virtual string Variable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4614,7 +4614,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>The mutations to be executed when this transaction commits. All mutations are applied atomically,
         /// in the order they appear in this list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mutations")]
-        public virtual System.Collections.Generic.IList<Mutation> Mutations { get; set; } 
+        public virtual System.Collections.Generic.IList<Mutation> Mutations { get; set; }
 
         /// <summary>Execute mutations in a temporary transaction. Note that unlike commit of a previously-started
         /// transaction, commit with a temporary transaction is non-idempotent. That is, if the `CommitRequest` is sent
@@ -4622,11 +4622,11 @@ namespace Google.Apis.Spanner.v1.Data
         /// library), it is possible that the mutations are executed more than once. If this is undesirable, use
         /// BeginTransaction and Commit instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("singleUseTransaction")]
-        public virtual TransactionOptions SingleUseTransaction { get; set; } 
+        public virtual TransactionOptions SingleUseTransaction { get; set; }
 
         /// <summary>Commit a previously-started transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionId")]
-        public virtual string TransactionId { get; set; } 
+        public virtual string TransactionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4637,7 +4637,7 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>The Cloud Spanner timestamp at which the transaction committed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commitTimestamp")]
-        public virtual object CommitTimestamp { get; set; } 
+        public virtual object CommitTimestamp { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4653,19 +4653,19 @@ namespace Google.Apis.Spanner.v1.Data
         /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
         /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelTime")]
-        public virtual object CancelTime { get; set; } 
+        public virtual object CancelTime { get; set; }
 
         /// <summary>The name of the database the backup is created from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
-        public virtual string Database { get; set; } 
+        public virtual string Database { get; set; }
 
         /// <summary>The name of the backup being created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The progress of the CreateBackup operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
-        public virtual OperationProgress Progress { get; set; } 
+        public virtual OperationProgress Progress { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4676,7 +4676,7 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>The database being created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
-        public virtual string Database { get; set; } 
+        public virtual string Database { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4690,13 +4690,13 @@ namespace Google.Apis.Spanner.v1.Data
         /// the database ID is a reserved word or if it contains a hyphen, the database ID must be enclosed in backticks
         /// (`` ` ``).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createStatement")]
-        public virtual string CreateStatement { get; set; } 
+        public virtual string CreateStatement { get; set; }
 
         /// <summary>Optional. A list of DDL statements to run inside the newly created database. Statements can create
         /// tables, indexes, etc. These statements execute atomically with the creation of the database: if there is an
         /// error in any statement, the database is not created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extraStatements")]
-        public virtual System.Collections.Generic.IList<string> ExtraStatements { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExtraStatements { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4708,19 +4708,19 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>The time at which this operation was cancelled. If set, this operation is in the process of undoing
         /// itself (which is guaranteed to succeed) and cannot be cancelled again.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelTime")]
-        public virtual object CancelTime { get; set; } 
+        public virtual object CancelTime { get; set; }
 
         /// <summary>The time at which this operation failed or was completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>The instance being created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
-        public virtual Instance Instance { get; set; } 
+        public virtual Instance Instance { get; set; }
 
         /// <summary>The time at which the CreateInstance request was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4732,12 +4732,12 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>Required. The instance to create. The name may be omitted, but if specified must be
         /// `/instances/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
-        public virtual Instance Instance { get; set; } 
+        public virtual Instance Instance { get; set; }
 
         /// <summary>Required. The ID of the instance to create. Valid identifiers are of the form `a-z*[a-z0-9]` and
         /// must be between 2 and 64 characters in length.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
-        public virtual string InstanceId { get; set; } 
+        public virtual string InstanceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4748,7 +4748,7 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>Required. The session to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("session")]
-        public virtual Session Session { get; set; } 
+        public virtual Session Session { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4759,22 +4759,22 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>Output only. If exists, the time at which the database creation started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Required. The name of the database. Values are of the form `projects//instances//databases/`, where
         /// `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to
         /// identify the database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. Applicable only for restored databases. Contains information about the restore
         /// source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restoreInfo")]
-        public virtual RestoreInfo RestoreInfo { get; set; } 
+        public virtual RestoreInfo RestoreInfo { get; set; }
 
         /// <summary>Output only. The current database state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4788,11 +4788,11 @@ namespace Google.Apis.Spanner.v1.Data
         /// DDL statement used to create the table). Delete is idempotent. The transaction will succeed even if some or
         /// all rows do not exist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keySet")]
-        public virtual KeySet KeySet { get; set; } 
+        public virtual KeySet KeySet { get; set; }
 
         /// <summary>Required. The table whose rows will be deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
-        public virtual string Table { get; set; } 
+        public virtual string Table { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4817,20 +4817,20 @@ namespace Google.Apis.Spanner.v1.Data
         /// time with an out-of-order sequence number, the transaction may be aborted. Replays of previously handled
         /// requests will yield the same response as the first execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seqno")]
-        public virtual System.Nullable<long> Seqno { get; set; } 
+        public virtual System.Nullable<long> Seqno { get; set; }
 
         /// <summary>Required. The list of statements to execute in this batch. Statements are executed serially, such
         /// that the effects of statement `i` are visible to statement `i+1`. Each statement must be a DML statement.
         /// Execution stops at the first failed statement; the remaining statements are not executed. Callers must
         /// provide at least one statement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statements")]
-        public virtual System.Collections.Generic.IList<Statement> Statements { get; set; } 
+        public virtual System.Collections.Generic.IList<Statement> Statements { get; set; }
 
         /// <summary>Required. The transaction to use. Must be a read-write transaction. To protect against replays,
         /// single-use transactions are not supported. The caller must either supply an existing transaction ID or begin
         /// a new transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
-        public virtual TransactionSelector Transaction { get; set; } 
+        public virtual TransactionSelector Transaction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4854,12 +4854,12 @@ namespace Google.Apis.Spanner.v1.Data
         /// contain the number of rows modified by the statement. Only the first ResultSet in the response contains
         /// valid ResultSetMetadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultSets")]
-        public virtual System.Collections.Generic.IList<ResultSet> ResultSets { get; set; } 
+        public virtual System.Collections.Generic.IList<ResultSet> ResultSets { get; set; }
 
         /// <summary>If all DML statements are executed successfully, the status is `OK`. Otherwise, the error status of
         /// the first failed statement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual Status Status { get; set; } 
+        public virtual Status Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4873,7 +4873,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// cases, `param_types` can be used to specify the exact SQL type for some or all of the SQL statement
         /// parameters. See the definition of Type for more information about SQL types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paramTypes")]
-        public virtual System.Collections.Generic.IDictionary<string,Type> ParamTypes { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, Type> ParamTypes { get; set; }
 
         /// <summary>Parameter names and values that bind to placeholders in the SQL string. A parameter placeholder
         /// consists of the `@` character followed by the parameter name (for example, `@firstName`). Parameter names
@@ -4882,29 +4882,29 @@ namespace Google.Apis.Spanner.v1.Data
         /// value is expected. The same parameter name can be used more than once, for example: `"WHERE id > @msg_id AND
         /// id < @msg_id + 100"` It is an error to execute a SQL statement with unbound parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Params__ { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
 
         /// <summary>If present, results will be restricted to the specified partition previously created using
         /// PartitionQuery(). There must be an exact match for the values of fields common to this message and the
         /// PartitionQueryRequest message used to create this partition_token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partitionToken")]
-        public virtual string PartitionToken { get; set; } 
+        public virtual string PartitionToken { get; set; }
 
         /// <summary>Used to control the amount of debugging information returned in ResultSetStats. If partition_token
         /// is set, query_mode can only be set to QueryMode.NORMAL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryMode")]
-        public virtual string QueryMode { get; set; } 
+        public virtual string QueryMode { get; set; }
 
         /// <summary>Query optimizer configuration to use for the given query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryOptions")]
-        public virtual QueryOptions QueryOptions { get; set; } 
+        public virtual QueryOptions QueryOptions { get; set; }
 
         /// <summary>If this request is resuming a previously interrupted SQL statement execution, `resume_token` should
         /// be copied from the last PartialResultSet yielded before the interruption. Doing this enables the new SQL
         /// statement execution to resume where the last one left off. The rest of the request parameters must exactly
         /// match the request that yielded this token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resumeToken")]
-        public virtual string ResumeToken { get; set; } 
+        public virtual string ResumeToken { get; set; }
 
         /// <summary>A per-transaction sequence number used to identify this request. This field makes each request
         /// idempotent such that if the request is received multiple times, at most one will succeed. The sequence
@@ -4912,11 +4912,11 @@ namespace Google.Apis.Spanner.v1.Data
         /// an out-of-order sequence number, the transaction may be aborted. Replays of previously handled requests will
         /// yield the same response as the first execution. Required for DML statements. Ignored for queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seqno")]
-        public virtual System.Nullable<long> Seqno { get; set; } 
+        public virtual System.Nullable<long> Seqno { get; set; }
 
         /// <summary>Required. The SQL string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sql")]
-        public virtual string Sql { get; set; } 
+        public virtual string Sql { get; set; }
 
         /// <summary>The transaction to use. For queries, if none is provided, the default is a temporary read-only
         /// transaction with strong concurrency. Standard DML statements require a read-write transaction. To protect
@@ -4924,7 +4924,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// transaction ID or begin a new transaction. Partitioned DML requires an existing Partitioned DML transaction
         /// ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
-        public virtual TransactionSelector Transaction { get; set; } 
+        public virtual TransactionSelector Transaction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4946,21 +4946,21 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
         /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4974,11 +4974,11 @@ namespace Google.Apis.Spanner.v1.Data
         /// `"SELECT ColName FROM Table"`). Some columns might have an empty name (e.g., !"SELECT UPPER(ColName)"`).
         /// Note that a query result can contain multiple fields with the same name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The type of the field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual Type Type { get; set; } 
+        public virtual Type Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4990,7 +4990,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>A list of formatted DDL statements defining the schema of the database specified in the
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statements")]
-        public virtual System.Collections.Generic.IList<string> Statements { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Statements { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5001,7 +5001,7 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
-        public virtual GetPolicyOptions Options { get; set; } 
+        public virtual GetPolicyOptions Options { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5016,7 +5016,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// unset. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
-        public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
+        public virtual System.Nullable<int> RequestedPolicyVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5028,16 +5028,16 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>Required. The name of the instance's configuration. Values are of the form
         /// `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
-        public virtual string Config { get; set; } 
+        public virtual string Config { get; set; }
 
         /// <summary>Required. The descriptive name for this instance as it appears in UIs. Must be unique per project
         /// and between 4 and 30 characters in length.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Deprecated. This field is not populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpointUris")]
-        public virtual System.Collections.Generic.IList<string> EndpointUris { get; set; } 
+        public virtual System.Collections.Generic.IList<string> EndpointUris { get; set; }
 
         /// <summary>Cloud Labels are a flexible and lightweight mechanism for organizing cloud resources into groups
         /// that reflect a customer's organizational needs and deployment strategies. Cloud Labels can be used to filter
@@ -5052,25 +5052,25 @@ namespace Google.Apis.Spanner.v1.Data
         /// being disallowed. For example, representing labels as the string: name + "_" + value would prove problematic
         /// if we were to allow "_" in a future release.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Required. A unique identifier for the instance, which cannot be changed after the instance is
         /// created. Values are of the form `projects//instances/a-z*[a-z0-9]`. The final segment of the name must be
         /// between 2 and 64 characters in length.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The number of nodes allocated to this instance. This may be zero in API responses for instances
         /// that are not yet in state `READY`. See [the
         /// documentation](https://cloud.google.com/spanner/docs/instances#node_count) for more information about
         /// nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
-        public virtual System.Nullable<int> NodeCount { get; set; } 
+        public virtual System.Nullable<int> NodeCount { get; set; }
 
         /// <summary>Output only. The current instance state. For CreateInstance, the state must be either omitted or
         /// set to `CREATING`. For UpdateInstance, the state must be either omitted or set to `READY`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5082,17 +5082,17 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>The name of this instance configuration as it appears in UIs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>A unique identifier for the instance configuration. Values are of the form
         /// `projects//instanceConfigs/a-z*`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The geographic placement of nodes in this instance configuration and their replication
         /// properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicas")]
-        public virtual System.Collections.Generic.IList<ReplicaInfo> Replicas { get; set; } 
+        public virtual System.Collections.Generic.IList<ReplicaInfo> Replicas { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5126,22 +5126,22 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>If the end is closed, then the range includes all rows whose first `len(end_closed)` key columns
         /// exactly match `end_closed`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endClosed")]
-        public virtual System.Collections.Generic.IList<object> EndClosed { get; set; } 
+        public virtual System.Collections.Generic.IList<object> EndClosed { get; set; }
 
         /// <summary>If the end is open, then the range excludes rows whose first `len(end_open)` key columns exactly
         /// match `end_open`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endOpen")]
-        public virtual System.Collections.Generic.IList<object> EndOpen { get; set; } 
+        public virtual System.Collections.Generic.IList<object> EndOpen { get; set; }
 
         /// <summary>If the start is closed, then the range includes all rows whose first `len(start_closed)` key
         /// columns exactly match `start_closed`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startClosed")]
-        public virtual System.Collections.Generic.IList<object> StartClosed { get; set; } 
+        public virtual System.Collections.Generic.IList<object> StartClosed { get; set; }
 
         /// <summary>If the start is open, then the range excludes rows whose first `len(start_open)` key columns
         /// exactly match `start_open`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startOpen")]
-        public virtual System.Collections.Generic.IList<object> StartOpen { get; set; } 
+        public virtual System.Collections.Generic.IList<object> StartOpen { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5156,17 +5156,17 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>For convenience `all` can be set to `true` to indicate that this `KeySet` matches all keys in the
         /// table or index. Note that any keys specified in `keys` or `ranges` are only yielded once.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("all")]
-        public virtual System.Nullable<bool> All { get; set; } 
+        public virtual System.Nullable<bool> All { get; set; }
 
         /// <summary>A list of specific keys. Entries in `keys` should have exactly as many elements as there are
         /// columns in the primary or index key with which this `KeySet` is used. Individual key values are encoded as
         /// described here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keys")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IList<object>> Keys { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IList<object>> Keys { get; set; }
 
         /// <summary>A list of key ranges. See KeyRange for more information about key range specifications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ranges")]
-        public virtual System.Collections.Generic.IList<KeyRange> Ranges { get; set; } 
+        public virtual System.Collections.Generic.IList<KeyRange> Ranges { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5178,7 +5178,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>`next_page_token` can be sent in a subsequent ListBackupOperations call to fetch more of the
         /// matching metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of matching backup long-running operations. Each operation's name will be prefixed by the
         /// backup's name and the operation's metadata will be of type CreateBackupMetadata. Operations returned include
@@ -5186,7 +5186,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// ordered by `operation.metadata.value.progress.start_time` in descending order starting from the most
         /// recently started operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5198,12 +5198,12 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>The list of matching backups. Backups returned are ordered by `create_time` in descending order,
         /// starting from the most recent `create_time`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backups")]
-        public virtual System.Collections.Generic.IList<Backup> Backups { get; set; } 
+        public virtual System.Collections.Generic.IList<Backup> Backups { get; set; }
 
         /// <summary>`next_page_token` can be sent in a subsequent ListBackups call to fetch more of the matching
         /// backups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5215,13 +5215,13 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>`next_page_token` can be sent in a subsequent ListDatabaseOperations call to fetch more of the
         /// matching metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of matching database long-running operations. Each operation's name will be prefixed by
         /// the database's name. The operation's metadata field type `metadata.type_url` describes the type of the
         /// metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5232,12 +5232,12 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>Databases that matched the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databases")]
-        public virtual System.Collections.Generic.IList<Database> Databases { get; set; } 
+        public virtual System.Collections.Generic.IList<Database> Databases { get; set; }
 
         /// <summary>`next_page_token` can be sent in a subsequent ListDatabases call to fetch more of the matching
         /// databases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5248,12 +5248,12 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>The list of requested instance configurations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceConfigs")]
-        public virtual System.Collections.Generic.IList<InstanceConfig> InstanceConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<InstanceConfig> InstanceConfigs { get; set; }
 
         /// <summary>`next_page_token` can be sent in a subsequent ListInstanceConfigs call to fetch more of the
         /// matching instance configurations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5264,12 +5264,12 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>The list of requested instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
-        public virtual System.Collections.Generic.IList<Instance> Instances { get; set; } 
+        public virtual System.Collections.Generic.IList<Instance> Instances { get; set; }
 
         /// <summary>`next_page_token` can be sent in a subsequent ListInstances call to fetch more of the matching
         /// instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5280,11 +5280,11 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5296,11 +5296,11 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>`next_page_token` can be sent in a subsequent ListSessions call to fetch more of the matching
         /// sessions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of requested sessions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessions")]
-        public virtual System.Collections.Generic.IList<Session> Sessions { get; set; } 
+        public virtual System.Collections.Generic.IList<Session> Sessions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5312,19 +5312,19 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>Delete rows from a table. Succeeds whether or not the named rows were present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delete")]
-        public virtual Delete Delete { get; set; } 
+        public virtual Delete Delete { get; set; }
 
         /// <summary>Insert new rows in a table. If any of the rows already exist, the write or transaction fails with
         /// error `ALREADY_EXISTS`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insert")]
-        public virtual Write Insert { get; set; } 
+        public virtual Write Insert { get; set; }
 
         /// <summary>Like insert, except that if the row already exists, then its column values are overwritten with the
         /// ones provided. Any column values not explicitly written are preserved. When using insert_or_update, just as
         /// when using insert, all `NOT NULL` columns in the table must be given a value. This holds true even when the
         /// row already exists and will therefore actually be updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertOrUpdate")]
-        public virtual Write InsertOrUpdate { get; set; } 
+        public virtual Write InsertOrUpdate { get; set; }
 
         /// <summary>Like insert, except that if the row already exists, it is deleted, and the column values provided
         /// are inserted instead. Unlike insert_or_update, this means any values not explicitly written become `NULL`.
@@ -5332,12 +5332,12 @@ namespace Google.Apis.Spanner.v1.Data
         /// replacing a parent row also deletes the child rows. Otherwise, you must delete the child rows before you
         /// replace the parent row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replace")]
-        public virtual Write Replace { get; set; } 
+        public virtual Write Replace { get; set; }
 
         /// <summary>Update existing rows in a table. If any of the rows does not already exist, the transaction fails
         /// with error `NOT_FOUND`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("update")]
-        public virtual Write Update { get; set; } 
+        public virtual Write Update { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5349,23 +5349,23 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -5373,7 +5373,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5384,15 +5384,15 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>If set, the time at which this operation failed or was completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Percent completion of the operation. Values are between 0 and 100 inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressPercent")]
-        public virtual System.Nullable<int> ProgressPercent { get; set; } 
+        public virtual System.Nullable<int> ProgressPercent { get; set; }
 
         /// <summary>Time the request was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5405,11 +5405,11 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>Name of the restored database being optimized.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The progress of the post-restore optimizations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
-        public virtual OperationProgress Progress { get; set; } 
+        public virtual OperationProgress Progress { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5422,25 +5422,25 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>If true, then the final value in values is chunked, and must be combined with more values from
         /// subsequent `PartialResultSet`s to obtain a complete field value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chunkedValue")]
-        public virtual System.Nullable<bool> ChunkedValue { get; set; } 
+        public virtual System.Nullable<bool> ChunkedValue { get; set; }
 
         /// <summary>Metadata about the result set, such as row type information. Only present in the first
         /// response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual ResultSetMetadata Metadata { get; set; } 
+        public virtual ResultSetMetadata Metadata { get; set; }
 
         /// <summary>Streaming calls might be interrupted for a variety of reasons, such as TCP connection loss. If this
         /// occurs, the stream of results can be resumed by re-sending the original request and including
         /// `resume_token`. Note that executing any other transaction in the same session invalidates the
         /// token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resumeToken")]
-        public virtual string ResumeToken { get; set; } 
+        public virtual string ResumeToken { get; set; }
 
         /// <summary>Query plan and execution statistics for the statement that produced this streaming result set.
         /// These can be requested by setting ExecuteSqlRequest.query_mode and are sent only once with the last response
         /// in the stream. This field will also be present in the last response for DML statements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stats")]
-        public virtual ResultSetStats Stats { get; set; } 
+        public virtual ResultSetStats Stats { get; set; }
 
         /// <summary>A streamed result set consists of a stream of values, which might be split into many
         /// `PartialResultSet` messages to accommodate large rows and/or large values. Every N complete values defines a
@@ -5466,7 +5466,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// sequence of `PartialResultSet`s encodes two rows, one containing the field value `"Hello"`, and a second
         /// containing the field value `"World" = "W" + "orl" + "d"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<object> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<object> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5478,7 +5478,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>This token can be passed to Read, StreamingRead, ExecuteSql, or ExecuteStreamingSql requests to
         /// restrict the results to those identified by this partition token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partitionToken")]
-        public virtual string PartitionToken { get; set; } 
+        public virtual string PartitionToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5492,13 +5492,13 @@ namespace Google.Apis.Spanner.v1.Data
         /// default for this option is currently 10,000. The maximum value is currently 200,000. This is only a hint.
         /// The actual number of partitions returned may be smaller or larger than this maximum count request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxPartitions")]
-        public virtual System.Nullable<long> MaxPartitions { get; set; } 
+        public virtual System.Nullable<long> MaxPartitions { get; set; }
 
         /// <summary>**Note:** This hint is currently ignored by PartitionQuery and PartitionRead requests. The desired
         /// data size for each partition generated. The default for this option is currently 1 GiB. This is only a hint.
         /// The actual size of each partition may be smaller or larger than this size request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partitionSizeBytes")]
-        public virtual System.Nullable<long> PartitionSizeBytes { get; set; } 
+        public virtual System.Nullable<long> PartitionSizeBytes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5512,7 +5512,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// cases, `param_types` can be used to specify the exact SQL type for some or all of the SQL query parameters.
         /// See the definition of Type for more information about SQL types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paramTypes")]
-        public virtual System.Collections.Generic.IDictionary<string,Type> ParamTypes { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, Type> ParamTypes { get; set; }
 
         /// <summary>Parameter names and values that bind to placeholders in the SQL string. A parameter placeholder
         /// consists of the `@` character followed by the parameter name (for example, `@firstName`). Parameter names
@@ -5520,11 +5520,11 @@ namespace Google.Apis.Spanner.v1.Data
         /// expected. The same parameter name can be used more than once, for example: `"WHERE id > @msg_id AND id <
         /// @msg_id + 100"` It is an error to execute a SQL statement with unbound parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Params__ { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
 
         /// <summary>Additional options that affect how many partitions are created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partitionOptions")]
-        public virtual PartitionOptions PartitionOptions { get; set; } 
+        public virtual PartitionOptions PartitionOptions { get; set; }
 
         /// <summary>Required. The query request to generate partitions for. The request will fail if the query is not
         /// root partitionable. The query plan of a root partitionable query has a single distributed union operator. A
@@ -5533,12 +5533,12 @@ namespace Google.Apis.Spanner.v1.Data
         /// such as INSERT, UPDATE, or DELETE. Use ExecuteStreamingSql with a PartitionedDml transaction for large,
         /// partition-friendly DML operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sql")]
-        public virtual string Sql { get; set; } 
+        public virtual string Sql { get; set; }
 
         /// <summary>Read only snapshot transactions are supported, read/write and single use transactions are
         /// not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
-        public virtual TransactionSelector Transaction { get; set; } 
+        public virtual TransactionSelector Transaction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5549,32 +5549,32 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>The columns of table to be returned for each row matching this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
-        public virtual System.Collections.Generic.IList<string> Columns { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Columns { get; set; }
 
         /// <summary>If non-empty, the name of an index on table. This index is used instead of the table primary key
         /// when interpreting key_set and sorting result rows. See key_set for further information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
-        public virtual string Index { get; set; } 
+        public virtual string Index { get; set; }
 
         /// <summary>Required. `key_set` identifies the rows to be yielded. `key_set` names the primary keys of the rows
         /// in table to be yielded, unless index is present. If index is present, then key_set instead names index keys
         /// in index. It is not an error for the `key_set` to name rows that do not exist in the database. Read yields
         /// nothing for nonexistent rows.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keySet")]
-        public virtual KeySet KeySet { get; set; } 
+        public virtual KeySet KeySet { get; set; }
 
         /// <summary>Additional options that affect how many partitions are created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partitionOptions")]
-        public virtual PartitionOptions PartitionOptions { get; set; } 
+        public virtual PartitionOptions PartitionOptions { get; set; }
 
         /// <summary>Required. The name of the table in the database to be read.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
-        public virtual string Table { get; set; } 
+        public virtual string Table { get; set; }
 
         /// <summary>Read only snapshot transactions are supported, read/write and single use transactions are
         /// not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
-        public virtual TransactionSelector Transaction { get; set; } 
+        public virtual TransactionSelector Transaction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5585,11 +5585,11 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>Partitions created by this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partitions")]
-        public virtual System.Collections.Generic.IList<Partition> Partitions { get; set; } 
+        public virtual System.Collections.Generic.IList<Partition> Partitions { get; set; }
 
         /// <summary>Transaction created by this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
-        public virtual Transaction Transaction { get; set; } 
+        public virtual Transaction Transaction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5607,37 +5607,37 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>List of child node `index`es and their relationship to this parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("childLinks")]
-        public virtual System.Collections.Generic.IList<ChildLink> ChildLinks { get; set; } 
+        public virtual System.Collections.Generic.IList<ChildLink> ChildLinks { get; set; }
 
         /// <summary>The display name for the node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The execution statistics associated with the node, contained in a group of key-value pairs. Only
         /// present if the plan was returned as a result of a profile query. For example, number of executions, number
         /// of rows/time per execution etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStats")]
-        public virtual System.Collections.Generic.IDictionary<string,object> ExecutionStats { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> ExecutionStats { get; set; }
 
         /// <summary>The `PlanNode`'s index in node list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
-        public virtual System.Nullable<int> Index { get; set; } 
+        public virtual System.Nullable<int> Index { get; set; }
 
         /// <summary>Used to determine the type of node. May be needed for visualizing different kinds of nodes
         /// differently. For example, If the node is a SCALAR node, it will have a condensed representation which can be
         /// used to directly embed a description of the node in its parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Attributes relevant to the node contained in a group of key-value pairs. For example, a Parameter
         /// Reference node could have the following information in its metadata: { "parameter_reference": "param1",
         /// "parameter_type": "array" }</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>Condensed representation for SCALAR nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortRepresentation")]
-        public virtual ShortRepresentation ShortRepresentation { get; set; } 
+        public virtual ShortRepresentation ShortRepresentation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5668,7 +5668,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
         /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
         /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
@@ -5679,7 +5679,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
         /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
         /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
@@ -5693,7 +5693,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
     }    
 
@@ -5710,7 +5710,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// /query-optimizer/manage-query-optimizer for more information on managing the query optimizer. The
         /// `optimizer_version` statement hint has precedence over this setting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optimizerVersion")]
-        public virtual string OptimizerVersion { get; set; } 
+        public virtual string OptimizerVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5722,7 +5722,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>The nodes in the query plan. Plan nodes are returned in pre-order starting with the plan root. Each
         /// PlanNode's `id` corresponds to its index in `plan_nodes`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("planNodes")]
-        public virtual System.Collections.Generic.IList<PlanNode> PlanNodes { get; set; } 
+        public virtual System.Collections.Generic.IList<PlanNode> PlanNodes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5737,7 +5737,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// client's local clock is substantially skewed from Cloud Spanner commit timestamps. Useful for reading at
         /// nearby replicas without the distributed timestamp negotiation overhead of `max_staleness`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exactStaleness")]
-        public virtual object ExactStaleness { get; set; } 
+        public virtual object ExactStaleness { get; set; }
 
         /// <summary>Read data at a timestamp >= `NOW - max_staleness` seconds. Guarantees that all writes that have
         /// committed more than the specified number of seconds ago are visible. Because Cloud Spanner chooses the exact
@@ -5746,7 +5746,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// possible staleness if the local replica has fallen behind. Note that this option can only be used in single-
         /// use transactions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxStaleness")]
-        public virtual object MaxStaleness { get; set; } 
+        public virtual object MaxStaleness { get; set; }
 
         /// <summary>Executes all reads at a timestamp >= `min_read_timestamp`. This is useful for requesting fresher
         /// data than some previous read, or data that is fresh enough to observe the effects of some previously
@@ -5754,7 +5754,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// transactions. A timestamp in RFC3339 UTC \"Zulu\" format, accurate to nanoseconds. Example:
         /// `"2014-10-02T15:01:23.045123456Z"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minReadTimestamp")]
-        public virtual object MinReadTimestamp { get; set; } 
+        public virtual object MinReadTimestamp { get; set; }
 
         /// <summary>Executes all reads at the given timestamp. Unlike other modes, reads at a specific timestamp are
         /// repeatable; the same read at the same timestamp always returns the same data. If the timestamp is in the
@@ -5763,16 +5763,16 @@ namespace Google.Apis.Spanner.v1.Data
         /// the data. A timestamp in RFC3339 UTC \"Zulu\" format, accurate to nanoseconds. Example:
         /// `"2014-10-02T15:01:23.045123456Z"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readTimestamp")]
-        public virtual object ReadTimestamp { get; set; } 
+        public virtual object ReadTimestamp { get; set; }
 
         /// <summary>If true, the Cloud Spanner-selected read timestamp is included in the Transaction message that
         /// describes the transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnReadTimestamp")]
-        public virtual System.Nullable<bool> ReturnReadTimestamp { get; set; } 
+        public virtual System.Nullable<bool> ReturnReadTimestamp { get; set; }
 
         /// <summary>Read at a timestamp where all previously committed transactions are visible.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("strong")]
-        public virtual System.Nullable<bool> Strong { get; set; } 
+        public virtual System.Nullable<bool> Strong { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5783,12 +5783,12 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>Required. The columns of table to be returned for each row matching this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
-        public virtual System.Collections.Generic.IList<string> Columns { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Columns { get; set; }
 
         /// <summary>If non-empty, the name of an index on table. This index is used instead of the table primary key
         /// when interpreting key_set and sorting result rows. See key_set for further information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
-        public virtual string Index { get; set; } 
+        public virtual string Index { get; set; }
 
         /// <summary>Required. `key_set` identifies the rows to be yielded. `key_set` names the primary keys of the rows
         /// in table to be yielded, unless index is present. If index is present, then key_set instead names index keys
@@ -5797,34 +5797,34 @@ namespace Google.Apis.Spanner.v1.Data
         /// yielded in an unspecified order. It is not an error for the `key_set` to name rows that do not exist in the
         /// database. Read yields nothing for nonexistent rows.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keySet")]
-        public virtual KeySet KeySet { get; set; } 
+        public virtual KeySet KeySet { get; set; }
 
         /// <summary>If greater than zero, only the first `limit` rows are yielded. If `limit` is zero, the default is
         /// no limit. A limit cannot be specified if `partition_token` is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
-        public virtual System.Nullable<long> Limit { get; set; } 
+        public virtual System.Nullable<long> Limit { get; set; }
 
         /// <summary>If present, results will be restricted to the specified partition previously created using
         /// PartitionRead(). There must be an exact match for the values of fields common to this message and the
         /// PartitionReadRequest message used to create this partition_token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partitionToken")]
-        public virtual string PartitionToken { get; set; } 
+        public virtual string PartitionToken { get; set; }
 
         /// <summary>If this request is resuming a previously interrupted read, `resume_token` should be copied from the
         /// last PartialResultSet yielded before the interruption. Doing this enables the new read to resume where the
         /// last read left off. The rest of the request parameters must exactly match the request that yielded this
         /// token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resumeToken")]
-        public virtual string ResumeToken { get; set; } 
+        public virtual string ResumeToken { get; set; }
 
         /// <summary>Required. The name of the table in the database to be read.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
-        public virtual string Table { get; set; } 
+        public virtual string Table { get; set; }
 
         /// <summary>The transaction to use. If none is provided, the default is a temporary read-only transaction with
         /// strong concurrency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
-        public virtual TransactionSelector Transaction { get; set; } 
+        public virtual TransactionSelector Transaction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5844,15 +5844,15 @@ namespace Google.Apis.Spanner.v1.Data
         /// placed. See the [region types documentation](https://cloud.google.com/spanner/docs/instances#region_types)
         /// for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultLeaderLocation")]
-        public virtual System.Nullable<bool> DefaultLeaderLocation { get; set; } 
+        public virtual System.Nullable<bool> DefaultLeaderLocation { get; set; }
 
         /// <summary>The location of the serving resources, e.g. "us-central1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>The type of replica.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5863,7 +5863,7 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>Information about the backup used to restore the database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupInfo")]
-        public virtual BackupInfo BackupInfo { get; set; } 
+        public virtual BackupInfo BackupInfo { get; set; }
 
         /// <summary>The time at which cancellation of this operation was received. Operations.CancelOperation starts
         /// asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the
@@ -5872,11 +5872,11 @@ namespace Google.Apis.Spanner.v1.Data
         /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
         /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelTime")]
-        public virtual object CancelTime { get; set; } 
+        public virtual object CancelTime { get; set; }
 
         /// <summary>Name of the database being created and restored to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>If exists, the name of the long-running operation that will be used to track the post-restore
         /// optimization process to optimize the performance of the restored database, and remove the dependency on the
@@ -5886,15 +5886,15 @@ namespace Google.Apis.Spanner.v1.Data
         /// after the RestoreDatabase long-running operation completes successfully. This operation will not be created
         /// if the restore was not successful.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optimizeDatabaseOperationName")]
-        public virtual string OptimizeDatabaseOperationName { get; set; } 
+        public virtual string OptimizeDatabaseOperationName { get; set; }
 
         /// <summary>The progress of the RestoreDatabase operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
-        public virtual OperationProgress Progress { get; set; } 
+        public virtual OperationProgress Progress { get; set; }
 
         /// <summary>The type of the restore source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceType")]
-        public virtual string SourceType { get; set; } 
+        public virtual string SourceType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5906,13 +5906,13 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>Name of the backup from which to restore. Values are of the form
         /// `projects//instances//backups/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backup")]
-        public virtual string Backup { get; set; } 
+        public virtual string Backup { get; set; }
 
         /// <summary>Required. The id of the database to create and restore to. This database must not already exist.
         /// The `database_id` appended to `parent` forms the full database name of the form
         /// `projects//instances//databases/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
-        public virtual string DatabaseId { get; set; } 
+        public virtual string DatabaseId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5924,11 +5924,11 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>Information about the backup used to restore the database. The backup may no longer
         /// exist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupInfo")]
-        public virtual BackupInfo BackupInfo { get; set; } 
+        public virtual BackupInfo BackupInfo { get; set; }
 
         /// <summary>The type of the restore source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceType")]
-        public virtual string SourceType { get; set; } 
+        public virtual string SourceType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5939,13 +5939,13 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>Metadata about the result set, such as row type information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual ResultSetMetadata Metadata { get; set; } 
+        public virtual ResultSetMetadata Metadata { get; set; }
 
         /// <summary>Each element in `rows` is a row whose format is defined by metadata.row_type. The ith element in
         /// each row matches the ith field in metadata.row_type. Elements are encoded based on type as described
         /// here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IList<object>> Rows { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IList<object>> Rows { get; set; }
 
         /// <summary>Query plan and execution statistics for the SQL statement that produced this result set. These can
         /// be requested by setting ExecuteSqlRequest.query_mode. DML statements always produce stats containing the
@@ -5953,7 +5953,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// ExecuteSqlRequest.query_mode. Other fields may or may not be populated, based on the
         /// ExecuteSqlRequest.query_mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stats")]
-        public virtual ResultSetStats Stats { get; set; } 
+        public virtual ResultSetStats Stats { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5966,12 +5966,12 @@ namespace Google.Apis.Spanner.v1.Data
         /// `"SELECT UserId, UserName FROM Users"` could return a `row_type` value like: "fields": [ { "name": "UserId",
         /// "type": { "code": "INT64" } }, { "name": "UserName", "type": { "code": "STRING" } }, ]</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowType")]
-        public virtual StructType RowType { get; set; } 
+        public virtual StructType RowType { get; set; }
 
         /// <summary>If the read or SQL query began a transaction as a side-effect, the information about the new
         /// transaction is yielded here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
-        public virtual Transaction Transaction { get; set; } 
+        public virtual Transaction Transaction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5982,22 +5982,22 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>QueryPlan for the query associated with this result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryPlan")]
-        public virtual QueryPlan QueryPlan { get; set; } 
+        public virtual QueryPlan QueryPlan { get; set; }
 
         /// <summary>Aggregated statistics from the execution of the query. Only present when the query is profiled. For
         /// example, a query could return the statistics as follows: { "rows_returned": "3", "elapsed_time": "1.22
         /// secs", "cpu_time": "1.19 secs" }</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryStats")]
-        public virtual System.Collections.Generic.IDictionary<string,object> QueryStats { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> QueryStats { get; set; }
 
         /// <summary>Standard DML returns an exact count of rows that were modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowCountExact")]
-        public virtual System.Nullable<long> RowCountExact { get; set; } 
+        public virtual System.Nullable<long> RowCountExact { get; set; }
 
         /// <summary>Partitioned DML does not offer exactly-once semantics, so it returns a lower bound of the rows
         /// modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowCountLowerBound")]
-        public virtual System.Nullable<long> RowCountLowerBound { get; set; } 
+        public virtual System.Nullable<long> RowCountLowerBound { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6008,7 +6008,7 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>Required. The transaction to roll back.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionId")]
-        public virtual string TransactionId { get; set; } 
+        public virtual string TransactionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6020,11 +6020,11 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>Output only. The approximate timestamp when the session is last used. It is typically earlier than
         /// the actual last use time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approximateLastUseTime")]
-        public virtual object ApproximateLastUseTime { get; set; } 
+        public virtual object ApproximateLastUseTime { get; set; }
 
         /// <summary>Output only. The timestamp when the session is created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The labels for the session. * Label keys must be between 1 and 63 characters long and must conform
         /// to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63
@@ -6032,11 +6032,11 @@ namespace Google.Apis.Spanner.v1.Data
         /// 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and
         /// examples of labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Output only. The name of the session. This is always system-assigned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6049,7 +6049,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
         /// might reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual Policy Policy { get; set; } 
+        public virtual Policy Policy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6060,13 +6060,13 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>A string representation of the expression subtree rooted at this node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>A mapping of (subquery variable name) -> (subquery node id) for cases where the `description`
         /// string of this node references a `SCALAR` subquery contained in the expression subtree rooted at this node.
         /// The referenced `SCALAR` subquery may not necessarily be a direct child of this node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subqueries")]
-        public virtual System.Collections.Generic.IDictionary<string,System.Nullable<int>> Subqueries { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<int>> Subqueries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6080,7 +6080,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// cases, `param_types` can be used to specify the exact SQL type for some or all of the SQL statement
         /// parameters. See the definition of Type for more information about SQL types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paramTypes")]
-        public virtual System.Collections.Generic.IDictionary<string,Type> ParamTypes { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, Type> ParamTypes { get; set; }
 
         /// <summary>Parameter names and values that bind to placeholders in the DML string. A parameter placeholder
         /// consists of the `@` character followed by the parameter name (for example, `@firstName`). Parameter names
@@ -6088,11 +6088,11 @@ namespace Google.Apis.Spanner.v1.Data
         /// expected. The same parameter name can be used more than once, for example: `"WHERE id > @msg_id AND id <
         /// @msg_id + 100"` It is an error to execute a SQL statement with unbound parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Params__ { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
 
         /// <summary>Required. The DML string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sql")]
-        public virtual string Sql { get; set; } 
+        public virtual string Sql { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6107,17 +6107,17 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6131,7 +6131,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// StructType. In turn, the order of fields matches the order of columns in a read request, or the order of
         /// fields in the `SELECT` clause of a query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual System.Collections.Generic.IList<Field> Fields { get; set; } 
+        public virtual System.Collections.Generic.IList<Field> Fields { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6143,7 +6143,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>REQUIRED: The set of permissions to check for 'resource'. Permissions with wildcards (such as '*',
         /// 'spanner.*', 'spanner.instances.*') are not allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6154,7 +6154,7 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6167,13 +6167,13 @@ namespace Google.Apis.Spanner.v1.Data
         /// calls. Single-use read-only transactions do not have IDs, because single-use transactions do not support
         /// multiple requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>For snapshot read-only transactions, the read timestamp chosen for the transaction. Not returned by
         /// default: see TransactionOptions.ReadOnly.return_read_timestamp. A timestamp in RFC3339 UTC \"Zulu\" format,
         /// accurate to nanoseconds. Example: `"2014-10-02T15:01:23.045123456Z"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readTimestamp")]
-        public virtual object ReadTimestamp { get; set; } 
+        public virtual object ReadTimestamp { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6294,17 +6294,17 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>Partitioned DML transaction. Authorization to begin a Partitioned DML transaction requires
         /// `spanner.databases.beginPartitionedDmlTransaction` permission on the `session` resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partitionedDml")]
-        public virtual PartitionedDml PartitionedDml { get; set; } 
+        public virtual PartitionedDml PartitionedDml { get; set; }
 
         /// <summary>Transaction will not write. Authorization to begin a read-only transaction requires
         /// `spanner.databases.beginReadOnlyTransaction` permission on the `session` resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
-        public virtual ReadOnly ReadOnly__ { get; set; } 
+        public virtual ReadOnly ReadOnly__ { get; set; }
 
         /// <summary>Transaction may write. Authorization to begin a read-write transaction requires
         /// `spanner.databases.beginOrRollbackReadWriteTransaction` permission on the `session` resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readWrite")]
-        public virtual ReadWrite ReadWrite { get; set; } 
+        public virtual ReadWrite ReadWrite { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6317,16 +6317,16 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>Begin a new transaction and execute this read or SQL query in it. The transaction ID of the new
         /// transaction is returned in ResultSetMetadata.transaction, which is a Transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("begin")]
-        public virtual TransactionOptions Begin { get; set; } 
+        public virtual TransactionOptions Begin { get; set; }
 
         /// <summary>Execute the read or SQL query in a previously-started transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Execute the read or SQL query in a temporary transaction. This is the most efficient way to execute
         /// a transaction that consists of a single SQL query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("singleUse")]
-        public virtual TransactionOptions SingleUse { get; set; } 
+        public virtual TransactionOptions SingleUse { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6338,15 +6338,15 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>If code == ARRAY, then `array_element_type` is the type of the array elements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("arrayElementType")]
-        public virtual Type ArrayElementType { get; set; } 
+        public virtual Type ArrayElementType { get; set; }
 
         /// <summary>Required. The TypeCode for this type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual string Code { get; set; } 
+        public virtual string Code { get; set; }
 
         /// <summary>If code == STRUCT, then `struct_type` provides type information for the struct's fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structType")]
-        public virtual StructType StructType { get; set; } 
+        public virtual StructType StructType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6358,16 +6358,16 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>Reports the commit timestamps of all statements that have succeeded so far, where
         /// `commit_timestamps[i]` is the commit timestamp for the statement `statements[i]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commitTimestamps")]
-        public virtual System.Collections.Generic.IList<object> CommitTimestamps { get; set; } 
+        public virtual System.Collections.Generic.IList<object> CommitTimestamps { get; set; }
 
         /// <summary>The database being modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
-        public virtual string Database { get; set; } 
+        public virtual string Database { get; set; }
 
         /// <summary>For an update this list contains all the statements. For an individual statement, this list
         /// contains only that statement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statements")]
-        public virtual System.Collections.Generic.IList<string> Statements { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Statements { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6392,11 +6392,11 @@ namespace Google.Apis.Spanner.v1.Data
         /// begin with an underscore. If the named operation already exists, UpdateDatabaseDdl returns
         /// `ALREADY_EXISTS`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
-        public virtual string OperationId { get; set; } 
+        public virtual string OperationId { get; set; }
 
         /// <summary>Required. DDL statements to be applied to the database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statements")]
-        public virtual System.Collections.Generic.IList<string> Statements { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Statements { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6408,19 +6408,19 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>The time at which this operation was cancelled. If set, this operation is in the process of undoing
         /// itself (which is guaranteed to succeed) and cannot be cancelled again.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelTime")]
-        public virtual object CancelTime { get; set; } 
+        public virtual object CancelTime { get; set; }
 
         /// <summary>The time at which this operation failed or was completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>The desired end state of the update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
-        public virtual Instance Instance { get; set; } 
+        public virtual Instance Instance { get; set; }
 
         /// <summary>The time at which UpdateInstance request was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6433,12 +6433,12 @@ namespace Google.Apis.Spanner.v1.Data
         /// be specified; this prevents any future fields in Instance from being erased accidentally by clients that do
         /// not know about them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldMask")]
-        public virtual object FieldMask { get; set; } 
+        public virtual object FieldMask { get; set; }
 
         /// <summary>Required. The instance to update, which must always include the instance name. Otherwise, only
         /// fields mentioned in field_mask need be included.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
-        public virtual Instance Instance { get; set; } 
+        public virtual Instance Instance { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6450,11 +6450,11 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>The names of the columns in table to be written. The list of columns must contain enough columns to
         /// allow Cloud Spanner to derive values for all primary key columns in the row(s) to be modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
-        public virtual System.Collections.Generic.IList<string> Columns { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Columns { get; set; }
 
         /// <summary>Required. The table whose rows will be written.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
-        public virtual string Table { get; set; } 
+        public virtual string Table { get; set; }
 
         /// <summary>The values to be written. `values` can contain more than one list of values. If it does, then
         /// multiple rows are written, one for each entry in `values`. Each list in `values` must have exactly as many
@@ -6462,7 +6462,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// `Mutation`s, each containing one `values` entry and repeating table and columns. Individual values in each
         /// list are encoded as described here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IList<object>> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IList<object>> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

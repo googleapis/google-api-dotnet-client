@@ -392,15 +392,15 @@ namespace Google.Apis.Kgsearch.v1.Data
         /// <summary>The local context applicable for the response. See more details at http://www.w3.org/TR/json-ld
         /// /#context-definitions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("@context")]
-        public virtual object Context { get; set; } 
+        public virtual object Context { get; set; }
 
         /// <summary>The schema type of top-level JSON-LD object, e.g. ItemList.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("@type")]
-        public virtual object Type { get; set; } 
+        public virtual object Type { get; set; }
 
         /// <summary>The item list of search results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemListElement")]
-        public virtual System.Collections.Generic.IList<object> ItemListElement { get; set; } 
+        public virtual System.Collections.Generic.IList<object> ItemListElement { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

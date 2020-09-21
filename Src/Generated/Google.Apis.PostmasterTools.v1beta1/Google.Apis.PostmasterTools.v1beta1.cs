@@ -629,15 +629,15 @@ namespace Google.Apis.PostmasterTools.v1beta1.Data
     {
         /// <summary>The class of delivery error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorClass")]
-        public virtual string ErrorClass { get; set; } 
+        public virtual string ErrorClass { get; set; }
 
         /// <summary>The ratio of messages where the error occurred vs all authenticated traffic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorRatio")]
-        public virtual System.Nullable<double> ErrorRatio { get; set; } 
+        public virtual System.Nullable<double> ErrorRatio { get; set; }
 
         /// <summary>The type of delivery error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorType")]
-        public virtual string ErrorType { get; set; } 
+        public virtual string ErrorType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -648,16 +648,16 @@ namespace Google.Apis.PostmasterTools.v1beta1.Data
     {
         /// <summary>Timestamp when the user registered this domain. Assigned by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The resource name of the Domain. Domain names have the form `domains/{domain_name}`, where
         /// domain_name is the fully qualified domain name (i.e., mymail.mydomain.com).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>User’s permission for this domain. Assigned by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permission")]
-        public virtual string Permission { get; set; } 
+        public virtual string Permission { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -668,12 +668,12 @@ namespace Google.Apis.PostmasterTools.v1beta1.Data
     {
         /// <summary>Feedback loop identifier that uniquely identifies individual campaigns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The ratio of user marked spam messages with the identifier vs the total number of inboxed messages
         /// with that identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spamRatio")]
-        public virtual System.Nullable<double> SpamRatio { get; set; } 
+        public virtual System.Nullable<double> SpamRatio { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -685,15 +685,15 @@ namespace Google.Apis.PostmasterTools.v1beta1.Data
         /// <summary>Total number of unique IPs in this reputation category. This metric only pertains to traffic that
         /// passed [SPF](http://www.openspf.org/) or [DKIM](http://www.dkim.org/).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numIps")]
-        public virtual System.Nullable<long> NumIps { get; set; } 
+        public virtual System.Nullable<long> NumIps { get; set; }
 
         /// <summary>The reputation category this IP reputation represents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reputation")]
-        public virtual string Reputation { get; set; } 
+        public virtual string Reputation { get; set; }
 
         /// <summary>A sample of IPs in this reputation category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleIps")]
-        public virtual System.Collections.Generic.IList<string> SampleIps { get; set; } 
+        public virtual System.Collections.Generic.IList<string> SampleIps { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -704,12 +704,12 @@ namespace Google.Apis.PostmasterTools.v1beta1.Data
     {
         /// <summary>The list of domains.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domains")]
-        public virtual System.Collections.Generic.IList<Domain> Domains { get; set; } 
+        public virtual System.Collections.Generic.IList<Domain> Domains { get; set; }
 
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -721,11 +721,11 @@ namespace Google.Apis.PostmasterTools.v1beta1.Data
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of TrafficStats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trafficStats")]
-        public virtual System.Collections.Generic.IList<TrafficStats> TrafficStats { get; set; } 
+        public virtual System.Collections.Generic.IList<TrafficStats> TrafficStats { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -737,33 +737,33 @@ namespace Google.Apis.PostmasterTools.v1beta1.Data
         /// <summary>Delivery errors for the domain. This metric only pertains to traffic that passed
         /// [SPF](http://www.openspf.org/) or [DKIM](http://www.dkim.org/).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryErrors")]
-        public virtual System.Collections.Generic.IList<DeliveryError> DeliveryErrors { get; set; } 
+        public virtual System.Collections.Generic.IList<DeliveryError> DeliveryErrors { get; set; }
 
         /// <summary>The ratio of mail that successfully authenticated with DKIM vs. all mail that attempted to
         /// authenticate with [DKIM](http://www.dkim.org/). Spoofed mail is excluded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dkimSuccessRatio")]
-        public virtual System.Nullable<double> DkimSuccessRatio { get; set; } 
+        public virtual System.Nullable<double> DkimSuccessRatio { get; set; }
 
         /// <summary>The ratio of mail that passed [DMARC](https://dmarc.org/) alignment checks vs all mail received
         /// from the domain that successfully authenticated with either of [SPF](http://www.openspf.org/) or
         /// [DKIM](http://www.dkim.org/).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dmarcSuccessRatio")]
-        public virtual System.Nullable<double> DmarcSuccessRatio { get; set; } 
+        public virtual System.Nullable<double> DmarcSuccessRatio { get; set; }
 
         /// <summary>Reputation of the domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainReputation")]
-        public virtual string DomainReputation { get; set; } 
+        public virtual string DomainReputation { get; set; }
 
         /// <summary>The ratio of incoming mail (to Gmail), that passed secure transport (TLS) vs all mail received from
         /// that domain. This metric only pertains to traffic that passed [SPF](http://www.openspf.org/) or
         /// [DKIM](http://www.dkim.org/).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inboundEncryptionRatio")]
-        public virtual System.Nullable<double> InboundEncryptionRatio { get; set; } 
+        public virtual System.Nullable<double> InboundEncryptionRatio { get; set; }
 
         /// <summary>Reputation information pertaining to the IP addresses of the email servers for the domain. There is
         /// exactly one entry for each reputation category except REPUTATION_CATEGORY_UNSPECIFIED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipReputations")]
-        public virtual System.Collections.Generic.IList<IpReputation> IpReputations { get; set; } 
+        public virtual System.Collections.Generic.IList<IpReputation> IpReputations { get; set; }
 
         /// <summary>The resource name of the traffic statistics. Traffic statistic names have the form
         /// `domains/{domain}/trafficStats/{date}`, where domain_name is the fully qualified domain name (i.e.,
@@ -771,27 +771,27 @@ namespace Google.Apis.PostmasterTools.v1beta1.Data
         /// format that these statistics corresponds to. For example:
         /// domains/mymail.mydomain.com/trafficStats/20160807</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ratio of outgoing mail (from Gmail) that was accepted over secure transport (TLS).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outboundEncryptionRatio")]
-        public virtual System.Nullable<double> OutboundEncryptionRatio { get; set; } 
+        public virtual System.Nullable<double> OutboundEncryptionRatio { get; set; }
 
         /// <summary>Spammy [Feedback loop identifiers] (https://support.google.com/mail/answer/6254652) with their
         /// individual spam rates. This metric only pertains to traffic that is authenticated by
         /// [DKIM](http://www.dkim.org/).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spammyFeedbackLoops")]
-        public virtual System.Collections.Generic.IList<FeedbackLoop> SpammyFeedbackLoops { get; set; } 
+        public virtual System.Collections.Generic.IList<FeedbackLoop> SpammyFeedbackLoops { get; set; }
 
         /// <summary>The ratio of mail that successfully authenticated with SPF vs. all mail that attempted to
         /// authenticate with [SPF](http://www.openspf.org/). Spoofed mail is excluded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spfSuccessRatio")]
-        public virtual System.Nullable<double> SpfSuccessRatio { get; set; } 
+        public virtual System.Nullable<double> SpfSuccessRatio { get; set; }
 
         /// <summary>The ratio of user-report spam vs. email that was sent to the inbox. This metric only pertains to
         /// emails authenticated by [DKIM](http://www.dkim.org/).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userReportedSpamRatio")]
-        public virtual System.Nullable<double> UserReportedSpamRatio { get; set; } 
+        public virtual System.Nullable<double> UserReportedSpamRatio { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

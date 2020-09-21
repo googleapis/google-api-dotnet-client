@@ -7300,15 +7300,15 @@ namespace Google.Apis.Storage.v1.Data
     {
         /// <summary>Access controls on the bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acl")]
-        public virtual System.Collections.Generic.IList<BucketAccessControl> Acl { get; set; } 
+        public virtual System.Collections.Generic.IList<BucketAccessControl> Acl { get; set; }
 
         /// <summary>The bucket's billing configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billing")]
-        public virtual BillingData Billing { get; set; } 
+        public virtual BillingData Billing { get; set; }
 
         /// <summary>The bucket's Cross-Origin Resource Sharing (CORS) configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cors")]
-        public virtual System.Collections.Generic.IList<CorsData> Cors { get; set; } 
+        public virtual System.Collections.Generic.IList<CorsData> Cors { get; set; }
 
         /// <summary>The default value for event-based hold on newly created objects in this bucket. Event-based hold is
         /// a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being
@@ -7320,69 +7320,69 @@ namespace Google.Apis.Storage.v1.Data
         /// based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or
         /// archived until the hold is removed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultEventBasedHold")]
-        public virtual System.Nullable<bool> DefaultEventBasedHold { get; set; } 
+        public virtual System.Nullable<bool> DefaultEventBasedHold { get; set; }
 
         /// <summary>Default access controls to apply to new objects when no ACL is provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultObjectAcl")]
-        public virtual System.Collections.Generic.IList<ObjectAccessControl> DefaultObjectAcl { get; set; } 
+        public virtual System.Collections.Generic.IList<ObjectAccessControl> DefaultObjectAcl { get; set; }
 
         /// <summary>Encryption configuration for a bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryption")]
-        public virtual EncryptionData Encryption { get; set; } 
+        public virtual EncryptionData Encryption { get; set; }
 
         /// <summary>HTTP 1.1 Entity tag for the bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The bucket's IAM configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iamConfiguration")]
-        public virtual IamConfigurationData IamConfiguration { get; set; } 
+        public virtual IamConfigurationData IamConfiguration { get; set; }
 
         /// <summary>The ID of the bucket. For buckets, the id and name properties are the same.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The kind of item this is. For buckets, this is always storage#bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>User-provided labels, in key/value pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The bucket's lifecycle configuration. See lifecycle management for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycle")]
-        public virtual LifecycleData Lifecycle { get; set; } 
+        public virtual LifecycleData Lifecycle { get; set; }
 
         /// <summary>The location of the bucket. Object data for objects in the bucket resides in physical storage
         /// within this region. Defaults to US. See the developer's guide for the authoritative list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>The type of the bucket location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationType")]
-        public virtual string LocationType { get; set; } 
+        public virtual string LocationType { get; set; }
 
         /// <summary>The bucket's logging configuration, which defines the destination bucket and optional name prefix
         /// for the current bucket's logs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logging")]
-        public virtual LoggingData Logging { get; set; } 
+        public virtual LoggingData Logging { get; set; }
 
         /// <summary>The metadata generation of this bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metageneration")]
-        public virtual System.Nullable<long> Metageneration { get; set; } 
+        public virtual System.Nullable<long> Metageneration { get; set; }
 
         /// <summary>The name of the bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The owner of the bucket. This is always the project team's owner group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("owner")]
-        public virtual OwnerData Owner { get; set; } 
+        public virtual OwnerData Owner { get; set; }
 
         /// <summary>The project number of the project the bucket belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
-        public virtual System.Nullable<ulong> ProjectNumber { get; set; } 
+        public virtual System.Nullable<ulong> ProjectNumber { get; set; }
 
         /// <summary>The bucket's retention policy. The retention policy enforces a minimum retention time for all
         /// objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects
@@ -7391,11 +7391,11 @@ namespace Google.Apis.Storage.v1.Data
         /// cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease
         /// period of a locked retention policy will result in a PERMISSION_DENIED error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retentionPolicy")]
-        public virtual RetentionPolicyData RetentionPolicy { get; set; } 
+        public virtual RetentionPolicyData RetentionPolicy { get; set; }
 
         /// <summary>The URI of this bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>The bucket's default storage class, used whenever no storageClass is specified for a newly-created
         /// object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage.
@@ -7403,7 +7403,7 @@ namespace Google.Apis.Storage.v1.Data
         /// DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to
         /// STANDARD. For more information, see storage classes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageClass")]
-        public virtual string StorageClass { get; set; } 
+        public virtual string StorageClass { get; set; }
 
         /// <summary>The creation time of the bucket in RFC 3339 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeCreated")]
@@ -7431,23 +7431,23 @@ namespace Google.Apis.Storage.v1.Data
 
         /// <summary>The bucket's versioning configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versioning")]
-        public virtual VersioningData Versioning { get; set; } 
+        public virtual VersioningData Versioning { get; set; }
 
         /// <summary>The bucket's website configuration, controlling how the service behaves when accessing bucket
         /// contents as a web site. See the Static Website Examples for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("website")]
-        public virtual WebsiteData Website { get; set; } 
+        public virtual WebsiteData Website { get; set; }
 
         /// <summary>The zone or zones from which the bucket is intended to use zonal quota. Requests for data from
         /// outside the specified affinities are still allowed but won't be able to use zonal quota. The zone or zones
         /// need to be within the bucket location otherwise the requests will fail with a 400 Bad Request
         /// response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zoneAffinity")]
-        public virtual System.Collections.Generic.IList<string> ZoneAffinity { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ZoneAffinity { get; set; }
 
         /// <summary>If set, objects placed in this bucket are required to be separated by disaster domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zoneSeparation")]
-        public virtual System.Nullable<bool> ZoneSeparation { get; set; } 
+        public virtual System.Nullable<bool> ZoneSeparation { get; set; }
 
         
 
@@ -7456,7 +7456,7 @@ namespace Google.Apis.Storage.v1.Data
         {
             /// <summary>When set to true, Requester Pays is enabled for this bucket.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("requesterPays")]
-            public virtual System.Nullable<bool> RequesterPays { get; set; } 
+            public virtual System.Nullable<bool> RequesterPays { get; set; }
 
         }    
 
@@ -7465,22 +7465,22 @@ namespace Google.Apis.Storage.v1.Data
             /// <summary>The value, in seconds, to return in the  Access-Control-Max-Age header used in preflight
             /// responses.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("maxAgeSeconds")]
-            public virtual System.Nullable<int> MaxAgeSeconds { get; set; } 
+            public virtual System.Nullable<int> MaxAgeSeconds { get; set; }
 
             /// <summary>The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc)
             /// Note: "*" is permitted in the list of methods, and means "any method".</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("method")]
-            public virtual System.Collections.Generic.IList<string> Method { get; set; } 
+            public virtual System.Collections.Generic.IList<string> Method { get; set; }
 
             /// <summary>The list of Origins eligible to receive CORS response headers. Note: "*" is permitted in the
             /// list of origins, and means "any Origin".</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("origin")]
-            public virtual System.Collections.Generic.IList<string> Origin { get; set; } 
+            public virtual System.Collections.Generic.IList<string> Origin { get; set; }
 
             /// <summary>The list of HTTP headers other than the simple response headers to give permission for the
             /// user-agent to share across domains.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("responseHeader")]
-            public virtual System.Collections.Generic.IList<string> ResponseHeader { get; set; } 
+            public virtual System.Collections.Generic.IList<string> ResponseHeader { get; set; }
 
         }    
 
@@ -7490,7 +7490,7 @@ namespace Google.Apis.Storage.v1.Data
             /// <summary>A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no
             /// encryption method is specified.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("defaultKmsKeyName")]
-            public virtual string DefaultKmsKeyName { get; set; } 
+            public virtual string DefaultKmsKeyName { get; set; }
 
         }    
 
@@ -7502,11 +7502,11 @@ namespace Google.Apis.Storage.v1.Data
             /// as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable
             /// and disable the feature.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("bucketPolicyOnly")]
-            public virtual BucketPolicyOnlyData BucketPolicyOnly { get; set; } 
+            public virtual BucketPolicyOnlyData BucketPolicyOnly { get; set; }
 
             /// <summary>The bucket's uniform bucket-level access configuration.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("uniformBucketLevelAccess")]
-            public virtual UniformBucketLevelAccessData UniformBucketLevelAccess { get; set; } 
+            public virtual UniformBucketLevelAccessData UniformBucketLevelAccess { get; set; }
 
             
 
@@ -7518,7 +7518,7 @@ namespace Google.Apis.Storage.v1.Data
             {
                 /// <summary>If set, access is controlled only by bucket-level or above IAM policies.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-                public virtual System.Nullable<bool> Enabled { get; set; } 
+                public virtual System.Nullable<bool> Enabled { get; set; }
 
                 /// <summary>The deadline for changing iamConfiguration.bucketPolicyOnly.enabled from true to false in
                 /// RFC 3339 format. iamConfiguration.bucketPolicyOnly.enabled may be changed from true to false until
@@ -7541,7 +7541,7 @@ namespace Google.Apis.Storage.v1.Data
             {
                 /// <summary>If set, access is controlled only by bucket-level or above IAM policies.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-                public virtual System.Nullable<bool> Enabled { get; set; } 
+                public virtual System.Nullable<bool> Enabled { get; set; }
 
                 /// <summary>The deadline for changing iamConfiguration.uniformBucketLevelAccess.enabled from true to
                 /// false in RFC 3339  format. iamConfiguration.uniformBucketLevelAccess.enabled may be changed from
@@ -7566,7 +7566,7 @@ namespace Google.Apis.Storage.v1.Data
             /// <summary>A lifecycle management rule, which is made of an action to take and the condition(s) under
             /// which the action will be taken.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("rule")]
-            public virtual System.Collections.Generic.IList<RuleData> Rule { get; set; } 
+            public virtual System.Collections.Generic.IList<RuleData> Rule { get; set; }
 
             
 
@@ -7574,11 +7574,11 @@ namespace Google.Apis.Storage.v1.Data
             {
                 /// <summary>The action to take.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("action")]
-                public virtual ActionData Action { get; set; } 
+                public virtual ActionData Action { get; set; }
 
                 /// <summary>The condition(s) under which the action will be taken.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-                public virtual ConditionData Condition { get; set; } 
+                public virtual ConditionData Condition { get; set; }
 
                 
 
@@ -7587,11 +7587,11 @@ namespace Google.Apis.Storage.v1.Data
                 {
                     /// <summary>Target storage class. Required iff the type of the action is SetStorageClass.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("storageClass")]
-                    public virtual string StorageClass { get; set; } 
+                    public virtual string StorageClass { get; set; }
 
                     /// <summary>Type of the action. Currently, only Delete and SetStorageClass are supported.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("type")]
-                    public virtual string Type { get; set; } 
+                    public virtual string Type { get; set; }
 
                 }    
 
@@ -7601,24 +7601,24 @@ namespace Google.Apis.Storage.v1.Data
                     /// <summary>Age of an object (in days). This condition is satisfied when an object reaches the
                     /// specified age.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("age")]
-                    public virtual System.Nullable<int> Age { get; set; } 
+                    public virtual System.Nullable<int> Age { get; set; }
 
                     /// <summary>A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This
                     /// condition is satisfied when an object is created before midnight of the specified date in
                     /// UTC.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("createdBefore")]
-                    public virtual string CreatedBefore { get; set; } 
+                    public virtual string CreatedBefore { get; set; }
 
                     /// <summary>A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This
                     /// condition is satisfied when the custom time on an object is before this date in UTC.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("customTimeBefore")]
-                    public virtual string CustomTimeBefore { get; set; } 
+                    public virtual string CustomTimeBefore { get; set; }
 
                     /// <summary>Number of days elapsed since the user-specified timestamp set on an object. The
                     /// condition is satisfied if the days elapsed is at least this number. If no custom timestamp is
                     /// specified on an object, the condition does not apply.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("daysSinceCustomTime")]
-                    public virtual System.Nullable<int> DaysSinceCustomTime { get; set; } 
+                    public virtual System.Nullable<int> DaysSinceCustomTime { get; set; }
 
                     /// <summary>Number of days elapsed since the noncurrent timestamp of an object. The condition is
                     /// satisfied if the days elapsed is at least this number. This condition is relevant only for
@@ -7626,12 +7626,12 @@ namespace Google.Apis.Storage.v1.Data
                     /// object version will become eligible for Lifecycle action as soon as it becomes
                     /// noncurrent.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("daysSinceNoncurrentTime")]
-                    public virtual System.Nullable<int> DaysSinceNoncurrentTime { get; set; } 
+                    public virtual System.Nullable<int> DaysSinceNoncurrentTime { get; set; }
 
                     /// <summary>Relevant only for versioned objects. If the value is true, this condition matches live
                     /// objects; if the value is false, it matches archived objects.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("isLive")]
-                    public virtual System.Nullable<bool> IsLive { get; set; } 
+                    public virtual System.Nullable<bool> IsLive { get; set; }
 
                     /// <summary>A regular expression that satisfies the RE2 syntax. This condition is satisfied when
                     /// the name of the object matches the RE2 pattern. Note: This feature is currently in the "Early
@@ -7639,25 +7639,25 @@ namespace Google.Apis.Storage.v1.Data
                     /// feature may be changed in backward-incompatible ways and that it is not guaranteed to be
                     /// released.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("matchesPattern")]
-                    public virtual string MatchesPattern { get; set; } 
+                    public virtual string MatchesPattern { get; set; }
 
                     /// <summary>Objects having any of the storage classes specified by this condition will be matched.
                     /// Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, and
                     /// DURABLE_REDUCED_AVAILABILITY.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("matchesStorageClass")]
-                    public virtual System.Collections.Generic.IList<string> MatchesStorageClass { get; set; } 
+                    public virtual System.Collections.Generic.IList<string> MatchesStorageClass { get; set; }
 
                     /// <summary>A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This
                     /// condition is satisfied when the noncurrent time on an object is before this date in UTC. This
                     /// condition is relevant only for versioned objects.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("noncurrentTimeBefore")]
-                    public virtual string NoncurrentTimeBefore { get; set; } 
+                    public virtual string NoncurrentTimeBefore { get; set; }
 
                     /// <summary>Relevant only for versioned objects. If the value is N, this condition is satisfied
                     /// when there are at least N versions (including the live version) newer than this version of the
                     /// object.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("numNewerVersions")]
-                    public virtual System.Nullable<int> NumNewerVersions { get; set; } 
+                    public virtual System.Nullable<int> NumNewerVersions { get; set; }
 
                 }
             }
@@ -7669,11 +7669,11 @@ namespace Google.Apis.Storage.v1.Data
         {
             /// <summary>The destination bucket where the current bucket's logs should be placed.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("logBucket")]
-            public virtual string LogBucket { get; set; } 
+            public virtual string LogBucket { get; set; }
 
             /// <summary>A prefix for log object names.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("logObjectPrefix")]
-            public virtual string LogObjectPrefix { get; set; } 
+            public virtual string LogObjectPrefix { get; set; }
 
         }    
 
@@ -7682,11 +7682,11 @@ namespace Google.Apis.Storage.v1.Data
         {
             /// <summary>The entity, in the form project-owner-projectId.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("entity")]
-            public virtual string Entity { get; set; } 
+            public virtual string Entity { get; set; }
 
             /// <summary>The ID for the entity.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
-            public virtual string EntityId { get; set; } 
+            public virtual string EntityId { get; set; }
 
         }    
 
@@ -7713,13 +7713,13 @@ namespace Google.Apis.Storage.v1.Data
 
             /// <summary>Once locked, an object retention policy cannot be modified.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("isLocked")]
-            public virtual System.Nullable<bool> IsLocked { get; set; } 
+            public virtual System.Nullable<bool> IsLocked { get; set; }
 
             /// <summary>The duration in seconds that objects need to be retained. Retention duration must be greater
             /// than zero and less than 100 years. Note that enforcement of retention periods less than a day is not
             /// guaranteed. Such periods should only be used for testing purposes.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("retentionPeriod")]
-            public virtual System.Nullable<long> RetentionPeriod { get; set; } 
+            public virtual System.Nullable<long> RetentionPeriod { get; set; }
 
         }    
 
@@ -7728,7 +7728,7 @@ namespace Google.Apis.Storage.v1.Data
         {
             /// <summary>While set to true, versioning is fully enabled for this bucket.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-            public virtual System.Nullable<bool> Enabled { get; set; } 
+            public virtual System.Nullable<bool> Enabled { get; set; }
 
         }    
 
@@ -7740,13 +7740,13 @@ namespace Google.Apis.Storage.v1.Data
             /// append this suffix, and attempt to retrieve the resulting object. This allows the creation of index.html
             /// objects to represent directory pages.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("mainPageSuffix")]
-            public virtual string MainPageSuffix { get; set; } 
+            public virtual string MainPageSuffix { get; set; }
 
             /// <summary>If the requested object path is missing, and any mainPageSuffix object is missing, if
             /// applicable, the service will return the named object from this bucket as the content for a 404 Not Found
             /// result.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("notFoundPage")]
-            public virtual string NotFoundPage { get; set; } 
+            public virtual string NotFoundPage { get; set; }
 
         }
     }    
@@ -7756,15 +7756,15 @@ namespace Google.Apis.Storage.v1.Data
     {
         /// <summary>The name of the bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
-        public virtual string Bucket { get; set; } 
+        public virtual string Bucket { get; set; }
 
         /// <summary>The domain associated with the entity, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
-        public virtual string Domain { get; set; } 
+        public virtual string Domain { get; set; }
 
         /// <summary>The email address associated with the entity, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; } 
+        public virtual string Email { get; set; }
 
         /// <summary>The entity holding the permission, in one of the following forms: - user-userId - user-email -
         /// group-groupId - group-email - domain-domain - project-team-projectId - allUsers - allAuthenticatedUsers
@@ -7772,36 +7772,36 @@ namespace Google.Apis.Storage.v1.Data
         /// would be group-example@googlegroups.com. - To refer to all members of the Google Apps for Business domain
         /// example.com, the entity would be domain-example.com.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entity")]
-        public virtual string Entity { get; set; } 
+        public virtual string Entity { get; set; }
 
         /// <summary>The ID for the entity, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
-        public virtual string EntityId { get; set; } 
+        public virtual string EntityId { get; set; }
 
         /// <summary>HTTP 1.1 Entity tag for the access-control entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The ID of the access-control entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The kind of item this is. For bucket access control entries, this is always
         /// storage#bucketAccessControl.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The project team associated with the entity, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectTeam")]
-        public virtual ProjectTeamData ProjectTeam { get; set; } 
+        public virtual ProjectTeamData ProjectTeam { get; set; }
 
         /// <summary>The access permission for the entity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The link to this access-control entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         
 
@@ -7810,11 +7810,11 @@ namespace Google.Apis.Storage.v1.Data
         {
             /// <summary>The project number.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
-            public virtual string ProjectNumber { get; set; } 
+            public virtual string ProjectNumber { get; set; }
 
             /// <summary>The team.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("team")]
-            public virtual string Team { get; set; } 
+            public virtual string Team { get; set; }
 
         }
     }    
@@ -7824,12 +7824,12 @@ namespace Google.Apis.Storage.v1.Data
     {
         /// <summary>The list of items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<BucketAccessControl> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<BucketAccessControl> Items { get; set; }
 
         /// <summary>The kind of item this is. For lists of bucket access control entries, this is always
         /// storage#bucketAccessControls.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7840,16 +7840,16 @@ namespace Google.Apis.Storage.v1.Data
     {
         /// <summary>The list of items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Bucket> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Bucket> Items { get; set; }
 
         /// <summary>The kind of item this is. For lists of buckets, this is always storage#buckets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The continuation token, used to page through large result sets. Provide this value in a subsequent
         /// request to return the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7860,47 +7860,47 @@ namespace Google.Apis.Storage.v1.Data
     {
         /// <summary>The address where notifications are delivered for this channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
-        public virtual string Address { get; set; } 
+        public virtual string Address { get; set; }
 
         /// <summary>Date and time of notification channel expiration, expressed as a Unix timestamp, in milliseconds.
         /// Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expiration")]
-        public virtual System.Nullable<long> Expiration { get; set; } 
+        public virtual System.Nullable<long> Expiration { get; set; }
 
         /// <summary>A UUID or similar unique string that identifies this channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies this as a notification channel used to watch for changes to a resource, which is
         /// "api#channel".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Additional parameters controlling delivery channel behavior. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Params__ { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Params__ { get; set; }
 
         /// <summary>A Boolean value to indicate whether payload is wanted. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual System.Nullable<bool> Payload { get; set; } 
+        public virtual System.Nullable<bool> Payload { get; set; }
 
         /// <summary>An opaque ID that identifies the resource being watched on this channel. Stable across different
         /// API versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual string ResourceId { get; set; } 
+        public virtual string ResourceId { get; set; }
 
         /// <summary>A version-specific identifier for the watched resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
-        public virtual string ResourceUri { get; set; } 
+        public virtual string ResourceUri { get; set; }
 
         /// <summary>An arbitrary string delivered to the target address with each notification delivered over this
         /// channel. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
-        public virtual string Token { get; set; } 
+        public virtual string Token { get; set; }
 
         /// <summary>The type of delivery mechanism used for this channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7911,15 +7911,15 @@ namespace Google.Apis.Storage.v1.Data
     {
         /// <summary>Properties of the resulting object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
-        public virtual Object Destination { get; set; } 
+        public virtual Object Destination { get; set; }
 
         /// <summary>The kind of item this is.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The list of source objects that will be concatenated into a single object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceObjects")]
-        public virtual System.Collections.Generic.IList<SourceObjectsData> SourceObjects { get; set; } 
+        public virtual System.Collections.Generic.IList<SourceObjectsData> SourceObjects { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7929,15 +7929,15 @@ namespace Google.Apis.Storage.v1.Data
         {
             /// <summary>The generation of this object to use as the source.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("generation")]
-            public virtual System.Nullable<long> Generation { get; set; } 
+            public virtual System.Nullable<long> Generation { get; set; }
 
             /// <summary>The source object's name. All source objects must reside in the same bucket.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("name")]
-            public virtual string Name { get; set; } 
+            public virtual string Name { get; set; }
 
             /// <summary>Conditions that must be met for this operation to execute.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("objectPreconditions")]
-            public virtual ObjectPreconditionsData ObjectPreconditions { get; set; } 
+            public virtual ObjectPreconditionsData ObjectPreconditions { get; set; }
 
             
 
@@ -7948,7 +7948,7 @@ namespace Google.Apis.Storage.v1.Data
                 /// matches this value. If this value and a generation are both specified, they must be the same value
                 /// or the call will fail.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("ifGenerationMatch")]
-                public virtual System.Nullable<long> IfGenerationMatch { get; set; } 
+                public virtual System.Nullable<long> IfGenerationMatch { get; set; }
 
             }
         }
@@ -7961,22 +7961,22 @@ namespace Google.Apis.Storage.v1.Data
         /// <summary>An optional description of the expression. This is a longer text which describes the expression,
         /// e.g. when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax. The application
         /// context of the containing message determines which well-known feature set of CEL is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>An optional string indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>An optional title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7987,15 +7987,15 @@ namespace Google.Apis.Storage.v1.Data
     {
         /// <summary>The kind of item this is. For HMAC keys, this is always storage#hmacKey.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Key metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual HmacKeyMetadata Metadata { get; set; } 
+        public virtual HmacKeyMetadata Metadata { get; set; }
 
         /// <summary>HMAC secret key material.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secret")]
-        public virtual string Secret { get; set; } 
+        public virtual string Secret { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8006,35 +8006,35 @@ namespace Google.Apis.Storage.v1.Data
     {
         /// <summary>The ID of the HMAC Key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessId")]
-        public virtual string AccessId { get; set; } 
+        public virtual string AccessId { get; set; }
 
         /// <summary>HTTP 1.1 Entity tag for the HMAC key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The ID of the HMAC key, including the Project ID and the Access ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The kind of item this is. For HMAC Key metadata, this is always storage#hmacKeyMetadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Project ID owning the service account to which the key authenticates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>The link to this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>The email address of the key's associated service account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
-        public virtual string ServiceAccountEmail { get; set; } 
+        public virtual string ServiceAccountEmail { get; set; }
 
         /// <summary>The state of the key. Can be one of ACTIVE, INACTIVE, or DELETED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The creation time of the HMAC key in RFC 3339 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeCreated")]
@@ -8067,16 +8067,16 @@ namespace Google.Apis.Storage.v1.Data
     {
         /// <summary>The list of items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<HmacKeyMetadata> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<HmacKeyMetadata> Items { get; set; }
 
         /// <summary>The kind of item this is. For lists of hmacKeys, this is always storage#hmacKeysMetadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The continuation token, used to page through large result sets. Provide this value in a subsequent
         /// request to return the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8088,42 +8088,42 @@ namespace Google.Apis.Storage.v1.Data
         /// <summary>An optional list of additional attributes to attach to each Cloud PubSub message published for this
         /// notification subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("custom_attributes")]
-        public virtual System.Collections.Generic.IDictionary<string,string> CustomAttributes { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> CustomAttributes { get; set; }
 
         /// <summary>HTTP 1.1 Entity tag for this subscription notification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>If present, only send notifications about listed event types. If empty, sent notifications for all
         /// event types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("event_types")]
-        public virtual System.Collections.Generic.IList<string> EventTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> EventTypes { get; set; }
 
         /// <summary>The ID of the notification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The kind of item this is. For notifications, this is always storage#notification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>If present, only apply this notification configuration to object names that begin with this
         /// prefix.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("object_name_prefix")]
-        public virtual string ObjectNamePrefix { get; set; } 
+        public virtual string ObjectNamePrefix { get; set; }
 
         /// <summary>The desired content of the Payload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload_format")]
-        public virtual string PayloadFormat { get; set; } 
+        public virtual string PayloadFormat { get; set; }
 
         /// <summary>The canonical URL of this notification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>The Cloud PubSub topic to which this subscription publishes. Formatted as:
         /// '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topic")]
-        public virtual string Topic { get; set; } 
+        public virtual string Topic { get; set; }
 
     }    
 
@@ -8132,12 +8132,12 @@ namespace Google.Apis.Storage.v1.Data
     {
         /// <summary>The list of items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Notification> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Notification> Items { get; set; }
 
         /// <summary>The kind of item this is. For lists of notifications, this is always
         /// storage#notifications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8148,43 +8148,43 @@ namespace Google.Apis.Storage.v1.Data
     {
         /// <summary>Access controls on the object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acl")]
-        public virtual System.Collections.Generic.IList<ObjectAccessControl> Acl { get; set; } 
+        public virtual System.Collections.Generic.IList<ObjectAccessControl> Acl { get; set; }
 
         /// <summary>The name of the bucket containing this object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
-        public virtual string Bucket { get; set; } 
+        public virtual string Bucket { get; set; }
 
         /// <summary>Cache-Control directive for the object data. If omitted, and the object is accessible to all
         /// anonymous users, the default will be public, max-age=3600.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cacheControl")]
-        public virtual string CacheControl { get; set; } 
+        public virtual string CacheControl { get; set; }
 
         /// <summary>Number of underlying components that make up this object. Components are accumulated by compose
         /// operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("componentCount")]
-        public virtual System.Nullable<int> ComponentCount { get; set; } 
+        public virtual System.Nullable<int> ComponentCount { get; set; }
 
         /// <summary>Content-Disposition of the object data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentDisposition")]
-        public virtual string ContentDisposition { get; set; } 
+        public virtual string ContentDisposition { get; set; }
 
         /// <summary>Content-Encoding of the object data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentEncoding")]
-        public virtual string ContentEncoding { get; set; } 
+        public virtual string ContentEncoding { get; set; }
 
         /// <summary>Content-Language of the object data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
-        public virtual string ContentLanguage { get; set; } 
+        public virtual string ContentLanguage { get; set; }
 
         /// <summary>Content-Type of the object data. If an object is stored without a Content-Type, it is served as
         /// application/octet-stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
-        public virtual string ContentType { get; set; } 
+        public virtual string ContentType { get; set; }
 
         /// <summary>CRC32c checksum, as described in RFC 4960, Appendix B; encoded using base64 in big-endian byte
         /// order. For more information about using the CRC32c checksum, see Hashes and ETags: Best Practices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crc32c")]
-        public virtual string Crc32c { get; set; } 
+        public virtual string Crc32c { get; set; }
 
         /// <summary>A timestamp in RFC 3339 format specified by the user for an object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customTime")]
@@ -8200,11 +8200,11 @@ namespace Google.Apis.Storage.v1.Data
 
         /// <summary>Metadata of customer-supplied encryption key, if the object is encrypted by such a key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerEncryption")]
-        public virtual CustomerEncryptionData CustomerEncryption { get; set; } 
+        public virtual CustomerEncryptionData CustomerEncryption { get; set; }
 
         /// <summary>HTTP 1.1 Entity tag for the object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Whether an object is under event-based hold. Event-based hold is a way to retain objects until an
         /// event occurs, which is signified by the hold's release (i.e. this value is set to false). After being
@@ -8215,50 +8215,50 @@ namespace Google.Apis.Storage.v1.Data
         /// object is released) and then 3 more years after that. That means retention duration of the objects begins
         /// from the moment event-based hold transitioned from true to false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventBasedHold")]
-        public virtual System.Nullable<bool> EventBasedHold { get; set; } 
+        public virtual System.Nullable<bool> EventBasedHold { get; set; }
 
         /// <summary>The content generation of this object. Used for object versioning.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generation")]
-        public virtual System.Nullable<long> Generation { get; set; } 
+        public virtual System.Nullable<long> Generation { get; set; }
 
         /// <summary>The ID of the object, including the bucket name, object name, and generation number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The kind of item this is. For objects, this is always storage#object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Cloud KMS Key used to encrypt this object, if the object is encrypted by such a key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
-        public virtual string KmsKeyName { get; set; } 
+        public virtual string KmsKeyName { get; set; }
 
         /// <summary>MD5 hash of the data; encoded using base64. For more information about using the MD5 hash, see
         /// Hashes and ETags: Best Practices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("md5Hash")]
-        public virtual string Md5Hash { get; set; } 
+        public virtual string Md5Hash { get; set; }
 
         /// <summary>Media download link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaLink")]
-        public virtual string MediaLink { get; set; } 
+        public virtual string MediaLink { get; set; }
 
         /// <summary>User-provided metadata, in key/value pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
         /// <summary>The version of the metadata for this object at this generation. Used for preconditions and for
         /// detecting changes in metadata. A metageneration number is only meaningful in the context of a particular
         /// generation of a particular object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metageneration")]
-        public virtual System.Nullable<long> Metageneration { get; set; } 
+        public virtual System.Nullable<long> Metageneration { get; set; }
 
         /// <summary>The name of the object. Required if not specified by URL parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The owner of the object. This will always be the uploader of the object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("owner")]
-        public virtual OwnerData Owner { get; set; } 
+        public virtual OwnerData Owner { get; set; }
 
         /// <summary>A server-determined value that specifies the earliest time that the object's retention period
         /// expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active
@@ -8278,22 +8278,22 @@ namespace Google.Apis.Storage.v1.Data
 
         /// <summary>The link to this object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>Content-Length of the data in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
-        public virtual System.Nullable<ulong> Size { get; set; } 
+        public virtual System.Nullable<ulong> Size { get; set; }
 
         /// <summary>Storage class of the object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageClass")]
-        public virtual string StorageClass { get; set; } 
+        public virtual string StorageClass { get; set; }
 
         /// <summary>Whether an object is under temporary hold. While this flag is set to true, the object is protected
         /// against deletion and overwrites. A common use case of this flag is regulatory investigations where objects
         /// need to be retained while the investigation is ongoing. Note that unlike event-based hold, temporary hold
         /// does not impact retention expiration time of an object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("temporaryHold")]
-        public virtual System.Nullable<bool> TemporaryHold { get; set; } 
+        public virtual System.Nullable<bool> TemporaryHold { get; set; }
 
         /// <summary>The creation time of the object in RFC 3339 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeCreated")]
@@ -8352,11 +8352,11 @@ namespace Google.Apis.Storage.v1.Data
         {
             /// <summary>The encryption algorithm.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("encryptionAlgorithm")]
-            public virtual string EncryptionAlgorithm { get; set; } 
+            public virtual string EncryptionAlgorithm { get; set; }
 
             /// <summary>SHA256 hash value of the encryption key.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("keySha256")]
-            public virtual string KeySha256 { get; set; } 
+            public virtual string KeySha256 { get; set; }
 
         }    
 
@@ -8365,11 +8365,11 @@ namespace Google.Apis.Storage.v1.Data
         {
             /// <summary>The entity, in the form user-userId.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("entity")]
-            public virtual string Entity { get; set; } 
+            public virtual string Entity { get; set; }
 
             /// <summary>The ID for the entity.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
-            public virtual string EntityId { get; set; } 
+            public virtual string EntityId { get; set; }
 
         }
     }    
@@ -8379,15 +8379,15 @@ namespace Google.Apis.Storage.v1.Data
     {
         /// <summary>The name of the bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
-        public virtual string Bucket { get; set; } 
+        public virtual string Bucket { get; set; }
 
         /// <summary>The domain associated with the entity, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
-        public virtual string Domain { get; set; } 
+        public virtual string Domain { get; set; }
 
         /// <summary>The email address associated with the entity, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; } 
+        public virtual string Email { get; set; }
 
         /// <summary>The entity holding the permission, in one of the following forms: - user-userId - user-email -
         /// group-groupId - group-email - domain-domain - project-team-projectId - allUsers - allAuthenticatedUsers
@@ -8395,44 +8395,44 @@ namespace Google.Apis.Storage.v1.Data
         /// would be group-example@googlegroups.com. - To refer to all members of the Google Apps for Business domain
         /// example.com, the entity would be domain-example.com.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entity")]
-        public virtual string Entity { get; set; } 
+        public virtual string Entity { get; set; }
 
         /// <summary>The ID for the entity, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
-        public virtual string EntityId { get; set; } 
+        public virtual string EntityId { get; set; }
 
         /// <summary>HTTP 1.1 Entity tag for the access-control entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The content generation of the object, if applied to an object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generation")]
-        public virtual System.Nullable<long> Generation { get; set; } 
+        public virtual System.Nullable<long> Generation { get; set; }
 
         /// <summary>The ID of the access-control entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The kind of item this is. For object access control entries, this is always
         /// storage#objectAccessControl.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The name of the object, if applied to an object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("object")]
-        public virtual string Object__ { get; set; } 
+        public virtual string Object__ { get; set; }
 
         /// <summary>The project team associated with the entity, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectTeam")]
-        public virtual ProjectTeamData ProjectTeam { get; set; } 
+        public virtual ProjectTeamData ProjectTeam { get; set; }
 
         /// <summary>The access permission for the entity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The link to this access-control entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         
 
@@ -8441,11 +8441,11 @@ namespace Google.Apis.Storage.v1.Data
         {
             /// <summary>The project number.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
-            public virtual string ProjectNumber { get; set; } 
+            public virtual string ProjectNumber { get; set; }
 
             /// <summary>The team.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("team")]
-            public virtual string Team { get; set; } 
+            public virtual string Team { get; set; }
 
         }
     }    
@@ -8455,12 +8455,12 @@ namespace Google.Apis.Storage.v1.Data
     {
         /// <summary>The list of items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<ObjectAccessControl> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<ObjectAccessControl> Items { get; set; }
 
         /// <summary>The kind of item this is. For lists of object access control entries, this is always
         /// storage#objectAccessControls.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8471,21 +8471,21 @@ namespace Google.Apis.Storage.v1.Data
     {
         /// <summary>The list of items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Object> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Object> Items { get; set; }
 
         /// <summary>The kind of item this is. For lists of objects, this is always storage#objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The continuation token, used to page through large result sets. Provide this value in a subsequent
         /// request to return the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of prefixes of objects matching-but-not-listed up to and including the requested
         /// delimiter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prefixes")]
-        public virtual System.Collections.Generic.IList<string> Prefixes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Prefixes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8497,16 +8497,16 @@ namespace Google.Apis.Storage.v1.Data
         /// <summary>An association between a role, which comes with a set of permissions, and members who may assume
         /// that role.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<BindingsData> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<BindingsData> Bindings { get; set; }
 
         /// <summary>HTTP 1.1  Entity tag for the policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The kind of item this is. For policies, this is always storage#policy. This field is ignored on
         /// input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket
         /// for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be
@@ -8514,11 +8514,11 @@ namespace Google.Apis.Storage.v1.Data
         /// bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on
         /// input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual string ResourceId { get; set; } 
+        public virtual string ResourceId { get; set; }
 
         /// <summary>The IAM policy format version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
         
 
@@ -8528,7 +8528,7 @@ namespace Google.Apis.Storage.v1.Data
             /// allow user access via current binding. Different bindings, including their conditions, are examined
             /// independently.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-            public virtual Expr Condition { get; set; } 
+            public virtual Expr Condition { get; set; }
 
             /// <summary>A collection of identifiers for members who may assume the provided role. Recognized
             /// identifiers are as follows: - allUsers — A special identifier that represents anyone on the internet;
@@ -8544,7 +8544,7 @@ namespace Google.Apis.Storage.v1.Data
             /// projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-
             /// project</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("members")]
-            public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+            public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
             /// <summary>The role to which members belong. Two types of roles are supported: new IAM roles, which grant
             /// permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map
@@ -8562,7 +8562,7 @@ namespace Google.Apis.Storage.v1.Data
             /// roles/storage.legacyBucketOwner — Read and write access to existing buckets with object
             /// listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("role")]
-            public virtual string Role { get; set; } 
+            public virtual string Role { get; set; }
 
         }
     }    
@@ -8573,31 +8573,31 @@ namespace Google.Apis.Storage.v1.Data
         /// <summary>true if the copy is finished; otherwise, false if the copy is in progress. This property is always
         /// present in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The kind of item this is.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The total size of the object being copied in bytes. This property is always present in the
         /// response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectSize")]
-        public virtual System.Nullable<long> ObjectSize { get; set; } 
+        public virtual System.Nullable<long> ObjectSize { get; set; }
 
         /// <summary>A resource containing the metadata for the copied-to object. This property is present in the
         /// response only when copying completes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
-        public virtual Object Resource { get; set; } 
+        public virtual Object Resource { get; set; }
 
         /// <summary>A token to use in subsequent requests to continue copying data. This token is present in the
         /// response only when there is more data to copy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rewriteToken")]
-        public virtual string RewriteToken { get; set; } 
+        public virtual string RewriteToken { get; set; }
 
         /// <summary>The total bytes written so far, which can be used to provide a waiting user with a progress
         /// indicator. This property is always present in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalBytesRewritten")]
-        public virtual System.Nullable<long> TotalBytesRewritten { get; set; } 
+        public virtual System.Nullable<long> TotalBytesRewritten { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8608,11 +8608,11 @@ namespace Google.Apis.Storage.v1.Data
     {
         /// <summary>The ID of the notification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email_address")]
-        public virtual string EmailAddress { get; set; } 
+        public virtual string EmailAddress { get; set; }
 
         /// <summary>The kind of item this is. For notifications, this is always storage#notification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8623,7 +8623,7 @@ namespace Google.Apis.Storage.v1.Data
     {
         /// <summary>The kind of item this is.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The permissions held by the caller. Permissions are always of the format
         /// storage.resource.capability, where resource is one of buckets or objects. The supported permissions are as
@@ -8636,7 +8636,7 @@ namespace Google.Apis.Storage.v1.Data
         /// storage.objects.setIamPolicy — Update object IAM policy. - storage.objects.update — Update object
         /// metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

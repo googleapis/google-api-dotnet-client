@@ -2347,7 +2347,7 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>A set of accounts to search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emails")]
-        public virtual System.Collections.Generic.IList<string> Emails { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Emails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2358,11 +2358,11 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>If present, this account was successfully created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("account")]
-        public virtual HeldAccount Account { get; set; } 
+        public virtual HeldAccount Account { get; set; }
 
         /// <summary>This represents the success status. If failed, check message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual Status Status { get; set; } 
+        public virtual Status Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2374,12 +2374,12 @@ namespace Google.Apis.Vault.v1.Data
         /// <summary>Account IDs to identify which accounts to add. Only account_ids or only emails should be specified,
         /// but not both.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountIds")]
-        public virtual System.Collections.Generic.IList<string> AccountIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AccountIds { get; set; }
 
         /// <summary>Emails to identify which accounts to add. Only emails or only account_ids should be specified, but
         /// not both.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emails")]
-        public virtual System.Collections.Generic.IList<string> Emails { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Emails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2390,7 +2390,7 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>The list of responses, in the same order as the batch request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responses")]
-        public virtual System.Collections.Generic.IList<AddHeldAccountResult> Responses { get; set; } 
+        public virtual System.Collections.Generic.IList<AddHeldAccountResult> Responses { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2403,16 +2403,16 @@ namespace Google.Apis.Vault.v1.Data
         /// <summary>Only relevant if send_emails is true. True to CC requestor in the email message. False to not CC
         /// requestor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ccMe")]
-        public virtual System.Nullable<bool> CcMe { get; set; } 
+        public virtual System.Nullable<bool> CcMe { get; set; }
 
         /// <summary>The MatterPermission to add.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matterPermission")]
-        public virtual MatterPermission MatterPermission { get; set; } 
+        public virtual MatterPermission MatterPermission { get; set; }
 
         /// <summary>True to send notification email to the added account. False to not send notification
         /// email.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sendEmails")]
-        public virtual System.Nullable<bool> SendEmails { get; set; } 
+        public virtual System.Nullable<bool> SendEmails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2430,7 +2430,7 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>The updated matter, with state CLOSED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matter")]
-        public virtual Matter Matter { get; set; } 
+        public virtual Matter Matter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2442,20 +2442,20 @@ namespace Google.Apis.Vault.v1.Data
         /// <summary>The cloud storage bucket name of this export file. Can be used in cloud storage JSON/XML API, but
         /// not to list the bucket contents. Instead, you can get individual export files by object name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketName")]
-        public virtual string BucketName { get; set; } 
+        public virtual string BucketName { get; set; }
 
         /// <summary>The md5 hash of the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("md5Hash")]
-        public virtual string Md5Hash { get; set; } 
+        public virtual string Md5Hash { get; set; }
 
         /// <summary>The cloud storage object name of this export file. Can be used in cloud storage JSON/XML
         /// API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectName")]
-        public virtual string ObjectName { get; set; } 
+        public virtual string ObjectName { get; set; }
 
         /// <summary>The size of the export file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
-        public virtual System.Nullable<long> Size { get; set; } 
+        public virtual System.Nullable<long> Size { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2466,7 +2466,7 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>Output only. The exported files on cloud storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("files")]
-        public virtual System.Collections.Generic.IList<CloudStorageFile> Files { get; set; } 
+        public virtual System.Collections.Generic.IList<CloudStorageFile> Files { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2477,19 +2477,19 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>Details pertaining to Drive holds. If set, corpus must be Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveQuery")]
-        public virtual HeldDriveQuery DriveQuery { get; set; } 
+        public virtual HeldDriveQuery DriveQuery { get; set; }
 
         /// <summary>Details pertaining to Groups holds. If set, corpus must be Groups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupsQuery")]
-        public virtual HeldGroupsQuery GroupsQuery { get; set; } 
+        public virtual HeldGroupsQuery GroupsQuery { get; set; }
 
         /// <summary>Details pertaining to Hangouts Chat holds. If set, corpus must be Hangouts Chat.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hangoutsChatQuery")]
-        public virtual HeldHangoutsChatQuery HangoutsChatQuery { get; set; } 
+        public virtual HeldHangoutsChatQuery HangoutsChatQuery { get; set; }
 
         /// <summary>Details pertaining to mail holds. If set, corpus must be mail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mailQuery")]
-        public virtual HeldMailQuery MailQuery { get; set; } 
+        public virtual HeldMailQuery MailQuery { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2500,7 +2500,7 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>Set to true to include access level information for users with indirect access to files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeAccessInfo")]
-        public virtual System.Nullable<bool> IncludeAccessInfo { get; set; } 
+        public virtual System.Nullable<bool> IncludeAccessInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2511,16 +2511,16 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>Set to true to include shared drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeSharedDrives")]
-        public virtual System.Nullable<bool> IncludeSharedDrives { get; set; } 
+        public virtual System.Nullable<bool> IncludeSharedDrives { get; set; }
 
         /// <summary>Set to true to include Team Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeTeamDrives")]
-        public virtual System.Nullable<bool> IncludeTeamDrives { get; set; } 
+        public virtual System.Nullable<bool> IncludeTeamDrives { get; set; }
 
         /// <summary>Search the versions of the Drive file as of the reference date. These timestamps are in GMT and
         /// rounded down to the given date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionDate")]
-        public virtual object VersionDate { get; set; } 
+        public virtual object VersionDate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2541,43 +2541,43 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>Output only. Export sink for cloud storage files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageSink")]
-        public virtual CloudStorageSink CloudStorageSink { get; set; } 
+        public virtual CloudStorageSink CloudStorageSink { get; set; }
 
         /// <summary>Output only. The time when the export was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Advanced options of the export.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportOptions")]
-        public virtual ExportOptions ExportOptions { get; set; } 
+        public virtual ExportOptions ExportOptions { get; set; }
 
         /// <summary>Output only. The generated export ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Output only. The matter ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matterId")]
-        public virtual string MatterId { get; set; } 
+        public virtual string MatterId { get; set; }
 
         /// <summary>The export name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The search query being exported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
-        public virtual Query Query { get; set; } 
+        public virtual Query Query { get; set; }
 
         /// <summary>Output only. The requester of the export.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requester")]
-        public virtual UserInfo Requester { get; set; } 
+        public virtual UserInfo Requester { get; set; }
 
         /// <summary>Output only. Export statistics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stats")]
-        public virtual ExportStats Stats { get; set; } 
+        public virtual ExportStats Stats { get; set; }
 
         /// <summary>Output only. The export status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2588,23 +2588,23 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>Option available for Drive export.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveOptions")]
-        public virtual DriveExportOptions DriveOptions { get; set; } 
+        public virtual DriveExportOptions DriveOptions { get; set; }
 
         /// <summary>Option available for groups export.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupsOptions")]
-        public virtual GroupsExportOptions GroupsOptions { get; set; } 
+        public virtual GroupsExportOptions GroupsOptions { get; set; }
 
         /// <summary>Option available for hangouts chat export.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hangoutsChatOptions")]
-        public virtual HangoutsChatExportOptions HangoutsChatOptions { get; set; } 
+        public virtual HangoutsChatExportOptions HangoutsChatOptions { get; set; }
 
         /// <summary>Option available for mail export.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mailOptions")]
-        public virtual MailExportOptions MailOptions { get; set; } 
+        public virtual MailExportOptions MailOptions { get; set; }
 
         /// <summary>The requested export location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
-        public virtual string Region { get; set; } 
+        public virtual string Region { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2615,15 +2615,15 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>The number of documents already processed by the export.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportedArtifactCount")]
-        public virtual System.Nullable<long> ExportedArtifactCount { get; set; } 
+        public virtual System.Nullable<long> ExportedArtifactCount { get; set; }
 
         /// <summary>The size of export in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeInBytes")]
-        public virtual System.Nullable<long> SizeInBytes { get; set; } 
+        public virtual System.Nullable<long> SizeInBytes { get; set; }
 
         /// <summary>The number of documents to be exported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalArtifactCount")]
-        public virtual System.Nullable<long> TotalArtifactCount { get; set; } 
+        public virtual System.Nullable<long> TotalArtifactCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2634,7 +2634,7 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>The export format for groups export.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportFormat")]
-        public virtual string ExportFormat { get; set; } 
+        public virtual string ExportFormat { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2645,7 +2645,7 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>The export format for hangouts chat export.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportFormat")]
-        public virtual string ExportFormat { get; set; } 
+        public virtual string ExportFormat { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2656,7 +2656,7 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>A set of rooms to search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roomId")]
-        public virtual System.Collections.Generic.IList<string> RoomId { get; set; } 
+        public virtual System.Collections.Generic.IList<string> RoomId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2667,7 +2667,7 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>Set to true to include rooms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeRooms")]
-        public virtual System.Nullable<bool> IncludeRooms { get; set; } 
+        public virtual System.Nullable<bool> IncludeRooms { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2679,24 +2679,24 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>The account's ID as provided by the Admin SDK.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual string AccountId { get; set; } 
+        public virtual string AccountId { get; set; }
 
         /// <summary>The primary email address of the account. If used as an input, this takes precedence over account
         /// ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; } 
+        public virtual string Email { get; set; }
 
         /// <summary>Output only. The first name of the account holder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstName")]
-        public virtual string FirstName { get; set; } 
+        public virtual string FirstName { get; set; }
 
         /// <summary>Output only. When the account was put on hold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("holdTime")]
-        public virtual object HoldTime { get; set; } 
+        public virtual object HoldTime { get; set; }
 
         /// <summary>Output only. The last name of the account holder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastName")]
-        public virtual string LastName { get; set; } 
+        public virtual string LastName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2707,11 +2707,11 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>If true, include files in shared drives in the hold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeSharedDriveFiles")]
-        public virtual System.Nullable<bool> IncludeSharedDriveFiles { get; set; } 
+        public virtual System.Nullable<bool> IncludeSharedDriveFiles { get; set; }
 
         /// <summary>If true, include files in Team Drives in the hold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeTeamDriveFiles")]
-        public virtual System.Nullable<bool> IncludeTeamDriveFiles { get; set; } 
+        public virtual System.Nullable<bool> IncludeTeamDriveFiles { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2723,16 +2723,16 @@ namespace Google.Apis.Vault.v1.Data
         /// <summary>The end time range for the search query. These timestamps are in GMT and rounded down to the start
         /// of the given date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>The start time range for the search query. These timestamps are in GMT and rounded down to the
         /// start of the given date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The search terms for the hold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("terms")]
-        public virtual string Terms { get; set; } 
+        public virtual string Terms { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2743,7 +2743,7 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>If true, include rooms the user has participated in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeRooms")]
-        public virtual System.Nullable<bool> IncludeRooms { get; set; } 
+        public virtual System.Nullable<bool> IncludeRooms { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2755,16 +2755,16 @@ namespace Google.Apis.Vault.v1.Data
         /// <summary>The end time range for the search query. These timestamps are in GMT and rounded down to the start
         /// of the given date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>The start time range for the search query. These timestamps are in GMT and rounded down to the
         /// start of the given date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The search terms for the hold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("terms")]
-        public virtual string Terms { get; set; } 
+        public virtual string Terms { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2775,11 +2775,11 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>When the org unit was put on hold. This property is immutable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("holdTime")]
-        public virtual object HoldTime { get; set; } 
+        public virtual object HoldTime { get; set; }
 
         /// <summary>The org unit's immutable ID as provided by the Admin SDK.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgUnitId")]
-        public virtual string OrgUnitId { get; set; } 
+        public virtual string OrgUnitId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2792,32 +2792,32 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>If set, the hold applies to the enumerated accounts and org_unit must be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accounts")]
-        public virtual System.Collections.Generic.IList<HeldAccount> Accounts { get; set; } 
+        public virtual System.Collections.Generic.IList<HeldAccount> Accounts { get; set; }
 
         /// <summary>The corpus to be searched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("corpus")]
-        public virtual string Corpus { get; set; } 
+        public virtual string Corpus { get; set; }
 
         /// <summary>The unique immutable ID of the hold. Assigned during creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("holdId")]
-        public virtual string HoldId { get; set; } 
+        public virtual string HoldId { get; set; }
 
         /// <summary>The name of the hold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>If set, the hold applies to all members of the organizational unit and accounts must be empty. This
         /// property is mutable. For groups holds, set the accounts field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgUnit")]
-        public virtual HeldOrgUnit OrgUnit { get; set; } 
+        public virtual HeldOrgUnit OrgUnit { get; set; }
 
         /// <summary>The corpus-specific query. If set, the corpusQuery must match corpus type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
-        public virtual CorpusQuery Query { get; set; } 
+        public virtual CorpusQuery Query { get; set; }
 
         /// <summary>The last time this hold was modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2828,11 +2828,11 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>The list of exports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exports")]
-        public virtual System.Collections.Generic.IList<Export> Exports { get; set; } 
+        public virtual System.Collections.Generic.IList<Export> Exports { get; set; }
 
         /// <summary>Page token to retrieve the next page of results in the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2843,7 +2843,7 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>The held accounts on a hold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accounts")]
-        public virtual System.Collections.Generic.IList<HeldAccount> Accounts { get; set; } 
+        public virtual System.Collections.Generic.IList<HeldAccount> Accounts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2854,12 +2854,12 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>The list of holds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("holds")]
-        public virtual System.Collections.Generic.IList<Hold> Holds { get; set; } 
+        public virtual System.Collections.Generic.IList<Hold> Holds { get; set; }
 
         /// <summary>Page token to retrieve the next page of results in the list. If this is empty, then there are no
         /// more holds to list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2870,11 +2870,11 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>List of matters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matters")]
-        public virtual System.Collections.Generic.IList<Matter> Matters { get; set; } 
+        public virtual System.Collections.Generic.IList<Matter> Matters { get; set; }
 
         /// <summary>Page token to retrieve the next page of results in the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2886,11 +2886,11 @@ namespace Google.Apis.Vault.v1.Data
         /// <summary>Page token to retrieve the next page of results in the list. If this is empty, then there are no
         /// more saved queries to list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>List of output saved queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("savedQueries")]
-        public virtual System.Collections.Generic.IList<SavedQuery> SavedQueries { get; set; } 
+        public virtual System.Collections.Generic.IList<SavedQuery> SavedQueries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2901,11 +2901,11 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>The export file format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportFormat")]
-        public virtual string ExportFormat { get; set; } 
+        public virtual string ExportFormat { get; set; }
 
         /// <summary>Set to true to export confidential mode content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("showConfidentialModeContent")]
-        public virtual System.Nullable<bool> ShowConfidentialModeContent { get; set; } 
+        public virtual System.Nullable<bool> ShowConfidentialModeContent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2916,7 +2916,7 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>Set to true to exclude drafts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeDrafts")]
-        public virtual System.Nullable<bool> ExcludeDrafts { get; set; } 
+        public virtual System.Nullable<bool> ExcludeDrafts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2927,25 +2927,25 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>The description of the matter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The matter ID which is generated by the server. Should be blank when creating a new
         /// matter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matterId")]
-        public virtual string MatterId { get; set; } 
+        public virtual string MatterId { get; set; }
 
         /// <summary>List of users and access to the matter. Currently there is no programmer defined limit on the
         /// number of permissions a matter can have.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matterPermissions")]
-        public virtual System.Collections.Generic.IList<MatterPermission> MatterPermissions { get; set; } 
+        public virtual System.Collections.Generic.IList<MatterPermission> MatterPermissions { get; set; }
 
         /// <summary>The name of the matter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The state of the matter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2957,11 +2957,11 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>The account ID, as provided by Admin SDK.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual string AccountId { get; set; } 
+        public virtual string AccountId { get; set; }
 
         /// <summary>The user's role in this matter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2972,7 +2972,7 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>Org unit to search, as provided by the Admin SDK Directory API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgUnitId")]
-        public virtual string OrgUnitId { get; set; } 
+        public virtual string OrgUnitId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2983,73 +2983,73 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>When 'ACCOUNT' is chosen as search method, account_info needs to be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountInfo")]
-        public virtual AccountInfo AccountInfo { get; set; } 
+        public virtual AccountInfo AccountInfo { get; set; }
 
         /// <summary>The corpus to search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("corpus")]
-        public virtual string Corpus { get; set; } 
+        public virtual string Corpus { get; set; }
 
         /// <summary>The data source to search from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataScope")]
-        public virtual string DataScope { get; set; } 
+        public virtual string DataScope { get; set; }
 
         /// <summary>For Drive search, specify more options in this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveOptions")]
-        public virtual DriveOptions DriveOptions { get; set; } 
+        public virtual DriveOptions DriveOptions { get; set; }
 
         /// <summary>The end time range for the search query. These timestamps are in GMT and rounded down to the start
         /// of the given date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>When 'ROOM' is chosen as search method, hangout_chats_info needs to be specified. (read-
         /// only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hangoutsChatInfo")]
-        public virtual HangoutsChatInfo HangoutsChatInfo { get; set; } 
+        public virtual HangoutsChatInfo HangoutsChatInfo { get; set; }
 
         /// <summary>For hangouts chat search, specify more options in this field. (read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hangoutsChatOptions")]
-        public virtual HangoutsChatOptions HangoutsChatOptions { get; set; } 
+        public virtual HangoutsChatOptions HangoutsChatOptions { get; set; }
 
         /// <summary>For mail search, specify more options in this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mailOptions")]
-        public virtual MailOptions MailOptions { get; set; } 
+        public virtual MailOptions MailOptions { get; set; }
 
         /// <summary>The search method to use. This field is similar to the search_method field but is introduced to
         /// support shared drives. It supports all search method types. In case the search_method is TEAM_DRIVE the
         /// response of this field will be SHARED_DRIVE only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
-        public virtual string Method { get; set; } 
+        public virtual string Method { get; set; }
 
         /// <summary>When 'ORG_UNIT' is chosen as as search method, org_unit_info needs to be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgUnitInfo")]
-        public virtual OrgUnitInfo OrgUnitInfo { get; set; } 
+        public virtual OrgUnitInfo OrgUnitInfo { get; set; }
 
         /// <summary>The search method to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchMethod")]
-        public virtual string SearchMethod { get; set; } 
+        public virtual string SearchMethod { get; set; }
 
         /// <summary>When 'SHARED_DRIVE' is chosen as search method, shared_drive_info needs to be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sharedDriveInfo")]
-        public virtual SharedDriveInfo SharedDriveInfo { get; set; } 
+        public virtual SharedDriveInfo SharedDriveInfo { get; set; }
 
         /// <summary>The start time range for the search query. These timestamps are in GMT and rounded down to the
         /// start of the given date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>When 'TEAM_DRIVE' is chosen as search method, team_drive_info needs to be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teamDriveInfo")]
-        public virtual TeamDriveInfo TeamDriveInfo { get; set; } 
+        public virtual TeamDriveInfo TeamDriveInfo { get; set; }
 
         /// <summary>The corpus-specific search operators used to generate search results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("terms")]
-        public virtual string Terms { get; set; } 
+        public virtual string Terms { get; set; }
 
         /// <summary>The time zone name. It should be an IANA TZ name, such as "America/Los_Angeles". For more
         /// information, see Time Zone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
-        public virtual string TimeZone { get; set; } 
+        public virtual string TimeZone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3060,7 +3060,7 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>Account IDs to identify HeldAccounts to remove.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountIds")]
-        public virtual System.Collections.Generic.IList<string> AccountIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AccountIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3071,7 +3071,7 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>A list of statuses for deleted accounts. Results have the same order as the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statuses")]
-        public virtual System.Collections.Generic.IList<Status> Statuses { get; set; } 
+        public virtual System.Collections.Generic.IList<Status> Statuses { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3082,7 +3082,7 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>The account ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual string AccountId { get; set; } 
+        public virtual string AccountId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3100,7 +3100,7 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>The updated matter, with state OPEN.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matter")]
-        public virtual Matter Matter { get; set; } 
+        public virtual Matter Matter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3111,24 +3111,24 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>Output only. The server generated timestamp at which saved query was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Name of the saved query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Output only. The matter ID of the associated matter. The server does not look at this field during
         /// create and always uses matter id in the URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matterId")]
-        public virtual string MatterId { get; set; } 
+        public virtual string MatterId { get; set; }
 
         /// <summary>The underlying Query object which contains all the information of the saved query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
-        public virtual Query Query { get; set; } 
+        public virtual Query Query { get; set; }
 
         /// <summary>A unique identifier for the saved query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("savedQueryId")]
-        public virtual string SavedQueryId { get; set; } 
+        public virtual string SavedQueryId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3139,7 +3139,7 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>List of Shared drive IDs, as provided by Drive API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sharedDriveIds")]
-        public virtual System.Collections.Generic.IList<string> SharedDriveIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> SharedDriveIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3154,17 +3154,17 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3175,7 +3175,7 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>List of Team Drive IDs, as provided by Drive API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teamDriveIds")]
-        public virtual System.Collections.Generic.IList<string> TeamDriveIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> TeamDriveIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3193,11 +3193,11 @@ namespace Google.Apis.Vault.v1.Data
     {
         /// <summary>The displayed name of the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The email address of the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; } 
+        public virtual string Email { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

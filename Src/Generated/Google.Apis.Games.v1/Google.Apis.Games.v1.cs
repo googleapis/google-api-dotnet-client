@@ -2711,58 +2711,58 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The type of the achievement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("achievementType")]
-        public virtual string AchievementType { get; set; } 
+        public virtual string AchievementType { get; set; }
 
         /// <summary>The description of the achievement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Experience points which will be earned when unlocking this achievement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("experiencePoints")]
-        public virtual System.Nullable<long> ExperiencePoints { get; set; } 
+        public virtual System.Nullable<long> ExperiencePoints { get; set; }
 
         /// <summary>The total steps for an incremental achievement as a string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedTotalSteps")]
-        public virtual string FormattedTotalSteps { get; set; } 
+        public virtual string FormattedTotalSteps { get; set; }
 
         /// <summary>The ID of the achievement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The initial state of the achievement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialState")]
-        public virtual string InitialState { get; set; } 
+        public virtual string InitialState { get; set; }
 
         /// <summary>Indicates whether the revealed icon image being returned is a default image, or is provided by the
         /// game.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isRevealedIconUrlDefault")]
-        public virtual System.Nullable<bool> IsRevealedIconUrlDefault { get; set; } 
+        public virtual System.Nullable<bool> IsRevealedIconUrlDefault { get; set; }
 
         /// <summary>Indicates whether the unlocked icon image being returned is a default image, or is game-
         /// provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isUnlockedIconUrlDefault")]
-        public virtual System.Nullable<bool> IsUnlockedIconUrlDefault { get; set; } 
+        public virtual System.Nullable<bool> IsUnlockedIconUrlDefault { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#achievementDefinition`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The name of the achievement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The image URL for the revealed achievement icon.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revealedIconUrl")]
-        public virtual string RevealedIconUrl { get; set; } 
+        public virtual string RevealedIconUrl { get; set; }
 
         /// <summary>The total steps for an incremental achievement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSteps")]
-        public virtual System.Nullable<int> TotalSteps { get; set; } 
+        public virtual System.Nullable<int> TotalSteps { get; set; }
 
         /// <summary>The image URL for the unlocked achievement icon.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unlockedIconUrl")]
-        public virtual string UnlockedIconUrl { get; set; } 
+        public virtual string UnlockedIconUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2773,16 +2773,16 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The achievement definitions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<AchievementDefinition> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<AchievementDefinition> Items { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#achievementDefinitionsListResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Token corresponding to the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2793,17 +2793,17 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The current steps recorded for this incremental achievement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentSteps")]
-        public virtual System.Nullable<int> CurrentSteps { get; set; } 
+        public virtual System.Nullable<int> CurrentSteps { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#achievementIncrementResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Whether the current steps for the achievement has reached the number of steps required to
         /// unlock.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newlyUnlocked")]
-        public virtual System.Nullable<bool> NewlyUnlocked { get; set; } 
+        public virtual System.Nullable<bool> NewlyUnlocked { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2815,12 +2815,12 @@ namespace Google.Apis.Games.v1.Data
         /// <summary>The current state of the achievement for which a reveal was attempted. This might be `UNLOCKED` if
         /// the achievement was already unlocked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentState")]
-        public virtual string CurrentState { get; set; } 
+        public virtual string CurrentState { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#achievementRevealResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2831,17 +2831,17 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The current steps recorded for this incremental achievement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentSteps")]
-        public virtual System.Nullable<int> CurrentSteps { get; set; } 
+        public virtual System.Nullable<int> CurrentSteps { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#achievementSetStepsAtLeastResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Whether the current steps for the achievement has reached the number of steps required to
         /// unlock.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newlyUnlocked")]
-        public virtual System.Nullable<bool> NewlyUnlocked { get; set; } 
+        public virtual System.Nullable<bool> NewlyUnlocked { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2853,12 +2853,12 @@ namespace Google.Apis.Games.v1.Data
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#achievementUnlockResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Whether this achievement was newly unlocked (that is, whether the unlock request for the
         /// achievement was the first for the player).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newlyUnlocked")]
-        public virtual System.Nullable<bool> NewlyUnlocked { get; set; } 
+        public virtual System.Nullable<bool> NewlyUnlocked { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2870,11 +2870,11 @@ namespace Google.Apis.Games.v1.Data
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#achievementUpdateMultipleRequest`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The individual achievement update requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updates")]
-        public virtual System.Collections.Generic.IList<AchievementUpdateRequest> Updates { get; set; } 
+        public virtual System.Collections.Generic.IList<AchievementUpdateRequest> Updates { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2886,11 +2886,11 @@ namespace Google.Apis.Games.v1.Data
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#achievementUpdateMultipleResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The updated state of the achievements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updatedAchievements")]
-        public virtual System.Collections.Generic.IList<AchievementUpdateResponse> UpdatedAchievements { get; set; } 
+        public virtual System.Collections.Generic.IList<AchievementUpdateResponse> UpdatedAchievements { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2901,24 +2901,24 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The achievement this update is being applied to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("achievementId")]
-        public virtual string AchievementId { get; set; } 
+        public virtual string AchievementId { get; set; }
 
         /// <summary>The payload if an update of type `INCREMENT` was requested for the achievement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("incrementPayload")]
-        public virtual GamesAchievementIncrement IncrementPayload { get; set; } 
+        public virtual GamesAchievementIncrement IncrementPayload { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#achievementUpdateRequest`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The payload if an update of type `SET_STEPS_AT_LEAST` was requested for the achievement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("setStepsAtLeastPayload")]
-        public virtual GamesAchievementSetStepsAtLeast SetStepsAtLeastPayload { get; set; } 
+        public virtual GamesAchievementSetStepsAtLeast SetStepsAtLeastPayload { get; set; }
 
         /// <summary>The type of update being applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateType")]
-        public virtual string UpdateType { get; set; } 
+        public virtual string UpdateType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2929,29 +2929,29 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The achievement this update is was applied to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("achievementId")]
-        public virtual string AchievementId { get; set; } 
+        public virtual string AchievementId { get; set; }
 
         /// <summary>The current state of the achievement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentState")]
-        public virtual string CurrentState { get; set; } 
+        public virtual string CurrentState { get; set; }
 
         /// <summary>The current steps recorded for this achievement if it is incremental.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentSteps")]
-        public virtual System.Nullable<int> CurrentSteps { get; set; } 
+        public virtual System.Nullable<int> CurrentSteps { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#achievementUpdateResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Whether this achievement was newly unlocked (that is, whether the unlock request for the
         /// achievement was the first for the player).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newlyUnlocked")]
-        public virtual System.Nullable<bool> NewlyUnlocked { get; set; } 
+        public virtual System.Nullable<bool> NewlyUnlocked { get; set; }
 
         /// <summary>Whether the requested updates actually affected the achievement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateOccurred")]
-        public virtual System.Nullable<bool> UpdateOccurred { get; set; } 
+        public virtual System.Nullable<bool> UpdateOccurred { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2962,57 +2962,57 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The number of achievements visible to the currently authenticated player.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("achievement_count")]
-        public virtual System.Nullable<int> AchievementCount { get; set; } 
+        public virtual System.Nullable<int> AchievementCount { get; set; }
 
         /// <summary>The assets of the application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assets")]
-        public virtual System.Collections.Generic.IList<ImageAsset> Assets { get; set; } 
+        public virtual System.Collections.Generic.IList<ImageAsset> Assets { get; set; }
 
         /// <summary>The author of the application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("author")]
-        public virtual string Author { get; set; } 
+        public virtual string Author { get; set; }
 
         /// <summary>The category of the application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
-        public virtual ApplicationCategory Category { get; set; } 
+        public virtual ApplicationCategory Category { get; set; }
 
         /// <summary>The description of the application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>A list of features that have been enabled for the application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabledFeatures")]
-        public virtual System.Collections.Generic.IList<string> EnabledFeatures { get; set; } 
+        public virtual System.Collections.Generic.IList<string> EnabledFeatures { get; set; }
 
         /// <summary>The ID of the application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The instances of the application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
-        public virtual System.Collections.Generic.IList<Instance> Instances { get; set; } 
+        public virtual System.Collections.Generic.IList<Instance> Instances { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#application`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The last updated timestamp of the application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdatedTimestamp")]
-        public virtual System.Nullable<long> LastUpdatedTimestamp { get; set; } 
+        public virtual System.Nullable<long> LastUpdatedTimestamp { get; set; }
 
         /// <summary>The number of leaderboards visible to the currently authenticated player.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("leaderboard_count")]
-        public virtual System.Nullable<int> LeaderboardCount { get; set; } 
+        public virtual System.Nullable<int> LeaderboardCount { get; set; }
 
         /// <summary>The name of the application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>A hint to the client UI for what color to use as an app-themed color. The color is given as an RGB
         /// triplet (e.g. "E0E0E0").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("themeColor")]
-        public virtual string ThemeColor { get; set; } 
+        public virtual string ThemeColor { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3024,15 +3024,15 @@ namespace Google.Apis.Games.v1.Data
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#applicationCategory`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The primary category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primary")]
-        public virtual string Primary { get; set; } 
+        public virtual string Primary { get; set; }
 
         /// <summary>The secondary category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondary")]
-        public virtual string Secondary { get; set; } 
+        public virtual string Secondary { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3044,16 +3044,16 @@ namespace Google.Apis.Games.v1.Data
         /// <summary>An alternate ID that was once used for the player that was issued the auth token used in this
         /// request. (This field is not normally populated.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternate_player_id")]
-        public virtual string AlternatePlayerId { get; set; } 
+        public virtual string AlternatePlayerId { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#applicationVerifyResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ID of the player that was issued the auth token used in this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("player_id")]
-        public virtual string PlayerId { get; set; } 
+        public virtual string PlayerId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3064,16 +3064,16 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The category name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
-        public virtual string CategoryValue { get; set; } 
+        public virtual string CategoryValue { get; set; }
 
         /// <summary>Experience points earned in this category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("experiencePoints")]
-        public virtual System.Nullable<long> ExperiencePoints { get; set; } 
+        public virtual System.Nullable<long> ExperiencePoints { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#category`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3084,16 +3084,16 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The list of categories with usage data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Category> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Category> Items { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#categoryListResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Token corresponding to the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3104,16 +3104,16 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The cause for the update failure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureCause")]
-        public virtual string FailureCause { get; set; } 
+        public virtual string FailureCause { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#eventBatchRecordFailure`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The time range which was rejected; empty for a request-wide failure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual EventPeriodRange Range { get; set; } 
+        public virtual EventPeriodRange Range { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3124,12 +3124,12 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The ID of the child event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("childId")]
-        public virtual string ChildId { get; set; } 
+        public virtual string ChildId { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#eventChild`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3140,36 +3140,36 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>A list of events that are a child of this event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("childEvents")]
-        public virtual System.Collections.Generic.IList<EventChild> ChildEvents { get; set; } 
+        public virtual System.Collections.Generic.IList<EventChild> ChildEvents { get; set; }
 
         /// <summary>Description of what this event represents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The name to display for the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The ID of the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The base URL for the image that represents the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
-        public virtual string ImageUrl { get; set; } 
+        public virtual string ImageUrl { get; set; }
 
         /// <summary>Indicates whether the icon image being returned is a default image, or is game-provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isDefaultImageUrl")]
-        public virtual System.Nullable<bool> IsDefaultImageUrl { get; set; } 
+        public virtual System.Nullable<bool> IsDefaultImageUrl { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#eventDefinition`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The visibility of event being tracked in this definition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
-        public virtual string Visibility { get; set; } 
+        public virtual string Visibility { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3180,16 +3180,16 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The event definitions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<EventDefinition> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<EventDefinition> Items { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#eventDefinitionListResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The pagination token for the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3201,15 +3201,15 @@ namespace Google.Apis.Games.v1.Data
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#eventPeriodRange`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The time when this update period ends, in millis, since 1970 UTC (Unix Epoch).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("periodEndMillis")]
-        public virtual System.Nullable<long> PeriodEndMillis { get; set; } 
+        public virtual System.Nullable<long> PeriodEndMillis { get; set; }
 
         /// <summary>The time when this update period begins, in millis, since 1970 UTC (Unix Epoch).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("periodStartMillis")]
-        public virtual System.Nullable<long> PeriodStartMillis { get; set; } 
+        public virtual System.Nullable<long> PeriodStartMillis { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3221,15 +3221,15 @@ namespace Google.Apis.Games.v1.Data
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#eventPeriodUpdate`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The time period being covered by this update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timePeriod")]
-        public virtual EventPeriodRange TimePeriod { get; set; } 
+        public virtual EventPeriodRange TimePeriod { get; set; }
 
         /// <summary>The updates being made for this time period.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updates")]
-        public virtual System.Collections.Generic.IList<EventUpdateRequest> Updates { get; set; } 
+        public virtual System.Collections.Generic.IList<EventUpdateRequest> Updates { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3240,16 +3240,16 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The ID of the event that was not updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; } 
+        public virtual string EventId { get; set; }
 
         /// <summary>The cause for the update failure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureCause")]
-        public virtual string FailureCause { get; set; } 
+        public virtual string FailureCause { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#eventRecordFailure`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3260,20 +3260,20 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The current time when this update was sent, in milliseconds, since 1970 UTC (Unix Epoch).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentTimeMillis")]
-        public virtual System.Nullable<long> CurrentTimeMillis { get; set; } 
+        public virtual System.Nullable<long> CurrentTimeMillis { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#eventRecordRequest`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The request ID used to identify this attempt to record events.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual System.Nullable<long> RequestId { get; set; } 
+        public virtual System.Nullable<long> RequestId { get; set; }
 
         /// <summary>A list of the time period updates being made in this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timePeriods")]
-        public virtual System.Collections.Generic.IList<EventPeriodUpdate> TimePeriods { get; set; } 
+        public virtual System.Collections.Generic.IList<EventPeriodUpdate> TimePeriods { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3284,16 +3284,16 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The ID of the event being modified in this update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("definitionId")]
-        public virtual string DefinitionId { get; set; } 
+        public virtual string DefinitionId { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#eventUpdateRequest`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The number of times this event occurred in this time period.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateCount")]
-        public virtual System.Nullable<long> UpdateCount { get; set; } 
+        public virtual System.Nullable<long> UpdateCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3304,20 +3304,20 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>Any batch-wide failures which occurred applying updates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchFailures")]
-        public virtual System.Collections.Generic.IList<EventBatchRecordFailure> BatchFailures { get; set; } 
+        public virtual System.Collections.Generic.IList<EventBatchRecordFailure> BatchFailures { get; set; }
 
         /// <summary>Any failures updating a particular event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventFailures")]
-        public virtual System.Collections.Generic.IList<EventRecordFailure> EventFailures { get; set; } 
+        public virtual System.Collections.Generic.IList<EventRecordFailure> EventFailures { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#eventUpdateResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The current status of any updated events</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playerEvents")]
-        public virtual System.Collections.Generic.IList<PlayerEvent> PlayerEvents { get; set; } 
+        public virtual System.Collections.Generic.IList<PlayerEvent> PlayerEvents { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3329,15 +3329,15 @@ namespace Google.Apis.Games.v1.Data
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#GamesAchievementIncrement`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The requestId associated with an increment to an achievement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual System.Nullable<long> RequestId { get; set; } 
+        public virtual System.Nullable<long> RequestId { get; set; }
 
         /// <summary>The number of steps to be incremented.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
-        public virtual System.Nullable<int> Steps { get; set; } 
+        public virtual System.Nullable<int> Steps { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3349,11 +3349,11 @@ namespace Google.Apis.Games.v1.Data
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#GamesAchievementSetStepsAtLeast`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The minimum number of steps for the achievement to be set to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
-        public virtual System.Nullable<int> Steps { get; set; } 
+        public virtual System.Nullable<int> Steps { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3364,24 +3364,24 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The height of the asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
-        public virtual System.Nullable<int> Height { get; set; } 
+        public virtual System.Nullable<int> Height { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#imageAsset`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The name of the asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The URL of the asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The width of the asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
-        public virtual System.Nullable<int> Width { get; set; } 
+        public virtual System.Nullable<int> Width { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3392,40 +3392,40 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>URI which shows where a user can acquire this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acquisitionUri")]
-        public virtual string AcquisitionUri { get; set; } 
+        public virtual string AcquisitionUri { get; set; }
 
         /// <summary>Platform dependent details for Android.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidInstance")]
-        public virtual InstanceAndroidDetails AndroidInstance { get; set; } 
+        public virtual InstanceAndroidDetails AndroidInstance { get; set; }
 
         /// <summary>Platform dependent details for iOS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosInstance")]
-        public virtual InstanceIosDetails IosInstance { get; set; } 
+        public virtual InstanceIosDetails IosInstance { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#instance`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Localized display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The platform type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platformType")]
-        public virtual string PlatformType { get; set; } 
+        public virtual string PlatformType { get; set; }
 
         /// <summary>Flag to show if this game instance supports realtime play.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("realtimePlay")]
-        public virtual System.Nullable<bool> RealtimePlay { get; set; } 
+        public virtual System.Nullable<bool> RealtimePlay { get; set; }
 
         /// <summary>Flag to show if this game instance supports turn based play.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("turnBasedPlay")]
-        public virtual System.Nullable<bool> TurnBasedPlay { get; set; } 
+        public virtual System.Nullable<bool> TurnBasedPlay { get; set; }
 
         /// <summary>Platform dependent details for Web.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webInstance")]
-        public virtual InstanceWebDetails WebInstance { get; set; } 
+        public virtual InstanceWebDetails WebInstance { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3436,20 +3436,20 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>Flag indicating whether the anti-piracy check is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePiracyCheck")]
-        public virtual System.Nullable<bool> EnablePiracyCheck { get; set; } 
+        public virtual System.Nullable<bool> EnablePiracyCheck { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#instanceAndroidDetails`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Android package name which maps to Google Play URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
-        public virtual string PackageName { get; set; } 
+        public virtual string PackageName { get; set; }
 
         /// <summary>Indicates that this instance is the default for new installations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preferred")]
-        public virtual System.Nullable<bool> Preferred { get; set; } 
+        public virtual System.Nullable<bool> Preferred { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3460,32 +3460,32 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>Bundle identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bundleIdentifier")]
-        public virtual string BundleIdentifier { get; set; } 
+        public virtual string BundleIdentifier { get; set; }
 
         /// <summary>iTunes App ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itunesAppId")]
-        public virtual string ItunesAppId { get; set; } 
+        public virtual string ItunesAppId { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#instanceIosDetails`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Indicates that this instance is the default for new installations on iPad devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preferredForIpad")]
-        public virtual System.Nullable<bool> PreferredForIpad { get; set; } 
+        public virtual System.Nullable<bool> PreferredForIpad { get; set; }
 
         /// <summary>Indicates that this instance is the default for new installations on iPhone devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preferredForIphone")]
-        public virtual System.Nullable<bool> PreferredForIphone { get; set; } 
+        public virtual System.Nullable<bool> PreferredForIphone { get; set; }
 
         /// <summary>Flag to indicate if this instance supports iPad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportIpad")]
-        public virtual System.Nullable<bool> SupportIpad { get; set; } 
+        public virtual System.Nullable<bool> SupportIpad { get; set; }
 
         /// <summary>Flag to indicate if this instance supports iPhone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportIphone")]
-        public virtual System.Nullable<bool> SupportIphone { get; set; } 
+        public virtual System.Nullable<bool> SupportIphone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3497,15 +3497,15 @@ namespace Google.Apis.Games.v1.Data
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#instanceWebDetails`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Launch URL for the game.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("launchUrl")]
-        public virtual string LaunchUrl { get; set; } 
+        public virtual string LaunchUrl { get; set; }
 
         /// <summary>Indicates that this instance is the default for new installations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preferred")]
-        public virtual System.Nullable<bool> Preferred { get; set; } 
+        public virtual System.Nullable<bool> Preferred { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3516,28 +3516,28 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The icon for the leaderboard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
-        public virtual string IconUrl { get; set; } 
+        public virtual string IconUrl { get; set; }
 
         /// <summary>The leaderboard ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Indicates whether the icon image being returned is a default image, or is game-provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isIconUrlDefault")]
-        public virtual System.Nullable<bool> IsIconUrlDefault { get; set; } 
+        public virtual System.Nullable<bool> IsIconUrlDefault { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#leaderboard`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The name of the leaderboard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>How scores are ordered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("order")]
-        public virtual string Order { get; set; } 
+        public virtual string Order { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3548,41 +3548,41 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The localized string for the numerical value of this score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedScore")]
-        public virtual string FormattedScore { get; set; } 
+        public virtual string FormattedScore { get; set; }
 
         /// <summary>The localized string for the rank of this score for this leaderboard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedScoreRank")]
-        public virtual string FormattedScoreRank { get; set; } 
+        public virtual string FormattedScoreRank { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#leaderboardEntry`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The player who holds this score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("player")]
-        public virtual Player Player { get; set; } 
+        public virtual Player Player { get; set; }
 
         /// <summary>The rank of this score for this leaderboard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoreRank")]
-        public virtual System.Nullable<long> ScoreRank { get; set; } 
+        public virtual System.Nullable<long> ScoreRank { get; set; }
 
         /// <summary>Additional information about the score. Values must contain no more than 64 URI-safe characters as
         /// defined by section 2.3 of RFC 3986.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoreTag")]
-        public virtual string ScoreTag { get; set; } 
+        public virtual string ScoreTag { get; set; }
 
         /// <summary>The numerical value of this score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoreValue")]
-        public virtual System.Nullable<long> ScoreValue { get; set; } 
+        public virtual System.Nullable<long> ScoreValue { get; set; }
 
         /// <summary>The time span of this high score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSpan")]
-        public virtual string TimeSpan { get; set; } 
+        public virtual string TimeSpan { get; set; }
 
         /// <summary>The timestamp at which this score was recorded, in milliseconds since the epoch in UTC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writeTimestampMillis")]
-        public virtual System.Nullable<long> WriteTimestampMillis { get; set; } 
+        public virtual System.Nullable<long> WriteTimestampMillis { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3593,16 +3593,16 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The leaderboards.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Leaderboard> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Leaderboard> Items { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#leaderboardListResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Token corresponding to the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3613,24 +3613,24 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The number of scores in the leaderboard as a string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedNumScores")]
-        public virtual string FormattedNumScores { get; set; } 
+        public virtual string FormattedNumScores { get; set; }
 
         /// <summary>The rank in the leaderboard as a string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedRank")]
-        public virtual string FormattedRank { get; set; } 
+        public virtual string FormattedRank { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#leaderboardScoreRank`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The number of scores in the leaderboard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numScores")]
-        public virtual System.Nullable<long> NumScores { get; set; } 
+        public virtual System.Nullable<long> NumScores { get; set; }
 
         /// <summary>The rank in the leaderboard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rank")]
-        public virtual System.Nullable<long> Rank { get; set; } 
+        public virtual System.Nullable<long> Rank { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3641,30 +3641,30 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The scores in the leaderboard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<LeaderboardEntry> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<LeaderboardEntry> Items { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#leaderboardScores`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The pagination token for the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The total number of scores in the leaderboard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numScores")]
-        public virtual System.Nullable<long> NumScores { get; set; } 
+        public virtual System.Nullable<long> NumScores { get; set; }
 
         /// <summary>The score of the requesting player on the leaderboard. The player's score may appear both here and
         /// in the list of scores above. If you are viewing a public leaderboard and the player is not sharing their
         /// gameplay information publicly, the `scoreRank`and `formattedScoreRank` values will not be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playerScore")]
-        public virtual LeaderboardEntry PlayerScore { get; set; } 
+        public virtual LeaderboardEntry PlayerScore { get; set; }
 
         /// <summary>The pagination token for the previous page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prevPageToken")]
-        public virtual string PrevPageToken { get; set; } 
+        public virtual string PrevPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3676,16 +3676,16 @@ namespace Google.Apis.Games.v1.Data
         /// <summary>Current version of the metagame configuration data. When this data is updated, the version number
         /// will be increased by one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentVersion")]
-        public virtual System.Nullable<int> CurrentVersion { get; set; } 
+        public virtual System.Nullable<int> CurrentVersion { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#metagameConfig`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The list of player levels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playerLevels")]
-        public virtual System.Collections.Generic.IList<PlayerLevel> PlayerLevels { get; set; } 
+        public virtual System.Collections.Generic.IList<PlayerLevel> PlayerLevels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3696,56 +3696,56 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The base URL for the image that represents the player.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("avatarImageUrl")]
-        public virtual string AvatarImageUrl { get; set; } 
+        public virtual string AvatarImageUrl { get; set; }
 
         /// <summary>The url to the landscape mode player banner image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bannerUrlLandscape")]
-        public virtual string BannerUrlLandscape { get; set; } 
+        public virtual string BannerUrlLandscape { get; set; }
 
         /// <summary>The url to the portrait mode player banner image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bannerUrlPortrait")]
-        public virtual string BannerUrlPortrait { get; set; } 
+        public virtual string BannerUrlPortrait { get; set; }
 
         /// <summary>The name to display for the player.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>An object to represent Play Game experience information for the player.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("experienceInfo")]
-        public virtual PlayerExperienceInfo ExperienceInfo { get; set; } 
+        public virtual PlayerExperienceInfo ExperienceInfo { get; set; }
 
         /// <summary>The friend status of the given player, relative to the requester. This is unset if the player is
         /// not sharing their friends list with the game.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("friendStatus")]
-        public virtual string FriendStatus { get; set; } 
+        public virtual string FriendStatus { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#player`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>A representation of the individual components of the name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual NameData Name { get; set; } 
+        public virtual NameData Name { get; set; }
 
         /// <summary>The player ID that was used for this player the first time they signed into the game in question.
         /// This is only populated for calls to player.get for the requesting player, only if the player ID has
         /// subsequently changed, and only to clients that support remapping player IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalPlayerId")]
-        public virtual string OriginalPlayerId { get; set; } 
+        public virtual string OriginalPlayerId { get; set; }
 
         /// <summary>The ID of the player.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playerId")]
-        public virtual string PlayerId { get; set; } 
+        public virtual string PlayerId { get; set; }
 
         /// <summary>The player's profile settings. Controls whether or not the player's profile is visible to other
         /// players.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileSettings")]
-        public virtual ProfileSettings ProfileSettings { get; set; } 
+        public virtual ProfileSettings ProfileSettings { get; set; }
 
         /// <summary>The player's title rewarded for their game activities.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3756,11 +3756,11 @@ namespace Google.Apis.Games.v1.Data
         {
             /// <summary>The family name of this player. In some places, this is known as the last name.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("familyName")]
-            public virtual string FamilyName { get; set; } 
+            public virtual string FamilyName { get; set; }
 
             /// <summary>The given name of this player. In some places, this is known as the first name.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("givenName")]
-            public virtual string GivenName { get; set; } 
+            public virtual string GivenName { get; set; }
 
         }
     }    
@@ -3770,34 +3770,34 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The state of the achievement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("achievementState")]
-        public virtual string AchievementState { get; set; } 
+        public virtual string AchievementState { get; set; }
 
         /// <summary>The current steps for an incremental achievement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentSteps")]
-        public virtual System.Nullable<int> CurrentSteps { get; set; } 
+        public virtual System.Nullable<int> CurrentSteps { get; set; }
 
         /// <summary>Experience points earned for the achievement. This field is absent for achievements that have not
         /// yet been unlocked and 0 for achievements that have been unlocked by testers but that are
         /// unpublished.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("experiencePoints")]
-        public virtual System.Nullable<long> ExperiencePoints { get; set; } 
+        public virtual System.Nullable<long> ExperiencePoints { get; set; }
 
         /// <summary>The current steps for an incremental achievement as a string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedCurrentStepsString")]
-        public virtual string FormattedCurrentStepsString { get; set; } 
+        public virtual string FormattedCurrentStepsString { get; set; }
 
         /// <summary>The ID of the achievement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#playerAchievement`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The timestamp of the last modification to this achievement's state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdatedTimestamp")]
-        public virtual System.Nullable<long> LastUpdatedTimestamp { get; set; } 
+        public virtual System.Nullable<long> LastUpdatedTimestamp { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3808,16 +3808,16 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The achievements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<PlayerAchievement> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<PlayerAchievement> Items { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#playerAchievementListResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Token corresponding to the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3828,25 +3828,25 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The ID of the event definition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("definitionId")]
-        public virtual string DefinitionId { get; set; } 
+        public virtual string DefinitionId { get; set; }
 
         /// <summary>The current number of times this event has occurred, as a string. The formatting of this string
         /// depends on the configuration of your event in the Play Games Developer Console.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedNumEvents")]
-        public virtual string FormattedNumEvents { get; set; } 
+        public virtual string FormattedNumEvents { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#playerEvent`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The current number of times this event has occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numEvents")]
-        public virtual System.Nullable<long> NumEvents { get; set; } 
+        public virtual System.Nullable<long> NumEvents { get; set; }
 
         /// <summary>The ID of the player.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playerId")]
-        public virtual string PlayerId { get; set; } 
+        public virtual string PlayerId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3857,16 +3857,16 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The player events.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<PlayerEvent> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<PlayerEvent> Items { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#playerEventListResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The pagination token for the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3877,25 +3877,25 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The current number of experience points for the player.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentExperiencePoints")]
-        public virtual System.Nullable<long> CurrentExperiencePoints { get; set; } 
+        public virtual System.Nullable<long> CurrentExperiencePoints { get; set; }
 
         /// <summary>The current level of the player.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentLevel")]
-        public virtual PlayerLevel CurrentLevel { get; set; } 
+        public virtual PlayerLevel CurrentLevel { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#playerExperienceInfo`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The timestamp when the player was leveled up, in millis since Unix epoch UTC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastLevelUpTimestampMillis")]
-        public virtual System.Nullable<long> LastLevelUpTimestampMillis { get; set; } 
+        public virtual System.Nullable<long> LastLevelUpTimestampMillis { get; set; }
 
         /// <summary>The next level of the player. If the current level is the maximum level, this should be same as the
         /// current level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextLevel")]
-        public virtual PlayerLevel NextLevel { get; set; } 
+        public virtual PlayerLevel NextLevel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3906,46 +3906,46 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The rank of the score in the friends collection for this leaderboard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("friendsRank")]
-        public virtual LeaderboardScoreRank FriendsRank { get; set; } 
+        public virtual LeaderboardScoreRank FriendsRank { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#playerLeaderboardScore`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ID of the leaderboard this score is in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("leaderboard_id")]
-        public virtual string LeaderboardId { get; set; } 
+        public virtual string LeaderboardId { get; set; }
 
         /// <summary>The public rank of the score in this leaderboard. This object will not be present if the user is
         /// not sharing their scores publicly.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicRank")]
-        public virtual LeaderboardScoreRank PublicRank { get; set; } 
+        public virtual LeaderboardScoreRank PublicRank { get; set; }
 
         /// <summary>The formatted value of this score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoreString")]
-        public virtual string ScoreString { get; set; } 
+        public virtual string ScoreString { get; set; }
 
         /// <summary>Additional information about the score. Values must contain no more than 64 URI-safe characters as
         /// defined by section 2.3 of RFC 3986.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoreTag")]
-        public virtual string ScoreTag { get; set; } 
+        public virtual string ScoreTag { get; set; }
 
         /// <summary>The numerical value of this score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoreValue")]
-        public virtual System.Nullable<long> ScoreValue { get; set; } 
+        public virtual System.Nullable<long> ScoreValue { get; set; }
 
         /// <summary>The social rank of the score in this leaderboard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("socialRank")]
-        public virtual LeaderboardScoreRank SocialRank { get; set; } 
+        public virtual LeaderboardScoreRank SocialRank { get; set; }
 
         /// <summary>The time span of this score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSpan")]
-        public virtual string TimeSpan { get; set; } 
+        public virtual string TimeSpan { get; set; }
 
         /// <summary>The timestamp at which this score was recorded, in milliseconds since the epoch in UTC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writeTimestamp")]
-        public virtual System.Nullable<long> WriteTimestamp { get; set; } 
+        public virtual System.Nullable<long> WriteTimestamp { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3956,20 +3956,20 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The leaderboard scores.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<PlayerLeaderboardScore> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<PlayerLeaderboardScore> Items { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#playerLeaderboardScoreListResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The pagination token for the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The Player resources for the owner of this score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("player")]
-        public virtual Player Player { get; set; } 
+        public virtual Player Player { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3981,19 +3981,19 @@ namespace Google.Apis.Games.v1.Data
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#playerLevel`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The level for the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("level")]
-        public virtual System.Nullable<int> Level { get; set; } 
+        public virtual System.Nullable<int> Level { get; set; }
 
         /// <summary>The maximum experience points for this level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxExperiencePoints")]
-        public virtual System.Nullable<long> MaxExperiencePoints { get; set; } 
+        public virtual System.Nullable<long> MaxExperiencePoints { get; set; }
 
         /// <summary>The minimum experience points for this level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minExperiencePoints")]
-        public virtual System.Nullable<long> MinExperiencePoints { get; set; } 
+        public virtual System.Nullable<long> MinExperiencePoints { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4004,16 +4004,16 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The players.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Player> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Player> Items { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#playerListResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Token corresponding to the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4024,25 +4024,25 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The formatted score for this player score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedScore")]
-        public virtual string FormattedScore { get; set; } 
+        public virtual string FormattedScore { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#playerScore`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The numerical value for this player score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
-        public virtual System.Nullable<long> Score { get; set; } 
+        public virtual System.Nullable<long> Score { get; set; }
 
         /// <summary>Additional information about this score. Values will contain no more than 64 URI-safe characters as
         /// defined by section 2.3 of RFC 3986.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoreTag")]
-        public virtual string ScoreTag { get; set; } 
+        public virtual string ScoreTag { get; set; }
 
         /// <summary>The time span for this player score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSpan")]
-        public virtual string TimeSpan { get; set; } 
+        public virtual string TimeSpan { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4054,11 +4054,11 @@ namespace Google.Apis.Games.v1.Data
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#playerScoreListResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The score submissions statuses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("submittedScores")]
-        public virtual System.Collections.Generic.IList<PlayerScoreResponse> SubmittedScores { get; set; } 
+        public virtual System.Collections.Generic.IList<PlayerScoreResponse> SubmittedScores { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4070,31 +4070,31 @@ namespace Google.Apis.Games.v1.Data
         /// <summary>The time spans where the submitted score is better than the existing score for that time
         /// span.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("beatenScoreTimeSpans")]
-        public virtual System.Collections.Generic.IList<string> BeatenScoreTimeSpans { get; set; } 
+        public virtual System.Collections.Generic.IList<string> BeatenScoreTimeSpans { get; set; }
 
         /// <summary>The formatted value of the submitted score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedScore")]
-        public virtual string FormattedScore { get; set; } 
+        public virtual string FormattedScore { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#playerScoreResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The leaderboard ID that this score was submitted to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("leaderboardId")]
-        public virtual string LeaderboardId { get; set; } 
+        public virtual string LeaderboardId { get; set; }
 
         /// <summary>Additional information about this score. Values will contain no more than 64 URI-safe characters as
         /// defined by section 2.3 of RFC 3986.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoreTag")]
-        public virtual string ScoreTag { get; set; } 
+        public virtual string ScoreTag { get; set; }
 
         /// <summary>The scores in time spans that have not been beaten. As an example, the submitted score may be
         /// better than the player's `DAILY` score, but not better than the player's scores for the `WEEKLY` or
         /// `ALL_TIME` time spans.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unbeatenScores")]
-        public virtual System.Collections.Generic.IList<PlayerScore> UnbeatenScores { get; set; } 
+        public virtual System.Collections.Generic.IList<PlayerScore> UnbeatenScores { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4106,11 +4106,11 @@ namespace Google.Apis.Games.v1.Data
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#playerScoreSubmissionList`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The score submissions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scores")]
-        public virtual System.Collections.Generic.IList<ScoreSubmission> Scores { get; set; } 
+        public virtual System.Collections.Generic.IList<ScoreSubmission> Scores { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4120,16 +4120,16 @@ namespace Google.Apis.Games.v1.Data
     public class ProfileSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("friendsListVisibility")]
-        public virtual string FriendsListVisibility { get; set; } 
+        public virtual string FriendsListVisibility { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#profileSettings`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Whether the player's profile is visible to the currently signed in player.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileVisible")]
-        public virtual System.Nullable<bool> ProfileVisible { get; set; } 
+        public virtual System.Nullable<bool> ProfileVisible { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4140,16 +4140,16 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The version of the API this client revision should use when calling API methods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; } 
+        public virtual string ApiVersion { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#revisionCheckResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The result of the revision check.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionStatus")]
-        public virtual string RevisionStatus { get; set; } 
+        public virtual string RevisionStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4161,24 +4161,24 @@ namespace Google.Apis.Games.v1.Data
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#scoreSubmission`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The leaderboard this score is being submitted to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("leaderboardId")]
-        public virtual string LeaderboardId { get; set; } 
+        public virtual string LeaderboardId { get; set; }
 
         /// <summary>The new score being submitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
-        public virtual System.Nullable<long> Score { get; set; } 
+        public virtual System.Nullable<long> Score { get; set; }
 
         /// <summary>Additional information about this score. Values will contain no more than 64 URI-safe characters as
         /// defined by section 2.3 of RFC 3986.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoreTag")]
-        public virtual string ScoreTag { get; set; } 
+        public virtual string ScoreTag { get; set; }
 
         /// <summary>Signature Values will contain URI-safe characters as defined by section 2.3 of RFC 3986.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]
-        public virtual string Signature { get; set; } 
+        public virtual string Signature { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4189,49 +4189,49 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The cover image of this snapshot. May be absent if there is no image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("coverImage")]
-        public virtual SnapshotImage CoverImage { get; set; } 
+        public virtual SnapshotImage CoverImage { get; set; }
 
         /// <summary>The description of this snapshot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The ID of the file underlying this snapshot in the Drive API. Only present if the snapshot is a
         /// view on a Drive file and the file is owned by the caller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveId")]
-        public virtual string DriveId { get; set; } 
+        public virtual string DriveId { get; set; }
 
         /// <summary>The duration associated with this snapshot, in millis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("durationMillis")]
-        public virtual System.Nullable<long> DurationMillis { get; set; } 
+        public virtual System.Nullable<long> DurationMillis { get; set; }
 
         /// <summary>The ID of the snapshot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#snapshot`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The timestamp (in millis since Unix epoch) of the last modification to this snapshot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedMillis")]
-        public virtual System.Nullable<long> LastModifiedMillis { get; set; } 
+        public virtual System.Nullable<long> LastModifiedMillis { get; set; }
 
         /// <summary>The progress value (64-bit integer set by developer) associated with this snapshot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressValue")]
-        public virtual System.Nullable<long> ProgressValue { get; set; } 
+        public virtual System.Nullable<long> ProgressValue { get; set; }
 
         /// <summary>The title of this snapshot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The type of this snapshot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The unique name provided when the snapshot was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uniqueName")]
-        public virtual string UniqueName { get; set; } 
+        public virtual string UniqueName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4242,24 +4242,24 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The height of the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
-        public virtual System.Nullable<int> Height { get; set; } 
+        public virtual System.Nullable<int> Height { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#snapshotImage`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The MIME type of the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mime_type")]
-        public virtual string MimeType { get; set; } 
+        public virtual string MimeType { get; set; }
 
         /// <summary>The URL of the image. This URL may be invalidated at any time and should not be cached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The width of the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
-        public virtual System.Nullable<int> Width { get; set; } 
+        public virtual System.Nullable<int> Width { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4270,17 +4270,17 @@ namespace Google.Apis.Games.v1.Data
     {
         /// <summary>The snapshots.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Snapshot> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Snapshot> Items { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#snapshotListResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Token corresponding to the next page of results. If there are no more results, the token is
         /// omitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4292,59 +4292,59 @@ namespace Google.Apis.Games.v1.Data
         /// <summary>Average session length in minutes of the player. E.g., 1, 30, 60, ... . Not populated if there is
         /// not enough information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("avg_session_length_minutes")]
-        public virtual System.Nullable<float> AvgSessionLengthMinutes { get; set; } 
+        public virtual System.Nullable<float> AvgSessionLengthMinutes { get; set; }
 
         /// <summary>The probability of the player not returning to play the game in the next day. E.g., 0, 0.1, 0.5,
         /// ..., 1.0. Not populated if there is not enough information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("churn_probability")]
-        public virtual System.Nullable<float> ChurnProbability { get; set; } 
+        public virtual System.Nullable<float> ChurnProbability { get; set; }
 
         /// <summary>Number of days since the player last played this game. E.g., 0, 1, 5, 10, ... . Not populated if
         /// there is not enough information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("days_since_last_played")]
-        public virtual System.Nullable<int> DaysSinceLastPlayed { get; set; } 
+        public virtual System.Nullable<int> DaysSinceLastPlayed { get; set; }
 
         /// <summary>The probability of the player going to spend beyond a threshold amount of money. E.g., 0, 0.25,
         /// 0.50, 0.75. Not populated if there is not enough information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("high_spender_probability")]
-        public virtual System.Nullable<float> HighSpenderProbability { get; set; } 
+        public virtual System.Nullable<float> HighSpenderProbability { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `games#statsResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Number of in-app purchases made by the player in this game. E.g., 0, 1, 5, 10, ... . Not populated
         /// if there is not enough information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("num_purchases")]
-        public virtual System.Nullable<int> NumPurchases { get; set; } 
+        public virtual System.Nullable<int> NumPurchases { get; set; }
 
         /// <summary>The approximate number of sessions of the player within the last 28 days, where a session begins
         /// when the player is connected to Play Games Services and ends when they are disconnected. E.g., 0, 1, 5, 10,
         /// ... . Not populated if there is not enough information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("num_sessions")]
-        public virtual System.Nullable<int> NumSessions { get; set; } 
+        public virtual System.Nullable<int> NumSessions { get; set; }
 
         /// <summary>The approximation of the sessions percentile of the player within the last 30 days, where a session
         /// begins when the player is connected to Play Games Services and ends when they are disconnected. E.g., 0,
         /// 0.25, 0.5, 0.75. Not populated if there is not enough information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("num_sessions_percentile")]
-        public virtual System.Nullable<float> NumSessionsPercentile { get; set; } 
+        public virtual System.Nullable<float> NumSessionsPercentile { get; set; }
 
         /// <summary>The approximate spend percentile of the player in this game. E.g., 0, 0.25, 0.5, 0.75. Not
         /// populated if there is not enough information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spend_percentile")]
-        public virtual System.Nullable<float> SpendPercentile { get; set; } 
+        public virtual System.Nullable<float> SpendPercentile { get; set; }
 
         /// <summary>The probability of the player going to spend the game in the next seven days. E.g., 0, 0.25, 0.50,
         /// 0.75. Not populated if there is not enough information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spend_probability")]
-        public virtual System.Nullable<float> SpendProbability { get; set; } 
+        public virtual System.Nullable<float> SpendProbability { get; set; }
 
         /// <summary>The predicted amount of money that the player going to spend in the next 28 days. E.g., 1, 30, 60,
         /// ... . Not populated if there is not enough information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("total_spend_next_28_days")]
-        public virtual System.Nullable<float> TotalSpendNext28Days { get; set; } 
+        public virtual System.Nullable<float> TotalSpendNext28Days { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

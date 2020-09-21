@@ -1927,7 +1927,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// response or RenewLease response. This restriction is to ensure that your worker currently holds the
         /// lease.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]
-        public virtual object ScheduleTime { get; set; } 
+        public virtual object ScheduleTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1963,7 +1963,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// <summary>Task-level setting for App Engine routing. If set, app_engine_routing_override is used for all
         /// tasks in the queue, no matter what the setting is for the task-level app_engine_routing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appEngineRouting")]
-        public virtual AppEngineRouting AppEngineRouting { get; set; } 
+        public virtual AppEngineRouting AppEngineRouting { get; set; }
 
         /// <summary>HTTP request headers. This map contains the header field names and values. Headers can be set when
         /// the task is created. Repeated headers are not supported but a header value can contain commas. Cloud Tasks
@@ -1983,7 +1983,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// maximum number of headers or the size, there is a limit on the maximum size of the Task. For more
         /// information, see the CreateTask documentation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Headers { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Headers { get; set; }
 
         /// <summary>The HTTP method to use for the request. The default is POST. The app's request handler for the
         /// task's target URL must be able to handle HTTP requests with this http_method, otherwise the task attempt
@@ -1993,19 +1993,19 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// Requests are Handled](https://cloud.google.com/appengine/docs/standard/python3/how-requests-are-
         /// handled).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpMethod")]
-        public virtual string HttpMethod { get; set; } 
+        public virtual string HttpMethod { get; set; }
 
         /// <summary>Payload. The payload will be sent as the HTTP message body. A message body, and thus a payload, is
         /// allowed only if the HTTP method is POST or PUT. It is an error to set a data payload on a task with an
         /// incompatible HttpMethod.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual string Payload { get; set; } 
+        public virtual string Payload { get; set; }
 
         /// <summary>The relative URL. The relative URL must begin with "/" and must be a valid HTTP relative URL. It
         /// can contain a path and query string arguments. If the relative URL is empty, then the root path "/" will be
         /// used. No spaces are allowed, and the maximum length allowed is 2083 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relativeUrl")]
-        public virtual string RelativeUrl { get; set; } 
+        public virtual string RelativeUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2021,7 +2021,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// <summary>Overrides for the task-level app_engine_routing. If set, `app_engine_routing_override` is used for
         /// all tasks in the queue, no matter what the setting is for the task-level app_engine_routing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appEngineRoutingOverride")]
-        public virtual AppEngineRouting AppEngineRoutingOverride { get; set; } 
+        public virtual AppEngineRouting AppEngineRoutingOverride { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2053,7 +2053,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// an instance which is available when the task is attempted. If service, version, or instance is invalid, then
         /// the task will be sent to the default version of the default service when the task is attempted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
-        public virtual string Host { get; set; } 
+        public virtual string Host { get; set; }
 
         /// <summary>App instance. By default, the task is sent to an instance which is available when the task is
         /// attempted. Requests can only be sent to a specific instance if [manual scaling is used in App Engine
@@ -2064,7 +2064,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-
         /// routed).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
-        public virtual string Instance { get; set; } 
+        public virtual string Instance { get; set; }
 
         /// <summary>App service. By default, the task is sent to the service which is the default service when the task
         /// is attempted. For some queues or tasks which were created using the App Engine Task Queue API, host is not
@@ -2072,7 +2072,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// Engine SDK use a custom domain name; custom domains are not parsed by Cloud Tasks. If host is not parsable,
         /// then service, version, and instance are the empty string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual string Service { get; set; } 
+        public virtual string Service { get; set; }
 
         /// <summary>App version. By default, the task is sent to the version which is the default version when the task
         /// is attempted. For some queues or tasks which were created using the App Engine Task Queue API, host is not
@@ -2080,7 +2080,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// Engine SDK use a custom domain name; custom domains are not parsed by Cloud Tasks. If host is not parsable,
         /// then service, version, and instance are the empty string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2092,22 +2092,22 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// <summary>Output only. The time that this attempt was dispatched. `dispatch_time` will be truncated to the
         /// nearest microsecond.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dispatchTime")]
-        public virtual object DispatchTime { get; set; } 
+        public virtual object DispatchTime { get; set; }
 
         /// <summary>Output only. The response from the target for this attempt. If the task has not been attempted or
         /// the task is currently running then the response status is unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseStatus")]
-        public virtual Status ResponseStatus { get; set; } 
+        public virtual Status ResponseStatus { get; set; }
 
         /// <summary>Output only. The time that this attempt response was received. `response_time` will be truncated to
         /// the nearest microsecond.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseTime")]
-        public virtual object ResponseTime { get; set; } 
+        public virtual object ResponseTime { get; set; }
 
         /// <summary>Output only. The time that this attempt was scheduled. `schedule_time` will be truncated to the
         /// nearest microsecond.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]
-        public virtual object ScheduleTime { get; set; } 
+        public virtual object ScheduleTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2119,7 +2119,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// <summary>A client-specified ID for this binding. Expected to be globally unique to support the internal
         /// bindings-by-ID API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; } 
+        public virtual string BindingId { get; set; }
 
         /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
         /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
@@ -2127,7 +2127,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; } 
+        public virtual Expr Condition { get; set; }
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
@@ -2149,12 +2149,12 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
         /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2169,13 +2169,13 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)
         /// permission on the Task resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseView")]
-        public virtual string ResponseView { get; set; } 
+        public virtual string ResponseView { get; set; }
 
         /// <summary>Required. The task's current schedule time, available in the schedule_time returned by LeaseTasks
         /// response or RenewLease response. This restriction is to ensure that your worker currently holds the
         /// lease.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]
-        public virtual object ScheduleTime { get; set; } 
+        public virtual object ScheduleTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2190,7 +2190,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)
         /// permission on the Task resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseView")]
-        public virtual string ResponseView { get; set; } 
+        public virtual string ResponseView { get; set; }
 
         /// <summary>Required. The task to add. Task names have the following format:
         /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`. The user can optionally specify a
@@ -2208,7 +2208,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// error rates in all task commands. The infrastructure relies on an approximately uniform distribution of task
         /// ids to store and serve tasks efficiently.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("task")]
-        public virtual Task Task { get; set; } 
+        public virtual Task Task { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2240,21 +2240,21 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
         /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2265,7 +2265,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     {
         /// <summary>OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
-        public virtual GetPolicyOptions Options { get; set; } 
+        public virtual GetPolicyOptions Options { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2280,7 +2280,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// unset. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
-        public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
+        public virtual System.Nullable<int> RequestedPolicyVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2300,7 +2300,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// aren't UTF-8 encoded can't be used in the filter and the task's tag will be displayed as empty in Cloud
         /// Tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual string Filter { get; set; } 
+        public virtual string Filter { get; set; }
 
         /// <summary>Required. The duration of the lease. Each task returned in the response will have its schedule_time
         /// set to the current time plus the `lease_duration`. The task is leased until its schedule_time; thus, the
@@ -2310,14 +2310,14 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// retry it. The maximum lease duration is 1 week. `lease_duration` will be truncated to the nearest
         /// second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("leaseDuration")]
-        public virtual object LeaseDuration { get; set; } 
+        public virtual object LeaseDuration { get; set; }
 
         /// <summary>The maximum number of tasks to lease. The system will make a best effort to return as close to as
         /// `max_tasks` as possible. The largest that `max_tasks` can be is 1000. The maximum total size of a lease
         /// tasks response is 32 MB. If the sum of all task sizes requested reaches this limit, fewer tasks than
         /// requested are returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxTasks")]
-        public virtual System.Nullable<int> MaxTasks { get; set; } 
+        public virtual System.Nullable<int> MaxTasks { get; set; }
 
         /// <summary>The response_view specifies which subset of the Task will be returned. By default response_view is
         /// BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable
@@ -2325,7 +2325,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)
         /// permission on the Task resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseView")]
-        public virtual string ResponseView { get; set; } 
+        public virtual string ResponseView { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2336,7 +2336,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     {
         /// <summary>The leased tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tasks")]
-        public virtual System.Collections.Generic.IList<Task> Tasks { get; set; } 
+        public virtual System.Collections.Generic.IList<Task> Tasks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2347,11 +2347,11 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     {
         /// <summary>A list of locations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
+        public virtual System.Collections.Generic.IList<Location> Locations { get; set; }
 
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2364,11 +2364,11 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// this value as the page_token. If the next_page_token is empty, there are no more results. The page token is
         /// valid for only 2 hours.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of queues.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queues")]
-        public virtual System.Collections.Generic.IList<Queue> Queues { get; set; } 
+        public virtual System.Collections.Generic.IList<Queue> Queues { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2380,11 +2380,11 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// <summary>A token to retrieve next page of results. To return the next page of results, call ListTasks with
         /// this value as the page_token. If the next_page_token is empty, there are no more results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tasks")]
-        public virtual System.Collections.Generic.IList<Task> Tasks { get; set; } 
+        public virtual System.Collections.Generic.IList<Task> Tasks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2395,25 +2395,25 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-
         /// east1"}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The canonical id for this location. For example: `"us-east1"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>Service-specific metadata. For example the available capacity at the given location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>Resource name for the location, which may vary between implementations. For example: `"projects
         /// /example-project/locations/us-east1"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2451,7 +2451,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
         /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
         /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
@@ -2462,7 +2462,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
         /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
         /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
@@ -2476,7 +2476,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
     }    
 
@@ -2486,7 +2486,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     {
         /// <summary>A data payload consumed by the worker to execute the task.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual string Payload { get; set; } 
+        public virtual string Payload { get; set; }
 
         /// <summary>The task's tag. Tags allow similar tasks to be processed in a batch. If you label tasks with a tag,
         /// your worker can lease tasks with the same tag using filter. For example, if you want to aggregate the events
@@ -2497,7 +2497,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// Tasks. If a tag isn't UTF-8 encoded, the tag will be empty when the task is returned by Cloud
         /// Tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
-        public virtual string Tag { get; set; } 
+        public virtual string Tag { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2523,7 +2523,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     {
         /// <summary>App Engine HTTP target. An App Engine queue is a queue that has an AppEngineHttpTarget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appEngineHttpTarget")]
-        public virtual AppEngineHttpTarget AppEngineHttpTarget { get; set; } 
+        public virtual AppEngineHttpTarget AppEngineHttpTarget { get; set; }
 
         /// <summary>Caller-specified and required in CreateQueue, after which it becomes output only. The queue name.
         /// The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` *
@@ -2534,11 +2534,11 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or
         /// hyphens (-). The maximum length is 100 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Pull target. A pull queue is a queue that has a PullTarget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pullTarget")]
-        public virtual PullTarget PullTarget { get; set; } 
+        public virtual PullTarget PullTarget { get; set; }
 
         /// <summary>Output only. The last time this queue was purged. All tasks that were created before this time were
         /// purged. A queue can be purged using PurgeQueue, the [App Engine Task Queue SDK, or the Cloud
@@ -2546,7 +2546,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// queues#purging_all_tasks_from_a_queue). Purge time will be truncated to the nearest microsecond. Purge time
         /// will be unset if the queue has never been purged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purgeTime")]
-        public virtual object PurgeTime { get; set; } 
+        public virtual object PurgeTime { get; set; }
 
         /// <summary>Rate limits for task dispatches. rate_limits and retry_config are related because they both control
         /// task attempts however they control how tasks are attempted in different ways: * rate_limits controls the
@@ -2555,7 +2555,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// after its first attempt fails. That is, retry_config controls task retries (the second attempt, third
         /// attempt, etc).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rateLimits")]
-        public virtual RateLimits RateLimits { get; set; } 
+        public virtual RateLimits RateLimits { get; set; }
 
         /// <summary>Settings that determine the retry behavior. * For tasks created using Cloud Tasks: the queue-level
         /// retry settings apply to all tasks in the queue that were created using Cloud Tasks. Retry settings cannot be
@@ -2565,13 +2565,13 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// documentation](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/retrying-
         /// tasks).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retryConfig")]
-        public virtual RetryConfig RetryConfig { get; set; } 
+        public virtual RetryConfig RetryConfig { get; set; }
 
         /// <summary>Output only. The state of the queue. `state` can only be changed by called PauseQueue, ResumeQueue,
         /// or uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref). UpdateQueue
         /// cannot be used to change `state`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2596,7 +2596,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// UpdateQueue is called on a queue without explicitly setting a value for `max_burst_size`, `max_burst_size`
         /// value will get updated if UpdateQueue is updating max_dispatches_per_second. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxBurstSize")]
-        public virtual System.Nullable<int> MaxBurstSize { get; set; } 
+        public virtual System.Nullable<int> MaxBurstSize { get; set; }
 
         /// <summary>The maximum number of concurrent tasks that Cloud Tasks allows to be dispatched for this queue.
         /// After this threshold has been reached, Cloud Tasks stops dispatching tasks until the number of concurrent
@@ -2606,7 +2606,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// [max_concurrent_requests in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/q
         /// ueueref#max_concurrent_requests).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentTasks")]
-        public virtual System.Nullable<int> MaxConcurrentTasks { get; set; } 
+        public virtual System.Nullable<int> MaxConcurrentTasks { get; set; }
 
         /// <summary>The maximum rate at which tasks are dispatched from this queue. If unspecified when the queue is
         /// created, Cloud Tasks will pick the default. * For App Engine queues, the maximum allowed value is 500. *
@@ -2615,7 +2615,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// [rate in
         /// queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#rate).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxTasksDispatchedPerSecond")]
-        public virtual System.Nullable<double> MaxTasksDispatchedPerSecond { get; set; } 
+        public virtual System.Nullable<double> MaxTasksDispatchedPerSecond { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2627,7 +2627,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// <summary>Required. The desired new lease duration, starting from now. The maximum lease duration is 1 week.
         /// `lease_duration` will be truncated to the nearest second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("leaseDuration")]
-        public virtual object LeaseDuration { get; set; } 
+        public virtual object LeaseDuration { get; set; }
 
         /// <summary>The response_view specifies which subset of the Task will be returned. By default response_view is
         /// BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable
@@ -2635,13 +2635,13 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)
         /// permission on the Task resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseView")]
-        public virtual string ResponseView { get; set; } 
+        public virtual string ResponseView { get; set; }
 
         /// <summary>Required. The task's current schedule time, available in the schedule_time returned by LeaseTasks
         /// response or RenewLease response. This restriction is to ensure that your worker currently holds the
         /// lease.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]
-        public virtual object ScheduleTime { get; set; } 
+        public virtual object ScheduleTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2660,7 +2660,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// <summary>The maximum number of attempts for a task. Cloud Tasks will attempt the task `max_attempts` times
         /// (that is, if the first attempt fails, then there will be `max_attempts - 1` retries). Must be > 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxAttempts")]
-        public virtual System.Nullable<int> MaxAttempts { get; set; } 
+        public virtual System.Nullable<int> MaxAttempts { get; set; }
 
         /// <summary>A task will be scheduled for retry between min_backoff and max_backoff duration after it fails, if
         /// the queue's RetryConfig specifies that the task should be retried. If unspecified when the queue is created,
@@ -2668,7 +2668,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// truncated to the nearest second. This field has the same meaning as [max_backoff_seconds in queue.yaml/xml](
         /// https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxBackoff")]
-        public virtual object MaxBackoff { get; set; } 
+        public virtual object MaxBackoff { get; set; }
 
         /// <summary>The time between retries will double `max_doublings` times. A task's retry interval starts at
         /// min_backoff, then doubles `max_doublings` times, then increases linearly, and finally retries at intervals
@@ -2680,7 +2680,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// This field is output only for pull queues. This field has the same meaning as [max_doublings in queue.yaml/x
         /// ml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxDoublings")]
-        public virtual System.Nullable<int> MaxDoublings { get; set; } 
+        public virtual System.Nullable<int> MaxDoublings { get; set; }
 
         /// <summary>If positive, `max_retry_duration` specifies the time limit for retrying a failed task, measured
         /// from when the task was first attempted. Once `max_retry_duration` time has passed *and* the task has been
@@ -2690,7 +2690,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// field has the same meaning as [task_age_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/sta
         /// ndard/python/config/queueref#retry_parameters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRetryDuration")]
-        public virtual object MaxRetryDuration { get; set; } 
+        public virtual object MaxRetryDuration { get; set; }
 
         /// <summary>A task will be scheduled for retry between min_backoff and max_backoff duration after it fails, if
         /// the queue's RetryConfig specifies that the task should be retried. If unspecified when the queue is created,
@@ -2698,11 +2698,11 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// truncated to the nearest second. This field has the same meaning as [min_backoff_seconds in queue.yaml/xml](
         /// https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minBackoff")]
-        public virtual object MinBackoff { get; set; } 
+        public virtual object MinBackoff { get; set; }
 
         /// <summary>If true, then the number of attempts is unlimited.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unlimitedAttempts")]
-        public virtual System.Nullable<bool> UnlimitedAttempts { get; set; } 
+        public virtual System.Nullable<bool> UnlimitedAttempts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2717,7 +2717,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)
         /// permission on the Task resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseView")]
-        public virtual string ResponseView { get; set; } 
+        public virtual string ResponseView { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2730,7 +2730,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
         /// might reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual Policy Policy { get; set; } 
+        public virtual Policy Policy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2745,17 +2745,17 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2768,12 +2768,12 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// app_engine_http_target is set on the queue. An App Engine task is a task that has AppEngineHttpRequest
         /// set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appEngineHttpRequest")]
-        public virtual AppEngineHttpRequest AppEngineHttpRequest { get; set; } 
+        public virtual AppEngineHttpRequest AppEngineHttpRequest { get; set; }
 
         /// <summary>Output only. The time that the task was created. `create_time` will be truncated to the nearest
         /// second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Optionally caller-specified in CreateTask. The task name. The task name must have the following
         /// format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain
@@ -2785,27 +2785,27 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers
         /// ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>LeaseTasks to process the task. Can be set only if pull_target is set on the queue. A pull task is
         /// a task that has PullMessage set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pullMessage")]
-        public virtual PullMessage PullMessage { get; set; } 
+        public virtual PullMessage PullMessage { get; set; }
 
         /// <summary>The time when the task is scheduled to be attempted. For App Engine queues, this is when the task
         /// will be attempted or retried. For pull queues, this is the time when the task is available to be leased; if
         /// a task is currently leased, this is the time when the current lease expires, that is, the time that the task
         /// was leased plus the lease_duration. `schedule_time` will be truncated to the nearest microsecond.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]
-        public virtual object ScheduleTime { get; set; } 
+        public virtual object ScheduleTime { get; set; }
 
         /// <summary>Output only. The task status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual TaskStatus Status { get; set; } 
+        public virtual TaskStatus Status { get; set; }
 
         /// <summary>Output only. The view specifies which subset of the Task has been returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("view")]
-        public virtual string View { get; set; } 
+        public virtual string View { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2817,23 +2817,23 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// <summary>Output only. The number of attempts dispatched. This count includes attempts which have been
         /// dispatched but haven't received a response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attemptDispatchCount")]
-        public virtual System.Nullable<int> AttemptDispatchCount { get; set; } 
+        public virtual System.Nullable<int> AttemptDispatchCount { get; set; }
 
         /// <summary>Output only. The number of attempts which have received a response. This field is not calculated
         /// for pull tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attemptResponseCount")]
-        public virtual System.Nullable<int> AttemptResponseCount { get; set; } 
+        public virtual System.Nullable<int> AttemptResponseCount { get; set; }
 
         /// <summary>Output only. The status of the task's first attempt. Only dispatch_time will be set. The other
         /// AttemptStatus information is not retained by Cloud Tasks. This field is not calculated for pull
         /// tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstAttemptStatus")]
-        public virtual AttemptStatus FirstAttemptStatus { get; set; } 
+        public virtual AttemptStatus FirstAttemptStatus { get; set; }
 
         /// <summary>Output only. The status of the task's last attempt. This field is not calculated for pull
         /// tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastAttemptStatus")]
-        public virtual AttemptStatus LastAttemptStatus { get; set; } 
+        public virtual AttemptStatus LastAttemptStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2846,7 +2846,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// 'storage.*') are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2857,7 +2857,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     {
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

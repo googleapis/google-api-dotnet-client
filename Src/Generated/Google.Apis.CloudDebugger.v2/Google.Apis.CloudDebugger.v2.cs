@@ -1090,11 +1090,11 @@ namespace Google.Apis.CloudDebugger.v2.Data
     {
         /// <summary>The alias kind.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The alias name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1106,60 +1106,60 @@ namespace Google.Apis.CloudDebugger.v2.Data
     {
         /// <summary>Action that the agent should perform when the code at the breakpoint location is hit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual string Action { get; set; } 
+        public virtual string Action { get; set; }
 
         /// <summary>The deadline for the breakpoint to stay in CANARY_ACTIVE state. The value is meaningless when the
         /// breakpoint is not in CANARY_ACTIVE state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canaryExpireTime")]
-        public virtual object CanaryExpireTime { get; set; } 
+        public virtual object CanaryExpireTime { get; set; }
 
         /// <summary>Condition that triggers the breakpoint. The condition is a compound boolean expression composed
         /// using expressions in a programming language at the source location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual string Condition { get; set; } 
+        public virtual string Condition { get; set; }
 
         /// <summary>Time this breakpoint was created by the server in seconds resolution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Values of evaluated expressions at breakpoint time. The evaluated expressions appear in exactly the
         /// same order they are listed in the `expressions` field. The `name` field holds the original expression text,
         /// the `value` or `members` field holds the result of the evaluated expression. If the expression cannot be
         /// evaluated, the `status` inside the `Variable` will indicate an error and contain the error text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluatedExpressions")]
-        public virtual System.Collections.Generic.IList<Variable> EvaluatedExpressions { get; set; } 
+        public virtual System.Collections.Generic.IList<Variable> EvaluatedExpressions { get; set; }
 
         /// <summary>List of read-only expressions to evaluate at the breakpoint location. The expressions are composed
         /// using expressions in the programming language at the source location. If the breakpoint action is `LOG`, the
         /// evaluated expressions are included in log statements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expressions")]
-        public virtual System.Collections.Generic.IList<string> Expressions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Expressions { get; set; }
 
         /// <summary>Time this breakpoint was finalized as seen by the server in seconds resolution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalTime")]
-        public virtual object FinalTime { get; set; } 
+        public virtual object FinalTime { get; set; }
 
         /// <summary>Breakpoint identifier, unique in the scope of the debuggee.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>When true, indicates that this is a final result and the breakpoint state will not change from here
         /// on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isFinalState")]
-        public virtual System.Nullable<bool> IsFinalState { get; set; } 
+        public virtual System.Nullable<bool> IsFinalState { get; set; }
 
         /// <summary>A set of custom breakpoint properties, populated by the agent, to be displayed to the
         /// user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Breakpoint source location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual SourceLocation Location { get; set; } 
+        public virtual SourceLocation Location { get; set; }
 
         /// <summary>Indicates the severity of the log. Only relevant when action is `LOG`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logLevel")]
-        public virtual string LogLevel { get; set; } 
+        public virtual string LogLevel { get; set; }
 
         /// <summary>Only relevant when action is `LOG`. Defines the message to log when the breakpoint hits. The
         /// message may include parameter placeholders `$0`, `$1`, etc. These placeholders are replaced with the
@@ -1167,16 +1167,16 @@ namespace Google.Apis.CloudDebugger.v2.Data
         /// logged. Example: `Message received, id = $0, count = $1` with `expressions` = `[ message.id, message.count
         /// ]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logMessageFormat")]
-        public virtual string LogMessageFormat { get; set; } 
+        public virtual string LogMessageFormat { get; set; }
 
         /// <summary>The stack at breakpoint time, where stack_frames[0] represents the most recently entered
         /// function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackFrames")]
-        public virtual System.Collections.Generic.IList<StackFrame> StackFrames { get; set; } 
+        public virtual System.Collections.Generic.IList<StackFrame> StackFrames { get; set; }
 
         /// <summary>The current state of the breakpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Breakpoint status. The status includes an error flag and a human readable message. This field is
         /// usually unset. The message can be either informational or an error message. Regardless, clients should
@@ -1184,11 +1184,11 @@ namespace Google.Apis.CloudDebugger.v2.Data
         /// Example (non-final state): `Still loading symbols...` Examples (final state): * `Invalid line number`
         /// referring to location * `Field f not found in class C` referring to condition</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual StatusMessage Status { get; set; } 
+        public virtual StatusMessage Status { get; set; }
 
         /// <summary>E-mail address of the user that created this breakpoint</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEmail")]
-        public virtual string UserEmail { get; set; } 
+        public virtual string UserEmail { get; set; }
 
         /// <summary>The `variable_table` exists to aid with computation, memory and network traffic optimization. It
         /// enables storing a variable once and reference it from multiple variables, including variables stored in the
@@ -1198,7 +1198,7 @@ namespace Google.Apis.CloudDebugger.v2.Data
         /// objects are nameless and get their name from the referencing variable. The effective variable is a merge of
         /// the referencing variable and the referenced variable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variableTable")]
-        public virtual System.Collections.Generic.IList<Variable> VariableTable { get; set; } 
+        public virtual System.Collections.Generic.IList<Variable> VariableTable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1210,19 +1210,19 @@ namespace Google.Apis.CloudDebugger.v2.Data
     {
         /// <summary>An alias, which may be a branch or tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aliasContext")]
-        public virtual AliasContext AliasContext { get; set; } 
+        public virtual AliasContext AliasContext { get; set; }
 
         /// <summary>The name of an alias (branch, tag, etc.).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aliasName")]
-        public virtual string AliasName { get; set; } 
+        public virtual string AliasName { get; set; }
 
         /// <summary>The ID of the repo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repoId")]
-        public virtual RepoId RepoId { get; set; } 
+        public virtual RepoId RepoId { get; set; }
 
         /// <summary>A revision ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
-        public virtual string RevisionId { get; set; } 
+        public virtual string RevisionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1235,11 +1235,11 @@ namespace Google.Apis.CloudDebugger.v2.Data
         /// <summary>The unique name of the workspace within the repo. This is the name chosen by the client in the
         /// Source API's CreateWorkspace method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ID of the repo containing the workspace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repoId")]
-        public virtual RepoId RepoId { get; set; } 
+        public virtual RepoId RepoId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1250,11 +1250,11 @@ namespace Google.Apis.CloudDebugger.v2.Data
     {
         /// <summary>The ID of the snapshot. An empty snapshot_id refers to the most recent snapshot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotId")]
-        public virtual string SnapshotId { get; set; } 
+        public virtual string SnapshotId { get; set; }
 
         /// <summary>The ID of the workspace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workspaceId")]
-        public virtual CloudWorkspaceId WorkspaceId { get; set; } 
+        public virtual CloudWorkspaceId WorkspaceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1269,61 +1269,61 @@ namespace Google.Apis.CloudDebugger.v2.Data
         /// <summary>Version ID of the agent. Schema: `domain/language-platform/vmajor.minor` (for example `google.com
         /// /java-gcp/v1.1`).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentVersion")]
-        public virtual string AgentVersion { get; set; } 
+        public virtual string AgentVersion { get; set; }
 
         /// <summary>Used when setting breakpoint canary for this debuggee.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canaryMode")]
-        public virtual string CanaryMode { get; set; } 
+        public virtual string CanaryMode { get; set; }
 
         /// <summary>Human readable description of the debuggee. Including a human-readable project name, environment
         /// name and version information is recommended.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>References to the locations and revisions of the source code used in the deployed
         /// application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extSourceContexts")]
-        public virtual System.Collections.Generic.IList<ExtendedSourceContext> ExtSourceContexts { get; set; } 
+        public virtual System.Collections.Generic.IList<ExtendedSourceContext> ExtSourceContexts { get; set; }
 
         /// <summary>Unique identifier for the debuggee generated by the controller service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>If set to `true`, indicates that the agent should disable itself and detach from the
         /// debuggee.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isDisabled")]
-        public virtual System.Nullable<bool> IsDisabled { get; set; } 
+        public virtual System.Nullable<bool> IsDisabled { get; set; }
 
         /// <summary>If set to `true`, indicates that Controller service does not detect any activity from the debuggee
         /// agents and the application is possibly stopped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isInactive")]
-        public virtual System.Nullable<bool> IsInactive { get; set; } 
+        public virtual System.Nullable<bool> IsInactive { get; set; }
 
         /// <summary>A set of custom debuggee properties, populated by the agent, to be displayed to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Project the debuggee is associated with. Use project number or id when registering a Google Cloud
         /// Platform project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
-        public virtual string Project { get; set; } 
+        public virtual string Project { get; set; }
 
         /// <summary>References to the locations and revisions of the source code used in the deployed
         /// application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceContexts")]
-        public virtual System.Collections.Generic.IList<SourceContext> SourceContexts { get; set; } 
+        public virtual System.Collections.Generic.IList<SourceContext> SourceContexts { get; set; }
 
         /// <summary>Human readable message to be displayed to the user about this debuggee. Absence of this field
         /// indicates no status. The message can be either informational or an error status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual StatusMessage Status { get; set; } 
+        public virtual StatusMessage Status { get; set; }
 
         /// <summary>Uniquifier to further distinguish the application. It is possible that different applications might
         /// have identical values in the debuggee message, thus, incorrectly identified as a single application by the
         /// Controller service. This field adds salt to further distinguish the application. Agents should consider
         /// seeding this field with value that identifies the code, binary, configuration and environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uniquifier")]
-        public virtual string Uniquifier { get; set; } 
+        public virtual string Uniquifier { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1345,11 +1345,11 @@ namespace Google.Apis.CloudDebugger.v2.Data
     {
         /// <summary>Any source context.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
-        public virtual SourceContext Context { get; set; } 
+        public virtual SourceContext Context { get; set; }
 
         /// <summary>Labels with user defined metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1363,11 +1363,11 @@ namespace Google.Apis.CloudDebugger.v2.Data
         /// $1 the first time it is loaded. Again, $0 is very important.` * `Please pay $$10 to use $0 instead of
         /// $1.`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
-        public virtual string Format { get; set; } 
+        public virtual string Format { get; set; }
 
         /// <summary>Optional parameters to be embedded into the message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IList<string> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Parameters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1378,24 +1378,24 @@ namespace Google.Apis.CloudDebugger.v2.Data
     {
         /// <summary>An alias, which may be a branch or tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aliasContext")]
-        public virtual AliasContext AliasContext { get; set; } 
+        public virtual AliasContext AliasContext { get; set; }
 
         /// <summary>The name of an alias (branch, tag, etc.).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aliasName")]
-        public virtual string AliasName { get; set; } 
+        public virtual string AliasName { get; set; }
 
         /// <summary>The full project name within the host. Projects may be nested, so "project/subproject" is a valid
         /// project name. The "repo name" is hostURI/project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gerritProject")]
-        public virtual string GerritProject { get; set; } 
+        public virtual string GerritProject { get; set; }
 
         /// <summary>The URI of a running Gerrit instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostUri")]
-        public virtual string HostUri { get; set; } 
+        public virtual string HostUri { get; set; }
 
         /// <summary>A revision (commit) ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
-        public virtual string RevisionId { get; set; } 
+        public virtual string RevisionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1406,7 +1406,7 @@ namespace Google.Apis.CloudDebugger.v2.Data
     {
         /// <summary>Complete breakpoint state. The fields `id` and `location` are guaranteed to be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("breakpoint")]
-        public virtual Breakpoint Breakpoint { get; set; } 
+        public virtual Breakpoint Breakpoint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1418,11 +1418,11 @@ namespace Google.Apis.CloudDebugger.v2.Data
     {
         /// <summary>Git commit hash. required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
-        public virtual string RevisionId { get; set; } 
+        public virtual string RevisionId { get; set; }
 
         /// <summary>Git repository URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1434,17 +1434,17 @@ namespace Google.Apis.CloudDebugger.v2.Data
         /// <summary>List of all active breakpoints. The fields `id` and `location` are guaranteed to be set on each
         /// breakpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("breakpoints")]
-        public virtual System.Collections.Generic.IList<Breakpoint> Breakpoints { get; set; } 
+        public virtual System.Collections.Generic.IList<Breakpoint> Breakpoints { get; set; }
 
         /// <summary>A token that can be used in the next method call to block until the list of breakpoints
         /// changes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextWaitToken")]
-        public virtual string NextWaitToken { get; set; } 
+        public virtual string NextWaitToken { get; set; }
 
         /// <summary>If set to `true`, indicates that there is no change to the list of active breakpoints and the
         /// server-selected timeout has expired. The `breakpoints` field would be empty and should be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("waitExpired")]
-        public virtual System.Nullable<bool> WaitExpired { get; set; } 
+        public virtual System.Nullable<bool> WaitExpired { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1457,12 +1457,12 @@ namespace Google.Apis.CloudDebugger.v2.Data
         /// on each breakpoint. The fields: `stack_frames`, `evaluated_expressions` and `variable_table` are cleared on
         /// each breakpoint regardless of its status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("breakpoints")]
-        public virtual System.Collections.Generic.IList<Breakpoint> Breakpoints { get; set; } 
+        public virtual System.Collections.Generic.IList<Breakpoint> Breakpoints { get; set; }
 
         /// <summary>A wait token that can be used in the next call to `list` (REST) or `ListBreakpoints` (RPC) to block
         /// until the list of breakpoints has changes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextWaitToken")]
-        public virtual string NextWaitToken { get; set; } 
+        public virtual string NextWaitToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1475,7 +1475,7 @@ namespace Google.Apis.CloudDebugger.v2.Data
         /// guaranteed to be set. The `description` field is a human readable field provided by agents and can be
         /// displayed to users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debuggees")]
-        public virtual System.Collections.Generic.IList<Debuggee> Debuggees { get; set; } 
+        public virtual System.Collections.Generic.IList<Debuggee> Debuggees { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1487,11 +1487,11 @@ namespace Google.Apis.CloudDebugger.v2.Data
     {
         /// <summary>The ID of the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>The name of the repo. Leave empty for the default repo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repoName")]
-        public virtual string RepoName { get; set; } 
+        public virtual string RepoName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1503,7 +1503,7 @@ namespace Google.Apis.CloudDebugger.v2.Data
         /// <summary>Required. Debuggee information to register. The fields `project`, `uniquifier`, `description` and
         /// `agent_version` of the debuggee must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debuggee")]
-        public virtual Debuggee Debuggee { get; set; } 
+        public virtual Debuggee Debuggee { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1515,14 +1515,14 @@ namespace Google.Apis.CloudDebugger.v2.Data
         /// <summary>A unique ID generated for the agent. Each RegisterDebuggee request will generate a new agent
         /// ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
-        public virtual string AgentId { get; set; } 
+        public virtual string AgentId { get; set; }
 
         /// <summary>Debuggee resource. The field `id` is guaranteed to be set (in addition to the echoed fields). If
         /// the field `is_disabled` is set to `true`, the agent should disable itself by removing all breakpoints and
         /// detaching from the application. It should however continue to poll `RegisterDebuggee` until
         /// reenabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debuggee")]
-        public virtual Debuggee Debuggee { get; set; } 
+        public virtual Debuggee Debuggee { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1533,11 +1533,11 @@ namespace Google.Apis.CloudDebugger.v2.Data
     {
         /// <summary>A combination of a project ID and a repo name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectRepoId")]
-        public virtual ProjectRepoId ProjectRepoId { get; set; } 
+        public virtual ProjectRepoId ProjectRepoId { get; set; }
 
         /// <summary>A server-assigned, globally unique identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
-        public virtual string Uid { get; set; } 
+        public virtual string Uid { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1549,7 +1549,7 @@ namespace Google.Apis.CloudDebugger.v2.Data
         /// <summary>Breakpoint resource. The field `id` is guaranteed to be set (in addition to the echoed
         /// fields).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("breakpoint")]
-        public virtual Breakpoint Breakpoint { get; set; } 
+        public virtual Breakpoint Breakpoint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1561,19 +1561,19 @@ namespace Google.Apis.CloudDebugger.v2.Data
     {
         /// <summary>A SourceContext referring to a revision in a cloud repo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudRepo")]
-        public virtual CloudRepoSourceContext CloudRepo { get; set; } 
+        public virtual CloudRepoSourceContext CloudRepo { get; set; }
 
         /// <summary>A SourceContext referring to a snapshot in a cloud workspace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudWorkspace")]
-        public virtual CloudWorkspaceSourceContext CloudWorkspace { get; set; } 
+        public virtual CloudWorkspaceSourceContext CloudWorkspace { get; set; }
 
         /// <summary>A SourceContext referring to a Gerrit project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gerrit")]
-        public virtual GerritSourceContext Gerrit { get; set; } 
+        public virtual GerritSourceContext Gerrit { get; set; }
 
         /// <summary>A SourceContext referring to any third party Git repo (e.g. GitHub).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("git")]
-        public virtual GitSourceContext Git { get; set; } 
+        public virtual GitSourceContext Git { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1585,15 +1585,15 @@ namespace Google.Apis.CloudDebugger.v2.Data
         /// <summary>Column within a line. The first column in a line as the value `1`. Agents that do not support
         /// setting breakpoints on specific columns ignore this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("column")]
-        public virtual System.Nullable<int> Column { get; set; } 
+        public virtual System.Nullable<int> Column { get; set; }
 
         /// <summary>Line inside the file. The first line in the file has the value `1`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("line")]
-        public virtual System.Nullable<int> Line { get; set; } 
+        public virtual System.Nullable<int> Line { get; set; }
 
         /// <summary>Path to the source file within the source context of the target binary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual string Path { get; set; } 
+        public virtual string Path { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1605,20 +1605,20 @@ namespace Google.Apis.CloudDebugger.v2.Data
         /// <summary>Set of arguments passed to this function. Note that this might not be populated for all stack
         /// frames.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("arguments")]
-        public virtual System.Collections.Generic.IList<Variable> Arguments { get; set; } 
+        public virtual System.Collections.Generic.IList<Variable> Arguments { get; set; }
 
         /// <summary>Demangled function name at the call site.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("function")]
-        public virtual string Function { get; set; } 
+        public virtual string Function { get; set; }
 
         /// <summary>Set of local variables at the stack frame location. Note that this might not be populated for all
         /// stack frames.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locals")]
-        public virtual System.Collections.Generic.IList<Variable> Locals { get; set; } 
+        public virtual System.Collections.Generic.IList<Variable> Locals { get; set; }
 
         /// <summary>Source location of the call site.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual SourceLocation Location { get; set; } 
+        public virtual SourceLocation Location { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1631,15 +1631,15 @@ namespace Google.Apis.CloudDebugger.v2.Data
     {
         /// <summary>Status message text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual FormatMessage Description { get; set; } 
+        public virtual FormatMessage Description { get; set; }
 
         /// <summary>Distinguishes errors from informational messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isError")]
-        public virtual System.Nullable<bool> IsError { get; set; } 
+        public virtual System.Nullable<bool> IsError { get; set; }
 
         /// <summary>Reference to which the message applies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refersTo")]
-        public virtual string RefersTo { get; set; } 
+        public virtual string RefersTo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1651,7 +1651,7 @@ namespace Google.Apis.CloudDebugger.v2.Data
         /// <summary>Required. Updated breakpoint information. The field `id` must be set. The agent must echo all
         /// Breakpoint specification fields in the update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("breakpoint")]
-        public virtual Breakpoint Breakpoint { get; set; } 
+        public virtual Breakpoint Breakpoint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1692,11 +1692,11 @@ namespace Google.Apis.CloudDebugger.v2.Data
     {
         /// <summary>Members contained or pointed to by the variable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<Variable> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<Variable> Members { get; set; }
 
         /// <summary>Name of the variable, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Status associated with the variable. This field will usually stay unset. A status of a single
         /// variable only applies to that variable or expression. The rest of breakpoint data still remains valid.
@@ -1707,23 +1707,23 @@ namespace Google.Apis.CloudDebugger.v2.Data
         /// Examples of error message applied to value: * `Malformed string`, * `Field f not found in class C` * `Null
         /// pointer dereference`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual StatusMessage Status { get; set; } 
+        public virtual StatusMessage Status { get; set; }
 
         /// <summary>Variable type (e.g. `MyClass`). If the variable is split with `var_table_index`, `type` goes next
         /// to `value`. The interpretation of a type is agent specific. It is recommended to include the dynamic type
         /// rather than a static type of an object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>Simple value of the variable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>Reference to a variable in the shared variable table. More than one variable can reference the same
         /// variable in the table. The `var_table_index` field is an index into `variable_table` in
         /// Breakpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("varTableIndex")]
-        public virtual System.Nullable<int> VarTableIndex { get; set; } 
+        public virtual System.Nullable<int> VarTableIndex { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -5355,7 +5355,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>The number of the accelerator cards of this type exposed to this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorCount")]
-        public virtual System.Nullable<int> AcceleratorCount { get; set; } 
+        public virtual System.Nullable<int> AcceleratorCount { get; set; }
 
         /// <summary>Full URL, partial URI, or short name of the accelerator type resource to expose to this instance.
         /// See Compute Engine AcceleratorTypes
@@ -5367,7 +5367,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// feature, you must use the short name of the accelerator type resource, for example, nvidia-
         /// tesla-k80.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorTypeUri")]
-        public virtual string AcceleratorTypeUri { get; set; } 
+        public virtual string AcceleratorTypeUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5382,7 +5382,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]Note that the policy must
         /// be in the same project and Dataproc region.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyUri")]
-        public virtual string PolicyUri { get; set; } 
+        public virtual string PolicyUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5392,13 +5392,13 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     public class AutoscalingPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("basicAlgorithm")]
-        public virtual BasicAutoscalingAlgorithm BasicAlgorithm { get; set; } 
+        public virtual BasicAutoscalingAlgorithm BasicAlgorithm { get; set; }
 
         /// <summary>Required. The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores
         /// (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50
         /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Output only. The "resource name" of the autoscaling policy, as described in
         /// https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource
@@ -5407,15 +5407,15 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// projects.locations.autoscalingPolicies, the resource name of the policy has the following format:
         /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Optional. Describes how the autoscaler will operate for secondary workers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryWorkerConfig")]
-        public virtual InstanceGroupAutoscalingPolicyConfig SecondaryWorkerConfig { get; set; } 
+        public virtual InstanceGroupAutoscalingPolicyConfig SecondaryWorkerConfig { get; set; }
 
         /// <summary>Required. Describes how the autoscaler will operate for primary workers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerConfig")]
-        public virtual InstanceGroupAutoscalingPolicyConfig WorkerConfig { get; set; } 
+        public virtual InstanceGroupAutoscalingPolicyConfig WorkerConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5427,11 +5427,11 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>Optional. Duration between scaling events. A scaling period starts after the update operation from
         /// the previous event has completed.Bounds: 2m, 1d. Default: 2m.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cooldownPeriod")]
-        public virtual object CooldownPeriod { get; set; } 
+        public virtual object CooldownPeriod { get; set; }
 
         /// <summary>Required. YARN autoscaling configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("yarnConfig")]
-        public virtual BasicYarnAutoscalingConfig YarnConfig { get; set; } 
+        public virtual BasicYarnAutoscalingConfig YarnConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5444,7 +5444,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only
         /// applicable to downscaling operations.Bounds: 0s, 1d.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gracefulDecommissionTimeout")]
-        public virtual object GracefulDecommissionTimeout { get; set; } 
+        public virtual object GracefulDecommissionTimeout { get; set; }
 
         /// <summary>Required. Fraction of average YARN pending memory in the last cooldown period for which to remove
         /// workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining
@@ -5452,14 +5452,14 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// beneficial for autoscaling a single job. See How autoscaling works for more information.Bounds: 0.0,
         /// 1.0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scaleDownFactor")]
-        public virtual System.Nullable<double> ScaleDownFactor { get; set; } 
+        public virtual System.Nullable<double> ScaleDownFactor { get; set; }
 
         /// <summary>Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs.
         /// For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2
         /// worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any
         /// recommended change.Bounds: 0.0, 1.0. Default: 0.0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scaleDownMinWorkerFraction")]
-        public virtual System.Nullable<double> ScaleDownMinWorkerFraction { get; set; } 
+        public virtual System.Nullable<double> ScaleDownMinWorkerFraction { get; set; }
 
         /// <summary>Required. Fraction of average YARN pending memory in the last cooldown period for which to add
         /// workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining
@@ -5467,14 +5467,14 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// of scaling up (less aggressive scaling). See How autoscaling works for more information.Bounds: 0.0,
         /// 1.0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scaleUpFactor")]
-        public virtual System.Nullable<double> ScaleUpFactor { get; set; } 
+        public virtual System.Nullable<double> ScaleUpFactor { get; set; }
 
         /// <summary>Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For
         /// example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker
         /// scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended
         /// change.Bounds: 0.0, 1.0. Default: 0.0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scaleUpMinWorkerFraction")]
-        public virtual System.Nullable<double> ScaleUpMinWorkerFraction { get; set; } 
+        public virtual System.Nullable<double> ScaleUpMinWorkerFraction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5486,7 +5486,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>A client-specified ID for this binding. Expected to be globally unique to support the internal
         /// bindings-by-ID API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; } 
+        public virtual string BindingId { get; set; }
 
         /// <summary>The condition that is associated with this binding.If the condition evaluates to true, then this
         /// binding applies to the current request.If the condition evaluates to false, then this binding does not apply
@@ -5494,7 +5494,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// members in this binding.To learn which resources support conditions in their IAM policies, see the IAM
         /// documentation (https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; } 
+        public virtual Expr Condition { get; set; }
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. members can have the
         /// following values: allUsers: A special identifier that represents anyone who is on the internet; with or
@@ -5516,12 +5516,12 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For
         /// example, google.com or example.com.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Role that is assigned to members. For example, roles/viewer, roles/editor, or
         /// roles/owner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5541,41 +5541,41 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>Required. The cluster name. Cluster names within a project must be unique. Names of deleted
         /// clusters can be reused.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
-        public virtual string ClusterName { get; set; } 
+        public virtual string ClusterName { get; set; }
 
         /// <summary>Output only. A cluster UUID (Unique Universal Identifier). Dataproc generates this value when it
         /// creates the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterUuid")]
-        public virtual string ClusterUuid { get; set; } 
+        public virtual string ClusterUuid { get; set; }
 
         /// <summary>Required. The cluster config. Note that Dataproc may set default values, and values may change when
         /// clusters are updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
-        public virtual ClusterConfig Config { get; set; } 
+        public virtual ClusterConfig Config { get; set; }
 
         /// <summary>Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters,
         /// and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if
         /// present, must contain 1 to 63 characters, and must conform to RFC 1035
         /// (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Output only. Contains cluster daemon metrics such as HDFS and YARN stats.Beta Feature: This report
         /// is available for testing purposes only. It may be changed before final release.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
-        public virtual ClusterMetrics Metrics { get; set; } 
+        public virtual ClusterMetrics Metrics { get; set; }
 
         /// <summary>Required. The Google Cloud Platform project ID that the cluster belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Output only. Cluster status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual ClusterStatus Status { get; set; } 
+        public virtual ClusterStatus Status { get; set; }
 
         /// <summary>Output only. The previous cluster status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusHistory")]
-        public virtual System.Collections.Generic.IList<ClusterStatus> StatusHistory { get; set; } 
+        public virtual System.Collections.Generic.IList<ClusterStatus> StatusHistory { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5587,7 +5587,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale
         /// if this field is unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoscalingConfig")]
-        public virtual AutoscalingConfig AutoscalingConfig { get; set; } 
+        public virtual AutoscalingConfig AutoscalingConfig { get; set; }
 
         /// <summary>Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver
         /// console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage
@@ -5596,25 +5596,25 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-
         /// bucket)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configBucket")]
-        public virtual string ConfigBucket { get; set; } 
+        public virtual string ConfigBucket { get; set; }
 
         /// <summary>Optional. Encryption settings for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
-        public virtual EncryptionConfig EncryptionConfig { get; set; } 
+        public virtual EncryptionConfig EncryptionConfig { get; set; }
 
         /// <summary>Optional. Port/endpoint configuration for this cluster</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpointConfig")]
-        public virtual EndpointConfig EndpointConfig { get; set; } 
+        public virtual EndpointConfig EndpointConfig { get; set; }
 
         /// <summary>Optional. The shared Compute Engine config settings for all instances in a cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gceClusterConfig")]
-        public virtual GceClusterConfig GceClusterConfig { get; set; } 
+        public virtual GceClusterConfig GceClusterConfig { get; set; }
 
         /// <summary>Optional. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this
         /// is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config,
         /// master_config, worker_config, secondary_worker_config, and autoscaling_config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeClusterConfig")]
-        public virtual GkeClusterConfig GkeClusterConfig { get; set; } 
+        public virtual GkeClusterConfig GkeClusterConfig { get; set; }
 
         /// <summary>Optional. Commands to execute on each node after config is completed. By default, executables are
         /// run on master and all worker nodes. You can test a node's role metadata to run an executable on a master or
@@ -5622,32 +5622,32 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// http://metadata/computeMetadata/v1beta2/instance/attributes/dataproc-role) if [[ "${ROLE}" == 'Master' ]];
         /// then ... master specific actions ... else ... worker specific actions ... fi </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initializationActions")]
-        public virtual System.Collections.Generic.IList<NodeInitializationAction> InitializationActions { get; set; } 
+        public virtual System.Collections.Generic.IList<NodeInitializationAction> InitializationActions { get; set; }
 
         /// <summary>Optional. The config setting for auto delete cluster schedule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycleConfig")]
-        public virtual LifecycleConfig LifecycleConfig { get; set; } 
+        public virtual LifecycleConfig LifecycleConfig { get; set; }
 
         /// <summary>Optional. The Compute Engine config settings for the master instance in a cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterConfig")]
-        public virtual InstanceGroupConfig MasterConfig { get; set; } 
+        public virtual InstanceGroupConfig MasterConfig { get; set; }
 
         /// <summary>Optional. Metastore configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metastoreConfig")]
-        public virtual MetastoreConfig MetastoreConfig { get; set; } 
+        public virtual MetastoreConfig MetastoreConfig { get; set; }
 
         /// <summary>Optional. The Compute Engine config settings for additional worker instances in a
         /// cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryWorkerConfig")]
-        public virtual InstanceGroupConfig SecondaryWorkerConfig { get; set; } 
+        public virtual InstanceGroupConfig SecondaryWorkerConfig { get; set; }
 
         /// <summary>Optional. Security related configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityConfig")]
-        public virtual SecurityConfig SecurityConfig { get; set; } 
+        public virtual SecurityConfig SecurityConfig { get; set; }
 
         /// <summary>Optional. The config settings for software inside the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("softwareConfig")]
-        public virtual SoftwareConfig SoftwareConfig { get; set; } 
+        public virtual SoftwareConfig SoftwareConfig { get; set; }
 
         /// <summary>Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and
         /// MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage
@@ -5655,11 +5655,11 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket
         /// has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tempBucket")]
-        public virtual string TempBucket { get; set; } 
+        public virtual string TempBucket { get; set; }
 
         /// <summary>Optional. The Compute Engine config settings for worker instances in a cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerConfig")]
-        public virtual InstanceGroupConfig WorkerConfig { get; set; } 
+        public virtual InstanceGroupConfig WorkerConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5671,11 +5671,11 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>The HDFS metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hdfsMetrics")]
-        public virtual System.Collections.Generic.IDictionary<string,System.Nullable<long>> HdfsMetrics { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> HdfsMetrics { get; set; }
 
         /// <summary>The YARN metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("yarnMetrics")]
-        public virtual System.Collections.Generic.IDictionary<string,System.Nullable<long>> YarnMetrics { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> YarnMetrics { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5686,15 +5686,15 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Output only. Indicates the operation is done.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>Output only. Error, if operation failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual string Error { get; set; } 
+        public virtual string Error { get; set; }
 
         /// <summary>Output only. The id of the cluster operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
-        public virtual string OperationId { get; set; } 
+        public virtual string OperationId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5705,35 +5705,35 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Output only. Name of the cluster for the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
-        public virtual string ClusterName { get; set; } 
+        public virtual string ClusterName { get; set; }
 
         /// <summary>Output only. Cluster UUID for the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterUuid")]
-        public virtual string ClusterUuid { get; set; } 
+        public virtual string ClusterUuid { get; set; }
 
         /// <summary>Output only. Short description of operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Output only. Labels associated with the operation</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Output only. The operation type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
-        public virtual string OperationType { get; set; } 
+        public virtual string OperationType { get; set; }
 
         /// <summary>Output only. Current operation status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual ClusterOperationStatus Status { get; set; } 
+        public virtual ClusterOperationStatus Status { get; set; }
 
         /// <summary>Output only. The previous operation status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusHistory")]
-        public virtual System.Collections.Generic.IList<ClusterOperationStatus> StatusHistory { get; set; } 
+        public virtual System.Collections.Generic.IList<ClusterOperationStatus> StatusHistory { get; set; }
 
         /// <summary>Output only. Errors encountered during operation execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
-        public virtual System.Collections.Generic.IList<string> Warnings { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Warnings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5744,19 +5744,19 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Output only. A message containing any operation metadata details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual string Details { get; set; } 
+        public virtual string Details { get; set; }
 
         /// <summary>Output only. A message containing the detailed operation state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("innerState")]
-        public virtual string InnerState { get; set; } 
+        public virtual string InnerState { get; set; }
 
         /// <summary>Output only. A message containing the operation state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Output only. The time this state was entered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateStartTime")]
-        public virtual object StateStartTime { get; set; } 
+        public virtual object StateStartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5767,12 +5767,12 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Required. The cluster labels. Cluster must have all labels to match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterLabels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> ClusterLabels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> ClusterLabels { get; set; }
 
         /// <summary>Optional. The zone where workflow process executes. This parameter does not affect the selection of
         /// the cluster.If unspecified, the zone of the first cluster matching the selector is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5783,20 +5783,20 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Output only. Optional details of cluster's state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detail")]
-        public virtual string Detail { get; set; } 
+        public virtual string Detail { get; set; }
 
         /// <summary>Output only. The cluster's state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Output only. Time when this state was entered (see JSON representation of Timestamp
         /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateStartTime")]
-        public virtual object StateStartTime { get; set; } 
+        public virtual object StateStartTime { get; set; }
 
         /// <summary>Output only. Additional state information that includes status reported by the agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("substate")]
-        public virtual string Substate { get; set; } 
+        public virtual string Substate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5815,7 +5815,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>Output only. The Cloud Storage URI of the diagnostic output. The output report is a plain text file
         /// with a summary of collected diagnostics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputUri")]
-        public virtual string OutputUri { get; set; } 
+        public virtual string OutputUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5826,19 +5826,19 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Optional. Size in GB of the boot disk (default is 500GB).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootDiskSizeGb")]
-        public virtual System.Nullable<int> BootDiskSizeGb { get; set; } 
+        public virtual System.Nullable<int> BootDiskSizeGb { get; set; }
 
         /// <summary>Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk
         /// Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootDiskType")]
-        public virtual string BootDiskType { get; set; } 
+        public virtual string BootDiskType { get; set; }
 
         /// <summary>Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is
         /// used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If
         /// one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only
         /// basic config and installed binaries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numLocalSsds")]
-        public virtual System.Nullable<int> NumLocalSsds { get; set; } 
+        public virtual System.Nullable<int> NumLocalSsds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5860,7 +5860,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the
         /// cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcePdKmsKeyName")]
-        public virtual string GcePdKmsKeyName { get; set; } 
+        public virtual string GcePdKmsKeyName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5872,12 +5872,12 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>Optional. If true, enable http access to specific ports on the cluster from external sources.
         /// Defaults to false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableHttpPortAccess")]
-        public virtual System.Nullable<bool> EnableHttpPortAccess { get; set; } 
+        public virtual System.Nullable<bool> EnableHttpPortAccess { get; set; }
 
         /// <summary>Output only. The map of port descriptions to URLs. Will only be populated if
         /// enable_http_port_access is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpPorts")]
-        public virtual System.Collections.Generic.IDictionary<string,string> HttpPorts { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> HttpPorts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5899,21 +5899,21 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
         /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5928,13 +5928,13 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// to each instance. This internal_ip_only restriction can only be enabled for subnetwork enabled networks, and
         /// all off-cluster dependencies must be configured to be accessible without external IP addresses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalIpOnly")]
-        public virtual System.Nullable<bool> InternalIpOnly { get; set; } 
+        public virtual System.Nullable<bool> InternalIpOnly { get; set; }
 
         /// <summary>The Compute Engine metadata entries to add to all instances (see Project and instance metadata
         /// (https://cloud.google.com/compute/docs/storing-retrieving-
         /// metadata#project_and_instance_metadata)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
         /// <summary>Optional. The Compute Engine network to be used for machine communications. Cannot be specified
         /// with subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the "default" network of the
@@ -5943,15 +5943,15 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default
         /// projects/[project_id]/regions/global/default default</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
-        public virtual string NetworkUri { get; set; } 
+        public virtual string NetworkUri { get; set; }
 
         /// <summary>Optional. The type of IPv6 access for a cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateIpv6GoogleAccess")]
-        public virtual string PrivateIpv6GoogleAccess { get; set; } 
+        public virtual string PrivateIpv6GoogleAccess { get; set; }
 
         /// <summary>Optional. Reservation Affinity for consuming Zonal reservation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservationAffinity")]
-        public virtual ReservationAffinity ReservationAffinity { get; set; } 
+        public virtual ReservationAffinity ReservationAffinity { get; set; }
 
         /// <summary>Optional. The Dataproc service account (https://cloud.google.com/dataproc/docs/concepts
         /// /configuring-clusters/service-accounts#service_accounts_in_dataproc) (also see VM Data Plane identity
@@ -5960,7 +5960,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// Cloud Platform services.If not specified, the Compute Engine default service account
         /// (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
-        public virtual string ServiceAccount { get; set; } 
+        public virtual string ServiceAccount { get; set; }
 
         /// <summary>Optional. The URIs of service account scopes to be included in Compute Engine instances. The
         /// following base set of scopes is always included: https://www.googleapis.com/auth/cloud.useraccounts.readonly
@@ -5969,19 +5969,19 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// https://www.googleapis.com/auth/bigtable.admin.table https://www.googleapis.com/auth/bigtable.data
         /// https://www.googleapis.com/auth/devstorage.full_control</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountScopes")]
-        public virtual System.Collections.Generic.IList<string> ServiceAccountScopes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ServiceAccountScopes { get; set; }
 
         /// <summary>Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified
         /// with network_uri.A full URL, partial URI, or short name are valid. Examples:
         /// https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0
         /// projects/[project_id]/regions/us-east1/subnetworks/sub0 sub0</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetworkUri")]
-        public virtual string SubnetworkUri { get; set; } 
+        public virtual string SubnetworkUri { get; set; }
 
         /// <summary>The Compute Engine tags to add to all instances (see Tagging instances
         /// (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
-        public virtual System.Collections.Generic.IList<string> Tags { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
         /// <summary>Optional. The zone where the Compute Engine cluster will be located. On a create request, it is
         /// required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in
@@ -5990,7 +5990,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone] projects/[project_id]/zones/[zone]
         /// us-central1-f</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zoneUri")]
-        public virtual string ZoneUri { get; set; } 
+        public virtual string ZoneUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6001,7 +6001,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>OPTIONAL: A GetPolicyOptions object for specifying options to GetIamPolicy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
-        public virtual GetPolicyOptions Options { get; set; } 
+        public virtual GetPolicyOptions Options { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6016,7 +6016,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// unset.To learn which resources support conditions in their IAM policies, see the IAM documentation
         /// (https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
-        public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
+        public virtual System.Nullable<int> RequestedPolicyVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6027,7 +6027,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Optional. A target for the deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespacedGkeDeploymentTarget")]
-        public virtual NamespacedGkeDeploymentTarget NamespacedGkeDeploymentTarget { get; set; } 
+        public virtual NamespacedGkeDeploymentTarget NamespacedGkeDeploymentTarget { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6041,43 +6041,43 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and
         /// tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("archiveUris")]
-        public virtual System.Collections.Generic.IList<string> ArchiveUris { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ArchiveUris { get; set; }
 
         /// <summary>Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or
         /// -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job
         /// submission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
-        public virtual System.Collections.Generic.IList<string> Args { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Args { get; set; }
 
         /// <summary>Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory
         /// of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileUris")]
-        public virtual System.Collections.Generic.IList<string> FileUris { get; set; } 
+        public virtual System.Collections.Generic.IList<string> FileUris { get; set; }
 
         /// <summary>Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jarFileUris")]
-        public virtual System.Collections.Generic.IList<string> JarFileUris { get; set; } 
+        public virtual System.Collections.Generic.IList<string> JarFileUris { get; set; }
 
         /// <summary>Optional. The runtime log config for job execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
-        public virtual LoggingConfig LoggingConfig { get; set; } 
+        public virtual LoggingConfig LoggingConfig { get; set; }
 
         /// <summary>The name of the driver's main class. The jar file containing the class must be in the default
         /// CLASSPATH or specified in jar_file_uris.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mainClass")]
-        public virtual string MainClass { get; set; } 
+        public virtual string MainClass { get; set; }
 
         /// <summary>The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-
         /// binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:home/usr/lib
         /// /hadoop-mapreduce/hadoop-mapreduce-examples.jar'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mainJarFileUri")]
-        public virtual string MainJarFileUri { get; set; } 
+        public virtual string MainJarFileUri { get; set; }
 
         /// <summary>Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict
         /// with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf-site
         /// and classes in user code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Properties { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Properties { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6089,31 +6089,31 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>Optional. Whether to continue executing queries if a query fails. The default value is false.
         /// Setting to true can be useful when executing independent parallel queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("continueOnFailure")]
-        public virtual System.Nullable<bool> ContinueOnFailure { get; set; } 
+        public virtual System.Nullable<bool> ContinueOnFailure { get; set; }
 
         /// <summary>Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce
         /// (MR) tasks. Can contain Hive SerDes and UDFs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jarFileUris")]
-        public virtual System.Collections.Generic.IList<string> JarFileUris { get; set; } 
+        public virtual System.Collections.Generic.IList<string> JarFileUris { get; set; }
 
         /// <summary>Optional. A mapping of property names and values, used to configure Hive. Properties that conflict
         /// with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf-
         /// site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Properties { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Properties { get; set; }
 
         /// <summary>The HCFS URI of the script that contains Hive queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryFileUri")]
-        public virtual string QueryFileUri { get; set; } 
+        public virtual string QueryFileUri { get; set; }
 
         /// <summary>A list of queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryList")]
-        public virtual QueryList QueryList { get; set; } 
+        public virtual QueryList QueryList { get; set; }
 
         /// <summary>Optional. Mapping of query variable names to values (equivalent to the Hive command: SET
         /// name="value";).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scriptVariables")]
-        public virtual System.Collections.Generic.IDictionary<string,string> ScriptVariables { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> ScriptVariables { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6128,12 +6128,12 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// instances is set.Primary workers - Bounds: [min_instances, ). Required. Secondary workers - Bounds:
         /// [min_instances, ). Default: 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxInstances")]
-        public virtual System.Nullable<int> MaxInstances { get; set; } 
+        public virtual System.Nullable<int> MaxInstances { get; set; }
 
         /// <summary>Optional. Minimum number of instances for this group.Primary workers - Bounds: 2, max_instances.
         /// Default: 2. Secondary workers - Bounds: 0, max_instances. Default: 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minInstances")]
-        public virtual System.Nullable<int> MinInstances { get; set; } 
+        public virtual System.Nullable<int> MinInstances { get; set; }
 
         /// <summary>Optional. Weight for the instance group, which is used to determine the fraction of total workers
         /// in the cluster from this instance group. For example, if primary workers have weight 2, and secondary
@@ -6146,7 +6146,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// cluster will default to zero weight on the unset group. For example if weight is set only on primary
         /// workers, the cluster will use primary workers only and no secondary workers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weight")]
-        public virtual System.Nullable<int> Weight { get; set; } 
+        public virtual System.Nullable<int> Weight { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6158,11 +6158,11 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Optional. The Compute Engine accelerator configuration for these instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accelerators")]
-        public virtual System.Collections.Generic.IList<AcceleratorConfig> Accelerators { get; set; } 
+        public virtual System.Collections.Generic.IList<AcceleratorConfig> Accelerators { get; set; }
 
         /// <summary>Optional. Disk option config settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskConfig")]
-        public virtual DiskConfig DiskConfig { get; set; } 
+        public virtual DiskConfig DiskConfig { get; set; }
 
         /// <summary>Optional. The Compute Engine image resource used for cluster instances.The URI can represent an
         /// image or image family.Image examples:
@@ -6173,20 +6173,20 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// name] projects/[project_id]/global/images/family/[custom-image-family-name]If the URI is unspecified, it
         /// will be inferred from SoftwareConfig.image_version or the system default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
-        public virtual string ImageUri { get; set; } 
+        public virtual string ImageUri { get; set; }
 
         /// <summary>Output only. The list of instance names. Dataproc derives the names from cluster_name,
         /// num_instances, and the instance group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceNames")]
-        public virtual System.Collections.Generic.IList<string> InstanceNames { get; set; } 
+        public virtual System.Collections.Generic.IList<string> InstanceNames { get; set; }
 
         /// <summary>Output only. List of references to Compute Engine instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceReferences")]
-        public virtual System.Collections.Generic.IList<InstanceReference> InstanceReferences { get; set; } 
+        public virtual System.Collections.Generic.IList<InstanceReference> InstanceReferences { get; set; }
 
         /// <summary>Output only. Specifies that this instance group contains preemptible instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isPreemptible")]
-        public virtual System.Nullable<bool> IsPreemptible { get; set; } 
+        public virtual System.Nullable<bool> IsPreemptible { get; set; }
 
         /// <summary>Optional. The Compute Engine machine type used for cluster instances.A full URL, partial URI, or
         /// short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-
@@ -6195,28 +6195,28 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement)
         /// feature, you must use the short name of the machine type resource, for example, n1-standard-2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineTypeUri")]
-        public virtual string MachineTypeUri { get; set; } 
+        public virtual string MachineTypeUri { get; set; }
 
         /// <summary>Output only. The config for Compute Engine Instance Group Manager that manages this group. This is
         /// only used for preemptible instance groups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedGroupConfig")]
-        public virtual ManagedGroupConfig ManagedGroupConfig { get; set; } 
+        public virtual ManagedGroupConfig ManagedGroupConfig { get; set; }
 
         /// <summary>Specifies the minimum cpu platform for the Instance Group. See Dataproc -> Minimum CPU Platform
         /// (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
-        public virtual string MinCpuPlatform { get; set; } 
+        public virtual string MinCpuPlatform { get; set; }
 
         /// <summary>Optional. The number of VM instances in the instance group. For master instance groups, must be set
         /// to 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numInstances")]
-        public virtual System.Nullable<int> NumInstances { get; set; } 
+        public virtual System.Nullable<int> NumInstances { get; set; }
 
         /// <summary>Optional. Specifies the preemptibility of the instance group.The default value for master and
         /// worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances
         /// is PREEMPTIBLE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preemptibility")]
-        public virtual string Preemptibility { get; set; } 
+        public virtual string Preemptibility { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6227,11 +6227,11 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>The unique identifier of the Compute Engine instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
-        public virtual string InstanceId { get; set; } 
+        public virtual string InstanceId { get; set; }
 
         /// <summary>The user-friendly name of the Compute Engine instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceName")]
-        public virtual string InstanceName { get; set; } 
+        public virtual string InstanceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6242,12 +6242,12 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Deprecated. Please use request_id field instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
-        public virtual string InstanceId { get; set; } 
+        public virtual string InstanceId { get; set; }
 
         /// <summary>Optional. Map from parameter names to values that should be used for those parameters. Values may
         /// not exceed 1000 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Parameters { get; set; }
 
         /// <summary>Optional. A tag that prevents multiple concurrent workflow instances with the same tag from
         /// running. This mitigates risk of concurrent instances started due to retries.It is recommended to always set
@@ -6255,13 +6255,13 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
         /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; } 
+        public virtual string RequestId { get; set; }
 
         /// <summary>Optional. The version of workflow template to instantiate. If specified, the workflow will be
         /// instantiated only if the current version of the workflow template has the supplied version.This option
         /// cannot be used to instantiate a previous version of workflow template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6274,94 +6274,94 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// progress. If true, the job is completed, and status.state field will indicate if it was successful, failed,
         /// or cancelled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>Output only. If present, the location of miscellaneous control files which may be used as part of
         /// job setup and handling. If not present, control files may be placed in the same location as
         /// driver_output_uri.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driverControlFilesUri")]
-        public virtual string DriverControlFilesUri { get; set; } 
+        public virtual string DriverControlFilesUri { get; set; }
 
         /// <summary>Output only. A URI pointing to the location of the stdout of the job's driver program.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driverOutputResourceUri")]
-        public virtual string DriverOutputResourceUri { get; set; } 
+        public virtual string DriverOutputResourceUri { get; set; }
 
         /// <summary>Optional. Job is a Hadoop job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hadoopJob")]
-        public virtual HadoopJob HadoopJob { get; set; } 
+        public virtual HadoopJob HadoopJob { get; set; }
 
         /// <summary>Optional. Job is a Hive job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hiveJob")]
-        public virtual HiveJob HiveJob { get; set; } 
+        public virtual HiveJob HiveJob { get; set; }
 
         /// <summary>Output only. A UUID that uniquely identifies a job within the project over time. This is in
         /// contrast to a user-settable reference.job_id that may be reused over time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobUuid")]
-        public virtual string JobUuid { get; set; } 
+        public virtual string JobUuid { get; set; }
 
         /// <summary>Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and
         /// must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present,
         /// must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No
         /// more than 32 labels can be associated with a job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Optional. Job is a Pig job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pigJob")]
-        public virtual PigJob PigJob { get; set; } 
+        public virtual PigJob PigJob { get; set; }
 
         /// <summary>Required. Job information, including how, when, and where to run the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placement")]
-        public virtual JobPlacement Placement { get; set; } 
+        public virtual JobPlacement Placement { get; set; }
 
         /// <summary>Optional. Job is a Presto job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prestoJob")]
-        public virtual PrestoJob PrestoJob { get; set; } 
+        public virtual PrestoJob PrestoJob { get; set; }
 
         /// <summary>Optional. Job is a PySpark job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pysparkJob")]
-        public virtual PySparkJob PysparkJob { get; set; } 
+        public virtual PySparkJob PysparkJob { get; set; }
 
         /// <summary>Optional. The fully qualified reference to the job, which can be used to obtain the equivalent REST
         /// path of the job resource. If this property is not specified when a job is created, the server generates a
         /// job_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reference")]
-        public virtual JobReference Reference { get; set; } 
+        public virtual JobReference Reference { get; set; }
 
         /// <summary>Optional. Job scheduling configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduling")]
-        public virtual JobScheduling Scheduling { get; set; } 
+        public virtual JobScheduling Scheduling { get; set; }
 
         /// <summary>Optional. Job is a Spark job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkJob")]
-        public virtual SparkJob SparkJob { get; set; } 
+        public virtual SparkJob SparkJob { get; set; }
 
         /// <summary>Optional. Job is a SparkR job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkRJob")]
-        public virtual SparkRJob SparkRJob { get; set; } 
+        public virtual SparkRJob SparkRJob { get; set; }
 
         /// <summary>Optional. Job is a SparkSql job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkSqlJob")]
-        public virtual SparkSqlJob SparkSqlJob { get; set; } 
+        public virtual SparkSqlJob SparkSqlJob { get; set; }
 
         /// <summary>Output only. The job status. Additional application-specific status information may be contained in
         /// the type_job and yarn_applications fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual JobStatus Status { get; set; } 
+        public virtual JobStatus Status { get; set; }
 
         /// <summary>Output only. The previous job status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusHistory")]
-        public virtual System.Collections.Generic.IList<JobStatus> StatusHistory { get; set; } 
+        public virtual System.Collections.Generic.IList<JobStatus> StatusHistory { get; set; }
 
         /// <summary>Output only. The email address of the user submitting the job. For jobs submitted on the cluster,
         /// the address is username@hostname.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("submittedBy")]
-        public virtual string SubmittedBy { get; set; } 
+        public virtual string SubmittedBy { get; set; }
 
         /// <summary>Output only. The collection of YARN applications spun up by this job.Beta Feature: This report is
         /// available for testing purposes only. It may be changed before final release.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("yarnApplications")]
-        public virtual System.Collections.Generic.IList<YarnApplication> YarnApplications { get; set; } 
+        public virtual System.Collections.Generic.IList<YarnApplication> YarnApplications { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6372,19 +6372,19 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Output only. The job id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
-        public virtual string JobId { get; set; } 
+        public virtual string JobId { get; set; }
 
         /// <summary>Output only. Operation type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
-        public virtual string OperationType { get; set; } 
+        public virtual string OperationType { get; set; }
 
         /// <summary>Output only. Job submission time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>Output only. Most recent job status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual JobStatus Status { get; set; } 
+        public virtual JobStatus Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6395,11 +6395,11 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Required. The name of the cluster where the job will be submitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
-        public virtual string ClusterName { get; set; } 
+        public virtual string ClusterName { get; set; }
 
         /// <summary>Output only. A cluster UUID generated by the Dataproc service when the job is submitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterUuid")]
-        public virtual string ClusterUuid { get; set; } 
+        public virtual string ClusterUuid { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6412,12 +6412,12 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-). The maximum length is 100 characters.If not
         /// specified by the caller, the job ID will be provided by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
-        public virtual string JobId { get; set; } 
+        public virtual string JobId { get; set; }
 
         /// <summary>Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must
         /// match the request project ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6430,7 +6430,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// terminating with non-zero code before job is reported failed.A job may be reported as thrashing if driver
         /// exits with non-zero code 4 times within 10 minute window.Maximum value is 10.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxFailuresPerHour")]
-        public virtual System.Nullable<int> MaxFailuresPerHour { get; set; } 
+        public virtual System.Nullable<int> MaxFailuresPerHour { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6442,19 +6442,19 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>Output only. Optional Job state details, such as an error description if the state is
         /// ERROR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual string Details { get; set; } 
+        public virtual string Details { get; set; }
 
         /// <summary>Output only. A state message specifying the overall job state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Output only. The time when this state was entered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateStartTime")]
-        public virtual object StateStartTime { get; set; } 
+        public virtual object StateStartTime { get; set; }
 
         /// <summary>Output only. Additional state information, which includes status reported by the agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("substate")]
-        public virtual string Substate { get; set; } 
+        public virtual string Substate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6466,76 +6466,76 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>Optional. The admin server (IP or hostname) for the remote trusted realm in a cross realm trust
         /// relationship.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crossRealmTrustAdminServer")]
-        public virtual string CrossRealmTrustAdminServer { get; set; } 
+        public virtual string CrossRealmTrustAdminServer { get; set; }
 
         /// <summary>Optional. The KDC (IP or hostname) for the remote trusted realm in a cross realm trust
         /// relationship.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crossRealmTrustKdc")]
-        public virtual string CrossRealmTrustKdc { get; set; } 
+        public virtual string CrossRealmTrustKdc { get; set; }
 
         /// <summary>Optional. The remote realm the Dataproc on-cluster KDC will trust, should the user enable cross
         /// realm trust.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crossRealmTrustRealm")]
-        public virtual string CrossRealmTrustRealm { get; set; } 
+        public virtual string CrossRealmTrustRealm { get; set; }
 
         /// <summary>Optional. The Cloud Storage URI of a KMS encrypted file containing the shared password between the
         /// on-cluster Kerberos realm and the remote trusted realm, in a cross realm trust relationship.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crossRealmTrustSharedPasswordUri")]
-        public virtual string CrossRealmTrustSharedPasswordUri { get; set; } 
+        public virtual string CrossRealmTrustSharedPasswordUri { get; set; }
 
         /// <summary>Optional. Flag to indicate whether to Kerberize the cluster (default: false). Set this field to
         /// true to enable Kerberos on a cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableKerberos")]
-        public virtual System.Nullable<bool> EnableKerberos { get; set; } 
+        public virtual System.Nullable<bool> EnableKerberos { get; set; }
 
         /// <summary>Optional. The Cloud Storage URI of a KMS encrypted file containing the master key of the KDC
         /// database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kdcDbKeyUri")]
-        public virtual string KdcDbKeyUri { get; set; } 
+        public virtual string KdcDbKeyUri { get; set; }
 
         /// <summary>Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user
         /// provided key. For the self-signed certificate, this password is generated by Dataproc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyPasswordUri")]
-        public virtual string KeyPasswordUri { get; set; } 
+        public virtual string KeyPasswordUri { get; set; }
 
         /// <summary>Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user
         /// provided keystore. For the self-signed certificate, this password is generated by Dataproc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keystorePasswordUri")]
-        public virtual string KeystorePasswordUri { get; set; } 
+        public virtual string KeystorePasswordUri { get; set; }
 
         /// <summary>Optional. The Cloud Storage URI of the keystore file used for SSL encryption. If not provided,
         /// Dataproc will provide a self-signed certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keystoreUri")]
-        public virtual string KeystoreUri { get; set; } 
+        public virtual string KeystoreUri { get; set; }
 
         /// <summary>Required. The uri of the KMS key used to encrypt various sensitive files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyUri")]
-        public virtual string KmsKeyUri { get; set; } 
+        public virtual string KmsKeyUri { get; set; }
 
         /// <summary>Optional. The name of the on-cluster Kerberos realm. If not specified, the uppercased domain of
         /// hostnames will be the realm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("realm")]
-        public virtual string Realm { get; set; } 
+        public virtual string Realm { get; set; }
 
         /// <summary>Required. The Cloud Storage URI of a KMS encrypted file containing the root principal
         /// password.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootPrincipalPasswordUri")]
-        public virtual string RootPrincipalPasswordUri { get; set; } 
+        public virtual string RootPrincipalPasswordUri { get; set; }
 
         /// <summary>Optional. The lifetime of the ticket granting ticket, in hours. If not specified, or user specifies
         /// 0, then default value 10 will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tgtLifetimeHours")]
-        public virtual System.Nullable<int> TgtLifetimeHours { get; set; } 
+        public virtual System.Nullable<int> TgtLifetimeHours { get; set; }
 
         /// <summary>Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user
         /// provided truststore. For the self-signed certificate, this password is generated by Dataproc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("truststorePasswordUri")]
-        public virtual string TruststorePasswordUri { get; set; } 
+        public virtual string TruststorePasswordUri { get; set; }
 
         /// <summary>Optional. The Cloud Storage URI of the truststore file used for SSL encryption. If not provided,
         /// Dataproc will provide a self-signed certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("truststoreUri")]
-        public virtual string TruststoreUri { get; set; } 
+        public virtual string TruststoreUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6547,26 +6547,26 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>Optional. The time when cluster will be auto-deleted. (see JSON representation of Timestamp
         /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoDeleteTime")]
-        public virtual object AutoDeleteTime { get; set; } 
+        public virtual object AutoDeleteTime { get; set; }
 
         /// <summary>Optional. The lifetime duration of cluster. The cluster will be auto-deleted at the end of this
         /// period. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration
         /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoDeleteTtl")]
-        public virtual object AutoDeleteTtl { get; set; } 
+        public virtual object AutoDeleteTtl { get; set; }
 
         /// <summary>Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing
         /// this threshold will cause the cluster to be deleted. Minimum value is 10 minutes; maximum value is 14 days
         /// (see JSON representation of Duration (https://developers.google.com/protocol-
         /// buffers/docs/proto3#json).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idleDeleteTtl")]
-        public virtual object IdleDeleteTtl { get; set; } 
+        public virtual object IdleDeleteTtl { get; set; }
 
         /// <summary>Output only. The time when cluster became idle (most recent job finished) and became eligible for
         /// deletion due to idleness (see JSON representation of Timestamp (https://developers.google.com/protocol-
         /// buffers/docs/proto3#json)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idleStartTime")]
-        public virtual object IdleStartTime { get; set; } 
+        public virtual object IdleStartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6577,11 +6577,11 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Output only. This token is included in the response if there are more results to fetch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Output only. Autoscaling policies list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policies")]
-        public virtual System.Collections.Generic.IList<AutoscalingPolicy> Policies { get; set; } 
+        public virtual System.Collections.Generic.IList<AutoscalingPolicy> Policies { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6592,12 +6592,12 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Output only. The clusters in the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusters")]
-        public virtual System.Collections.Generic.IList<Cluster> Clusters { get; set; } 
+        public virtual System.Collections.Generic.IList<Cluster> Clusters { get; set; }
 
         /// <summary>Output only. This token is included in the response if there are more results to fetch. To fetch
         /// additional results, provide this value as the page_token in a subsequent ListClustersRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6608,12 +6608,12 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Output only. Jobs list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobs")]
-        public virtual System.Collections.Generic.IList<Job> Jobs { get; set; } 
+        public virtual System.Collections.Generic.IList<Job> Jobs { get; set; }
 
         /// <summary>Optional. This token is included in the response if there are more results to fetch. To fetch
         /// additional results, provide this value as the page_token in a subsequent ListJobsRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6624,11 +6624,11 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6641,11 +6641,11 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// additional results, provide this value as the page_token in a subsequent
         /// ListWorkflowTemplatesRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Output only. WorkflowTemplates list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("templates")]
-        public virtual System.Collections.Generic.IList<WorkflowTemplate> Templates { get; set; } 
+        public virtual System.Collections.Generic.IList<WorkflowTemplate> Templates { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6657,7 +6657,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>The per-package log levels for the driver. This may include "root" package name to configure
         /// rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driverLogLevels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> DriverLogLevels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> DriverLogLevels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6670,18 +6670,18 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with
         /// a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
-        public virtual string ClusterName { get; set; } 
+        public virtual string ClusterName { get; set; }
 
         /// <summary>Required. The cluster configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
-        public virtual ClusterConfig Config { get; set; } 
+        public virtual ClusterConfig Config { get; set; }
 
         /// <summary>Optional. The labels to associate with this cluster.Label keys must be between 1 and 63 characters
         /// long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}Label values must be
         /// between 1 and 63 characters long, and must conform to the following PCRE regular expression:
         /// \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6692,11 +6692,11 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Output only. The name of the Instance Group Manager for this group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceGroupManagerName")]
-        public virtual string InstanceGroupManagerName { get; set; } 
+        public virtual string InstanceGroupManagerName { get; set; }
 
         /// <summary>Output only. The name of the Instance Template used for the Managed Instance Group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceTemplateName")]
-        public virtual string InstanceTemplateName { get; set; } 
+        public virtual string InstanceTemplateName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6708,7 +6708,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>Required. Resource name of an existing Dataproc Metastore service.Example:
         /// projects/[project_id]/locations/[dataproc_region]/services/[service-name]</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataprocMetastoreService")]
-        public virtual string DataprocMetastoreService { get; set; } 
+        public virtual string DataprocMetastoreService { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6719,12 +6719,12 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Optional. A namespace within the GKE cluster to deploy into.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterNamespace")]
-        public virtual string ClusterNamespace { get; set; } 
+        public virtual string ClusterNamespace { get; set; }
 
         /// <summary>Optional. The target GKE cluster to deploy to. Format:
         /// 'projects/{project}/locations/{location}/clusters/{cluster_id}'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetGkeCluster")]
-        public virtual string TargetGkeCluster { get; set; } 
+        public virtual string TargetGkeCluster { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6736,14 +6736,14 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Required. Cloud Storage URI of executable file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executableFile")]
-        public virtual string ExecutableFile { get; set; } 
+        public virtual string ExecutableFile { get; set; }
 
         /// <summary>Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation
         /// of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).Cluster creation fails with
         /// an explanatory error message (the name of the executable that caused the error and the exceeded timeout
         /// period) if the executable is not completed at end of the timeout period.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionTimeout")]
-        public virtual object ExecutionTimeout { get; set; } 
+        public virtual object ExecutionTimeout { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6755,23 +6755,23 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>If the value is false, it means the operation is still in progress. If true, the operation is
         /// completed, and either error or response is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the name should be a resource name ending with
         /// operations/{unique_id}.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as Delete, the response is google.protobuf.Empty. If the original method is standard
@@ -6779,7 +6779,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// XxxResponse, where Xxx is the original method name. For example, if the original method name is
         /// TakeSnapshot(), the inferred response type is TakeSnapshotResponse.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6790,58 +6790,58 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Optional. Job is a Hadoop job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hadoopJob")]
-        public virtual HadoopJob HadoopJob { get; set; } 
+        public virtual HadoopJob HadoopJob { get; set; }
 
         /// <summary>Optional. Job is a Hive job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hiveJob")]
-        public virtual HiveJob HiveJob { get; set; } 
+        public virtual HiveJob HiveJob { get; set; }
 
         /// <summary>Optional. The labels to associate with this job.Label keys must be between 1 and 63 characters
         /// long, and must conform to the following regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1
         /// and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No
         /// more than 32 labels can be associated with a given job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Optional. Job is a Pig job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pigJob")]
-        public virtual PigJob PigJob { get; set; } 
+        public virtual PigJob PigJob { get; set; }
 
         /// <summary>Optional. The optional list of prerequisite job step_ids. If not specified, the job will start at
         /// the beginning of workflow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prerequisiteStepIds")]
-        public virtual System.Collections.Generic.IList<string> PrerequisiteStepIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> PrerequisiteStepIds { get; set; }
 
         /// <summary>Optional. Job is a Presto job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prestoJob")]
-        public virtual PrestoJob PrestoJob { get; set; } 
+        public virtual PrestoJob PrestoJob { get; set; }
 
         /// <summary>Optional. Job is a PySpark job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pysparkJob")]
-        public virtual PySparkJob PysparkJob { get; set; } 
+        public virtual PySparkJob PysparkJob { get; set; }
 
         /// <summary>Optional. Job scheduling configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduling")]
-        public virtual JobScheduling Scheduling { get; set; } 
+        public virtual JobScheduling Scheduling { get; set; }
 
         /// <summary>Optional. Job is a Spark job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkJob")]
-        public virtual SparkJob SparkJob { get; set; } 
+        public virtual SparkJob SparkJob { get; set; }
 
         /// <summary>Optional. Job is a SparkR job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkRJob")]
-        public virtual SparkRJob SparkRJob { get; set; } 
+        public virtual SparkRJob SparkRJob { get; set; }
 
         /// <summary>Optional. Job is a SparkSql job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkSqlJob")]
-        public virtual SparkSqlJob SparkSqlJob { get; set; } 
+        public virtual SparkSqlJob SparkSqlJob { get; set; }
 
         /// <summary>Required. The step id. The id must be unique among all jobs within the template.The step id is used
         /// as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from
         /// other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-).
         /// Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stepId")]
-        public virtual string StepId { get; set; } 
+        public virtual string StepId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6852,11 +6852,11 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Validation based on regular expressions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regex")]
-        public virtual RegexValidation Regex { get; set; } 
+        public virtual RegexValidation Regex { get; set; }
 
         /// <summary>Validation based on a list of allowed values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual ValueValidation Values { get; set; } 
+        public virtual ValueValidation Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6868,35 +6868,35 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>Optional. Whether to continue executing queries if a query fails. The default value is false.
         /// Setting to true can be useful when executing independent parallel queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("continueOnFailure")]
-        public virtual System.Nullable<bool> ContinueOnFailure { get; set; } 
+        public virtual System.Nullable<bool> ContinueOnFailure { get; set; }
 
         /// <summary>Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce
         /// (MR) tasks. Can contain Pig UDFs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jarFileUris")]
-        public virtual System.Collections.Generic.IList<string> JarFileUris { get; set; } 
+        public virtual System.Collections.Generic.IList<string> JarFileUris { get; set; }
 
         /// <summary>Optional. The runtime log config for job execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
-        public virtual LoggingConfig LoggingConfig { get; set; } 
+        public virtual LoggingConfig LoggingConfig { get; set; }
 
         /// <summary>Optional. A mapping of property names to values, used to configure Pig. Properties that conflict
         /// with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf-
         /// site.xml, /etc/pig/conf/pig.properties, and classes in user code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Properties { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Properties { get; set; }
 
         /// <summary>The HCFS URI of the script that contains the Pig queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryFileUri")]
-        public virtual string QueryFileUri { get; set; } 
+        public virtual string QueryFileUri { get; set; }
 
         /// <summary>A list of queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryList")]
-        public virtual QueryList QueryList { get; set; } 
+        public virtual QueryList QueryList { get; set; }
 
         /// <summary>Optional. Mapping of query variable names to values (equivalent to the Pig command:
         /// name=[value]).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scriptVariables")]
-        public virtual System.Collections.Generic.IDictionary<string,string> ScriptVariables { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> ScriptVariables { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6926,7 +6926,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>Associates a list of members to a role. Optionally, may specify a condition that determines how and
         /// when the bindings are applied. Each of the bindings must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
         /// <summary>etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a
         /// policy from overwriting each other. It is strongly suggested that systems make use of the etag in the read-
@@ -6937,7 +6937,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// to overwrite a version 3 policy with a version 1 policy, and all of the conditions in the version 3 policy
         /// are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Specifies the format of the policy.Valid values are 0, 1, and 3. Requests that specify an invalid
         /// value are rejected.Any operation that affects conditional role bindings must specify version 3. This
@@ -6950,7 +6950,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// valid version or leave the field unset.To learn which resources support conditions in their IAM policies,
         /// see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
     }    
 
@@ -6961,35 +6961,35 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Optional. Presto client tags to attach to this query</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientTags")]
-        public virtual System.Collections.Generic.IList<string> ClientTags { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ClientTags { get; set; }
 
         /// <summary>Optional. Whether to continue executing queries if a query fails. The default value is false.
         /// Setting to true can be useful when executing independent parallel queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("continueOnFailure")]
-        public virtual System.Nullable<bool> ContinueOnFailure { get; set; } 
+        public virtual System.Nullable<bool> ContinueOnFailure { get; set; }
 
         /// <summary>Optional. The runtime log config for job execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
-        public virtual LoggingConfig LoggingConfig { get; set; } 
+        public virtual LoggingConfig LoggingConfig { get; set; }
 
         /// <summary>Optional. The format in which query output will be displayed. See the Presto documentation for
         /// supported output formats</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputFormat")]
-        public virtual string OutputFormat { get; set; } 
+        public virtual string OutputFormat { get; set; }
 
         /// <summary>Optional. A mapping of property names to values. Used to set Presto session properties
         /// (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto
         /// CLI</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Properties { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Properties { get; set; }
 
         /// <summary>The HCFS URI of the script that contains SQL queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryFileUri")]
-        public virtual string QueryFileUri { get; set; } 
+        public virtual string QueryFileUri { get; set; }
 
         /// <summary>A list of queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryList")]
-        public virtual QueryList QueryList { get; set; } 
+        public virtual QueryList QueryList { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7002,40 +7002,40 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>Optional. HCFS URIs of archives to be extracted into the working directory of each executor.
         /// Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("archiveUris")]
-        public virtual System.Collections.Generic.IList<string> ArchiveUris { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ArchiveUris { get; set; }
 
         /// <summary>Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can
         /// be set as job properties, since a collision may occur that causes an incorrect job submission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
-        public virtual System.Collections.Generic.IList<string> Args { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Args { get; set; }
 
         /// <summary>Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for
         /// naively parallel tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileUris")]
-        public virtual System.Collections.Generic.IList<string> FileUris { get; set; } 
+        public virtual System.Collections.Generic.IList<string> FileUris { get; set; }
 
         /// <summary>Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jarFileUris")]
-        public virtual System.Collections.Generic.IList<string> JarFileUris { get; set; } 
+        public virtual System.Collections.Generic.IList<string> JarFileUris { get; set; }
 
         /// <summary>Optional. The runtime log config for job execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
-        public virtual LoggingConfig LoggingConfig { get; set; } 
+        public virtual LoggingConfig LoggingConfig { get; set; }
 
         /// <summary>Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mainPythonFileUri")]
-        public virtual string MainPythonFileUri { get; set; } 
+        public virtual string MainPythonFileUri { get; set; }
 
         /// <summary>Optional. A mapping of property names to values, used to configure PySpark. Properties that
         /// conflict with values set by the Dataproc API may be overwritten. Can include properties set in
         /// /etc/spark/conf/spark-defaults.conf and classes in user code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Properties { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Properties { get; set; }
 
         /// <summary>Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types:
         /// .py, .egg, and .zip.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pythonFileUris")]
-        public virtual System.Collections.Generic.IList<string> PythonFileUris { get; set; } 
+        public virtual System.Collections.Generic.IList<string> PythonFileUris { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7049,7 +7049,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [
         /// "query1", "query2", "query3;query4", ] } } </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queries")]
-        public virtual System.Collections.Generic.IList<string> Queries { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Queries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7061,7 +7061,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>Required. RE2 regular expressions used to validate the parameter's value. The value must match the
         /// regex in its entirety (substring matches are not sufficient).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regexes")]
-        public virtual System.Collections.Generic.IList<string> Regexes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Regexes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7072,15 +7072,15 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Optional. Type of reservation to consume</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumeReservationType")]
-        public virtual string ConsumeReservationType { get; set; } 
+        public virtual string ConsumeReservationType { get; set; }
 
         /// <summary>Optional. Corresponds to the label key of reservation resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         /// <summary>Optional. Corresponds to the label values of reservation resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<string> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7091,7 +7091,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Kerberos related configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kerberosConfig")]
-        public virtual KerberosConfig KerberosConfig { get; set; } 
+        public virtual KerberosConfig KerberosConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7104,7 +7104,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
         /// might reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual Policy Policy { get; set; } 
+        public virtual Policy Policy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7119,11 +7119,11 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// the "preview" version (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-
         /// versions#other_versions). If unspecified, it defaults to the latest Debian version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageVersion")]
-        public virtual string ImageVersion { get; set; } 
+        public virtual string ImageVersion { get; set; }
 
         /// <summary>The set of optional components to activate on the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optionalComponents")]
-        public virtual System.Collections.Generic.IList<string> OptionalComponents { get; set; } 
+        public virtual System.Collections.Generic.IList<string> OptionalComponents { get; set; }
 
         /// <summary>Optional. The properties to set on daemon config files.Property keys are specified in
         /// prefix:property format, for example core:hadoop.tmp.dir. The following are supported prefixes and their
@@ -7132,7 +7132,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// yarn: yarn-site.xmlFor more information, see Cluster properties
         /// (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Properties { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Properties { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7147,40 +7147,40 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>Optional. HCFS URIs of archives to be extracted into the working directory of each executor.
         /// Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("archiveUris")]
-        public virtual System.Collections.Generic.IList<string> ArchiveUris { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ArchiveUris { get; set; }
 
         /// <summary>Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can
         /// be set as job properties, since a collision may occur that causes an incorrect job submission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
-        public virtual System.Collections.Generic.IList<string> Args { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Args { get; set; }
 
         /// <summary>Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for
         /// naively parallel tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileUris")]
-        public virtual System.Collections.Generic.IList<string> FileUris { get; set; } 
+        public virtual System.Collections.Generic.IList<string> FileUris { get; set; }
 
         /// <summary>Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jarFileUris")]
-        public virtual System.Collections.Generic.IList<string> JarFileUris { get; set; } 
+        public virtual System.Collections.Generic.IList<string> JarFileUris { get; set; }
 
         /// <summary>Optional. The runtime log config for job execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
-        public virtual LoggingConfig LoggingConfig { get; set; } 
+        public virtual LoggingConfig LoggingConfig { get; set; }
 
         /// <summary>The name of the driver's main class. The jar file that contains the class must be in the default
         /// CLASSPATH or specified in jar_file_uris.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mainClass")]
-        public virtual string MainClass { get; set; } 
+        public virtual string MainClass { get; set; }
 
         /// <summary>The HCFS URI of the jar file that contains the main class.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mainJarFileUri")]
-        public virtual string MainJarFileUri { get; set; } 
+        public virtual string MainJarFileUri { get; set; }
 
         /// <summary>Optional. A mapping of property names to values, used to configure Spark. Properties that conflict
         /// with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-
         /// defaults.conf and classes in user code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Properties { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Properties { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7193,31 +7193,31 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>Optional. HCFS URIs of archives to be extracted into the working directory of each executor.
         /// Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("archiveUris")]
-        public virtual System.Collections.Generic.IList<string> ArchiveUris { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ArchiveUris { get; set; }
 
         /// <summary>Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can
         /// be set as job properties, since a collision may occur that causes an incorrect job submission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
-        public virtual System.Collections.Generic.IList<string> Args { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Args { get; set; }
 
         /// <summary>Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for
         /// naively parallel tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileUris")]
-        public virtual System.Collections.Generic.IList<string> FileUris { get; set; } 
+        public virtual System.Collections.Generic.IList<string> FileUris { get; set; }
 
         /// <summary>Optional. The runtime log config for job execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
-        public virtual LoggingConfig LoggingConfig { get; set; } 
+        public virtual LoggingConfig LoggingConfig { get; set; }
 
         /// <summary>Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mainRFileUri")]
-        public virtual string MainRFileUri { get; set; } 
+        public virtual string MainRFileUri { get; set; }
 
         /// <summary>Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict
         /// with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-
         /// defaults.conf and classes in user code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Properties { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Properties { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7228,29 +7228,29 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jarFileUris")]
-        public virtual System.Collections.Generic.IList<string> JarFileUris { get; set; } 
+        public virtual System.Collections.Generic.IList<string> JarFileUris { get; set; }
 
         /// <summary>Optional. The runtime log config for job execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
-        public virtual LoggingConfig LoggingConfig { get; set; } 
+        public virtual LoggingConfig LoggingConfig { get; set; }
 
         /// <summary>Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf.
         /// Properties that conflict with values set by the Dataproc API may be overwritten.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Properties { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Properties { get; set; }
 
         /// <summary>The HCFS URI of the script that contains SQL queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryFileUri")]
-        public virtual string QueryFileUri { get; set; } 
+        public virtual string QueryFileUri { get; set; }
 
         /// <summary>A list of queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryList")]
-        public virtual QueryList QueryList { get; set; } 
+        public virtual QueryList QueryList { get; set; }
 
         /// <summary>Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET
         /// name="value";).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scriptVariables")]
-        public virtual System.Collections.Generic.IDictionary<string,string> ScriptVariables { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> ScriptVariables { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7262,7 +7262,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>Optional. Specifying the cluster_uuid means the RPC should fail (with error NOT_FOUND) if cluster
         /// with specified UUID does not exist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterUuid")]
-        public virtual string ClusterUuid { get; set; } 
+        public virtual string ClusterUuid { get; set; }
 
         /// <summary>Optional. A unique id used to identify the request. If the server receives two StartClusterRequest
         /// requests with the same id, then the second request will be ignored and the first
@@ -7271,7 +7271,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
         /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; } 
+        public virtual string RequestId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7285,17 +7285,17 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7307,7 +7307,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>Optional. Specifying the cluster_uuid means the RPC should fail (with error NOT_FOUND) if cluster
         /// with specified UUID does not exist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterUuid")]
-        public virtual string ClusterUuid { get; set; } 
+        public virtual string ClusterUuid { get; set; }
 
         /// <summary>Optional. A unique id used to identify the request. If the server receives two StopClusterRequest
         /// requests with the same id, then the second request will be ignored and the first
@@ -7316,7 +7316,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
         /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; } 
+        public virtual string RequestId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7327,7 +7327,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Required. The job resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("job")]
-        public virtual Job Job { get; set; } 
+        public virtual Job Job { get; set; }
 
         /// <summary>Optional. A unique id used to identify the request. If the server receives two SubmitJobRequest
         /// requests with the same id, then the second request will be ignored and the first Job created and stored in
@@ -7335,7 +7335,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters (a-z, A-Z),
         /// numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; } 
+        public virtual string RequestId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7348,7 +7348,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Optional. Brief description of the parameter. Must not exceed 1024 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Required. Paths to all fields that the parameter replaces. A field is allowed to appear in at most
         /// one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For
@@ -7367,18 +7367,18 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// example, the following field paths are invalid: placement.clusterSelector.clusterLabels jobs'step-
         /// id'.sparkJob.args</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual System.Collections.Generic.IList<string> Fields { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Fields { get; set; }
 
         /// <summary>Required. Parameter name. The parameter name is used as the key, and paired with the parameter
         /// value, which are passed to the template when the template is instantiated. The name must contain only
         /// capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum
         /// length is 40 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Optional. Validation rules to be applied to this parameter's value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validation")]
-        public virtual ParameterValidation Validation { get; set; } 
+        public virtual ParameterValidation Validation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7391,7 +7391,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// 'storage.*') are not allowed. For more information see IAM Overview
         /// (https://cloud.google.com/iam/docs/overview#permissions).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7402,7 +7402,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>A subset of TestPermissionsRequest.permissions that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7413,7 +7413,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Required. List of allowed values for the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<string> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7424,7 +7424,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Output only. The workflow nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
-        public virtual System.Collections.Generic.IList<WorkflowNode> Nodes { get; set; } 
+        public virtual System.Collections.Generic.IList<WorkflowNode> Nodes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7435,55 +7435,55 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Output only. The name of the target cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
-        public virtual string ClusterName { get; set; } 
+        public virtual string ClusterName { get; set; }
 
         /// <summary>Output only. The UUID of target cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterUuid")]
-        public virtual string ClusterUuid { get; set; } 
+        public virtual string ClusterUuid { get; set; }
 
         /// <summary>Output only. The create cluster operation metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createCluster")]
-        public virtual ClusterOperation CreateCluster { get; set; } 
+        public virtual ClusterOperation CreateCluster { get; set; }
 
         /// <summary>Output only. DAG end time, which is only set for workflows with dag_timeout when the DAG
         /// ends.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dagEndTime")]
-        public virtual object DagEndTime { get; set; } 
+        public virtual object DagEndTime { get; set; }
 
         /// <summary>Output only. DAG start time, which is only set for workflows with dag_timeout when the DAG
         /// begins.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dagStartTime")]
-        public virtual object DagStartTime { get; set; } 
+        public virtual object DagStartTime { get; set; }
 
         /// <summary>Output only. The timeout duration for the DAG of jobs. Minimum timeout duration is 10 minutes and
         /// maximum is 24 hours, expressed as a google.protobuf.Duration. For example, "1800" = 1800 seconds/30 minutes
         /// duration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dagTimeout")]
-        public virtual object DagTimeout { get; set; } 
+        public virtual object DagTimeout { get; set; }
 
         /// <summary>Output only. The delete cluster operation metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteCluster")]
-        public virtual ClusterOperation DeleteCluster { get; set; } 
+        public virtual ClusterOperation DeleteCluster { get; set; }
 
         /// <summary>Output only. Workflow end time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Output only. The workflow graph.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("graph")]
-        public virtual WorkflowGraph Graph { get; set; } 
+        public virtual WorkflowGraph Graph { get; set; }
 
         /// <summary>Map from parameter names to values that were used for those parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Parameters { get; set; }
 
         /// <summary>Output only. Workflow start time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>Output only. The workflow state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Output only. The resource name of the workflow template as described in
         /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the resource
@@ -7492,11 +7492,11 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// projects.locations.workflowTemplates, the resource name of the template has the following format:
         /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("template")]
-        public virtual string Template { get; set; } 
+        public virtual string Template { get; set; }
 
         /// <summary>Output only. The version of template at the time of workflow instantiation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7507,23 +7507,23 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Output only. The error detail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual string Error { get; set; } 
+        public virtual string Error { get; set; }
 
         /// <summary>Output only. The job id; populated after the node enters RUNNING state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
-        public virtual string JobId { get; set; } 
+        public virtual string JobId { get; set; }
 
         /// <summary>Output only. Node's prerequisite nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prerequisiteStepIds")]
-        public virtual System.Collections.Generic.IList<string> PrerequisiteStepIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> PrerequisiteStepIds { get; set; }
 
         /// <summary>Output only. The node state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Output only. The name of the node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stepId")]
-        public virtual string StepId { get; set; } 
+        public virtual string StepId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7534,7 +7534,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Output only. The time template was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h", and "d" suffixes for
         /// second, minute, hour, and day duration values, respectively. The timeout duration must be from 10 minutes
@@ -7542,17 +7542,17 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if
         /// the workflow was running on a managed cluster, the cluster is deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dagTimeout")]
-        public virtual object DagTimeout { get; set; } 
+        public virtual object DagTimeout { get; set; }
 
         /// <summary>Required. The template id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores
         /// (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50
         /// characters..</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Required. The Directed Acyclic Graph of Jobs to submit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobs")]
-        public virtual System.Collections.Generic.IList<OrderedJob> Jobs { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderedJob> Jobs { get; set; }
 
         /// <summary>Optional. The labels to associate with this template. These labels will be propagated to all jobs
         /// and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform
@@ -7560,7 +7560,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32
         /// labels can be associated with a template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Output only. The resource name of the workflow template, as described in
         /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the resource
@@ -7569,20 +7569,20 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// projects.locations.workflowTemplates, the resource name of the template has the following format:
         /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Optional. Template parameters whose values are substituted into the template. Values for parameters
         /// must be provided when the template is instantiated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IList<TemplateParameter> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IList<TemplateParameter> Parameters { get; set; }
 
         /// <summary>Required. WorkflowTemplate scheduling information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placement")]
-        public virtual WorkflowTemplatePlacement Placement { get; set; } 
+        public virtual WorkflowTemplatePlacement Placement { get; set; }
 
         /// <summary>Output only. The time template was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>Optional. Used to perform a consistent read-modify-write.This field should be left blank for a
         /// CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the
@@ -7591,7 +7591,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// the current server version. The user updates other fields in the template, then returns it as part of the
         /// UpdateWorkflowTemplate request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7603,11 +7603,11 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>Optional. A selector that chooses target cluster for jobs based on metadata.The selector is
         /// evaluated at the time each job is submitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterSelector")]
-        public virtual ClusterSelector ClusterSelector { get; set; } 
+        public virtual ClusterSelector ClusterSelector { get; set; }
 
         /// <summary>Optional. A cluster that is managed by the workflow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedCluster")]
-        public virtual ManagedCluster ManagedCluster { get; set; } 
+        public virtual ManagedCluster ManagedCluster { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7620,21 +7620,21 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Output only. The application name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The numerical progress of the application, from 1 to 100.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
-        public virtual System.Nullable<float> Progress { get; set; } 
+        public virtual System.Nullable<float> Progress { get; set; }
 
         /// <summary>Output only. The application state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Output only. The HTTP URL of the ApplicationMaster, HistoryServer, or TimelineServer that provides
         /// application-specific information. The URL uses the internal hostname, and requires a proxy server for
         /// resolution and, possibly, access.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingUrl")]
-        public virtual string TrackingUrl { get; set; } 
+        public virtual string TrackingUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -6011,12 +6011,12 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>The end date of the range (inclusive). Must be within the 30 days leading up to current date, and
         /// must be equal to or after start_date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
-        public virtual Date EndDate { get; set; } 
+        public virtual Date EndDate { get; set; }
 
         /// <summary>The start date of the range (inclusive). Must be within the 30 days leading up to current date, and
         /// must be equal to or before end_date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
-        public virtual Date StartDate { get; set; } 
+        public virtual Date StartDate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6027,7 +6027,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The last known client revision number of the proposal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proposalRevision")]
-        public virtual System.Nullable<long> ProposalRevision { get; set; } 
+        public virtual System.Nullable<long> ProposalRevision { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6039,16 +6039,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>The height of the ad slot in pixels. This field will be present only when size type is
         /// `PIXEL`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
-        public virtual System.Nullable<long> Height { get; set; } 
+        public virtual System.Nullable<long> Height { get; set; }
 
         /// <summary>The size type of the ad slot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeType")]
-        public virtual string SizeType { get; set; } 
+        public virtual string SizeType { get; set; }
 
         /// <summary>The width of the ad slot in pixels. This field will be present only when size type is
         /// `PIXEL`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
-        public virtual System.Nullable<long> Width { get; set; } 
+        public virtual System.Nullable<long> Width { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6067,13 +6067,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// submitted with that creative for an impression that will serve to an EEA user, the bid will be filtered
         /// before the auction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedProviderIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> DetectedProviderIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> DetectedProviderIds { get; set; }
 
         /// <summary>Whether the creative contains an unidentified ad technology provider. If true for a given creative,
         /// any bid submitted with that creative for an impression that will serve to an EEA user will be filtered
         /// before the auction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasUnidentifiedProvider")]
-        public virtual System.Nullable<bool> HasUnidentifiedProvider { get; set; } 
+        public virtual System.Nullable<bool> HasUnidentifiedProvider { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6084,7 +6084,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The association between a creative and a deal that should be added.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("association")]
-        public virtual CreativeDealAssociation Association { get; set; } 
+        public virtual CreativeDealAssociation Association { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6095,7 +6095,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>Details of the note to add.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("note")]
-        public virtual Note Note { get; set; } 
+        public virtual Note Note { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6106,7 +6106,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The app types this restriction applies to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appTypes")]
-        public virtual System.Collections.Generic.IList<string> AppTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AppTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6117,7 +6117,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The auction types this restriction applies to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auctionTypes")]
-        public virtual System.Collections.Generic.IList<string> AuctionTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AuctionTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6129,37 +6129,37 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The number of bids that Ad Exchange received from the buyer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bids")]
-        public virtual MetricValue Bids { get; set; } 
+        public virtual MetricValue Bids { get; set; }
 
         /// <summary>The number of bids that were permitted to compete in the auction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bidsInAuction")]
-        public virtual MetricValue BidsInAuction { get; set; } 
+        public virtual MetricValue BidsInAuction { get; set; }
 
         /// <summary>The number of bids for which the buyer was billed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billedImpressions")]
-        public virtual MetricValue BilledImpressions { get; set; } 
+        public virtual MetricValue BilledImpressions { get; set; }
 
         /// <summary>The number of bids that won the auction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("impressionsWon")]
-        public virtual MetricValue ImpressionsWon { get; set; } 
+        public virtual MetricValue ImpressionsWon { get; set; }
 
         /// <summary>The number of bids for which the corresponding impression was measurable for viewability (as
         /// defined by Active View).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("measurableImpressions")]
-        public virtual MetricValue MeasurableImpressions { get; set; } 
+        public virtual MetricValue MeasurableImpressions { get; set; }
 
         /// <summary>The number of bids that won the auction and also won the mediation waterfall (if any).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reachedQueries")]
-        public virtual MetricValue ReachedQueries { get; set; } 
+        public virtual MetricValue ReachedQueries { get; set; }
 
         /// <summary>The values of all dimensions associated with metric values in this row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowDimensions")]
-        public virtual RowDimensions RowDimensions { get; set; } 
+        public virtual RowDimensions RowDimensions { get; set; }
 
         /// <summary>The number of bids for which the corresponding impression was viewable (as defined by Active
         /// View).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewableImpressions")]
-        public virtual MetricValue ViewableImpressions { get; set; } 
+        public virtual MetricValue ViewableImpressions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6171,15 +6171,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The number of impressions for which there was a bid response with the specified status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("impressionCount")]
-        public virtual MetricValue ImpressionCount { get; set; } 
+        public virtual MetricValue ImpressionCount { get; set; }
 
         /// <summary>The values of all dimensions associated with metric values in this row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowDimensions")]
-        public virtual RowDimensions RowDimensions { get; set; } 
+        public virtual RowDimensions RowDimensions { get; set; }
 
         /// <summary>The status specifying why the bid responses were considered to have no applicable bids.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6191,7 +6191,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>Authorized Buyers account ID of the buyer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual string AccountId { get; set; } 
+        public virtual string AccountId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6204,16 +6204,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>The ID of the callout status. See [callout-status-codes](https://developers.google.com/authorized-
         /// buyers/rtb/downloads/callout-status-codes).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("calloutStatusId")]
-        public virtual System.Nullable<int> CalloutStatusId { get; set; } 
+        public virtual System.Nullable<int> CalloutStatusId { get; set; }
 
         /// <summary>The number of impressions for which there was a bid request or bid response with the specified
         /// callout status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("impressionCount")]
-        public virtual MetricValue ImpressionCount { get; set; } 
+        public virtual MetricValue ImpressionCount { get; set; }
 
         /// <summary>The values of all dimensions associated with metric values in this row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowDimensions")]
-        public virtual RowDimensions RowDimensions { get; set; } 
+        public virtual RowDimensions RowDimensions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6235,13 +6235,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>The globally-unique numerical ID of the client. The value of this field is ignored in create and
         /// update operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientAccountId")]
-        public virtual System.Nullable<long> ClientAccountId { get; set; } 
+        public virtual System.Nullable<long> ClientAccountId { get; set; }
 
         /// <summary>Name used to represent this client to publishers. You may have multiple clients that map to the
         /// same entity, but for each client the combination of `clientName` and entity must be unique. You can specify
         /// this field as empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientName")]
-        public virtual string ClientName { get; set; } 
+        public virtual string ClientName { get; set; }
 
         /// <summary>Numerical identifier of the client entity. The entity can be an advertiser, a brand, or an agency.
         /// This identifier is unique among all the entities with the same type. The value of this field is ignored if
@@ -6251,17 +6251,17 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// dictionaries/brands.txt) file. A list of all known agencies with their identifiers is available in the
         /// [agencies.txt](https://storage.googleapis.com/adx-rtb-dictionaries/agencies.txt) file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
-        public virtual System.Nullable<long> EntityId { get; set; } 
+        public virtual System.Nullable<long> EntityId { get; set; }
 
         /// <summary>The name of the entity. This field is automatically fetched based on the type and ID. The value of
         /// this field is ignored in create and update operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityName")]
-        public virtual string EntityName { get; set; } 
+        public virtual string EntityName { get; set; }
 
         /// <summary>An optional field for specifying the type of the client entity: `ADVERTISER`, `BRAND`, or
         /// `AGENCY`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityType")]
-        public virtual string EntityType { get; set; } 
+        public virtual string EntityType { get; set; }
 
         /// <summary>Optional arbitrary unique identifier of this client buyer from the standpoint of its Ad Exchange
         /// sponsor buyer. This field can be used to associate a client buyer with the identifier in the namespace of
@@ -6269,21 +6269,21 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// a given client buyer already exists. If present, must be unique among all the client buyers for its Ad
         /// Exchange sponsor buyer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerClientId")]
-        public virtual string PartnerClientId { get; set; } 
+        public virtual string PartnerClientId { get; set; }
 
         /// <summary>The role which is assigned to the client buyer. Each role implies a set of permissions granted to
         /// the client. Must be one of `CLIENT_DEAL_VIEWER`, `CLIENT_DEAL_NEGOTIATOR` or
         /// `CLIENT_DEAL_APPROVER`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The status of the client buyer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>Whether the client buyer will be visible to sellers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibleToSeller")]
-        public virtual System.Nullable<bool> VisibleToSeller { get; set; } 
+        public virtual System.Nullable<bool> VisibleToSeller { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6298,20 +6298,20 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>Numerical account ID of the client buyer with which the user is associated; the buyer must be a
         /// client of the current sponsor buyer. The value of this field is ignored in an update operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientAccountId")]
-        public virtual System.Nullable<long> ClientAccountId { get; set; } 
+        public virtual System.Nullable<long> ClientAccountId { get; set; }
 
         /// <summary>User's email address. The value of this field is ignored in an update operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; } 
+        public virtual string Email { get; set; }
 
         /// <summary>The status of the client user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The unique numerical ID of the client user that has accepted an invitation. The value of this field
         /// is ignored in an update operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
-        public virtual System.Nullable<long> UserId { get; set; } 
+        public virtual System.Nullable<long> UserId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6324,17 +6324,17 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>Numerical account ID of the client buyer that the invited user is associated with. The value of
         /// this field is ignored in create operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientAccountId")]
-        public virtual System.Nullable<long> ClientAccountId { get; set; } 
+        public virtual System.Nullable<long> ClientAccountId { get; set; }
 
         /// <summary>The email address to which the invitation is sent. Email addresses should be unique among all
         /// client users under each sponsor buyer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; } 
+        public virtual string Email { get; set; }
 
         /// <summary>The unique numerical ID of the invitation that is sent to the user. The value of this field is
         /// ignored in create operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invitationId")]
-        public virtual System.Nullable<long> InvitationId { get; set; } 
+        public virtual System.Nullable<long> InvitationId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6352,11 +6352,11 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>Email address for the contact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; } 
+        public virtual string Email { get; set; }
 
         /// <summary>The name of the contact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6367,15 +6367,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The contexts for the correction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contexts")]
-        public virtual System.Collections.Generic.IList<ServingContext> Contexts { get; set; } 
+        public virtual System.Collections.Generic.IList<ServingContext> Contexts { get; set; }
 
         /// <summary>Additional details about what was corrected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<string> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Details { get; set; }
 
         /// <summary>The type of correction that was applied to the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6387,123 +6387,123 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>The account that this creative belongs to. Can be used to filter the response of the creatives.list
         /// method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual string AccountId { get; set; } 
+        public virtual string AccountId { get; set; }
 
         /// <summary>The link to AdChoices destination page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adChoicesDestinationUrl")]
-        public virtual string AdChoicesDestinationUrl { get; set; } 
+        public virtual string AdChoicesDestinationUrl { get; set; }
 
         /// <summary>Output only. The detected ad technology providers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adTechnologyProviders")]
-        public virtual AdTechnologyProviders AdTechnologyProviders { get; set; } 
+        public virtual AdTechnologyProviders AdTechnologyProviders { get; set; }
 
         /// <summary>The name of the company being advertised in the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserName")]
-        public virtual string AdvertiserName { get; set; } 
+        public virtual string AdvertiserName { get; set; }
 
         /// <summary>The agency ID for this creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agencyId")]
-        public virtual System.Nullable<long> AgencyId { get; set; } 
+        public virtual System.Nullable<long> AgencyId { get; set; }
 
         /// <summary>Output only. The last update timestamp of the creative via API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiUpdateTime")]
-        public virtual object ApiUpdateTime { get; set; } 
+        public virtual object ApiUpdateTime { get; set; }
 
         /// <summary>All attributes for the ads that may be shown from this creative. Can be used to filter the response
         /// of the creatives.list method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
-        public virtual System.Collections.Generic.IList<string> Attributes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Attributes { get; set; }
 
         /// <summary>The set of destination URLs for the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickThroughUrls")]
-        public virtual System.Collections.Generic.IList<string> ClickThroughUrls { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ClickThroughUrls { get; set; }
 
         /// <summary>Output only. Shows any corrections that were applied to this creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("corrections")]
-        public virtual System.Collections.Generic.IList<Correction> Corrections { get; set; } 
+        public virtual System.Collections.Generic.IList<Correction> Corrections { get; set; }
 
         /// <summary>The buyer-defined creative ID of this creative. Can be used to filter the response of the
         /// creatives.list method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeId")]
-        public virtual string CreativeId { get; set; } 
+        public virtual string CreativeId { get; set; }
 
         /// <summary>Output only. The top-level deals status of this creative. If disapproved, an entry for
         /// 'auctionType=DIRECT_DEALS' (or 'ALL') in serving_restrictions will also exist. Note that this may be nuanced
         /// with other contextual restrictions, in which case, it may be preferable to read from serving_restrictions
         /// directly. Can be used to filter the response of the creatives.list method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dealsStatus")]
-        public virtual string DealsStatus { get; set; } 
+        public virtual string DealsStatus { get; set; }
 
         /// <summary>The set of declared destination URLs for the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("declaredClickThroughUrls")]
-        public virtual System.Collections.Generic.IList<string> DeclaredClickThroughUrls { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DeclaredClickThroughUrls { get; set; }
 
         /// <summary>Output only. Detected advertiser IDs, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedAdvertiserIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> DetectedAdvertiserIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> DetectedAdvertiserIds { get; set; }
 
         /// <summary>Output only. The detected domains for this creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedDomains")]
-        public virtual System.Collections.Generic.IList<string> DetectedDomains { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DetectedDomains { get; set; }
 
         /// <summary>Output only. The detected languages for this creative. The order is arbitrary. The codes are 2 or 5
         /// characters and are documented at
         /// https://developers.google.com/adwords/api/docs/appendix/languagecodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedLanguages")]
-        public virtual System.Collections.Generic.IList<string> DetectedLanguages { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DetectedLanguages { get; set; }
 
         /// <summary>Output only. Detected product categories, if any. See the ad-product-categories.txt file in the
         /// technical documentation for a list of IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedProductCategories")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> DetectedProductCategories { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> DetectedProductCategories { get; set; }
 
         /// <summary>Output only. Detected sensitive categories, if any. See the ad-sensitive-categories.txt file in the
         /// technical documentation for a list of IDs. You should use these IDs along with the excluded-sensitive-
         /// category field in the bid request to filter your bids.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedSensitiveCategories")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> DetectedSensitiveCategories { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> DetectedSensitiveCategories { get; set; }
 
         /// <summary>An HTML creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("html")]
-        public virtual HtmlContent Html { get; set; } 
+        public virtual HtmlContent Html { get; set; }
 
         /// <summary>The set of URLs to be called to record an impression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("impressionTrackingUrls")]
-        public virtual System.Collections.Generic.IList<string> ImpressionTrackingUrls { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ImpressionTrackingUrls { get; set; }
 
         /// <summary>A native creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("native")]
-        public virtual NativeContent Native { get; set; } 
+        public virtual NativeContent Native { get; set; }
 
         /// <summary>Output only. The top-level open auction status of this creative. If disapproved, an entry for
         /// 'auctionType = OPEN_AUCTION' (or 'ALL') in serving_restrictions will also exist. Note that this may be
         /// nuanced with other contextual restrictions, in which case, it may be preferable to read from
         /// serving_restrictions directly. Can be used to filter the response of the creatives.list method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openAuctionStatus")]
-        public virtual string OpenAuctionStatus { get; set; } 
+        public virtual string OpenAuctionStatus { get; set; }
 
         /// <summary>All restricted categories for the ads that may be shown from this creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedCategories")]
-        public virtual System.Collections.Generic.IList<string> RestrictedCategories { get; set; } 
+        public virtual System.Collections.Generic.IList<string> RestrictedCategories { get; set; }
 
         /// <summary>Output only. The granular status of this ad in specific contexts. A context here relates to where
         /// something ultimately serves (for example, a physical location, a platform, an HTTPS vs HTTP request, or the
         /// type of auction).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingRestrictions")]
-        public virtual System.Collections.Generic.IList<ServingRestriction> ServingRestrictions { get; set; } 
+        public virtual System.Collections.Generic.IList<ServingRestriction> ServingRestrictions { get; set; }
 
         /// <summary>All vendor IDs for the ads that may be shown from this creative. See https://storage.googleapis.com
         /// /adx-rtb-dictionaries/vendors.txt for possible values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vendorIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> VendorIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> VendorIds { get; set; }
 
         /// <summary>Output only. The version of this creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
         /// <summary>A video creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("video")]
-        public virtual VideoContent Video { get; set; } 
+        public virtual VideoContent Video { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6514,15 +6514,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The account the creative belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual string AccountId { get; set; } 
+        public virtual string AccountId { get; set; }
 
         /// <summary>The ID of the creative associated with the deal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeId")]
-        public virtual string CreativeId { get; set; } 
+        public virtual string CreativeId { get; set; }
 
         /// <summary>The externalDealId for the deal associated with the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dealsId")]
-        public virtual string DealsId { get; set; } 
+        public virtual string DealsId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6534,14 +6534,14 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The format of the environment that the creatives will be displayed in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeFormat")]
-        public virtual string CreativeFormat { get; set; } 
+        public virtual string CreativeFormat { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("creativeSpecifications")]
-        public virtual System.Collections.Generic.IList<CreativeSpecification> CreativeSpecifications { get; set; } 
+        public virtual System.Collections.Generic.IList<CreativeSpecification> CreativeSpecifications { get; set; }
 
         /// <summary>Skippable video ads allow viewers to skip ads after 5 seconds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skippableAdType")]
-        public virtual string SkippableAdType { get; set; } 
+        public virtual string SkippableAdType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6554,30 +6554,30 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// allowed. For example, if this field contains AllowedFormatType.AUDIO then the publisher only allows an audio
         /// ad (without any video).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedFormats")]
-        public virtual System.Collections.Generic.IList<string> AllowedFormats { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AllowedFormats { get; set; }
 
         /// <summary>For video creatives specifies the sizes of companion ads (if present). Companion sizes may be
         /// filled in only when creative_size_type = VIDEO</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companionSizes")]
-        public virtual System.Collections.Generic.IList<Size> CompanionSizes { get; set; } 
+        public virtual System.Collections.Generic.IList<Size> CompanionSizes { get; set; }
 
         /// <summary>The creative size type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeSizeType")]
-        public virtual string CreativeSizeType { get; set; } 
+        public virtual string CreativeSizeType { get; set; }
 
         /// <summary>Output only. The native template for this creative. It will have a value only if creative_size_type
         /// = CreativeSizeType.NATIVE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nativeTemplate")]
-        public virtual string NativeTemplate { get; set; } 
+        public virtual string NativeTemplate { get; set; }
 
         /// <summary>For regular or video creative size type, specifies the size of the creative</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
-        public virtual Size Size { get; set; } 
+        public virtual Size Size { get; set; }
 
         /// <summary>The type of skippable ad for this creative. It will have a value only if creative_size_type =
         /// CreativeSizeType.VIDEO.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skippableAdType")]
-        public virtual string SkippableAdType { get; set; } 
+        public virtual string SkippableAdType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6589,11 +6589,11 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>Companion sizes may be filled in only when this is a video creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeCompanionSizes")]
-        public virtual System.Collections.Generic.IList<AdSize> CreativeCompanionSizes { get; set; } 
+        public virtual System.Collections.Generic.IList<AdSize> CreativeCompanionSizes { get; set; }
 
         /// <summary>The size of the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeSize")]
-        public virtual AdSize CreativeSize { get; set; } 
+        public virtual AdSize CreativeSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6605,16 +6605,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The number of bids with the specified status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bidCount")]
-        public virtual MetricValue BidCount { get; set; } 
+        public virtual MetricValue BidCount { get; set; }
 
         /// <summary>The ID of the creative status. See [creative-status-codes](https://developers.google.com
         /// /authorized-buyers/rtb/downloads/creative-status-codes).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeStatusId")]
-        public virtual System.Nullable<int> CreativeStatusId { get; set; } 
+        public virtual System.Nullable<int> CreativeStatusId { get; set; }
 
         /// <summary>The values of all dimensions associated with metric values in this row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowDimensions")]
-        public virtual RowDimensions RowDimensions { get; set; } 
+        public virtual RowDimensions RowDimensions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6626,11 +6626,11 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>A list of numeric IDs to be excluded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedCriteriaIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> ExcludedCriteriaIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> ExcludedCriteriaIds { get; set; }
 
         /// <summary>A list of numeric IDs to be included.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetedCriteriaIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> TargetedCriteriaIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> TargetedCriteriaIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6647,15 +6647,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by
         /// itself or a year and month where the day is not significant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
-        public virtual System.Nullable<int> Day { get; set; } 
+        public virtual System.Nullable<int> Day { get; set; }
 
         /// <summary>Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("month")]
-        public virtual System.Nullable<int> Month { get; set; } 
+        public virtual System.Nullable<int> Month { get; set; }
 
         /// <summary>Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("year")]
-        public virtual System.Nullable<int> Year { get; set; } 
+        public virtual System.Nullable<int> Year { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6667,17 +6667,17 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The day of the week to target. If unspecified, applicable to all days.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dayOfWeek")]
-        public virtual string DayOfWeek { get; set; } 
+        public virtual string DayOfWeek { get; set; }
 
         /// <summary>The ending time of the day for the ad to show (minute level granularity). The end time is
         /// exclusive. This field is not available for filtering in PQL queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual TimeOfDay EndTime { get; set; } 
+        public virtual TimeOfDay EndTime { get; set; }
 
         /// <summary>The starting time of day for the ad to show (minute level granularity). The start time is
         /// inclusive. This field is not available for filtering in PQL queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual TimeOfDay StartTime { get; set; } 
+        public virtual TimeOfDay StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6688,11 +6688,11 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>A list of day part targeting criterion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dayParts")]
-        public virtual System.Collections.Generic.IList<DayPart> DayParts { get; set; } 
+        public virtual System.Collections.Generic.IList<DayPart> DayParts { get; set; }
 
         /// <summary>The timezone to use for interpreting the day part targeting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZoneType")]
-        public virtual string TimeZoneType { get; set; } 
+        public virtual string TimeZoneType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6705,115 +6705,115 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>Proposed flight end time of the deal. This will generally be stored in a granularity of a second. A
         /// value is not required for Private Auction deals or Preferred Deals.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availableEndTime")]
-        public virtual object AvailableEndTime { get; set; } 
+        public virtual object AvailableEndTime { get; set; }
 
         /// <summary>Optional proposed flight start time of the deal. This will generally be stored in the granularity
         /// of one second since deal serving starts at seconds boundary. Any time specified with more granularity (e.g.,
         /// in milliseconds) will be truncated towards the start of time in seconds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availableStartTime")]
-        public virtual object AvailableStartTime { get; set; } 
+        public virtual object AvailableStartTime { get; set; }
 
         /// <summary>Buyer private data (hidden from seller).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buyerPrivateData")]
-        public virtual PrivateData BuyerPrivateData { get; set; } 
+        public virtual PrivateData BuyerPrivateData { get; set; }
 
         /// <summary>The product ID from which this deal was created. Note: This field may be set only when creating the
         /// resource. Modifying this field while updating the resource will result in an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createProductId")]
-        public virtual string CreateProductId { get; set; } 
+        public virtual string CreateProductId { get; set; }
 
         /// <summary>Optional revision number of the product that the deal was created from. If present on create, and
         /// the server `product_revision` has advanced sinced the passed-in `create_product_revision`, an `ABORTED`
         /// error will be returned. Note: This field may be set only when creating the resource. Modifying this field
         /// while updating the resource will result in an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createProductRevision")]
-        public virtual System.Nullable<long> CreateProductRevision { get; set; } 
+        public virtual System.Nullable<long> CreateProductRevision { get; set; }
 
         /// <summary>Output only. The time of the deal creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. Specifies the creative pre-approval policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativePreApprovalPolicy")]
-        public virtual string CreativePreApprovalPolicy { get; set; } 
+        public virtual string CreativePreApprovalPolicy { get; set; }
 
         /// <summary>Output only. Restricitions about the creatives associated with the deal (i.e., size) This is
         /// available for Programmatic Guaranteed/Preferred Deals in Ad Manager.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeRestrictions")]
-        public virtual CreativeRestrictions CreativeRestrictions { get; set; } 
+        public virtual CreativeRestrictions CreativeRestrictions { get; set; }
 
         /// <summary>Output only. Specifies whether the creative is safeFrame compatible.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeSafeFrameCompatibility")]
-        public virtual string CreativeSafeFrameCompatibility { get; set; } 
+        public virtual string CreativeSafeFrameCompatibility { get; set; }
 
         /// <summary>Output only. A unique deal ID for the deal (server-assigned).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dealId")]
-        public virtual string DealId { get; set; } 
+        public virtual string DealId { get; set; }
 
         /// <summary>Output only. Metadata about the serving status of this deal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dealServingMetadata")]
-        public virtual DealServingMetadata DealServingMetadata { get; set; } 
+        public virtual DealServingMetadata DealServingMetadata { get; set; }
 
         /// <summary>The negotiable terms of the deal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dealTerms")]
-        public virtual DealTerms DealTerms { get; set; } 
+        public virtual DealTerms DealTerms { get; set; }
 
         /// <summary>The set of fields around delivery control that are interesting for a buyer to see but are non-
         /// negotiable. These are set by the publisher.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryControl")]
-        public virtual DeliveryControl DeliveryControl { get; set; } 
+        public virtual DeliveryControl DeliveryControl { get; set; }
 
         /// <summary>Description for the deal terms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The name of the deal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Output only. The external deal ID assigned to this deal once the deal is finalized. This is the
         /// deal ID that shows up in serving/reporting etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalDealId")]
-        public virtual string ExternalDealId { get; set; } 
+        public virtual string ExternalDealId { get; set; }
 
         /// <summary>Output only. True, if the buyside inventory setup is complete for this deal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isSetupComplete")]
-        public virtual System.Nullable<bool> IsSetupComplete { get; set; } 
+        public virtual System.Nullable<bool> IsSetupComplete { get; set; }
 
         /// <summary>Output only. Specifies the creative source for programmatic deals. PUBLISHER means creative is
         /// provided by seller and ADVERTISER means creative is provided by buyer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("programmaticCreativeSource")]
-        public virtual string ProgrammaticCreativeSource { get; set; } 
+        public virtual string ProgrammaticCreativeSource { get; set; }
 
         /// <summary>Output only. ID of the proposal that this deal is part of.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proposalId")]
-        public virtual string ProposalId { get; set; } 
+        public virtual string ProposalId { get; set; }
 
         /// <summary>Output only. Seller contact information for the deal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sellerContacts")]
-        public virtual System.Collections.Generic.IList<ContactInformation> SellerContacts { get; set; } 
+        public virtual System.Collections.Generic.IList<ContactInformation> SellerContacts { get; set; }
 
         /// <summary>The syndication product associated with the deal. Note: This field may be set only when creating
         /// the resource. Modifying this field while updating the resource will result in an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syndicationProduct")]
-        public virtual string SyndicationProduct { get; set; } 
+        public virtual string SyndicationProduct { get; set; }
 
         /// <summary>Output only. Specifies the subset of inventory targeted by the deal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targeting")]
-        public virtual MarketplaceTargeting Targeting { get; set; } 
+        public virtual MarketplaceTargeting Targeting { get; set; }
 
         /// <summary>The shared targeting visible to buyers and sellers. Each shared targeting entity is AND'd
         /// together.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingCriterion")]
-        public virtual System.Collections.Generic.IList<TargetingCriteria> TargetingCriterion { get; set; } 
+        public virtual System.Collections.Generic.IList<TargetingCriteria> TargetingCriterion { get; set; }
 
         /// <summary>Output only. The time when the deal was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The web property code for the seller copied over from the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webPropertyCode")]
-        public virtual string WebPropertyCode { get; set; } 
+        public virtual string WebPropertyCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6825,23 +6825,23 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The buyer's reason for pausing, if the buyer paused the deal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buyerPauseReason")]
-        public virtual string BuyerPauseReason { get; set; } 
+        public virtual string BuyerPauseReason { get; set; }
 
         /// <summary>The role of the person who first paused this deal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstPausedBy")]
-        public virtual string FirstPausedBy { get; set; } 
+        public virtual string FirstPausedBy { get; set; }
 
         /// <summary>True, if the buyer has paused the deal unilaterally.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasBuyerPaused")]
-        public virtual System.Nullable<bool> HasBuyerPaused { get; set; } 
+        public virtual System.Nullable<bool> HasBuyerPaused { get; set; }
 
         /// <summary>True, if the seller has paused the deal unilaterally.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasSellerPaused")]
-        public virtual System.Nullable<bool> HasSellerPaused { get; set; } 
+        public virtual System.Nullable<bool> HasSellerPaused { get; set; }
 
         /// <summary>The seller's reason for pausing, if the seller paused the deal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sellerPauseReason")]
-        public virtual string SellerPauseReason { get; set; } 
+        public virtual string SellerPauseReason { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6852,7 +6852,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>Output only. Tracks which parties (if any) have paused a deal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dealPauseStatus")]
-        public virtual DealPauseStatus DealPauseStatus { get; set; } 
+        public virtual DealPauseStatus DealPauseStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6864,38 +6864,38 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>Visibility of the URL in bid requests. (default: BRANDED)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brandingType")]
-        public virtual string BrandingType { get; set; } 
+        public virtual string BrandingType { get; set; }
 
         /// <summary>Publisher provided description for the terms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Non-binding estimate of the estimated gross spend for this deal. Can be set by buyer or
         /// seller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("estimatedGrossSpend")]
-        public virtual Price EstimatedGrossSpend { get; set; } 
+        public virtual Price EstimatedGrossSpend { get; set; }
 
         /// <summary>Non-binding estimate of the impressions served per day. Can be set by buyer or seller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("estimatedImpressionsPerDay")]
-        public virtual System.Nullable<long> EstimatedImpressionsPerDay { get; set; } 
+        public virtual System.Nullable<long> EstimatedImpressionsPerDay { get; set; }
 
         /// <summary>The terms for guaranteed fixed price deals.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guaranteedFixedPriceTerms")]
-        public virtual GuaranteedFixedPriceTerms GuaranteedFixedPriceTerms { get; set; } 
+        public virtual GuaranteedFixedPriceTerms GuaranteedFixedPriceTerms { get; set; }
 
         /// <summary>The terms for non-guaranteed auction deals.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonGuaranteedAuctionTerms")]
-        public virtual NonGuaranteedAuctionTerms NonGuaranteedAuctionTerms { get; set; } 
+        public virtual NonGuaranteedAuctionTerms NonGuaranteedAuctionTerms { get; set; }
 
         /// <summary>The terms for non-guaranteed fixed price deals.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonGuaranteedFixedPriceTerms")]
-        public virtual NonGuaranteedFixedPriceTerms NonGuaranteedFixedPriceTerms { get; set; } 
+        public virtual NonGuaranteedFixedPriceTerms NonGuaranteedFixedPriceTerms { get; set; }
 
         /// <summary>The time zone name. For deals with Cost Per Day billing, defines the time zone used to mark the
         /// boundaries of a day. It should be an IANA TZ name, such as "America/Los_Angeles". For more information, see
         /// https://en.wikipedia.org/wiki/List_of_tz_database_time_zones.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sellerTimeZone")]
-        public virtual string SellerTimeZone { get; set; } 
+        public virtual string SellerTimeZone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6906,15 +6906,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>Output only. Specified the creative blocking levels to be applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeBlockingLevel")]
-        public virtual string CreativeBlockingLevel { get; set; } 
+        public virtual string CreativeBlockingLevel { get; set; }
 
         /// <summary>Output only. Specifies how the impression delivery will be paced.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryRateType")]
-        public virtual string DeliveryRateType { get; set; } 
+        public virtual string DeliveryRateType { get; set; }
 
         /// <summary>Output only. Specifies any frequency caps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frequencyCaps")]
-        public virtual System.Collections.Generic.IList<FrequencyCap> FrequencyCaps { get; set; } 
+        public virtual System.Collections.Generic.IList<FrequencyCap> FrequencyCaps { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6925,11 +6925,11 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>Additional details about the reason for disapproval.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<string> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Details { get; set; }
 
         /// <summary>The categorized reason for disapproval.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6954,64 +6954,64 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>An absolute date range, defined by a start date and an end date. Interpreted relative to Pacific
         /// time zone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("absoluteDateRange")]
-        public virtual AbsoluteDateRange AbsoluteDateRange { get; set; } 
+        public virtual AbsoluteDateRange AbsoluteDateRange { get; set; }
 
         /// <summary>The set of dimensions along which to break down the response; may be empty. If multiple dimensions
         /// are requested, the breakdown is along the Cartesian product of the requested dimensions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("breakdownDimensions")]
-        public virtual System.Collections.Generic.IList<string> BreakdownDimensions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> BreakdownDimensions { get; set; }
 
         /// <summary>The ID of the creative on which to filter; optional. This field may be set only for a filter set
         /// that accesses account-level troubleshooting data, i.e., one whose name matches the
         /// `bidders/accounts/filterSets` pattern.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeId")]
-        public virtual string CreativeId { get; set; } 
+        public virtual string CreativeId { get; set; }
 
         /// <summary>The ID of the deal on which to filter; optional. This field may be set only for a filter set that
         /// accesses account-level troubleshooting data, i.e., one whose name matches the `bidders/accounts/filterSets`
         /// pattern.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dealId")]
-        public virtual System.Nullable<long> DealId { get; set; } 
+        public virtual System.Nullable<long> DealId { get; set; }
 
         /// <summary>The environment on which to filter; optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
-        public virtual string Environment { get; set; } 
+        public virtual string Environment { get; set; }
 
         /// <summary>Creative format bidded on or allowed to bid on, can be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
-        public virtual string Format { get; set; } 
+        public virtual string Format { get; set; }
 
         /// <summary>Creative formats bidded on or allowed to bid on, can be empty. Although this field is a list, it
         /// can only be populated with a single item. A HTTP 400 bad request error will be returned in the response if
         /// you specify multiple items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formats")]
-        public virtual System.Collections.Generic.IList<string> Formats { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Formats { get; set; }
 
         /// <summary>A user-defined name of the filter set. Filter set names must be unique globally and match one of
         /// the patterns: - `bidders/filterSets` (for accessing bidder-level troubleshooting data) -
         /// `bidders/accounts/filterSets` (for accessing account-level troubleshooting data) This field is required in
         /// create operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The list of platforms on which to filter; may be empty. The filters represented by multiple
         /// platforms are ORed together (i.e., if non-empty, results must match any one of the platforms).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platforms")]
-        public virtual System.Collections.Generic.IList<string> Platforms { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Platforms { get; set; }
 
         /// <summary>For Open Bidding partners only. The list of publisher identifiers on which to filter; may be empty.
         /// The filters represented by multiple publisher identifiers are ORed together.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisherIdentifiers")]
-        public virtual System.Collections.Generic.IList<string> PublisherIdentifiers { get; set; } 
+        public virtual System.Collections.Generic.IList<string> PublisherIdentifiers { get; set; }
 
         /// <summary>An open-ended realtime time range, defined by the aggregation start timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("realtimeTimeRange")]
-        public virtual RealtimeTimeRange RealtimeTimeRange { get; set; } 
+        public virtual RealtimeTimeRange RealtimeTimeRange { get; set; }
 
         /// <summary>A relative date range, defined by an offset from today and a duration. Interpreted relative to
         /// Pacific time zone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relativeDateRange")]
-        public virtual RelativeDateRange RelativeDateRange { get; set; } 
+        public virtual RelativeDateRange RelativeDateRange { get; set; }
 
         /// <summary>For Authorized Buyers only. The list of IDs of the seller (publisher) networks on which to filter;
         /// may be empty. The filters represented by multiple seller network IDs are ORed together (i.e., if non-empty,
@@ -7019,11 +7019,11 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// ids](https://developers.google.com/authorized-buyers/rtb/downloads/seller-network-ids) file for the set of
         /// existing seller network IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sellerNetworkIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> SellerNetworkIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> SellerNetworkIds { get; set; }
 
         /// <summary>The granularity of time intervals if a time series breakdown is desired; optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesGranularity")]
-        public virtual string TimeSeriesGranularity { get; set; } 
+        public virtual string TimeSeriesGranularity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7035,15 +7035,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The number of bids with the specified creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bidCount")]
-        public virtual MetricValue BidCount { get; set; } 
+        public virtual MetricValue BidCount { get; set; }
 
         /// <summary>The ID of the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeId")]
-        public virtual string CreativeId { get; set; } 
+        public virtual string CreativeId { get; set; }
 
         /// <summary>The values of all dimensions associated with metric values in this row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowDimensions")]
-        public virtual RowDimensions RowDimensions { get; set; } 
+        public virtual RowDimensions RowDimensions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7055,23 +7055,23 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The number of bids with the specified detail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bidCount")]
-        public virtual MetricValue BidCount { get; set; } 
+        public virtual MetricValue BidCount { get; set; }
 
         /// <summary>The ID of the detail, can be numeric or text. The associated value can be looked up in the
         /// dictionary file corresponding to the DetailType in the response message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detail")]
-        public virtual string Detail { get; set; } 
+        public virtual string Detail { get; set; }
 
         /// <summary>Note: this field will be deprecated, use "detail" field instead. When "detail" field represents an
         /// integer value, this field is populated as the same integer value "detail" field represents, otherwise this
         /// field will be 0. The ID of the detail. The associated value can be looked up in the dictionary file
         /// corresponding to the DetailType in the response message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detailId")]
-        public virtual System.Nullable<int> DetailId { get; set; } 
+        public virtual System.Nullable<int> DetailId { get; set; }
 
         /// <summary>The values of all dimensions associated with metric values in this row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowDimensions")]
-        public virtual RowDimensions RowDimensions { get; set; } 
+        public virtual RowDimensions RowDimensions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7085,11 +7085,11 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>A list of application IDs to be excluded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedAppIds")]
-        public virtual System.Collections.Generic.IList<string> ExcludedAppIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExcludedAppIds { get; set; }
 
         /// <summary>A list of application IDs to be included.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetedAppIds")]
-        public virtual System.Collections.Generic.IList<string> TargetedAppIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> TargetedAppIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7101,17 +7101,17 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>The maximum number of impressions that can be served to a user within the specified time
         /// period.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxImpressions")]
-        public virtual System.Nullable<int> MaxImpressions { get; set; } 
+        public virtual System.Nullable<int> MaxImpressions { get; set; }
 
         /// <summary>The amount of time, in the units specified by time_unit_type. Defines the amount of time over which
         /// impressions per user are counted and capped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numTimeUnits")]
-        public virtual System.Nullable<int> NumTimeUnits { get; set; } 
+        public virtual System.Nullable<int> NumTimeUnits { get; set; }
 
         /// <summary>The time unit. Along with num_time_units defines the amount of time over which impressions per user
         /// are counted and capped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeUnitType")]
-        public virtual string TimeUnitType { get; set; } 
+        public virtual string TimeUnitType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7122,20 +7122,20 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>Fixed price for the specified buyer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixedPrices")]
-        public virtual System.Collections.Generic.IList<PricePerBuyer> FixedPrices { get; set; } 
+        public virtual System.Collections.Generic.IList<PricePerBuyer> FixedPrices { get; set; }
 
         /// <summary>Guaranteed impressions as a percentage. This is the percentage of guaranteed looks that the buyer
         /// is guaranteeing to buy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guaranteedImpressions")]
-        public virtual System.Nullable<long> GuaranteedImpressions { get; set; } 
+        public virtual System.Nullable<long> GuaranteedImpressions { get; set; }
 
         /// <summary>Count of guaranteed looks. Required for deal, optional for product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guaranteedLooks")]
-        public virtual System.Nullable<long> GuaranteedLooks { get; set; } 
+        public virtual System.Nullable<long> GuaranteedLooks { get; set; }
 
         /// <summary>Daily minimum looks for CPD deal types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumDailyLooks")]
-        public virtual System.Nullable<long> MinimumDailyLooks { get; set; } 
+        public virtual System.Nullable<long> MinimumDailyLooks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7146,15 +7146,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The height of the HTML snippet in pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
-        public virtual System.Nullable<int> Height { get; set; } 
+        public virtual System.Nullable<int> Height { get; set; }
 
         /// <summary>The HTML snippet that displays the ad when inserted in the web page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual string Snippet { get; set; } 
+        public virtual string Snippet { get; set; }
 
         /// <summary>The width of the HTML snippet in pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
-        public virtual System.Nullable<int> Width { get; set; } 
+        public virtual System.Nullable<int> Width { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7166,15 +7166,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>Image height in pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
-        public virtual System.Nullable<int> Height { get; set; } 
+        public virtual System.Nullable<int> Height { get; set; }
 
         /// <summary>The URL of the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>Image width in pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
-        public virtual System.Nullable<int> Width { get; set; } 
+        public virtual System.Nullable<int> Width { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7187,29 +7187,29 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>The number of impressions available to the buyer on Ad Exchange. In some cases this value may be
         /// unavailable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availableImpressions")]
-        public virtual MetricValue AvailableImpressions { get; set; } 
+        public virtual MetricValue AvailableImpressions { get; set; }
 
         /// <summary>The number of impressions for which Ad Exchange sent the buyer a bid request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bidRequests")]
-        public virtual MetricValue BidRequests { get; set; } 
+        public virtual MetricValue BidRequests { get; set; }
 
         /// <summary>The number of impressions that match the buyer's inventory pretargeting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventoryMatches")]
-        public virtual MetricValue InventoryMatches { get; set; } 
+        public virtual MetricValue InventoryMatches { get; set; }
 
         /// <summary>The number of impressions for which Ad Exchange received a response from the buyer that contained
         /// at least one applicable bid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responsesWithBids")]
-        public virtual MetricValue ResponsesWithBids { get; set; } 
+        public virtual MetricValue ResponsesWithBids { get; set; }
 
         /// <summary>The values of all dimensions associated with metric values in this row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowDimensions")]
-        public virtual RowDimensions RowDimensions { get; set; } 
+        public virtual RowDimensions RowDimensions { get; set; }
 
         /// <summary>The number of impressions for which the buyer successfully sent a response to Ad
         /// Exchange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("successfulResponses")]
-        public virtual MetricValue SuccessfulResponses { get; set; } 
+        public virtual MetricValue SuccessfulResponses { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7222,11 +7222,11 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>A list of inventory sizes to be excluded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedInventorySizes")]
-        public virtual System.Collections.Generic.IList<AdSize> ExcludedInventorySizes { get; set; } 
+        public virtual System.Collections.Generic.IList<AdSize> ExcludedInventorySizes { get; set; }
 
         /// <summary>A list of inventory sizes to be included.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetedInventorySizes")]
-        public virtual System.Collections.Generic.IList<AdSize> TargetedInventorySizes { get; set; } 
+        public virtual System.Collections.Generic.IList<AdSize> TargetedInventorySizes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7237,13 +7237,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>List of rows, each containing a set of bid metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bidMetricsRows")]
-        public virtual System.Collections.Generic.IList<BidMetricsRow> BidMetricsRows { get; set; } 
+        public virtual System.Collections.Generic.IList<BidMetricsRow> BidMetricsRows { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the
         /// ListBidMetricsRequest.pageToken field in the subsequent call to the bidMetrics.list method to retrieve the
         /// next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7254,13 +7254,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>List of rows, with counts of bid responses aggregated by callout status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("calloutStatusRows")]
-        public virtual System.Collections.Generic.IList<CalloutStatusRow> CalloutStatusRows { get; set; } 
+        public virtual System.Collections.Generic.IList<CalloutStatusRow> CalloutStatusRows { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the
         /// ListBidResponseErrorsRequest.pageToken field in the subsequent call to the bidResponseErrors.list method to
         /// retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7272,13 +7272,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>List of rows, with counts of bid responses without bids aggregated by status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bidResponseWithoutBidsStatusRows")]
-        public virtual System.Collections.Generic.IList<BidResponseWithoutBidsStatusRow> BidResponseWithoutBidsStatusRows { get; set; } 
+        public virtual System.Collections.Generic.IList<BidResponseWithoutBidsStatusRow> BidResponseWithoutBidsStatusRows { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the
         /// ListBidResponsesWithoutBidsRequest.pageToken field in the subsequent call to the
         /// bidResponsesWithoutBids.list method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7288,13 +7288,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The returned list of client users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invitations")]
-        public virtual System.Collections.Generic.IList<ClientUserInvitation> Invitations { get; set; } 
+        public virtual System.Collections.Generic.IList<ClientUserInvitation> Invitations { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the
         /// ListClientUserInvitationsRequest.pageToken field in the subsequent call to the clients.invitations.list
         /// method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7306,11 +7306,11 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// ListClientUsersRequest.pageToken field in the subsequent call to the clients.invitations.list method to
         /// retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The returned list of client users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("users")]
-        public virtual System.Collections.Generic.IList<ClientUser> Users { get; set; } 
+        public virtual System.Collections.Generic.IList<ClientUser> Users { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7320,13 +7320,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The returned list of clients.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clients")]
-        public virtual System.Collections.Generic.IList<Client> Clients { get; set; } 
+        public virtual System.Collections.Generic.IList<Client> Clients { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the ListClientsRequest.pageToken
         /// field in the subsequent call to the accounts.clients.list method to retrieve the next page of
         /// results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7337,13 +7337,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>List of rows, with counts of bids with a given creative status aggregated by creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filteredBidCreativeRows")]
-        public virtual System.Collections.Generic.IList<FilteredBidCreativeRow> FilteredBidCreativeRows { get; set; } 
+        public virtual System.Collections.Generic.IList<FilteredBidCreativeRow> FilteredBidCreativeRows { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the
         /// ListCreativeStatusBreakdownByCreativeRequest.pageToken field in the subsequent call to the
         /// filteredBids.creatives.list method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7354,17 +7354,17 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The type of detail that the detail IDs represent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detailType")]
-        public virtual string DetailType { get; set; } 
+        public virtual string DetailType { get; set; }
 
         /// <summary>List of rows, with counts of bids with a given creative status aggregated by detail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filteredBidDetailRows")]
-        public virtual System.Collections.Generic.IList<FilteredBidDetailRow> FilteredBidDetailRows { get; set; } 
+        public virtual System.Collections.Generic.IList<FilteredBidDetailRow> FilteredBidDetailRows { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the
         /// ListCreativeStatusBreakdownByDetailRequest.pageToken field in the subsequent call to the
         /// filteredBids.details.list method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7375,13 +7375,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The list of creatives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creatives")]
-        public virtual System.Collections.Generic.IList<Creative> Creatives { get; set; } 
+        public virtual System.Collections.Generic.IList<Creative> Creatives { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the
         /// ListCreativesRequest.page_token field in the subsequent call to `ListCreatives` method to retrieve the next
         /// page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7392,13 +7392,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The list of associations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("associations")]
-        public virtual System.Collections.Generic.IList<CreativeDealAssociation> Associations { get; set; } 
+        public virtual System.Collections.Generic.IList<CreativeDealAssociation> Associations { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the
         /// ListDealAssociationsRequest.page_token field in the subsequent call to 'ListDealAssociation' method to
         /// retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7409,13 +7409,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The filter sets belonging to the buyer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterSets")]
-        public virtual System.Collections.Generic.IList<FilterSet> FilterSets { get; set; } 
+        public virtual System.Collections.Generic.IList<FilterSet> FilterSets { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the
         /// ListFilterSetsRequest.pageToken field in the subsequent call to the accounts.filterSets.list method to
         /// retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7427,13 +7427,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>List of rows, with counts of filtered bid requests aggregated by callout status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("calloutStatusRows")]
-        public virtual System.Collections.Generic.IList<CalloutStatusRow> CalloutStatusRows { get; set; } 
+        public virtual System.Collections.Generic.IList<CalloutStatusRow> CalloutStatusRows { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the
         /// ListFilteredBidRequestsRequest.pageToken field in the subsequent call to the filteredBidRequests.list method
         /// to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7445,13 +7445,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>List of rows, with counts of filtered bids aggregated by filtering reason (i.e. creative
         /// status).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeStatusRows")]
-        public virtual System.Collections.Generic.IList<CreativeStatusRow> CreativeStatusRows { get; set; } 
+        public virtual System.Collections.Generic.IList<CreativeStatusRow> CreativeStatusRows { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the
         /// ListFilteredBidsRequest.pageToken field in the subsequent call to the filteredBids.list method to retrieve
         /// the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7462,13 +7462,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>List of rows, each containing a set of impression metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("impressionMetricsRows")]
-        public virtual System.Collections.Generic.IList<ImpressionMetricsRow> ImpressionMetricsRows { get; set; } 
+        public virtual System.Collections.Generic.IList<ImpressionMetricsRow> ImpressionMetricsRows { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the
         /// ListImpressionMetricsRequest.pageToken field in the subsequent call to the impressionMetrics.list method to
         /// retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7480,13 +7480,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>List of rows, with counts of losing bids aggregated by loss reason (i.e. creative
         /// status).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeStatusRows")]
-        public virtual System.Collections.Generic.IList<CreativeStatusRow> CreativeStatusRows { get; set; } 
+        public virtual System.Collections.Generic.IList<CreativeStatusRow> CreativeStatusRows { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the
         /// ListLosingBidsRequest.pageToken field in the subsequent call to the losingBids.list method to retrieve the
         /// next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7499,11 +7499,11 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// ListNonBillableWinningBidsRequest.pageToken field in the subsequent call to the nonBillableWinningBids.list
         /// method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>List of rows, with counts of bids not billed aggregated by reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonBillableWinningBidStatusRows")]
-        public virtual System.Collections.Generic.IList<NonBillableWinningBidStatusRow> NonBillableWinningBidStatusRows { get; set; } 
+        public virtual System.Collections.Generic.IList<NonBillableWinningBidStatusRow> NonBillableWinningBidStatusRows { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7514,11 +7514,11 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>List pagination support.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of matching products at their head revision number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("products")]
-        public virtual System.Collections.Generic.IList<Product> Products { get; set; } 
+        public virtual System.Collections.Generic.IList<Product> Products { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7529,11 +7529,11 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>Continuation token for fetching the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of proposals.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proposals")]
-        public virtual System.Collections.Generic.IList<Proposal> Proposals { get; set; } 
+        public virtual System.Collections.Generic.IList<Proposal> Proposals { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7544,11 +7544,11 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>List pagination support</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of matching publisher profiles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisherProfiles")]
-        public virtual System.Collections.Generic.IList<PublisherProfile> PublisherProfiles { get; set; } 
+        public virtual System.Collections.Generic.IList<PublisherProfile> PublisherProfiles { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7561,7 +7561,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// table.csv](https://storage.googleapis.com/adx-rtb-dictionaries/geo-table.csv) file for different geo
         /// criteria IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geoCriteriaIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> GeoCriteriaIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> GeoCriteriaIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7574,23 +7574,23 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>Geo criteria IDs to be included/excluded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geoTargeting")]
-        public virtual CriteriaTargeting GeoTargeting { get; set; } 
+        public virtual CriteriaTargeting GeoTargeting { get; set; }
 
         /// <summary>Inventory sizes to be included/excluded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySizeTargeting")]
-        public virtual InventorySizeTargeting InventorySizeTargeting { get; set; } 
+        public virtual InventorySizeTargeting InventorySizeTargeting { get; set; }
 
         /// <summary>Placement targeting information, e.g., URL, mobile applications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placementTargeting")]
-        public virtual PlacementTargeting PlacementTargeting { get; set; } 
+        public virtual PlacementTargeting PlacementTargeting { get; set; }
 
         /// <summary>Technology targeting information, e.g., operating system, device category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("technologyTargeting")]
-        public virtual TechnologyTargeting TechnologyTargeting { get; set; } 
+        public virtual TechnologyTargeting TechnologyTargeting { get; set; }
 
         /// <summary>Video targeting information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoTargeting")]
-        public virtual VideoTargeting VideoTargeting { get; set; } 
+        public virtual VideoTargeting VideoTargeting { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7602,14 +7602,14 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The expected value of the metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual System.Nullable<long> Value { get; set; } 
+        public virtual System.Nullable<long> Value { get; set; }
 
         /// <summary>The variance (i.e. square of the standard deviation) of the metric value. If value is exact,
         /// variance is 0. Can be used to calculate margin of error as a percentage of value, using the following
         /// formula, where Z is the standard constant that depends on the desired size of the confidence interval (e.g.
         /// for 90% confidence interval, use Z = 1.645): marginOfError = 100 * Z * sqrt(variance) / value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variance")]
-        public virtual System.Nullable<long> Variance { get; set; } 
+        public virtual System.Nullable<long> Variance { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7620,7 +7620,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>Publisher owned apps to be targeted or excluded by the publisher to display the ads in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstPartyTargeting")]
-        public virtual FirstPartyMobileApplicationTargeting FirstPartyTargeting { get; set; } 
+        public virtual FirstPartyMobileApplicationTargeting FirstPartyTargeting { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7631,19 +7631,19 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The 3-letter currency code defined in ISO 4217.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
-        public virtual string CurrencyCode { get; set; } 
+        public virtual string CurrencyCode { get; set; }
 
         /// <summary>Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999
         /// inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be
         /// positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is
         /// represented as `units`=-1 and `nanos`=-750,000,000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
-        public virtual System.Nullable<int> Nanos { get; set; } 
+        public virtual System.Nullable<int> Nanos { get; set; }
 
         /// <summary>The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US
         /// dollar.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("units")]
-        public virtual System.Nullable<long> Units { get; set; } 
+        public virtual System.Nullable<long> Units { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7654,55 +7654,55 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The name of the advertiser or sponsor, to be displayed in the ad creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserName")]
-        public virtual string AdvertiserName { get; set; } 
+        public virtual string AdvertiserName { get; set; }
 
         /// <summary>The app icon, for app download ads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appIcon")]
-        public virtual Image AppIcon { get; set; } 
+        public virtual Image AppIcon { get; set; }
 
         /// <summary>A long description of the ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("body")]
-        public virtual string Body { get; set; } 
+        public virtual string Body { get; set; }
 
         /// <summary>A label for the button that the user is supposed to click.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("callToAction")]
-        public virtual string CallToAction { get; set; } 
+        public virtual string CallToAction { get; set; }
 
         /// <summary>The URL that the browser/SDK will load when the user clicks the ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickLinkUrl")]
-        public virtual string ClickLinkUrl { get; set; } 
+        public virtual string ClickLinkUrl { get; set; }
 
         /// <summary>The URL to use for click tracking.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickTrackingUrl")]
-        public virtual string ClickTrackingUrl { get; set; } 
+        public virtual string ClickTrackingUrl { get; set; }
 
         /// <summary>A short title for the ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headline")]
-        public virtual string Headline { get; set; } 
+        public virtual string Headline { get; set; }
 
         /// <summary>A large image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual Image Image { get; set; } 
+        public virtual Image Image { get; set; }
 
         /// <summary>A smaller image, for the advertiser's logo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logo")]
-        public virtual Image Logo { get; set; } 
+        public virtual Image Logo { get; set; }
 
         /// <summary>The price of the promoted app including currency info.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceDisplayText")]
-        public virtual string PriceDisplayText { get; set; } 
+        public virtual string PriceDisplayText { get; set; }
 
         /// <summary>The app rating in the app store. Must be in the range [0-5].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("starRating")]
-        public virtual System.Nullable<double> StarRating { get; set; } 
+        public virtual System.Nullable<double> StarRating { get; set; }
 
         /// <summary>The URL to the app store to purchase/download the promoted app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeUrl")]
-        public virtual string StoreUrl { get; set; } 
+        public virtual string StoreUrl { get; set; }
 
         /// <summary>The URL to fetch a native video ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoUrl")]
-        public virtual string VideoUrl { get; set; } 
+        public virtual string VideoUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7714,15 +7714,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The number of bids with the specified status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bidCount")]
-        public virtual MetricValue BidCount { get; set; } 
+        public virtual MetricValue BidCount { get; set; }
 
         /// <summary>The values of all dimensions associated with metric values in this row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowDimensions")]
-        public virtual RowDimensions RowDimensions { get; set; } 
+        public virtual RowDimensions RowDimensions { get; set; }
 
         /// <summary>The status specifying why the winning bids were not billed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7735,11 +7735,11 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>True if open auction buyers are allowed to compete with invited buyers in this private
         /// auction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoOptimizePrivateAuction")]
-        public virtual System.Nullable<bool> AutoOptimizePrivateAuction { get; set; } 
+        public virtual System.Nullable<bool> AutoOptimizePrivateAuction { get; set; }
 
         /// <summary>Reserve price for the specified buyer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservePricesPerBuyer")]
-        public virtual System.Collections.Generic.IList<PricePerBuyer> ReservePricesPerBuyer { get; set; } 
+        public virtual System.Collections.Generic.IList<PricePerBuyer> ReservePricesPerBuyer { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7751,7 +7751,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>Fixed price for the specified buyer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixedPrices")]
-        public virtual System.Collections.Generic.IList<PricePerBuyer> FixedPrices { get; set; } 
+        public virtual System.Collections.Generic.IList<PricePerBuyer> FixedPrices { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7762,25 +7762,25 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>Output only. The timestamp for when this note was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. The role of the person (buyer/seller) creating the note.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creatorRole")]
-        public virtual string CreatorRole { get; set; } 
+        public virtual string CreatorRole { get; set; }
 
         /// <summary>The actual note to attach. (max-length: 1024 unicode code units) Note: This field may be set only
         /// when creating the resource. Modifying this field while updating the resource will result in an
         /// error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("note")]
-        public virtual string NoteValue { get; set; } 
+        public virtual string NoteValue { get; set; }
 
         /// <summary>Output only. The unique ID for the note.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("noteId")]
-        public virtual string NoteId { get; set; } 
+        public virtual string NoteId { get; set; }
 
         /// <summary>Output only. The revision number of the proposal when the note is created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proposalRevision")]
-        public virtual System.Nullable<long> ProposalRevision { get; set; } 
+        public virtual System.Nullable<long> ProposalRevision { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7791,11 +7791,11 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>IDs of operating systems to be included/excluded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatingSystemCriteria")]
-        public virtual CriteriaTargeting OperatingSystemCriteria { get; set; } 
+        public virtual CriteriaTargeting OperatingSystemCriteria { get; set; }
 
         /// <summary>IDs of operating system versions to be included/excluded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatingSystemVersionCriteria")]
-        public virtual CriteriaTargeting OperatingSystemVersionCriteria { get; set; } 
+        public virtual CriteriaTargeting OperatingSystemVersionCriteria { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7807,7 +7807,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>The reason why the proposal is being paused. This human readable message will be displayed in the
         /// seller's UI. (Max length: 1000 unicode code units.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7820,11 +7820,11 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>Mobile application targeting information in a deal. This doesn't apply to Auction
         /// Packages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileApplicationTargeting")]
-        public virtual MobileApplicationTargeting MobileApplicationTargeting { get; set; } 
+        public virtual MobileApplicationTargeting MobileApplicationTargeting { get; set; }
 
         /// <summary>URLs to be included/excluded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlTargeting")]
-        public virtual UrlTargeting UrlTargeting { get; set; } 
+        public virtual UrlTargeting UrlTargeting { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7835,7 +7835,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The platforms this restriction applies to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platforms")]
-        public virtual System.Collections.Generic.IList<string> Platforms { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Platforms { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7846,11 +7846,11 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The actual price with currency specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
-        public virtual Money Amount { get; set; } 
+        public virtual Money Amount { get; set; }
 
         /// <summary>The pricing type for the deal/product. (default: CPM)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pricingType")]
-        public virtual string PricingType { get; set; } 
+        public virtual string PricingType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7865,16 +7865,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>The list of advertisers for this price when associated with this buyer. If empty, all advertisers
         /// with this buyer pay this price.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserIds")]
-        public virtual System.Collections.Generic.IList<string> AdvertiserIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AdvertiserIds { get; set; }
 
         /// <summary>The buyer who will pay this price. If unset, all buyers can pay this price (if the advertisers
         /// match, and there's no more specific rule matching the buyer).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buyer")]
-        public virtual Buyer Buyer { get; set; } 
+        public virtual Buyer Buyer { get; set; }
 
         /// <summary>The specified price.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
-        public virtual Price Price { get; set; } 
+        public virtual Price Price { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7886,7 +7886,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>A buyer or seller specified reference ID. This can be queried in the list operations (max-length:
         /// 1024 unicode code units).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referenceId")]
-        public virtual string ReferenceId { get; set; } 
+        public virtual string ReferenceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7900,69 +7900,69 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>The proposed end time for the deal. The field will be truncated to the order of seconds during
         /// serving.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availableEndTime")]
-        public virtual object AvailableEndTime { get; set; } 
+        public virtual object AvailableEndTime { get; set; }
 
         /// <summary>Inventory availability dates. The start time will be truncated to seconds during serving. Thus, a
         /// field specified as 3:23:34.456 (HH:mm:ss.SSS) will be truncated to 3:23:34 when serving.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availableStartTime")]
-        public virtual object AvailableStartTime { get; set; } 
+        public virtual object AvailableStartTime { get; set; }
 
         /// <summary>Creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Optional contact information for the creator of this product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creatorContacts")]
-        public virtual System.Collections.Generic.IList<ContactInformation> CreatorContacts { get; set; } 
+        public virtual System.Collections.Generic.IList<ContactInformation> CreatorContacts { get; set; }
 
         /// <summary>The display name for this product as set by the seller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>If the creator has already signed off on the product, then the buyer can finalize the deal by
         /// accepting the product as is. When copying to a proposal, if any of the terms are changed, then auto_finalize
         /// is automatically set to false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasCreatorSignedOff")]
-        public virtual System.Nullable<bool> HasCreatorSignedOff { get; set; } 
+        public virtual System.Nullable<bool> HasCreatorSignedOff { get; set; }
 
         /// <summary>The unique ID for the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>The revision number of the product (auto-assigned by Marketplace).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productRevision")]
-        public virtual System.Nullable<long> ProductRevision { get; set; } 
+        public virtual System.Nullable<long> ProductRevision { get; set; }
 
         /// <summary>An ID which can be used by the Publisher Profile API to get more information about the seller that
         /// created this product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisherProfileId")]
-        public virtual string PublisherProfileId { get; set; } 
+        public virtual string PublisherProfileId { get; set; }
 
         /// <summary>Information about the seller that created this product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seller")]
-        public virtual Seller Seller { get; set; } 
+        public virtual Seller Seller { get; set; }
 
         /// <summary>The syndication product associated with the deal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syndicationProduct")]
-        public virtual string SyndicationProduct { get; set; } 
+        public virtual string SyndicationProduct { get; set; }
 
         /// <summary>Targeting that is shared between the buyer and the seller. Each targeting criterion has a specified
         /// key and for each key there is a list of inclusion value or exclusion values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingCriterion")]
-        public virtual System.Collections.Generic.IList<TargetingCriteria> TargetingCriterion { get; set; } 
+        public virtual System.Collections.Generic.IList<TargetingCriteria> TargetingCriterion { get; set; }
 
         /// <summary>The negotiable terms of the deal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("terms")]
-        public virtual DealTerms Terms { get; set; } 
+        public virtual DealTerms Terms { get; set; }
 
         /// <summary>Time of last update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The web-property code for the seller. This needs to be copied as is when adding a new deal to a
         /// proposal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webPropertyCode")]
-        public virtual string WebPropertyCode { get; set; } 
+        public virtual string WebPropertyCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7976,58 +7976,58 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>Output only. Reference to the buyer that will get billed for this proposal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billedBuyer")]
-        public virtual Buyer BilledBuyer { get; set; } 
+        public virtual Buyer BilledBuyer { get; set; }
 
         /// <summary>Reference to the buyer on the proposal. Note: This field may be set only when creating the
         /// resource. Modifying this field while updating the resource will result in an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buyer")]
-        public virtual Buyer Buyer { get; set; } 
+        public virtual Buyer Buyer { get; set; }
 
         /// <summary>Contact information for the buyer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buyerContacts")]
-        public virtual System.Collections.Generic.IList<ContactInformation> BuyerContacts { get; set; } 
+        public virtual System.Collections.Generic.IList<ContactInformation> BuyerContacts { get; set; }
 
         /// <summary>Private data for buyer. (hidden from seller).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buyerPrivateData")]
-        public virtual PrivateData BuyerPrivateData { get; set; } 
+        public virtual PrivateData BuyerPrivateData { get; set; }
 
         /// <summary>The deals associated with this proposal. For Private Auction proposals (whose deals have
         /// NonGuaranteedAuctionTerms), there will only be one deal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deals")]
-        public virtual System.Collections.Generic.IList<Deal> Deals { get; set; } 
+        public virtual System.Collections.Generic.IList<Deal> Deals { get; set; }
 
         /// <summary>The name for the proposal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Output only. True if the proposal is being renegotiated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isRenegotiating")]
-        public virtual System.Nullable<bool> IsRenegotiating { get; set; } 
+        public virtual System.Nullable<bool> IsRenegotiating { get; set; }
 
         /// <summary>Output only. True, if the buyside inventory setup is complete for this proposal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isSetupComplete")]
-        public virtual System.Nullable<bool> IsSetupComplete { get; set; } 
+        public virtual System.Nullable<bool> IsSetupComplete { get; set; }
 
         /// <summary>Output only. The role of the last user that either updated the proposal or left a
         /// comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdaterOrCommentorRole")]
-        public virtual string LastUpdaterOrCommentorRole { get; set; } 
+        public virtual string LastUpdaterOrCommentorRole { get; set; }
 
         /// <summary>Output only. The notes associated with this proposal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
-        public virtual System.Collections.Generic.IList<Note> Notes { get; set; } 
+        public virtual System.Collections.Generic.IList<Note> Notes { get; set; }
 
         /// <summary>Output only. Indicates whether the buyer/seller created the proposal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originatorRole")]
-        public virtual string OriginatorRole { get; set; } 
+        public virtual string OriginatorRole { get; set; }
 
         /// <summary>Output only. Private auction ID if this proposal is a private auction proposal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateAuctionId")]
-        public virtual string PrivateAuctionId { get; set; } 
+        public virtual string PrivateAuctionId { get; set; }
 
         /// <summary>Output only. The unique ID of the proposal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proposalId")]
-        public virtual string ProposalId { get; set; } 
+        public virtual string ProposalId { get; set; }
 
         /// <summary>Output only. The revision number for the proposal. Each update to the proposal or the deal causes
         /// the proposal revision number to auto-increment. The buyer keeps track of the last revision number they know
@@ -8035,24 +8035,24 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// then an ABORTED error is returned during the update operation to let the buyer know that a subsequent update
         /// was made.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proposalRevision")]
-        public virtual System.Nullable<long> ProposalRevision { get; set; } 
+        public virtual System.Nullable<long> ProposalRevision { get; set; }
 
         /// <summary>Output only. The current state of the proposal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proposalState")]
-        public virtual string ProposalState { get; set; } 
+        public virtual string ProposalState { get; set; }
 
         /// <summary>Reference to the seller on the proposal. Note: This field may be set only when creating the
         /// resource. Modifying this field while updating the resource will result in an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seller")]
-        public virtual Seller Seller { get; set; } 
+        public virtual Seller Seller { get; set; }
 
         /// <summary>Output only. Contact information for the seller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sellerContacts")]
-        public virtual System.Collections.Generic.IList<ContactInformation> SellerContacts { get; set; } 
+        public virtual System.Collections.Generic.IList<ContactInformation> SellerContacts { get; set; }
 
         /// <summary>Output only. The time when the proposal was last revised.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8066,31 +8066,31 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>Description on the publisher's audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audienceDescription")]
-        public virtual string AudienceDescription { get; set; } 
+        public virtual string AudienceDescription { get; set; }
 
         /// <summary>Statement explaining what's unique about publisher's business, and why buyers should partner with
         /// the publisher.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buyerPitchStatement")]
-        public virtual string BuyerPitchStatement { get; set; } 
+        public virtual string BuyerPitchStatement { get; set; }
 
         /// <summary>Contact information for direct reservation deals. This is free text entered by the publisher and
         /// may include information like names, phone numbers and email addresses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directDealsContact")]
-        public virtual string DirectDealsContact { get; set; } 
+        public virtual string DirectDealsContact { get; set; }
 
         /// <summary>Name of the publisher profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The list of domains represented in this publisher profile. Empty if this is a parent profile. These
         /// are top private domains, meaning that these will not contain a string like "photos.google.co.uk/123", but
         /// will instead contain "google.co.uk".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domains")]
-        public virtual System.Collections.Generic.IList<string> Domains { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Domains { get; set; }
 
         /// <summary>URL to publisher's Google+ page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googlePlusUrl")]
-        public virtual string GooglePlusUrl { get; set; } 
+        public virtual string GooglePlusUrl { get; set; }
 
         /// <summary>Indicates if this profile is the parent profile of the seller. A parent profile represents all the
         /// inventory from the seller, as opposed to child profile that is created to brand a portion of inventory. One
@@ -8099,46 +8099,46 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// google.ads.adexchange.buyer.v2beta1.PublisherProfile.seller. See
         /// https://support.google.com/admanager/answer/6035806 for details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isParent")]
-        public virtual System.Nullable<bool> IsParent { get; set; } 
+        public virtual System.Nullable<bool> IsParent { get; set; }
 
         /// <summary>A Google public URL to the logo for this publisher profile. The logo is stored as a PNG, JPG, or
         /// GIF image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logoUrl")]
-        public virtual string LogoUrl { get; set; } 
+        public virtual string LogoUrl { get; set; }
 
         /// <summary>URL to additional marketing and sales materials.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaKitUrl")]
-        public virtual string MediaKitUrl { get; set; } 
+        public virtual string MediaKitUrl { get; set; }
 
         /// <summary>Overview of the publisher.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overview")]
-        public virtual string Overview { get; set; } 
+        public virtual string Overview { get; set; }
 
         /// <summary>Contact information for programmatic deals. This is free text entered by the publisher and may
         /// include information like names, phone numbers and email addresses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("programmaticDealsContact")]
-        public virtual string ProgrammaticDealsContact { get; set; } 
+        public virtual string ProgrammaticDealsContact { get; set; }
 
         /// <summary>Unique ID for publisher profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisherProfileId")]
-        public virtual string PublisherProfileId { get; set; } 
+        public virtual string PublisherProfileId { get; set; }
 
         /// <summary>URL to a publisher rate card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rateCardInfoUrl")]
-        public virtual string RateCardInfoUrl { get; set; } 
+        public virtual string RateCardInfoUrl { get; set; }
 
         /// <summary>URL to a sample content page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("samplePageUrl")]
-        public virtual string SamplePageUrl { get; set; } 
+        public virtual string SamplePageUrl { get; set; }
 
         /// <summary>Seller of the publisher profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seller")]
-        public virtual Seller Seller { get; set; } 
+        public virtual Seller Seller { get; set; }
 
         /// <summary>Up to three key metrics and rankings. Max 100 characters each. For example "#1 Mobile News Site for
         /// 20 Straight Months".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topHeadlines")]
-        public virtual System.Collections.Generic.IList<string> TopHeadlines { get; set; } 
+        public virtual System.Collections.Generic.IList<string> TopHeadlines { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8150,7 +8150,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The start timestamp of the real-time RTB metrics aggregation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTimestamp")]
-        public virtual object StartTimestamp { get; set; } 
+        public virtual object StartTimestamp { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8164,12 +8164,12 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>The number of days in the requested date range, e.g., for a range spanning today: 1. For a range
         /// spanning the last 7 days: 7.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("durationDays")]
-        public virtual System.Nullable<int> DurationDays { get; set; } 
+        public virtual System.Nullable<int> DurationDays { get; set; }
 
         /// <summary>The end date of the filter set, specified as the number of days before today, e.g., for a range
         /// where the last date is today: 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offsetDays")]
-        public virtual System.Nullable<int> OffsetDays { get; set; } 
+        public virtual System.Nullable<int> OffsetDays { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8180,7 +8180,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The association between a creative and a deal that should be removed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("association")]
-        public virtual CreativeDealAssociation Association { get; set; } 
+        public virtual CreativeDealAssociation Association { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8202,11 +8202,11 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// buyers/apis/reference/rest/v2beta1/bidders.accounts.filterSets#FilterSet.BreakdownDimension) was
         /// requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisherIdentifier")]
-        public virtual string PublisherIdentifier { get; set; } 
+        public virtual string PublisherIdentifier { get; set; }
 
         /// <summary>The time interval that this row represents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeInterval")]
-        public virtual TimeInterval TimeInterval { get; set; } 
+        public virtual TimeInterval TimeInterval { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8217,7 +8217,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The security types in this context.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securities")]
-        public virtual System.Collections.Generic.IList<string> Securities { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Securities { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8230,11 +8230,11 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>The unique ID for the seller. The seller fills in this field. The seller account ID is then
         /// available to buyer in the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual string AccountId { get; set; } 
+        public virtual string AccountId { get; set; }
 
         /// <summary>Optional sub-account ID for the seller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subAccountId")]
-        public virtual string SubAccountId { get; set; } 
+        public virtual string SubAccountId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8245,27 +8245,27 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>Matches all contexts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("all")]
-        public virtual string All { get; set; } 
+        public virtual string All { get; set; }
 
         /// <summary>Matches impressions for a particular app type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appType")]
-        public virtual AppContext AppType { get; set; } 
+        public virtual AppContext AppType { get; set; }
 
         /// <summary>Matches impressions for a particular auction type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auctionType")]
-        public virtual AuctionContext AuctionType { get; set; } 
+        public virtual AuctionContext AuctionType { get; set; }
 
         /// <summary>Matches impressions coming from users *or* publishers in a specific location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual LocationContext Location { get; set; } 
+        public virtual LocationContext Location { get; set; }
 
         /// <summary>Matches impressions coming from a particular platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platform")]
-        public virtual PlatformContext Platform { get; set; } 
+        public virtual PlatformContext Platform { get; set; }
 
         /// <summary>Matches impressions for a particular security type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityType")]
-        public virtual SecurityContext SecurityType { get; set; } 
+        public virtual SecurityContext SecurityType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8278,23 +8278,23 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The contexts for the restriction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contexts")]
-        public virtual System.Collections.Generic.IList<ServingContext> Contexts { get; set; } 
+        public virtual System.Collections.Generic.IList<ServingContext> Contexts { get; set; }
 
         /// <summary>Disapproval bound to this restriction. Only present if status=DISAPPROVED. Can be used to filter
         /// the response of the creatives.list method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disapproval")]
-        public virtual Disapproval Disapproval { get; set; } 
+        public virtual Disapproval Disapproval { get; set; }
 
         /// <summary>Any disapprovals bound to this restriction. Only present if status=DISAPPROVED. Can be used to
         /// filter the response of the creatives.list method. Deprecated; please use disapproval field
         /// instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disapprovalReasons")]
-        public virtual System.Collections.Generic.IList<Disapproval> DisapprovalReasons { get; set; } 
+        public virtual System.Collections.Generic.IList<Disapproval> DisapprovalReasons { get; set; }
 
         /// <summary>The status of the creative in this context (for example, it has been explicitly disapproved or is
         /// pending review).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8306,11 +8306,11 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The height of the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
-        public virtual System.Nullable<int> Height { get; set; } 
+        public virtual System.Nullable<int> Height { get; set; }
 
         /// <summary>The width of the creative</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
-        public virtual System.Nullable<int> Width { get; set; } 
+        public virtual System.Nullable<int> Width { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8329,17 +8329,17 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The list of values to exclude from targeting. Each value is AND'd together.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusions")]
-        public virtual System.Collections.Generic.IList<TargetingValue> Exclusions { get; set; } 
+        public virtual System.Collections.Generic.IList<TargetingValue> Exclusions { get; set; }
 
         /// <summary>The list of value to include as part of the targeting. Each value is OR'd together.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inclusions")]
-        public virtual System.Collections.Generic.IList<TargetingValue> Inclusions { get; set; } 
+        public virtual System.Collections.Generic.IList<TargetingValue> Inclusions { get; set; }
 
         /// <summary>The key representing the shared targeting criterion. Targeting criteria defined by Google ad
         /// servers will begin with GOOG_. Third parties may define their own keys. A list of permissible keys along
         /// with the acceptable values will be provided as part of the external documentation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8350,20 +8350,20 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The creative size value to include/exclude. Filled in when key = GOOG_CREATIVE_SIZE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeSizeValue")]
-        public virtual CreativeSize CreativeSizeValue { get; set; } 
+        public virtual CreativeSize CreativeSizeValue { get; set; }
 
         /// <summary>The daypart targeting to include / exclude. Filled in when the key is GOOG_DAYPART_TARGETING. The
         /// definition of this targeting is derived from the structure used by Ad Manager.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dayPartTargetingValue")]
-        public virtual DayPartTargeting DayPartTargetingValue { get; set; } 
+        public virtual DayPartTargeting DayPartTargetingValue { get; set; }
 
         /// <summary>The long value to include/exclude.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longValue")]
-        public virtual System.Nullable<long> LongValue { get; set; } 
+        public virtual System.Nullable<long> LongValue { get; set; }
 
         /// <summary>The string value to include/exclude.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
-        public virtual string StringValue { get; set; } 
+        public virtual string StringValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8374,15 +8374,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>IDs of device capabilities to be included/excluded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceCapabilityTargeting")]
-        public virtual CriteriaTargeting DeviceCapabilityTargeting { get; set; } 
+        public virtual CriteriaTargeting DeviceCapabilityTargeting { get; set; }
 
         /// <summary>IDs of device categories to be included/excluded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceCategoryTargeting")]
-        public virtual CriteriaTargeting DeviceCategoryTargeting { get; set; } 
+        public virtual CriteriaTargeting DeviceCategoryTargeting { get; set; }
 
         /// <summary>Operating system related targeting information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatingSystemTargeting")]
-        public virtual OperatingSystemTargeting OperatingSystemTargeting { get; set; } 
+        public virtual OperatingSystemTargeting OperatingSystemTargeting { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8393,11 +8393,11 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The timestamp marking the end of the range (exclusive) for which data is included.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>The timestamp marking the start of the range (inclusive) for which data is included.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8411,20 +8411,20 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value
         /// "24:00:00" for scenarios like business closing time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hours")]
-        public virtual System.Nullable<int> Hours { get; set; } 
+        public virtual System.Nullable<int> Hours { get; set; }
 
         /// <summary>Minutes of hour of day. Must be from 0 to 59.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
-        public virtual System.Nullable<int> Minutes { get; set; } 
+        public virtual System.Nullable<int> Minutes { get; set; }
 
         /// <summary>Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
-        public virtual System.Nullable<int> Nanos { get; set; } 
+        public virtual System.Nullable<int> Nanos { get; set; }
 
         /// <summary>Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it
         /// allows leap-seconds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
-        public virtual System.Nullable<int> Seconds { get; set; } 
+        public virtual System.Nullable<int> Seconds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8437,11 +8437,11 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>A list of URLs to be excluded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedUrls")]
-        public virtual System.Collections.Generic.IList<string> ExcludedUrls { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExcludedUrls { get; set; }
 
         /// <summary>A list of URLs to be included.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetedUrls")]
-        public virtual System.Collections.Generic.IList<string> TargetedUrls { get; set; } 
+        public virtual System.Collections.Generic.IList<string> TargetedUrls { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8452,12 +8452,12 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     {
         /// <summary>The URL to fetch a video ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoUrl")]
-        public virtual string VideoUrl { get; set; } 
+        public virtual string VideoUrl { get; set; }
 
         /// <summary>The contents of a VAST document for a video ad. This document should conform to the VAST 2.0 or 3.0
         /// standard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoVastXml")]
-        public virtual string VideoVastXml { get; set; } 
+        public virtual string VideoVastXml { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8469,12 +8469,12 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>A list of video positions to be excluded. Position types can either be included or excluded
         /// (XOR).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedPositionTypes")]
-        public virtual System.Collections.Generic.IList<string> ExcludedPositionTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExcludedPositionTypes { get; set; }
 
         /// <summary>A list of video positions to be included. When the included list is present, the excluded list must
         /// be empty. When the excluded list is present, the included list must be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetedPositionTypes")]
-        public virtual System.Collections.Generic.IList<string> TargetedPositionTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> TargetedPositionTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8487,7 +8487,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// permission to ad-exchange-buyside-reports@google.com to write to the topic. This should be the full resource
         /// name in "projects/{project_id}/topics/{topic_id}" format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topic")]
-        public virtual string Topic { get; set; } 
+        public virtual string Topic { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

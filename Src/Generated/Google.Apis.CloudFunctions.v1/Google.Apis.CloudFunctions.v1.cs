@@ -1296,12 +1296,12 @@ namespace Google.Apis.CloudFunctions.v1.Data
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
-        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; }
 
         /// <summary>Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
         /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual string Service { get; set; } 
+        public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1316,11 +1316,11 @@ namespace Google.Apis.CloudFunctions.v1.Data
         /// <summary>Specifies the identities that do not cause logging for this type of permission. Follows the same
         /// format of Binding.members.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
-        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; }
 
         /// <summary>The log type that this config enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logType")]
-        public virtual string LogType { get; set; } 
+        public virtual string LogType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1335,7 +1335,7 @@ namespace Google.Apis.CloudFunctions.v1.Data
         /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; } 
+        public virtual Expr Condition { get; set; }
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
@@ -1357,12 +1357,12 @@ namespace Google.Apis.CloudFunctions.v1.Data
         /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
         /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1373,7 +1373,7 @@ namespace Google.Apis.CloudFunctions.v1.Data
     {
         /// <summary>Required. Input to be passed to the function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual string Data { get; set; } 
+        public virtual string Data { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1384,16 +1384,16 @@ namespace Google.Apis.CloudFunctions.v1.Data
     {
         /// <summary>Either system or user-function generated error. Set if execution was not successful.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual string Error { get; set; } 
+        public virtual string Error { get; set; }
 
         /// <summary>Execution id of function invocation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionId")]
-        public virtual string ExecutionId { get; set; } 
+        public virtual string ExecutionId { get; set; }
 
         /// <summary>Result populated for successful execution of synchronous function. Will not be populated if
         /// function does not return a result through context.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
-        public virtual string Result { get; set; } 
+        public virtual string Result { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1405,51 +1405,51 @@ namespace Google.Apis.CloudFunctions.v1.Data
     {
         /// <summary>The amount of memory in MB available for a function. Defaults to 256MB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availableMemoryMb")]
-        public virtual System.Nullable<int> AvailableMemoryMb { get; set; } 
+        public virtual System.Nullable<int> AvailableMemoryMb { get; set; }
 
         /// <summary>Output only. The Cloud Build ID of the latest successful deployment of the function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildId")]
-        public virtual string BuildId { get; set; } 
+        public virtual string BuildId { get; set; }
 
         /// <summary>User-provided description of a function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The name of the function (as defined in source code) that will be executed. Defaults to the
         /// resource name suffix, if not specified. For backward compatibility, if function with given name is not
         /// found, then the system will try to use function named "function". For Node.js this is name of a function
         /// exported by the module specified in `source_location`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entryPoint")]
-        public virtual string EntryPoint { get; set; } 
+        public virtual string EntryPoint { get; set; }
 
         /// <summary>Environment variables that shall be available during function execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environmentVariables")]
-        public virtual System.Collections.Generic.IDictionary<string,string> EnvironmentVariables { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> EnvironmentVariables { get; set; }
 
         /// <summary>A source that fires events in response to a condition in another service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTrigger")]
-        public virtual EventTrigger EventTrigger { get; set; } 
+        public virtual EventTrigger EventTrigger { get; set; }
 
         /// <summary>An HTTPS endpoint type of source that can be triggered via URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpsTrigger")]
-        public virtual HttpsTrigger HttpsTrigger { get; set; } 
+        public virtual HttpsTrigger HttpsTrigger { get; set; }
 
         /// <summary>The ingress settings for the function, controlling what traffic can reach it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ingressSettings")]
-        public virtual string IngressSettings { get; set; } 
+        public virtual string IngressSettings { get; set; }
 
         /// <summary>Labels associated with this Cloud Function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The limit on the maximum number of function instances that may coexist at a given time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxInstances")]
-        public virtual System.Nullable<int> MaxInstances { get; set; } 
+        public virtual System.Nullable<int> MaxInstances { get; set; }
 
         /// <summary>A user-defined name of the function. Function names must be unique globally and match pattern
         /// `projects/locations/functions`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI,
         /// or the short name of the network resource. If the short network name is used, the network must belong to the
@@ -1460,50 +1460,50 @@ namespace Google.Apis.CloudFunctions.v1.Data
         /// documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud
         /// projects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
-        public virtual string Network { get; set; } 
+        public virtual string Network { get; set; }
 
         /// <summary>The runtime in which to run the function. Required when deploying a new function, optional when
         /// updating an existing function. For a complete list of possible choices, see the [`gcloud` command
         /// reference](/sdk/gcloud/reference/functions/deploy#--runtime).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtime")]
-        public virtual string Runtime { get; set; } 
+        public virtual string Runtime { get; set; }
 
         /// <summary>The email of the function's service account. If empty, defaults to
         /// `{project_id}@appspot.gserviceaccount.com`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
-        public virtual string ServiceAccountEmail { get; set; } 
+        public virtual string ServiceAccountEmail { get; set; }
 
         /// <summary>The Google Cloud Storage URL, starting with gs://, pointing to the zip archive which contains the
         /// function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceArchiveUrl")]
-        public virtual string SourceArchiveUrl { get; set; } 
+        public virtual string SourceArchiveUrl { get; set; }
 
         /// <summary>**Beta Feature** The source repository where a function is hosted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceRepository")]
-        public virtual SourceRepository SourceRepository { get; set; } 
+        public virtual SourceRepository SourceRepository { get; set; }
 
         /// <summary>The Google Cloud Storage signed URL used for source uploading, generated by
         /// google.cloud.functions.v1.GenerateUploadUrl</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceUploadUrl")]
-        public virtual string SourceUploadUrl { get; set; } 
+        public virtual string SourceUploadUrl { get; set; }
 
         /// <summary>Output only. Status of the function deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The function execution timeout. Execution is considered failed and can be terminated if the
         /// function is not completed at the end of the timeout period. Defaults to 60 seconds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
-        public virtual object Timeout { get; set; } 
+        public virtual object Timeout { get; set; }
 
         /// <summary>Output only. The last update timestamp of a Cloud Function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>Output only. The version identifier of the Cloud Function. Each deployment attempt results in a new
         /// version of a function being created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionId")]
-        public virtual System.Nullable<long> VersionId { get; set; } 
+        public virtual System.Nullable<long> VersionId { get; set; }
 
         /// <summary>The VPC Network Connector that this cloud function can connect to. It can be either the fully-
         /// qualified URI, or the short name of the network connector resource. The format of this field is
@@ -1511,11 +1511,11 @@ namespace Google.Apis.CloudFunctions.v1.Data
         /// replace it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on
         /// connecting Cloud projects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcConnector")]
-        public virtual string VpcConnector { get; set; } 
+        public virtual string VpcConnector { get; set; }
 
         /// <summary>The egress settings for the connector, controlling what traffic is diverted through it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcConnectorEgressSettings")]
-        public virtual string VpcConnectorEgressSettings { get; set; } 
+        public virtual string VpcConnectorEgressSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1532,11 +1532,11 @@ namespace Google.Apis.CloudFunctions.v1.Data
         /// generates the event. For example, action for a Google Cloud Storage Object is 'change'. These parts are
         /// lower case.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
-        public virtual string EventType { get; set; } 
+        public virtual string EventType { get; set; }
 
         /// <summary>Specifies policy for failed executions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failurePolicy")]
-        public virtual FailurePolicy FailurePolicy { get; set; } 
+        public virtual FailurePolicy FailurePolicy { get; set; }
 
         /// <summary>Required. The resource(s) from which to observe events, for example, `projects/_/buckets/myBucket`.
         /// Not all syntactically correct values are accepted by all services. For example: 1. The authorization model
@@ -1547,13 +1547,13 @@ namespace Google.Apis.CloudFunctions.v1.Data
         /// short names when creating an `EventTrigger`. These will always be returned in the normalized "long" format.
         /// See each *service's* documentation for supported formats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
-        public virtual string Resource { get; set; } 
+        public virtual string Resource { get; set; }
 
         /// <summary>The hostname of the service that should be observed. If no string is provided, the default service
         /// implementing the API will be used. For example, `storage.googleapis.com` is the default for all event types
         /// in the `google.storage` namespace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual string Service { get; set; } 
+        public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1575,21 +1575,21 @@ namespace Google.Apis.CloudFunctions.v1.Data
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
         /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1601,7 +1601,7 @@ namespace Google.Apis.CloudFunctions.v1.Data
     {
         /// <summary>If specified, then the function will be retried in case of a failure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retry")]
-        public virtual Retry Retry { get; set; } 
+        public virtual Retry Retry { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1612,7 +1612,7 @@ namespace Google.Apis.CloudFunctions.v1.Data
     {
         /// <summary>The optional version of function. If not set, default, current version is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionId")]
-        public virtual System.Nullable<ulong> VersionId { get; set; } 
+        public virtual System.Nullable<ulong> VersionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1624,7 +1624,7 @@ namespace Google.Apis.CloudFunctions.v1.Data
         /// <summary>The generated Google Cloud Storage signed URL that should be used for function source code
         /// download.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("downloadUrl")]
-        public virtual string DownloadUrl { get; set; } 
+        public virtual string DownloadUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1643,7 +1643,7 @@ namespace Google.Apis.CloudFunctions.v1.Data
         /// <summary>The generated Google Cloud Storage signed URL that should be used for a function source code
         /// upload. The uploaded file should be a zip archive which contains a function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadUrl")]
-        public virtual string UploadUrl { get; set; } 
+        public virtual string UploadUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1654,7 +1654,7 @@ namespace Google.Apis.CloudFunctions.v1.Data
     {
         /// <summary>Output only. The deployed url for the function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1665,17 +1665,17 @@ namespace Google.Apis.CloudFunctions.v1.Data
     {
         /// <summary>The functions that match the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functions")]
-        public virtual System.Collections.Generic.IList<CloudFunction> Functions { get; set; } 
+        public virtual System.Collections.Generic.IList<CloudFunction> Functions { get; set; }
 
         /// <summary>If not empty, indicates that there may be more functions that match the request; this value should
         /// be passed in a new google.cloud.functions.v1.ListFunctionsRequest to get more functions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Locations that could not be reached. The response does not include any functions from these
         /// locations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1686,11 +1686,11 @@ namespace Google.Apis.CloudFunctions.v1.Data
     {
         /// <summary>A list of locations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
+        public virtual System.Collections.Generic.IList<Location> Locations { get; set; }
 
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1701,11 +1701,11 @@ namespace Google.Apis.CloudFunctions.v1.Data
     {
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1716,25 +1716,25 @@ namespace Google.Apis.CloudFunctions.v1.Data
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-
         /// east1"}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The canonical id for this location. For example: `"us-east1"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>Service-specific metadata. For example the available capacity at the given location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>Resource name for the location, which may vary between implementations. For example: `"projects
         /// /example-project/locations/us-east1"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1746,23 +1746,23 @@ namespace Google.Apis.CloudFunctions.v1.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -1770,7 +1770,7 @@ namespace Google.Apis.CloudFunctions.v1.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1782,29 +1782,29 @@ namespace Google.Apis.CloudFunctions.v1.Data
         /// <summary>The Cloud Build ID of the function created or updated by an API call. This field is only populated
         /// for Create and Update operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildId")]
-        public virtual string BuildId { get; set; } 
+        public virtual string BuildId { get; set; }
 
         /// <summary>The original request that started the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("request")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Request { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Request { get; set; }
 
         /// <summary>Target of the operation - for example
         /// projects/project-1/locations/region-1/functions/function-1</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; } 
+        public virtual string Target { get; set; }
 
         /// <summary>Type of operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The last update timestamp of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>Version id of the function created or updated by an API call. This field is only populated for
         /// Create and Update operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionId")]
-        public virtual System.Nullable<long> VersionId { get; set; } 
+        public virtual System.Nullable<long> VersionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1834,12 +1834,12 @@ namespace Google.Apis.CloudFunctions.v1.Data
     {
         /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
-        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; }
 
         /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
         /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
         /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
@@ -1850,7 +1850,7 @@ namespace Google.Apis.CloudFunctions.v1.Data
         /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
         /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
         /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
@@ -1864,7 +1864,7 @@ namespace Google.Apis.CloudFunctions.v1.Data
         /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
     }    
 
@@ -1884,13 +1884,13 @@ namespace Google.Apis.CloudFunctions.v1.Data
         /// a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
         /// might reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual Policy Policy { get; set; } 
+        public virtual Policy Policy { get; set; }
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
         /// will be modified. If no mask is provided, the following default mask is used: `paths: "bindings,
         /// etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1903,7 +1903,7 @@ namespace Google.Apis.CloudFunctions.v1.Data
         /// <summary>Output only. The URL pointing to the hosted repository where the function were defined at the time
         /// of deployment. It always points to a specific commit in the format described above.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployedUrl")]
-        public virtual string DeployedUrl { get; set; } 
+        public virtual string DeployedUrl { get; set; }
 
         /// <summary>The URL pointing to the hosted repository where the function is defined. There are supported Cloud
         /// Source Repository URLs in the following formats: To refer to a specific commit:
@@ -1913,7 +1913,7 @@ namespace Google.Apis.CloudFunctions.v1.Data
         /// `https://source.developers.google.com/projects/repos/fixed-aliases/paths` You may omit `paths` if you want
         /// to use the main directory.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1928,17 +1928,17 @@ namespace Google.Apis.CloudFunctions.v1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1951,7 +1951,7 @@ namespace Google.Apis.CloudFunctions.v1.Data
         /// 'storage.*') are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1962,7 +1962,7 @@ namespace Google.Apis.CloudFunctions.v1.Data
     {
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

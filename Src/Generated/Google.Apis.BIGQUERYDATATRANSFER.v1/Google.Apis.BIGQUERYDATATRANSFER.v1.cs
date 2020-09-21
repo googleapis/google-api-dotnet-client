@@ -2879,7 +2879,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
     {
         /// <summary>If set to `true`, the credentials exist and are valid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasValidCreds")]
-        public virtual System.Nullable<bool> HasValidCreds { get; set; } 
+        public virtual System.Nullable<bool> HasValidCreds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2891,83 +2891,83 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
     {
         /// <summary>Indicates the type of authorization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizationType")]
-        public virtual string AuthorizationType { get; set; } 
+        public virtual string AuthorizationType { get; set; }
 
         /// <summary>Data source client id which should be used to receive refresh token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
-        public virtual string ClientId { get; set; } 
+        public virtual string ClientId { get; set; }
 
         /// <summary>Specifies whether the data source supports automatic data refresh for the past few days, and how
         /// it's supported. For some data sources, data might not be complete until a few days later, so it's useful to
         /// refresh data automatically.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataRefreshType")]
-        public virtual string DataRefreshType { get; set; } 
+        public virtual string DataRefreshType { get; set; }
 
         /// <summary>Data source id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
-        public virtual string DataSourceId { get; set; } 
+        public virtual string DataSourceId { get; set; }
 
         /// <summary>Default data refresh window on days. Only meaningful when `data_refresh_type` =
         /// `SLIDING_WINDOW`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultDataRefreshWindowDays")]
-        public virtual System.Nullable<int> DefaultDataRefreshWindowDays { get; set; } 
+        public virtual System.Nullable<int> DefaultDataRefreshWindowDays { get; set; }
 
         /// <summary>Default data transfer schedule. Examples of valid schedules include: `1st,3rd monday of month
         /// 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultSchedule")]
-        public virtual string DefaultSchedule { get; set; } 
+        public virtual string DefaultSchedule { get; set; }
 
         /// <summary>User friendly data source description string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>User friendly data source name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Url for the help document for this data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("helpUrl")]
-        public virtual string HelpUrl { get; set; } 
+        public virtual string HelpUrl { get; set; }
 
         /// <summary>Disables backfilling and manual run scheduling for the data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manualRunsDisabled")]
-        public virtual System.Nullable<bool> ManualRunsDisabled { get; set; } 
+        public virtual System.Nullable<bool> ManualRunsDisabled { get; set; }
 
         /// <summary>The minimum interval for scheduler to schedule runs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumScheduleInterval")]
-        public virtual object MinimumScheduleInterval { get; set; } 
+        public virtual object MinimumScheduleInterval { get; set; }
 
         /// <summary>Output only. Data source resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Data source parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IList<DataSourceParameter> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IList<DataSourceParameter> Parameters { get; set; }
 
         /// <summary>Api auth scopes for which refresh token needs to be obtained. These are scopes needed by a data
         /// source to prepare data and ingest them into BigQuery, e.g.,
         /// https://www.googleapis.com/auth/bigquery</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
-        public virtual System.Collections.Generic.IList<string> Scopes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
 
         /// <summary>Specifies whether the data source supports a user defined schedule, or operates on the default
         /// schedule. When set to `true`, user can override default schedule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportsCustomSchedule")]
-        public virtual System.Nullable<bool> SupportsCustomSchedule { get; set; } 
+        public virtual System.Nullable<bool> SupportsCustomSchedule { get; set; }
 
         /// <summary>Deprecated. This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportsMultipleTransfers")]
-        public virtual System.Nullable<bool> SupportsMultipleTransfers { get; set; } 
+        public virtual System.Nullable<bool> SupportsMultipleTransfers { get; set; }
 
         /// <summary>Deprecated. This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferType")]
-        public virtual string TransferType { get; set; } 
+        public virtual string TransferType { get; set; }
 
         /// <summary>The number of seconds to wait for an update from the data source before the Data Transfer Service
         /// marks the transfer as FAILED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateDeadlineSeconds")]
-        public virtual System.Nullable<int> UpdateDeadlineSeconds { get; set; } 
+        public virtual System.Nullable<int> UpdateDeadlineSeconds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2981,68 +2981,68 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
     {
         /// <summary>All possible values for the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedValues")]
-        public virtual System.Collections.Generic.IList<string> AllowedValues { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AllowedValues { get; set; }
 
         /// <summary>If true, it should not be used in new transfers, and it should not be visible to users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deprecated")]
-        public virtual System.Nullable<bool> Deprecated { get; set; } 
+        public virtual System.Nullable<bool> Deprecated { get; set; }
 
         /// <summary>Parameter description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Parameter display name in the user interface.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Deprecated. This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual System.Collections.Generic.IList<DataSourceParameter> Fields { get; set; } 
+        public virtual System.Collections.Generic.IList<DataSourceParameter> Fields { get; set; }
 
         /// <summary>Cannot be changed after initial creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("immutable")]
-        public virtual System.Nullable<bool> Immutable { get; set; } 
+        public virtual System.Nullable<bool> Immutable { get; set; }
 
         /// <summary>For integer and double values specifies maxminum allowed value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxValue")]
-        public virtual System.Nullable<double> MaxValue { get; set; } 
+        public virtual System.Nullable<double> MaxValue { get; set; }
 
         /// <summary>For integer and double values specifies minimum allowed value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minValue")]
-        public virtual System.Nullable<double> MinValue { get; set; } 
+        public virtual System.Nullable<double> MinValue { get; set; }
 
         /// <summary>Parameter identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paramId")]
-        public virtual string ParamId { get; set; } 
+        public virtual string ParamId { get; set; }
 
         /// <summary>Deprecated. This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recurse")]
-        public virtual System.Nullable<bool> Recurse { get; set; } 
+        public virtual System.Nullable<bool> Recurse { get; set; }
 
         /// <summary>Deprecated. This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repeated")]
-        public virtual System.Nullable<bool> Repeated { get; set; } 
+        public virtual System.Nullable<bool> Repeated { get; set; }
 
         /// <summary>Is parameter required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("required")]
-        public virtual System.Nullable<bool> Required { get; set; } 
+        public virtual System.Nullable<bool> Required { get; set; }
 
         /// <summary>Parameter type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>Description of the requirements for this field, in case the user input does not fulfill the regex
         /// pattern or min/max values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validationDescription")]
-        public virtual string ValidationDescription { get; set; } 
+        public virtual string ValidationDescription { get; set; }
 
         /// <summary>URL to a help document to further explain the naming requirements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validationHelpUrl")]
-        public virtual string ValidationHelpUrl { get; set; } 
+        public virtual string ValidationHelpUrl { get; set; }
 
         /// <summary>Regular expression which can be used for parameter validation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validationRegex")]
-        public virtual string ValidationRegex { get; set; } 
+        public virtual string ValidationRegex { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3053,7 +3053,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
     {
         /// <summary>If true, email notifications will be sent on transfer run failures.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableFailureEmail")]
-        public virtual System.Nullable<bool> EnableFailureEmail { get; set; } 
+        public virtual System.Nullable<bool> EnableFailureEmail { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3074,12 +3074,12 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
     {
         /// <summary>List of supported data sources and their transfer settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSources")]
-        public virtual System.Collections.Generic.IList<DataSource> DataSources { get; set; } 
+        public virtual System.Collections.Generic.IList<DataSource> DataSources { get; set; }
 
         /// <summary>Output only. The next-pagination token. For multiple-page list results, this token can be used as
         /// the `ListDataSourcesRequest.page_token` to request the next page of list results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3090,11 +3090,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
     {
         /// <summary>A list of locations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
+        public virtual System.Collections.Generic.IList<Location> Locations { get; set; }
 
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3106,11 +3106,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         /// <summary>Output only. The next-pagination token. For multiple-page list results, this token can be used as
         /// the `ListTransferConfigsRequest.page_token` to request the next page of list results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Output only. The stored pipeline transfer configurations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferConfigs")]
-        public virtual System.Collections.Generic.IList<TransferConfig> TransferConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<TransferConfig> TransferConfigs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3122,11 +3122,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         /// <summary>Output only. The next-pagination token. For multiple-page list results, this token can be used as
         /// the `GetTransferRunLogRequest.page_token` to request the next page of list results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Output only. The stored pipeline transfer messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferMessages")]
-        public virtual System.Collections.Generic.IList<TransferMessage> TransferMessages { get; set; } 
+        public virtual System.Collections.Generic.IList<TransferMessage> TransferMessages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3138,11 +3138,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         /// <summary>Output only. The next-pagination token. For multiple-page list results, this token can be used as
         /// the `ListTransferRunsRequest.page_token` to request the next page of list results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Output only. The stored pipeline transfer runs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferRuns")]
-        public virtual System.Collections.Generic.IList<TransferRun> TransferRuns { get; set; } 
+        public virtual System.Collections.Generic.IList<TransferRun> TransferRuns { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3153,25 +3153,25 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-
         /// east1"}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The canonical id for this location. For example: `"us-east1"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>Service-specific metadata. For example the available capacity at the given location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>Resource name for the location, which may vary between implementations. For example: `"projects
         /// /example-project/locations/us-east1"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3184,20 +3184,20 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         /// runs can be started on ad-hoc basis using StartManualTransferRuns API. When automatic scheduling is
         /// disabled, the TransferConfig.schedule field will be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableAutoScheduling")]
-        public virtual System.Nullable<bool> DisableAutoScheduling { get; set; } 
+        public virtual System.Nullable<bool> DisableAutoScheduling { get; set; }
 
         /// <summary>Defines time to stop scheduling transfer runs. A transfer run cannot be scheduled at or after the
         /// end time. The end time can be changed at any moment. The time when a data transfer can be trigerred manually
         /// is not limited by this option.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Specifies time to start scheduling transfer runs. The first run will be scheduled at or after the
         /// start time according to a recurrence pattern defined in the schedule string. The start time can be changed
         /// at any moment. The time when a data transfer can be trigerred manually is not limited by this
         /// option.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3209,12 +3209,12 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         /// <summary>Required. End time of the range of transfer runs. For example,
         /// `"2017-05-30T00:00:00+00:00"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Required. Start time of the range of transfer runs. For example,
         /// `"2017-05-25T00:00:00+00:00"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3225,7 +3225,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
     {
         /// <summary>The transfer runs that were scheduled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runs")]
-        public virtual System.Collections.Generic.IList<TransferRun> Runs { get; set; } 
+        public virtual System.Collections.Generic.IList<TransferRun> Runs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3237,11 +3237,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         /// <summary>Specific run_time for a transfer run to be started. The requested_run_time must not be in the
         /// future.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedRunTime")]
-        public virtual object RequestedRunTime { get; set; } 
+        public virtual object RequestedRunTime { get; set; }
 
         /// <summary>Time range for the transfer runs that should be started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedTimeRange")]
-        public virtual TimeRange RequestedTimeRange { get; set; } 
+        public virtual TimeRange RequestedTimeRange { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3252,7 +3252,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
     {
         /// <summary>The transfer runs that were created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runs")]
-        public virtual System.Collections.Generic.IList<TransferRun> Runs { get; set; } 
+        public virtual System.Collections.Generic.IList<TransferRun> Runs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3267,17 +3267,17 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3291,13 +3291,13 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         /// must not be in the future. Creates transfer runs where run_time is in the range between start_time
         /// (inclusive) and end_time (exclusive).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Start time of the range of transfer runs. For example, `"2017-05-25T00:00:00+00:00"`. The
         /// start_time must be strictly less than the end_time. Creates transfer runs where run_time is in the range
         /// between start_time (inclusive) and end_time (exclusive).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3314,32 +3314,32 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         /// ingesting data for just [today-1]. Only valid if the data source supports the feature. Set the value to 0 to
         /// use the default value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataRefreshWindowDays")]
-        public virtual System.Nullable<int> DataRefreshWindowDays { get; set; } 
+        public virtual System.Nullable<int> DataRefreshWindowDays { get; set; }
 
         /// <summary>Data source id. Cannot be changed once data transfer is created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
-        public virtual string DataSourceId { get; set; } 
+        public virtual string DataSourceId { get; set; }
 
         /// <summary>Output only. Region in which BigQuery dataset is located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetRegion")]
-        public virtual string DatasetRegion { get; set; } 
+        public virtual string DatasetRegion { get; set; }
 
         /// <summary>The BigQuery target dataset id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationDatasetId")]
-        public virtual string DestinationDatasetId { get; set; } 
+        public virtual string DestinationDatasetId { get; set; }
 
         /// <summary>Is this config disabled. When set to true, no runs are scheduled for a given transfer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
-        public virtual System.Nullable<bool> Disabled { get; set; } 
+        public virtual System.Nullable<bool> Disabled { get; set; }
 
         /// <summary>User specified display name for the data transfer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Email notifications will be sent according to these preferences to the email address of the user
         /// who owns this transfer config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailPreferences")]
-        public virtual EmailPreferences EmailPreferences { get; set; } 
+        public virtual EmailPreferences EmailPreferences { get; set; }
 
         /// <summary>The resource name of the transfer config. Transfer config names have the form of
         /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. The name is automatically generated
@@ -3347,20 +3347,20 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         /// config_id is not provided, usually a uuid, even though it is not guaranteed or required, will be generated
         /// for config_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. Next time when data transfer will run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextRunTime")]
-        public virtual object NextRunTime { get; set; } 
+        public virtual object NextRunTime { get; set; }
 
         /// <summary>Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer
         /// config finish.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationPubsubTopic")]
-        public virtual string NotificationPubsubTopic { get; set; } 
+        public virtual string NotificationPubsubTopic { get; set; }
 
         /// <summary>Data transfer specific parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Params__ { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
 
         /// <summary>Data transfer schedule. If the data source does not support a custom schedule, this should be
         /// empty. If it is empty, the default value for the data source will be used. The specified times are in UTC.
@@ -3369,23 +3369,23 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         /// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
         /// NOTE: the granularity should be at least 8 hours, or less frequent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
-        public virtual string Schedule { get; set; } 
+        public virtual string Schedule { get; set; }
 
         /// <summary>Options customizing the data transfer schedule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleOptions")]
-        public virtual ScheduleOptions ScheduleOptions { get; set; } 
+        public virtual ScheduleOptions ScheduleOptions { get; set; }
 
         /// <summary>Output only. State of the most recently updated transfer run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Output only. Data transfer modification time. Ignored by server on input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>Deprecated. Unique ID of the user on whose behalf transfer is done.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
-        public virtual System.Nullable<long> UserId { get; set; } 
+        public virtual System.Nullable<long> UserId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3396,15 +3396,15 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
     {
         /// <summary>Message text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageText")]
-        public virtual string MessageText { get; set; } 
+        public virtual string MessageText { get; set; }
 
         /// <summary>Time when message was logged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageTime")]
-        public virtual object MessageTime { get; set; } 
+        public virtual object MessageTime { get; set; }
 
         /// <summary>Message severity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
-        public virtual string Severity { get; set; } 
+        public virtual string Severity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3415,71 +3415,71 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
     {
         /// <summary>Output only. Data source id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
-        public virtual string DataSourceId { get; set; } 
+        public virtual string DataSourceId { get; set; }
 
         /// <summary>Output only. The BigQuery target dataset id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationDatasetId")]
-        public virtual string DestinationDatasetId { get; set; } 
+        public virtual string DestinationDatasetId { get; set; }
 
         /// <summary>Output only. Email notifications will be sent according to these preferences to the email address
         /// of the user who owns the transfer config this run was derived from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailPreferences")]
-        public virtual EmailPreferences EmailPreferences { get; set; } 
+        public virtual EmailPreferences EmailPreferences { get; set; }
 
         /// <summary>Output only. Time when transfer run ended. Parameter ignored by server for input
         /// requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Status of the transfer run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorStatus")]
-        public virtual Status ErrorStatus { get; set; } 
+        public virtual Status ErrorStatus { get; set; }
 
         /// <summary>The resource name of the transfer run. Transfer run names have the form
         /// `projects/{project_id}/locations/{location}/transferConfigs/{config_id}/runs/{run_id}`. The name is ignored
         /// when creating a transfer run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. Pub/Sub topic where a notification will be sent after this transfer run
         /// finishes</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationPubsubTopic")]
-        public virtual string NotificationPubsubTopic { get; set; } 
+        public virtual string NotificationPubsubTopic { get; set; }
 
         /// <summary>Output only. Data transfer specific parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Params__ { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
 
         /// <summary>For batch transfer runs, specifies the date and time of the data should be ingested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runTime")]
-        public virtual object RunTime { get; set; } 
+        public virtual object RunTime { get; set; }
 
         /// <summary>Output only. Describes the schedule of this transfer run if it was created as part of a regular
         /// schedule. For batch transfer runs that are scheduled manually, this is empty. NOTE: the system might choose
         /// to delay the schedule depending on the current load, so `schedule_time` doesn't always match this.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
-        public virtual string Schedule { get; set; } 
+        public virtual string Schedule { get; set; }
 
         /// <summary>Minimum time after which a transfer run can be started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]
-        public virtual object ScheduleTime { get; set; } 
+        public virtual object ScheduleTime { get; set; }
 
         /// <summary>Output only. Time when transfer run was started. Parameter ignored by server for input
         /// requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>Data transfer run state. Ignored for input requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Output only. Last time the data transfer run state was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>Deprecated. Unique ID of the user on whose behalf transfer is done.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
-        public virtual System.Nullable<long> UserId { get; set; } 
+        public virtual System.Nullable<long> UserId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

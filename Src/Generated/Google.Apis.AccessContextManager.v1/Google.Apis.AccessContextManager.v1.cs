@@ -1827,25 +1827,25 @@ namespace Google.Apis.AccessContextManager.v1.Data
     {
         /// <summary>A `BasicLevel` composed of `Conditions`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("basic")]
-        public virtual BasicLevel Basic { get; set; } 
+        public virtual BasicLevel Basic { get; set; }
 
         /// <summary>A `CustomLevel` written in the Common Expression Language.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("custom")]
-        public virtual CustomLevel Custom { get; set; } 
+        public virtual CustomLevel Custom { get; set; }
 
         /// <summary>Description of the `AccessLevel` and its use. Does not affect behavior.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Required. Resource name for the Access Level. The `short_name` component must begin with a letter
         /// and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/accessLevels/{short_name}`. The
         /// maximum length of the `short_name` component is 50 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Human readable title. Must be unique within the Policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1861,20 +1861,20 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// be a strongly validated etag, meaning that two Access Polices will be identical if and only if their etags
         /// are identical. Clients should not expect this to be in any specific format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable
         /// once created. Format: `organizations/{organization_id}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
-        public virtual string Parent { get; set; } 
+        public virtual string Parent { get; set; }
 
         /// <summary>Required. Human readable title. Does not affect behavior.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
     }    
 
@@ -1886,11 +1886,11 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel`
         /// to be applied. Default behavior is AND.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("combiningFunction")]
-        public virtual string CombiningFunction { get; set; } 
+        public virtual string CombiningFunction { get; set; }
 
         /// <summary>Required. A list of requirements for the `AccessLevel` to be granted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
-        public virtual System.Collections.Generic.IList<Condition> Conditions { get; set; } 
+        public virtual System.Collections.Generic.IList<Condition> Conditions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1912,7 +1912,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// This field is not required. If etag is not provided, the operation will be performed as if a valid etag is
         /// provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
     }    
 
@@ -1922,7 +1922,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
     {
         /// <summary>List of all the Service Perimeter instances in the Access Policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicePerimeters")]
-        public virtual System.Collections.Generic.IList<ServicePerimeter> ServicePerimeters { get; set; } 
+        public virtual System.Collections.Generic.IList<ServicePerimeter> ServicePerimeters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1937,7 +1937,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// <summary>Device specific restrictions, all restrictions must hold for the Condition to be true. If not
         /// specified, all devices are allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("devicePolicy")]
-        public virtual DevicePolicy DevicePolicy { get; set; } 
+        public virtual DevicePolicy DevicePolicy { get; set; }
 
         /// <summary>CIDR block IP subnetwork specification. May be IPv4 or IPv6. Note that for a CIDR IP address block,
         /// the specified IP address portion must be properly truncated (i.e. all the host bits must be zero) or the
@@ -1946,29 +1946,29 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// be in one of the listed subnets in order for this Condition to be true. If empty, all IP addresses are
         /// allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipSubnetworks")]
-        public virtual System.Collections.Generic.IList<string> IpSubnetworks { get; set; } 
+        public virtual System.Collections.Generic.IList<string> IpSubnetworks { get; set; }
 
         /// <summary>The request must be made by one of the provided user or service accounts. Groups are not supported.
         /// Syntax: `user:{emailid}` `serviceAccount:{emailid}` If not specified, a request may come from any
         /// user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields,
         /// each field must be false for the Condition overall to be satisfied. Defaults to false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negate")]
-        public virtual System.Nullable<bool> Negate { get; set; } 
+        public virtual System.Nullable<bool> Negate { get; set; }
 
         /// <summary>The request must originate from one of the provided countries/regions. Must be valid ISO 3166-1
         /// alpha-2 codes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regions")]
-        public virtual System.Collections.Generic.IList<string> Regions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Regions { get; set; }
 
         /// <summary>A list of other access levels defined in the same `Policy`, referenced by resource name.
         /// Referencing an `AccessLevel` which does not exist is an error. All access levels listed must be granted for
         /// the Condition to be true. Example: "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiredAccessLevels")]
-        public virtual System.Collections.Generic.IList<string> RequiredAccessLevels { get; set; } 
+        public virtual System.Collections.Generic.IList<string> RequiredAccessLevels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1980,7 +1980,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
     {
         /// <summary>Required. A Cloud CEL expression evaluating to a boolean.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expr")]
-        public virtual Expr Expr { get; set; } 
+        public virtual Expr Expr { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1996,28 +1996,28 @@ namespace Google.Apis.AccessContextManager.v1.Data
     {
         /// <summary>Allowed device management levels, an empty list allows all management levels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedDeviceManagementLevels")]
-        public virtual System.Collections.Generic.IList<string> AllowedDeviceManagementLevels { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AllowedDeviceManagementLevels { get; set; }
 
         /// <summary>Allowed encryptions statuses, an empty list allows all statuses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedEncryptionStatuses")]
-        public virtual System.Collections.Generic.IList<string> AllowedEncryptionStatuses { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AllowedEncryptionStatuses { get; set; }
 
         /// <summary>Allowed OS versions, an empty list allows all types and all versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("osConstraints")]
-        public virtual System.Collections.Generic.IList<OsConstraint> OsConstraints { get; set; } 
+        public virtual System.Collections.Generic.IList<OsConstraint> OsConstraints { get; set; }
 
         /// <summary>Whether the device needs to be approved by the customer admin.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireAdminApproval")]
-        public virtual System.Nullable<bool> RequireAdminApproval { get; set; } 
+        public virtual System.Nullable<bool> RequireAdminApproval { get; set; }
 
         /// <summary>Whether the device needs to be corp owned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireCorpOwned")]
-        public virtual System.Nullable<bool> RequireCorpOwned { get; set; } 
+        public virtual System.Nullable<bool> RequireCorpOwned { get; set; }
 
         /// <summary>Whether or not screenlock is required for the DevicePolicy to be true. Defaults to
         /// `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireScreenlock")]
-        public virtual System.Nullable<bool> RequireScreenlock { get; set; } 
+        public virtual System.Nullable<bool> RequireScreenlock { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2049,21 +2049,21 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
         /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2074,12 +2074,12 @@ namespace Google.Apis.AccessContextManager.v1.Data
     {
         /// <summary>List of the Access Level instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessLevels")]
-        public virtual System.Collections.Generic.IList<AccessLevel> AccessLevels { get; set; } 
+        public virtual System.Collections.Generic.IList<AccessLevel> AccessLevels { get; set; }
 
         /// <summary>The pagination token to retrieve the next page of results. If the value is empty, no further
         /// results remain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2090,12 +2090,12 @@ namespace Google.Apis.AccessContextManager.v1.Data
     {
         /// <summary>List of the AccessPolicy instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessPolicies")]
-        public virtual System.Collections.Generic.IList<AccessPolicy> AccessPolicies { get; set; } 
+        public virtual System.Collections.Generic.IList<AccessPolicy> AccessPolicies { get; set; }
 
         /// <summary>The pagination token to retrieve the next page of results. If the value is empty, no further
         /// results remain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2106,11 +2106,11 @@ namespace Google.Apis.AccessContextManager.v1.Data
     {
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2122,11 +2122,11 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// <summary>The pagination token to retrieve the next page of results. If the value is empty, no further
         /// results remain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>List of the Service Perimeter instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicePerimeters")]
-        public virtual System.Collections.Generic.IList<ServicePerimeter> ServicePerimeters { get; set; } 
+        public virtual System.Collections.Generic.IList<ServicePerimeter> ServicePerimeters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2138,23 +2138,23 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -2162,7 +2162,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2174,17 +2174,17 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// <summary>The minimum allowed OS version. If not set, any version of this OS satisfies the constraint.
         /// Format: `"major.minor.patch"`. Examples: `"10.5.301"`, `"9.2.1"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumVersion")]
-        public virtual string MinimumVersion { get; set; } 
+        public virtual string MinimumVersion { get; set; }
 
         /// <summary>Required. The allowed OS type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("osType")]
-        public virtual string OsType { get; set; } 
+        public virtual string OsType { get; set; }
 
         /// <summary>Only allows requests from devices with a verified Chrome OS. Verifications includes requirements
         /// that the device is enterprise-managed, conformant to domain policies, and the caller has permission to call
         /// the API targeted by the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireVerifiedChromeOs")]
-        public virtual System.Nullable<bool> RequireVerifiedChromeOs { get; set; } 
+        public virtual System.Nullable<bool> RequireVerifiedChromeOs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2197,7 +2197,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// <summary>Required. The desired Access Levels that should replace all existing Access Levels in the Access
         /// Policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessLevels")]
-        public virtual System.Collections.Generic.IList<AccessLevel> AccessLevels { get; set; } 
+        public virtual System.Collections.Generic.IList<AccessLevel> AccessLevels { get; set; }
 
         /// <summary>Optional. The etag for the version of the Access Policy that this replace operation is to be
         /// performed on. If, at the time of replace, the etag for the Access Policy stored in Access Context Manager is
@@ -2205,7 +2205,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// This field is not required. If etag is not provided, the operation will be performed as if a valid etag is
         /// provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
     }    
 
@@ -2215,7 +2215,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
     {
         /// <summary>List of the Access Level instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessLevels")]
-        public virtual System.Collections.Generic.IList<AccessLevel> AccessLevels { get; set; } 
+        public virtual System.Collections.Generic.IList<AccessLevel> AccessLevels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2231,12 +2231,12 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// This field is not required. If etag is not provided, the operation will be performed as if a valid etag is
         /// provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Required. The desired Service Perimeters that should replace all existing Service Perimeters in the
         /// Access Policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicePerimeters")]
-        public virtual System.Collections.Generic.IList<ServicePerimeter> ServicePerimeters { get; set; } 
+        public virtual System.Collections.Generic.IList<ServicePerimeter> ServicePerimeters { get; set; }
 
     }    
 
@@ -2246,7 +2246,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
     {
         /// <summary>List of the Service Perimeter instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicePerimeters")]
-        public virtual System.Collections.Generic.IList<ServicePerimeter> ServicePerimeters { get; set; } 
+        public virtual System.Collections.Generic.IList<ServicePerimeter> ServicePerimeters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2263,35 +2263,35 @@ namespace Google.Apis.AccessContextManager.v1.Data
     {
         /// <summary>Description of the `ServicePerimeter` and its use. Does not affect behavior.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Required. Resource name for the ServicePerimeter. The `short_name` component must begin with a
         /// letter and only include alphanumeric and '_'. Format:
         /// `accessPolicies/{policy_id}/servicePerimeters/{short_name}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Perimeter type indicator. A single project is allowed to be a member of single regular perimeter,
         /// but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being
         /// included in regular perimeter. For perimeter bridges, the restricted service list as well as access level
         /// lists must be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("perimeterType")]
-        public virtual string PerimeterType { get; set; } 
+        public virtual string PerimeterType { get; set; }
 
         /// <summary>Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test
         /// ServicePerimeter configuration without enforcing actual access restrictions. Only allowed to be set when the
         /// "use_explicit_dry_run_spec" flag is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
-        public virtual ServicePerimeterConfig Spec { get; set; } 
+        public virtual ServicePerimeterConfig Spec { get; set; }
 
         /// <summary>Current ServicePerimeter configuration. Specifies sets of resources, restricted services and access
         /// levels that determine perimeter content and boundaries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual ServicePerimeterConfig Status { get; set; } 
+        public virtual ServicePerimeterConfig Status { get; set; }
 
         /// <summary>Human readable title. Must be unique within the Policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists for all Service
         /// Perimeters, and that spec is identical to the status for those Service Perimeters. When this flag is set, it
@@ -2301,7 +2301,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// analyzing the differences between currently enforced and suggested restrictions. use_explicit_dry_run_spec
         /// must bet set to True if any of the fields in the spec are set to non-default values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useExplicitDryRunSpec")]
-        public virtual System.Nullable<bool> UseExplicitDryRunSpec { get; set; } 
+        public virtual System.Nullable<bool> UseExplicitDryRunSpec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2318,22 +2318,22 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// Example: `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`. For Service Perimeter Bridge, must be
         /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessLevels")]
-        public virtual System.Collections.Generic.IList<string> AccessLevels { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AccessLevels { get; set; }
 
         /// <summary>A list of Google Cloud resources that are inside of the service perimeter. Currently only projects
         /// are allowed. Format: `projects/{project_number}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<string> Resources { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Resources { get; set; }
 
         /// <summary>Google Cloud services that are subject to the Service Perimeter restrictions. For example, if
         /// `storage.googleapis.com` is specified, access to the storage buckets inside the perimeter must meet the
         /// perimeter's access restrictions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedServices")]
-        public virtual System.Collections.Generic.IList<string> RestrictedServices { get; set; } 
+        public virtual System.Collections.Generic.IList<string> RestrictedServices { get; set; }
 
         /// <summary>Configuration for APIs allowed within Perimeter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcAccessibleServices")]
-        public virtual VpcAccessibleServices VpcAccessibleServices { get; set; } 
+        public virtual VpcAccessibleServices VpcAccessibleServices { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2348,17 +2348,17 @@ namespace Google.Apis.AccessContextManager.v1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2371,12 +2371,12 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// True. You can specify a list of individual services, as well as include the 'RESTRICTED-SERVICES' value,
         /// which automatically includes all of the services protected by the perimeter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedServices")]
-        public virtual System.Collections.Generic.IList<string> AllowedServices { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AllowedServices { get; set; }
 
         /// <summary>Whether to restrict API calls within the Service Perimeter to the list of APIs specified in
         /// 'allowed_services'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableRestriction")]
-        public virtual System.Nullable<bool> EnableRestriction { get; set; } 
+        public virtual System.Nullable<bool> EnableRestriction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

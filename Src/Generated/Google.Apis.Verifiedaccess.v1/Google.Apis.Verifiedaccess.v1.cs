@@ -367,11 +367,11 @@ namespace Google.Apis.Verifiedaccess.v1.Data
         /// <summary>Challenge generated with the old signing key (this will only be present during key
         /// rotation)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternativeChallenge")]
-        public virtual SignedData AlternativeChallenge { get; set; } 
+        public virtual SignedData AlternativeChallenge { get; set; }
 
         /// <summary>Generated challenge</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("challenge")]
-        public virtual SignedData ChallengeValue { get; set; } 
+        public virtual SignedData ChallengeValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -392,11 +392,11 @@ namespace Google.Apis.Verifiedaccess.v1.Data
     {
         /// <summary>The data to be signed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual string Data { get; set; } 
+        public virtual string Data { get; set; }
 
         /// <summary>The signature of the data field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]
-        public virtual string Signature { get; set; } 
+        public virtual string Signature { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -407,14 +407,14 @@ namespace Google.Apis.Verifiedaccess.v1.Data
     {
         /// <summary>The generated response to the challenge</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("challengeResponse")]
-        public virtual SignedData ChallengeResponse { get; set; } 
+        public virtual SignedData ChallengeResponse { get; set; }
 
         /// <summary>Service can optionally provide identity information about the device or user associated with the
         /// key. For an EMK, this value is the enrolled domain. For an EUK, this value is the user's email address. If
         /// present, this value will be checked against contents of the response, and verification will fail if there is
         /// no match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expectedIdentity")]
-        public virtual string ExpectedIdentity { get; set; } 
+        public virtual string ExpectedIdentity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -425,24 +425,24 @@ namespace Google.Apis.Verifiedaccess.v1.Data
     {
         /// <summary>Device enrollment id is returned in this field (for the machine response only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceEnrollmentId")]
-        public virtual string DeviceEnrollmentId { get; set; } 
+        public virtual string DeviceEnrollmentId { get; set; }
 
         /// <summary>Device permanent id is returned in this field (for the machine response only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("devicePermanentId")]
-        public virtual string DevicePermanentId { get; set; } 
+        public virtual string DevicePermanentId { get; set; }
 
         /// <summary>Certificate Signing Request (in the SPKAC format, base64 encoded) is returned in this field. This
         /// field will be set only if device has included CSR in its challenge response. (the option to include CSR is
         /// now available for both user and machine responses)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signedPublicKeyAndChallenge")]
-        public virtual string SignedPublicKeyAndChallenge { get; set; } 
+        public virtual string SignedPublicKeyAndChallenge { get; set; }
 
         /// <summary>For EMCert check, device permanent id is returned here. For EUCert check,
         /// signed_public_key_and_challenge [base64 encoded] is returned if present, otherwise empty string is returned.
         /// This field is deprecated, please use device_permanent_id or signed_public_key_and_challenge
         /// fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verificationOutput")]
-        public virtual string VerificationOutput { get; set; } 
+        public virtual string VerificationOutput { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

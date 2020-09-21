@@ -1581,12 +1581,12 @@ namespace Google.Apis.Translate.v3.Data
     {
         /// <summary>Optional. Glossaries to be applied for translation. It's keyed by target language code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glossaries")]
-        public virtual System.Collections.Generic.IDictionary<string,TranslateTextGlossaryConfig> Glossaries { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, TranslateTextGlossaryConfig> Glossaries { get; set; }
 
         /// <summary>Required. Input configurations. The total number of files matched should be <= 1000. The total
         /// content size should be <= 100M Unicode codepoints. The files must use UTF-8 encoding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputConfigs")]
-        public virtual System.Collections.Generic.IList<InputConfig> InputConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<InputConfig> InputConfigs { get; set; }
 
         /// <summary>Optional. The labels with user-defined metadata for the request. Label keys and values can be no
         /// longer than 63 characters (Unicode codepoints), can only contain lowercase letters, numeric characters,
@@ -1594,7 +1594,7 @@ namespace Google.Apis.Translate.v3.Data
         /// start with a letter. See https://cloud.google.com/translate/docs/advanced/labels for more
         /// information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Optional. The models to use for translation. Map's key is target language code. Map's value is
         /// model name. Value can be a built-in general model, or an AutoML Translation model. The value format depends
@@ -1604,20 +1604,20 @@ namespace Google.Apis.Translate.v3.Data
         /// the map is empty or a specific model is not requested for a language pair, then default google model (nmt)
         /// is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("models")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Models { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Models { get; set; }
 
         /// <summary>Required. Output configuration. If 2 input configs match to the same file (that is, same input
         /// path), we don't generate output for duplicate inputs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
-        public virtual OutputConfig OutputConfig { get; set; } 
+        public virtual OutputConfig OutputConfig { get; set; }
 
         /// <summary>Required. Source language code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceLanguageCode")]
-        public virtual string SourceLanguageCode { get; set; } 
+        public virtual string SourceLanguageCode { get; set; }
 
         /// <summary>Required. Specify up to 10 language codes here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetLanguageCodes")]
-        public virtual System.Collections.Generic.IList<string> TargetLanguageCodes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> TargetLanguageCodes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1635,7 +1635,7 @@ namespace Google.Apis.Translate.v3.Data
     {
         /// <summary>The content of the input stored as a string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual string Content { get; set; } 
+        public virtual string Content { get; set; }
 
         /// <summary>Optional. The labels with user-defined metadata for the request. Label keys and values can be no
         /// longer than 63 characters (Unicode codepoints), can only contain lowercase letters, numeric characters,
@@ -1643,19 +1643,19 @@ namespace Google.Apis.Translate.v3.Data
         /// start with a letter. See https://cloud.google.com/translate/docs/advanced/labels for more
         /// information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Optional. The format of the source text, for example, "text/html", "text/plain". If left blank, the
         /// MIME type defaults to "text/html".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-        public virtual string MimeType { get; set; } 
+        public virtual string MimeType { get; set; }
 
         /// <summary>Optional. The language detection model to be used. Format: `projects/{project-number-or-
         /// id}/locations/{location-id}/models/language-detection/{model-id}` Only one language detection model is
         /// currently supported: `projects/{project-number-or-id}/locations/{location-id}/models/language-
         /// detection/default`. If not specified, the default model is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
-        public virtual string Model { get; set; } 
+        public virtual string Model { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1667,7 +1667,7 @@ namespace Google.Apis.Translate.v3.Data
         /// <summary>A list of detected languages sorted by detection confidence in descending order. The most probable
         /// language first.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languages")]
-        public virtual System.Collections.Generic.IList<DetectedLanguage> Languages { get; set; } 
+        public virtual System.Collections.Generic.IList<DetectedLanguage> Languages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1678,11 +1678,11 @@ namespace Google.Apis.Translate.v3.Data
     {
         /// <summary>The confidence of the detection result for this language.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
-        public virtual System.Nullable<float> Confidence { get; set; } 
+        public virtual System.Nullable<float> Confidence { get; set; }
 
         /// <summary>The BCP-47 language code of source content in the request, detected automatically.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; } 
+        public virtual string LanguageCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1706,7 +1706,7 @@ namespace Google.Apis.Translate.v3.Data
         /// can only be used by one batch translation job at a time. Otherwise an INVALID_ARGUMENT (400) error is
         /// returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputUriPrefix")]
-        public virtual string OutputUriPrefix { get; set; } 
+        public virtual string OutputUriPrefix { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1717,7 +1717,7 @@ namespace Google.Apis.Translate.v3.Data
     {
         /// <summary>Required. Source data URI. For example, `gs://my_bucket/my_object`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUri")]
-        public virtual string InputUri { get; set; } 
+        public virtual string InputUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1728,33 +1728,33 @@ namespace Google.Apis.Translate.v3.Data
     {
         /// <summary>Output only. When the glossary creation was finished.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Output only. The number of entries defined in the glossary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entryCount")]
-        public virtual System.Nullable<int> EntryCount { get; set; } 
+        public virtual System.Nullable<int> EntryCount { get; set; }
 
         /// <summary>Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode
         /// codepoints.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputConfig")]
-        public virtual GlossaryInputConfig InputConfig { get; set; } 
+        public virtual GlossaryInputConfig InputConfig { get; set; }
 
         /// <summary>Used with equivalent term set glossaries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCodesSet")]
-        public virtual LanguageCodesSet LanguageCodesSet { get; set; } 
+        public virtual LanguageCodesSet LanguageCodesSet { get; set; }
 
         /// <summary>Used with unidirectional glossaries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languagePair")]
-        public virtual LanguageCodePair LanguagePair { get; set; } 
+        public virtual LanguageCodePair LanguagePair { get; set; }
 
         /// <summary>Required. The resource name of the glossary. Glossary names have the form `projects/{project-
         /// number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. When CreateGlossary was called.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("submitTime")]
-        public virtual object SubmitTime { get; set; } 
+        public virtual object SubmitTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1773,7 +1773,7 @@ namespace Google.Apis.Translate.v3.Data
         /// multiple languages. See documentation for more information -
         /// [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
-        public virtual GcsSource GcsSource { get; set; } 
+        public virtual GcsSource GcsSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1792,13 +1792,13 @@ namespace Google.Apis.Translate.v3.Data
         /// file. csvlint --delimiter='\t' your_input_file.tsv The other supported file extensions are `.txt` or
         /// `.html`, which is treated as a single large chunk of text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
-        public virtual GcsSource GcsSource { get; set; } 
+        public virtual GcsSource GcsSource { get; set; }
 
         /// <summary>Optional. Can be "text/plain" or "text/html". For `.tsv`, "text/html" is used if mime_type is
         /// missing. For `.html`, this field must be "text/html" or empty. For `.txt`, this field must be "text/plain"
         /// or empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-        public virtual string MimeType { get; set; } 
+        public virtual string MimeType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1810,12 +1810,12 @@ namespace Google.Apis.Translate.v3.Data
         /// <summary>Required. The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact
         /// match for GlossaryTerm.language_code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceLanguageCode")]
-        public virtual string SourceLanguageCode { get; set; } 
+        public virtual string SourceLanguageCode { get; set; }
 
         /// <summary>Required. The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an
         /// exact match for GlossaryTerm.language_code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetLanguageCode")]
-        public virtual string TargetLanguageCode { get; set; } 
+        public virtual string TargetLanguageCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1827,7 +1827,7 @@ namespace Google.Apis.Translate.v3.Data
         /// <summary>The BCP-47 language code(s) for terms defined in the glossary. All entries are unique. The list
         /// contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCodes")]
-        public virtual System.Collections.Generic.IList<string> LanguageCodes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> LanguageCodes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1838,12 +1838,12 @@ namespace Google.Apis.Translate.v3.Data
     {
         /// <summary>The list of glossaries for a project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glossaries")]
-        public virtual System.Collections.Generic.IList<Glossary> Glossaries { get; set; } 
+        public virtual System.Collections.Generic.IList<Glossary> Glossaries { get; set; }
 
         /// <summary>A token to retrieve a page of results. Pass this value in the [ListGlossariesRequest.page_token]
         /// field in the subsequent call to `ListGlossaries` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1854,11 +1854,11 @@ namespace Google.Apis.Translate.v3.Data
     {
         /// <summary>A list of locations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
+        public virtual System.Collections.Generic.IList<Location> Locations { get; set; }
 
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1869,11 +1869,11 @@ namespace Google.Apis.Translate.v3.Data
     {
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1884,25 +1884,25 @@ namespace Google.Apis.Translate.v3.Data
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-
         /// east1"}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The canonical id for this location. For example: `"us-east1"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>Service-specific metadata. For example the available capacity at the given location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>Resource name for the location, which may vary between implementations. For example: `"projects
         /// /example-project/locations/us-east1"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1914,23 +1914,23 @@ namespace Google.Apis.Translate.v3.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -1938,7 +1938,7 @@ namespace Google.Apis.Translate.v3.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1979,7 +1979,7 @@ namespace Google.Apis.Translate.v3.Data
         /// will be generated that contains error details. glossary_error_file has format of
         /// gs://translation_test/a_b_c_'trg'_glossary_errors.[extension]</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
-        public virtual GcsDestination GcsDestination { get; set; } 
+        public virtual GcsDestination GcsDestination { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1994,17 +1994,17 @@ namespace Google.Apis.Translate.v3.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2017,21 +2017,21 @@ namespace Google.Apis.Translate.v3.Data
         /// <summary>Human readable name of the language localized in the display language specified in the
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Supported language code, generally consisting of its ISO 639-1 identifier, for example, 'en', 'ja'.
         /// In certain cases, BCP-47 codes including language and region identifiers are returned (for example, 'zh-TW'
         /// and 'zh-CN')</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; } 
+        public virtual string LanguageCode { get; set; }
 
         /// <summary>Can be used as source language.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportSource")]
-        public virtual System.Nullable<bool> SupportSource { get; set; } 
+        public virtual System.Nullable<bool> SupportSource { get; set; }
 
         /// <summary>Can be used as target language.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportTarget")]
-        public virtual System.Nullable<bool> SupportTarget { get; set; } 
+        public virtual System.Nullable<bool> SupportTarget { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2043,7 +2043,7 @@ namespace Google.Apis.Translate.v3.Data
         /// <summary>A list of supported language responses. This list contains an entry for each language the
         /// Translation API supports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languages")]
-        public virtual System.Collections.Generic.IList<SupportedLanguage> Languages { get; set; } 
+        public virtual System.Collections.Generic.IList<SupportedLanguage> Languages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2057,11 +2057,11 @@ namespace Google.Apis.Translate.v3.Data
         /// provided custom glossary: `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-
         /// id}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glossary")]
-        public virtual string Glossary { get; set; } 
+        public virtual string Glossary { get; set; }
 
         /// <summary>Optional. Indicates match is case-insensitive. Default value is false if missing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreCase")]
-        public virtual System.Nullable<bool> IgnoreCase { get; set; } 
+        public virtual System.Nullable<bool> IgnoreCase { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2073,12 +2073,12 @@ namespace Google.Apis.Translate.v3.Data
         /// <summary>Required. The content of the input in string format. We recommend the total content be less than
         /// 30k codepoints. Use BatchTranslateText for larger text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contents")]
-        public virtual System.Collections.Generic.IList<string> Contents { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Contents { get; set; }
 
         /// <summary>Optional. Glossary to be applied. The glossary must be within the same region (have the same
         /// location-id) as the model, otherwise an INVALID_ARGUMENT (400) error is returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glossaryConfig")]
-        public virtual TranslateTextGlossaryConfig GlossaryConfig { get; set; } 
+        public virtual TranslateTextGlossaryConfig GlossaryConfig { get; set; }
 
         /// <summary>Optional. The labels with user-defined metadata for the request. Label keys and values can be no
         /// longer than 63 characters (Unicode codepoints), can only contain lowercase letters, numeric characters,
@@ -2086,12 +2086,12 @@ namespace Google.Apis.Translate.v3.Data
         /// start with a letter. See https://cloud.google.com/translate/docs/advanced/labels for more
         /// information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Optional. The format of the source text, for example, "text/html", "text/plain". If left blank, the
         /// MIME type defaults to "text/html".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-        public virtual string MimeType { get; set; } 
+        public virtual string MimeType { get; set; }
 
         /// <summary>Optional. The `model` type requested for this translation. The format depends on model type: -
         /// AutoML Translation models: `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}` -
@@ -2101,19 +2101,19 @@ namespace Google.Apis.Translate.v3.Data
         /// id}/locations/global/models/general/nmt`. If missing, the system decides which google base model to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
-        public virtual string Model { get; set; } 
+        public virtual string Model { get; set; }
 
         /// <summary>Optional. The BCP-47 language code of the input text if known, for example, "en-US" or "sr-Latn".
         /// Supported language codes are listed in Language Support. If the source language isn't specified, the API
         /// attempts to identify the source language automatically and returns the source language within the
         /// response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceLanguageCode")]
-        public virtual string SourceLanguageCode { get; set; } 
+        public virtual string SourceLanguageCode { get; set; }
 
         /// <summary>Required. The BCP-47 language code to use for translation of the input text, set to one of the
         /// language codes listed in Language Support.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetLanguageCode")]
-        public virtual string TargetLanguageCode { get; set; } 
+        public virtual string TargetLanguageCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2124,12 +2124,12 @@ namespace Google.Apis.Translate.v3.Data
         /// <summary>Text translation responses if a glossary is provided in the request. This can be the same as
         /// `translations` if no terms apply. This field has the same length as `contents`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glossaryTranslations")]
-        public virtual System.Collections.Generic.IList<Translation> GlossaryTranslations { get; set; } 
+        public virtual System.Collections.Generic.IList<Translation> GlossaryTranslations { get; set; }
 
         /// <summary>Text translation responses with no glossary applied. This field has the same length as
         /// `contents`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("translations")]
-        public virtual System.Collections.Generic.IList<Translation> Translations { get; set; } 
+        public virtual System.Collections.Generic.IList<Translation> Translations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2142,22 +2142,22 @@ namespace Google.Apis.Translate.v3.Data
         /// source language was passed within the initial request. If the source language was passed, auto-detection of
         /// the language does not occur and this field is empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedLanguageCode")]
-        public virtual string DetectedLanguageCode { get; set; } 
+        public virtual string DetectedLanguageCode { get; set; }
 
         /// <summary>The `glossary_config` used for this translation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glossaryConfig")]
-        public virtual TranslateTextGlossaryConfig GlossaryConfig { get; set; } 
+        public virtual TranslateTextGlossaryConfig GlossaryConfig { get; set; }
 
         /// <summary>Only present when `model` is present in the request. `model` here is normalized to have project
         /// number. For example: If the `model` requested in TranslationTextRequest is `projects/{project-id}/locations
         /// /{location-id}/models/general/nmt` then `model` here would be normalized to `projects/{project-
         /// number}/locations/{location-id}/models/general/nmt`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
-        public virtual string Model { get; set; } 
+        public virtual string Model { get; set; }
 
         /// <summary>Text translated into the target language.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("translatedText")]
-        public virtual string TranslatedText { get; set; } 
+        public virtual string TranslatedText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2170,7 +2170,7 @@ namespace Google.Apis.Translate.v3.Data
         /// permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one
         /// will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
-        public virtual object Timeout { get; set; } 
+        public virtual object Timeout { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

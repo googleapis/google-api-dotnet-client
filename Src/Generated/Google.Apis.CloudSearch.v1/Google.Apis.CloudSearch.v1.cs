@@ -4411,7 +4411,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// text within the content field for the item. The operator name can only contain lowercase letters (a-z). The
         /// maximum length is 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorName")]
-        public virtual string OperatorName { get; set; } 
+        public virtual string OperatorName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4422,7 +4422,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>If set, describes how the boolean should be used as a search operator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorOptions")]
-        public virtual BooleanOperatorOptions OperatorOptions { get; set; } 
+        public virtual BooleanOperatorOptions OperatorOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4432,7 +4432,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Returns true if principal has access. Returns false otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasAccess")]
-        public virtual System.Nullable<bool> HasAccess { get; set; } 
+        public virtual System.Nullable<bool> HasAccess { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4442,11 +4442,11 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>The logic operator of the sub filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logicOperator")]
-        public virtual string LogicOperator { get; set; } 
+        public virtual string LogicOperator { get; set; }
 
         /// <summary>Sub filters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subFilters")]
-        public virtual System.Collections.Generic.IList<Filter> SubFilters { get; set; } 
+        public virtual System.Collections.Generic.IList<Filter> SubFilters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4457,11 +4457,11 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Date for which statistics were calculated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
-        public virtual Date Date { get; set; } 
+        public virtual Date Date { get; set; }
 
         /// <summary>Number of items aggregrated by status code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemCountByStatus")]
-        public virtual System.Collections.Generic.IList<ItemCountByStatus> ItemCountByStatus { get; set; } 
+        public virtual System.Collections.Generic.IList<ItemCountByStatus> ItemCountByStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4472,10 +4472,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Date for which query stats were calculated. Stats calculated on the next day close to midnight are
         /// returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
-        public virtual Date Date { get; set; } 
+        public virtual Date Date { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("queryCountByStatus")]
-        public virtual System.Collections.Generic.IList<QueryCountByStatus> QueryCountByStatus { get; set; } 
+        public virtual System.Collections.Generic.IList<QueryCountByStatus> QueryCountByStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4486,11 +4486,11 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Date for which session stats were calculated. Stats calculated on the next day close to midnight
         /// are returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
-        public virtual Date Date { get; set; } 
+        public virtual Date Date { get; set; }
 
         /// <summary>The count of search sessions on the day</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchSessionsCount")]
-        public virtual System.Nullable<long> SearchSessionsCount { get; set; } 
+        public virtual System.Nullable<long> SearchSessionsCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4501,19 +4501,19 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Date for which session stats were calculated. Stats calculated on the next day close to midnight
         /// are returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
-        public virtual Date Date { get; set; } 
+        public virtual Date Date { get; set; }
 
         /// <summary>The count of unique active users in the past one day</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oneDayActiveUsersCount")]
-        public virtual System.Nullable<long> OneDayActiveUsersCount { get; set; } 
+        public virtual System.Nullable<long> OneDayActiveUsersCount { get; set; }
 
         /// <summary>The count of unique active users in the past seven days</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sevenDaysActiveUsersCount")]
-        public virtual System.Nullable<long> SevenDaysActiveUsersCount { get; set; } 
+        public virtual System.Nullable<long> SevenDaysActiveUsersCount { get; set; }
 
         /// <summary>The count of unique active users in the past thirty days</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirtyDaysActiveUsersCount")]
-        public virtual System.Nullable<long> ThirtyDaysActiveUsersCount { get; set; } 
+        public virtual System.Nullable<long> ThirtyDaysActiveUsersCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4526,19 +4526,19 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>If true, Indexing API rejects any modification calls to this datasource such as create, update, and
         /// delete. Disabling this does not imply halting process of previously accepted data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableModifications")]
-        public virtual System.Nullable<bool> DisableModifications { get; set; } 
+        public virtual System.Nullable<bool> DisableModifications { get; set; }
 
         /// <summary>Disable serving any search or assist results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableServing")]
-        public virtual System.Nullable<bool> DisableServing { get; set; } 
+        public virtual System.Nullable<bool> DisableServing { get; set; }
 
         /// <summary>Required. Display name of the datasource The maximum length is 300 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>List of service accounts that have indexing access.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexingServiceAccounts")]
-        public virtual System.Collections.Generic.IList<string> IndexingServiceAccounts { get; set; } 
+        public virtual System.Collections.Generic.IList<string> IndexingServiceAccounts { get; set; }
 
         /// <summary>This field restricts visibility to items at the datasource level. Items within the datasource are
         /// restricted to the union of users and groups included in this field. Note that, this does not ensure access
@@ -4546,16 +4546,16 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// access on the entire datasource, and that the individual items are not shared outside this
         /// visibility.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemsVisibility")]
-        public virtual System.Collections.Generic.IList<GSuitePrincipal> ItemsVisibility { get; set; } 
+        public virtual System.Collections.Generic.IList<GSuitePrincipal> ItemsVisibility { get; set; }
 
         /// <summary>Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating
         /// a datasource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>IDs of the Long Running Operations (LROs) currently running for this schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationIds")]
-        public virtual System.Collections.Generic.IList<string> OperationIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> OperationIds { get; set; }
 
         /// <summary>A short name or alias for the source. This value will be used to match the 'source' operator. For
         /// example, if the short name is ** then queries like *source:* will only return results for this source. The
@@ -4564,7 +4564,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// drive, groups, sites, calendar, hangouts, gplus, keep, people, teams. Its maximum length is 32
         /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortName")]
-        public virtual string ShortName { get; set; } 
+        public virtual string ShortName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4577,11 +4577,11 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// stats calculated on the next day are returned. Stats are calculated close to mid night in this case. If date
         /// of request is current date, then real time stats are returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
-        public virtual Date Date { get; set; } 
+        public virtual Date Date { get; set; }
 
         /// <summary>Number of items aggregrated by status code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemCountByStatus")]
-        public virtual System.Collections.Generic.IList<ItemCountByStatus> ItemCountByStatus { get; set; } 
+        public virtual System.Collections.Generic.IList<ItemCountByStatus> ItemCountByStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4596,11 +4596,11 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// few filters at the moment: "objecttype", "type" and "mimetype". For now, schema specific filters cannot be
         /// used to filter suggestions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterOptions")]
-        public virtual System.Collections.Generic.IList<FilterOptions> FilterOptions { get; set; } 
+        public virtual System.Collections.Generic.IList<FilterOptions> FilterOptions { get; set; }
 
         /// <summary>The source of restriction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual Source Source { get; set; } 
+        public virtual Source Source { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4614,15 +4614,15 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
-        public virtual System.Nullable<int> Day { get; set; } 
+        public virtual System.Nullable<int> Day { get; set; }
 
         /// <summary>Month of date. Must be from 1 to 12.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("month")]
-        public virtual System.Nullable<int> Month { get; set; } 
+        public virtual System.Nullable<int> Month { get; set; }
 
         /// <summary>Year of date. Must be from 1 to 9999.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("year")]
-        public virtual System.Nullable<int> Year { get; set; } 
+        public virtual System.Nullable<int> Year { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4638,7 +4638,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// *closeDate* is later than **. The operator name can only contain lowercase letters (a-z). The maximum length
         /// is 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("greaterThanOperatorName")]
-        public virtual string GreaterThanOperatorName { get; set; } 
+        public virtual string GreaterThanOperatorName { get; set; }
 
         /// <summary>Indicates the operator name required in the query in order to isolate the date property using the
         /// less-than operator. For example, if lessThanOperatorName is *closedbefore* and the property's name is
@@ -4646,7 +4646,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// *closeDate* is earlier than **. The operator name can only contain lowercase letters (a-z). The maximum
         /// length is 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lessThanOperatorName")]
-        public virtual string LessThanOperatorName { get; set; } 
+        public virtual string LessThanOperatorName { get; set; }
 
         /// <summary>Indicates the actual string required in the query in order to isolate the date property. For
         /// example, suppose an issue tracking schema object has a property named *closeDate* that specifies an operator
@@ -4656,7 +4656,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// field for the indexed datasource. The operator name can only contain lowercase letters (a-z). The maximum
         /// length is 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorName")]
-        public virtual string OperatorName { get; set; } 
+        public virtual string OperatorName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4667,7 +4667,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>If set, describes how the date should be used as a search operator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorOptions")]
-        public virtual DateOperatorOptions OperatorOptions { get; set; } 
+        public virtual DateOperatorOptions OperatorOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4677,7 +4677,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class DateValues : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<Date> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<Date> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4689,7 +4689,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>If you are asked by Google to help with debugging, set this field. Otherwise, ignore this
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableDebugging")]
-        public virtual System.Nullable<bool> EnableDebugging { get; set; } 
+        public virtual System.Nullable<bool> EnableDebugging { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4699,15 +4699,15 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Name of connector making this call. Format: datasources/{source_id}/connectors/{ID}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectorName")]
-        public virtual string ConnectorName { get; set; } 
+        public virtual string ConnectorName { get; set; }
 
         /// <summary>Common debug options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debugOptions")]
-        public virtual DebugOptions DebugOptions { get; set; } 
+        public virtual DebugOptions DebugOptions { get; set; }
 
         /// <summary>Name of a queue to delete items from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queue")]
-        public virtual string Queue { get; set; } 
+        public virtual string Queue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4721,7 +4721,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>The name of the top-level property as defined in a property definition for the object. If the name
         /// is not a defined property in the schema, an error is given when attempting to update the schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("propertyName")]
-        public virtual string PropertyName { get; set; } 
+        public virtual string PropertyName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4735,7 +4735,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// as a facet. The operator name can only contain lowercase letters (a-z). The maximum length is 32
         /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorName")]
-        public virtual string OperatorName { get; set; } 
+        public virtual string OperatorName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4746,7 +4746,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>If set, describes how the double should be used as a search operator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorOptions")]
-        public virtual DoubleOperatorOptions OperatorOptions { get; set; } 
+        public virtual DoubleOperatorOptions OperatorOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4756,7 +4756,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class DoubleValues : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<System.Nullable<double>> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4766,7 +4766,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class DriveFollowUpRestrict : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4776,7 +4776,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class DriveLocationRestrict : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4786,7 +4786,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class DriveMimeTypeRestrict : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4796,7 +4796,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class DriveTimeSpanRestrict : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4807,7 +4807,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>The email address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
-        public virtual string EmailAddressValue { get; set; } 
+        public virtual string EmailAddressValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4829,7 +4829,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// properties or text within the content field for the item. The operator name can only contain lowercase
         /// letters (a-z). The maximum length is 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorName")]
-        public virtual string OperatorName { get; set; } 
+        public virtual string OperatorName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4845,14 +4845,14 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>If set, describes how the enum should be used as a search operator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorOptions")]
-        public virtual EnumOperatorOptions OperatorOptions { get; set; } 
+        public virtual EnumOperatorOptions OperatorOptions { get; set; }
 
         /// <summary>Used to specify the ordered ranking for the enumeration that determines how the integer values
         /// provided in the possible EnumValuePairs are used to rank results. If specified, integer values must be
         /// provided for all possible EnumValuePair values given for this property. Can only be used if isRepeatable is
         /// false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderedRanking")]
-        public virtual string OrderedRanking { get; set; } 
+        public virtual string OrderedRanking { get; set; }
 
         /// <summary>The list of possible values for the enumeration property. All EnumValuePairs must provide a string
         /// value. If you specify an integer value for one EnumValuePair, then all possible EnumValuePairs must provide
@@ -4861,7 +4861,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// additional enum values in the future, leave gaps in the initial integer values to allow adding a value in
         /// between previously registered values. The maximum number of elements is 100.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("possibleValues")]
-        public virtual System.Collections.Generic.IList<EnumValuePair> PossibleValues { get; set; } 
+        public virtual System.Collections.Generic.IList<EnumValuePair> PossibleValues { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4879,11 +4879,11 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>The integer value of the EnumValuePair which must be non-negative. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integerValue")]
-        public virtual System.Nullable<int> IntegerValue { get; set; } 
+        public virtual System.Nullable<int> IntegerValue { get; set; }
 
         /// <summary>The string value of the EnumValuePair. The maximum length is 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
-        public virtual string StringValue { get; set; } 
+        public virtual string StringValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4894,7 +4894,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>The maximum allowable length for string values is 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<string> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4904,7 +4904,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class ErrorInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessages")]
-        public virtual System.Collections.Generic.IList<ErrorMessage> ErrorMessages { get; set; } 
+        public virtual System.Collections.Generic.IList<ErrorMessage> ErrorMessages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4914,10 +4914,10 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class ErrorMessage : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
-        public virtual string ErrorMessageValue { get; set; } 
+        public virtual string ErrorMessageValue { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual Source Source { get; set; } 
+        public virtual Source Source { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4931,17 +4931,17 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Number of results that match the bucket value. Counts are only returned for searches when count
         /// accuracy is ensured. Can be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
-        public virtual System.Nullable<int> Count { get; set; } 
+        public virtual System.Nullable<int> Count { get; set; }
 
         /// <summary>Percent of results that match the bucket value. The returned value is between (0-100], and is
         /// rounded down to an integer if fractional. If the value is not explicitly returned, it represents a
         /// percentage value that rounds to 0. Percentages are returned for all searches, but are an estimate. Because
         /// percentages are always returned, you should render percentages instead of counts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percentage")]
-        public virtual System.Nullable<int> Percentage { get; set; } 
+        public virtual System.Nullable<int> Percentage { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual Value Value { get; set; } 
+        public virtual Value Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4954,21 +4954,21 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Maximum number of facet buckets that should be returned for this facet. Defaults to 10. Maximum
         /// value is 100.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numFacetBuckets")]
-        public virtual System.Nullable<int> NumFacetBuckets { get; set; } 
+        public virtual System.Nullable<int> NumFacetBuckets { get; set; }
 
         /// <summary>If object_type is set, only those objects of that type will be used to compute facets. If empty,
         /// then all objects will be used to compute facets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectType")]
-        public virtual string ObjectType { get; set; } 
+        public virtual string ObjectType { get; set; }
 
         /// <summary>Name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorName")]
-        public virtual string OperatorName { get; set; } 
+        public virtual string OperatorName { get; set; }
 
         /// <summary>Source name to facet on. Format: datasources/{source_id} If empty, all data sources will be
         /// used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceName")]
-        public virtual string SourceName { get; set; } 
+        public virtual string SourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4979,19 +4979,19 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>FacetBuckets for values in response containing at least a single result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buckets")]
-        public virtual System.Collections.Generic.IList<FacetBucket> Buckets { get; set; } 
+        public virtual System.Collections.Generic.IList<FacetBucket> Buckets { get; set; }
 
         /// <summary>Object type for which facet results are returned. Can be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectType")]
-        public virtual string ObjectType { get; set; } 
+        public virtual string ObjectType { get; set; }
 
         /// <summary>Name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorName")]
-        public virtual string OperatorName { get; set; } 
+        public virtual string OperatorName { get; set; }
 
         /// <summary>Source name for which facet results are returned. Will not be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceName")]
-        public virtual string SourceName { get; set; } 
+        public virtual string SourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5001,11 +5001,11 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Description of the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Path of field with violation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual string Field { get; set; } 
+        public virtual string Field { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5019,10 +5019,10 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class Filter : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("compositeFilter")]
-        public virtual CompositeFilter CompositeFilter { get; set; } 
+        public virtual CompositeFilter CompositeFilter { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("valueFilter")]
-        public virtual ValueFilter ValueFilter { get; set; } 
+        public virtual ValueFilter ValueFilter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5033,13 +5033,13 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Generic filter to restrict the search, such as `lang:en`, `site:xyz`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual Filter Filter { get; set; } 
+        public virtual Filter Filter { get; set; }
 
         /// <summary>If object_type is set, only objects of that type are returned. This should correspond to the name
         /// of the object that was registered within the definition of schema. The maximum length is 256
         /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectType")]
-        public virtual string ObjectType { get; set; } 
+        public virtual string ObjectType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5055,7 +5055,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>The duration after which an object should be considered stale. The default value is 180 days (in
         /// seconds).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freshnessDuration")]
-        public virtual object FreshnessDuration { get; set; } 
+        public virtual object FreshnessDuration { get; set; }
 
         /// <summary>This property indicates the freshness level of the object in the index. If set, this property must
         /// be a top-level property within the property definitions and it must be a timestamp type or date type.
@@ -5063,7 +5063,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// characters. When a property is used to calculate freshness, the value defaults to 2 years from the current
         /// time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freshnessProperty")]
-        public virtual string FreshnessProperty { get; set; } 
+        public virtual string FreshnessProperty { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5073,15 +5073,15 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>This principal represents all users of the G Suite domain of the customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gsuiteDomain")]
-        public virtual System.Nullable<bool> GsuiteDomain { get; set; } 
+        public virtual System.Nullable<bool> GsuiteDomain { get; set; }
 
         /// <summary>This principal references a G Suite group account</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gsuiteGroupEmail")]
-        public virtual string GsuiteGroupEmail { get; set; } 
+        public virtual string GsuiteGroupEmail { get; set; }
 
         /// <summary>This principal references a G Suite user account</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gsuiteUserEmail")]
-        public virtual string GsuiteUserEmail { get; set; } 
+        public virtual string GsuiteUserEmail { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5091,7 +5091,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Summary of indexed item counts, one for each day in the requested range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stats")]
-        public virtual System.Collections.Generic.IList<CustomerIndexStats> Stats { get; set; } 
+        public virtual System.Collections.Generic.IList<CustomerIndexStats> Stats { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5100,7 +5100,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class GetCustomerQueryStatsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("stats")]
-        public virtual System.Collections.Generic.IList<CustomerQueryStats> Stats { get; set; } 
+        public virtual System.Collections.Generic.IList<CustomerQueryStats> Stats { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5109,7 +5109,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class GetCustomerSessionStatsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("stats")]
-        public virtual System.Collections.Generic.IList<CustomerSessionStats> Stats { get; set; } 
+        public virtual System.Collections.Generic.IList<CustomerSessionStats> Stats { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5118,7 +5118,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class GetCustomerUserStatsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("stats")]
-        public virtual System.Collections.Generic.IList<CustomerUserStats> Stats { get; set; } 
+        public virtual System.Collections.Generic.IList<CustomerUserStats> Stats { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5128,7 +5128,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Summary of indexed item counts, one for each day in the requested range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stats")]
-        public virtual System.Collections.Generic.IList<DataSourceIndexStats> Stats { get; set; } 
+        public virtual System.Collections.Generic.IList<DataSourceIndexStats> Stats { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5137,7 +5137,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class GetSearchApplicationQueryStatsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("stats")]
-        public virtual System.Collections.Generic.IList<SearchApplicationQueryStats> Stats { get; set; } 
+        public virtual System.Collections.Generic.IList<SearchApplicationQueryStats> Stats { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5146,7 +5146,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class GetSearchApplicationSessionStatsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("stats")]
-        public virtual System.Collections.Generic.IList<SearchApplicationSessionStats> Stats { get; set; } 
+        public virtual System.Collections.Generic.IList<SearchApplicationSessionStats> Stats { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5155,7 +5155,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class GetSearchApplicationUserStatsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("stats")]
-        public virtual System.Collections.Generic.IList<SearchApplicationUserStats> Stats { get; set; } 
+        public virtual System.Collections.Generic.IList<SearchApplicationUserStats> Stats { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5172,7 +5172,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// text within the content field for the item. The operator name can only contain lowercase letters (a-z). The
         /// maximum length is 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorName")]
-        public virtual string OperatorName { get; set; } 
+        public virtual string OperatorName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5183,12 +5183,12 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>If set, describes how the property should be used as a search operator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorOptions")]
-        public virtual HtmlOperatorOptions OperatorOptions { get; set; } 
+        public virtual HtmlOperatorOptions OperatorOptions { get; set; }
 
         /// <summary>Indicates the search quality importance of the tokens within the field when used for retrieval. Can
         /// only be set to DEFAULT or NONE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retrievalImportance")]
-        public virtual RetrievalImportance RetrievalImportance { get; set; } 
+        public virtual RetrievalImportance RetrievalImportance { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5199,7 +5199,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>The maximum allowable length for html values is 2048 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<string> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5210,7 +5210,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Specifies if the index request should allow gsuite principals that do not exist or are deleted in
         /// the index request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowUnknownGsuitePrincipals")]
-        public virtual System.Nullable<bool> AllowUnknownGsuitePrincipals { get; set; } 
+        public virtual System.Nullable<bool> AllowUnknownGsuitePrincipals { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5220,22 +5220,22 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Name of connector making this call. Format: datasources/{source_id}/connectors/{ID}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectorName")]
-        public virtual string ConnectorName { get; set; } 
+        public virtual string ConnectorName { get; set; }
 
         /// <summary>Common debug options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debugOptions")]
-        public virtual DebugOptions DebugOptions { get; set; } 
+        public virtual DebugOptions DebugOptions { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("indexItemOptions")]
-        public virtual IndexItemOptions IndexItemOptions { get; set; } 
+        public virtual IndexItemOptions IndexItemOptions { get; set; }
 
         /// <summary>Name of the item. Format: datasources/{source_id}/items/{item_id}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("item")]
-        public virtual Item Item { get; set; } 
+        public virtual Item Item { get; set; }
 
         /// <summary>Required. The RequestMode for this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
-        public virtual string Mode { get; set; } 
+        public virtual string Mode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5251,7 +5251,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// named *priorityVal* is greater than **. The operator name can only contain lowercase letters (a-z). The
         /// maximum length is 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("greaterThanOperatorName")]
-        public virtual string GreaterThanOperatorName { get; set; } 
+        public virtual string GreaterThanOperatorName { get; set; }
 
         /// <summary>Indicates the operator name required in the query in order to isolate the integer property using
         /// the less-than operator. For example, if lessThanOperatorName is *prioritybelow* and the property's name is
@@ -5259,7 +5259,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// *priorityVal* is less than **. The operator name can only contain lowercase letters (a-z). The maximum
         /// length is 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lessThanOperatorName")]
-        public virtual string LessThanOperatorName { get; set; } 
+        public virtual string LessThanOperatorName { get; set; }
 
         /// <summary>Indicates the operator name required in the query in order to isolate the integer property. For
         /// example, if operatorName is *priority* and the property's name is *priorityVal*, then queries like
@@ -5268,7 +5268,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// properties or text within the content field for the item. The operator name can only contain lowercase
         /// letters (a-z). The maximum length is 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorName")]
-        public virtual string OperatorName { get; set; } 
+        public virtual string OperatorName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5281,22 +5281,22 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// results according to the ordered ranking. Indexing requests with values greater than the maximum are
         /// accepted and ranked with the same weight as items indexed with the maximum value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximumValue")]
-        public virtual System.Nullable<long> MaximumValue { get; set; } 
+        public virtual System.Nullable<long> MaximumValue { get; set; }
 
         /// <summary>The minimum value of the property. The minimum and maximum values for the property are used to rank
         /// results according to the ordered ranking. Indexing requests with values less than the minimum are accepted
         /// and ranked with the same weight as items indexed with the minimum value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumValue")]
-        public virtual System.Nullable<long> MinimumValue { get; set; } 
+        public virtual System.Nullable<long> MinimumValue { get; set; }
 
         /// <summary>If set, describes how the integer should be used as a search operator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorOptions")]
-        public virtual IntegerOperatorOptions OperatorOptions { get; set; } 
+        public virtual IntegerOperatorOptions OperatorOptions { get; set; }
 
         /// <summary>Used to specify the ordered ranking for the integer. Can only be used if isRepeatable is
         /// false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderedRanking")]
-        public virtual string OrderedRanking { get; set; } 
+        public virtual string OrderedRanking { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5306,7 +5306,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class IntegerValues : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5318,14 +5318,14 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>The time when the user acted on the item. If multiple actions of the same type exist for a single
         /// user, only the most recent action is recorded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interactionTime")]
-        public virtual object InteractionTime { get; set; } 
+        public virtual object InteractionTime { get; set; }
 
         /// <summary>The user that acted on the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principal")]
-        public virtual Principal Principal { get; set; } 
+        public virtual Principal Principal { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5337,48 +5337,48 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Access control list for this item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acl")]
-        public virtual ItemAcl Acl { get; set; } 
+        public virtual ItemAcl Acl { get; set; }
 
         /// <summary>Item content to be indexed and made text searchable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual ItemContent Content { get; set; } 
+        public virtual ItemContent Content { get; set; }
 
         /// <summary>Type for this item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemType")]
-        public virtual string ItemType { get; set; } 
+        public virtual string ItemType { get; set; }
 
         /// <summary>Metadata information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual ItemMetadata Metadata { get; set; } 
+        public virtual ItemMetadata Metadata { get; set; }
 
         /// <summary>Name of the Item. Format: datasources/{source_id}/items/{item_id} This is a required field. The
         /// maximum length is 1536 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Additional state connector can store for this item. The maximum length is 10000 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual string Payload { get; set; } 
+        public virtual string Payload { get; set; }
 
         /// <summary>Queue this item belongs to. The maximum length is 100 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queue")]
-        public virtual string Queue { get; set; } 
+        public virtual string Queue { get; set; }
 
         /// <summary>Status of the item. Output only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual ItemStatus Status { get; set; } 
+        public virtual ItemStatus Status { get; set; }
 
         /// <summary>The structured data for the item that should conform to a registered object definition in the
         /// schema for the data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structuredData")]
-        public virtual ItemStructuredData StructuredData { get; set; } 
+        public virtual ItemStructuredData StructuredData { get; set; }
 
         /// <summary>Required. The indexing system stores the version from the datasource as a byte string and compares
         /// the Item version in the index to the version of the queued Item using lexical ordering. Cloud Search
         /// Indexing won't index or delete any queued item with a version value that is less than or equal to the
         /// version of the currently indexed item. The maximum length for this field is 1024 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5392,13 +5392,13 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// always be set in tandem with the inheritAclFrom field. Also, when the inheritAclFrom field is set, this
         /// field should be set to a valid AclInheritanceType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aclInheritanceType")]
-        public virtual string AclInheritanceType { get; set; } 
+        public virtual string AclInheritanceType { get; set; }
 
         /// <summary>List of principals who are explicitly denied access to the item in search results. While principals
         /// are denied access by default, use denied readers to handle exceptions and override the list allowed readers.
         /// The maximum number of elements is 100.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deniedReaders")]
-        public virtual System.Collections.Generic.IList<Principal> DeniedReaders { get; set; } 
+        public virtual System.Collections.Generic.IList<Principal> DeniedReaders { get; set; }
 
         /// <summary>Name of the item to inherit the Access Permission List (ACL) from. Note: ACL inheritance *only*
         /// provides access permissions to child items and does not define structural relationships, nor does it provide
@@ -5408,19 +5408,19 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// all items that reference the container via the containerName field. The maximum length for this field is
         /// 1536 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inheritAclFrom")]
-        public virtual string InheritAclFrom { get; set; } 
+        public virtual string InheritAclFrom { get; set; }
 
         /// <summary>Optional. List of owners for the item. This field has no bearing on document access permissions. It
         /// does, however, offer a slight ranking boosts items where the querying user is an owner. The maximum number
         /// of elements is 5.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("owners")]
-        public virtual System.Collections.Generic.IList<Principal> Owners { get; set; } 
+        public virtual System.Collections.Generic.IList<Principal> Owners { get; set; }
 
         /// <summary>List of principals who are allowed to see the item in search results. Optional if inheriting
         /// permissions from another item or if the item is not intended to be visible, such as virtual containers. The
         /// maximum number of elements is 1000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readers")]
-        public virtual System.Collections.Generic.IList<Principal> Readers { get; set; } 
+        public virtual System.Collections.Generic.IList<Principal> Readers { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5431,20 +5431,20 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Upload reference ID of a previously uploaded content via write method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentDataRef")]
-        public virtual UploadItemRef ContentDataRef { get; set; } 
+        public virtual UploadItemRef ContentDataRef { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("contentFormat")]
-        public virtual string ContentFormat { get; set; } 
+        public virtual string ContentFormat { get; set; }
 
         /// <summary>Hashing info calculated and provided by the API client for content. Can be used with the items.push
         /// method to calculate modified state. The maximum length is 2048 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hash")]
-        public virtual string Hash { get; set; } 
+        public virtual string Hash { get; set; }
 
         /// <summary>Content that is supplied inlined within the update method. The maximum length is 102400 bytes (100
         /// KiB).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inlineContent")]
-        public virtual string InlineContent { get; set; } 
+        public virtual string InlineContent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5454,11 +5454,11 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Number of items matching the status code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
-        public virtual System.Nullable<long> Count { get; set; } 
+        public virtual System.Nullable<long> Count { get; set; }
 
         /// <summary>Status of the items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusCode")]
-        public virtual string StatusCode { get; set; } 
+        public virtual string StatusCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5471,63 +5471,63 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// of this item. Note: ACLs are not inherited from a container item. To provide ACL inheritance for an item,
         /// use the inheritAclFrom field. The maximum length is 1536 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerName")]
-        public virtual string ContainerName { get; set; } 
+        public virtual string ContainerName { get; set; }
 
         /// <summary>The BCP-47 language code for the item, such as "en-US" or "sr-Latn". For more information, see
         /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. The maximum length is 32
         /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
-        public virtual string ContentLanguage { get; set; } 
+        public virtual string ContentLanguage { get; set; }
 
         /// <summary>The time when the item was created in the source repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Hashing value provided by the API caller. This can be used with the items.push method to calculate
         /// modified state. The maximum length is 2048 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hash")]
-        public virtual string Hash { get; set; } 
+        public virtual string Hash { get; set; }
 
         /// <summary>A list of interactions for the item. Interactions are used to improve Search quality, but are not
         /// exposed to end users. The maximum number of elements is 1000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interactions")]
-        public virtual System.Collections.Generic.IList<Interaction> Interactions { get; set; } 
+        public virtual System.Collections.Generic.IList<Interaction> Interactions { get; set; }
 
         /// <summary>Additional keywords or phrases that should match the item. Used internally for user generated
         /// content. The maximum number of elements is 100. The maximum length is 8192 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keywords")]
-        public virtual System.Collections.Generic.IList<string> Keywords { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Keywords { get; set; }
 
         /// <summary>The original mime-type of ItemContent.content in the source repository. The maximum length is 256
         /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-        public virtual string MimeType { get; set; } 
+        public virtual string MimeType { get; set; }
 
         /// <summary>The type of the item. This should correspond to the name of an object definition in the schema
         /// registered for the data source. For example, if the schema for the data source contains an object definition
         /// with name 'document', then item indexing requests for objects of that type should set objectType to
         /// 'document'. The maximum length is 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectType")]
-        public virtual string ObjectType { get; set; } 
+        public virtual string ObjectType { get; set; }
 
         /// <summary>Additional search quality metadata of the item</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchQualityMetadata")]
-        public virtual SearchQualityMetadata SearchQualityMetadata { get; set; } 
+        public virtual SearchQualityMetadata SearchQualityMetadata { get; set; }
 
         /// <summary>Link to the source repository serving the data. Search results apply this link to the title.
         /// Whitespace or special characters may cause Cloud Search result links to trigger a redirect notice; to avoid
         /// this, encode the URL. The maximum length is 2048 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceRepositoryUrl")]
-        public virtual string SourceRepositoryUrl { get; set; } 
+        public virtual string SourceRepositoryUrl { get; set; }
 
         /// <summary>The title of the item. If given, this will be the displayed title of the Search result. The maximum
         /// length is 2048 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The time when the item was last modified in the source repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5538,15 +5538,15 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Status code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual string Code { get; set; } 
+        public virtual string Code { get; set; }
 
         /// <summary>Error details in case the item is in ERROR state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processingErrors")]
-        public virtual System.Collections.Generic.IList<ProcessingError> ProcessingErrors { get; set; } 
+        public virtual System.Collections.Generic.IList<ProcessingError> ProcessingErrors { get; set; }
 
         /// <summary>Repository error reported by connector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repositoryErrors")]
-        public virtual System.Collections.Generic.IList<RepositoryError> RepositoryErrors { get; set; } 
+        public virtual System.Collections.Generic.IList<RepositoryError> RepositoryErrors { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5558,12 +5558,12 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Hashing value provided by the API caller. This can be used with the items.push method to calculate
         /// modified state. The maximum length is 2048 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hash")]
-        public virtual string Hash { get; set; } 
+        public virtual string Hash { get; set; }
 
         /// <summary>The structured data object that should conform to a registered object definition in the schema for
         /// the data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("object")]
-        public virtual StructuredDataObject Object__ { get; set; } 
+        public virtual StructuredDataObject Object__ { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5574,10 +5574,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("sources")]
-        public virtual System.Collections.Generic.IList<DataSource> Sources { get; set; } 
+        public virtual System.Collections.Generic.IList<DataSource> Sources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5586,12 +5586,12 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class ListItemNamesForUnmappedIdentityResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("itemNames")]
-        public virtual System.Collections.Generic.IList<string> ItemNames { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ItemNames { get; set; }
 
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5600,12 +5600,12 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class ListItemsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Item> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Item> Items { get; set; }
 
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5616,11 +5616,11 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5630,10 +5630,10 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class ListQuerySourcesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("sources")]
-        public virtual System.Collections.Generic.IList<QuerySource> Sources { get; set; } 
+        public virtual System.Collections.Generic.IList<QuerySource> Sources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5644,10 +5644,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("searchApplications")]
-        public virtual System.Collections.Generic.IList<SearchApplication> SearchApplications { get; set; } 
+        public virtual System.Collections.Generic.IList<SearchApplication> SearchApplications { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5658,10 +5658,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("unmappedIdentities")]
-        public virtual System.Collections.Generic.IList<UnmappedIdentity> UnmappedIdentities { get; set; } 
+        public virtual System.Collections.Generic.IList<UnmappedIdentity> UnmappedIdentities { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5672,11 +5672,11 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>End of the match in the snippet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("end")]
-        public virtual System.Nullable<int> End { get; set; } 
+        public virtual System.Nullable<int> End { get; set; }
 
         /// <summary>Starting position of the match in the snippet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("start")]
-        public virtual System.Nullable<int> Start { get; set; } 
+        public virtual System.Nullable<int> Start { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5687,7 +5687,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Name of the media resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
-        public virtual string ResourceName { get; set; } 
+        public virtual string ResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5698,37 +5698,37 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>The creation time for this document or object in the search result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Options that specify how to display a structured data search result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayOptions")]
-        public virtual ResultDisplayMetadata DisplayOptions { get; set; } 
+        public virtual ResultDisplayMetadata DisplayOptions { get; set; }
 
         /// <summary>Indexed fields in structured data, returned as a generic named property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual System.Collections.Generic.IList<NamedProperty> Fields { get; set; } 
+        public virtual System.Collections.Generic.IList<NamedProperty> Fields { get; set; }
 
         /// <summary>Mime type of the search result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-        public virtual string MimeType { get; set; } 
+        public virtual string MimeType { get; set; }
 
         /// <summary>Object type of the search result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectType")]
-        public virtual string ObjectType { get; set; } 
+        public virtual string ObjectType { get; set; }
 
         /// <summary>Owner (usually creator) of the document or object of the search result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("owner")]
-        public virtual Person Owner { get; set; } 
+        public virtual Person Owner { get; set; }
 
         /// <summary>The named source for the result, such as Gmail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual Source Source { get; set; } 
+        public virtual Source Source { get; set; }
 
         /// <summary>The last modified date for the object in the search result. If not set in the item, the value
         /// returned here is empty. When `updateTime` is used for calculating freshness and is not set, this value
         /// defaults to 2 years from the current time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5740,7 +5740,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>The list of displayed properties for the metaline. The maximum number of properties is 5.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual System.Collections.Generic.IList<DisplayedProperty> Properties { get; set; } 
+        public virtual System.Collections.Generic.IList<DisplayedProperty> Properties { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5752,7 +5752,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>The read-only display name formatted according to the locale specified by the viewer's account or
         /// the Accept-Language HTTP header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5763,37 +5763,37 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class NamedProperty : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("booleanValue")]
-        public virtual System.Nullable<bool> BooleanValue { get; set; } 
+        public virtual System.Nullable<bool> BooleanValue { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("dateValues")]
-        public virtual DateValues DateValues { get; set; } 
+        public virtual DateValues DateValues { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("doubleValues")]
-        public virtual DoubleValues DoubleValues { get; set; } 
+        public virtual DoubleValues DoubleValues { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("enumValues")]
-        public virtual EnumValues EnumValues { get; set; } 
+        public virtual EnumValues EnumValues { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("htmlValues")]
-        public virtual HtmlValues HtmlValues { get; set; } 
+        public virtual HtmlValues HtmlValues { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("integerValues")]
-        public virtual IntegerValues IntegerValues { get; set; } 
+        public virtual IntegerValues IntegerValues { get; set; }
 
         /// <summary>The name of the property. This name should correspond to the name of the property that was
         /// registered for object definition in the schema. The maximum allowable length for this property is 256
         /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("objectValues")]
-        public virtual ObjectValues ObjectValues { get; set; } 
+        public virtual ObjectValues ObjectValues { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("textValues")]
-        public virtual TextValues TextValues { get; set; } 
+        public virtual TextValues TextValues { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("timestampValues")]
-        public virtual TimestampValues TimestampValues { get; set; } 
+        public virtual TimestampValues TimestampValues { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5808,15 +5808,15 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// schema. The name must start with a letter and can only contain letters (A-Z, a-z) or numbers (0-9). The
         /// maximum length is 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The optional object-specific options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
-        public virtual ObjectOptions Options { get; set; } 
+        public virtual ObjectOptions Options { get; set; }
 
         /// <summary>The property definitions for the object. The maximum number of elements is 1000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("propertyDefinitions")]
-        public virtual System.Collections.Generic.IList<PropertyDefinition> PropertyDefinitions { get; set; } 
+        public virtual System.Collections.Generic.IList<PropertyDefinition> PropertyDefinitions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5831,13 +5831,13 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// before repeated properties in this list. All of the properties must set is_returnable to true. The maximum
         /// number of metalines is 3.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metalines")]
-        public virtual System.Collections.Generic.IList<Metaline> Metalines { get; set; } 
+        public virtual System.Collections.Generic.IList<Metaline> Metalines { get; set; }
 
         /// <summary>The user friendly label to display in the search result to indicate the type of the item. This is
         /// OPTIONAL; if not provided, an object label isn't displayed on the context line of the search results. The
         /// maximum length is 64 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectDisplayLabel")]
-        public virtual string ObjectDisplayLabel { get; set; } 
+        public virtual string ObjectDisplayLabel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5848,11 +5848,11 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Options that determine how the object is displayed in the Cloud Search results page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayOptions")]
-        public virtual ObjectDisplayOptions DisplayOptions { get; set; } 
+        public virtual ObjectDisplayOptions DisplayOptions { get; set; }
 
         /// <summary>The freshness options for an object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freshnessOptions")]
-        public virtual FreshnessOptions FreshnessOptions { get; set; } 
+        public virtual FreshnessOptions FreshnessOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5865,7 +5865,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// property represents a postal address, the subobjectProperties might be named *street*, *city*, and *state*.
         /// The maximum number of elements is 1000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subobjectProperties")]
-        public virtual System.Collections.Generic.IList<PropertyDefinition> SubobjectProperties { get; set; } 
+        public virtual System.Collections.Generic.IList<PropertyDefinition> SubobjectProperties { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5875,7 +5875,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class ObjectValues : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<StructuredDataObject> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<StructuredDataObject> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5887,23 +5887,23 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -5911,7 +5911,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5922,7 +5922,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Suggested person. All fields of the person object might not be populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("person")]
-        public virtual Person Person { get; set; } 
+        public virtual Person Person { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5933,25 +5933,25 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>The person's email addresses</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddresses")]
-        public virtual System.Collections.Generic.IList<EmailAddress> EmailAddresses { get; set; } 
+        public virtual System.Collections.Generic.IList<EmailAddress> EmailAddresses { get; set; }
 
         /// <summary>The resource name of the person to provide information about. See People.get from Google People
         /// API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Obfuscated ID of a person.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedId")]
-        public virtual string ObfuscatedId { get; set; } 
+        public virtual string ObfuscatedId { get; set; }
 
         /// <summary>The person's name</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("personNames")]
-        public virtual System.Collections.Generic.IList<Name> PersonNames { get; set; } 
+        public virtual System.Collections.Generic.IList<Name> PersonNames { get; set; }
 
         /// <summary>A person's read-only photo. A picture shown next to the person's name to help others recognize the
         /// person in search results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photos")]
-        public virtual System.Collections.Generic.IList<Photo> Photos { get; set; } 
+        public virtual System.Collections.Generic.IList<Photo> Photos { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5962,7 +5962,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>The URL of the photo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5972,24 +5972,24 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Name of connector making this call. Format: datasources/{source_id}/connectors/{ID}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectorName")]
-        public virtual string ConnectorName { get; set; } 
+        public virtual string ConnectorName { get; set; }
 
         /// <summary>Common debug options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debugOptions")]
-        public virtual DebugOptions DebugOptions { get; set; } 
+        public virtual DebugOptions DebugOptions { get; set; }
 
         /// <summary>Maximum number of items to return. The maximum value is 100 and the default value is 20.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
-        public virtual System.Nullable<int> Limit { get; set; } 
+        public virtual System.Nullable<int> Limit { get; set; }
 
         /// <summary>Queue name to fetch items from. If unspecified, PollItems will fetch from 'default' queue. The
         /// maximum length is 100 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queue")]
-        public virtual string Queue { get; set; } 
+        public virtual string Queue { get; set; }
 
         /// <summary>Limit the items polled to the ones with these statuses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusCodes")]
-        public virtual System.Collections.Generic.IList<string> StatusCodes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> StatusCodes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6001,7 +6001,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// subset of fields populated: version metadata.hash structured_data.hash content.hash payload status
         /// queue</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Item> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Item> Items { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6013,16 +6013,16 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>This principal is a group identified using an external identity. The name field must specify the
         /// group resource name with this format: identitysources/{source_id}/groups/{ID}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupResourceName")]
-        public virtual string GroupResourceName { get; set; } 
+        public virtual string GroupResourceName { get; set; }
 
         /// <summary>This principal is a GSuite user, group or domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gsuitePrincipal")]
-        public virtual GSuitePrincipal GsuitePrincipal { get; set; } 
+        public virtual GSuitePrincipal GsuitePrincipal { get; set; }
 
         /// <summary>This principal is a user identified using an external identity. The name field must specify the
         /// user resource name with this format: identitysources/{source_id}/users/{ID}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userResourceName")]
-        public virtual string UserResourceName { get; set; } 
+        public virtual string UserResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6032,16 +6032,16 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Error code indicating the nature of the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual string Code { get; set; } 
+        public virtual string Code { get; set; }
 
         /// <summary>Description of the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
-        public virtual string ErrorMessage { get; set; } 
+        public virtual string ErrorMessage { get; set; }
 
         /// <summary>In case the item fields are invalid, this field contains the details about the validation
         /// errors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldViolations")]
-        public virtual System.Collections.Generic.IList<FieldViolation> FieldViolations { get; set; } 
+        public virtual System.Collections.Generic.IList<FieldViolation> FieldViolations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6051,40 +6051,40 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class PropertyDefinition : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("booleanPropertyOptions")]
-        public virtual BooleanPropertyOptions BooleanPropertyOptions { get; set; } 
+        public virtual BooleanPropertyOptions BooleanPropertyOptions { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("datePropertyOptions")]
-        public virtual DatePropertyOptions DatePropertyOptions { get; set; } 
+        public virtual DatePropertyOptions DatePropertyOptions { get; set; }
 
         /// <summary>Options that determine how the property is displayed in the Cloud Search results page if it is
         /// specified to be displayed in the object's display options .</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayOptions")]
-        public virtual PropertyDisplayOptions DisplayOptions { get; set; } 
+        public virtual PropertyDisplayOptions DisplayOptions { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("doublePropertyOptions")]
-        public virtual DoublePropertyOptions DoublePropertyOptions { get; set; } 
+        public virtual DoublePropertyOptions DoublePropertyOptions { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("enumPropertyOptions")]
-        public virtual EnumPropertyOptions EnumPropertyOptions { get; set; } 
+        public virtual EnumPropertyOptions EnumPropertyOptions { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("htmlPropertyOptions")]
-        public virtual HtmlPropertyOptions HtmlPropertyOptions { get; set; } 
+        public virtual HtmlPropertyOptions HtmlPropertyOptions { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("integerPropertyOptions")]
-        public virtual IntegerPropertyOptions IntegerPropertyOptions { get; set; } 
+        public virtual IntegerPropertyOptions IntegerPropertyOptions { get; set; }
 
         /// <summary>Indicates that the property can be used for generating facets. Cannot be true for properties whose
         /// type is object. IsReturnable must be true to set this option. Only supported for Boolean, Enum, and Text
         /// properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isFacetable")]
-        public virtual System.Nullable<bool> IsFacetable { get; set; } 
+        public virtual System.Nullable<bool> IsFacetable { get; set; }
 
         /// <summary>Indicates that multiple values are allowed for the property. For example, a document only has one
         /// description but can have multiple comments. Cannot be true for properties whose type is a boolean. If set to
         /// false, properties that contain more than one value cause the indexing request for that item to be
         /// rejected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isRepeatable")]
-        public virtual System.Nullable<bool> IsRepeatable { get; set; } 
+        public virtual System.Nullable<bool> IsRepeatable { get; set; }
 
         /// <summary>Indicates that the property identifies data that should be returned in search results via the Query
         /// API. If set to *true*, indicates that Query API users can use matching property fields in results. However,
@@ -6092,23 +6092,23 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// performance over large datasets. Set to *true* here only if the field is needed for search results. Cannot
         /// be true for properties whose type is an object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isReturnable")]
-        public virtual System.Nullable<bool> IsReturnable { get; set; } 
+        public virtual System.Nullable<bool> IsReturnable { get; set; }
 
         /// <summary>Indicates that the property can be used for sorting. Cannot be true for properties that are
         /// repeatable. Cannot be true for properties whose type is object or user identifier. IsReturnable must be true
         /// to set this option. Only supported for Boolean, Date, Double, Integer, and Timestamp properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isSortable")]
-        public virtual System.Nullable<bool> IsSortable { get; set; } 
+        public virtual System.Nullable<bool> IsSortable { get; set; }
 
         /// <summary>Indicates that the property can be used for generating query suggestions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isSuggestable")]
-        public virtual System.Nullable<bool> IsSuggestable { get; set; } 
+        public virtual System.Nullable<bool> IsSuggestable { get; set; }
 
         /// <summary>Indicates that users can perform wildcard search for this property. Only supported for Text
         /// properties. IsReturnable must be true to set this option. In a given datasource maximum of 5 properties can
         /// be marked as is_wildcard_searchable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isWildcardSearchable")]
-        public virtual System.Nullable<bool> IsWildcardSearchable { get; set; } 
+        public virtual System.Nullable<bool> IsWildcardSearchable { get; set; }
 
         /// <summary>The name of the property. Item indexing requests sent to the Indexing API should set the property
         /// name equal to this value. For example, if name is *subject_line*, then indexing requests for document items
@@ -6117,16 +6117,16 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// for another property within that object. The name must start with a letter and can only contain letters
         /// (A-Z, a-z) or numbers (0-9). The maximum length is 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("objectPropertyOptions")]
-        public virtual ObjectPropertyOptions ObjectPropertyOptions { get; set; } 
+        public virtual ObjectPropertyOptions ObjectPropertyOptions { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("textPropertyOptions")]
-        public virtual TextPropertyOptions TextPropertyOptions { get; set; } 
+        public virtual TextPropertyOptions TextPropertyOptions { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("timestampPropertyOptions")]
-        public virtual TimestampPropertyOptions TimestampPropertyOptions { get; set; } 
+        public virtual TimestampPropertyOptions TimestampPropertyOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6142,7 +6142,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// 'priority : 1' in the search results which provides clear context to search users. This is OPTIONAL; if not
         /// given, only the property values are displayed. The maximum length is 64 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayLabel")]
-        public virtual string DisplayLabel { get; set; } 
+        public virtual string DisplayLabel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6155,38 +6155,38 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// to modify this item's status. Setting this field and the type field results in argument error. The maximum
         /// length is 2048 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentHash")]
-        public virtual string ContentHash { get; set; } 
+        public virtual string ContentHash { get; set; }
 
         /// <summary>Metadata hash of the item according to the repository. If specified, this is used to determine how
         /// to modify this item's status. Setting this field and the type field results in argument error. The maximum
         /// length is 2048 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadataHash")]
-        public virtual string MetadataHash { get; set; } 
+        public virtual string MetadataHash { get; set; }
 
         /// <summary>Provides additional document state information for the connector, such as an alternate repository
         /// ID and other metadata. The maximum length is 8192 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual string Payload { get; set; } 
+        public virtual string Payload { get; set; }
 
         /// <summary>Queue to which this item belongs to. The default queue is chosen if this field is not specified.
         /// The maximum length is 512 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queue")]
-        public virtual string Queue { get; set; } 
+        public virtual string Queue { get; set; }
 
         /// <summary>Populate this field to store Connector or repository error details. This information is displayed
         /// in the Admin Console. This field may only be populated when the Type is REPOSITORY_ERROR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repositoryError")]
-        public virtual RepositoryError RepositoryError { get; set; } 
+        public virtual RepositoryError RepositoryError { get; set; }
 
         /// <summary>Structured data hash of the item according to the repository. If specified, this is used to
         /// determine how to modify this item's status. Setting this field and the type field results in argument error.
         /// The maximum length is 2048 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structuredDataHash")]
-        public virtual string StructuredDataHash { get; set; } 
+        public virtual string StructuredDataHash { get; set; }
 
         /// <summary>The type of the push operation that defines the push behavior.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6196,15 +6196,15 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Name of connector making this call. Format: datasources/{source_id}/connectors/{ID}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectorName")]
-        public virtual string ConnectorName { get; set; } 
+        public virtual string ConnectorName { get; set; }
 
         /// <summary>Common debug options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debugOptions")]
-        public virtual DebugOptions DebugOptions { get; set; } 
+        public virtual DebugOptions DebugOptions { get; set; }
 
         /// <summary>Item to push onto the queue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("item")]
-        public virtual PushItem Item { get; set; } 
+        public virtual PushItem Item { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6213,11 +6213,11 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class QueryCountByStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
-        public virtual System.Nullable<long> Count { get; set; } 
+        public virtual System.Nullable<long> Count { get; set; }
 
         /// <summary>This represents the http status code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusCode")]
-        public virtual System.Nullable<int> StatusCode { get; set; } 
+        public virtual System.Nullable<int> StatusCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6226,18 +6226,18 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class QueryInterpretation : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("interpretationType")]
-        public virtual string InterpretationType { get; set; } 
+        public virtual string InterpretationType { get; set; }
 
         /// <summary>The interpretation of the query used in search. For example, queries with natural language intent
         /// like "email from john" will be interpreted as "from:john source:mail". This field will not be filled when
         /// the reason is NOT_ENOUGH_RESULTS_FOUND_FOR_USER_QUERY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interpretedQuery")]
-        public virtual string InterpretedQuery { get; set; } 
+        public virtual string InterpretedQuery { get; set; }
 
         /// <summary>The reason for interpretation of the query. This field will not be UNSPECIFIED if the
         /// interpretation type is not NONE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6249,13 +6249,13 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Flag to disable natural language (NL) interpretation of queries. Default is false, Set to true to
         /// disable natural language interpretation. NL interpretation only applies to predefined datasources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableNlInterpretation")]
-        public virtual System.Nullable<bool> DisableNlInterpretation { get; set; } 
+        public virtual System.Nullable<bool> DisableNlInterpretation { get; set; }
 
         /// <summary>Enable this flag to turn off all internal optimizations like natural language (NL) interpretation
         /// of queries, supplemental result retrieval, and usage of synonyms including custom ones. Nl interpretation
         /// will be disabled if either one of the two flags is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableVerbatimMode")]
-        public virtual System.Nullable<bool> EnableVerbatimMode { get; set; } 
+        public virtual System.Nullable<bool> EnableVerbatimMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6266,7 +6266,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>True if the text was generated by means other than a previous user search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isSynthetic")]
-        public virtual System.Nullable<bool> IsSynthetic { get; set; } 
+        public virtual System.Nullable<bool> IsSynthetic { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6277,55 +6277,55 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Display name of the operator</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Potential list of values for the opeatror field. This field is only filled when we can safely
         /// enumerate all the possible values of this operator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enumValues")]
-        public virtual System.Collections.Generic.IList<string> EnumValues { get; set; } 
+        public virtual System.Collections.Generic.IList<string> EnumValues { get; set; }
 
         /// <summary>Indicates the operator name that can be used to isolate the property using the greater-than
         /// operator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("greaterThanOperatorName")]
-        public virtual string GreaterThanOperatorName { get; set; } 
+        public virtual string GreaterThanOperatorName { get; set; }
 
         /// <summary>Can this operator be used to get facets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isFacetable")]
-        public virtual System.Nullable<bool> IsFacetable { get; set; } 
+        public virtual System.Nullable<bool> IsFacetable { get; set; }
 
         /// <summary>Indicates if multiple values can be set for this property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isRepeatable")]
-        public virtual System.Nullable<bool> IsRepeatable { get; set; } 
+        public virtual System.Nullable<bool> IsRepeatable { get; set; }
 
         /// <summary>Will the property associated with this facet be returned as part of search results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isReturnable")]
-        public virtual System.Nullable<bool> IsReturnable { get; set; } 
+        public virtual System.Nullable<bool> IsReturnable { get; set; }
 
         /// <summary>Can this operator be used to sort results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isSortable")]
-        public virtual System.Nullable<bool> IsSortable { get; set; } 
+        public virtual System.Nullable<bool> IsSortable { get; set; }
 
         /// <summary>Can get suggestions for this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isSuggestable")]
-        public virtual System.Nullable<bool> IsSuggestable { get; set; } 
+        public virtual System.Nullable<bool> IsSuggestable { get; set; }
 
         /// <summary>Indicates the operator name that can be used to isolate the property using the less-than
         /// operator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lessThanOperatorName")]
-        public virtual string LessThanOperatorName { get; set; } 
+        public virtual string LessThanOperatorName { get; set; }
 
         /// <summary>Name of the object corresponding to the operator. This field is only filled for schema-specific
         /// operators, and is unset for common operators.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectType")]
-        public virtual string ObjectType { get; set; } 
+        public virtual string ObjectType { get; set; }
 
         /// <summary>The name of the operator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorName")]
-        public virtual string OperatorName { get; set; } 
+        public virtual string OperatorName { get; set; }
 
         /// <summary>Type of the operator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6336,19 +6336,19 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Display name of the data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>List of all operators applicable for this source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operators")]
-        public virtual System.Collections.Generic.IList<QueryOperator> Operators { get; set; } 
+        public virtual System.Collections.Generic.IList<QueryOperator> Operators { get; set; }
 
         /// <summary>A short name or alias for the source. This value can be used with the 'source' operator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortName")]
-        public virtual string ShortName { get; set; } 
+        public virtual string ShortName { get; set; }
 
         /// <summary>Name of the source</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual Source Source { get; set; } 
+        public virtual Source Source { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6368,15 +6368,15 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Message that describes the error. The maximum allowable length of the message is 8192
         /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
-        public virtual string ErrorMessage { get; set; } 
+        public virtual string ErrorMessage { get; set; }
 
         /// <summary>Error codes. Matches the definition of HTTP status codes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpStatusCode")]
-        public virtual System.Nullable<int> HttpStatusCode { get; set; } 
+        public virtual System.Nullable<int> HttpStatusCode { get; set; }
 
         /// <summary>Type of error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6387,7 +6387,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Debug options of the request</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debugOptions")]
-        public virtual DebugOptions DebugOptions { get; set; } 
+        public virtual DebugOptions DebugOptions { get; set; }
 
         /// <summary>The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
         /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. For translations. Set this field using the
@@ -6396,12 +6396,12 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// specified language. The suggest API does not use this parameter. Instead, suggest autocompletes only based
         /// on characters in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; } 
+        public virtual string LanguageCode { get; set; }
 
         /// <summary>The ID generated when you create a search application using the [admin
         /// console](https://support.google.com/a/answer/9043922).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchApplicationId")]
-        public virtual string SearchApplicationId { get; set; } 
+        public virtual string SearchApplicationId { get; set; }
 
         /// <summary>Current user's time zone id, such as "America/Los_Angeles" or "Australia/Sydney". These IDs are
         /// defined by [Unicode Common Locale Data Repository (CLDR)](http://cldr.unicode.org/) project, and currently
@@ -6409,7 +6409,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// field is used to correctly interpret date and time queries. If this field is not specified, the default time
         /// zone (UTC) is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
-        public virtual string TimeZone { get; set; } 
+        public virtual string TimeZone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6419,7 +6419,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Common debug options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debugOptions")]
-        public virtual DebugOptions DebugOptions { get; set; } 
+        public virtual DebugOptions DebugOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6430,7 +6430,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>General debug info formatted for display.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedDebugInfo")]
-        public virtual string FormattedDebugInfo { get; set; } 
+        public virtual string FormattedDebugInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6442,21 +6442,21 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>LINT.ThenChange(//depot/google3/java/com/google/apps/search/quality/itemsuggest/utils/SubtypeRerank
         /// ingUtils.java)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveFollowUpRestrict")]
-        public virtual DriveFollowUpRestrict DriveFollowUpRestrict { get; set; } 
+        public virtual DriveFollowUpRestrict DriveFollowUpRestrict { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("driveLocationRestrict")]
-        public virtual DriveLocationRestrict DriveLocationRestrict { get; set; } 
+        public virtual DriveLocationRestrict DriveLocationRestrict { get; set; }
 
         /// <summary>LINT.IfChange Drive Types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveMimeTypeRestrict")]
-        public virtual DriveMimeTypeRestrict DriveMimeTypeRestrict { get; set; } 
+        public virtual DriveMimeTypeRestrict DriveMimeTypeRestrict { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("driveTimeSpanRestrict")]
-        public virtual DriveTimeSpanRestrict DriveTimeSpanRestrict { get; set; } 
+        public virtual DriveTimeSpanRestrict DriveTimeSpanRestrict { get; set; }
 
         /// <summary>The search restrict (e.g. "after:2017-09-11 before:2017-09-12").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchOperator")]
-        public virtual string SearchOperator { get; set; } 
+        public virtual string SearchOperator { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6467,7 +6467,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Result count information for each source with results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceResultCounts")]
-        public virtual System.Collections.Generic.IList<SourceResultCount> SourceResultCounts { get; set; } 
+        public virtual System.Collections.Generic.IList<SourceResultCount> SourceResultCounts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6478,7 +6478,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>General debug info formatted for display.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedDebugInfo")]
-        public virtual string FormattedDebugInfo { get; set; } 
+        public virtual string FormattedDebugInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6489,15 +6489,15 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>The display label for the property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual string Label { get; set; } 
+        public virtual string Label { get; set; }
 
         /// <summary>The operator name of the property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorName")]
-        public virtual string OperatorName { get; set; } 
+        public virtual string OperatorName { get; set; }
 
         /// <summary>The name value pair for the property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("property")]
-        public virtual NamedProperty Property { get; set; } 
+        public virtual NamedProperty Property { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6507,7 +6507,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class ResultDisplayLine : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual System.Collections.Generic.IList<ResultDisplayField> Fields { get; set; } 
+        public virtual System.Collections.Generic.IList<ResultDisplayField> Fields { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6517,11 +6517,11 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>The metalines content to be displayed with the result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metalines")]
-        public virtual System.Collections.Generic.IList<ResultDisplayLine> Metalines { get; set; } 
+        public virtual System.Collections.Generic.IList<ResultDisplayLine> Metalines { get; set; }
 
         /// <summary>The display label for the object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectTypeLabel")]
-        public virtual string ObjectTypeLabel { get; set; } 
+        public virtual string ObjectTypeLabel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6532,7 +6532,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Indicates the ranking importance given to property when it is matched during retrieval. Once set,
         /// the token importance of a property cannot be changed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importance")]
-        public virtual string Importance { get; set; } 
+        public virtual string Importance { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6543,12 +6543,12 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>The list of top-level objects for the data source. The maximum number of elements is 10.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectDefinitions")]
-        public virtual System.Collections.Generic.IList<ObjectDefinition> ObjectDefinitions { get; set; } 
+        public virtual System.Collections.Generic.IList<ObjectDefinition> ObjectDefinitions { get; set; }
 
         /// <summary>IDs of the Long Running Operations (LROs) currently running for this schema. After modifying the
         /// schema, wait for operations to complete before indexing additional content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationIds")]
-        public virtual System.Collections.Generic.IList<string> OperationIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> OperationIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6560,12 +6560,12 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Whether to use freshness as a ranking signal. By default, freshness is used as a ranking signal.
         /// Note that this setting is not available in the Admin UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableFreshness")]
-        public virtual System.Nullable<bool> DisableFreshness { get; set; } 
+        public virtual System.Nullable<bool> DisableFreshness { get; set; }
 
         /// <summary>Whether to personalize the results. By default, personal signals will be used to boost
         /// results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disablePersonalization")]
-        public virtual System.Nullable<bool> DisablePersonalization { get; set; } 
+        public virtual System.Nullable<bool> DisablePersonalization { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6576,37 +6576,37 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Retrictions applied to the configurations. The maximum number of elements is 10.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceRestrictions")]
-        public virtual System.Collections.Generic.IList<DataSourceRestriction> DataSourceRestrictions { get; set; } 
+        public virtual System.Collections.Generic.IList<DataSourceRestriction> DataSourceRestrictions { get; set; }
 
         /// <summary>The default fields for returning facet results. The sources specified here also have been included
         /// in data_source_restrictions above.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultFacetOptions")]
-        public virtual System.Collections.Generic.IList<FacetOptions> DefaultFacetOptions { get; set; } 
+        public virtual System.Collections.Generic.IList<FacetOptions> DefaultFacetOptions { get; set; }
 
         /// <summary>The default options for sorting the search results</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultSortOptions")]
-        public virtual SortOptions DefaultSortOptions { get; set; } 
+        public virtual SortOptions DefaultSortOptions { get; set; }
 
         /// <summary>Display name of the Search Application. The maximum length is 300 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Name of the Search Application. Format: searchapplications/{application_id}.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. IDs of the Long Running Operations (LROs) currently running for this schema. Output
         /// only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationIds")]
-        public virtual System.Collections.Generic.IList<string> OperationIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> OperationIds { get; set; }
 
         /// <summary>Configuration for ranking results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoringConfig")]
-        public virtual ScoringConfig ScoringConfig { get; set; } 
+        public virtual ScoringConfig ScoringConfig { get; set; }
 
         /// <summary>Configuration for a sources specified in data_source_restrictions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceConfig")]
-        public virtual System.Collections.Generic.IList<SourceConfig> SourceConfig { get; set; } 
+        public virtual System.Collections.Generic.IList<SourceConfig> SourceConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6617,10 +6617,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Date for which query stats were calculated. Stats calculated on the next day close to midnight are
         /// returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
-        public virtual Date Date { get; set; } 
+        public virtual Date Date { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("queryCountByStatus")]
-        public virtual System.Collections.Generic.IList<QueryCountByStatus> QueryCountByStatus { get; set; } 
+        public virtual System.Collections.Generic.IList<QueryCountByStatus> QueryCountByStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6631,11 +6631,11 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Date for which session stats were calculated. Stats calculated on the next day close to midnight
         /// are returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
-        public virtual Date Date { get; set; } 
+        public virtual Date Date { get; set; }
 
         /// <summary>The count of search sessions on the day</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchSessionsCount")]
-        public virtual System.Nullable<long> SearchSessionsCount { get; set; } 
+        public virtual System.Nullable<long> SearchSessionsCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6646,19 +6646,19 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Date for which session stats were calculated. Stats calculated on the next day close to midnight
         /// are returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
-        public virtual Date Date { get; set; } 
+        public virtual Date Date { get; set; }
 
         /// <summary>The count of unique active users in the past one day</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oneDayActiveUsersCount")]
-        public virtual System.Nullable<long> OneDayActiveUsersCount { get; set; } 
+        public virtual System.Nullable<long> OneDayActiveUsersCount { get; set; }
 
         /// <summary>The count of unique active users in the past seven days</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sevenDaysActiveUsersCount")]
-        public virtual System.Nullable<long> SevenDaysActiveUsersCount { get; set; } 
+        public virtual System.Nullable<long> SevenDaysActiveUsersCount { get; set; }
 
         /// <summary>The count of unique active users in the past thirty days</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirtyDaysActiveUsersCount")]
-        public virtual System.Nullable<long> ThirtyDaysActiveUsersCount { get; set; } 
+        public virtual System.Nullable<long> ThirtyDaysActiveUsersCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6668,16 +6668,16 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Common debug options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debugOptions")]
-        public virtual DebugOptions DebugOptions { get; set; } 
+        public virtual DebugOptions DebugOptions { get; set; }
 
         /// <summary>The next_page_token value returned from a previous request, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
-        public virtual string PageToken { get; set; } 
+        public virtual string PageToken { get; set; }
 
         /// <summary>Specify the full view URL to find the corresponding item. The maximum length is 2048
         /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewUrl")]
-        public virtual string ViewUrl { get; set; } 
+        public virtual string ViewUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6686,12 +6686,12 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class SearchItemsByViewUrlResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Item> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Item> Items { get; set; }
 
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6703,7 +6703,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>An indication of the quality of the item, used to influence search quality. Value should be between
         /// 0.0 (lowest quality) and 1.0 (highest quality). The default value is 0.0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quality")]
-        public virtual System.Nullable<double> Quality { get; set; } 
+        public virtual System.Nullable<double> Quality { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6715,36 +6715,36 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>The sources to use for querying. If not specified, all data sources from the current search
         /// application are used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceRestrictions")]
-        public virtual System.Collections.Generic.IList<DataSourceRestriction> DataSourceRestrictions { get; set; } 
+        public virtual System.Collections.Generic.IList<DataSourceRestriction> DataSourceRestrictions { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("facetOptions")]
-        public virtual System.Collections.Generic.IList<FacetOptions> FacetOptions { get; set; } 
+        public virtual System.Collections.Generic.IList<FacetOptions> FacetOptions { get; set; }
 
         /// <summary>Maximum number of search results to return in one page. Valid values are between 1 and 100,
         /// inclusive. Default value is 10.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
-        public virtual System.Nullable<int> PageSize { get; set; } 
+        public virtual System.Nullable<int> PageSize { get; set; }
 
         /// <summary>The raw query string. See supported search operators in the [Cloud search Cheat
         /// Sheet](https://support.google.com/a/users/answer/9299929)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
-        public virtual string Query { get; set; } 
+        public virtual string Query { get; set; }
 
         /// <summary>Options to interpret the user query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryInterpretationOptions")]
-        public virtual QueryInterpretationOptions QueryInterpretationOptions { get; set; } 
+        public virtual QueryInterpretationOptions QueryInterpretationOptions { get; set; }
 
         /// <summary>Request options, such as the search application and user timezone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
-        public virtual RequestOptions RequestOptions { get; set; } 
+        public virtual RequestOptions RequestOptions { get; set; }
 
         /// <summary>The options for sorting the search results</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sortOptions")]
-        public virtual SortOptions SortOptions { get; set; } 
+        public virtual SortOptions SortOptions { get; set; }
 
         /// <summary>Starting index of the results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("start")]
-        public virtual System.Nullable<int> Start { get; set; } 
+        public virtual System.Nullable<int> Start { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6755,48 +6755,48 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Debugging information about the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debugInfo")]
-        public virtual ResponseDebugInfo DebugInfo { get; set; } 
+        public virtual ResponseDebugInfo DebugInfo { get; set; }
 
         /// <summary>Error information about the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorInfo")]
-        public virtual ErrorInfo ErrorInfo { get; set; } 
+        public virtual ErrorInfo ErrorInfo { get; set; }
 
         /// <summary>Repeated facet results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("facetResults")]
-        public virtual System.Collections.Generic.IList<FacetResult> FacetResults { get; set; } 
+        public virtual System.Collections.Generic.IList<FacetResult> FacetResults { get; set; }
 
         /// <summary>Whether there are more search results matching the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasMoreResults")]
-        public virtual System.Nullable<bool> HasMoreResults { get; set; } 
+        public virtual System.Nullable<bool> HasMoreResults { get; set; }
 
         /// <summary>Query interpretation result for user query. Empty if query interpretation is disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryInterpretation")]
-        public virtual QueryInterpretation QueryInterpretation { get; set; } 
+        public virtual QueryInterpretation QueryInterpretation { get; set; }
 
         /// <summary>The estimated result count for this query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultCountEstimate")]
-        public virtual System.Nullable<long> ResultCountEstimate { get; set; } 
+        public virtual System.Nullable<long> ResultCountEstimate { get; set; }
 
         /// <summary>The exact result count for this query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultCountExact")]
-        public virtual System.Nullable<long> ResultCountExact { get; set; } 
+        public virtual System.Nullable<long> ResultCountExact { get; set; }
 
         /// <summary>Expanded result count information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultCounts")]
-        public virtual ResultCounts ResultCounts { get; set; } 
+        public virtual ResultCounts ResultCounts { get; set; }
 
         /// <summary>Results from a search query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
-        public virtual System.Collections.Generic.IList<SearchResult> Results { get; set; } 
+        public virtual System.Collections.Generic.IList<SearchResult> Results { get; set; }
 
         /// <summary>Suggested spelling for the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spellResults")]
-        public virtual System.Collections.Generic.IList<SpellResult> SpellResults { get; set; } 
+        public virtual System.Collections.Generic.IList<SpellResult> SpellResults { get; set; }
 
         /// <summary>Structured results for the user query. These results are not counted against the
         /// page_size.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structuredResults")]
-        public virtual System.Collections.Generic.IList<StructuredResult> StructuredResults { get; set; } 
+        public virtual System.Collections.Generic.IList<StructuredResult> StructuredResults { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6808,28 +6808,28 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>If source is clustered, provide list of clustered results. There will only be one level of
         /// clustered results. If current source is not enabled for clustering, this field will be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusteredResults")]
-        public virtual System.Collections.Generic.IList<SearchResult> ClusteredResults { get; set; } 
+        public virtual System.Collections.Generic.IList<SearchResult> ClusteredResults { get; set; }
 
         /// <summary>Debugging information about this search result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debugInfo")]
-        public virtual ResultDebugInfo DebugInfo { get; set; } 
+        public virtual ResultDebugInfo DebugInfo { get; set; }
 
         /// <summary>Metadata of the search result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual Metadata Metadata { get; set; } 
+        public virtual Metadata Metadata { get; set; }
 
         /// <summary>The concatenation of all snippets (summaries) available for this result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual Snippet Snippet { get; set; } 
+        public virtual Snippet Snippet { get; set; }
 
         /// <summary>Title of the search result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The URL of the search result. The URL contains a Google redirect to the actual item. This URL is
         /// signed and shouldn't be changed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6840,12 +6840,12 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>The matched ranges in the snippet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchRanges")]
-        public virtual System.Collections.Generic.IList<MatchRange> MatchRanges { get; set; } 
+        public virtual System.Collections.Generic.IList<MatchRange> MatchRanges { get; set; }
 
         /// <summary>The snippet of the document. The snippet of the document. May contain escaped HTML character that
         /// should be unescaped prior to rendering.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual string SnippetValue { get; set; } 
+        public virtual string SnippetValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6856,11 +6856,11 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Name of the operator corresponding to the field to sort on. The corresponding property must be
         /// marked as sortable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorName")]
-        public virtual string OperatorName { get; set; } 
+        public virtual string OperatorName { get; set; }
 
         /// <summary>Ascending is the default sort order</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sortOrder")]
-        public virtual string SortOrder { get; set; } 
+        public virtual string SortOrder { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6871,11 +6871,11 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Source name for content indexed by the Indexing API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Predefined content source for Google Apps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predefinedSource")]
-        public virtual string PredefinedSource { get; set; } 
+        public virtual string PredefinedSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6886,15 +6886,15 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>The crowding configuration for the source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crowdingConfig")]
-        public virtual SourceCrowdingConfig CrowdingConfig { get; set; } 
+        public virtual SourceCrowdingConfig CrowdingConfig { get; set; }
 
         /// <summary>The scoring configuration for the source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoringConfig")]
-        public virtual SourceScoringConfig ScoringConfig { get; set; } 
+        public virtual SourceScoringConfig ScoringConfig { get; set; }
 
         /// <summary>The source for which this configuration is to be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual Source Source { get; set; } 
+        public virtual Source Source { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6909,12 +6909,12 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Maximum number of results allowed from a source. No limits will be set on results if this value is
         /// less than or equal to 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numResults")]
-        public virtual System.Nullable<int> NumResults { get; set; } 
+        public virtual System.Nullable<int> NumResults { get; set; }
 
         /// <summary>Maximum number of suggestions allowed from a source. No limits will be set on results if this value
         /// is less than or equal to 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numSuggestions")]
-        public virtual System.Nullable<int> NumSuggestions { get; set; } 
+        public virtual System.Nullable<int> NumSuggestions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6925,19 +6925,19 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Whether there are more search results for this source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasMoreResults")]
-        public virtual System.Nullable<bool> HasMoreResults { get; set; } 
+        public virtual System.Nullable<bool> HasMoreResults { get; set; }
 
         /// <summary>The estimated result count for this source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultCountEstimate")]
-        public virtual System.Nullable<long> ResultCountEstimate { get; set; } 
+        public virtual System.Nullable<long> ResultCountEstimate { get; set; }
 
         /// <summary>The exact result count for this source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultCountExact")]
-        public virtual System.Nullable<long> ResultCountExact { get; set; } 
+        public virtual System.Nullable<long> ResultCountExact { get; set; }
 
         /// <summary>The source the result count information is associated with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual Source Source { get; set; } 
+        public virtual Source Source { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6948,7 +6948,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Importance of the source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceImportance")]
-        public virtual string SourceImportance { get; set; } 
+        public virtual string SourceImportance { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6958,7 +6958,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>The suggested spelling of the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestedQuery")]
-        public virtual string SuggestedQuery { get; set; } 
+        public virtual string SuggestedQuery { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6969,11 +6969,11 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Name of connector making this call. Format: datasources/{source_id}/connectors/{ID}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectorName")]
-        public virtual string ConnectorName { get; set; } 
+        public virtual string ConnectorName { get; set; }
 
         /// <summary>Common debug options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debugOptions")]
-        public virtual DebugOptions DebugOptions { get; set; } 
+        public virtual DebugOptions DebugOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6988,17 +6988,17 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7009,7 +7009,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>The properties for the object. The maximum number of elements is 1000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual System.Collections.Generic.IList<NamedProperty> Properties { get; set; } 
+        public virtual System.Collections.Generic.IList<NamedProperty> Properties { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7020,7 +7020,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Representation of a person</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("person")]
-        public virtual Person Person { get; set; } 
+        public virtual Person Person { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7033,16 +7033,16 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// search application. NOTE: Suggestions are supported only for third party data sources and people (i.e.
         /// PredefinedSource.PERSON).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceRestrictions")]
-        public virtual System.Collections.Generic.IList<DataSourceRestriction> DataSourceRestrictions { get; set; } 
+        public virtual System.Collections.Generic.IList<DataSourceRestriction> DataSourceRestrictions { get; set; }
 
         /// <summary>Partial query for which autocomplete suggestions will be shown. For example, if the query is "sea",
         /// then the server might return "season", "search", "seagull" and so on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
-        public virtual string Query { get; set; } 
+        public virtual string Query { get; set; }
 
         /// <summary>Request options, such as the search application and user timezone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
-        public virtual RequestOptions RequestOptions { get; set; } 
+        public virtual RequestOptions RequestOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7053,7 +7053,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>List of suggestions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestResults")]
-        public virtual System.Collections.Generic.IList<SuggestResult> SuggestResults { get; set; } 
+        public virtual System.Collections.Generic.IList<SuggestResult> SuggestResults { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7065,19 +7065,19 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>This is present when the suggestion indicates a person. It contains more information about the
         /// person - like their email ID, name etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peopleSuggestion")]
-        public virtual PeopleSuggestion PeopleSuggestion { get; set; } 
+        public virtual PeopleSuggestion PeopleSuggestion { get; set; }
 
         /// <summary>This field will be present if the suggested query is a word/phrase completion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("querySuggestion")]
-        public virtual QuerySuggestion QuerySuggestion { get; set; } 
+        public virtual QuerySuggestion QuerySuggestion { get; set; }
 
         /// <summary>The source of the suggestion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual Source Source { get; set; } 
+        public virtual Source Source { get; set; }
 
         /// <summary>The suggested query that will be used for search, when the user clicks on the suggestion</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestedQuery")]
-        public virtual string SuggestedQuery { get; set; } 
+        public virtual string SuggestedQuery { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7093,7 +7093,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// case-sensitive and does not remove special characters. If false, the text is tokenized. For example, if the
         /// value is "science-fiction" the queries "genre:science" and "genre:fiction" matches the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exactMatchWithOperator")]
-        public virtual System.Nullable<bool> ExactMatchWithOperator { get; set; } 
+        public virtual System.Nullable<bool> ExactMatchWithOperator { get; set; }
 
         /// <summary>Indicates the operator name required in the query in order to isolate the text property. For
         /// example, if operatorName is *subject* and the property's name is *subjectLine*, then queries like *subject:*
@@ -7102,7 +7102,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// text within the content field for the item. The operator name can only contain lowercase letters (a-z). The
         /// maximum length is 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorName")]
-        public virtual string OperatorName { get; set; } 
+        public virtual string OperatorName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7113,12 +7113,12 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>If set, describes how the property should be used as a search operator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorOptions")]
-        public virtual TextOperatorOptions OperatorOptions { get; set; } 
+        public virtual TextOperatorOptions OperatorOptions { get; set; }
 
         /// <summary>Indicates the search quality importance of the tokens within the field when used for
         /// retrieval.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retrievalImportance")]
-        public virtual RetrievalImportance RetrievalImportance { get; set; } 
+        public virtual RetrievalImportance RetrievalImportance { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7129,7 +7129,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>The maximum allowable length for text values is 2048 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<string> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7145,7 +7145,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// *closeDate* is later than **. The operator name can only contain lowercase letters (a-z). The maximum length
         /// is 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("greaterThanOperatorName")]
-        public virtual string GreaterThanOperatorName { get; set; } 
+        public virtual string GreaterThanOperatorName { get; set; }
 
         /// <summary>Indicates the operator name required in the query in order to isolate the timestamp property using
         /// the less-than operator. For example, if lessThanOperatorName is *closedbefore* and the property's name is
@@ -7153,7 +7153,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// *closeDate* is earlier than **. The operator name can only contain lowercase letters (a-z). The maximum
         /// length is 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lessThanOperatorName")]
-        public virtual string LessThanOperatorName { get; set; } 
+        public virtual string LessThanOperatorName { get; set; }
 
         /// <summary>Indicates the operator name required in the query in order to isolate the timestamp property. For
         /// example, if operatorName is *closedon* and the property's name is *closeDate*, then queries like *closedon:*
@@ -7162,7 +7162,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// or text within the content field for the item. The operator name can only contain lowercase letters (a-z).
         /// The maximum length is 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorName")]
-        public virtual string OperatorName { get; set; } 
+        public virtual string OperatorName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7173,7 +7173,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>If set, describes how the timestamp should be used as a search operator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorOptions")]
-        public virtual TimestampOperatorOptions OperatorOptions { get; set; } 
+        public virtual TimestampOperatorOptions OperatorOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7183,7 +7183,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class TimestampValues : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<object> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<object> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7193,11 +7193,11 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>The resource name for an external user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalIdentity")]
-        public virtual Principal ExternalIdentity { get; set; } 
+        public virtual Principal ExternalIdentity { get; set; }
 
         /// <summary>The resolution status for the external identity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolutionStatusCode")]
-        public virtual string ResolutionStatusCode { get; set; } 
+        public virtual string ResolutionStatusCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7207,15 +7207,15 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Name of connector making this call. Format: datasources/{source_id}/connectors/{ID}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectorName")]
-        public virtual string ConnectorName { get; set; } 
+        public virtual string ConnectorName { get; set; }
 
         /// <summary>Common debug options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debugOptions")]
-        public virtual DebugOptions DebugOptions { get; set; } 
+        public virtual DebugOptions DebugOptions { get; set; }
 
         /// <summary>Name of a queue to unreserve items from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queue")]
-        public virtual string Queue { get; set; } 
+        public virtual string Queue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7225,10 +7225,10 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Common debug options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debugOptions")]
-        public virtual DebugOptions DebugOptions { get; set; } 
+        public virtual DebugOptions DebugOptions { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual DataSource Source { get; set; } 
+        public virtual DataSource Source { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7238,16 +7238,16 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Common debug options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debugOptions")]
-        public virtual DebugOptions DebugOptions { get; set; } 
+        public virtual DebugOptions DebugOptions { get; set; }
 
         /// <summary>The new schema for the source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
-        public virtual Schema Schema { get; set; } 
+        public virtual Schema Schema { get; set; }
 
         /// <summary>If true, the schema will be checked for validity, but will not be registered with the data source,
         /// even if valid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
-        public virtual System.Nullable<bool> ValidateOnly { get; set; } 
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7259,7 +7259,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>Name of the content reference. The maximum length is 2048 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7269,22 +7269,22 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class Value : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("booleanValue")]
-        public virtual System.Nullable<bool> BooleanValue { get; set; } 
+        public virtual System.Nullable<bool> BooleanValue { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("dateValue")]
-        public virtual Date DateValue { get; set; } 
+        public virtual Date DateValue { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
-        public virtual System.Nullable<double> DoubleValue { get; set; } 
+        public virtual System.Nullable<double> DoubleValue { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("integerValue")]
-        public virtual System.Nullable<long> IntegerValue { get; set; } 
+        public virtual System.Nullable<long> IntegerValue { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
-        public virtual string StringValue { get; set; } 
+        public virtual string StringValue { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("timestampValue")]
-        public virtual object TimestampValue { get; set; } 
+        public virtual object TimestampValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7298,11 +7298,11 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// `less_than_operator_name` in your schema. The query filters the results for the property values that are
         /// greater than or less than the supplied value in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorName")]
-        public virtual string OperatorName { get; set; } 
+        public virtual string OperatorName { get; set; }
 
         /// <summary>The value to be compared with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual Value Value { get; set; } 
+        public virtual Value Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

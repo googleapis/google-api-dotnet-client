@@ -847,19 +847,19 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         /// <summary>Optional. Compliance controls that should be applied to the resources managed by the
         /// workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("complianceRegime")]
-        public virtual string ComplianceRegime { get; set; } 
+        public virtual string ComplianceRegime { get; set; }
 
         /// <summary>Optional. Time when the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Optional. The display name of the workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Optional. The parent of the workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
-        public virtual string Parent { get; set; } 
+        public virtual string Parent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -870,11 +870,11 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
     {
         /// <summary>The next page token. Return empty if reached the last page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>List of Workloads under a given parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloads")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1Workload> Workloads { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1Workload> Workloads { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -889,58 +889,58 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         /// account. The resource name has the form `billingAccounts/{billing_account_id}`. For example,
         /// `billingAccounts/012345-567890-ABCDEF`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingAccount")]
-        public virtual string BillingAccount { get; set; } 
+        public virtual string BillingAccount { get; set; }
 
         /// <summary>Required. Input only. Immutable. Settings specific to resources needed for CJIS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cjisSettings")]
-        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings CjisSettings { get; set; } 
+        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings CjisSettings { get; set; }
 
         /// <summary>Required. Immutable. Compliance Regime associated with this workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("complianceRegime")]
-        public virtual string ComplianceRegime { get; set; } 
+        public virtual string ComplianceRegime { get; set; }
 
         /// <summary>Output only. Immutable. The Workload creation timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Required. The user-assigned display name of the Workload. When present it must be between 4 to 30
         /// characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example:
         /// My Workload</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be
         /// used in Update & Delete operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Required. Input only. Immutable. Settings specific to resources needed for FedRAMP High.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fedrampHighSettings")]
-        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings FedrampHighSettings { get; set; } 
+        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings FedrampHighSettings { get; set; }
 
         /// <summary>Required. Input only. Immutable. Settings specific to resources needed for FedRAMP
         /// Moderate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fedrampModerateSettings")]
-        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings FedrampModerateSettings { get; set; } 
+        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings FedrampModerateSettings { get; set; }
 
         /// <summary>Required. Input only. Immutable. Settings specific to resources needed for IL4.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("il4Settings")]
-        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings Il4Settings { get; set; } 
+        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings Il4Settings { get; set; }
 
         /// <summary>Optional. Labels applied to the workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Optional. The resource name of the workload. Format:
         /// organizations/{organization}/locations/{location}/workloads/{workload} Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The resources associated with this workload. These resources will be created when
         /// creating the workload. If any of the projects already exist, the workload creation will fail. Always read
         /// only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo> Resources { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo> Resources { get; set; }
 
     }    
 
@@ -949,7 +949,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
     {
         /// <summary>Required. Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
-        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings KmsSettings { get; set; } 
+        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings KmsSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -960,7 +960,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
     {
         /// <summary>Required. Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
-        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings KmsSettings { get; set; } 
+        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings KmsSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -971,7 +971,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
     {
         /// <summary>Required. Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
-        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings KmsSettings { get; set; } 
+        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings KmsSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -982,7 +982,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
     {
         /// <summary>Required. Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
-        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings KmsSettings { get; set; } 
+        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings KmsSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -994,13 +994,13 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         /// <summary>Required. Input only. Immutable. The time at which the Key Management Service will automatically
         /// create a new version of the crypto key and mark it as the primary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextRotationTime")]
-        public virtual object NextRotationTime { get; set; } 
+        public virtual object NextRotationTime { get; set; }
 
         /// <summary>Required. Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key
         /// Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000
         /// hours.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rotationPeriod")]
-        public virtual object RotationPeriod { get; set; } 
+        public virtual object RotationPeriod { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1011,11 +1011,11 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
     {
         /// <summary>Resource identifier. For a project this represents project_number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual System.Nullable<long> ResourceId { get; set; } 
+        public virtual System.Nullable<long> ResourceId { get; set; }
 
         /// <summary>Indicates the type of resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
-        public virtual string ResourceType { get; set; } 
+        public virtual string ResourceType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1026,11 +1026,11 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
     {
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<GoogleLongrunningOperation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleLongrunningOperation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1042,23 +1042,23 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual GoogleRpcStatus Error { get; set; } 
+        public virtual GoogleRpcStatus Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -1066,7 +1066,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1091,17 +1091,17 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

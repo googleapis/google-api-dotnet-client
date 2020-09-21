@@ -609,12 +609,12 @@ namespace Google.Apis.Digitalassetlinks.v1.Data
         /// statements contain syntactic sugar to easily let you specify apps that are known by multiple certificates.)
         /// REQUIRED</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certificate")]
-        public virtual CertificateInfo Certificate { get; set; } 
+        public virtual CertificateInfo Certificate { get; set; }
 
         /// <summary>Android App assets are naturally identified by their Java package name. For example, the Google
         /// Maps app uses the package name `com.google.android.apps.maps`. REQUIRED</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
-        public virtual string PackageName { get; set; } 
+        public virtual string PackageName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -627,11 +627,11 @@ namespace Google.Apis.Digitalassetlinks.v1.Data
     {
         /// <summary>Set if this is an Android App asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidApp")]
-        public virtual AndroidAppAsset AndroidApp { get; set; } 
+        public virtual AndroidAppAsset AndroidApp { get; set; }
 
         /// <summary>Set if this is a web asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("web")]
-        public virtual WebAsset Web { get; set; } 
+        public virtual WebAsset Web { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -651,7 +651,7 @@ namespace Google.Apis.Digitalassetlinks.v1.Data
         /// SHA-256 hash of that string and represent the result as a hexstring (that is, uppercase hexadecimal
         /// representations of each octet, separated by colons).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha256Fingerprint")]
-        public virtual string Sha256Fingerprint { get; set; } 
+        public virtual string Sha256Fingerprint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -666,21 +666,21 @@ namespace Google.Apis.Digitalassetlinks.v1.Data
         /// aspect of it may be subject to change without notice. You should not attempt to programmatically parse this
         /// data. For programmatic access, use the error_code field below.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debugString")]
-        public virtual string DebugString { get; set; } 
+        public virtual string DebugString { get; set; }
 
         /// <summary>Error codes that describe the result of the Check operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
-        public virtual System.Collections.Generic.IList<string> ErrorCode { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ErrorCode { get; set; }
 
         /// <summary>Set to true if the assets specified in the request are linked by the relation specified in the
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linked")]
-        public virtual System.Nullable<bool> Linked { get; set; } 
+        public virtual System.Nullable<bool> Linked { get; set; }
 
         /// <summary>From serving time, how much longer the response should be considered valid barring further updates.
         /// REQUIRED</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxAge")]
-        public virtual object MaxAge { get; set; } 
+        public virtual object MaxAge { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -695,20 +695,20 @@ namespace Google.Apis.Digitalassetlinks.v1.Data
         /// aspect of it may be subject to change without notice. You should not attempt to programmatically parse this
         /// data. For programmatic access, use the error_code field below.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debugString")]
-        public virtual string DebugString { get; set; } 
+        public virtual string DebugString { get; set; }
 
         /// <summary>Error codes that describe the result of the List operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
-        public virtual System.Collections.Generic.IList<string> ErrorCode { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ErrorCode { get; set; }
 
         /// <summary>From serving time, how much longer the response should be considered valid barring further updates.
         /// REQUIRED</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxAge")]
-        public virtual object MaxAge { get; set; } 
+        public virtual object MaxAge { get; set; }
 
         /// <summary>A list of all the matching statements that have been found.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statements")]
-        public virtual System.Collections.Generic.IList<Statement> Statements { get; set; } 
+        public virtual System.Collections.Generic.IList<Statement> Statements { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -727,15 +727,15 @@ namespace Google.Apis.Digitalassetlinks.v1.Data
         /// Refer to [our API documentation](/digital-asset-links/v1/relation-strings) for the current list of supported
         /// relations. Example: `delegate_permission/common.handle_all_urls` REQUIRED</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relation")]
-        public virtual string Relation { get; set; } 
+        public virtual string Relation { get; set; }
 
         /// <summary>Every statement has a source asset. REQUIRED</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual Asset Source { get; set; } 
+        public virtual Asset Source { get; set; }
 
         /// <summary>Every statement has a target asset. REQUIRED</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual Asset Target { get; set; } 
+        public virtual Asset Target { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -756,7 +756,7 @@ namespace Google.Apis.Digitalassetlinks.v1.Data
         /// (wrong scheme) * `https://google.com/` (hostname does not match) * `https://www.google.com:444/` (port does
         /// not match) REQUIRED</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("site")]
-        public virtual string Site { get; set; } 
+        public virtual string Site { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

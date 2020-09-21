@@ -1014,25 +1014,25 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
     {
         /// <summary>The HTTP request which was processed when the error was triggered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpRequest")]
-        public virtual HttpRequestContext HttpRequest { get; set; } 
+        public virtual HttpRequestContext HttpRequest { get; set; }
 
         /// <summary>The location in the source code where the decision was made to report the error, usually the place
         /// where it was logged. For a logged exception this would be the source line where the exception is logged,
         /// usually close to the place where it was caught.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportLocation")]
-        public virtual SourceLocation ReportLocation { get; set; } 
+        public virtual SourceLocation ReportLocation { get; set; }
 
         /// <summary>Source code that was used to build the executable which has caused the given error
         /// message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceReferences")]
-        public virtual System.Collections.Generic.IList<SourceReference> SourceReferences { get; set; } 
+        public virtual System.Collections.Generic.IList<SourceReference> SourceReferences { get; set; }
 
         /// <summary>The user who caused or was affected by the crash. This can be a user ID, an email address, or an
         /// arbitrary token that uniquely identifies the user. When sending an error report, leave this field empty if
         /// the user was not logged in. In this case the Error Reporting system will use other data, such as remote IP
         /// address, to distinguish affected users. See `affected_users_count` in `ErrorGroupStats`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
-        public virtual string User { get; set; } 
+        public virtual string User { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1043,20 +1043,20 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
     {
         /// <summary>Data about the context in which the error occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
-        public virtual ErrorContext Context { get; set; } 
+        public virtual ErrorContext Context { get; set; }
 
         /// <summary>Time when the event occurred as provided in the error report. If the report did not contain a
         /// timestamp, the time the error was received by the Error Reporting system is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
-        public virtual object EventTime { get; set; } 
+        public virtual object EventTime { get; set; }
 
         /// <summary>The stack trace that was reported or logged by the service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The `ServiceContext` for which this error was reported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceContext")]
-        public virtual ServiceContext ServiceContext { get; set; } 
+        public virtual ServiceContext ServiceContext { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1068,20 +1068,20 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         /// <summary>Group IDs are unique for a given project. If the same kind of error occurs in different service
         /// contexts, it will receive the same group ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
-        public virtual string GroupId { get; set; } 
+        public virtual string GroupId { get; set; }
 
         /// <summary>The group resource name. Example: projects/my-project-123/groups/CNSgkpnppqKCUw</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Error group's resolution status. An unspecified resolution status will be interpreted as
         /// OPEN</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolutionStatus")]
-        public virtual string ResolutionStatus { get; set; } 
+        public virtual string ResolutionStatus { get; set; }
 
         /// <summary>Associated tracking issues.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingIssues")]
-        public virtual System.Collections.Generic.IList<TrackingIssue> TrackingIssues { get; set; } 
+        public virtual System.Collections.Generic.IList<TrackingIssue> TrackingIssues { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1094,7 +1094,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         /// <summary>Service contexts with a non-zero error count for the given filter criteria. This list can be
         /// truncated if multiple services are affected. Refer to `num_affected_services` for the total count.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("affectedServices")]
-        public virtual System.Collections.Generic.IList<ServiceContext> AffectedServices { get; set; } 
+        public virtual System.Collections.Generic.IList<ServiceContext> AffectedServices { get; set; }
 
         /// <summary>Approximate number of affected users in the given group that match the filter criteria. Users are
         /// distinguished by data in the `ErrorContext` of the individual error events, such as their login name or
@@ -1103,41 +1103,41 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         /// are counted based on data in the request context that was provided in the error report. If more users are
         /// implicitly affected, such as due to a crash of the whole service, this is not reflected here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("affectedUsersCount")]
-        public virtual System.Nullable<long> AffectedUsersCount { get; set; } 
+        public virtual System.Nullable<long> AffectedUsersCount { get; set; }
 
         /// <summary>Approximate total number of events in the given group that match the filter criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
-        public virtual System.Nullable<long> Count { get; set; } 
+        public virtual System.Nullable<long> Count { get; set; }
 
         /// <summary>Approximate first occurrence that was ever seen for this group and which matches the given filter
         /// criteria, ignoring the time_range that was specified in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstSeenTime")]
-        public virtual object FirstSeenTime { get; set; } 
+        public virtual object FirstSeenTime { get; set; }
 
         /// <summary>Group data that is independent of the filter criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("group")]
-        public virtual ErrorGroup Group { get; set; } 
+        public virtual ErrorGroup Group { get; set; }
 
         /// <summary>Approximate last occurrence that was ever seen for this group and which matches the given filter
         /// criteria, ignoring the time_range that was specified in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastSeenTime")]
-        public virtual object LastSeenTime { get; set; } 
+        public virtual object LastSeenTime { get; set; }
 
         /// <summary>The total number of services with a non-zero error count for the given filter criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numAffectedServices")]
-        public virtual System.Nullable<int> NumAffectedServices { get; set; } 
+        public virtual System.Nullable<int> NumAffectedServices { get; set; }
 
         /// <summary>An arbitrary event that is chosen as representative for the whole group. The representative event
         /// is intended to be used as a quick preview for the whole group. Events in the group are usually sufficiently
         /// similar to each other such that showing an arbitrary representative provides insight into the
         /// characteristics of the group as a whole.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("representative")]
-        public virtual ErrorEvent Representative { get; set; } 
+        public virtual ErrorEvent Representative { get; set; }
 
         /// <summary>Approximate number of occurrences over time. Timed counts returned by ListGroups are guaranteed to
         /// be: - Inside the requested time interval - Non-overlapping, and - Ordered by ascending time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timedCounts")]
-        public virtual System.Collections.Generic.IList<TimedCount> TimedCounts { get; set; } 
+        public virtual System.Collections.Generic.IList<TimedCount> TimedCounts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1150,28 +1150,28 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
     {
         /// <summary>The type of HTTP request, such as `GET`, `POST`, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
-        public virtual string Method { get; set; } 
+        public virtual string Method { get; set; }
 
         /// <summary>The referrer information that is provided with the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referrer")]
-        public virtual string Referrer { get; set; } 
+        public virtual string Referrer { get; set; }
 
         /// <summary>The IP address from which the request originated. This can be IPv4, IPv6, or a token which is
         /// derived from the IP address, depending on the data that has been provided in the error report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remoteIp")]
-        public virtual string RemoteIp { get; set; } 
+        public virtual string RemoteIp { get; set; }
 
         /// <summary>The HTTP response status code for the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseStatusCode")]
-        public virtual System.Nullable<int> ResponseStatusCode { get; set; } 
+        public virtual System.Nullable<int> ResponseStatusCode { get; set; }
 
         /// <summary>The URL of the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The user agent information that is provided with the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
-        public virtual string UserAgent { get; set; } 
+        public virtual string UserAgent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1182,16 +1182,16 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
     {
         /// <summary>The error events which match the given request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorEvents")]
-        public virtual System.Collections.Generic.IList<ErrorEvent> ErrorEvents { get; set; } 
+        public virtual System.Collections.Generic.IList<ErrorEvent> ErrorEvents { get; set; }
 
         /// <summary>If non-empty, more results are available. Pass this token, along with the same query parameters as
         /// the first request, to view the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The timestamp specifies the start time to which the request was restricted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeRangeBegin")]
-        public virtual object TimeRangeBegin { get; set; } 
+        public virtual object TimeRangeBegin { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1202,18 +1202,18 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
     {
         /// <summary>The error group stats which match the given request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorGroupStats")]
-        public virtual System.Collections.Generic.IList<ErrorGroupStats> ErrorGroupStats { get; set; } 
+        public virtual System.Collections.Generic.IList<ErrorGroupStats> ErrorGroupStats { get; set; }
 
         /// <summary>If non-empty, more results are available. Pass this token, along with the same query parameters as
         /// the first request, to view the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The timestamp specifies the start time to which the request was restricted. The start time is set
         /// based on the requested time range. It may be adjusted to a later time if a project has exceeded the storage
         /// quota and older data has been deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeRangeBegin")]
-        public virtual object TimeRangeBegin { get; set; } 
+        public virtual object TimeRangeBegin { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1232,12 +1232,12 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
     {
         /// <summary>Optional. A description of the context in which the error occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
-        public virtual ErrorContext Context { get; set; } 
+        public virtual ErrorContext Context { get; set; }
 
         /// <summary>Optional. Time when the event occurred. If not provided, the time when the event was received by
         /// the Error Reporting system will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
-        public virtual object EventTime { get; set; } 
+        public virtual object EventTime { get; set; }
 
         /// <summary>Required. The error message. If no `context.reportLocation` is provided, the message must contain a
         /// header (typically consisting of the exception type name and an error message) and an exception stack trace
@@ -1254,11 +1254,11 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         /// [`(string)$exception`](http://php.net/manual/en/exception.tostring.php). * **Go**: Must be the return value
         /// of [`runtime.Stack()`](https://golang.org/pkg/runtime/debug/#Stack).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>Required. The service context in which this error has occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceContext")]
-        public virtual ServiceContext ServiceContext { get; set; } 
+        public virtual ServiceContext ServiceContext { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1272,7 +1272,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         /// https://cloud.google.com/monitoring/api/resources Value is set automatically for incoming errors and must
         /// not be set when reporting errors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
-        public virtual string ResourceType { get; set; } 
+        public virtual string ResourceType { get; set; }
 
         /// <summary>An identifier of the service, such as the name of the executable, job, or Google App Engine service
         /// name. This field is expected to have a low number of values that are relatively stable over time, as opposed
@@ -1280,13 +1280,13 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         /// reports extracted from Google App Engine logs or `default` if the App Engine default service is
         /// used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual string Service { get; set; } 
+        public virtual string Service { get; set; }
 
         /// <summary>Represents the source code version that the developer provided, which could represent a version
         /// label or a Git SHA-1 hash, for example. For App Engine standard environment, the version is set to the
         /// version of the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1300,16 +1300,16 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         /// <summary>The source code filename, which can include a truncated relative path, or a full path from a
         /// production machine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
-        public virtual string FilePath { get; set; } 
+        public virtual string FilePath { get; set; }
 
         /// <summary>Human-readable name of a function or method. The value can include optional context like the class
         /// or package name. For example, `my.package.MyClass.method` in case of Java.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionName")]
-        public virtual string FunctionName { get; set; } 
+        public virtual string FunctionName { get; set; }
 
         /// <summary>1-based. 0 indicates that the line number is unknown.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineNumber")]
-        public virtual System.Nullable<int> LineNumber { get; set; } 
+        public virtual System.Nullable<int> LineNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1322,12 +1322,12 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         /// <summary>Optional. A URI string identifying the repository. Example:
         /// "https://github.com/GoogleCloudPlatform/kubernetes.git"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repository")]
-        public virtual string Repository { get; set; } 
+        public virtual string Repository { get; set; }
 
         /// <summary>The canonical and persistent identifier of the deployed revision. Example (git):
         /// "0035781c50ec7aa23385dc841529ce8a4b70db1b"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
-        public virtual string RevisionId { get; set; } 
+        public virtual string RevisionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1339,15 +1339,15 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
     {
         /// <summary>Approximate number of occurrences in the given time period.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
-        public virtual System.Nullable<long> Count { get; set; } 
+        public virtual System.Nullable<long> Count { get; set; }
 
         /// <summary>End of the time period to which `count` refers (excluded).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Start of the time period to which `count` refers (included).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1359,7 +1359,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         /// <summary>A URL pointing to a related entry in an issue tracking system. Example:
         /// `https://github.com/user/project/issues/4`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

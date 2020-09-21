@@ -660,11 +660,11 @@ namespace Google.Apis.WorkflowExecutions.v1beta.Data
     {
         /// <summary>Human readable error context, helpful for debugging purposes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
-        public virtual string Context { get; set; } 
+        public virtual string Context { get; set; }
 
         /// <summary>Error payload returned by the execution, represented as a JSON string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual string Payload { get; set; } 
+        public virtual string Payload { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -676,38 +676,38 @@ namespace Google.Apis.WorkflowExecutions.v1beta.Data
     {
         /// <summary>Input parameters of the execution represented as a JSON string. The size limit is 32KB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("argument")]
-        public virtual string Argument { get; set; } 
+        public virtual string Argument { get; set; }
 
         /// <summary>Output only. Marks the end of execution, successful or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Output only. The error which caused the execution to finish prematurely. The value is only present
         /// if the execution's state is `FAILED` or `CANCELLED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Error Error { get; set; } 
+        public virtual Error Error { get; set; }
 
         /// <summary>Output only. The resource name of the execution. Format:
         /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. Output of the execution represented as a JSON string. The value can only be present if
         /// the execution's state is `SUCCEEDED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
-        public virtual string Result { get; set; } 
+        public virtual string Result { get; set; }
 
         /// <summary>Output only. Marks the beginning of execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>Output only. Current state of the execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Output only. Revision of the workflow this execution is using.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workflowRevisionId")]
-        public virtual string WorkflowRevisionId { get; set; } 
+        public virtual string WorkflowRevisionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -718,12 +718,12 @@ namespace Google.Apis.WorkflowExecutions.v1beta.Data
     {
         /// <summary>The executions which match the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executions")]
-        public virtual System.Collections.Generic.IList<Execution> Executions { get; set; } 
+        public virtual System.Collections.Generic.IList<Execution> Executions { get; set; }
 
         /// <summary>A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
         /// there are no subsequent pages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

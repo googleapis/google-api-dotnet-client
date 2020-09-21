@@ -1020,31 +1020,31 @@ namespace Google.Apis.Firestore.v1beta2.Data
     {
         /// <summary>Which collection ids are being exported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectionIds")]
-        public virtual System.Collections.Generic.IList<string> CollectionIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> CollectionIds { get; set; }
 
         /// <summary>The time this operation completed. Will be unset if operation still in progress.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>The state of the export operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationState")]
-        public virtual string OperationState { get; set; } 
+        public virtual string OperationState { get; set; }
 
         /// <summary>Where the entities are being exported to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputUriPrefix")]
-        public virtual string OutputUriPrefix { get; set; } 
+        public virtual string OutputUriPrefix { get; set; }
 
         /// <summary>The progress, in bytes, of this operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressBytes")]
-        public virtual GoogleFirestoreAdminV1beta2Progress ProgressBytes { get; set; } 
+        public virtual GoogleFirestoreAdminV1beta2Progress ProgressBytes { get; set; }
 
         /// <summary>The progress, in documents, of this operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressDocuments")]
-        public virtual GoogleFirestoreAdminV1beta2Progress ProgressDocuments { get; set; } 
+        public virtual GoogleFirestoreAdminV1beta2Progress ProgressDocuments { get; set; }
 
         /// <summary>The time this operation started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1055,7 +1055,7 @@ namespace Google.Apis.Firestore.v1beta2.Data
     {
         /// <summary>Which collection ids to export. Unspecified means all collections.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectionIds")]
-        public virtual System.Collections.Generic.IList<string> CollectionIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> CollectionIds { get; set; }
 
         /// <summary>The output URI. Currently only supports Google Cloud Storage URIs of the form:
         /// `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the name of the Google Cloud Storage bucket and
@@ -1063,7 +1063,7 @@ namespace Google.Apis.Firestore.v1beta2.Data
         /// consider Google Cloud Storage naming guidelines: https://cloud.google.com/storage/docs/naming. If the URI is
         /// a bucket (without a namespace path), a prefix will be generated based on the start time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputUriPrefix")]
-        public virtual string OutputUriPrefix { get; set; } 
+        public virtual string OutputUriPrefix { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1075,7 +1075,7 @@ namespace Google.Apis.Firestore.v1beta2.Data
         /// <summary>Location of the output files. This can be used to begin an import into Cloud Firestore (this
         /// project or another project) after the operation completes successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputUriPrefix")]
-        public virtual string OutputUriPrefix { get; set; } 
+        public virtual string OutputUriPrefix { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1089,7 +1089,7 @@ namespace Google.Apis.Firestore.v1beta2.Data
         /// defined by the `ancestor_field`. To explicitly remove all indexes for this field, specify an index config
         /// with an empty list of indexes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexConfig")]
-        public virtual GoogleFirestoreAdminV1beta2IndexConfig IndexConfig { get; set; } 
+        public virtual GoogleFirestoreAdminV1beta2IndexConfig IndexConfig { get; set; }
 
         /// <summary>A field name of the form
         /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}` A field
@@ -1105,7 +1105,7 @@ namespace Google.Apis.Firestore.v1beta2.Data
         /// `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields` Indexes defined on this
         /// `Field` will be applied to all fields which do not have their own `Field` index configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1116,32 +1116,32 @@ namespace Google.Apis.Firestore.v1beta2.Data
     {
         /// <summary>The progress, in bytes, of this operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bytesProgress")]
-        public virtual GoogleFirestoreAdminV1beta2Progress BytesProgress { get; set; } 
+        public virtual GoogleFirestoreAdminV1beta2Progress BytesProgress { get; set; }
 
         /// <summary>The progress, in documents, of this operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentProgress")]
-        public virtual GoogleFirestoreAdminV1beta2Progress DocumentProgress { get; set; } 
+        public virtual GoogleFirestoreAdminV1beta2Progress DocumentProgress { get; set; }
 
         /// <summary>The time this operation completed. Will be unset if operation still in progress.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>The field resource that this operation is acting on. For example: `projects/{project_id}/databases/
         /// {database_id}/collectionGroups/{collection_id}/fields/{field_path}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual string Field { get; set; } 
+        public virtual string Field { get; set; }
 
         /// <summary>A list of IndexConfigDelta, which describe the intent of this operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexConfigDeltas")]
-        public virtual System.Collections.Generic.IList<GoogleFirestoreAdminV1beta2IndexConfigDelta> IndexConfigDeltas { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleFirestoreAdminV1beta2IndexConfigDelta> IndexConfigDeltas { get; set; }
 
         /// <summary>The time this operation started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The state of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1152,31 +1152,31 @@ namespace Google.Apis.Firestore.v1beta2.Data
     {
         /// <summary>Which collection ids are being imported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectionIds")]
-        public virtual System.Collections.Generic.IList<string> CollectionIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> CollectionIds { get; set; }
 
         /// <summary>The time this operation completed. Will be unset if operation still in progress.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>The location of the documents being imported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUriPrefix")]
-        public virtual string InputUriPrefix { get; set; } 
+        public virtual string InputUriPrefix { get; set; }
 
         /// <summary>The state of the import operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationState")]
-        public virtual string OperationState { get; set; } 
+        public virtual string OperationState { get; set; }
 
         /// <summary>The progress, in bytes, of this operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressBytes")]
-        public virtual GoogleFirestoreAdminV1beta2Progress ProgressBytes { get; set; } 
+        public virtual GoogleFirestoreAdminV1beta2Progress ProgressBytes { get; set; }
 
         /// <summary>The progress, in documents, of this operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressDocuments")]
-        public virtual GoogleFirestoreAdminV1beta2Progress ProgressDocuments { get; set; } 
+        public virtual GoogleFirestoreAdminV1beta2Progress ProgressDocuments { get; set; }
 
         /// <summary>The time this operation started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1187,13 +1187,13 @@ namespace Google.Apis.Firestore.v1beta2.Data
     {
         /// <summary>Which collection ids to import. Unspecified means all collections included in the import.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectionIds")]
-        public virtual System.Collections.Generic.IList<string> CollectionIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> CollectionIds { get; set; }
 
         /// <summary>Location of the exported files. This must match the output_uri_prefix of an ExportDocumentsResponse
         /// from an export that has completed successfully. See:
         /// google.firestore.admin.v1beta2.ExportDocumentsResponse.output_uri_prefix.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUriPrefix")]
-        public virtual string InputUriPrefix { get; set; } 
+        public virtual string InputUriPrefix { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1209,24 +1209,24 @@ namespace Google.Apis.Firestore.v1beta2.Data
         /// explicitly specified). For single field indexes, this will always be exactly one entry with a field path
         /// equal to the field path of the associated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual System.Collections.Generic.IList<GoogleFirestoreAdminV1beta2IndexField> Fields { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleFirestoreAdminV1beta2IndexField> Fields { get; set; }
 
         /// <summary>Output only. A server defined name for this index. The form of this name for composite indexes will
         /// be: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index
         /// _id}` For single field indexes, this field will be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Indexes with a collection query scope specified allow queries against a collection that is the
         /// child of a specific document, specified at query time, and that has the same collection id. Indexes with a
         /// collection group query scope specified allow queries against all collections descended from a specific
         /// document, specified at query time, and that have the same collection id as this index.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryScope")]
-        public virtual string QueryScope { get; set; } 
+        public virtual string QueryScope { get; set; }
 
         /// <summary>Output only. The serving state of the index.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1239,22 +1239,22 @@ namespace Google.Apis.Firestore.v1beta2.Data
         /// is set (when `uses_ancestor_config` is true), or from which it *would* be set if this field had no index
         /// configuration (when `uses_ancestor_config` is false).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ancestorField")]
-        public virtual string AncestorField { get; set; } 
+        public virtual string AncestorField { get; set; }
 
         /// <summary>The indexes supported for this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexes")]
-        public virtual System.Collections.Generic.IList<GoogleFirestoreAdminV1beta2Index> Indexes { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleFirestoreAdminV1beta2Index> Indexes { get; set; }
 
         /// <summary>Output only When true, the `Field`'s index configuration is in the process of being reverted. Once
         /// complete, the index config will transition to the same state as the field specified by `ancestor_field`, at
         /// which point `uses_ancestor_config` will be `true` and `reverting` will be `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reverting")]
-        public virtual System.Nullable<bool> Reverting { get; set; } 
+        public virtual System.Nullable<bool> Reverting { get; set; }
 
         /// <summary>Output only. When true, the `Field`'s index configuration is set from the configuration specified
         /// by the `ancestor_field`. When false, the `Field`'s index configuration is defined explicitly.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usesAncestorConfig")]
-        public virtual System.Nullable<bool> UsesAncestorConfig { get; set; } 
+        public virtual System.Nullable<bool> UsesAncestorConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1265,11 +1265,11 @@ namespace Google.Apis.Firestore.v1beta2.Data
     {
         /// <summary>Specifies how the index is changing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("changeType")]
-        public virtual string ChangeType { get; set; } 
+        public virtual string ChangeType { get; set; }
 
         /// <summary>The index being changed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
-        public virtual GoogleFirestoreAdminV1beta2Index Index { get; set; } 
+        public virtual GoogleFirestoreAdminV1beta2Index Index { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1281,17 +1281,17 @@ namespace Google.Apis.Firestore.v1beta2.Data
     {
         /// <summary>Indicates that this field supports operations on `array_value`s.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("arrayConfig")]
-        public virtual string ArrayConfig { get; set; } 
+        public virtual string ArrayConfig { get; set; }
 
         /// <summary>Can be __name__. For single field indexes, this must match the name of the field or may be
         /// omitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldPath")]
-        public virtual string FieldPath { get; set; } 
+        public virtual string FieldPath { get; set; }
 
         /// <summary>Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >,
         /// >=.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("order")]
-        public virtual string Order { get; set; } 
+        public virtual string Order { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1302,28 +1302,28 @@ namespace Google.Apis.Firestore.v1beta2.Data
     {
         /// <summary>The time this operation completed. Will be unset if operation still in progress.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>The index resource that this operation is acting on. For example: `projects/{project_id}/databases/
         /// {database_id}/collectionGroups/{collection_id}/indexes/{index_id}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
-        public virtual string Index { get; set; } 
+        public virtual string Index { get; set; }
 
         /// <summary>The progress, in bytes, of this operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressBytes")]
-        public virtual GoogleFirestoreAdminV1beta2Progress ProgressBytes { get; set; } 
+        public virtual GoogleFirestoreAdminV1beta2Progress ProgressBytes { get; set; }
 
         /// <summary>The progress, in documents, of this operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressDocuments")]
-        public virtual GoogleFirestoreAdminV1beta2Progress ProgressDocuments { get; set; } 
+        public virtual GoogleFirestoreAdminV1beta2Progress ProgressDocuments { get; set; }
 
         /// <summary>The time this operation started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The state of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1334,12 +1334,12 @@ namespace Google.Apis.Firestore.v1beta2.Data
     {
         /// <summary>The requested fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual System.Collections.Generic.IList<GoogleFirestoreAdminV1beta2Field> Fields { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleFirestoreAdminV1beta2Field> Fields { get; set; }
 
         /// <summary>A page token that may be used to request another page of results. If blank, this is the last
         /// page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1350,12 +1350,12 @@ namespace Google.Apis.Firestore.v1beta2.Data
     {
         /// <summary>The requested indexes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexes")]
-        public virtual System.Collections.Generic.IList<GoogleFirestoreAdminV1beta2Index> Indexes { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleFirestoreAdminV1beta2Index> Indexes { get; set; }
 
         /// <summary>A page token that may be used to request another page of results. If blank, this is the last
         /// page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1367,11 +1367,11 @@ namespace Google.Apis.Firestore.v1beta2.Data
     {
         /// <summary>The amount of work completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completedWork")]
-        public virtual System.Nullable<long> CompletedWork { get; set; } 
+        public virtual System.Nullable<long> CompletedWork { get; set; }
 
         /// <summary>The amount of work estimated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("estimatedWork")]
-        public virtual System.Nullable<long> EstimatedWork { get; set; } 
+        public virtual System.Nullable<long> EstimatedWork { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1383,23 +1383,23 @@ namespace Google.Apis.Firestore.v1beta2.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -1407,7 +1407,7 @@ namespace Google.Apis.Firestore.v1beta2.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1422,17 +1422,17 @@ namespace Google.Apis.Firestore.v1beta2.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

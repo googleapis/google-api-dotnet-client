@@ -19522,32 +19522,32 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Account permissions assigned to this account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountPermissionIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> AccountPermissionIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> AccountPermissionIds { get; set; }
 
         /// <summary>Profile for this account. This is a read-only field that can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountProfile")]
-        public virtual string AccountProfile { get; set; } 
+        public virtual string AccountProfile { get; set; }
 
         /// <summary>Whether this account is active.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("active")]
-        public virtual System.Nullable<bool> Active { get; set; } 
+        public virtual System.Nullable<bool> Active { get; set; }
 
         /// <summary>Maximum number of active ads allowed for this account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeAdsLimitTier")]
-        public virtual string ActiveAdsLimitTier { get; set; } 
+        public virtual string ActiveAdsLimitTier { get; set; }
 
         /// <summary>Whether to serve creatives with Active View tags. If disabled, viewability data will not be
         /// available for any impressions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeViewOptOut")]
-        public virtual System.Nullable<bool> ActiveViewOptOut { get; set; } 
+        public virtual System.Nullable<bool> ActiveViewOptOut { get; set; }
 
         /// <summary>User role permissions available to the user roles of this account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availablePermissionIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> AvailablePermissionIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> AvailablePermissionIds { get; set; }
 
         /// <summary>ID of the country associated with this account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryId")]
-        public virtual System.Nullable<long> CountryId { get; set; } 
+        public virtual System.Nullable<long> CountryId { get; set; }
 
         /// <summary>ID of currency associated with this account. This is a required field. Acceptable values are: - "1"
         /// for USD - "2" for GBP - "3" for ESP - "4" for SEK - "5" for CAD - "6" for JPY - "7" for DEM - "8" for AUD -
@@ -19558,58 +19558,58 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// "40" for THB - "41" for IDR - "42" for CZK - "43" for RON - "44" for HUF - "45" for RUB - "46" for AED -
         /// "47" for BGN - "48" for HRK - "49" for MXN - "50" for NGN - "51" for EGP </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyId")]
-        public virtual System.Nullable<long> CurrencyId { get; set; } 
+        public virtual System.Nullable<long> CurrencyId { get; set; }
 
         /// <summary>Default placement dimensions for this account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultCreativeSizeId")]
-        public virtual System.Nullable<long> DefaultCreativeSizeId { get; set; } 
+        public virtual System.Nullable<long> DefaultCreativeSizeId { get; set; }
 
         /// <summary>Description of this account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>ID of this account. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "dfareporting#account".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Locale of this account. Acceptable values are: - "cs" (Czech) - "de" (German) - "en" (English) -
         /// "en-GB" (English United Kingdom) - "es" (Spanish) - "fr" (French) - "it" (Italian) - "ja" (Japanese) - "ko"
         /// (Korean) - "pl" (Polish) - "pt-BR" (Portuguese Brazil) - "ru" (Russian) - "sv" (Swedish) - "tr" (Turkish) -
         /// "zh-CN" (Chinese Simplified) - "zh-TW" (Chinese Traditional) </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locale")]
-        public virtual string Locale { get; set; } 
+        public virtual string Locale { get; set; }
 
         /// <summary>Maximum image size allowed for this account, in kilobytes. Value must be greater than or equal to
         /// 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximumImageSize")]
-        public virtual System.Nullable<long> MaximumImageSize { get; set; } 
+        public virtual System.Nullable<long> MaximumImageSize { get; set; }
 
         /// <summary>Name of this account. This is a required field, and must be less than 128 characters long and be
         /// globally unique.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Whether campaigns created in this account will be enabled for Nielsen OCR reach ratings by
         /// default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nielsenOcrEnabled")]
-        public virtual System.Nullable<bool> NielsenOcrEnabled { get; set; } 
+        public virtual System.Nullable<bool> NielsenOcrEnabled { get; set; }
 
         /// <summary>Reporting configuration of this account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportsConfiguration")]
-        public virtual ReportsConfiguration ReportsConfiguration { get; set; } 
+        public virtual ReportsConfiguration ReportsConfiguration { get; set; }
 
         /// <summary>Share Path to Conversion reports with Twitter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shareReportsWithTwitter")]
-        public virtual System.Nullable<bool> ShareReportsWithTwitter { get; set; } 
+        public virtual System.Nullable<bool> ShareReportsWithTwitter { get; set; }
 
         /// <summary>File size limit in kilobytes of Rich Media teaser creatives. Acceptable values are 1 to 10240,
         /// inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teaserSizeLimit")]
-        public virtual System.Nullable<long> TeaserSizeLimit { get; set; } 
+        public virtual System.Nullable<long> TeaserSizeLimit { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19620,24 +19620,24 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>ID of the account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>Ads that have been activated for the account</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeAds")]
-        public virtual System.Nullable<long> ActiveAds { get; set; } 
+        public virtual System.Nullable<long> ActiveAds { get; set; }
 
         /// <summary>Maximum number of active ads allowed for the account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeAdsLimitTier")]
-        public virtual string ActiveAdsLimitTier { get; set; } 
+        public virtual string ActiveAdsLimitTier { get; set; }
 
         /// <summary>Ads that can be activated for the account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availableAds")]
-        public virtual System.Nullable<long> AvailableAds { get; set; } 
+        public virtual System.Nullable<long> AvailableAds { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#accountActiveAdSummary".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19650,28 +19650,28 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Account profiles associated with this account permission. Possible values are: -
         /// "ACCOUNT_PROFILE_BASIC" - "ACCOUNT_PROFILE_STANDARD" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountProfiles")]
-        public virtual System.Collections.Generic.IList<string> AccountProfiles { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AccountProfiles { get; set; }
 
         /// <summary>ID of this account permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#accountPermission".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Administrative level required to enable this account permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("level")]
-        public virtual string Level { get; set; } 
+        public virtual string Level { get; set; }
 
         /// <summary>Name of this account permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Permission group of this account permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissionGroupId")]
-        public virtual System.Nullable<long> PermissionGroupId { get; set; } 
+        public virtual System.Nullable<long> PermissionGroupId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19683,16 +19683,16 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>ID of this account permission group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#accountPermissionGroup".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this account permission group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19703,12 +19703,12 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Account permission group collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountPermissionGroups")]
-        public virtual System.Collections.Generic.IList<AccountPermissionGroup> AccountPermissionGroups { get; set; } 
+        public virtual System.Collections.Generic.IList<AccountPermissionGroup> AccountPermissionGroups { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#accountPermissionGroupsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19719,12 +19719,12 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Account permission collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountPermissions")]
-        public virtual System.Collections.Generic.IList<AccountPermission> AccountPermissions { get; set; } 
+        public virtual System.Collections.Generic.IList<AccountPermission> AccountPermissions { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#accountPermissionsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19736,74 +19736,74 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Account ID of the user profile. This is a read-only field that can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>Whether this user profile is active. This defaults to false, and must be set true on insert for the
         /// user profile to be usable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("active")]
-        public virtual System.Nullable<bool> Active { get; set; } 
+        public virtual System.Nullable<bool> Active { get; set; }
 
         /// <summary>Filter that describes which advertisers are visible to the user profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserFilter")]
-        public virtual ObjectFilter AdvertiserFilter { get; set; } 
+        public virtual ObjectFilter AdvertiserFilter { get; set; }
 
         /// <summary>Filter that describes which campaigns are visible to the user profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignFilter")]
-        public virtual ObjectFilter CampaignFilter { get; set; } 
+        public virtual ObjectFilter CampaignFilter { get; set; }
 
         /// <summary>Comments for this user profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comments")]
-        public virtual string Comments { get; set; } 
+        public virtual string Comments { get; set; }
 
         /// <summary>Email of the user profile. The email addresss must be linked to a Google Account. This field is
         /// required on insertion and is read-only after insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; } 
+        public virtual string Email { get; set; }
 
         /// <summary>ID of the user profile. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#accountUserProfile".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Locale of the user profile. This is a required field. Acceptable values are: - "cs" (Czech) - "de"
         /// (German) - "en" (English) - "en-GB" (English United Kingdom) - "es" (Spanish) - "fr" (French) - "it"
         /// (Italian) - "ja" (Japanese) - "ko" (Korean) - "pl" (Polish) - "pt-BR" (Portuguese Brazil) - "ru" (Russian) -
         /// "sv" (Swedish) - "tr" (Turkish) - "zh-CN" (Chinese Simplified) - "zh-TW" (Chinese Traditional) </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locale")]
-        public virtual string Locale { get; set; } 
+        public virtual string Locale { get; set; }
 
         /// <summary>Name of the user profile. This is a required field. Must be less than 64 characters long, must be
         /// globally unique, and cannot contain whitespace or any of the following characters: "&;<>"#%,".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Filter that describes which sites are visible to the user profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteFilter")]
-        public virtual ObjectFilter SiteFilter { get; set; } 
+        public virtual ObjectFilter SiteFilter { get; set; }
 
         /// <summary>Subaccount ID of the user profile. This is a read-only field that can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subaccountId")]
-        public virtual System.Nullable<long> SubaccountId { get; set; } 
+        public virtual System.Nullable<long> SubaccountId { get; set; }
 
         /// <summary>Trafficker type of this user profile. This is a read-only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("traffickerType")]
-        public virtual string TraffickerType { get; set; } 
+        public virtual string TraffickerType { get; set; }
 
         /// <summary>User type of the user profile. This is a read-only field that can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userAccessType")]
-        public virtual string UserAccessType { get; set; } 
+        public virtual string UserAccessType { get; set; }
 
         /// <summary>Filter that describes which user roles are visible to the user profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userRoleFilter")]
-        public virtual ObjectFilter UserRoleFilter { get; set; } 
+        public virtual ObjectFilter UserRoleFilter { get; set; }
 
         /// <summary>User role ID of the user profile. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userRoleId")]
-        public virtual System.Nullable<long> UserRoleId { get; set; } 
+        public virtual System.Nullable<long> UserRoleId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19814,16 +19814,16 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Account user profile collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountUserProfiles")]
-        public virtual System.Collections.Generic.IList<AccountUserProfile> AccountUserProfiles { get; set; } 
+        public virtual System.Collections.Generic.IList<AccountUserProfile> AccountUserProfiles { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#accountUserProfilesListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19834,16 +19834,16 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Account collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accounts")]
-        public virtual System.Collections.Generic.IList<Account> Accounts { get; set; } 
+        public virtual System.Collections.Generic.IList<Account> Accounts { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#accountsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19855,15 +19855,15 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>List of activity filters. The dimension values need to be all either of type "dfa:activity" or
         /// "dfa:activityGroup".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filters")]
-        public virtual System.Collections.Generic.IList<DimensionValue> Filters { get; set; } 
+        public virtual System.Collections.Generic.IList<DimensionValue> Filters { get; set; }
 
         /// <summary>The kind of resource this is, in this case dfareporting#activities.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>List of names of floodlight activity metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricNames")]
-        public virtual System.Collections.Generic.IList<string> MetricNames { get; set; } 
+        public virtual System.Collections.Generic.IList<string> MetricNames { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19874,50 +19874,50 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Account ID of this ad. This is a read-only field that can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>Whether this ad is active. When true, archived must be false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("active")]
-        public virtual System.Nullable<bool> Active { get; set; } 
+        public virtual System.Nullable<bool> Active { get; set; }
 
         /// <summary>Advertiser ID of this ad. This is a required field on insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>Dimension value for the ID of the advertiser. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserIdDimensionValue")]
-        public virtual DimensionValue AdvertiserIdDimensionValue { get; set; } 
+        public virtual DimensionValue AdvertiserIdDimensionValue { get; set; }
 
         /// <summary>Whether this ad is archived. When true, active must be false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("archived")]
-        public virtual System.Nullable<bool> Archived { get; set; } 
+        public virtual System.Nullable<bool> Archived { get; set; }
 
         /// <summary>Audience segment ID that is being targeted for this ad. Applicable when type is
         /// AD_SERVING_STANDARD_AD.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audienceSegmentId")]
-        public virtual System.Nullable<long> AudienceSegmentId { get; set; } 
+        public virtual System.Nullable<long> AudienceSegmentId { get; set; }
 
         /// <summary>Campaign ID of this ad. This is a required field on insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignId")]
-        public virtual System.Nullable<long> CampaignId { get; set; } 
+        public virtual System.Nullable<long> CampaignId { get; set; }
 
         /// <summary>Dimension value for the ID of the campaign. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignIdDimensionValue")]
-        public virtual DimensionValue CampaignIdDimensionValue { get; set; } 
+        public virtual DimensionValue CampaignIdDimensionValue { get; set; }
 
         /// <summary>Click-through URL for this ad. This is a required field on insertion. Applicable when type is
         /// AD_SERVING_CLICK_TRACKER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickThroughUrl")]
-        public virtual ClickThroughUrl ClickThroughUrl { get; set; } 
+        public virtual ClickThroughUrl ClickThroughUrl { get; set; }
 
         /// <summary>Click-through URL suffix properties for this ad. Applies to the URL in the ad or (if overriding ad
         /// properties) the URL in the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickThroughUrlSuffixProperties")]
-        public virtual ClickThroughUrlSuffixProperties ClickThroughUrlSuffixProperties { get; set; } 
+        public virtual ClickThroughUrlSuffixProperties ClickThroughUrlSuffixProperties { get; set; }
 
         /// <summary>Comments for this ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comments")]
-        public virtual string Comments { get; set; } 
+        public virtual string Comments { get; set; }
 
         /// <summary>Compatibility of this ad. Applicable when type is AD_SERVING_DEFAULT_AD. DISPLAY and
         /// DISPLAY_INTERSTITIAL refer to either rendering on desktop or on mobile devices or in mobile apps for regular
@@ -19926,42 +19926,42 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// placements will be limited to those compatibility types. IN_STREAM_VIDEO refers to rendering in-stream video
         /// ads developed with the VAST standard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compatibility")]
-        public virtual string Compatibility { get; set; } 
+        public virtual string Compatibility { get; set; }
 
         /// <summary>Information about the creation of this ad. This is a read-only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createInfo")]
-        public virtual LastModifiedInfo CreateInfo { get; set; } 
+        public virtual LastModifiedInfo CreateInfo { get; set; }
 
         /// <summary>Creative group assignments for this ad. Applicable when type is AD_SERVING_CLICK_TRACKER. Only one
         /// assignment per creative group number is allowed for a maximum of two assignments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeGroupAssignments")]
-        public virtual System.Collections.Generic.IList<CreativeGroupAssignment> CreativeGroupAssignments { get; set; } 
+        public virtual System.Collections.Generic.IList<CreativeGroupAssignment> CreativeGroupAssignments { get; set; }
 
         /// <summary>Creative rotation for this ad. Applicable when type is AD_SERVING_DEFAULT_AD,
         /// AD_SERVING_STANDARD_AD, or AD_SERVING_TRACKING. When type is AD_SERVING_DEFAULT_AD, this field should have
         /// exactly one creativeAssignment .</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeRotation")]
-        public virtual CreativeRotation CreativeRotation { get; set; } 
+        public virtual CreativeRotation CreativeRotation { get; set; }
 
         /// <summary>Time and day targeting information for this ad. This field must be left blank if the ad is using a
         /// targeting template. Applicable when type is AD_SERVING_STANDARD_AD.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dayPartTargeting")]
-        public virtual DayPartTargeting DayPartTargeting { get; set; } 
+        public virtual DayPartTargeting DayPartTargeting { get; set; }
 
         /// <summary>Default click-through event tag properties for this ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultClickThroughEventTagProperties")]
-        public virtual DefaultClickThroughEventTagProperties DefaultClickThroughEventTagProperties { get; set; } 
+        public virtual DefaultClickThroughEventTagProperties DefaultClickThroughEventTagProperties { get; set; }
 
         /// <summary>Delivery schedule information for this ad. Applicable when type is AD_SERVING_STANDARD_AD or
         /// AD_SERVING_TRACKING. This field along with subfields priority and impressionRatio are required on insertion
         /// when type is AD_SERVING_STANDARD_AD.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliverySchedule")]
-        public virtual DeliverySchedule DeliverySchedule { get; set; } 
+        public virtual DeliverySchedule DeliverySchedule { get; set; }
 
         /// <summary>Whether this ad is a dynamic click tracker. Applicable when type is AD_SERVING_CLICK_TRACKER. This
         /// is a required field on insert, and is read-only after insert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dynamicClickTracker")]
-        public virtual System.Nullable<bool> DynamicClickTracker { get; set; } 
+        public virtual System.Nullable<bool> DynamicClickTracker { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual string EndTimeRaw { get; set; }
@@ -19976,65 +19976,65 @@ namespace Google.Apis.Dfareporting.v3_3.Data
 
         /// <summary>Event tag overrides for this ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTagOverrides")]
-        public virtual System.Collections.Generic.IList<EventTagOverride> EventTagOverrides { get; set; } 
+        public virtual System.Collections.Generic.IList<EventTagOverride> EventTagOverrides { get; set; }
 
         /// <summary>Geographical targeting information for this ad. This field must be left blank if the ad is using a
         /// targeting template. Applicable when type is AD_SERVING_STANDARD_AD.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geoTargeting")]
-        public virtual GeoTargeting GeoTargeting { get; set; } 
+        public virtual GeoTargeting GeoTargeting { get; set; }
 
         /// <summary>ID of this ad. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Dimension value for the ID of this ad. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idDimensionValue")]
-        public virtual DimensionValue IdDimensionValue { get; set; } 
+        public virtual DimensionValue IdDimensionValue { get; set; }
 
         /// <summary>Key-value targeting information for this ad. This field must be left blank if the ad is using a
         /// targeting template. Applicable when type is AD_SERVING_STANDARD_AD.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyValueTargetingExpression")]
-        public virtual KeyValueTargetingExpression KeyValueTargetingExpression { get; set; } 
+        public virtual KeyValueTargetingExpression KeyValueTargetingExpression { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "dfareporting#ad".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Language targeting information for this ad. This field must be left blank if the ad is using a
         /// targeting template. Applicable when type is AD_SERVING_STANDARD_AD.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageTargeting")]
-        public virtual LanguageTargeting LanguageTargeting { get; set; } 
+        public virtual LanguageTargeting LanguageTargeting { get; set; }
 
         /// <summary>Information about the most recent modification of this ad. This is a read-only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedInfo")]
-        public virtual LastModifiedInfo LastModifiedInfo { get; set; } 
+        public virtual LastModifiedInfo LastModifiedInfo { get; set; }
 
         /// <summary>Name of this ad. This is a required field and must be less than 256 characters long.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Placement assignments for this ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placementAssignments")]
-        public virtual System.Collections.Generic.IList<PlacementAssignment> PlacementAssignments { get; set; } 
+        public virtual System.Collections.Generic.IList<PlacementAssignment> PlacementAssignments { get; set; }
 
         /// <summary>Remarketing list targeting expression for this ad. This field must be left blank if the ad is using
         /// a targeting template. Applicable when type is AD_SERVING_STANDARD_AD.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remarketingListExpression")]
-        public virtual ListTargetingExpression RemarketingListExpression { get; set; } 
+        public virtual ListTargetingExpression RemarketingListExpression { get; set; }
 
         /// <summary>Size of this ad. Applicable when type is AD_SERVING_DEFAULT_AD.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
-        public virtual Size Size { get; set; } 
+        public virtual Size Size { get; set; }
 
         /// <summary>Whether this ad is ssl compliant. This is a read-only field that is auto-generated when the ad is
         /// inserted or updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslCompliant")]
-        public virtual System.Nullable<bool> SslCompliant { get; set; } 
+        public virtual System.Nullable<bool> SslCompliant { get; set; }
 
         /// <summary>Whether this ad requires ssl. This is a read-only field that is auto-generated when the ad is
         /// inserted or updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslRequired")]
-        public virtual System.Nullable<bool> SslRequired { get; set; } 
+        public virtual System.Nullable<bool> SslRequired { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTimeRaw { get; set; }
@@ -20049,24 +20049,24 @@ namespace Google.Apis.Dfareporting.v3_3.Data
 
         /// <summary>Subaccount ID of this ad. This is a read-only field that can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subaccountId")]
-        public virtual System.Nullable<long> SubaccountId { get; set; } 
+        public virtual System.Nullable<long> SubaccountId { get; set; }
 
         /// <summary>Targeting template ID, used to apply preconfigured targeting information to this ad. This cannot be
         /// set while any of dayPartTargeting, geoTargeting, keyValueTargetingExpression, languageTargeting,
         /// remarketingListExpression, or technologyTargeting are set. Applicable when type is
         /// AD_SERVING_STANDARD_AD.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingTemplateId")]
-        public virtual System.Nullable<long> TargetingTemplateId { get; set; } 
+        public virtual System.Nullable<long> TargetingTemplateId { get; set; }
 
         /// <summary>Technology platform targeting information for this ad. This field must be left blank if the ad is
         /// using a targeting template. Applicable when type is AD_SERVING_STANDARD_AD.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("technologyTargeting")]
-        public virtual TechnologyTargeting TechnologyTargeting { get; set; } 
+        public virtual TechnologyTargeting TechnologyTargeting { get; set; }
 
         /// <summary>Type of ad. This is a required field on insertion. Note that default ads ( AD_SERVING_DEFAULT_AD)
         /// cannot be created directly (see Creative resource).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20078,23 +20078,23 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Click-through URL used by brand-neutral ads. This is a required field when overrideClickThroughUrl
         /// is set to true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickThroughUrl")]
-        public virtual string ClickThroughUrl { get; set; } 
+        public virtual string ClickThroughUrl { get; set; }
 
         /// <summary>ID of a creative bundle to use for this campaign. If set, brand-neutral ads will select creatives
         /// from this bundle. Otherwise, a default transparent pixel will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeBundleId")]
-        public virtual System.Nullable<long> CreativeBundleId { get; set; } 
+        public virtual System.Nullable<long> CreativeBundleId { get; set; }
 
         /// <summary>Whether this campaign has enabled ad blocking. When true, ad blocking is enabled for placements in
         /// the campaign, but this may be overridden by site and placement settings. When false, ad blocking is disabled
         /// for all placements under the campaign, regardless of site and placement settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>Whether the brand-neutral ad's click-through URL comes from the campaign's creative bundle or the
         /// override URL. Must be set to true if ad blocking is enabled and no creative bundle is configured.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overrideClickThroughUrl")]
-        public virtual System.Nullable<bool> OverrideClickThroughUrl { get; set; } 
+        public virtual System.Nullable<bool> OverrideClickThroughUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20105,38 +20105,38 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Comment for this ad slot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comment")]
-        public virtual string Comment { get; set; } 
+        public virtual string Comment { get; set; }
 
         /// <summary>Ad slot compatibility. DISPLAY and DISPLAY_INTERSTITIAL refer to rendering either on desktop,
         /// mobile devices or in mobile apps for regular or interstitial ads respectively. APP and APP_INTERSTITIAL are
         /// for rendering in mobile apps. IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with the
         /// VAST standard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compatibility")]
-        public virtual string Compatibility { get; set; } 
+        public virtual string Compatibility { get; set; }
 
         /// <summary>Height of this ad slot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
-        public virtual System.Nullable<long> Height { get; set; } 
+        public virtual System.Nullable<long> Height { get; set; }
 
         /// <summary>ID of the placement from an external platform that is linked to this ad slot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedPlacementId")]
-        public virtual System.Nullable<long> LinkedPlacementId { get; set; } 
+        public virtual System.Nullable<long> LinkedPlacementId { get; set; }
 
         /// <summary>Name of this ad slot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Payment source type of this ad slot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paymentSourceType")]
-        public virtual string PaymentSourceType { get; set; } 
+        public virtual string PaymentSourceType { get; set; }
 
         /// <summary>Primary ad slot of a roadblock inventory item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primary")]
-        public virtual System.Nullable<bool> Primary { get; set; } 
+        public virtual System.Nullable<bool> Primary { get; set; }
 
         /// <summary>Width of this ad slot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
-        public virtual System.Nullable<long> Width { get; set; } 
+        public virtual System.Nullable<long> Width { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20147,16 +20147,16 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Ad collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ads")]
-        public virtual System.Collections.Generic.IList<Ad> Ads { get; set; } 
+        public virtual System.Collections.Generic.IList<Ad> Ads { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#adsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20167,26 +20167,26 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Account ID of this advertiser.This is a read-only field that can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>ID of the advertiser group this advertiser belongs to. You can group advertisers for reporting
         /// purposes, allowing you to see aggregated information for all advertisers in each group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserGroupId")]
-        public virtual System.Nullable<long> AdvertiserGroupId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserGroupId { get; set; }
 
         /// <summary>Suffix added to click-through URL of ad creative associations under this advertiser. Must be less
         /// than 129 characters long.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickThroughUrlSuffix")]
-        public virtual string ClickThroughUrlSuffix { get; set; } 
+        public virtual string ClickThroughUrlSuffix { get; set; }
 
         /// <summary>ID of the click-through event tag to apply by default to the landing pages of this advertiser's
         /// campaigns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultClickThroughEventTagId")]
-        public virtual System.Nullable<long> DefaultClickThroughEventTagId { get; set; } 
+        public virtual System.Nullable<long> DefaultClickThroughEventTagId { get; set; }
 
         /// <summary>Default email address used in sender field for tag emails.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultEmail")]
-        public virtual string DefaultEmail { get; set; } 
+        public virtual string DefaultEmail { get; set; }
 
         /// <summary>Floodlight configuration ID of this advertiser. The floodlight configuration ID will be created
         /// automatically, so on insert this field should be left blank. This field can be set to another advertiser's
@@ -20195,49 +20195,49 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// floodlight activities or floodlight activity groups. - This advertiser's original floodlight configuration
         /// is not already shared with another advertiser. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightConfigurationId")]
-        public virtual System.Nullable<long> FloodlightConfigurationId { get; set; } 
+        public virtual System.Nullable<long> FloodlightConfigurationId { get; set; }
 
         /// <summary>Dimension value for the ID of the floodlight configuration. This is a read-only, auto-generated
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightConfigurationIdDimensionValue")]
-        public virtual DimensionValue FloodlightConfigurationIdDimensionValue { get; set; } 
+        public virtual DimensionValue FloodlightConfigurationIdDimensionValue { get; set; }
 
         /// <summary>ID of this advertiser. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Dimension value for the ID of this advertiser. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idDimensionValue")]
-        public virtual DimensionValue IdDimensionValue { get; set; } 
+        public virtual DimensionValue IdDimensionValue { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#advertiser".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this advertiser. This is a required field and must be less than 256 characters long and
         /// unique among advertisers of the same account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Original floodlight configuration before any sharing occurred. Set the floodlightConfigurationId of
         /// this advertiser to originalFloodlightConfigurationId to unshare the advertiser's current floodlight
         /// configuration. You cannot unshare an advertiser's floodlight configuration if the shared configuration has
         /// activities associated with any campaign or placement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalFloodlightConfigurationId")]
-        public virtual System.Nullable<long> OriginalFloodlightConfigurationId { get; set; } 
+        public virtual System.Nullable<long> OriginalFloodlightConfigurationId { get; set; }
 
         /// <summary>Status of this advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>Subaccount ID of this advertiser.This is a read-only field that can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subaccountId")]
-        public virtual System.Nullable<long> SubaccountId { get; set; } 
+        public virtual System.Nullable<long> SubaccountId { get; set; }
 
         /// <summary>Suspension status of this advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suspended")]
-        public virtual System.Nullable<bool> Suspended { get; set; } 
+        public virtual System.Nullable<bool> Suspended { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20248,21 +20248,21 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Account ID of this advertiser group. This is a read-only field that can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>ID of this advertiser group. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#advertiserGroup".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this advertiser group. This is a required field and must be less than 256 characters long
         /// and unique among advertiser groups of the same account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20273,16 +20273,16 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Advertiser group collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserGroups")]
-        public virtual System.Collections.Generic.IList<AdvertiserGroup> AdvertiserGroups { get; set; } 
+        public virtual System.Collections.Generic.IList<AdvertiserGroup> AdvertiserGroups { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#advertiserGroupsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20294,15 +20294,15 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#advertiserLandingPagesListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Landing page collection</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("landingPages")]
-        public virtual System.Collections.Generic.IList<LandingPage> LandingPages { get; set; } 
+        public virtual System.Collections.Generic.IList<LandingPage> LandingPages { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20313,16 +20313,16 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Advertiser collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertisers")]
-        public virtual System.Collections.Generic.IList<Advertiser> Advertisers { get; set; } 
+        public virtual System.Collections.Generic.IList<Advertiser> Advertisers { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#advertisersListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20335,16 +20335,16 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// weights assigned to other segments in the same segment group. Acceptable values are 1 to 1000,
         /// inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allocation")]
-        public virtual System.Nullable<int> Allocation { get; set; } 
+        public virtual System.Nullable<int> Allocation { get; set; }
 
         /// <summary>ID of this audience segment. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Name of this audience segment. This is a required field and must be less than 65 characters
         /// long.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20356,16 +20356,16 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Audience segments assigned to this group. The number of segments must be between 2 and
         /// 100.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audienceSegments")]
-        public virtual System.Collections.Generic.IList<AudienceSegment> AudienceSegments { get; set; } 
+        public virtual System.Collections.Generic.IList<AudienceSegment> AudienceSegments { get; set; }
 
         /// <summary>ID of this audience segment group. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Name of this audience segment group. This is a required field and must be less than 65 characters
         /// long.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20377,15 +20377,15 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>ID referring to this grouping of browser and version numbers. This is the ID used for
         /// targeting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("browserVersionId")]
-        public virtual System.Nullable<long> BrowserVersionId { get; set; } 
+        public virtual System.Nullable<long> BrowserVersionId { get; set; }
 
         /// <summary>DART ID of this browser. This is the ID used when generating reports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dartId")]
-        public virtual System.Nullable<long> DartId { get; set; } 
+        public virtual System.Nullable<long> DartId { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "dfareporting#browser".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Major version number (leftmost number) of this browser. For example, for Chrome 5.0.376.86 beta,
         /// this field should be set to 5. An asterisk (*) may be used to target any version number, and a question mark
@@ -20394,7 +20394,7 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// Firefox ?.? targets cases where the ad server knows the browser is Firefox but can't tell which version it
         /// is.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("majorVersion")]
-        public virtual string MajorVersion { get; set; } 
+        public virtual string MajorVersion { get; set; }
 
         /// <summary>Minor version number (number after first dot on left) of this browser. For example, for Chrome
         /// 5.0.375.86 beta, this field should be set to 0. An asterisk (*) may be used to target any version number,
@@ -20403,11 +20403,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// 3.5, but not 4.0. Firefox ?.? targets cases where the ad server knows the browser is Firefox but can't tell
         /// which version it is.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minorVersion")]
-        public virtual string MinorVersion { get; set; } 
+        public virtual string MinorVersion { get; set; }
 
         /// <summary>Name of this browser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20418,12 +20418,12 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Browser collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("browsers")]
-        public virtual System.Collections.Generic.IList<Browser> Browsers { get; set; } 
+        public virtual System.Collections.Generic.IList<Browser> Browsers { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#browsersListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20434,119 +20434,119 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Account ID of this campaign. This is a read-only field that can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>Ad blocking settings for this campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adBlockingConfiguration")]
-        public virtual AdBlockingConfiguration AdBlockingConfiguration { get; set; } 
+        public virtual AdBlockingConfiguration AdBlockingConfiguration { get; set; }
 
         /// <summary>Additional creative optimization configurations for the campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalCreativeOptimizationConfigurations")]
-        public virtual System.Collections.Generic.IList<CreativeOptimizationConfiguration> AdditionalCreativeOptimizationConfigurations { get; set; } 
+        public virtual System.Collections.Generic.IList<CreativeOptimizationConfiguration> AdditionalCreativeOptimizationConfigurations { get; set; }
 
         /// <summary>Advertiser group ID of the associated advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserGroupId")]
-        public virtual System.Nullable<long> AdvertiserGroupId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserGroupId { get; set; }
 
         /// <summary>Advertiser ID of this campaign. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>Dimension value for the advertiser ID of this campaign. This is a read-only, auto-generated
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserIdDimensionValue")]
-        public virtual DimensionValue AdvertiserIdDimensionValue { get; set; } 
+        public virtual DimensionValue AdvertiserIdDimensionValue { get; set; }
 
         /// <summary>Whether this campaign has been archived.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("archived")]
-        public virtual System.Nullable<bool> Archived { get; set; } 
+        public virtual System.Nullable<bool> Archived { get; set; }
 
         /// <summary>Audience segment groups assigned to this campaign. Cannot have more than 300 segment
         /// groups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audienceSegmentGroups")]
-        public virtual System.Collections.Generic.IList<AudienceSegmentGroup> AudienceSegmentGroups { get; set; } 
+        public virtual System.Collections.Generic.IList<AudienceSegmentGroup> AudienceSegmentGroups { get; set; }
 
         /// <summary>Billing invoice code included in the Campaign Manager client billing invoices associated with the
         /// campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingInvoiceCode")]
-        public virtual string BillingInvoiceCode { get; set; } 
+        public virtual string BillingInvoiceCode { get; set; }
 
         /// <summary>Click-through URL suffix override properties for this campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickThroughUrlSuffixProperties")]
-        public virtual ClickThroughUrlSuffixProperties ClickThroughUrlSuffixProperties { get; set; } 
+        public virtual ClickThroughUrlSuffixProperties ClickThroughUrlSuffixProperties { get; set; }
 
         /// <summary>Arbitrary comments about this campaign. Must be less than 256 characters long.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comment")]
-        public virtual string Comment { get; set; } 
+        public virtual string Comment { get; set; }
 
         /// <summary>Information about the creation of this campaign. This is a read-only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createInfo")]
-        public virtual LastModifiedInfo CreateInfo { get; set; } 
+        public virtual LastModifiedInfo CreateInfo { get; set; }
 
         /// <summary>List of creative group IDs that are assigned to the campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeGroupIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> CreativeGroupIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> CreativeGroupIds { get; set; }
 
         /// <summary>Creative optimization configuration for the campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeOptimizationConfiguration")]
-        public virtual CreativeOptimizationConfiguration CreativeOptimizationConfiguration { get; set; } 
+        public virtual CreativeOptimizationConfiguration CreativeOptimizationConfiguration { get; set; }
 
         /// <summary>Click-through event tag ID override properties for this campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultClickThroughEventTagProperties")]
-        public virtual DefaultClickThroughEventTagProperties DefaultClickThroughEventTagProperties { get; set; } 
+        public virtual DefaultClickThroughEventTagProperties DefaultClickThroughEventTagProperties { get; set; }
 
         /// <summary>The default landing page ID for this campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultLandingPageId")]
-        public virtual System.Nullable<long> DefaultLandingPageId { get; set; } 
+        public virtual System.Nullable<long> DefaultLandingPageId { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
-        public virtual string EndDate { get; set; } 
+        public virtual string EndDate { get; set; }
 
         /// <summary>Overrides that can be used to activate or deactivate advertiser event tags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTagOverrides")]
-        public virtual System.Collections.Generic.IList<EventTagOverride> EventTagOverrides { get; set; } 
+        public virtual System.Collections.Generic.IList<EventTagOverride> EventTagOverrides { get; set; }
 
         /// <summary>External ID for this campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalId")]
-        public virtual string ExternalId { get; set; } 
+        public virtual string ExternalId { get; set; }
 
         /// <summary>ID of this campaign. This is a read-only auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Dimension value for the ID of this campaign. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idDimensionValue")]
-        public virtual DimensionValue IdDimensionValue { get; set; } 
+        public virtual DimensionValue IdDimensionValue { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#campaign".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Information about the most recent modification of this campaign. This is a read-only
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedInfo")]
-        public virtual LastModifiedInfo LastModifiedInfo { get; set; } 
+        public virtual LastModifiedInfo LastModifiedInfo { get; set; }
 
         /// <summary>Name of this campaign. This is a required field and must be less than 256 characters long and
         /// unique among campaigns of the same advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Whether Nielsen reports are enabled for this campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nielsenOcrEnabled")]
-        public virtual System.Nullable<bool> NielsenOcrEnabled { get; set; } 
+        public virtual System.Nullable<bool> NielsenOcrEnabled { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
-        public virtual string StartDate { get; set; } 
+        public virtual string StartDate { get; set; }
 
         /// <summary>Subaccount ID of this campaign. This is a read-only field that can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subaccountId")]
-        public virtual System.Nullable<long> SubaccountId { get; set; } 
+        public virtual System.Nullable<long> SubaccountId { get; set; }
 
         /// <summary>Campaign trafficker contact emails.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("traffickerEmails")]
-        public virtual System.Collections.Generic.IList<string> TraffickerEmails { get; set; } 
+        public virtual System.Collections.Generic.IList<string> TraffickerEmails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20557,12 +20557,12 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>ID of the creative associated with the campaign. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeId")]
-        public virtual System.Nullable<long> CreativeId { get; set; } 
+        public virtual System.Nullable<long> CreativeId { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#campaignCreativeAssociation".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20573,16 +20573,16 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Campaign creative association collection</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignCreativeAssociations")]
-        public virtual System.Collections.Generic.IList<CampaignCreativeAssociation> CampaignCreativeAssociations { get; set; } 
+        public virtual System.Collections.Generic.IList<CampaignCreativeAssociation> CampaignCreativeAssociations { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#campaignCreativeAssociationsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20593,16 +20593,16 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Campaign collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaigns")]
-        public virtual System.Collections.Generic.IList<Campaign> Campaigns { get; set; } 
+        public virtual System.Collections.Generic.IList<Campaign> Campaigns { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#campaignsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20613,11 +20613,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Account ID of the modified object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>Action which caused the change.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual string Action { get; set; } 
+        public virtual string Action { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("changeTime")]
         public virtual string ChangeTimeRaw { get; set; }
@@ -20632,50 +20632,50 @@ namespace Google.Apis.Dfareporting.v3_3.Data
 
         /// <summary>Field name of the object which changed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
-        public virtual string FieldName { get; set; } 
+        public virtual string FieldName { get; set; }
 
         /// <summary>ID of this change log.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#changeLog".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>New value of the object field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newValue")]
-        public virtual string NewValue { get; set; } 
+        public virtual string NewValue { get; set; }
 
         /// <summary>ID of the object of this change log. The object could be a campaign, placement, ad, or other
         /// type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
-        public virtual System.Nullable<long> ObjectId { get; set; } 
+        public virtual System.Nullable<long> ObjectId { get; set; }
 
         /// <summary>Object type of the change log.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectType")]
-        public virtual string ObjectType { get; set; } 
+        public virtual string ObjectType { get; set; }
 
         /// <summary>Old value of the object field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oldValue")]
-        public virtual string OldValue { get; set; } 
+        public virtual string OldValue { get; set; }
 
         /// <summary>Subaccount ID of the modified object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subaccountId")]
-        public virtual System.Nullable<long> SubaccountId { get; set; } 
+        public virtual System.Nullable<long> SubaccountId { get; set; }
 
         /// <summary>Transaction ID of this change log. When a single API call results in many changes, each change will
         /// have a separate ID in the change log but will share the same transactionId.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionId")]
-        public virtual System.Nullable<long> TransactionId { get; set; } 
+        public virtual System.Nullable<long> TransactionId { get; set; }
 
         /// <summary>ID of the user who modified the object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userProfileId")]
-        public virtual System.Nullable<long> UserProfileId { get; set; } 
+        public virtual System.Nullable<long> UserProfileId { get; set; }
 
         /// <summary>User profile name of the user who modified the object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userProfileName")]
-        public virtual string UserProfileName { get; set; } 
+        public virtual string UserProfileName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20686,16 +20686,16 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Change log collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("changeLogs")]
-        public virtual System.Collections.Generic.IList<ChangeLog> ChangeLogs { get; set; } 
+        public virtual System.Collections.Generic.IList<ChangeLog> ChangeLogs { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#changeLogsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20706,12 +20706,12 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>City collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cities")]
-        public virtual System.Collections.Generic.IList<City> Cities { get; set; } 
+        public virtual System.Collections.Generic.IList<City> Cities { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#citiesListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20722,39 +20722,39 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Country code of the country to which this city belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
-        public virtual string CountryCode { get; set; } 
+        public virtual string CountryCode { get; set; }
 
         /// <summary>DART ID of the country to which this city belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryDartId")]
-        public virtual System.Nullable<long> CountryDartId { get; set; } 
+        public virtual System.Nullable<long> CountryDartId { get; set; }
 
         /// <summary>DART ID of this city. This is the ID used for targeting and generating reports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dartId")]
-        public virtual System.Nullable<long> DartId { get; set; } 
+        public virtual System.Nullable<long> DartId { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "dfareporting#city".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Metro region code of the metro region (DMA) to which this city belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metroCode")]
-        public virtual string MetroCode { get; set; } 
+        public virtual string MetroCode { get; set; }
 
         /// <summary>ID of the metro region (DMA) to which this city belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metroDmaId")]
-        public virtual System.Nullable<long> MetroDmaId { get; set; } 
+        public virtual System.Nullable<long> MetroDmaId { get; set; }
 
         /// <summary>Name of this city.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Region code of the region to which this city belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
-        public virtual string RegionCode { get; set; } 
+        public virtual string RegionCode { get; set; }
 
         /// <summary>DART ID of the region to which this city belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionDartId")]
-        public virtual System.Nullable<long> RegionDartId { get; set; } 
+        public virtual System.Nullable<long> RegionDartId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20765,17 +20765,17 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Parameter value for the specified click tag. This field contains a click-through url.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickThroughUrl")]
-        public virtual CreativeClickThroughUrl ClickThroughUrl { get; set; } 
+        public virtual CreativeClickThroughUrl ClickThroughUrl { get; set; }
 
         /// <summary>Advertiser event name associated with the click tag. This field is used by DISPLAY_IMAGE_GALLERY
         /// and HTML5_BANNER creatives. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventName")]
-        public virtual string EventName { get; set; } 
+        public virtual string EventName { get; set; }
 
         /// <summary>Parameter name for the specified click tag. For DISPLAY_IMAGE_GALLERY creative assets, this field
         /// must match the value of the creative asset's creativeAssetId.name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20790,21 +20790,21 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// that landing page's URL is assigned to this field. - If neither of the above cases apply, then the
         /// customClickThroughUrl is assigned to this field. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computedClickThroughUrl")]
-        public virtual string ComputedClickThroughUrl { get; set; } 
+        public virtual string ComputedClickThroughUrl { get; set; }
 
         /// <summary>Custom click-through URL. Applicable if the defaultLandingPage field is set to false and the
         /// landingPageId field is left unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customClickThroughUrl")]
-        public virtual string CustomClickThroughUrl { get; set; } 
+        public virtual string CustomClickThroughUrl { get; set; }
 
         /// <summary>Whether the campaign default landing page is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultLandingPage")]
-        public virtual System.Nullable<bool> DefaultLandingPage { get; set; } 
+        public virtual System.Nullable<bool> DefaultLandingPage { get; set; }
 
         /// <summary>ID of the landing page for the click-through URL. Applicable if the defaultLandingPage field is set
         /// to false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("landingPageId")]
-        public virtual System.Nullable<long> LandingPageId { get; set; } 
+        public virtual System.Nullable<long> LandingPageId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20816,12 +20816,12 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Click-through URL suffix to apply to all ads in this entity's scope. Must be less than 128
         /// characters long.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickThroughUrlSuffix")]
-        public virtual string ClickThroughUrlSuffix { get; set; } 
+        public virtual string ClickThroughUrlSuffix { get; set; }
 
         /// <summary>Whether this entity should override the inherited click-through URL suffix with its own defined
         /// value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overrideInheritedSuffix")]
-        public virtual System.Nullable<bool> OverrideInheritedSuffix { get; set; } 
+        public virtual System.Nullable<bool> OverrideInheritedSuffix { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20832,11 +20832,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Click-through URL of this companion click-through override.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickThroughUrl")]
-        public virtual ClickThroughUrl ClickThroughUrl { get; set; } 
+        public virtual ClickThroughUrl ClickThroughUrl { get; set; }
 
         /// <summary>ID of the creative for this companion click-through override.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeId")]
-        public virtual System.Nullable<long> CreativeId { get; set; } 
+        public virtual System.Nullable<long> CreativeId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20847,21 +20847,21 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Whether companions are disabled for this placement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companionsDisabled")]
-        public virtual System.Nullable<bool> CompanionsDisabled { get; set; } 
+        public virtual System.Nullable<bool> CompanionsDisabled { get; set; }
 
         /// <summary>Whitelist of companion sizes to be served to this placement. Set this list to null or empty to
         /// serve all companion sizes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabledSizes")]
-        public virtual System.Collections.Generic.IList<Size> EnabledSizes { get; set; } 
+        public virtual System.Collections.Generic.IList<Size> EnabledSizes { get; set; }
 
         /// <summary>Whether to serve only static images as companions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageOnly")]
-        public virtual System.Nullable<bool> ImageOnly { get; set; } 
+        public virtual System.Nullable<bool> ImageOnly { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#companionSetting".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20873,28 +20873,28 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Contains items that are compatible to be selected for a report of type
         /// "CROSS_DIMENSION_REACH".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crossDimensionReachReportCompatibleFields")]
-        public virtual CrossDimensionReachReportCompatibleFields CrossDimensionReachReportCompatibleFields { get; set; } 
+        public virtual CrossDimensionReachReportCompatibleFields CrossDimensionReachReportCompatibleFields { get; set; }
 
         /// <summary>Contains items that are compatible to be selected for a report of type "FLOODLIGHT".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightReportCompatibleFields")]
-        public virtual FloodlightReportCompatibleFields FloodlightReportCompatibleFields { get; set; } 
+        public virtual FloodlightReportCompatibleFields FloodlightReportCompatibleFields { get; set; }
 
         /// <summary>The kind of resource this is, in this case dfareporting#compatibleFields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Contains items that are compatible to be selected for a report of type
         /// "PATH_TO_CONVERSION".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathToConversionReportCompatibleFields")]
-        public virtual PathToConversionReportCompatibleFields PathToConversionReportCompatibleFields { get; set; } 
+        public virtual PathToConversionReportCompatibleFields PathToConversionReportCompatibleFields { get; set; }
 
         /// <summary>Contains items that are compatible to be selected for a report of type "REACH".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reachReportCompatibleFields")]
-        public virtual ReachReportCompatibleFields ReachReportCompatibleFields { get; set; } 
+        public virtual ReachReportCompatibleFields ReachReportCompatibleFields { get; set; }
 
         /// <summary>Contains items that are compatible to be selected for a report of type "STANDARD".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportCompatibleFields")]
-        public virtual ReportCompatibleFields ReportCompatibleFields { get; set; } 
+        public virtual ReportCompatibleFields ReportCompatibleFields { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20906,16 +20906,16 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>ID of this connection type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#connectionType".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this connection type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20926,12 +20926,12 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Collection of connection types such as broadband and mobile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionTypes")]
-        public virtual System.Collections.Generic.IList<ConnectionType> ConnectionTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<ConnectionType> ConnectionTypes { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#connectionTypesListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20942,16 +20942,16 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Content category collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentCategories")]
-        public virtual System.Collections.Generic.IList<ContentCategory> ContentCategories { get; set; } 
+        public virtual System.Collections.Generic.IList<ContentCategory> ContentCategories { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#contentCategoriesListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20962,21 +20962,21 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Account ID of this content category. This is a read-only field that can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>ID of this content category. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#contentCategory".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this content category. This is a required field and must be less than 256 characters long
         /// and unique among content categories of the same account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20989,17 +20989,17 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Whether this particular request may come from a user under the age of 13, under COPPA
         /// compliance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("childDirectedTreatment")]
-        public virtual System.Nullable<bool> ChildDirectedTreatment { get; set; } 
+        public virtual System.Nullable<bool> ChildDirectedTreatment { get; set; }
 
         /// <summary>Custom floodlight variables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customVariables")]
-        public virtual System.Collections.Generic.IList<CustomFloodlightVariable> CustomVariables { get; set; } 
+        public virtual System.Collections.Generic.IList<CustomFloodlightVariable> CustomVariables { get; set; }
 
         /// <summary>The alphanumeric encrypted user ID. When set, encryptionInfo should also be specified. This field
         /// is mutually exclusive with encryptedUserIdCandidates[], matchId, mobileDeviceId and gclid. This or
         /// encryptedUserIdCandidates[] or matchId or mobileDeviceId or gclid is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptedUserId")]
-        public virtual string EncryptedUserId { get; set; } 
+        public virtual string EncryptedUserId { get; set; }
 
         /// <summary>A list of the alphanumeric encrypted user IDs. Any user ID with exposure prior to the conversion
         /// timestamp will be used in the inserted conversion. If no such user ID is found then the conversion will be
@@ -21008,70 +21008,70 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// encryptedUserId, matchId, mobileDeviceId and gclid. This or encryptedUserId or matchId or mobileDeviceId or
         /// gclid is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptedUserIdCandidates")]
-        public virtual System.Collections.Generic.IList<string> EncryptedUserIdCandidates { get; set; } 
+        public virtual System.Collections.Generic.IList<string> EncryptedUserIdCandidates { get; set; }
 
         /// <summary>Floodlight Activity ID of this conversion. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightActivityId")]
-        public virtual System.Nullable<long> FloodlightActivityId { get; set; } 
+        public virtual System.Nullable<long> FloodlightActivityId { get; set; }
 
         /// <summary>Floodlight Configuration ID of this conversion. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightConfigurationId")]
-        public virtual System.Nullable<long> FloodlightConfigurationId { get; set; } 
+        public virtual System.Nullable<long> FloodlightConfigurationId { get; set; }
 
         /// <summary>The Google click ID. This field is mutually exclusive with encryptedUserId,
         /// encryptedUserIdCandidates[], matchId and mobileDeviceId. This or encryptedUserId or
         /// encryptedUserIdCandidates[] or matchId or mobileDeviceId is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gclid")]
-        public virtual string Gclid { get; set; } 
+        public virtual string Gclid { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#conversion".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Whether Limit Ad Tracking is enabled. When set to true, the conversion will be used for reporting
         /// but not targeting. This will prevent remarketing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limitAdTracking")]
-        public virtual System.Nullable<bool> LimitAdTracking { get; set; } 
+        public virtual System.Nullable<bool> LimitAdTracking { get; set; }
 
         /// <summary>The match ID field. A match ID is your own first-party identifier that has been synced with Google
         /// using the match ID feature in Floodlight. This field is mutually exclusive with encryptedUserId,
         /// encryptedUserIdCandidates[],mobileDeviceId and gclid. This or encryptedUserId or encryptedUserIdCandidates[]
         /// or mobileDeviceId or gclid is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchId")]
-        public virtual string MatchId { get; set; } 
+        public virtual string MatchId { get; set; }
 
         /// <summary>The mobile device ID. This field is mutually exclusive with encryptedUserId,
         /// encryptedUserIdCandidates[], matchId and gclid. This or encryptedUserId or encryptedUserIdCandidates[] or
         /// matchId or gclid is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileDeviceId")]
-        public virtual string MobileDeviceId { get; set; } 
+        public virtual string MobileDeviceId { get; set; }
 
         /// <summary>Whether the conversion was for a non personalized ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonPersonalizedAd")]
-        public virtual System.Nullable<bool> NonPersonalizedAd { get; set; } 
+        public virtual System.Nullable<bool> NonPersonalizedAd { get; set; }
 
         /// <summary>The ordinal of the conversion. Use this field to control how conversions of the same user and day
         /// are de-duplicated. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ordinal")]
-        public virtual string Ordinal { get; set; } 
+        public virtual string Ordinal { get; set; }
 
         /// <summary>The quantity of the conversion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
-        public virtual System.Nullable<long> Quantity { get; set; } 
+        public virtual System.Nullable<long> Quantity { get; set; }
 
         /// <summary>The timestamp of conversion, in Unix epoch micros. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestampMicros")]
-        public virtual System.Nullable<long> TimestampMicros { get; set; } 
+        public virtual System.Nullable<long> TimestampMicros { get; set; }
 
         /// <summary>Whether this particular request may come from a user under the age of 16 (may differ by country),
         /// under compliance with the European Union's General Data Protection Regulation (GDPR).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("treatmentForUnderage")]
-        public virtual System.Nullable<bool> TreatmentForUnderage { get; set; } 
+        public virtual System.Nullable<bool> TreatmentForUnderage { get; set; }
 
         /// <summary>The value of the conversion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual System.Nullable<double> Value { get; set; } 
+        public virtual System.Nullable<double> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21082,16 +21082,16 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>The error code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual string Code { get; set; } 
+        public virtual string Code { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#conversionError".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>A description of the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21102,16 +21102,16 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>The original conversion that was inserted or updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversion")]
-        public virtual Conversion Conversion { get; set; } 
+        public virtual Conversion Conversion { get; set; }
 
         /// <summary>A list of errors related to this conversion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual System.Collections.Generic.IList<ConversionError> Errors { get; set; } 
+        public virtual System.Collections.Generic.IList<ConversionError> Errors { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#conversionStatus".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21122,17 +21122,17 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>The set of conversions to insert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversions")]
-        public virtual System.Collections.Generic.IList<Conversion> Conversions { get; set; } 
+        public virtual System.Collections.Generic.IList<Conversion> Conversions { get; set; }
 
         /// <summary>Describes how encryptedUserId or encryptedUserIdCandidates[] is encrypted. This is a required field
         /// if encryptedUserId or encryptedUserIdCandidates[] is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionInfo")]
-        public virtual EncryptionInfo EncryptionInfo { get; set; } 
+        public virtual EncryptionInfo EncryptionInfo { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#conversionsBatchInsertRequest".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21143,17 +21143,17 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Indicates that some or all conversions failed to insert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasFailures")]
-        public virtual System.Nullable<bool> HasFailures { get; set; } 
+        public virtual System.Nullable<bool> HasFailures { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#conversionsBatchInsertResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The insert status of each conversion. Statuses are returned in the same order that conversions are
         /// inserted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual System.Collections.Generic.IList<ConversionStatus> Status { get; set; } 
+        public virtual System.Collections.Generic.IList<ConversionStatus> Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21164,17 +21164,17 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>The set of conversions to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversions")]
-        public virtual System.Collections.Generic.IList<Conversion> Conversions { get; set; } 
+        public virtual System.Collections.Generic.IList<Conversion> Conversions { get; set; }
 
         /// <summary>Describes how encryptedUserId is encrypted. This is a required field if encryptedUserId is
         /// used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionInfo")]
-        public virtual EncryptionInfo EncryptionInfo { get; set; } 
+        public virtual EncryptionInfo EncryptionInfo { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#conversionsBatchUpdateRequest".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21185,17 +21185,17 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Indicates that some or all conversions failed to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasFailures")]
-        public virtual System.Nullable<bool> HasFailures { get; set; } 
+        public virtual System.Nullable<bool> HasFailures { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#conversionsBatchUpdateResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The update status of each conversion. Statuses are returned in the same order that conversions are
         /// updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual System.Collections.Generic.IList<ConversionStatus> Status { get; set; } 
+        public virtual System.Collections.Generic.IList<ConversionStatus> Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21206,12 +21206,12 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Country collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countries")]
-        public virtual System.Collections.Generic.IList<Country> Countries { get; set; } 
+        public virtual System.Collections.Generic.IList<Country> Countries { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#countriesListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21222,23 +21222,23 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Country code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
-        public virtual string CountryCode { get; set; } 
+        public virtual string CountryCode { get; set; }
 
         /// <summary>DART ID of this country. This is the ID used for targeting and generating reports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dartId")]
-        public virtual System.Nullable<long> DartId { get; set; } 
+        public virtual System.Nullable<long> DartId { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "dfareporting#country".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this country.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Whether ad serving supports secure servers in this country.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslEnabled")]
-        public virtual System.Nullable<bool> SslEnabled { get; set; } 
+        public virtual System.Nullable<bool> SslEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21250,75 +21250,75 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Account ID of this creative. This field, if left unset, will be auto-generated for both insert and
         /// update operations. Applicable to all creative types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>Whether the creative is active. Applicable to all creative types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("active")]
-        public virtual System.Nullable<bool> Active { get; set; } 
+        public virtual System.Nullable<bool> Active { get; set; }
 
         /// <summary>Ad parameters user for VPAID creative. This is a read-only field. Applicable to the following
         /// creative types: all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adParameters")]
-        public virtual string AdParameters { get; set; } 
+        public virtual string AdParameters { get; set; }
 
         /// <summary>Keywords for a Rich Media creative. Keywords let you customize the creative settings of a Rich
         /// Media ad running on your site without having to contact the advertiser. You can use keywords to dynamically
         /// change the look or functionality of a creative. Applicable to the following creative types: all RICH_MEDIA,
         /// and all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adTagKeys")]
-        public virtual System.Collections.Generic.IList<string> AdTagKeys { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AdTagKeys { get; set; }
 
         /// <summary>Additional sizes associated with a responsive creative. When inserting or updating a creative
         /// either the size ID field or size width and height fields can be used. Applicable to DISPLAY creatives when
         /// the primary asset type is HTML_IMAGE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalSizes")]
-        public virtual System.Collections.Generic.IList<Size> AdditionalSizes { get; set; } 
+        public virtual System.Collections.Generic.IList<Size> AdditionalSizes { get; set; }
 
         /// <summary>Advertiser ID of this creative. This is a required field. Applicable to all creative
         /// types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>Whether script access is allowed for this creative. This is a read-only and deprecated field which
         /// will automatically be set to true on update. Applicable to the following creative types:
         /// FLASH_INPAGE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowScriptAccess")]
-        public virtual System.Nullable<bool> AllowScriptAccess { get; set; } 
+        public virtual System.Nullable<bool> AllowScriptAccess { get; set; }
 
         /// <summary>Whether the creative is archived. Applicable to all creative types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("archived")]
-        public virtual System.Nullable<bool> Archived { get; set; } 
+        public virtual System.Nullable<bool> Archived { get; set; }
 
         /// <summary>Type of artwork used for the creative. This is a read-only field. Applicable to the following
         /// creative types: all RICH_MEDIA, and all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("artworkType")]
-        public virtual string ArtworkType { get; set; } 
+        public virtual string ArtworkType { get; set; }
 
         /// <summary>Source application where creative was authored. Presently, only DBM authored creatives will have
         /// this field set. Applicable to all creative types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authoringSource")]
-        public virtual string AuthoringSource { get; set; } 
+        public virtual string AuthoringSource { get; set; }
 
         /// <summary>Authoring tool for HTML5 banner creatives. This is a read-only field. Applicable to the following
         /// creative types: HTML5_BANNER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authoringTool")]
-        public virtual string AuthoringTool { get; set; } 
+        public virtual string AuthoringTool { get; set; }
 
         /// <summary>Whether images are automatically advanced for image gallery creatives. Applicable to the following
         /// creative types: DISPLAY_IMAGE_GALLERY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoAdvanceImages")]
-        public virtual System.Nullable<bool> AutoAdvanceImages { get; set; } 
+        public virtual System.Nullable<bool> AutoAdvanceImages { get; set; }
 
         /// <summary>The 6-character HTML color code, beginning with #, for the background of the window area where the
         /// Flash file is displayed. Default is white. Applicable to the following creative types:
         /// FLASH_INPAGE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
-        public virtual string BackgroundColor { get; set; } 
+        public virtual string BackgroundColor { get; set; }
 
         /// <summary>Click-through URL for backup image. Applicable to ENHANCED_BANNER when the primary asset type is
         /// not HTML_IMAGE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupImageClickThroughUrl")]
-        public virtual CreativeClickThroughUrl BackupImageClickThroughUrl { get; set; } 
+        public virtual CreativeClickThroughUrl BackupImageClickThroughUrl { get; set; }
 
         /// <summary>List of feature dependencies that will cause a backup image to be served if the browser that serves
         /// the ad does not support them. Feature dependencies are features that a browser must be able to support in
@@ -21328,17 +21328,17 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// following creative types: HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not
         /// HTML_IMAGE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupImageFeatures")]
-        public virtual System.Collections.Generic.IList<string> BackupImageFeatures { get; set; } 
+        public virtual System.Collections.Generic.IList<string> BackupImageFeatures { get; set; }
 
         /// <summary>Reporting label used for HTML5 banner backup image. Applicable to the following creative types:
         /// DISPLAY when the primary asset type is not HTML_IMAGE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupImageReportingLabel")]
-        public virtual string BackupImageReportingLabel { get; set; } 
+        public virtual string BackupImageReportingLabel { get; set; }
 
         /// <summary>Target window for backup image. Applicable to the following creative types: FLASH_INPAGE and
         /// HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupImageTargetWindow")]
-        public virtual TargetWindow BackupImageTargetWindow { get; set; } 
+        public virtual TargetWindow BackupImageTargetWindow { get; set; }
 
         /// <summary>Click tags of the creative. For DISPLAY, FLASH_INPAGE, and HTML5_BANNER creatives, this is a subset
         /// of detected click tags for the assets associated with this creative. After creating a flash asset, detected
@@ -21349,18 +21349,18 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// field. Applicable to the following creative types: DISPLAY_IMAGE_GALLERY, FLASH_INPAGE, HTML5_BANNER.
         /// Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickTags")]
-        public virtual System.Collections.Generic.IList<ClickTag> ClickTags { get; set; } 
+        public virtual System.Collections.Generic.IList<ClickTag> ClickTags { get; set; }
 
         /// <summary>Industry standard ID assigned to creative for reach and frequency. Applicable to
         /// INSTREAM_VIDEO_REDIRECT creatives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commercialId")]
-        public virtual string CommercialId { get; set; } 
+        public virtual string CommercialId { get; set; }
 
         /// <summary>List of companion creatives assigned to an in-Stream video creative. Acceptable values include IDs
         /// of existing flash and image creatives. Applicable to the following creative types: all VPAID, all
         /// INSTREAM_AUDIO and all INSTREAM_VIDEO with dynamicAssetSelection set to false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companionCreatives")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> CompanionCreatives { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> CompanionCreatives { get; set; }
 
         /// <summary>Compatibilities associated with this creative. This is a read-only field. DISPLAY and
         /// DISPLAY_INTERSTITIAL refer to rendering either on desktop or on mobile devices or in mobile apps for regular
@@ -21371,121 +21371,121 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// Applicable to all creative types. Acceptable values are: - "APP" - "APP_INTERSTITIAL" - "IN_STREAM_VIDEO" -
         /// "IN_STREAM_AUDIO" - "DISPLAY" - "DISPLAY_INTERSTITIAL" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compatibility")]
-        public virtual System.Collections.Generic.IList<string> Compatibility { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Compatibility { get; set; }
 
         /// <summary>Whether Flash assets associated with the creative need to be automatically converted to HTML5. This
         /// flag is enabled by default and users can choose to disable it if they don't want the system to generate and
         /// use HTML5 asset for this creative. Applicable to the following creative type: FLASH_INPAGE. Applicable to
         /// DISPLAY when the primary asset type is not HTML_IMAGE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("convertFlashToHtml5")]
-        public virtual System.Nullable<bool> ConvertFlashToHtml5 { get; set; } 
+        public virtual System.Nullable<bool> ConvertFlashToHtml5 { get; set; }
 
         /// <summary>List of counter events configured for the creative. For DISPLAY_IMAGE_GALLERY creatives, these are
         /// read-only and auto-generated from clickTags. Applicable to the following creative types:
         /// DISPLAY_IMAGE_GALLERY, all RICH_MEDIA, and all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("counterCustomEvents")]
-        public virtual System.Collections.Generic.IList<CreativeCustomEvent> CounterCustomEvents { get; set; } 
+        public virtual System.Collections.Generic.IList<CreativeCustomEvent> CounterCustomEvents { get; set; }
 
         /// <summary>Required if dynamicAssetSelection is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeAssetSelection")]
-        public virtual CreativeAssetSelection CreativeAssetSelection { get; set; } 
+        public virtual CreativeAssetSelection CreativeAssetSelection { get; set; }
 
         /// <summary>Assets associated with a creative. Applicable to all but the following creative types:
         /// INTERNAL_REDIRECT, INTERSTITIAL_INTERNAL_REDIRECT, and REDIRECT</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeAssets")]
-        public virtual System.Collections.Generic.IList<CreativeAsset> CreativeAssets { get; set; } 
+        public virtual System.Collections.Generic.IList<CreativeAsset> CreativeAssets { get; set; }
 
         /// <summary>Creative field assignments for this creative. Applicable to all creative types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeFieldAssignments")]
-        public virtual System.Collections.Generic.IList<CreativeFieldAssignment> CreativeFieldAssignments { get; set; } 
+        public virtual System.Collections.Generic.IList<CreativeFieldAssignment> CreativeFieldAssignments { get; set; }
 
         /// <summary>Custom key-values for a Rich Media creative. Key-values let you customize the creative settings of
         /// a Rich Media ad running on your site without having to contact the advertiser. You can use key-values to
         /// dynamically change the look or functionality of a creative. Applicable to the following creative types: all
         /// RICH_MEDIA, and all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customKeyValues")]
-        public virtual System.Collections.Generic.IList<string> CustomKeyValues { get; set; } 
+        public virtual System.Collections.Generic.IList<string> CustomKeyValues { get; set; }
 
         /// <summary>Set this to true to enable the use of rules to target individual assets in this creative. When set
         /// to true creativeAssetSelection must be set. This also controls asset-level companions. When this is true,
         /// companion creatives should be assigned to creative assets. Learn more. Applicable to INSTREAM_VIDEO
         /// creatives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dynamicAssetSelection")]
-        public virtual System.Nullable<bool> DynamicAssetSelection { get; set; } 
+        public virtual System.Nullable<bool> DynamicAssetSelection { get; set; }
 
         /// <summary>List of exit events configured for the creative. For DISPLAY and DISPLAY_IMAGE_GALLERY creatives,
         /// these are read-only and auto-generated from clickTags, For DISPLAY, an event is also created from the
         /// backupImageReportingLabel. Applicable to the following creative types: DISPLAY_IMAGE_GALLERY, all
         /// RICH_MEDIA, and all VPAID. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exitCustomEvents")]
-        public virtual System.Collections.Generic.IList<CreativeCustomEvent> ExitCustomEvents { get; set; } 
+        public virtual System.Collections.Generic.IList<CreativeCustomEvent> ExitCustomEvents { get; set; }
 
         /// <summary>OpenWindow FSCommand of this creative. This lets the SWF file communicate with either Flash Player
         /// or the program hosting Flash Player, such as a web browser. This is only triggered if allowScriptAccess
         /// field is true. Applicable to the following creative types: FLASH_INPAGE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fsCommand")]
-        public virtual FsCommand FsCommand { get; set; } 
+        public virtual FsCommand FsCommand { get; set; }
 
         /// <summary>HTML code for the creative. This is a required field when applicable. This field is ignored if
         /// htmlCodeLocked is true. Applicable to the following creative types: all CUSTOM, FLASH_INPAGE, and
         /// HTML5_BANNER, and all RICH_MEDIA.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("htmlCode")]
-        public virtual string HtmlCode { get; set; } 
+        public virtual string HtmlCode { get; set; }
 
         /// <summary>Whether HTML code is generated by Campaign Manager or manually entered. Set to true to ignore
         /// changes to htmlCode. Applicable to the following creative types: FLASH_INPAGE and HTML5_BANNER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("htmlCodeLocked")]
-        public virtual System.Nullable<bool> HtmlCodeLocked { get; set; } 
+        public virtual System.Nullable<bool> HtmlCodeLocked { get; set; }
 
         /// <summary>ID of this creative. This is a read-only, auto-generated field. Applicable to all creative
         /// types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Dimension value for the ID of this creative. This is a read-only field. Applicable to all creative
         /// types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idDimensionValue")]
-        public virtual DimensionValue IdDimensionValue { get; set; } 
+        public virtual DimensionValue IdDimensionValue { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#creative".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Creative last modification information. This is a read-only field. Applicable to all creative
         /// types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedInfo")]
-        public virtual LastModifiedInfo LastModifiedInfo { get; set; } 
+        public virtual LastModifiedInfo LastModifiedInfo { get; set; }
 
         /// <summary>Latest Studio trafficked creative ID associated with rich media and VPAID creatives. This is a
         /// read-only field. Applicable to the following creative types: all RICH_MEDIA, and all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestTraffickedCreativeId")]
-        public virtual System.Nullable<long> LatestTraffickedCreativeId { get; set; } 
+        public virtual System.Nullable<long> LatestTraffickedCreativeId { get; set; }
 
         /// <summary>Description of the audio or video ad. Applicable to the following creative types: all
         /// INSTREAM_VIDEO, INSTREAM_AUDIO, and all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaDescription")]
-        public virtual string MediaDescription { get; set; } 
+        public virtual string MediaDescription { get; set; }
 
         /// <summary>Creative audio or video duration in seconds. This is a read-only field. Applicable to the following
         /// creative types: INSTREAM_VIDEO, INSTREAM_AUDIO, all RICH_MEDIA, and all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaDuration")]
-        public virtual System.Nullable<float> MediaDuration { get; set; } 
+        public virtual System.Nullable<float> MediaDuration { get; set; }
 
         /// <summary>Name of the creative. This is a required field and must be less than 256 characters long.
         /// Applicable to all creative types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Override CSS value for rich media creatives. Applicable to the following creative types: all
         /// RICH_MEDIA.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overrideCss")]
-        public virtual string OverrideCss { get; set; } 
+        public virtual string OverrideCss { get; set; }
 
         /// <summary>Amount of time to play the video before counting a view. Applicable to the following creative
         /// types: all INSTREAM_VIDEO.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressOffset")]
-        public virtual VideoOffset ProgressOffset { get; set; } 
+        public virtual VideoOffset ProgressOffset { get; set; }
 
         /// <summary>URL of hosted image or hosted video or another ad tag. For INSTREAM_VIDEO_REDIRECT creatives this
         /// is the in-stream video redirect URL. The standard for a VAST (Video Ad Serving Template) ad response allows
@@ -21493,28 +21493,28 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// the following creative types: DISPLAY_REDIRECT, INTERNAL_REDIRECT, INTERSTITIAL_INTERNAL_REDIRECT, and
         /// INSTREAM_VIDEO_REDIRECT</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirectUrl")]
-        public virtual string RedirectUrl { get; set; } 
+        public virtual string RedirectUrl { get; set; }
 
         /// <summary>ID of current rendering version. This is a read-only field. Applicable to all creative
         /// types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("renderingId")]
-        public virtual System.Nullable<long> RenderingId { get; set; } 
+        public virtual System.Nullable<long> RenderingId { get; set; }
 
         /// <summary>Dimension value for the rendering ID of this creative. This is a read-only field. Applicable to all
         /// creative types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("renderingIdDimensionValue")]
-        public virtual DimensionValue RenderingIdDimensionValue { get; set; } 
+        public virtual DimensionValue RenderingIdDimensionValue { get; set; }
 
         /// <summary>The minimum required Flash plugin version for this creative. For example, 11.2.202.235. This is a
         /// read-only field. Applicable to the following creative types: all RICH_MEDIA, and all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiredFlashPluginVersion")]
-        public virtual string RequiredFlashPluginVersion { get; set; } 
+        public virtual string RequiredFlashPluginVersion { get; set; }
 
         /// <summary>The internal Flash version for this creative as calculated by Studio. This is a read-only field.
         /// Applicable to the following creative types: FLASH_INPAGE all RICH_MEDIA, and all VPAID. Applicable to
         /// DISPLAY when the primary asset type is not HTML_IMAGE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiredFlashVersion")]
-        public virtual System.Nullable<int> RequiredFlashVersion { get; set; } 
+        public virtual System.Nullable<int> RequiredFlashVersion { get; set; }
 
         /// <summary>Size associated with this creative. When inserting or updating a creative either the size ID field
         /// or size width and height fields can be used. This is a required field when applicable; however for IMAGE,
@@ -21523,85 +21523,85 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// following creative types: DISPLAY, DISPLAY_IMAGE_GALLERY, FLASH_INPAGE, HTML5_BANNER, IMAGE, and all
         /// RICH_MEDIA.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
-        public virtual Size Size { get; set; } 
+        public virtual Size Size { get; set; }
 
         /// <summary>Amount of time to play the video before the skip button appears. Applicable to the following
         /// creative types: all INSTREAM_VIDEO.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipOffset")]
-        public virtual VideoOffset SkipOffset { get; set; } 
+        public virtual VideoOffset SkipOffset { get; set; }
 
         /// <summary>Whether the user can choose to skip the creative. Applicable to the following creative types: all
         /// INSTREAM_VIDEO and all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skippable")]
-        public virtual System.Nullable<bool> Skippable { get; set; } 
+        public virtual System.Nullable<bool> Skippable { get; set; }
 
         /// <summary>Whether the creative is SSL-compliant. This is a read-only field. Applicable to all creative
         /// types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslCompliant")]
-        public virtual System.Nullable<bool> SslCompliant { get; set; } 
+        public virtual System.Nullable<bool> SslCompliant { get; set; }
 
         /// <summary>Whether creative should be treated as SSL compliant even if the system scan shows it's not.
         /// Applicable to all creative types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslOverride")]
-        public virtual System.Nullable<bool> SslOverride { get; set; } 
+        public virtual System.Nullable<bool> SslOverride { get; set; }
 
         /// <summary>Studio advertiser ID associated with rich media and VPAID creatives. This is a read-only field.
         /// Applicable to the following creative types: all RICH_MEDIA, and all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("studioAdvertiserId")]
-        public virtual System.Nullable<long> StudioAdvertiserId { get; set; } 
+        public virtual System.Nullable<long> StudioAdvertiserId { get; set; }
 
         /// <summary>Studio creative ID associated with rich media and VPAID creatives. This is a read-only field.
         /// Applicable to the following creative types: all RICH_MEDIA, and all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("studioCreativeId")]
-        public virtual System.Nullable<long> StudioCreativeId { get; set; } 
+        public virtual System.Nullable<long> StudioCreativeId { get; set; }
 
         /// <summary>Studio trafficked creative ID associated with rich media and VPAID creatives. This is a read-only
         /// field. Applicable to the following creative types: all RICH_MEDIA, and all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("studioTraffickedCreativeId")]
-        public virtual System.Nullable<long> StudioTraffickedCreativeId { get; set; } 
+        public virtual System.Nullable<long> StudioTraffickedCreativeId { get; set; }
 
         /// <summary>Subaccount ID of this creative. This field, if left unset, will be auto-generated for both insert
         /// and update operations. Applicable to all creative types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subaccountId")]
-        public virtual System.Nullable<long> SubaccountId { get; set; } 
+        public virtual System.Nullable<long> SubaccountId { get; set; }
 
         /// <summary>Third-party URL used to record backup image impressions. Applicable to the following creative
         /// types: all RICH_MEDIA.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyBackupImageImpressionsUrl")]
-        public virtual string ThirdPartyBackupImageImpressionsUrl { get; set; } 
+        public virtual string ThirdPartyBackupImageImpressionsUrl { get; set; }
 
         /// <summary>Third-party URL used to record rich media impressions. Applicable to the following creative types:
         /// all RICH_MEDIA.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyRichMediaImpressionsUrl")]
-        public virtual string ThirdPartyRichMediaImpressionsUrl { get; set; } 
+        public virtual string ThirdPartyRichMediaImpressionsUrl { get; set; }
 
         /// <summary>Third-party URLs for tracking in-stream creative events. Applicable to the following creative
         /// types: all INSTREAM_VIDEO, all INSTREAM_AUDIO, and all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyUrls")]
-        public virtual System.Collections.Generic.IList<ThirdPartyTrackingUrl> ThirdPartyUrls { get; set; } 
+        public virtual System.Collections.Generic.IList<ThirdPartyTrackingUrl> ThirdPartyUrls { get; set; }
 
         /// <summary>List of timer events configured for the creative. For DISPLAY_IMAGE_GALLERY creatives, these are
         /// read-only and auto-generated from clickTags. Applicable to the following creative types:
         /// DISPLAY_IMAGE_GALLERY, all RICH_MEDIA, and all VPAID. Applicable to DISPLAY when the primary asset is not
         /// HTML_IMAGE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timerCustomEvents")]
-        public virtual System.Collections.Generic.IList<CreativeCustomEvent> TimerCustomEvents { get; set; } 
+        public virtual System.Collections.Generic.IList<CreativeCustomEvent> TimerCustomEvents { get; set; }
 
         /// <summary>Combined size of all creative assets. This is a read-only field. Applicable to the following
         /// creative types: all RICH_MEDIA, and all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalFileSize")]
-        public virtual System.Nullable<long> TotalFileSize { get; set; } 
+        public virtual System.Nullable<long> TotalFileSize { get; set; }
 
         /// <summary>Type of this creative. This is a required field. Applicable to all creative types. *Note:*
         /// FLASH_INPAGE, HTML5_BANNER, and IMAGE are only used for existing creatives. New creatives should use DISPLAY
         /// as a replacement for these types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>A Universal Ad ID as per the VAST 4.0 spec. Applicable to the following creative types:
         /// INSTREAM_AUDIO and INSTREAM_VIDEO and VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("universalAdId")]
-        public virtual UniversalAdId UniversalAdId { get; set; } 
+        public virtual UniversalAdId UniversalAdId { get; set; }
 
         /// <summary>The version number helps you keep track of multiple versions of your creative in your reports. The
         /// version number will always be auto-generated during insert operations to start at 1. For tracking creatives
@@ -21609,7 +21609,7 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// be incremented only by 1 during update operations. In addition, the version will be automatically
         /// incremented by 1 when undergoing Rich Media creative merging. Applicable to all creative types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21622,204 +21622,204 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// following creative type: FLASH_INPAGE. Applicable to DISPLAY when the primary asset type is not
         /// HTML_IMAGE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionScript3")]
-        public virtual System.Nullable<bool> ActionScript3 { get; set; } 
+        public virtual System.Nullable<bool> ActionScript3 { get; set; }
 
         /// <summary>Whether the video or audio asset is active. This is a read-only field for VPAID_NON_LINEAR_VIDEO
         /// assets. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("active")]
-        public virtual System.Nullable<bool> Active { get; set; } 
+        public virtual System.Nullable<bool> Active { get; set; }
 
         /// <summary>Additional sizes associated with this creative asset. HTML5 asset generated by compatible software
         /// such as GWD will be able to support more sizes this creative asset can render.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalSizes")]
-        public virtual System.Collections.Generic.IList<Size> AdditionalSizes { get; set; } 
+        public virtual System.Collections.Generic.IList<Size> AdditionalSizes { get; set; }
 
         /// <summary>Possible alignments for an asset. This is a read-only field. Applicable to the following creative
         /// types: RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL .</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alignment")]
-        public virtual string Alignment { get; set; } 
+        public virtual string Alignment { get; set; }
 
         /// <summary>Artwork type of rich media creative. This is a read-only field. Applicable to the following
         /// creative types: all RICH_MEDIA.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("artworkType")]
-        public virtual string ArtworkType { get; set; } 
+        public virtual string ArtworkType { get; set; }
 
         /// <summary>Identifier of this asset. This is the same identifier returned during creative asset insert
         /// operation. This is a required field. Applicable to all but the following creative types: all REDIRECT and
         /// TRACKING_TEXT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetIdentifier")]
-        public virtual CreativeAssetId AssetIdentifier { get; set; } 
+        public virtual CreativeAssetId AssetIdentifier { get; set; }
 
         /// <summary>Audio stream bit rate in kbps. This is a read-only field. Applicable to the following creative
         /// types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioBitRate")]
-        public virtual System.Nullable<int> AudioBitRate { get; set; } 
+        public virtual System.Nullable<int> AudioBitRate { get; set; }
 
         /// <summary>Audio sample bit rate in hertz. This is a read-only field. Applicable to the following creative
         /// types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioSampleRate")]
-        public virtual System.Nullable<int> AudioSampleRate { get; set; } 
+        public virtual System.Nullable<int> AudioSampleRate { get; set; }
 
         /// <summary>Exit event configured for the backup image. Applicable to the following creative types: all
         /// RICH_MEDIA.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupImageExit")]
-        public virtual CreativeCustomEvent BackupImageExit { get; set; } 
+        public virtual CreativeCustomEvent BackupImageExit { get; set; }
 
         /// <summary>Detected bit-rate for audio or video asset. This is a read-only field. Applicable to the following
         /// creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bitRate")]
-        public virtual System.Nullable<int> BitRate { get; set; } 
+        public virtual System.Nullable<int> BitRate { get; set; }
 
         /// <summary>Rich media child asset type. This is a read-only field. Applicable to the following creative types:
         /// all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("childAssetType")]
-        public virtual string ChildAssetType { get; set; } 
+        public virtual string ChildAssetType { get; set; }
 
         /// <summary>Size of an asset when collapsed. This is a read-only field. Applicable to the following creative
         /// types: all RICH_MEDIA and all VPAID. Additionally, applicable to assets whose displayType is
         /// ASSET_DISPLAY_TYPE_EXPANDING or ASSET_DISPLAY_TYPE_PEEL_DOWN.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collapsedSize")]
-        public virtual Size CollapsedSize { get; set; } 
+        public virtual Size CollapsedSize { get; set; }
 
         /// <summary>List of companion creatives assigned to an in-stream video creative asset. Acceptable values
         /// include IDs of existing flash and image creatives. Applicable to INSTREAM_VIDEO creative type with
         /// dynamicAssetSelection set to true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companionCreativeIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> CompanionCreativeIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> CompanionCreativeIds { get; set; }
 
         /// <summary>Custom start time in seconds for making the asset visible. Applicable to the following creative
         /// types: all RICH_MEDIA. Value must be greater than or equal to 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customStartTimeValue")]
-        public virtual System.Nullable<int> CustomStartTimeValue { get; set; } 
+        public virtual System.Nullable<int> CustomStartTimeValue { get; set; }
 
         /// <summary>List of feature dependencies for the creative asset that are detected by Campaign Manager. Feature
         /// dependencies are features that a browser must be able to support in order to render your HTML5 creative
         /// correctly. This is a read-only, auto-generated field. Applicable to the following creative types:
         /// HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedFeatures")]
-        public virtual System.Collections.Generic.IList<string> DetectedFeatures { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DetectedFeatures { get; set; }
 
         /// <summary>Type of rich media asset. This is a read-only field. Applicable to the following creative types:
         /// all RICH_MEDIA.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayType")]
-        public virtual string DisplayType { get; set; } 
+        public virtual string DisplayType { get; set; }
 
         /// <summary>Duration in seconds for which an asset will be displayed. Applicable to the following creative
         /// types: INSTREAM_AUDIO, INSTREAM_VIDEO and VPAID_LINEAR_VIDEO. Value must be greater than or equal to
         /// 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
-        public virtual System.Nullable<int> Duration { get; set; } 
+        public virtual System.Nullable<int> Duration { get; set; }
 
         /// <summary>Duration type for which an asset will be displayed. Applicable to the following creative types: all
         /// RICH_MEDIA.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("durationType")]
-        public virtual string DurationType { get; set; } 
+        public virtual string DurationType { get; set; }
 
         /// <summary>Detected expanded dimension for video asset. This is a read-only field. Applicable to the following
         /// creative types: INSTREAM_VIDEO and all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expandedDimension")]
-        public virtual Size ExpandedDimension { get; set; } 
+        public virtual Size ExpandedDimension { get; set; }
 
         /// <summary>File size associated with this creative asset. This is a read-only field. Applicable to all but the
         /// following creative types: all REDIRECT and TRACKING_TEXT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileSize")]
-        public virtual System.Nullable<long> FileSize { get; set; } 
+        public virtual System.Nullable<long> FileSize { get; set; }
 
         /// <summary>Flash version of the asset. This is a read-only field. Applicable to the following creative types:
         /// FLASH_INPAGE, all RICH_MEDIA, and all VPAID. Applicable to DISPLAY when the primary asset type is not
         /// HTML_IMAGE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flashVersion")]
-        public virtual System.Nullable<int> FlashVersion { get; set; } 
+        public virtual System.Nullable<int> FlashVersion { get; set; }
 
         /// <summary>Video frame rate for video asset in frames per second. This is a read-only field. Applicable to the
         /// following creative types: INSTREAM_VIDEO and all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frameRate")]
-        public virtual System.Nullable<float> FrameRate { get; set; } 
+        public virtual System.Nullable<float> FrameRate { get; set; }
 
         /// <summary>Whether to hide Flash objects flag for an asset. Applicable to the following creative types: all
         /// RICH_MEDIA.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hideFlashObjects")]
-        public virtual System.Nullable<bool> HideFlashObjects { get; set; } 
+        public virtual System.Nullable<bool> HideFlashObjects { get; set; }
 
         /// <summary>Whether to hide selection boxes flag for an asset. Applicable to the following creative types: all
         /// RICH_MEDIA.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hideSelectionBoxes")]
-        public virtual System.Nullable<bool> HideSelectionBoxes { get; set; } 
+        public virtual System.Nullable<bool> HideSelectionBoxes { get; set; }
 
         /// <summary>Whether the asset is horizontally locked. This is a read-only field. Applicable to the following
         /// creative types: all RICH_MEDIA.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("horizontallyLocked")]
-        public virtual System.Nullable<bool> HorizontallyLocked { get; set; } 
+        public virtual System.Nullable<bool> HorizontallyLocked { get; set; }
 
         /// <summary>Numeric ID of this creative asset. This is a required field and should not be modified. Applicable
         /// to all but the following creative types: all REDIRECT and TRACKING_TEXT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Dimension value for the ID of the asset. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idDimensionValue")]
-        public virtual DimensionValue IdDimensionValue { get; set; } 
+        public virtual DimensionValue IdDimensionValue { get; set; }
 
         /// <summary>Detected duration for audio or video asset. This is a read-only field. Applicable to the following
         /// creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaDuration")]
-        public virtual System.Nullable<float> MediaDuration { get; set; } 
+        public virtual System.Nullable<float> MediaDuration { get; set; }
 
         /// <summary>Detected MIME type for audio or video asset. This is a read-only field. Applicable to the following
         /// creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-        public virtual string MimeType { get; set; } 
+        public virtual string MimeType { get; set; }
 
         /// <summary>Offset position for an asset in collapsed mode. This is a read-only field. Applicable to the
         /// following creative types: all RICH_MEDIA and all VPAID. Additionally, only applicable to assets whose
         /// displayType is ASSET_DISPLAY_TYPE_EXPANDING or ASSET_DISPLAY_TYPE_PEEL_DOWN.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offset")]
-        public virtual OffsetPosition Offset { get; set; } 
+        public virtual OffsetPosition Offset { get; set; }
 
         /// <summary>Orientation of video asset. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orientation")]
-        public virtual string Orientation { get; set; } 
+        public virtual string Orientation { get; set; }
 
         /// <summary>Whether the backup asset is original or changed by the user in Campaign Manager. Applicable to the
         /// following creative types: all RICH_MEDIA.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalBackup")]
-        public virtual System.Nullable<bool> OriginalBackup { get; set; } 
+        public virtual System.Nullable<bool> OriginalBackup { get; set; }
 
         /// <summary>Whether this asset is used as a polite load asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("politeLoad")]
-        public virtual System.Nullable<bool> PoliteLoad { get; set; } 
+        public virtual System.Nullable<bool> PoliteLoad { get; set; }
 
         /// <summary>Offset position for an asset. Applicable to the following creative types: all RICH_MEDIA.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("position")]
-        public virtual OffsetPosition Position { get; set; } 
+        public virtual OffsetPosition Position { get; set; }
 
         /// <summary>Offset left unit for an asset. This is a read-only field. Applicable to the following creative
         /// types: all RICH_MEDIA.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("positionLeftUnit")]
-        public virtual string PositionLeftUnit { get; set; } 
+        public virtual string PositionLeftUnit { get; set; }
 
         /// <summary>Offset top unit for an asset. This is a read-only field if the asset displayType is
         /// ASSET_DISPLAY_TYPE_OVERLAY. Applicable to the following creative types: all RICH_MEDIA.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("positionTopUnit")]
-        public virtual string PositionTopUnit { get; set; } 
+        public virtual string PositionTopUnit { get; set; }
 
         /// <summary>Progressive URL for video asset. This is a read-only field. Applicable to the following creative
         /// types: INSTREAM_VIDEO and all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressiveServingUrl")]
-        public virtual string ProgressiveServingUrl { get; set; } 
+        public virtual string ProgressiveServingUrl { get; set; }
 
         /// <summary>Whether the asset pushes down other content. Applicable to the following creative types: all
         /// RICH_MEDIA. Additionally, only applicable when the asset offsets are 0, the collapsedSize.width matches
         /// size.width, and the collapsedSize.height is less than size.height.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pushdown")]
-        public virtual System.Nullable<bool> Pushdown { get; set; } 
+        public virtual System.Nullable<bool> Pushdown { get; set; }
 
         /// <summary>Pushdown duration in seconds for an asset. Applicable to the following creative types: all
         /// RICH_MEDIA.Additionally, only applicable when the asset pushdown field is true, the offsets are 0, the
         /// collapsedSize.width matches size.width, and the collapsedSize.height is less than size.height. Acceptable
         /// values are 0 to 9.99, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pushdownDuration")]
-        public virtual System.Nullable<float> PushdownDuration { get; set; } 
+        public virtual System.Nullable<float> PushdownDuration { get; set; }
 
         /// <summary>Role of the asset in relation to creative. Applicable to all but the following creative types: all
         /// REDIRECT and TRACKING_TEXT. This is a required field. PRIMARY applies to DISPLAY, FLASH_INPAGE,
@@ -21840,7 +21840,7 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// transcoded by Campaign Manager from PARENT_AUDIO assets and is applicable to INSTREAM_AUDIO creatives.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>Size associated with this creative asset. This is a required field when applicable; however for
         /// IMAGE and FLASH_INPAGE, creatives if left blank, this field will be automatically set using the actual size
@@ -21848,54 +21848,54 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// FLASH_INPAGE, HTML5_BANNER, IMAGE, and all RICH_MEDIA. Applicable to DISPLAY when the primary asset type is
         /// not HTML_IMAGE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
-        public virtual Size Size { get; set; } 
+        public virtual Size Size { get; set; }
 
         /// <summary>Whether the asset is SSL-compliant. This is a read-only field. Applicable to all but the following
         /// creative types: all REDIRECT and TRACKING_TEXT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslCompliant")]
-        public virtual System.Nullable<bool> SslCompliant { get; set; } 
+        public virtual System.Nullable<bool> SslCompliant { get; set; }
 
         /// <summary>Initial wait time type before making the asset visible. Applicable to the following creative types:
         /// all RICH_MEDIA.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTimeType")]
-        public virtual string StartTimeType { get; set; } 
+        public virtual string StartTimeType { get; set; }
 
         /// <summary>Streaming URL for video asset. This is a read-only field. Applicable to the following creative
         /// types: INSTREAM_VIDEO and all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streamingServingUrl")]
-        public virtual string StreamingServingUrl { get; set; } 
+        public virtual string StreamingServingUrl { get; set; }
 
         /// <summary>Whether the asset is transparent. Applicable to the following creative types: all RICH_MEDIA.
         /// Additionally, only applicable to HTML5 assets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transparency")]
-        public virtual System.Nullable<bool> Transparency { get; set; } 
+        public virtual System.Nullable<bool> Transparency { get; set; }
 
         /// <summary>Whether the asset is vertically locked. This is a read-only field. Applicable to the following
         /// creative types: all RICH_MEDIA.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verticallyLocked")]
-        public virtual System.Nullable<bool> VerticallyLocked { get; set; } 
+        public virtual System.Nullable<bool> VerticallyLocked { get; set; }
 
         /// <summary>Window mode options for flash assets. Applicable to the following creative types: FLASH_INPAGE,
         /// RICH_MEDIA_DISPLAY_EXPANDING, RICH_MEDIA_IM_EXPAND, RICH_MEDIA_DISPLAY_BANNER, and
         /// RICH_MEDIA_INPAGE_FLOATING.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("windowMode")]
-        public virtual string WindowMode { get; set; } 
+        public virtual string WindowMode { get; set; }
 
         /// <summary>zIndex value of an asset. Applicable to the following creative types: all RICH_MEDIA.Additionally,
         /// only applicable to assets whose displayType is NOT one of the following types: ASSET_DISPLAY_TYPE_INPAGE or
         /// ASSET_DISPLAY_TYPE_OVERLAY. Acceptable values are -999999999 to 999999999, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zIndex")]
-        public virtual System.Nullable<int> ZIndex { get; set; } 
+        public virtual System.Nullable<int> ZIndex { get; set; }
 
         /// <summary>File name of zip file. This is a read-only field. Applicable to the following creative types:
         /// HTML5_BANNER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zipFilename")]
-        public virtual string ZipFilename { get; set; } 
+        public virtual string ZipFilename { get; set; }
 
         /// <summary>Size of zip file. This is a read-only field. Applicable to the following creative types:
         /// HTML5_BANNER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zipFilesize")]
-        public virtual string ZipFilesize { get; set; } 
+        public virtual string ZipFilesize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21908,12 +21908,12 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// this assetIdentifier is used to identify the uploaded asset. Characters in the name must be alphanumeric or
         /// one of the following: ".-_ ". Spaces are allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Type of asset to upload. This is a required field. FLASH and IMAGE are no longer supported for new
         /// uploads. All image assets should use HTML_IMAGE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21925,32 +21925,32 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>ID of the creative asset. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetIdentifier")]
-        public virtual CreativeAssetId AssetIdentifier { get; set; } 
+        public virtual CreativeAssetId AssetIdentifier { get; set; }
 
         /// <summary>List of detected click tags for assets. This is a read-only, auto-generated field. This field is
         /// empty for a rich media asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickTags")]
-        public virtual System.Collections.Generic.IList<ClickTag> ClickTags { get; set; } 
+        public virtual System.Collections.Generic.IList<ClickTag> ClickTags { get; set; }
 
         /// <summary>List of feature dependencies for the creative asset that are detected by Campaign Manager. Feature
         /// dependencies are features that a browser must be able to support in order to render your HTML5 creative
         /// correctly. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedFeatures")]
-        public virtual System.Collections.Generic.IList<string> DetectedFeatures { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DetectedFeatures { get; set; }
 
         /// <summary>Numeric ID of the asset. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Dimension value for the numeric ID of the asset. This is a read-only, auto-generated
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idDimensionValue")]
-        public virtual DimensionValue IdDimensionValue { get; set; } 
+        public virtual DimensionValue IdDimensionValue { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#creativeAssetMetadata".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Rules validated during code generation that generated a warning. This is a read-only, auto-
         /// generated field. Possible values are: - "ADMOB_REFERENCED" - "ASSET_FORMAT_UNSUPPORTED_DCM" -
@@ -21961,7 +21961,7 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// "MRAID_REFERENCED" - "NOT_SSL_COMPLIANT" - "ORPHANED_ASSET" - "PRIMARY_HTML_MISSING" - "SVG_INVALID" -
         /// "ZIP_INVALID" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnedValidationRules")]
-        public virtual System.Collections.Generic.IList<string> WarnedValidationRules { get; set; } 
+        public virtual System.Collections.Generic.IList<string> WarnedValidationRules { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21974,13 +21974,13 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>A creativeAssets[].id. This should refer to one of the parent assets in this creative, and will be
         /// served if none of the rules match. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultAssetId")]
-        public virtual System.Nullable<long> DefaultAssetId { get; set; } 
+        public virtual System.Nullable<long> DefaultAssetId { get; set; }
 
         /// <summary>Rules determine which asset will be served to a viewer. Rules will be evaluated in the order in
         /// which they are stored in this list. This list must contain at least one rule. Applicable to INSTREAM_VIDEO
         /// creatives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
-        public virtual System.Collections.Generic.IList<Rule> Rules { get; set; } 
+        public virtual System.Collections.Generic.IList<Rule> Rules { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21992,34 +21992,34 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Whether this creative assignment is active. When true, the creative will be included in the ad's
         /// rotation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("active")]
-        public virtual System.Nullable<bool> Active { get; set; } 
+        public virtual System.Nullable<bool> Active { get; set; }
 
         /// <summary>Whether applicable event tags should fire when this creative assignment is rendered. If this value
         /// is unset when the ad is inserted or updated, it will default to true for all creative types EXCEPT for
         /// INTERNAL_REDIRECT, INTERSTITIAL_INTERNAL_REDIRECT, and INSTREAM_VIDEO.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applyEventTags")]
-        public virtual System.Nullable<bool> ApplyEventTags { get; set; } 
+        public virtual System.Nullable<bool> ApplyEventTags { get; set; }
 
         /// <summary>Click-through URL of the creative assignment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickThroughUrl")]
-        public virtual ClickThroughUrl ClickThroughUrl { get; set; } 
+        public virtual ClickThroughUrl ClickThroughUrl { get; set; }
 
         /// <summary>Companion creative overrides for this creative assignment. Applicable to video ads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companionCreativeOverrides")]
-        public virtual System.Collections.Generic.IList<CompanionClickThroughOverride> CompanionCreativeOverrides { get; set; } 
+        public virtual System.Collections.Generic.IList<CompanionClickThroughOverride> CompanionCreativeOverrides { get; set; }
 
         /// <summary>Creative group assignments for this creative assignment. Only one assignment per creative group
         /// number is allowed for a maximum of two assignments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeGroupAssignments")]
-        public virtual System.Collections.Generic.IList<CreativeGroupAssignment> CreativeGroupAssignments { get; set; } 
+        public virtual System.Collections.Generic.IList<CreativeGroupAssignment> CreativeGroupAssignments { get; set; }
 
         /// <summary>ID of the creative to be assigned. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeId")]
-        public virtual System.Nullable<long> CreativeId { get; set; } 
+        public virtual System.Nullable<long> CreativeId { get; set; }
 
         /// <summary>Dimension value for the ID of the creative. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeIdDimensionValue")]
-        public virtual DimensionValue CreativeIdDimensionValue { get; set; } 
+        public virtual DimensionValue CreativeIdDimensionValue { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual string EndTimeRaw { get; set; }
@@ -22037,17 +22037,17 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// RICH_MEDIA_EXPANDING - RICH_MEDIA_INTERSTITIAL_FLOAT - RICH_MEDIA_MOBILE_IN_APP - RICH_MEDIA_MULTI_FLOATING
         /// - RICH_MEDIA_PEEL_DOWN - VPAID_LINEAR - VPAID_NON_LINEAR </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("richMediaExitOverrides")]
-        public virtual System.Collections.Generic.IList<RichMediaExitOverride> RichMediaExitOverrides { get; set; } 
+        public virtual System.Collections.Generic.IList<RichMediaExitOverride> RichMediaExitOverrides { get; set; }
 
         /// <summary>Sequence number of the creative assignment, applicable when the rotation type is
         /// CREATIVE_ROTATION_TYPE_SEQUENTIAL. Acceptable values are 1 to 65535, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sequence")]
-        public virtual System.Nullable<int> Sequence { get; set; } 
+        public virtual System.Nullable<int> Sequence { get; set; }
 
         /// <summary>Whether the creative to be assigned is SSL-compliant. This is a read-only field that is auto-
         /// generated when the ad is inserted or updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslCompliant")]
-        public virtual System.Nullable<bool> SslCompliant { get; set; } 
+        public virtual System.Nullable<bool> SslCompliant { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTimeRaw { get; set; }
@@ -22063,7 +22063,7 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Weight of the creative assignment, applicable when the rotation type is
         /// CREATIVE_ROTATION_TYPE_RANDOM. Value must be greater than or equal to 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weight")]
-        public virtual System.Nullable<int> Weight { get; set; } 
+        public virtual System.Nullable<int> Weight { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22076,15 +22076,15 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// The URL is computed as follows: - If landingPageId is specified then that landing page's URL is assigned to
         /// this field. - Otherwise, the customClickThroughUrl is assigned to this field. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computedClickThroughUrl")]
-        public virtual string ComputedClickThroughUrl { get; set; } 
+        public virtual string ComputedClickThroughUrl { get; set; }
 
         /// <summary>Custom click-through URL. Applicable if the landingPageId field is left unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customClickThroughUrl")]
-        public virtual string CustomClickThroughUrl { get; set; } 
+        public virtual string CustomClickThroughUrl { get; set; }
 
         /// <summary>ID of the landing page for the click-through URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("landingPageId")]
-        public virtual System.Nullable<long> LandingPageId { get; set; } 
+        public virtual System.Nullable<long> LandingPageId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22095,45 +22095,45 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Unique ID of this event used by Reporting and Data Transfer. This is a read-only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserCustomEventId")]
-        public virtual System.Nullable<long> AdvertiserCustomEventId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserCustomEventId { get; set; }
 
         /// <summary>User-entered name for the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserCustomEventName")]
-        public virtual string AdvertiserCustomEventName { get; set; } 
+        public virtual string AdvertiserCustomEventName { get; set; }
 
         /// <summary>Type of the event. This is a read-only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserCustomEventType")]
-        public virtual string AdvertiserCustomEventType { get; set; } 
+        public virtual string AdvertiserCustomEventType { get; set; }
 
         /// <summary>Artwork label column, used to link events in Campaign Manager back to events in Studio. This is a
         /// required field and should not be modified after insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("artworkLabel")]
-        public virtual string ArtworkLabel { get; set; } 
+        public virtual string ArtworkLabel { get; set; }
 
         /// <summary>Artwork type used by the creative.This is a read-only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("artworkType")]
-        public virtual string ArtworkType { get; set; } 
+        public virtual string ArtworkType { get; set; }
 
         /// <summary>Exit click-through URL for the event. This field is used only for exit events.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exitClickThroughUrl")]
-        public virtual CreativeClickThroughUrl ExitClickThroughUrl { get; set; } 
+        public virtual CreativeClickThroughUrl ExitClickThroughUrl { get; set; }
 
         /// <summary>ID of this event. This is a required field and should not be modified after insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Properties for rich media popup windows. This field is used only for exit events.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("popupWindowProperties")]
-        public virtual PopupWindowProperties PopupWindowProperties { get; set; } 
+        public virtual PopupWindowProperties PopupWindowProperties { get; set; }
 
         /// <summary>Target type used by the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetType")]
-        public virtual string TargetType { get; set; } 
+        public virtual string TargetType { get; set; }
 
         /// <summary>Video reporting ID, used to differentiate multiple videos in a single creative. This is a read-only
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoReportingId")]
-        public virtual string VideoReportingId { get; set; } 
+        public virtual string VideoReportingId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22144,33 +22144,33 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Account ID of this creative field. This is a read-only field that can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>Advertiser ID of this creative field. This is a required field on insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>Dimension value for the ID of the advertiser. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserIdDimensionValue")]
-        public virtual DimensionValue AdvertiserIdDimensionValue { get; set; } 
+        public virtual DimensionValue AdvertiserIdDimensionValue { get; set; }
 
         /// <summary>ID of this creative field. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#creativeField".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this creative field. This is a required field and must be less than 256 characters long and
         /// unique among creative fields of the same advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Subaccount ID of this creative field. This is a read-only field that can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subaccountId")]
-        public virtual System.Nullable<long> SubaccountId { get; set; } 
+        public virtual System.Nullable<long> SubaccountId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22181,11 +22181,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>ID of the creative field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeFieldId")]
-        public virtual System.Nullable<long> CreativeFieldId { get; set; } 
+        public virtual System.Nullable<long> CreativeFieldId { get; set; }
 
         /// <summary>ID of the creative field value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeFieldValueId")]
-        public virtual System.Nullable<long> CreativeFieldValueId { get; set; } 
+        public virtual System.Nullable<long> CreativeFieldValueId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22196,17 +22196,17 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>ID of this creative field value. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#creativeFieldValue".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Value of this creative field value. It needs to be less than 256 characters in length and unique
         /// per creative field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22217,16 +22217,16 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Creative field value collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeFieldValues")]
-        public virtual System.Collections.Generic.IList<CreativeFieldValue> CreativeFieldValues { get; set; } 
+        public virtual System.Collections.Generic.IList<CreativeFieldValue> CreativeFieldValues { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#creativeFieldValuesListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22237,16 +22237,16 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Creative field collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeFields")]
-        public virtual System.Collections.Generic.IList<CreativeField> CreativeFields { get; set; } 
+        public virtual System.Collections.Generic.IList<CreativeField> CreativeFields { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#creativeFieldsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22257,39 +22257,39 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Account ID of this creative group. This is a read-only field that can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>Advertiser ID of this creative group. This is a required field on insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>Dimension value for the ID of the advertiser. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserIdDimensionValue")]
-        public virtual DimensionValue AdvertiserIdDimensionValue { get; set; } 
+        public virtual DimensionValue AdvertiserIdDimensionValue { get; set; }
 
         /// <summary>Subgroup of the creative group. Assign your creative groups to a subgroup in order to filter or
         /// manage them more easily. This field is required on insertion and is read-only after insertion. Acceptable
         /// values are 1 to 2, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupNumber")]
-        public virtual System.Nullable<int> GroupNumber { get; set; } 
+        public virtual System.Nullable<int> GroupNumber { get; set; }
 
         /// <summary>ID of this creative group. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#creativeGroup".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this creative group. This is a required field and must be less than 256 characters long and
         /// unique among creative groups of the same advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Subaccount ID of this creative group. This is a read-only field that can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subaccountId")]
-        public virtual System.Nullable<long> SubaccountId { get; set; } 
+        public virtual System.Nullable<long> SubaccountId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22300,11 +22300,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>ID of the creative group to be assigned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeGroupId")]
-        public virtual System.Nullable<long> CreativeGroupId { get; set; } 
+        public virtual System.Nullable<long> CreativeGroupId { get; set; }
 
         /// <summary>Creative group number of the creative group assignment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeGroupNumber")]
-        public virtual string CreativeGroupNumber { get; set; } 
+        public virtual string CreativeGroupNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22315,16 +22315,16 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Creative group collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeGroups")]
-        public virtual System.Collections.Generic.IList<CreativeGroup> CreativeGroups { get; set; } 
+        public virtual System.Collections.Generic.IList<CreativeGroup> CreativeGroups { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#creativeGroupsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22336,20 +22336,20 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>ID of this creative optimization config. This field is auto-generated when the campaign is inserted
         /// or updated. It can be null for existing campaigns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Name of this creative optimization config. This is a required field and must be less than 129
         /// characters long.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>List of optimization activities associated with this configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optimizationActivitys")]
-        public virtual System.Collections.Generic.IList<OptimizationActivity> OptimizationActivitys { get; set; } 
+        public virtual System.Collections.Generic.IList<OptimizationActivity> OptimizationActivitys { get; set; }
 
         /// <summary>Optimization model for this configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optimizationModel")]
-        public virtual string OptimizationModel { get; set; } 
+        public virtual string OptimizationModel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22360,22 +22360,22 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Creative assignments in this creative rotation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeAssignments")]
-        public virtual System.Collections.Generic.IList<CreativeAssignment> CreativeAssignments { get; set; } 
+        public virtual System.Collections.Generic.IList<CreativeAssignment> CreativeAssignments { get; set; }
 
         /// <summary>Creative optimization configuration that is used by this ad. It should refer to one of the existing
         /// optimization configurations in the ad's campaign. If it is unset or set to 0, then the campaign's default
         /// optimization configuration will be used for this ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeOptimizationConfigurationId")]
-        public virtual System.Nullable<long> CreativeOptimizationConfigurationId { get; set; } 
+        public virtual System.Nullable<long> CreativeOptimizationConfigurationId { get; set; }
 
         /// <summary>Type of creative rotation. Can be used to specify whether to use sequential or random
         /// rotation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>Strategy for calculating weights. Used with CREATIVE_ROTATION_TYPE_RANDOM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weightCalculationStrategy")]
-        public virtual string WeightCalculationStrategy { get; set; } 
+        public virtual string WeightCalculationStrategy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22386,16 +22386,16 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Creative collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creatives")]
-        public virtual System.Collections.Generic.IList<Creative> Creatives { get; set; } 
+        public virtual System.Collections.Generic.IList<Creative> Creatives { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#creativesListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22407,26 +22407,26 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Dimensions which are compatible to be selected in the "breakdown" section of the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("breakdown")]
-        public virtual System.Collections.Generic.IList<Dimension> Breakdown { get; set; } 
+        public virtual System.Collections.Generic.IList<Dimension> Breakdown { get; set; }
 
         /// <summary>Dimensions which are compatible to be selected in the "dimensionFilters" section of the
         /// report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionFilters")]
-        public virtual System.Collections.Generic.IList<Dimension> DimensionFilters { get; set; } 
+        public virtual System.Collections.Generic.IList<Dimension> DimensionFilters { get; set; }
 
         /// <summary>The kind of resource this is, in this case
         /// dfareporting#crossDimensionReachReportCompatibleFields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Metrics which are compatible to be selected in the "metricNames" section of the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
-        public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; } 
+        public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; }
 
         /// <summary>Metrics which are compatible to be selected in the "overlapMetricNames" section of the
         /// report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overlapMetrics")]
-        public virtual System.Collections.Generic.IList<Metric> OverlapMetrics { get; set; } 
+        public virtual System.Collections.Generic.IList<Metric> OverlapMetrics { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22438,17 +22438,17 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#customFloodlightVariable".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The type of custom floodlight variable to supply a value for. These map to the "u[1-20]=" in the
         /// tags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The value of the custom floodlight variable. The length of string must not exceed 50
         /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22460,11 +22460,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>List of custom rich media event IDs. Dimension values must be all of type
         /// dfa:richMediaEventTypeIdAndName.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filteredEventIds")]
-        public virtual System.Collections.Generic.IList<DimensionValue> FilteredEventIds { get; set; } 
+        public virtual System.Collections.Generic.IList<DimensionValue> FilteredEventIds { get; set; }
 
         /// <summary>The kind of resource this is, in this case dfareporting#customRichMediaEvents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22475,15 +22475,15 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Configuration of the custom viewability metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configuration")]
-        public virtual CustomViewabilityMetricConfiguration Configuration { get; set; } 
+        public virtual CustomViewabilityMetricConfiguration Configuration { get; set; }
 
         /// <summary>ID of the custom viewability metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Name of the custom viewability metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22495,22 +22495,22 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Whether the video must be audible to count an impression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audible")]
-        public virtual System.Nullable<bool> Audible { get; set; } 
+        public virtual System.Nullable<bool> Audible { get; set; }
 
         /// <summary>The time in milliseconds the video must play for the Custom Viewability Metric to count an
         /// impression. If both this and timePercent are specified, the earlier of the two will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeMillis")]
-        public virtual System.Nullable<int> TimeMillis { get; set; } 
+        public virtual System.Nullable<int> TimeMillis { get; set; }
 
         /// <summary>The percentage of video that must play for the Custom Viewability Metric to count an impression. If
         /// both this and timeMillis are specified, the earlier of the two will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timePercent")]
-        public virtual System.Nullable<int> TimePercent { get; set; } 
+        public virtual System.Nullable<int> TimePercent { get; set; }
 
         /// <summary>The percentage of video that must be on screen for the Custom Viewability Metric to count an
         /// impression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewabilityPercent")]
-        public virtual System.Nullable<int> ViewabilityPercent { get; set; } 
+        public virtual System.Nullable<int> ViewabilityPercent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22520,18 +22520,18 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     public class DateRange : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
-        public virtual string EndDate { get; set; } 
+        public virtual string EndDate { get; set; }
 
         /// <summary>The kind of resource this is, in this case dfareporting#dateRange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The date range relative to the date of when the report is run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relativeDateRange")]
-        public virtual string RelativeDateRange { get; set; } 
+        public virtual string RelativeDateRange { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
-        public virtual string StartDate { get; set; } 
+        public virtual string StartDate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22543,7 +22543,7 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Days of the week when the ad will serve. Acceptable values are: - "SUNDAY" - "MONDAY" - "TUESDAY" -
         /// "WEDNESDAY" - "THURSDAY" - "FRIDAY" - "SATURDAY" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("daysOfWeek")]
-        public virtual System.Collections.Generic.IList<string> DaysOfWeek { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DaysOfWeek { get; set; }
 
         /// <summary>Hours of the day when the ad will serve, where 0 is midnight to 1 AM and 23 is 11 PM to midnight.
         /// Can be specified with days of week, in which case the ad would serve during these hours on the specified
@@ -22551,12 +22551,12 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// 15, and 16) is specified, the ad would serve Monday, Wednesdays, and Fridays at 9-10am and 3-5pm. Acceptable
         /// values are 0 to 23, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hoursOfDay")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> HoursOfDay { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> HoursOfDay { get; set; }
 
         /// <summary>Whether or not to use the user's local time. If false, the America/New York time zone
         /// applies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userLocalTime")]
-        public virtual System.Nullable<bool> UserLocalTime { get; set; } 
+        public virtual System.Nullable<bool> UserLocalTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22567,26 +22567,26 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>The URL of the mobile app being linked to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appUrl")]
-        public virtual string AppUrl { get; set; } 
+        public virtual string AppUrl { get; set; }
 
         /// <summary>The fallback URL. This URL will be served to users who do not have the mobile app
         /// installed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fallbackUrl")]
-        public virtual string FallbackUrl { get; set; } 
+        public virtual string FallbackUrl { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#deepLink".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The mobile app targeted by this deep link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileApp")]
-        public virtual MobileApp MobileApp { get; set; } 
+        public virtual MobileApp MobileApp { get; set; }
 
         /// <summary>Ads served to users on these remarketing lists will use this deep link. Applicable when
         /// mobileApp.directory is APPLE_APP_STORE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remarketingListIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> RemarketingListIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> RemarketingListIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22599,12 +22599,12 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>ID of the click-through event tag to apply to all ads in this entity's scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultClickThroughEventTagId")]
-        public virtual System.Nullable<long> DefaultClickThroughEventTagId { get; set; } 
+        public virtual System.Nullable<long> DefaultClickThroughEventTagId { get; set; }
 
         /// <summary>Whether this entity should override the inherited default click-through event tag with its own
         /// defined value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overrideInheritedEventTag")]
-        public virtual System.Nullable<bool> OverrideInheritedEventTag { get; set; } 
+        public virtual System.Nullable<bool> OverrideInheritedEventTag { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22616,24 +22616,24 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Limit on the number of times an individual user can be served the ad within a specified period of
         /// time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frequencyCap")]
-        public virtual FrequencyCap FrequencyCap { get; set; } 
+        public virtual FrequencyCap FrequencyCap { get; set; }
 
         /// <summary>Whether or not hard cutoff is enabled. If true, the ad will not serve after the end date and time.
         /// Otherwise the ad will continue to be served until it has reached its delivery goals.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hardCutoff")]
-        public virtual System.Nullable<bool> HardCutoff { get; set; } 
+        public virtual System.Nullable<bool> HardCutoff { get; set; }
 
         /// <summary>Impression ratio for this ad. This ratio determines how often each ad is served relative to the
         /// others. For example, if ad A has an impression ratio of 1 and ad B has an impression ratio of 3, then
         /// Campaign Manager will serve ad B three times as often as ad A. Acceptable values are 1 to 10,
         /// inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("impressionRatio")]
-        public virtual System.Nullable<long> ImpressionRatio { get; set; } 
+        public virtual System.Nullable<long> ImpressionRatio { get; set; }
 
         /// <summary>Serving priority of an ad, with respect to other ads. The lower the priority number, the greater
         /// the priority with which it is served.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
-        public virtual string Priority { get; set; } 
+        public virtual string Priority { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22644,23 +22644,23 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Ad Manager network code for this directory site.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dfpNetworkCode")]
-        public virtual string DfpNetworkCode { get; set; } 
+        public virtual string DfpNetworkCode { get; set; }
 
         /// <summary>Ad Manager network name for this directory site.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dfpNetworkName")]
-        public virtual string DfpNetworkName { get; set; } 
+        public virtual string DfpNetworkName { get; set; }
 
         /// <summary>Whether this directory site accepts programmatic placements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("programmaticPlacementAccepted")]
-        public virtual System.Nullable<bool> ProgrammaticPlacementAccepted { get; set; } 
+        public virtual System.Nullable<bool> ProgrammaticPlacementAccepted { get; set; }
 
         /// <summary>Whether this directory site accepts publisher-paid tags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubPaidPlacementAccepted")]
-        public virtual System.Nullable<bool> PubPaidPlacementAccepted { get; set; } 
+        public virtual System.Nullable<bool> PubPaidPlacementAccepted { get; set; }
 
         /// <summary>Whether this directory site is available only via Publisher Portal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisherPortalOnly")]
-        public virtual System.Nullable<bool> PublisherPortalOnly { get; set; } 
+        public virtual System.Nullable<bool> PublisherPortalOnly { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22671,11 +22671,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>The kind of resource this is, in this case dfareporting#dimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The dimension name, e.g. dfa:advertiser</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22686,15 +22686,15 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>The name of the dimension to filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionName")]
-        public virtual string DimensionName { get; set; } 
+        public virtual string DimensionName { get; set; }
 
         /// <summary>The kind of resource this is, in this case dfareporting#dimensionFilter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The value of the dimension to filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22705,30 +22705,30 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>The name of the dimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionName")]
-        public virtual string DimensionName { get; set; } 
+        public virtual string DimensionName { get; set; }
 
         /// <summary>The eTag of this response for caching purposes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The ID associated with the value if available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The kind of resource this is, in this case dfareporting#dimensionValue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Determines how the 'value' field is matched when filtering. If not specified, defaults to EXACT. If
         /// set to WILDCARD_EXPRESSION, '*' is allowed as a placeholder for variable length character sequences, and it
         /// can be escaped with a backslash. Note, only paid search dimensions ('dfa:paidSearch*') allow a matchType
         /// other than EXACT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchType")]
-        public virtual string MatchType { get; set; } 
+        public virtual string MatchType { get; set; }
 
         /// <summary>The value of the dimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
     }    
 
@@ -22737,21 +22737,21 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>The eTag of this response for caching purposes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The dimension values returned in this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<DimensionValue> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<DimensionValue> Items { get; set; }
 
         /// <summary>The kind of list this is, in this case dfareporting#dimensionValueList.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Continuation token used to page through dimension values. To retrieve the next page of results, set
         /// the next request's "pageToken" to the value of this field. The page token is only valid for a limited amount
         /// of time and should not be persisted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
     }    
 
@@ -22760,21 +22760,21 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>The name of the dimension for which values should be requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionName")]
-        public virtual string DimensionName { get; set; } 
+        public virtual string DimensionName { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
-        public virtual string EndDate { get; set; } 
+        public virtual string EndDate { get; set; }
 
         /// <summary>The list of filters by which to filter values. The filters are ANDed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filters")]
-        public virtual System.Collections.Generic.IList<DimensionFilter> Filters { get; set; } 
+        public virtual System.Collections.Generic.IList<DimensionFilter> Filters { get; set; }
 
         /// <summary>The kind of request this is, in this case dfareporting#dimensionValueRequest .</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
-        public virtual string StartDate { get; set; } 
+        public virtual string StartDate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22786,43 +22786,43 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Whether this directory site is active.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("active")]
-        public virtual System.Nullable<bool> Active { get; set; } 
+        public virtual System.Nullable<bool> Active { get; set; }
 
         /// <summary>ID of this directory site. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Dimension value for the ID of this directory site. This is a read-only, auto-generated
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idDimensionValue")]
-        public virtual DimensionValue IdDimensionValue { get; set; } 
+        public virtual DimensionValue IdDimensionValue { get; set; }
 
         /// <summary>Tag types for regular placements. Acceptable values are: - "STANDARD" - "IFRAME_JAVASCRIPT_INPAGE"
         /// - "INTERNAL_REDIRECT_INPAGE" - "JAVASCRIPT_INPAGE" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inpageTagFormats")]
-        public virtual System.Collections.Generic.IList<string> InpageTagFormats { get; set; } 
+        public virtual System.Collections.Generic.IList<string> InpageTagFormats { get; set; }
 
         /// <summary>Tag types for interstitial placements. Acceptable values are: - "IFRAME_JAVASCRIPT_INTERSTITIAL" -
         /// "INTERNAL_REDIRECT_INTERSTITIAL" - "JAVASCRIPT_INTERSTITIAL" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interstitialTagFormats")]
-        public virtual System.Collections.Generic.IList<string> InterstitialTagFormats { get; set; } 
+        public virtual System.Collections.Generic.IList<string> InterstitialTagFormats { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#directorySite".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this directory site.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Directory site settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("settings")]
-        public virtual DirectorySiteSettings Settings { get; set; } 
+        public virtual DirectorySiteSettings Settings { get; set; }
 
         /// <summary>URL of this directory site.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22833,19 +22833,19 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Whether this directory site has disabled active view creatives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeViewOptOut")]
-        public virtual System.Nullable<bool> ActiveViewOptOut { get; set; } 
+        public virtual System.Nullable<bool> ActiveViewOptOut { get; set; }
 
         /// <summary>Directory site Ad Manager settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dfpSettings")]
-        public virtual DfpSettings DfpSettings { get; set; } 
+        public virtual DfpSettings DfpSettings { get; set; }
 
         /// <summary>Whether this site accepts in-stream video ads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instreamVideoPlacementAccepted")]
-        public virtual System.Nullable<bool> InstreamVideoPlacementAccepted { get; set; } 
+        public virtual System.Nullable<bool> InstreamVideoPlacementAccepted { get; set; }
 
         /// <summary>Whether this site accepts interstitial ads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interstitialPlacementAccepted")]
-        public virtual System.Nullable<bool> InterstitialPlacementAccepted { get; set; } 
+        public virtual System.Nullable<bool> InterstitialPlacementAccepted { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22856,16 +22856,16 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Directory site collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directorySites")]
-        public virtual System.Collections.Generic.IList<DirectorySite> DirectorySites { get; set; } 
+        public virtual System.Collections.Generic.IList<DirectorySite> DirectorySites { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#directorySitesListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22880,20 +22880,20 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#dynamicTargetingKey".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this dynamic targeting key. This is a required field. Must be less than 256 characters long
         /// and cannot contain commas. All characters are converted to lowercase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>ID of the object of this dynamic targeting key. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
-        public virtual System.Nullable<long> ObjectId { get; set; } 
+        public virtual System.Nullable<long> ObjectId { get; set; }
 
         /// <summary>Type of the object of this dynamic targeting key. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectType")]
-        public virtual string ObjectType { get; set; } 
+        public virtual string ObjectType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22904,12 +22904,12 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Dynamic targeting key collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dynamicTargetingKeys")]
-        public virtual System.Collections.Generic.IList<DynamicTargetingKey> DynamicTargetingKeys { get; set; } 
+        public virtual System.Collections.Generic.IList<DynamicTargetingKey> DynamicTargetingKeys { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#dynamicTargetingKeysListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22921,22 +22921,22 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>The encryption entity ID. This should match the encryption configuration for ad serving or Data
         /// Transfer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionEntityId")]
-        public virtual System.Nullable<long> EncryptionEntityId { get; set; } 
+        public virtual System.Nullable<long> EncryptionEntityId { get; set; }
 
         /// <summary>The encryption entity type. This should match the encryption configuration for ad serving or Data
         /// Transfer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionEntityType")]
-        public virtual string EncryptionEntityType { get; set; } 
+        public virtual string EncryptionEntityType { get; set; }
 
         /// <summary>Describes whether the encrypted cookie was received from ad serving (the %m macro) or from Data
         /// Transfer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionSource")]
-        public virtual string EncryptionSource { get; set; } 
+        public virtual string EncryptionSource { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#encryptionInfo".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22947,90 +22947,90 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Account ID of this event tag. This is a read-only field that can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>Advertiser ID of this event tag. This field or the campaignId field is required on
         /// insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>Dimension value for the ID of the advertiser. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserIdDimensionValue")]
-        public virtual DimensionValue AdvertiserIdDimensionValue { get; set; } 
+        public virtual DimensionValue AdvertiserIdDimensionValue { get; set; }
 
         /// <summary>Campaign ID of this event tag. This field or the advertiserId field is required on
         /// insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignId")]
-        public virtual System.Nullable<long> CampaignId { get; set; } 
+        public virtual System.Nullable<long> CampaignId { get; set; }
 
         /// <summary>Dimension value for the ID of the campaign. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignIdDimensionValue")]
-        public virtual DimensionValue CampaignIdDimensionValue { get; set; } 
+        public virtual DimensionValue CampaignIdDimensionValue { get; set; }
 
         /// <summary>Whether this event tag should be automatically enabled for all of the advertiser's campaigns and
         /// ads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabledByDefault")]
-        public virtual System.Nullable<bool> EnabledByDefault { get; set; } 
+        public virtual System.Nullable<bool> EnabledByDefault { get; set; }
 
         /// <summary>Whether to remove this event tag from ads that are trafficked through Display & Video 360 to Ad
         /// Exchange. This may be useful if the event tag uses a pixel that is unapproved for Ad Exchange bids on one or
         /// more networks, such as the Google Display Network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeFromAdxRequests")]
-        public virtual System.Nullable<bool> ExcludeFromAdxRequests { get; set; } 
+        public virtual System.Nullable<bool> ExcludeFromAdxRequests { get; set; }
 
         /// <summary>ID of this event tag. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#eventTag".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this event tag. This is a required field and must be less than 256 characters
         /// long.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Site filter type for this event tag. If no type is specified then the event tag will be applied to
         /// all sites.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteFilterType")]
-        public virtual string SiteFilterType { get; set; } 
+        public virtual string SiteFilterType { get; set; }
 
         /// <summary>Filter list of site IDs associated with this event tag. The siteFilterType determines whether this
         /// is a allowlist or blocklist filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> SiteIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> SiteIds { get; set; }
 
         /// <summary>Whether this tag is SSL-compliant or not. This is a read-only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslCompliant")]
-        public virtual System.Nullable<bool> SslCompliant { get; set; } 
+        public virtual System.Nullable<bool> SslCompliant { get; set; }
 
         /// <summary>Status of this event tag. Must be ENABLED for this event tag to fire. This is a required
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>Subaccount ID of this event tag. This is a read-only field that can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subaccountId")]
-        public virtual System.Nullable<long> SubaccountId { get; set; } 
+        public virtual System.Nullable<long> SubaccountId { get; set; }
 
         /// <summary>Event tag type. Can be used to specify whether to use a third-party pixel, a third-party JavaScript
         /// URL, or a third-party click-through URL for either impression or click tracking. This is a required
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>Payload URL for this event tag. The URL on a click-through event tag should have a landing page URL
         /// appended to the end of it. This field is required on insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>Number of times the landing page URL should be URL-escaped before being appended to the click-
         /// through event tag URL. Only applies to click-through event tags as specified by the event tag
         /// type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlEscapeLevels")]
-        public virtual System.Nullable<int> UrlEscapeLevels { get; set; } 
+        public virtual System.Nullable<int> UrlEscapeLevels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23041,11 +23041,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Whether this override is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>ID of this event tag override. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23056,12 +23056,12 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Event tag collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTags")]
-        public virtual System.Collections.Generic.IList<EventTag> EventTags { get; set; } 
+        public virtual System.Collections.Generic.IList<EventTag> EventTags { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#eventTagsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23075,49 +23075,49 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>The date range for which the file has report data. The date range will always be the absolute date
         /// range for which the report is run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateRange")]
-        public virtual DateRange DateRange { get; set; } 
+        public virtual DateRange DateRange { get; set; }
 
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The filename of the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileName")]
-        public virtual string FileName { get; set; } 
+        public virtual string FileName { get; set; }
 
         /// <summary>The output format of the report. Only available once the file is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
-        public virtual string Format { get; set; } 
+        public virtual string Format { get; set; }
 
         /// <summary>The unique ID of this report file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "dfareporting#file".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The timestamp in milliseconds since epoch when this file was last modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
-        public virtual System.Nullable<long> LastModifiedTime { get; set; } 
+        public virtual System.Nullable<long> LastModifiedTime { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("mediaRequestInfo")]
-        public virtual MediaRequestInfo MediaRequestInfo { get; set; } 
+        public virtual MediaRequestInfo MediaRequestInfo { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("mediaResponseInfo")]
-        public virtual MediaResponseInfo MediaResponseInfo { get; set; } 
+        public virtual MediaResponseInfo MediaResponseInfo { get; set; }
 
         /// <summary>The ID of the report this file was generated from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportId")]
-        public virtual System.Nullable<long> ReportId { get; set; } 
+        public virtual System.Nullable<long> ReportId { get; set; }
 
         /// <summary>The status of the report file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The URLs where the completed report file can be downloaded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urls")]
-        public virtual UrlsData Urls { get; set; } 
+        public virtual UrlsData Urls { get; set; }
 
         
 
@@ -23126,11 +23126,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         {
             /// <summary>The URL for downloading the report data through the API.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("apiUrl")]
-            public virtual string ApiUrl { get; set; } 
+            public virtual string ApiUrl { get; set; }
 
             /// <summary>The URL for downloading the report data through a browser.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("browserUrl")]
-            public virtual string BrowserUrl { get; set; } 
+            public virtual string BrowserUrl { get; set; }
 
         }
     }    
@@ -23140,22 +23140,22 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The files returned in this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<File> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<File> Items { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#fileList".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Continuation token used to page through files. To retrieve the next page of results, set the next
         /// request's "pageToken" to the value of this field. The page token is only valid for a limited amount of time
         /// and should not be persisted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
     }    
 
@@ -23163,18 +23163,18 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     public class Flight : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
-        public virtual string EndDate { get; set; } 
+        public virtual string EndDate { get; set; }
 
         /// <summary>Rate or cost of this flight.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rateOrCost")]
-        public virtual System.Nullable<long> RateOrCost { get; set; } 
+        public virtual System.Nullable<long> RateOrCost { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
-        public virtual string StartDate { get; set; } 
+        public virtual string StartDate { get; set; }
 
         /// <summary>Units of this flight.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("units")]
-        public virtual System.Nullable<long> Units { get; set; } 
+        public virtual System.Nullable<long> Units { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23186,18 +23186,18 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Generated tag for this Floodlight activity. For global site tags, this is the event
         /// snippet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightActivityTag")]
-        public virtual string FloodlightActivityTag { get; set; } 
+        public virtual string FloodlightActivityTag { get; set; }
 
         /// <summary>The global snippet section of a global site tag. The global site tag sets new cookies on your
         /// domain, which will store a unique identifier for a user or the ad click that brought the user to your site.
         /// Learn more.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("globalSiteTagGlobalSnippet")]
-        public virtual string GlobalSiteTagGlobalSnippet { get; set; } 
+        public virtual string GlobalSiteTagGlobalSnippet { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#floodlightActivitiesGenerateTagResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23208,16 +23208,16 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Floodlight activity collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightActivities")]
-        public virtual System.Collections.Generic.IList<FloodlightActivity> FloodlightActivities { get; set; } 
+        public virtual System.Collections.Generic.IList<FloodlightActivity> FloodlightActivities { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#floodlightActivitiesListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23228,130 +23228,130 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Account ID of this floodlight activity. This is a read-only field that can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>Advertiser ID of this floodlight activity. If this field is left blank, the value will be copied
         /// over either from the activity group's advertiser or the existing activity's advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>Dimension value for the ID of the advertiser. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserIdDimensionValue")]
-        public virtual DimensionValue AdvertiserIdDimensionValue { get; set; } 
+        public virtual DimensionValue AdvertiserIdDimensionValue { get; set; }
 
         /// <summary>Code type used for cache busting in the generated tag. Applicable only when
         /// floodlightActivityGroupType is COUNTER and countingMethod is STANDARD_COUNTING or UNIQUE_COUNTING.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cacheBustingType")]
-        public virtual string CacheBustingType { get; set; } 
+        public virtual string CacheBustingType { get; set; }
 
         /// <summary>Counting method for conversions for this floodlight activity. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countingMethod")]
-        public virtual string CountingMethod { get; set; } 
+        public virtual string CountingMethod { get; set; }
 
         /// <summary>Dynamic floodlight tags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultTags")]
-        public virtual System.Collections.Generic.IList<FloodlightActivityDynamicTag> DefaultTags { get; set; } 
+        public virtual System.Collections.Generic.IList<FloodlightActivityDynamicTag> DefaultTags { get; set; }
 
         /// <summary>URL where this tag will be deployed. If specified, must be less than 256 characters long.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expectedUrl")]
-        public virtual string ExpectedUrl { get; set; } 
+        public virtual string ExpectedUrl { get; set; }
 
         /// <summary>Floodlight activity group ID of this floodlight activity. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightActivityGroupId")]
-        public virtual System.Nullable<long> FloodlightActivityGroupId { get; set; } 
+        public virtual System.Nullable<long> FloodlightActivityGroupId { get; set; }
 
         /// <summary>Name of the associated floodlight activity group. This is a read-only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightActivityGroupName")]
-        public virtual string FloodlightActivityGroupName { get; set; } 
+        public virtual string FloodlightActivityGroupName { get; set; }
 
         /// <summary>Tag string of the associated floodlight activity group. This is a read-only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightActivityGroupTagString")]
-        public virtual string FloodlightActivityGroupTagString { get; set; } 
+        public virtual string FloodlightActivityGroupTagString { get; set; }
 
         /// <summary>Type of the associated floodlight activity group. This is a read-only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightActivityGroupType")]
-        public virtual string FloodlightActivityGroupType { get; set; } 
+        public virtual string FloodlightActivityGroupType { get; set; }
 
         /// <summary>Floodlight configuration ID of this floodlight activity. If this field is left blank, the value
         /// will be copied over either from the activity group's floodlight configuration or from the existing
         /// activity's floodlight configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightConfigurationId")]
-        public virtual System.Nullable<long> FloodlightConfigurationId { get; set; } 
+        public virtual System.Nullable<long> FloodlightConfigurationId { get; set; }
 
         /// <summary>Dimension value for the ID of the floodlight configuration. This is a read-only, auto-generated
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightConfigurationIdDimensionValue")]
-        public virtual DimensionValue FloodlightConfigurationIdDimensionValue { get; set; } 
+        public virtual DimensionValue FloodlightConfigurationIdDimensionValue { get; set; }
 
         /// <summary>The type of Floodlight tag this activity will generate. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightTagType")]
-        public virtual string FloodlightTagType { get; set; } 
+        public virtual string FloodlightTagType { get; set; }
 
         /// <summary>Whether this activity is archived.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hidden")]
-        public virtual System.Nullable<bool> Hidden { get; set; } 
+        public virtual System.Nullable<bool> Hidden { get; set; }
 
         /// <summary>ID of this floodlight activity. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Dimension value for the ID of this floodlight activity. This is a read-only, auto-generated
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idDimensionValue")]
-        public virtual DimensionValue IdDimensionValue { get; set; } 
+        public virtual DimensionValue IdDimensionValue { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#floodlightActivity".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this floodlight activity. This is a required field. Must be less than 129 characters long
         /// and cannot contain quotes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>General notes or implementation instructions for the tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
-        public virtual string Notes { get; set; } 
+        public virtual string Notes { get; set; }
 
         /// <summary>Publisher dynamic floodlight tags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisherTags")]
-        public virtual System.Collections.Generic.IList<FloodlightActivityPublisherDynamicTag> PublisherTags { get; set; } 
+        public virtual System.Collections.Generic.IList<FloodlightActivityPublisherDynamicTag> PublisherTags { get; set; }
 
         /// <summary>Whether this tag should use SSL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secure")]
-        public virtual System.Nullable<bool> Secure { get; set; } 
+        public virtual System.Nullable<bool> Secure { get; set; }
 
         /// <summary>Whether the floodlight activity is SSL-compliant. This is a read-only field, its value detected by
         /// the system from the floodlight tags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslCompliant")]
-        public virtual System.Nullable<bool> SslCompliant { get; set; } 
+        public virtual System.Nullable<bool> SslCompliant { get; set; }
 
         /// <summary>Whether this floodlight activity must be SSL-compliant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslRequired")]
-        public virtual System.Nullable<bool> SslRequired { get; set; } 
+        public virtual System.Nullable<bool> SslRequired { get; set; }
 
         /// <summary>Subaccount ID of this floodlight activity. This is a read-only field that can be left
         /// blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subaccountId")]
-        public virtual System.Nullable<long> SubaccountId { get; set; } 
+        public virtual System.Nullable<long> SubaccountId { get; set; }
 
         /// <summary>Tag format type for the floodlight activity. If left blank, the tag format will default to
         /// HTML.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagFormat")]
-        public virtual string TagFormat { get; set; } 
+        public virtual string TagFormat { get; set; }
 
         /// <summary>Value of the cat= parameter in the floodlight tag, which the ad servers use to identify the
         /// activity. This is optional: if empty, a new tag string will be generated for you. This string must be 1 to 8
         /// characters long, with valid characters being a-z0-9[ _ ]. This tag string must also be unique among
         /// activities of the same activity group. This field is read-only after insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagString")]
-        public virtual string TagString { get; set; } 
+        public virtual string TagString { get; set; }
 
         /// <summary>List of the user-defined variables used by this conversion tag. These map to the "u[1-100]=" in the
         /// tags. Each of these can have a user defined type. Acceptable values are U1 to U100, inclusive. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userDefinedVariableTypes")]
-        public virtual System.Collections.Generic.IList<string> UserDefinedVariableTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> UserDefinedVariableTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23362,15 +23362,15 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>ID of this dynamic tag. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Name of this tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Tag code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
-        public virtual string Tag { get; set; } 
+        public virtual string Tag { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23382,50 +23382,50 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Account ID of this floodlight activity group. This is a read-only field that can be left
         /// blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>Advertiser ID of this floodlight activity group. If this field is left blank, the value will be
         /// copied over either from the floodlight configuration's advertiser or from the existing activity group's
         /// advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>Dimension value for the ID of the advertiser. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserIdDimensionValue")]
-        public virtual DimensionValue AdvertiserIdDimensionValue { get; set; } 
+        public virtual DimensionValue AdvertiserIdDimensionValue { get; set; }
 
         /// <summary>Floodlight configuration ID of this floodlight activity group. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightConfigurationId")]
-        public virtual System.Nullable<long> FloodlightConfigurationId { get; set; } 
+        public virtual System.Nullable<long> FloodlightConfigurationId { get; set; }
 
         /// <summary>Dimension value for the ID of the floodlight configuration. This is a read-only, auto-generated
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightConfigurationIdDimensionValue")]
-        public virtual DimensionValue FloodlightConfigurationIdDimensionValue { get; set; } 
+        public virtual DimensionValue FloodlightConfigurationIdDimensionValue { get; set; }
 
         /// <summary>ID of this floodlight activity group. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Dimension value for the ID of this floodlight activity group. This is a read-only, auto-generated
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idDimensionValue")]
-        public virtual DimensionValue IdDimensionValue { get; set; } 
+        public virtual DimensionValue IdDimensionValue { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#floodlightActivityGroup".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this floodlight activity group. This is a required field. Must be less than 65 characters
         /// long and cannot contain quotes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Subaccount ID of this floodlight activity group. This is a read-only field that can be left
         /// blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subaccountId")]
-        public virtual System.Nullable<long> SubaccountId { get; set; } 
+        public virtual System.Nullable<long> SubaccountId { get; set; }
 
         /// <summary>Value of the type= parameter in the floodlight tag, which the ad servers use to identify the
         /// activity group that the activity belongs to. This is optional: if empty, a new tag string will be generated
@@ -23433,12 +23433,12 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// string must also be unique among activity groups of the same floodlight configuration. This field is read-
         /// only after insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagString")]
-        public virtual string TagString { get; set; } 
+        public virtual string TagString { get; set; }
 
         /// <summary>Type of the floodlight activity group. This is a required field that is read-only after
         /// insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23449,16 +23449,16 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Floodlight activity group collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightActivityGroups")]
-        public virtual System.Collections.Generic.IList<FloodlightActivityGroup> FloodlightActivityGroups { get; set; } 
+        public virtual System.Collections.Generic.IList<FloodlightActivityGroup> FloodlightActivityGroups { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#floodlightActivityGroupsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23469,29 +23469,29 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Whether this tag is applicable only for click-throughs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickThrough")]
-        public virtual System.Nullable<bool> ClickThrough { get; set; } 
+        public virtual System.Nullable<bool> ClickThrough { get; set; }
 
         /// <summary>Directory site ID of this dynamic tag. This is a write-only field that can be used as an
         /// alternative to the siteId field. When this resource is retrieved, only the siteId field will be
         /// populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directorySiteId")]
-        public virtual System.Nullable<long> DirectorySiteId { get; set; } 
+        public virtual System.Nullable<long> DirectorySiteId { get; set; }
 
         /// <summary>Dynamic floodlight tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dynamicTag")]
-        public virtual FloodlightActivityDynamicTag DynamicTag { get; set; } 
+        public virtual FloodlightActivityDynamicTag DynamicTag { get; set; }
 
         /// <summary>Site ID of this dynamic tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteId")]
-        public virtual System.Nullable<long> SiteId { get; set; } 
+        public virtual System.Nullable<long> SiteId { get; set; }
 
         /// <summary>Dimension value for the ID of the site. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteIdDimensionValue")]
-        public virtual DimensionValue SiteIdDimensionValue { get; set; } 
+        public virtual DimensionValue SiteIdDimensionValue { get; set; }
 
         /// <summary>Whether this tag is applicable only for view-throughs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewThrough")]
-        public virtual System.Nullable<bool> ViewThrough { get; set; } 
+        public virtual System.Nullable<bool> ViewThrough { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23503,80 +23503,80 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Account ID of this floodlight configuration. This is a read-only field that can be left
         /// blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>Advertiser ID of the parent advertiser of this floodlight configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>Dimension value for the ID of the advertiser. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserIdDimensionValue")]
-        public virtual DimensionValue AdvertiserIdDimensionValue { get; set; } 
+        public virtual DimensionValue AdvertiserIdDimensionValue { get; set; }
 
         /// <summary>Whether advertiser data is shared with Google Analytics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analyticsDataSharingEnabled")]
-        public virtual System.Nullable<bool> AnalyticsDataSharingEnabled { get; set; } 
+        public virtual System.Nullable<bool> AnalyticsDataSharingEnabled { get; set; }
 
         /// <summary>Custom Viewability metric for the floodlight configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customViewabilityMetric")]
-        public virtual CustomViewabilityMetric CustomViewabilityMetric { get; set; } 
+        public virtual CustomViewabilityMetric CustomViewabilityMetric { get; set; }
 
         /// <summary>Whether the exposure-to-conversion report is enabled. This report shows detailed pathway
         /// information on up to 10 of the most recent ad exposures seen by a user before converting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exposureToConversionEnabled")]
-        public virtual System.Nullable<bool> ExposureToConversionEnabled { get; set; } 
+        public virtual System.Nullable<bool> ExposureToConversionEnabled { get; set; }
 
         /// <summary>Day that will be counted as the first day of the week in reports. This is a required
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstDayOfWeek")]
-        public virtual string FirstDayOfWeek { get; set; } 
+        public virtual string FirstDayOfWeek { get; set; }
 
         /// <summary>ID of this floodlight configuration. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Dimension value for the ID of this floodlight configuration. This is a read-only, auto-generated
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idDimensionValue")]
-        public virtual DimensionValue IdDimensionValue { get; set; } 
+        public virtual DimensionValue IdDimensionValue { get; set; }
 
         /// <summary>Whether in-app attribution tracking is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inAppAttributionTrackingEnabled")]
-        public virtual System.Nullable<bool> InAppAttributionTrackingEnabled { get; set; } 
+        public virtual System.Nullable<bool> InAppAttributionTrackingEnabled { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#floodlightConfiguration".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Lookback window settings for this floodlight configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lookbackConfiguration")]
-        public virtual LookbackConfiguration LookbackConfiguration { get; set; } 
+        public virtual LookbackConfiguration LookbackConfiguration { get; set; }
 
         /// <summary>Types of attribution options for natural search conversions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("naturalSearchConversionAttributionOption")]
-        public virtual string NaturalSearchConversionAttributionOption { get; set; } 
+        public virtual string NaturalSearchConversionAttributionOption { get; set; }
 
         /// <summary>Settings for Campaign Manager Omniture integration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("omnitureSettings")]
-        public virtual OmnitureSettings OmnitureSettings { get; set; } 
+        public virtual OmnitureSettings OmnitureSettings { get; set; }
 
         /// <summary>Subaccount ID of this floodlight configuration. This is a read-only field that can be left
         /// blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subaccountId")]
-        public virtual System.Nullable<long> SubaccountId { get; set; } 
+        public virtual System.Nullable<long> SubaccountId { get; set; }
 
         /// <summary>Configuration settings for dynamic and image floodlight tags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagSettings")]
-        public virtual TagSettings TagSettings { get; set; } 
+        public virtual TagSettings TagSettings { get; set; }
 
         /// <summary>List of third-party authentication tokens enabled for this configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyAuthenticationTokens")]
-        public virtual System.Collections.Generic.IList<ThirdPartyAuthenticationToken> ThirdPartyAuthenticationTokens { get; set; } 
+        public virtual System.Collections.Generic.IList<ThirdPartyAuthenticationToken> ThirdPartyAuthenticationTokens { get; set; }
 
         /// <summary>List of user defined variables enabled for this configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userDefinedVariableConfigurations")]
-        public virtual System.Collections.Generic.IList<UserDefinedVariableConfiguration> UserDefinedVariableConfigurations { get; set; } 
+        public virtual System.Collections.Generic.IList<UserDefinedVariableConfiguration> UserDefinedVariableConfigurations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23587,12 +23587,12 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Floodlight configuration collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightConfigurations")]
-        public virtual System.Collections.Generic.IList<FloodlightConfiguration> FloodlightConfigurations { get; set; } 
+        public virtual System.Collections.Generic.IList<FloodlightConfiguration> FloodlightConfigurations { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#floodlightConfigurationsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23604,19 +23604,19 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Dimensions which are compatible to be selected in the "dimensionFilters" section of the
         /// report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionFilters")]
-        public virtual System.Collections.Generic.IList<Dimension> DimensionFilters { get; set; } 
+        public virtual System.Collections.Generic.IList<Dimension> DimensionFilters { get; set; }
 
         /// <summary>Dimensions which are compatible to be selected in the "dimensions" section of the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
-        public virtual System.Collections.Generic.IList<Dimension> Dimensions { get; set; } 
+        public virtual System.Collections.Generic.IList<Dimension> Dimensions { get; set; }
 
         /// <summary>The kind of resource this is, in this case dfareporting#floodlightReportCompatibleFields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Metrics which are compatible to be selected in the "metricNames" section of the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
-        public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; } 
+        public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23628,12 +23628,12 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Duration of time, in seconds, for this frequency cap. The maximum duration is 90 days. Acceptable
         /// values are 1 to 7776000, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
-        public virtual System.Nullable<long> Duration { get; set; } 
+        public virtual System.Nullable<long> Duration { get; set; }
 
         /// <summary>Number of times an individual user can be served the ad within the specified duration. Acceptable
         /// values are 1 to 15, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("impressions")]
-        public virtual System.Nullable<long> Impressions { get; set; } 
+        public virtual System.Nullable<long> Impressions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23645,24 +23645,24 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Distance from the left of the browser.Applicable when positionOption is
         /// DISTANCE_FROM_TOP_LEFT_CORNER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("left")]
-        public virtual System.Nullable<int> Left { get; set; } 
+        public virtual System.Nullable<int> Left { get; set; }
 
         /// <summary>Position in the browser where the window will open.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("positionOption")]
-        public virtual string PositionOption { get; set; } 
+        public virtual string PositionOption { get; set; }
 
         /// <summary>Distance from the top of the browser. Applicable when positionOption is
         /// DISTANCE_FROM_TOP_LEFT_CORNER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("top")]
-        public virtual System.Nullable<int> Top { get; set; } 
+        public virtual System.Nullable<int> Top { get; set; }
 
         /// <summary>Height of the window.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("windowHeight")]
-        public virtual System.Nullable<int> WindowHeight { get; set; } 
+        public virtual System.Nullable<int> WindowHeight { get; set; }
 
         /// <summary>Width of the window.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("windowWidth")]
-        public virtual System.Nullable<int> WindowWidth { get; set; } 
+        public virtual System.Nullable<int> WindowWidth { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23675,37 +23675,37 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// automatically when the ad is inserted or updated. If targeting a city, do not target or exclude the country
         /// of the city, and do not target the metro or region of the city.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cities")]
-        public virtual System.Collections.Generic.IList<City> Cities { get; set; } 
+        public virtual System.Collections.Generic.IList<City> Cities { get; set; }
 
         /// <summary>Countries to be targeted or excluded from targeting, depending on the setting of the
         /// excludeCountries field. For each country only dartId is required. The other fields are populated
         /// automatically when the ad is inserted or updated. If targeting or excluding a country, do not target
         /// regions, cities, metros, or postal codes in the same country.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countries")]
-        public virtual System.Collections.Generic.IList<Country> Countries { get; set; } 
+        public virtual System.Collections.Generic.IList<Country> Countries { get; set; }
 
         /// <summary>Whether or not to exclude the countries in the countries field from targeting. If false, the
         /// countries field refers to countries which will be targeted by the ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeCountries")]
-        public virtual System.Nullable<bool> ExcludeCountries { get; set; } 
+        public virtual System.Nullable<bool> ExcludeCountries { get; set; }
 
         /// <summary>Metros to be targeted. For each metro only dmaId is required. The other fields are populated
         /// automatically when the ad is inserted or updated. If targeting a metro, do not target or exclude the country
         /// of the metro.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metros")]
-        public virtual System.Collections.Generic.IList<Metro> Metros { get; set; } 
+        public virtual System.Collections.Generic.IList<Metro> Metros { get; set; }
 
         /// <summary>Postal codes to be targeted. For each postal code only id is required. The other fields are
         /// populated automatically when the ad is inserted or updated. If targeting a postal code, do not target or
         /// exclude the country of the postal code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCodes")]
-        public virtual System.Collections.Generic.IList<PostalCode> PostalCodes { get; set; } 
+        public virtual System.Collections.Generic.IList<PostalCode> PostalCodes { get; set; }
 
         /// <summary>Regions to be targeted. For each region only dartId is required. The other fields are populated
         /// automatically when the ad is inserted or updated. If targeting a region, do not target or exclude the
         /// country of the region.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regions")]
-        public virtual System.Collections.Generic.IList<Region> Regions { get; set; } 
+        public virtual System.Collections.Generic.IList<Region> Regions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23716,87 +23716,87 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Account ID of this inventory item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>Ad slots of this inventory item. If this inventory item represents a standalone placement, there
         /// will be exactly one ad slot. If this inventory item represents a placement group, there will be more than
         /// one ad slot, each representing one child placement in that placement group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adSlots")]
-        public virtual System.Collections.Generic.IList<AdSlot> AdSlots { get; set; } 
+        public virtual System.Collections.Generic.IList<AdSlot> AdSlots { get; set; }
 
         /// <summary>Advertiser ID of this inventory item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>Content category ID of this inventory item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentCategoryId")]
-        public virtual System.Nullable<long> ContentCategoryId { get; set; } 
+        public virtual System.Nullable<long> ContentCategoryId { get; set; }
 
         /// <summary>Estimated click-through rate of this inventory item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("estimatedClickThroughRate")]
-        public virtual System.Nullable<long> EstimatedClickThroughRate { get; set; } 
+        public virtual System.Nullable<long> EstimatedClickThroughRate { get; set; }
 
         /// <summary>Estimated conversion rate of this inventory item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("estimatedConversionRate")]
-        public virtual System.Nullable<long> EstimatedConversionRate { get; set; } 
+        public virtual System.Nullable<long> EstimatedConversionRate { get; set; }
 
         /// <summary>ID of this inventory item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Whether this inventory item is in plan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inPlan")]
-        public virtual System.Nullable<bool> InPlan { get; set; } 
+        public virtual System.Nullable<bool> InPlan { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#inventoryItem".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Information about the most recent modification of this inventory item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedInfo")]
-        public virtual LastModifiedInfo LastModifiedInfo { get; set; } 
+        public virtual LastModifiedInfo LastModifiedInfo { get; set; }
 
         /// <summary>Name of this inventory item. For standalone inventory items, this is the same name as that of its
         /// only ad slot. For group inventory items, this can differ from the name of any of its ad slots.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Negotiation channel ID of this inventory item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negotiationChannelId")]
-        public virtual System.Nullable<long> NegotiationChannelId { get; set; } 
+        public virtual System.Nullable<long> NegotiationChannelId { get; set; }
 
         /// <summary>Order ID of this inventory item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
-        public virtual System.Nullable<long> OrderId { get; set; } 
+        public virtual System.Nullable<long> OrderId { get; set; }
 
         /// <summary>Placement strategy ID of this inventory item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placementStrategyId")]
-        public virtual System.Nullable<long> PlacementStrategyId { get; set; } 
+        public virtual System.Nullable<long> PlacementStrategyId { get; set; }
 
         /// <summary>Pricing of this inventory item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pricing")]
-        public virtual Pricing Pricing { get; set; } 
+        public virtual Pricing Pricing { get; set; }
 
         /// <summary>Project ID of this inventory item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual System.Nullable<long> ProjectId { get; set; } 
+        public virtual System.Nullable<long> ProjectId { get; set; }
 
         /// <summary>RFP ID of this inventory item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rfpId")]
-        public virtual System.Nullable<long> RfpId { get; set; } 
+        public virtual System.Nullable<long> RfpId { get; set; }
 
         /// <summary>ID of the site this inventory item is associated with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteId")]
-        public virtual System.Nullable<long> SiteId { get; set; } 
+        public virtual System.Nullable<long> SiteId { get; set; }
 
         /// <summary>Subaccount ID of this inventory item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subaccountId")]
-        public virtual System.Nullable<long> SubaccountId { get; set; } 
+        public virtual System.Nullable<long> SubaccountId { get; set; }
 
         /// <summary>Type of inventory item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23807,16 +23807,16 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Inventory item collection</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventoryItems")]
-        public virtual System.Collections.Generic.IList<InventoryItem> InventoryItems { get; set; } 
+        public virtual System.Collections.Generic.IList<InventoryItem> InventoryItems { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#inventoryItemsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23827,7 +23827,7 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Keyword expression being targeted by the ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23838,33 +23838,33 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Advertiser ID of this landing page. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>Whether this landing page has been archived.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("archived")]
-        public virtual System.Nullable<bool> Archived { get; set; } 
+        public virtual System.Nullable<bool> Archived { get; set; }
 
         /// <summary>Links that will direct the user to a mobile app, if installed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deepLinks")]
-        public virtual System.Collections.Generic.IList<DeepLink> DeepLinks { get; set; } 
+        public virtual System.Collections.Generic.IList<DeepLink> DeepLinks { get; set; }
 
         /// <summary>ID of this landing page. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#landingPage".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this landing page. This is a required field. It must be less than 256 characters
         /// long.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>URL of this landing page. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23875,21 +23875,21 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Language ID of this language. This is the ID used for targeting and generating reports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#language".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Format of language code is an ISO 639 two-letter language code optionally followed by an underscore
         /// followed by an ISO 3166 code. Examples are "en" for English or "zh_CN" for Simplified Chinese.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; } 
+        public virtual string LanguageCode { get; set; }
 
         /// <summary>Name of this language.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23901,7 +23901,7 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Languages that this ad targets. For each language only languageId is required. The other fields are
         /// populated automatically when the ad is inserted or updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languages")]
-        public virtual System.Collections.Generic.IList<Language> Languages { get; set; } 
+        public virtual System.Collections.Generic.IList<Language> Languages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23913,11 +23913,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#languagesListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Language collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languages")]
-        public virtual System.Collections.Generic.IList<Language> Languages { get; set; } 
+        public virtual System.Collections.Generic.IList<Language> Languages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23928,7 +23928,7 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Timestamp of the last change in milliseconds since epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("time")]
-        public virtual System.Nullable<long> Time { get; set; } 
+        public virtual System.Nullable<long> Time { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23940,7 +23940,7 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Terms of this list population clause. Each clause is made up of list population terms representing
         /// constraints and are joined by ORs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("terms")]
-        public virtual System.Collections.Generic.IList<ListPopulationTerm> Terms { get; set; } 
+        public virtual System.Collections.Generic.IList<ListPopulationTerm> Terms { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23951,17 +23951,17 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Floodlight activity ID associated with this rule. This field can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightActivityId")]
-        public virtual System.Nullable<long> FloodlightActivityId { get; set; } 
+        public virtual System.Nullable<long> FloodlightActivityId { get; set; }
 
         /// <summary>Name of floodlight activity associated with this rule. This is a read-only, auto-generated
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightActivityName")]
-        public virtual string FloodlightActivityName { get; set; } 
+        public virtual string FloodlightActivityName { get; set; }
 
         /// <summary>Clauses that make up this list population rule. Clauses are joined by ANDs, and the clauses
         /// themselves are made up of list population terms which are joined by ORs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listPopulationClauses")]
-        public virtual System.Collections.Generic.IList<ListPopulationClause> ListPopulationClauses { get; set; } 
+        public virtual System.Collections.Generic.IList<ListPopulationClause> ListPopulationClauses { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23974,44 +23974,44 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// if the user is not in the list. This field is only relevant when type is set to LIST_MEMBERSHIP_TERM. False
         /// by default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contains")]
-        public virtual System.Nullable<bool> Contains { get; set; } 
+        public virtual System.Nullable<bool> Contains { get; set; }
 
         /// <summary>Whether to negate the comparison result of this term during rule evaluation. This field is only
         /// relevant when type is left unset or set to CUSTOM_VARIABLE_TERM or REFERRER_TERM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negation")]
-        public virtual System.Nullable<bool> Negation { get; set; } 
+        public virtual System.Nullable<bool> Negation { get; set; }
 
         /// <summary>Comparison operator of this term. This field is only relevant when type is left unset or set to
         /// CUSTOM_VARIABLE_TERM or REFERRER_TERM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operator")]
-        public virtual string Operator__ { get; set; } 
+        public virtual string Operator__ { get; set; }
 
         /// <summary>ID of the list in question. This field is only relevant when type is set to
         /// LIST_MEMBERSHIP_TERM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remarketingListId")]
-        public virtual System.Nullable<long> RemarketingListId { get; set; } 
+        public virtual System.Nullable<long> RemarketingListId { get; set; }
 
         /// <summary>List population term type determines the applicable fields in this object. If left unset or set to
         /// CUSTOM_VARIABLE_TERM, then variableName, variableFriendlyName, operator, value, and negation are applicable.
         /// If set to LIST_MEMBERSHIP_TERM then remarketingListId and contains are applicable. If set to REFERRER_TERM
         /// then operator, value, and negation are applicable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>Literal to compare the variable to. This field is only relevant when type is left unset or set to
         /// CUSTOM_VARIABLE_TERM or REFERRER_TERM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>Friendly name of this term's variable. This is a read-only, auto-generated field. This field is
         /// only relevant when type is left unset or set to CUSTOM_VARIABLE_TERM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variableFriendlyName")]
-        public virtual string VariableFriendlyName { get; set; } 
+        public virtual string VariableFriendlyName { get; set; }
 
         /// <summary>Name of the variable (U1, U2, etc.) being compared in this term. This field is only relevant when
         /// type is set to null, CUSTOM_VARIABLE_TERM or REFERRER_TERM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variableName")]
-        public virtual string VariableName { get; set; } 
+        public virtual string VariableName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24022,7 +24022,7 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Expression describing which lists are being targeted by the ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24035,13 +24035,13 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// 0, clicks will not be considered as triggering events for floodlight tracking. If you leave this field
         /// blank, the default value for your account will be used. Acceptable values are 0 to 90, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickDuration")]
-        public virtual System.Nullable<int> ClickDuration { get; set; } 
+        public virtual System.Nullable<int> ClickDuration { get; set; }
 
         /// <summary>Lookback window, in days, from the last time a given user viewed one of your ads. If you enter 0,
         /// impressions will not be considered as triggering events for floodlight tracking. If you leave this field
         /// blank, the default value for your account will be used. Acceptable values are 0 to 90, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postImpressionActivitiesDuration")]
-        public virtual System.Nullable<int> PostImpressionActivitiesDuration { get; set; } 
+        public virtual System.Nullable<int> PostImpressionActivitiesDuration { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24052,35 +24052,35 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>The number of current bytes uploaded or downloaded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentBytes")]
-        public virtual System.Nullable<long> CurrentBytes { get; set; } 
+        public virtual System.Nullable<long> CurrentBytes { get; set; }
 
         /// <summary>Data to be copied to backend requests. Custom data is returned to Scotty in the agent_state field,
         /// which Scotty will then provide in subsequent upload notifications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customData")]
-        public virtual string CustomData { get; set; } 
+        public virtual string CustomData { get; set; }
 
         /// <summary>Set if the http request info is diff encoded. The value of this field is the version number of the
         /// base revision. This is corresponding to Apiary's mediaDiffObjectVersion
         /// (//depot/google3/java/com/google/api/server/media/variable/DiffObjectVersionVariable.java). See go/esf-
         /// scotty-diff-upload for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diffObjectVersion")]
-        public virtual string DiffObjectVersion { get; set; } 
+        public virtual string DiffObjectVersion { get; set; }
 
         /// <summary>The type of notification received from Scotty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationType")]
-        public virtual string NotificationType { get; set; } 
+        public virtual string NotificationType { get; set; }
 
         /// <summary>The Scotty request ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; } 
+        public virtual string RequestId { get; set; }
 
         /// <summary>The total size of the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalBytes")]
-        public virtual System.Nullable<long> TotalBytes { get; set; } 
+        public virtual System.Nullable<long> TotalBytes { get; set; }
 
         /// <summary>Whether the total bytes field contains an estimated data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalBytesIsEstimated")]
-        public virtual System.Nullable<bool> TotalBytesIsEstimated { get; set; } 
+        public virtual System.Nullable<bool> TotalBytesIsEstimated { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24097,13 +24097,13 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Data to copy from backend response to the next backend requests. Custom data is returned to Scotty
         /// in the agent_state field, which Scotty will then provide in subsequent upload notifications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customData")]
-        public virtual string CustomData { get; set; } 
+        public virtual string CustomData { get; set; }
 
         /// <summary>Specifies any transformation to be applied to data before persisting it or retrieving from storage.
         /// E.g., encryption options for blobstore2. This should be of the form
         /// uploader_service.DataStorageTransform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStorageTransform")]
-        public virtual string DataStorageTransform { get; set; } 
+        public virtual string DataStorageTransform { get; set; }
 
         /// <summary>Specifies the Scotty Drop Target to use for uploads. If present in a media response, Scotty does
         /// not upload to a standard drop zone. Instead, Scotty saves the upload directly to the location specified in
@@ -24113,27 +24113,27 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// target design doc here: http://goto/ScottyDropTarget This field will be preferred to dynamicDropzone. If
         /// provided, the identified field in the response must be of the type uploader.agent.DropTarget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dynamicDropTarget")]
-        public virtual string DynamicDropTarget { get; set; } 
+        public virtual string DynamicDropTarget { get; set; }
 
         /// <summary>Specifies the Scotty dropzone to use for uploads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dynamicDropzone")]
-        public virtual string DynamicDropzone { get; set; } 
+        public virtual string DynamicDropzone { get; set; }
 
         /// <summary>Request class to use for all Blobstore operations for this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestClass")]
-        public virtual string RequestClass { get; set; } 
+        public virtual string RequestClass { get; set; }
 
         /// <summary>Specifies the TrafficClass that Scotty should use for any RPCs to fetch the response bytes. Will
         /// override the traffic class GTOS of the incoming http request. This is a temporary field to facilitate
         /// whitelisting and experimentation by the bigstore agent only. For instance, this does not apply to RTMP
         /// reads. WARNING: DO NOT USE WITHOUT PERMISSION FROM THE SCOTTY TEAM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trafficClassField")]
-        public virtual string TrafficClassField { get; set; } 
+        public virtual string TrafficClassField { get; set; }
 
         /// <summary>Tells Scotty to verify hashes on the agent's behalf by parsing out the X-Goog-Hash
         /// header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifyHashFromHeader")]
-        public virtual System.Nullable<bool> VerifyHashFromHeader { get; set; } 
+        public virtual System.Nullable<bool> VerifyHashFromHeader { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24144,11 +24144,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>The kind of resource this is, in this case dfareporting#metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The metric name, e.g. dfa:impressions</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24159,32 +24159,32 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Country code of the country to which this metro region belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
-        public virtual string CountryCode { get; set; } 
+        public virtual string CountryCode { get; set; }
 
         /// <summary>DART ID of the country to which this metro region belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryDartId")]
-        public virtual System.Nullable<long> CountryDartId { get; set; } 
+        public virtual System.Nullable<long> CountryDartId { get; set; }
 
         /// <summary>DART ID of this metro region.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dartId")]
-        public virtual System.Nullable<long> DartId { get; set; } 
+        public virtual System.Nullable<long> DartId { get; set; }
 
         /// <summary>DMA ID of this metro region. This is the ID used for targeting and generating reports, and is
         /// equivalent to metro_code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dmaId")]
-        public virtual System.Nullable<long> DmaId { get; set; } 
+        public virtual System.Nullable<long> DmaId { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "dfareporting#metro".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Metro code of this metro region. This is equivalent to dma_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metroCode")]
-        public virtual string MetroCode { get; set; } 
+        public virtual string MetroCode { get; set; }
 
         /// <summary>Name of this metro region.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24196,11 +24196,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#metrosListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Metro collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metros")]
-        public virtual System.Collections.Generic.IList<Metro> Metros { get; set; } 
+        public virtual System.Collections.Generic.IList<Metro> Metros { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24211,24 +24211,24 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Mobile app directory.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directory")]
-        public virtual string Directory { get; set; } 
+        public virtual string Directory { get; set; }
 
         /// <summary>ID of this mobile app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#mobileApp".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Publisher name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisherName")]
-        public virtual string PublisherName { get; set; } 
+        public virtual string PublisherName { get; set; }
 
         /// <summary>Title of this mobile app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24240,15 +24240,15 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#mobileAppsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Mobile apps collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileApps")]
-        public virtual System.Collections.Generic.IList<MobileApp> MobileApps { get; set; } 
+        public virtual System.Collections.Generic.IList<MobileApp> MobileApps { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24259,24 +24259,24 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Country code of the country to which this mobile carrier belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
-        public virtual string CountryCode { get; set; } 
+        public virtual string CountryCode { get; set; }
 
         /// <summary>DART ID of the country to which this mobile carrier belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryDartId")]
-        public virtual System.Nullable<long> CountryDartId { get; set; } 
+        public virtual System.Nullable<long> CountryDartId { get; set; }
 
         /// <summary>ID of this mobile carrier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#mobileCarrier".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this mobile carrier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24288,11 +24288,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#mobileCarriersListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Mobile carrier collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileCarriers")]
-        public virtual System.Collections.Generic.IList<MobileCarrier> MobileCarriers { get; set; } 
+        public virtual System.Collections.Generic.IList<MobileCarrier> MobileCarriers { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24304,17 +24304,17 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#objectFilter".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Applicable when status is ASSIGNED. The user has access to objects with these object IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> ObjectIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> ObjectIds { get; set; }
 
         /// <summary>Status of the filter. NONE means the user has access to none of the objects. ALL means the user has
         /// access to all objects. ASSIGNED means the user has access to the objects with IDs in the objectIds
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24325,11 +24325,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Offset distance from left side of an asset or a window.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("left")]
-        public virtual System.Nullable<int> Left { get; set; } 
+        public virtual System.Nullable<int> Left { get; set; }
 
         /// <summary>Offset distance from top side of an asset or a window.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("top")]
-        public virtual System.Nullable<int> Top { get; set; } 
+        public virtual System.Nullable<int> Top { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24341,12 +24341,12 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Whether placement cost data will be sent to Omniture. This property can be enabled only if
         /// omnitureIntegrationEnabled is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("omnitureCostDataEnabled")]
-        public virtual System.Nullable<bool> OmnitureCostDataEnabled { get; set; } 
+        public virtual System.Nullable<bool> OmnitureCostDataEnabled { get; set; }
 
         /// <summary>Whether Omniture integration is enabled. This property can be enabled only when the "Advanced Ad
         /// Serving" account setting is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("omnitureIntegrationEnabled")]
-        public virtual System.Nullable<bool> OmnitureIntegrationEnabled { get; set; } 
+        public virtual System.Nullable<bool> OmnitureIntegrationEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24357,24 +24357,24 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>DART ID of this operating system. This is the ID used for targeting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dartId")]
-        public virtual System.Nullable<long> DartId { get; set; } 
+        public virtual System.Nullable<long> DartId { get; set; }
 
         /// <summary>Whether this operating system is for desktop.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desktop")]
-        public virtual System.Nullable<bool> Desktop { get; set; } 
+        public virtual System.Nullable<bool> Desktop { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#operatingSystem".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Whether this operating system is for mobile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobile")]
-        public virtual System.Nullable<bool> Mobile { get; set; } 
+        public virtual System.Nullable<bool> Mobile { get; set; }
 
         /// <summary>Name of this operating system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24386,28 +24386,28 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>ID of this operating system version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#operatingSystemVersion".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Major version (leftmost number) of this operating system version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("majorVersion")]
-        public virtual string MajorVersion { get; set; } 
+        public virtual string MajorVersion { get; set; }
 
         /// <summary>Minor version (number after the first dot) of this operating system version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minorVersion")]
-        public virtual string MinorVersion { get; set; } 
+        public virtual string MinorVersion { get; set; }
 
         /// <summary>Name of this operating system version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Operating system of this operating system version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatingSystem")]
-        public virtual OperatingSystem OperatingSystem { get; set; } 
+        public virtual OperatingSystem OperatingSystem { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24419,11 +24419,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#operatingSystemVersionsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Operating system version collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatingSystemVersions")]
-        public virtual System.Collections.Generic.IList<OperatingSystemVersion> OperatingSystemVersions { get; set; } 
+        public virtual System.Collections.Generic.IList<OperatingSystemVersion> OperatingSystemVersions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24435,11 +24435,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#operatingSystemsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Operating system collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatingSystems")]
-        public virtual System.Collections.Generic.IList<OperatingSystem> OperatingSystems { get; set; } 
+        public virtual System.Collections.Generic.IList<OperatingSystem> OperatingSystems { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24450,18 +24450,18 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Floodlight activity ID of this optimization activity. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightActivityId")]
-        public virtual System.Nullable<long> FloodlightActivityId { get; set; } 
+        public virtual System.Nullable<long> FloodlightActivityId { get; set; }
 
         /// <summary>Dimension value for the ID of the floodlight activity. This is a read-only, auto-generated
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightActivityIdDimensionValue")]
-        public virtual DimensionValue FloodlightActivityIdDimensionValue { get; set; } 
+        public virtual DimensionValue FloodlightActivityIdDimensionValue { get; set; }
 
         /// <summary>Weight associated with this optimization. The weight assigned will be understood in proportion to
         /// the weights assigned to the other optimization activities. Value must be greater than or equal to
         /// 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weight")]
-        public virtual System.Nullable<int> Weight { get; set; } 
+        public virtual System.Nullable<int> Weight { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24472,83 +24472,83 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Account ID of this order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>Advertiser ID of this order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>IDs for users that have to approve documents created for this order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approverUserProfileIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> ApproverUserProfileIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> ApproverUserProfileIds { get; set; }
 
         /// <summary>Buyer invoice ID associated with this order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buyerInvoiceId")]
-        public virtual string BuyerInvoiceId { get; set; } 
+        public virtual string BuyerInvoiceId { get; set; }
 
         /// <summary>Name of the buyer organization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buyerOrganizationName")]
-        public virtual string BuyerOrganizationName { get; set; } 
+        public virtual string BuyerOrganizationName { get; set; }
 
         /// <summary>Comments in this order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comments")]
-        public virtual string Comments { get; set; } 
+        public virtual string Comments { get; set; }
 
         /// <summary>Contacts for this order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contacts")]
-        public virtual System.Collections.Generic.IList<OrderContact> Contacts { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderContact> Contacts { get; set; }
 
         /// <summary>ID of this order. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "dfareporting#order".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Information about the most recent modification of this order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedInfo")]
-        public virtual LastModifiedInfo LastModifiedInfo { get; set; } 
+        public virtual LastModifiedInfo LastModifiedInfo { get; set; }
 
         /// <summary>Name of this order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Notes of this order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
-        public virtual string Notes { get; set; } 
+        public virtual string Notes { get; set; }
 
         /// <summary>ID of the terms and conditions template used in this order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("planningTermId")]
-        public virtual System.Nullable<long> PlanningTermId { get; set; } 
+        public virtual System.Nullable<long> PlanningTermId { get; set; }
 
         /// <summary>Project ID of this order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual System.Nullable<long> ProjectId { get; set; } 
+        public virtual System.Nullable<long> ProjectId { get; set; }
 
         /// <summary>Seller order ID associated with this order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sellerOrderId")]
-        public virtual string SellerOrderId { get; set; } 
+        public virtual string SellerOrderId { get; set; }
 
         /// <summary>Name of the seller organization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sellerOrganizationName")]
-        public virtual string SellerOrganizationName { get; set; } 
+        public virtual string SellerOrganizationName { get; set; }
 
         /// <summary>Site IDs this order is associated with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteId")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> SiteId { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> SiteId { get; set; }
 
         /// <summary>Free-form site names this order is associated with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteNames")]
-        public virtual System.Collections.Generic.IList<string> SiteNames { get; set; } 
+        public virtual System.Collections.Generic.IList<string> SiteNames { get; set; }
 
         /// <summary>Subaccount ID of this order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subaccountId")]
-        public virtual System.Nullable<long> SubaccountId { get; set; } 
+        public virtual System.Nullable<long> SubaccountId { get; set; }
 
         /// <summary>Terms and conditions of this order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("termsAndConditions")]
-        public virtual string TermsAndConditions { get; set; } 
+        public virtual string TermsAndConditions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24560,24 +24560,24 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Free-form information about this contact. It could be any information related to this contact in
         /// addition to type, title, name, and signature user profile ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactInfo")]
-        public virtual string ContactInfo { get; set; } 
+        public virtual string ContactInfo { get; set; }
 
         /// <summary>Name of this contact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactName")]
-        public virtual string ContactName { get; set; } 
+        public virtual string ContactName { get; set; }
 
         /// <summary>Title of this contact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactTitle")]
-        public virtual string ContactTitle { get; set; } 
+        public virtual string ContactTitle { get; set; }
 
         /// <summary>Type of this contact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactType")]
-        public virtual string ContactType { get; set; } 
+        public virtual string ContactType { get; set; }
 
         /// <summary>ID of the user profile containing the signature that will be embedded into order
         /// documents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signatureUserProfileId")]
-        public virtual System.Nullable<long> SignatureUserProfileId { get; set; } 
+        public virtual System.Nullable<long> SignatureUserProfileId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24588,44 +24588,44 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Account ID of this order document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>Advertiser ID of this order document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>The amended order document ID of this order document. An order document can be created by
         /// optionally amending another order document so that the change history can be preserved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amendedOrderDocumentId")]
-        public virtual System.Nullable<long> AmendedOrderDocumentId { get; set; } 
+        public virtual System.Nullable<long> AmendedOrderDocumentId { get; set; }
 
         /// <summary>IDs of users who have approved this order document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approvedByUserProfileIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> ApprovedByUserProfileIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> ApprovedByUserProfileIds { get; set; }
 
         /// <summary>Whether this order document is cancelled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelled")]
-        public virtual System.Nullable<bool> Cancelled { get; set; } 
+        public virtual System.Nullable<bool> Cancelled { get; set; }
 
         /// <summary>Information about the creation of this order document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdInfo")]
-        public virtual LastModifiedInfo CreatedInfo { get; set; } 
+        public virtual LastModifiedInfo CreatedInfo { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveDate")]
-        public virtual string EffectiveDate { get; set; } 
+        public virtual string EffectiveDate { get; set; }
 
         /// <summary>ID of this order document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#orderDocument".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>List of email addresses that received the last sent document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastSentRecipients")]
-        public virtual System.Collections.Generic.IList<string> LastSentRecipients { get; set; } 
+        public virtual System.Collections.Generic.IList<string> LastSentRecipients { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("lastSentTime")]
         public virtual string LastSentTimeRaw { get; set; }
@@ -24640,27 +24640,27 @@ namespace Google.Apis.Dfareporting.v3_3.Data
 
         /// <summary>ID of the order from which this order document is created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
-        public virtual System.Nullable<long> OrderId { get; set; } 
+        public virtual System.Nullable<long> OrderId { get; set; }
 
         /// <summary>Project ID of this order document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual System.Nullable<long> ProjectId { get; set; } 
+        public virtual System.Nullable<long> ProjectId { get; set; }
 
         /// <summary>Whether this order document has been signed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signed")]
-        public virtual System.Nullable<bool> Signed { get; set; } 
+        public virtual System.Nullable<bool> Signed { get; set; }
 
         /// <summary>Subaccount ID of this order document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subaccountId")]
-        public virtual System.Nullable<long> SubaccountId { get; set; } 
+        public virtual System.Nullable<long> SubaccountId { get; set; }
 
         /// <summary>Title of this order document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>Type of this order document</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24672,15 +24672,15 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#orderDocumentsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Order document collection</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderDocuments")]
-        public virtual System.Collections.Generic.IList<OrderDocument> OrderDocuments { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderDocument> OrderDocuments { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24692,15 +24692,15 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#ordersListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Order collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orders")]
-        public virtual System.Collections.Generic.IList<Order> Orders { get; set; } 
+        public virtual System.Collections.Generic.IList<Order> Orders { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24713,26 +24713,26 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Conversion dimensions which are compatible to be selected in the "conversionDimensions" section of
         /// the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionDimensions")]
-        public virtual System.Collections.Generic.IList<Dimension> ConversionDimensions { get; set; } 
+        public virtual System.Collections.Generic.IList<Dimension> ConversionDimensions { get; set; }
 
         /// <summary>Custom floodlight variables which are compatible to be selected in the "customFloodlightVariables"
         /// section of the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customFloodlightVariables")]
-        public virtual System.Collections.Generic.IList<Dimension> CustomFloodlightVariables { get; set; } 
+        public virtual System.Collections.Generic.IList<Dimension> CustomFloodlightVariables { get; set; }
 
         /// <summary>The kind of resource this is, in this case
         /// dfareporting#pathToConversionReportCompatibleFields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Metrics which are compatible to be selected in the "metricNames" section of the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
-        public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; } 
+        public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; }
 
         /// <summary>Per-interaction dimensions which are compatible to be selected in the "perInteractionDimensions"
         /// section of the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("perInteractionDimensions")]
-        public virtual System.Collections.Generic.IList<Dimension> PerInteractionDimensions { get; set; } 
+        public virtual System.Collections.Generic.IList<Dimension> PerInteractionDimensions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24743,41 +24743,41 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Account ID of this placement. This field can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>Whether this placement opts out of ad blocking. When true, ad blocking is disabled for this
         /// placement. When false, the campaign and site settings take effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adBlockingOptOut")]
-        public virtual System.Nullable<bool> AdBlockingOptOut { get; set; } 
+        public virtual System.Nullable<bool> AdBlockingOptOut { get; set; }
 
         /// <summary>Additional sizes associated with this placement. When inserting or updating a placement, only the
         /// size ID field is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalSizes")]
-        public virtual System.Collections.Generic.IList<Size> AdditionalSizes { get; set; } 
+        public virtual System.Collections.Generic.IList<Size> AdditionalSizes { get; set; }
 
         /// <summary>Advertiser ID of this placement. This field can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>Dimension value for the ID of the advertiser. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserIdDimensionValue")]
-        public virtual DimensionValue AdvertiserIdDimensionValue { get; set; } 
+        public virtual DimensionValue AdvertiserIdDimensionValue { get; set; }
 
         /// <summary>Whether this placement is archived.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("archived")]
-        public virtual System.Nullable<bool> Archived { get; set; } 
+        public virtual System.Nullable<bool> Archived { get; set; }
 
         /// <summary>Campaign ID of this placement. This field is a required field on insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignId")]
-        public virtual System.Nullable<long> CampaignId { get; set; } 
+        public virtual System.Nullable<long> CampaignId { get; set; }
 
         /// <summary>Dimension value for the ID of the campaign. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignIdDimensionValue")]
-        public virtual DimensionValue CampaignIdDimensionValue { get; set; } 
+        public virtual DimensionValue CampaignIdDimensionValue { get; set; }
 
         /// <summary>Comments for this placement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comment")]
-        public virtual string Comment { get; set; } 
+        public virtual string Comment { get; set; }
 
         /// <summary>Placement compatibility. DISPLAY and DISPLAY_INTERSTITIAL refer to rendering on desktop, on mobile
         /// devices or in mobile apps for regular or interstitial ads respectively. APP and APP_INTERSTITIAL are no
@@ -24785,127 +24785,127 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// refers to rendering in in-stream video ads developed with the VAST standard. This field is required on
         /// insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compatibility")]
-        public virtual string Compatibility { get; set; } 
+        public virtual string Compatibility { get; set; }
 
         /// <summary>ID of the content category assigned to this placement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentCategoryId")]
-        public virtual System.Nullable<long> ContentCategoryId { get; set; } 
+        public virtual System.Nullable<long> ContentCategoryId { get; set; }
 
         /// <summary>Information about the creation of this placement. This is a read-only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createInfo")]
-        public virtual LastModifiedInfo CreateInfo { get; set; } 
+        public virtual LastModifiedInfo CreateInfo { get; set; }
 
         /// <summary>Directory site ID of this placement. On insert, you must set either this field or the siteId field
         /// to specify the site associated with this placement. This is a required field that is read-only after
         /// insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directorySiteId")]
-        public virtual System.Nullable<long> DirectorySiteId { get; set; } 
+        public virtual System.Nullable<long> DirectorySiteId { get; set; }
 
         /// <summary>Dimension value for the ID of the directory site. This is a read-only, auto-generated
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directorySiteIdDimensionValue")]
-        public virtual DimensionValue DirectorySiteIdDimensionValue { get; set; } 
+        public virtual DimensionValue DirectorySiteIdDimensionValue { get; set; }
 
         /// <summary>External ID for this placement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalId")]
-        public virtual string ExternalId { get; set; } 
+        public virtual string ExternalId { get; set; }
 
         /// <summary>ID of this placement. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Dimension value for the ID of this placement. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idDimensionValue")]
-        public virtual DimensionValue IdDimensionValue { get; set; } 
+        public virtual DimensionValue IdDimensionValue { get; set; }
 
         /// <summary>Key name of this placement. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyName")]
-        public virtual string KeyName { get; set; } 
+        public virtual string KeyName { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#placement".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Information about the most recent modification of this placement. This is a read-only
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedInfo")]
-        public virtual LastModifiedInfo LastModifiedInfo { get; set; } 
+        public virtual LastModifiedInfo LastModifiedInfo { get; set; }
 
         /// <summary>Lookback window settings for this placement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lookbackConfiguration")]
-        public virtual LookbackConfiguration LookbackConfiguration { get; set; } 
+        public virtual LookbackConfiguration LookbackConfiguration { get; set; }
 
         /// <summary>Name of this placement.This is a required field and must be less than 256 characters
         /// long.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Whether payment was approved for this placement. This is a read-only field relevant only to
         /// publisher-paid placements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paymentApproved")]
-        public virtual System.Nullable<bool> PaymentApproved { get; set; } 
+        public virtual System.Nullable<bool> PaymentApproved { get; set; }
 
         /// <summary>Payment source for this placement. This is a required field that is read-only after
         /// insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paymentSource")]
-        public virtual string PaymentSource { get; set; } 
+        public virtual string PaymentSource { get; set; }
 
         /// <summary>ID of this placement's group, if applicable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placementGroupId")]
-        public virtual System.Nullable<long> PlacementGroupId { get; set; } 
+        public virtual System.Nullable<long> PlacementGroupId { get; set; }
 
         /// <summary>Dimension value for the ID of the placement group. This is a read-only, auto-generated
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placementGroupIdDimensionValue")]
-        public virtual DimensionValue PlacementGroupIdDimensionValue { get; set; } 
+        public virtual DimensionValue PlacementGroupIdDimensionValue { get; set; }
 
         /// <summary>ID of the placement strategy assigned to this placement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placementStrategyId")]
-        public virtual System.Nullable<long> PlacementStrategyId { get; set; } 
+        public virtual System.Nullable<long> PlacementStrategyId { get; set; }
 
         /// <summary>Pricing schedule of this placement. This field is required on insertion, specifically subfields
         /// startDate, endDate and pricingType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pricingSchedule")]
-        public virtual PricingSchedule PricingSchedule { get; set; } 
+        public virtual PricingSchedule PricingSchedule { get; set; }
 
         /// <summary>Whether this placement is the primary placement of a roadblock (placement group). You cannot change
         /// this field from true to false. Setting this field to true will automatically set the primary field on the
         /// original primary placement of the roadblock to false, and it will automatically set the roadblock's
         /// primaryPlacementId field to the ID of this placement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primary")]
-        public virtual System.Nullable<bool> Primary { get; set; } 
+        public virtual System.Nullable<bool> Primary { get; set; }
 
         /// <summary>Information about the last publisher update. This is a read-only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisherUpdateInfo")]
-        public virtual LastModifiedInfo PublisherUpdateInfo { get; set; } 
+        public virtual LastModifiedInfo PublisherUpdateInfo { get; set; }
 
         /// <summary>Site ID associated with this placement. On insert, you must set either this field or the
         /// directorySiteId field to specify the site associated with this placement. This is a required field that is
         /// read-only after insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteId")]
-        public virtual System.Nullable<long> SiteId { get; set; } 
+        public virtual System.Nullable<long> SiteId { get; set; }
 
         /// <summary>Dimension value for the ID of the site. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteIdDimensionValue")]
-        public virtual DimensionValue SiteIdDimensionValue { get; set; } 
+        public virtual DimensionValue SiteIdDimensionValue { get; set; }
 
         /// <summary>Size associated with this placement. When inserting or updating a placement, only the size ID field
         /// is used. This field is required on insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
-        public virtual Size Size { get; set; } 
+        public virtual Size Size { get; set; }
 
         /// <summary>Whether creatives assigned to this placement must be SSL-compliant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslRequired")]
-        public virtual System.Nullable<bool> SslRequired { get; set; } 
+        public virtual System.Nullable<bool> SslRequired { get; set; }
 
         /// <summary>Third-party placement status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>Subaccount ID of this placement. This field can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subaccountId")]
-        public virtual System.Nullable<long> SubaccountId { get; set; } 
+        public virtual System.Nullable<long> SubaccountId { get; set; }
 
         /// <summary>Tag formats to generate for this placement. This field is required on insertion. Acceptable values
         /// are: - "PLACEMENT_TAG_STANDARD" - "PLACEMENT_TAG_IFRAME_JAVASCRIPT" - "PLACEMENT_TAG_IFRAME_ILAYER" -
@@ -24916,11 +24916,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4" - "PLACEMENT_TAG_TRACKING" - "PLACEMENT_TAG_TRACKING_IFRAME"
         /// - "PLACEMENT_TAG_TRACKING_JAVASCRIPT" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagFormats")]
-        public virtual System.Collections.Generic.IList<string> TagFormats { get; set; } 
+        public virtual System.Collections.Generic.IList<string> TagFormats { get; set; }
 
         /// <summary>Tag settings for this placement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagSetting")]
-        public virtual TagSetting TagSetting { get; set; } 
+        public virtual TagSetting TagSetting { get; set; }
 
         /// <summary>Whether Verification and ActiveView are disabled for in-stream video creatives for this placement.
         /// The same setting videoActiveViewOptOut exists on the site level -- the opt out occurs if either of these
@@ -24928,18 +24928,18 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// Sites.siteSettings.activeViewOptOut which only apply to display ads. However, Accounts.activeViewOptOut opts
         /// out both video traffic, as well as display ads, from Verification and ActiveView.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoActiveViewOptOut")]
-        public virtual System.Nullable<bool> VideoActiveViewOptOut { get; set; } 
+        public virtual System.Nullable<bool> VideoActiveViewOptOut { get; set; }
 
         /// <summary>A collection of settings which affect video creatives served through this placement. Applicable to
         /// placements with IN_STREAM_VIDEO compatibility.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoSettings")]
-        public virtual VideoSettings VideoSettings { get; set; } 
+        public virtual VideoSettings VideoSettings { get; set; }
 
         /// <summary>VPAID adapter setting for this placement. Controls which VPAID format the measurement adapter will
         /// use for in-stream video creatives assigned to this placement. *Note:* Flash is no longer supported. This
         /// field now defaults to HTML5 when the following values are provided: FLASH, BOTH.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpaidAdapterChoice")]
-        public virtual string VpaidAdapterChoice { get; set; } 
+        public virtual string VpaidAdapterChoice { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24951,20 +24951,20 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Whether this placement assignment is active. When true, the placement will be included in the ad's
         /// rotation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("active")]
-        public virtual System.Nullable<bool> Active { get; set; } 
+        public virtual System.Nullable<bool> Active { get; set; }
 
         /// <summary>ID of the placement to be assigned. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placementId")]
-        public virtual System.Nullable<long> PlacementId { get; set; } 
+        public virtual System.Nullable<long> PlacementId { get; set; }
 
         /// <summary>Dimension value for the ID of the placement. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placementIdDimensionValue")]
-        public virtual DimensionValue PlacementIdDimensionValue { get; set; } 
+        public virtual DimensionValue PlacementIdDimensionValue { get; set; }
 
         /// <summary>Whether the placement to be assigned requires SSL. This is a read-only field that is auto-generated
         /// when the ad is inserted or updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslRequired")]
-        public virtual System.Nullable<bool> SslRequired { get; set; } 
+        public virtual System.Nullable<bool> SslRequired { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24975,83 +24975,83 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Account ID of this placement group. This is a read-only field that can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>Advertiser ID of this placement group. This is a required field on insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>Dimension value for the ID of the advertiser. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserIdDimensionValue")]
-        public virtual DimensionValue AdvertiserIdDimensionValue { get; set; } 
+        public virtual DimensionValue AdvertiserIdDimensionValue { get; set; }
 
         /// <summary>Whether this placement group is archived.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("archived")]
-        public virtual System.Nullable<bool> Archived { get; set; } 
+        public virtual System.Nullable<bool> Archived { get; set; }
 
         /// <summary>Campaign ID of this placement group. This field is required on insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignId")]
-        public virtual System.Nullable<long> CampaignId { get; set; } 
+        public virtual System.Nullable<long> CampaignId { get; set; }
 
         /// <summary>Dimension value for the ID of the campaign. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignIdDimensionValue")]
-        public virtual DimensionValue CampaignIdDimensionValue { get; set; } 
+        public virtual DimensionValue CampaignIdDimensionValue { get; set; }
 
         /// <summary>IDs of placements which are assigned to this placement group. This is a read-only, auto-generated
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("childPlacementIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> ChildPlacementIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> ChildPlacementIds { get; set; }
 
         /// <summary>Comments for this placement group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comment")]
-        public virtual string Comment { get; set; } 
+        public virtual string Comment { get; set; }
 
         /// <summary>ID of the content category assigned to this placement group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentCategoryId")]
-        public virtual System.Nullable<long> ContentCategoryId { get; set; } 
+        public virtual System.Nullable<long> ContentCategoryId { get; set; }
 
         /// <summary>Information about the creation of this placement group. This is a read-only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createInfo")]
-        public virtual LastModifiedInfo CreateInfo { get; set; } 
+        public virtual LastModifiedInfo CreateInfo { get; set; }
 
         /// <summary>Directory site ID associated with this placement group. On insert, you must set either this field
         /// or the site_id field to specify the site associated with this placement group. This is a required field that
         /// is read-only after insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directorySiteId")]
-        public virtual System.Nullable<long> DirectorySiteId { get; set; } 
+        public virtual System.Nullable<long> DirectorySiteId { get; set; }
 
         /// <summary>Dimension value for the ID of the directory site. This is a read-only, auto-generated
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directorySiteIdDimensionValue")]
-        public virtual DimensionValue DirectorySiteIdDimensionValue { get; set; } 
+        public virtual DimensionValue DirectorySiteIdDimensionValue { get; set; }
 
         /// <summary>External ID for this placement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalId")]
-        public virtual string ExternalId { get; set; } 
+        public virtual string ExternalId { get; set; }
 
         /// <summary>ID of this placement group. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Dimension value for the ID of this placement group. This is a read-only, auto-generated
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idDimensionValue")]
-        public virtual DimensionValue IdDimensionValue { get; set; } 
+        public virtual DimensionValue IdDimensionValue { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#placementGroup".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Information about the most recent modification of this placement group. This is a read-only
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedInfo")]
-        public virtual LastModifiedInfo LastModifiedInfo { get; set; } 
+        public virtual LastModifiedInfo LastModifiedInfo { get; set; }
 
         /// <summary>Name of this placement group. This is a required field and must be less than 256 characters
         /// long.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Type of this placement group. A package is a simple group of placements that acts as a single
         /// pricing point for a group of tags. A roadblock is a group of placements that not only acts as a single
@@ -25059,40 +25059,40 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// requires one of its assigned placements to be marked as primary for reporting. This field is required on
         /// insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placementGroupType")]
-        public virtual string PlacementGroupType { get; set; } 
+        public virtual string PlacementGroupType { get; set; }
 
         /// <summary>ID of the placement strategy assigned to this placement group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placementStrategyId")]
-        public virtual System.Nullable<long> PlacementStrategyId { get; set; } 
+        public virtual System.Nullable<long> PlacementStrategyId { get; set; }
 
         /// <summary>Pricing schedule of this placement group. This field is required on insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pricingSchedule")]
-        public virtual PricingSchedule PricingSchedule { get; set; } 
+        public virtual PricingSchedule PricingSchedule { get; set; }
 
         /// <summary>ID of the primary placement, used to calculate the media cost of a roadblock (placement group).
         /// Modifying this field will automatically modify the primary field on all affected roadblock child
         /// placements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryPlacementId")]
-        public virtual System.Nullable<long> PrimaryPlacementId { get; set; } 
+        public virtual System.Nullable<long> PrimaryPlacementId { get; set; }
 
         /// <summary>Dimension value for the ID of the primary placement. This is a read-only, auto-generated
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryPlacementIdDimensionValue")]
-        public virtual DimensionValue PrimaryPlacementIdDimensionValue { get; set; } 
+        public virtual DimensionValue PrimaryPlacementIdDimensionValue { get; set; }
 
         /// <summary>Site ID associated with this placement group. On insert, you must set either this field or the
         /// directorySiteId field to specify the site associated with this placement group. This is a required field
         /// that is read-only after insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteId")]
-        public virtual System.Nullable<long> SiteId { get; set; } 
+        public virtual System.Nullable<long> SiteId { get; set; }
 
         /// <summary>Dimension value for the ID of the site. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteIdDimensionValue")]
-        public virtual DimensionValue SiteIdDimensionValue { get; set; } 
+        public virtual DimensionValue SiteIdDimensionValue { get; set; }
 
         /// <summary>Subaccount ID of this placement group. This is a read-only field that can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subaccountId")]
-        public virtual System.Nullable<long> SubaccountId { get; set; } 
+        public virtual System.Nullable<long> SubaccountId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25104,15 +25104,15 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#placementGroupsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Placement group collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placementGroups")]
-        public virtual System.Collections.Generic.IList<PlacementGroup> PlacementGroups { get; set; } 
+        public virtual System.Collections.Generic.IList<PlacementGroup> PlacementGroups { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25124,15 +25124,15 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#placementStrategiesListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Placement strategy collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placementStrategies")]
-        public virtual System.Collections.Generic.IList<PlacementStrategy> PlacementStrategies { get; set; } 
+        public virtual System.Collections.Generic.IList<PlacementStrategy> PlacementStrategies { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25143,21 +25143,21 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Account ID of this placement strategy.This is a read-only field that can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>ID of this placement strategy. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#placementStrategy".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this placement strategy. This is a required field. It must be less than 256 characters long
         /// and unique among placement strategies of the same account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25168,11 +25168,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Placement ID</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placementId")]
-        public virtual System.Nullable<long> PlacementId { get; set; } 
+        public virtual System.Nullable<long> PlacementId { get; set; }
 
         /// <summary>Tags generated for this placement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagDatas")]
-        public virtual System.Collections.Generic.IList<TagData> TagDatas { get; set; } 
+        public virtual System.Collections.Generic.IList<TagData> TagDatas { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25184,11 +25184,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#placementsGenerateTagsResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Set of generated tags for the specified placements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placementTags")]
-        public virtual System.Collections.Generic.IList<PlacementTag> PlacementTags { get; set; } 
+        public virtual System.Collections.Generic.IList<PlacementTag> PlacementTags { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25200,15 +25200,15 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#placementsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Placement collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placements")]
-        public virtual System.Collections.Generic.IList<Placement> Placements { get; set; } 
+        public virtual System.Collections.Generic.IList<Placement> Placements { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25219,16 +25219,16 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>ID of this platform type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#platformType".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this platform type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25240,11 +25240,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#platformTypesListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Platform type collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platformTypes")]
-        public virtual System.Collections.Generic.IList<PlatformType> PlatformTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<PlatformType> PlatformTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25256,40 +25256,40 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Popup dimension for a creative. This is a read-only field. Applicable to the following creative
         /// types: all RICH_MEDIA and all VPAID</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimension")]
-        public virtual Size Dimension { get; set; } 
+        public virtual Size Dimension { get; set; }
 
         /// <summary>Upper-left corner coordinates of the popup window. Applicable if positionType is
         /// COORDINATES.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offset")]
-        public virtual OffsetPosition Offset { get; set; } 
+        public virtual OffsetPosition Offset { get; set; }
 
         /// <summary>Popup window position either centered or at specific coordinate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("positionType")]
-        public virtual string PositionType { get; set; } 
+        public virtual string PositionType { get; set; }
 
         /// <summary>Whether to display the browser address bar.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("showAddressBar")]
-        public virtual System.Nullable<bool> ShowAddressBar { get; set; } 
+        public virtual System.Nullable<bool> ShowAddressBar { get; set; }
 
         /// <summary>Whether to display the browser menu bar.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("showMenuBar")]
-        public virtual System.Nullable<bool> ShowMenuBar { get; set; } 
+        public virtual System.Nullable<bool> ShowMenuBar { get; set; }
 
         /// <summary>Whether to display the browser scroll bar.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("showScrollBar")]
-        public virtual System.Nullable<bool> ShowScrollBar { get; set; } 
+        public virtual System.Nullable<bool> ShowScrollBar { get; set; }
 
         /// <summary>Whether to display the browser status bar.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("showStatusBar")]
-        public virtual System.Nullable<bool> ShowStatusBar { get; set; } 
+        public virtual System.Nullable<bool> ShowStatusBar { get; set; }
 
         /// <summary>Whether to display the browser tool bar.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("showToolBar")]
-        public virtual System.Nullable<bool> ShowToolBar { get; set; } 
+        public virtual System.Nullable<bool> ShowToolBar { get; set; }
 
         /// <summary>Title of popup window.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25300,24 +25300,24 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Postal code. This is equivalent to the id field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual string Code { get; set; } 
+        public virtual string Code { get; set; }
 
         /// <summary>Country code of the country to which this postal code belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
-        public virtual string CountryCode { get; set; } 
+        public virtual string CountryCode { get; set; }
 
         /// <summary>DART ID of the country to which this postal code belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryDartId")]
-        public virtual System.Nullable<long> CountryDartId { get; set; } 
+        public virtual System.Nullable<long> CountryDartId { get; set; }
 
         /// <summary>ID of this postal code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#postalCode".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25329,11 +25329,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#postalCodesListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Postal code collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCodes")]
-        public virtual System.Collections.Generic.IList<PostalCode> PostalCodes { get; set; } 
+        public virtual System.Collections.Generic.IList<PostalCode> PostalCodes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25344,15 +25344,15 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Cap cost type of this inventory item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capCostType")]
-        public virtual string CapCostType { get; set; } 
+        public virtual string CapCostType { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
-        public virtual string EndDate { get; set; } 
+        public virtual string EndDate { get; set; }
 
         /// <summary>Flights of this inventory item. A flight (a.k.a. pricing period) represents the inventory item
         /// pricing information for a specific period of time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flights")]
-        public virtual System.Collections.Generic.IList<Flight> Flights { get; set; } 
+        public virtual System.Collections.Generic.IList<Flight> Flights { get; set; }
 
         /// <summary>Group type of this inventory item if it represents a placement group. Is null otherwise. There are
         /// two type of placement groups: PLANNING_PLACEMENT_GROUP_TYPE_PACKAGE is a simple group of inventory items
@@ -25361,14 +25361,14 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// will be served at the same time. A roadblock requires one of its assigned inventory items to be marked as
         /// primary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupType")]
-        public virtual string GroupType { get; set; } 
+        public virtual string GroupType { get; set; }
 
         /// <summary>Pricing type of this inventory item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pricingType")]
-        public virtual string PricingType { get; set; } 
+        public virtual string PricingType { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
-        public virtual string StartDate { get; set; } 
+        public virtual string StartDate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25379,38 +25379,38 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Placement cap cost option.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capCostOption")]
-        public virtual string CapCostOption { get; set; } 
+        public virtual string CapCostOption { get; set; }
 
         /// <summary>Whether cap costs are ignored by ad serving.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disregardOverdelivery")]
-        public virtual System.Nullable<bool> DisregardOverdelivery { get; set; } 
+        public virtual System.Nullable<bool> DisregardOverdelivery { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
-        public virtual string EndDate { get; set; } 
+        public virtual string EndDate { get; set; }
 
         /// <summary>Whether this placement is flighted. If true, pricing periods will be computed
         /// automatically.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flighted")]
-        public virtual System.Nullable<bool> Flighted { get; set; } 
+        public virtual System.Nullable<bool> Flighted { get; set; }
 
         /// <summary>Floodlight activity ID associated with this placement. This field should be set when placement
         /// pricing type is set to PRICING_TYPE_CPA.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightActivityId")]
-        public virtual System.Nullable<long> FloodlightActivityId { get; set; } 
+        public virtual System.Nullable<long> FloodlightActivityId { get; set; }
 
         /// <summary>Pricing periods for this placement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pricingPeriods")]
-        public virtual System.Collections.Generic.IList<PricingSchedulePricingPeriod> PricingPeriods { get; set; } 
+        public virtual System.Collections.Generic.IList<PricingSchedulePricingPeriod> PricingPeriods { get; set; }
 
         /// <summary>Placement pricing type. This field is required on insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pricingType")]
-        public virtual string PricingType { get; set; } 
+        public virtual string PricingType { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
-        public virtual string StartDate { get; set; } 
+        public virtual string StartDate { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("testingStartDate")]
-        public virtual string TestingStartDate { get; set; } 
+        public virtual string TestingStartDate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25420,23 +25420,23 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     public class PricingSchedulePricingPeriod : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
-        public virtual string EndDate { get; set; } 
+        public virtual string EndDate { get; set; }
 
         /// <summary>Comments for this pricing period.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pricingComment")]
-        public virtual string PricingComment { get; set; } 
+        public virtual string PricingComment { get; set; }
 
         /// <summary>Rate or cost of this pricing period in nanos (i.e., multipled by 1000000000). Acceptable values are
         /// 0 to 1000000000000000000, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rateOrCostNanos")]
-        public virtual System.Nullable<long> RateOrCostNanos { get; set; } 
+        public virtual System.Nullable<long> RateOrCostNanos { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
-        public virtual string StartDate { get; set; } 
+        public virtual string StartDate { get; set; }
 
         /// <summary>Units of this pricing period. Acceptable values are 0 to 10000000000, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("units")]
-        public virtual System.Nullable<long> Units { get; set; } 
+        public virtual System.Nullable<long> Units { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25447,91 +25447,91 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Account ID of this project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>Advertiser ID of this project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>Audience age group of this project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audienceAgeGroup")]
-        public virtual string AudienceAgeGroup { get; set; } 
+        public virtual string AudienceAgeGroup { get; set; }
 
         /// <summary>Audience gender of this project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audienceGender")]
-        public virtual string AudienceGender { get; set; } 
+        public virtual string AudienceGender { get; set; }
 
         /// <summary>Budget of this project in the currency specified by the current account. The value stored in this
         /// field represents only the non-fractional amount. For example, for USD, the smallest value that can be
         /// represented by this field is 1 US dollar.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("budget")]
-        public virtual System.Nullable<long> Budget { get; set; } 
+        public virtual System.Nullable<long> Budget { get; set; }
 
         /// <summary>Client billing code of this project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientBillingCode")]
-        public virtual string ClientBillingCode { get; set; } 
+        public virtual string ClientBillingCode { get; set; }
 
         /// <summary>Name of the project client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientName")]
-        public virtual string ClientName { get; set; } 
+        public virtual string ClientName { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
-        public virtual string EndDate { get; set; } 
+        public virtual string EndDate { get; set; }
 
         /// <summary>ID of this project. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "dfareporting#project".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Information about the most recent modification of this project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedInfo")]
-        public virtual LastModifiedInfo LastModifiedInfo { get; set; } 
+        public virtual LastModifiedInfo LastModifiedInfo { get; set; }
 
         /// <summary>Name of this project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Overview of this project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overview")]
-        public virtual string Overview { get; set; } 
+        public virtual string Overview { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
-        public virtual string StartDate { get; set; } 
+        public virtual string StartDate { get; set; }
 
         /// <summary>Subaccount ID of this project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subaccountId")]
-        public virtual System.Nullable<long> SubaccountId { get; set; } 
+        public virtual System.Nullable<long> SubaccountId { get; set; }
 
         /// <summary>Number of clicks that the advertiser is targeting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetClicks")]
-        public virtual System.Nullable<long> TargetClicks { get; set; } 
+        public virtual System.Nullable<long> TargetClicks { get; set; }
 
         /// <summary>Number of conversions that the advertiser is targeting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetConversions")]
-        public virtual System.Nullable<long> TargetConversions { get; set; } 
+        public virtual System.Nullable<long> TargetConversions { get; set; }
 
         /// <summary>CPA that the advertiser is targeting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetCpaNanos")]
-        public virtual System.Nullable<long> TargetCpaNanos { get; set; } 
+        public virtual System.Nullable<long> TargetCpaNanos { get; set; }
 
         /// <summary>CPC that the advertiser is targeting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetCpcNanos")]
-        public virtual System.Nullable<long> TargetCpcNanos { get; set; } 
+        public virtual System.Nullable<long> TargetCpcNanos { get; set; }
 
         /// <summary>vCPM from Active View that the advertiser is targeting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetCpmActiveViewNanos")]
-        public virtual System.Nullable<long> TargetCpmActiveViewNanos { get; set; } 
+        public virtual System.Nullable<long> TargetCpmActiveViewNanos { get; set; }
 
         /// <summary>CPM that the advertiser is targeting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetCpmNanos")]
-        public virtual System.Nullable<long> TargetCpmNanos { get; set; } 
+        public virtual System.Nullable<long> TargetCpmNanos { get; set; }
 
         /// <summary>Number of impressions that the advertiser is targeting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetImpressions")]
-        public virtual System.Nullable<long> TargetImpressions { get; set; } 
+        public virtual System.Nullable<long> TargetImpressions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25543,15 +25543,15 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#projectsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Project collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projects")]
-        public virtual System.Collections.Generic.IList<Project> Projects { get; set; } 
+        public virtual System.Collections.Generic.IList<Project> Projects { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25563,29 +25563,29 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Dimensions which are compatible to be selected in the "dimensionFilters" section of the
         /// report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionFilters")]
-        public virtual System.Collections.Generic.IList<Dimension> DimensionFilters { get; set; } 
+        public virtual System.Collections.Generic.IList<Dimension> DimensionFilters { get; set; }
 
         /// <summary>Dimensions which are compatible to be selected in the "dimensions" section of the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
-        public virtual System.Collections.Generic.IList<Dimension> Dimensions { get; set; } 
+        public virtual System.Collections.Generic.IList<Dimension> Dimensions { get; set; }
 
         /// <summary>The kind of resource this is, in this case dfareporting#reachReportCompatibleFields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Metrics which are compatible to be selected in the "metricNames" section of the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
-        public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; } 
+        public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; }
 
         /// <summary>Metrics which are compatible to be selected as activity metrics to pivot on in the "activities"
         /// section of the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pivotedActivityMetrics")]
-        public virtual System.Collections.Generic.IList<Metric> PivotedActivityMetrics { get; set; } 
+        public virtual System.Collections.Generic.IList<Metric> PivotedActivityMetrics { get; set; }
 
         /// <summary>Metrics which are compatible to be selected in the "reachByFrequencyMetricNames" section of the
         /// report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reachByFrequencyMetrics")]
-        public virtual System.Collections.Generic.IList<Metric> ReachByFrequencyMetrics { get; set; } 
+        public virtual System.Collections.Generic.IList<Metric> ReachByFrequencyMetrics { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25596,15 +25596,15 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>The delivery type for the recipient.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryType")]
-        public virtual string DeliveryType { get; set; } 
+        public virtual string DeliveryType { get; set; }
 
         /// <summary>The email address of the recipient.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; } 
+        public virtual string Email { get; set; }
 
         /// <summary>The kind of resource this is, in this case dfareporting#recipient.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25615,27 +25615,27 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Country code of the country to which this region belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
-        public virtual string CountryCode { get; set; } 
+        public virtual string CountryCode { get; set; }
 
         /// <summary>DART ID of the country to which this region belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryDartId")]
-        public virtual System.Nullable<long> CountryDartId { get; set; } 
+        public virtual System.Nullable<long> CountryDartId { get; set; }
 
         /// <summary>DART ID of this region.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dartId")]
-        public virtual System.Nullable<long> DartId { get; set; } 
+        public virtual System.Nullable<long> DartId { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "dfareporting#region".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this region.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Region code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
-        public virtual string RegionCode { get; set; } 
+        public virtual string RegionCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25647,11 +25647,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#regionsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Region collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regions")]
-        public virtual System.Collections.Generic.IList<Region> Regions { get; set; } 
+        public virtual System.Collections.Generic.IList<Region> Regions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25667,60 +25667,60 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Account ID of this remarketing list. This is a read-only, auto-generated field that is only
         /// returned in GET requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>Whether this remarketing list is active.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("active")]
-        public virtual System.Nullable<bool> Active { get; set; } 
+        public virtual System.Nullable<bool> Active { get; set; }
 
         /// <summary>Dimension value for the advertiser ID that owns this remarketing list. This is a required
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>Dimension value for the ID of the advertiser. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserIdDimensionValue")]
-        public virtual DimensionValue AdvertiserIdDimensionValue { get; set; } 
+        public virtual DimensionValue AdvertiserIdDimensionValue { get; set; }
 
         /// <summary>Remarketing list description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Remarketing list ID. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#remarketingList".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Number of days that a user should remain in the remarketing list without an impression. Acceptable
         /// values are 1 to 540, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifeSpan")]
-        public virtual System.Nullable<long> LifeSpan { get; set; } 
+        public virtual System.Nullable<long> LifeSpan { get; set; }
 
         /// <summary>Rule used to populate the remarketing list with users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listPopulationRule")]
-        public virtual ListPopulationRule ListPopulationRule { get; set; } 
+        public virtual ListPopulationRule ListPopulationRule { get; set; }
 
         /// <summary>Number of users currently in the list. This is a read-only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listSize")]
-        public virtual System.Nullable<long> ListSize { get; set; } 
+        public virtual System.Nullable<long> ListSize { get; set; }
 
         /// <summary>Product from which this remarketing list was originated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listSource")]
-        public virtual string ListSource { get; set; } 
+        public virtual string ListSource { get; set; }
 
         /// <summary>Name of the remarketing list. This is a required field. Must be no greater than 128 characters
         /// long.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Subaccount ID of this remarketing list. This is a read-only, auto-generated field that is only
         /// returned in GET requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subaccountId")]
-        public virtual System.Nullable<long> SubaccountId { get; set; } 
+        public virtual System.Nullable<long> SubaccountId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25734,19 +25734,19 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#remarketingListShare".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Remarketing list ID. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remarketingListId")]
-        public virtual System.Nullable<long> RemarketingListId { get; set; } 
+        public virtual System.Nullable<long> RemarketingListId { get; set; }
 
         /// <summary>Accounts that the remarketing list is shared with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sharedAccountIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> SharedAccountIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> SharedAccountIds { get; set; }
 
         /// <summary>Advertisers that the remarketing list is shared with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sharedAdvertiserIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> SharedAdvertiserIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> SharedAdvertiserIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25758,15 +25758,15 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#remarketingListsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Remarketing list collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remarketingLists")]
-        public virtual System.Collections.Generic.IList<RemarketingList> RemarketingLists { get; set; } 
+        public virtual System.Collections.Generic.IList<RemarketingList> RemarketingLists { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25777,78 +25777,78 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>The account ID to which this report belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>The report criteria for a report of type "STANDARD".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("criteria")]
-        public virtual CriteriaData Criteria { get; set; } 
+        public virtual CriteriaData Criteria { get; set; }
 
         /// <summary>The report criteria for a report of type "CROSS_DIMENSION_REACH".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crossDimensionReachCriteria")]
-        public virtual CrossDimensionReachCriteriaData CrossDimensionReachCriteria { get; set; } 
+        public virtual CrossDimensionReachCriteriaData CrossDimensionReachCriteria { get; set; }
 
         /// <summary>The report's email delivery settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delivery")]
-        public virtual DeliveryData Delivery { get; set; } 
+        public virtual DeliveryData Delivery { get; set; }
 
         /// <summary>The eTag of this response for caching purposes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The filename used when generating report files for this report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileName")]
-        public virtual string FileName { get; set; } 
+        public virtual string FileName { get; set; }
 
         /// <summary>The report criteria for a report of type "FLOODLIGHT".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightCriteria")]
-        public virtual FloodlightCriteriaData FloodlightCriteria { get; set; } 
+        public virtual FloodlightCriteriaData FloodlightCriteria { get; set; }
 
         /// <summary>The output format of the report. If not specified, default format is "CSV". Note that the actual
         /// format in the completed report file might differ if for instance the report's size exceeds the format's
         /// capabilities. "CSV" will then be the fallback format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
-        public virtual string Format { get; set; } 
+        public virtual string Format { get; set; }
 
         /// <summary>The unique ID identifying this report resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>The kind of resource this is, in this case dfareporting#report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The timestamp (in milliseconds since epoch) of when this report was last modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
-        public virtual System.Nullable<ulong> LastModifiedTime { get; set; } 
+        public virtual System.Nullable<ulong> LastModifiedTime { get; set; }
 
         /// <summary>The name of the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The user profile id of the owner of this report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownerProfileId")]
-        public virtual System.Nullable<long> OwnerProfileId { get; set; } 
+        public virtual System.Nullable<long> OwnerProfileId { get; set; }
 
         /// <summary>The report criteria for a report of type "PATH_TO_CONVERSION".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathToConversionCriteria")]
-        public virtual PathToConversionCriteriaData PathToConversionCriteria { get; set; } 
+        public virtual PathToConversionCriteriaData PathToConversionCriteria { get; set; }
 
         /// <summary>The report criteria for a report of type "REACH".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reachCriteria")]
-        public virtual ReachCriteriaData ReachCriteria { get; set; } 
+        public virtual ReachCriteriaData ReachCriteria { get; set; }
 
         /// <summary>The report's schedule. Can only be set if the report's 'dateRange' is a relative date range and the
         /// relative date range is not "TODAY".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
-        public virtual ScheduleData Schedule { get; set; } 
+        public virtual ScheduleData Schedule { get; set; }
 
         /// <summary>The subaccount ID to which this report belongs if applicable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subAccountId")]
-        public virtual System.Nullable<long> SubAccountId { get; set; } 
+        public virtual System.Nullable<long> SubAccountId { get; set; }
 
         /// <summary>The type of the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         
 
@@ -25857,28 +25857,28 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         {
             /// <summary>Activity group.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("activities")]
-            public virtual Activities Activities { get; set; } 
+            public virtual Activities Activities { get; set; }
 
             /// <summary>Custom Rich Media Events group.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("customRichMediaEvents")]
-            public virtual CustomRichMediaEvents CustomRichMediaEvents { get; set; } 
+            public virtual CustomRichMediaEvents CustomRichMediaEvents { get; set; }
 
             /// <summary>The date range for which this report should be run.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("dateRange")]
-            public virtual DateRange DateRange { get; set; } 
+            public virtual DateRange DateRange { get; set; }
 
             /// <summary>The list of filters on which dimensions are filtered. Filters for different dimensions are
             /// ANDed, filters for the same dimension are grouped together and ORed.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("dimensionFilters")]
-            public virtual System.Collections.Generic.IList<DimensionValue> DimensionFilters { get; set; } 
+            public virtual System.Collections.Generic.IList<DimensionValue> DimensionFilters { get; set; }
 
             /// <summary>The list of standard dimensions the report should include.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
-            public virtual System.Collections.Generic.IList<SortedDimension> Dimensions { get; set; } 
+            public virtual System.Collections.Generic.IList<SortedDimension> Dimensions { get; set; }
 
             /// <summary>The list of names of metrics the report should include.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("metricNames")]
-            public virtual System.Collections.Generic.IList<string> MetricNames { get; set; } 
+            public virtual System.Collections.Generic.IList<string> MetricNames { get; set; }
 
         }    
 
@@ -25887,31 +25887,31 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         {
             /// <summary>The list of dimensions the report should include.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("breakdown")]
-            public virtual System.Collections.Generic.IList<SortedDimension> Breakdown { get; set; } 
+            public virtual System.Collections.Generic.IList<SortedDimension> Breakdown { get; set; }
 
             /// <summary>The date range this report should be run for.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("dateRange")]
-            public virtual DateRange DateRange { get; set; } 
+            public virtual DateRange DateRange { get; set; }
 
             /// <summary>The dimension option.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("dimension")]
-            public virtual string Dimension { get; set; } 
+            public virtual string Dimension { get; set; }
 
             /// <summary>The list of filters on which dimensions are filtered.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("dimensionFilters")]
-            public virtual System.Collections.Generic.IList<DimensionValue> DimensionFilters { get; set; } 
+            public virtual System.Collections.Generic.IList<DimensionValue> DimensionFilters { get; set; }
 
             /// <summary>The list of names of metrics the report should include.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("metricNames")]
-            public virtual System.Collections.Generic.IList<string> MetricNames { get; set; } 
+            public virtual System.Collections.Generic.IList<string> MetricNames { get; set; }
 
             /// <summary>The list of names of overlap metrics the report should include.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("overlapMetricNames")]
-            public virtual System.Collections.Generic.IList<string> OverlapMetricNames { get; set; } 
+            public virtual System.Collections.Generic.IList<string> OverlapMetricNames { get; set; }
 
             /// <summary>Whether the report is pivoted or not. Defaults to true.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("pivoted")]
-            public virtual System.Nullable<bool> Pivoted { get; set; } 
+            public virtual System.Nullable<bool> Pivoted { get; set; }
 
         }    
 
@@ -25920,19 +25920,19 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         {
             /// <summary>Whether the report should be emailed to the report owner.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("emailOwner")]
-            public virtual System.Nullable<bool> EmailOwner { get; set; } 
+            public virtual System.Nullable<bool> EmailOwner { get; set; }
 
             /// <summary>The type of delivery for the owner to receive, if enabled.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("emailOwnerDeliveryType")]
-            public virtual string EmailOwnerDeliveryType { get; set; } 
+            public virtual string EmailOwnerDeliveryType { get; set; }
 
             /// <summary>The message to be sent with each email.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
-            public virtual string Message { get; set; } 
+            public virtual string Message { get; set; }
 
             /// <summary>The list of recipients to which to email the report.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("recipients")]
-            public virtual System.Collections.Generic.IList<Recipient> Recipients { get; set; } 
+            public virtual System.Collections.Generic.IList<Recipient> Recipients { get; set; }
 
         }    
 
@@ -25941,34 +25941,34 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         {
             /// <summary>The list of custom rich media events to include.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("customRichMediaEvents")]
-            public virtual System.Collections.Generic.IList<DimensionValue> CustomRichMediaEvents { get; set; } 
+            public virtual System.Collections.Generic.IList<DimensionValue> CustomRichMediaEvents { get; set; }
 
             /// <summary>The date range this report should be run for.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("dateRange")]
-            public virtual DateRange DateRange { get; set; } 
+            public virtual DateRange DateRange { get; set; }
 
             /// <summary>The list of filters on which dimensions are filtered. Filters for different dimensions are
             /// ANDed, filters for the same dimension are grouped together and ORed.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("dimensionFilters")]
-            public virtual System.Collections.Generic.IList<DimensionValue> DimensionFilters { get; set; } 
+            public virtual System.Collections.Generic.IList<DimensionValue> DimensionFilters { get; set; }
 
             /// <summary>The list of dimensions the report should include.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
-            public virtual System.Collections.Generic.IList<SortedDimension> Dimensions { get; set; } 
+            public virtual System.Collections.Generic.IList<SortedDimension> Dimensions { get; set; }
 
             /// <summary>The floodlight ID for which to show data in this report. All advertisers associated with that
             /// ID will automatically be added. The dimension of the value needs to be
             /// 'dfa:floodlightConfigId'.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("floodlightConfigId")]
-            public virtual DimensionValue FloodlightConfigId { get; set; } 
+            public virtual DimensionValue FloodlightConfigId { get; set; }
 
             /// <summary>The list of names of metrics the report should include.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("metricNames")]
-            public virtual System.Collections.Generic.IList<string> MetricNames { get; set; } 
+            public virtual System.Collections.Generic.IList<string> MetricNames { get; set; }
 
             /// <summary>The properties of the report.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("reportProperties")]
-            public virtual ReportPropertiesData ReportProperties { get; set; } 
+            public virtual ReportPropertiesData ReportProperties { get; set; }
 
             
 
@@ -25977,19 +25977,19 @@ namespace Google.Apis.Dfareporting.v3_3.Data
             {
                 /// <summary>Include conversions that have no cookie, but do have an exposure path.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("includeAttributedIPConversions")]
-                public virtual System.Nullable<bool> IncludeAttributedIPConversions { get; set; } 
+                public virtual System.Nullable<bool> IncludeAttributedIPConversions { get; set; }
 
                 /// <summary>Include conversions of users with a DoubleClick cookie but without an exposure. That means
                 /// the user did not click or see an ad from the advertiser within the Floodlight group, or that the
                 /// interaction happened outside the lookback window.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("includeUnattributedCookieConversions")]
-                public virtual System.Nullable<bool> IncludeUnattributedCookieConversions { get; set; } 
+                public virtual System.Nullable<bool> IncludeUnattributedCookieConversions { get; set; }
 
                 /// <summary>Include conversions that have no associated cookies and no exposures. It’s therefore
                 /// impossible to know how the user was exposed to your ads during the lookback window prior to a
                 /// conversion.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("includeUnattributedIPConversions")]
-                public virtual System.Nullable<bool> IncludeUnattributedIPConversions { get; set; } 
+                public virtual System.Nullable<bool> IncludeUnattributedIPConversions { get; set; }
 
             }
         }    
@@ -25999,41 +25999,41 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         {
             /// <summary>The list of 'dfa:activity' values to filter on.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("activityFilters")]
-            public virtual System.Collections.Generic.IList<DimensionValue> ActivityFilters { get; set; } 
+            public virtual System.Collections.Generic.IList<DimensionValue> ActivityFilters { get; set; }
 
             /// <summary>The list of conversion dimensions the report should include.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("conversionDimensions")]
-            public virtual System.Collections.Generic.IList<SortedDimension> ConversionDimensions { get; set; } 
+            public virtual System.Collections.Generic.IList<SortedDimension> ConversionDimensions { get; set; }
 
             /// <summary>The list of custom floodlight variables the report should include.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("customFloodlightVariables")]
-            public virtual System.Collections.Generic.IList<SortedDimension> CustomFloodlightVariables { get; set; } 
+            public virtual System.Collections.Generic.IList<SortedDimension> CustomFloodlightVariables { get; set; }
 
             /// <summary>The list of custom rich media events to include.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("customRichMediaEvents")]
-            public virtual System.Collections.Generic.IList<DimensionValue> CustomRichMediaEvents { get; set; } 
+            public virtual System.Collections.Generic.IList<DimensionValue> CustomRichMediaEvents { get; set; }
 
             /// <summary>The date range this report should be run for.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("dateRange")]
-            public virtual DateRange DateRange { get; set; } 
+            public virtual DateRange DateRange { get; set; }
 
             /// <summary>The floodlight ID for which to show data in this report. All advertisers associated with that
             /// ID will automatically be added. The dimension of the value needs to be
             /// 'dfa:floodlightConfigId'.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("floodlightConfigId")]
-            public virtual DimensionValue FloodlightConfigId { get; set; } 
+            public virtual DimensionValue FloodlightConfigId { get; set; }
 
             /// <summary>The list of names of metrics the report should include.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("metricNames")]
-            public virtual System.Collections.Generic.IList<string> MetricNames { get; set; } 
+            public virtual System.Collections.Generic.IList<string> MetricNames { get; set; }
 
             /// <summary>The list of per interaction dimensions the report should include.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("perInteractionDimensions")]
-            public virtual System.Collections.Generic.IList<SortedDimension> PerInteractionDimensions { get; set; } 
+            public virtual System.Collections.Generic.IList<SortedDimension> PerInteractionDimensions { get; set; }
 
             /// <summary>The properties of the report.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("reportProperties")]
-            public virtual ReportPropertiesData ReportProperties { get; set; } 
+            public virtual ReportPropertiesData ReportProperties { get; set; }
 
             
 
@@ -26044,50 +26044,50 @@ namespace Google.Apis.Dfareporting.v3_3.Data
                 /// before a conversion. By default the value is pulled from Floodlight or you can manually enter a
                 /// custom value. Valid values: 1-90.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("clicksLookbackWindow")]
-                public virtual System.Nullable<int> ClicksLookbackWindow { get; set; } 
+                public virtual System.Nullable<int> ClicksLookbackWindow { get; set; }
 
                 /// <summary>DFA checks to see if an impression interaction occurred within the specified period of time
                 /// before a conversion. By default the value is pulled from Floodlight or you can manually enter a
                 /// custom value. Valid values: 1-90.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("impressionsLookbackWindow")]
-                public virtual System.Nullable<int> ImpressionsLookbackWindow { get; set; } 
+                public virtual System.Nullable<int> ImpressionsLookbackWindow { get; set; }
 
                 /// <summary>Deprecated: has no effect.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("includeAttributedIPConversions")]
-                public virtual System.Nullable<bool> IncludeAttributedIPConversions { get; set; } 
+                public virtual System.Nullable<bool> IncludeAttributedIPConversions { get; set; }
 
                 /// <summary>Include conversions of users with a DoubleClick cookie but without an exposure. That means
                 /// the user did not click or see an ad from the advertiser within the Floodlight group, or that the
                 /// interaction happened outside the lookback window.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("includeUnattributedCookieConversions")]
-                public virtual System.Nullable<bool> IncludeUnattributedCookieConversions { get; set; } 
+                public virtual System.Nullable<bool> IncludeUnattributedCookieConversions { get; set; }
 
                 /// <summary>Include conversions that have no associated cookies and no exposures. It’s therefore
                 /// impossible to know how the user was exposed to your ads during the lookback window prior to a
                 /// conversion.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("includeUnattributedIPConversions")]
-                public virtual System.Nullable<bool> IncludeUnattributedIPConversions { get; set; } 
+                public virtual System.Nullable<bool> IncludeUnattributedIPConversions { get; set; }
 
                 /// <summary>The maximum number of click interactions to include in the report. Advertisers currently
                 /// paying for E2C reports get up to 200 (100 clicks, 100 impressions). If another advertiser in your
                 /// network is paying for E2C, you can have up to 5 total exposures per report.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("maximumClickInteractions")]
-                public virtual System.Nullable<int> MaximumClickInteractions { get; set; } 
+                public virtual System.Nullable<int> MaximumClickInteractions { get; set; }
 
                 /// <summary>The maximum number of click interactions to include in the report. Advertisers currently
                 /// paying for E2C reports get up to 200 (100 clicks, 100 impressions). If another advertiser in your
                 /// network is paying for E2C, you can have up to 5 total exposures per report.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("maximumImpressionInteractions")]
-                public virtual System.Nullable<int> MaximumImpressionInteractions { get; set; } 
+                public virtual System.Nullable<int> MaximumImpressionInteractions { get; set; }
 
                 /// <summary>The maximum amount of time that can take place between interactions (clicks or impressions)
                 /// by the same user. Valid values: 1-90.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("maximumInteractionGap")]
-                public virtual System.Nullable<int> MaximumInteractionGap { get; set; } 
+                public virtual System.Nullable<int> MaximumInteractionGap { get; set; }
 
                 /// <summary>Enable pivoting on interaction path.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("pivotOnInteractionPath")]
-                public virtual System.Nullable<bool> PivotOnInteractionPath { get; set; } 
+                public virtual System.Nullable<bool> PivotOnInteractionPath { get; set; }
 
             }
         }    
@@ -26097,37 +26097,37 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         {
             /// <summary>Activity group.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("activities")]
-            public virtual Activities Activities { get; set; } 
+            public virtual Activities Activities { get; set; }
 
             /// <summary>Custom Rich Media Events group.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("customRichMediaEvents")]
-            public virtual CustomRichMediaEvents CustomRichMediaEvents { get; set; } 
+            public virtual CustomRichMediaEvents CustomRichMediaEvents { get; set; }
 
             /// <summary>The date range this report should be run for.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("dateRange")]
-            public virtual DateRange DateRange { get; set; } 
+            public virtual DateRange DateRange { get; set; }
 
             /// <summary>The list of filters on which dimensions are filtered. Filters for different dimensions are
             /// ANDed, filters for the same dimension are grouped together and ORed.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("dimensionFilters")]
-            public virtual System.Collections.Generic.IList<DimensionValue> DimensionFilters { get; set; } 
+            public virtual System.Collections.Generic.IList<DimensionValue> DimensionFilters { get; set; }
 
             /// <summary>The list of dimensions the report should include.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
-            public virtual System.Collections.Generic.IList<SortedDimension> Dimensions { get; set; } 
+            public virtual System.Collections.Generic.IList<SortedDimension> Dimensions { get; set; }
 
             /// <summary>Whether to enable all reach dimension combinations in the report. Defaults to false. If
             /// enabled, the date range of the report should be within the last 42 days.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("enableAllDimensionCombinations")]
-            public virtual System.Nullable<bool> EnableAllDimensionCombinations { get; set; } 
+            public virtual System.Nullable<bool> EnableAllDimensionCombinations { get; set; }
 
             /// <summary>The list of names of metrics the report should include.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("metricNames")]
-            public virtual System.Collections.Generic.IList<string> MetricNames { get; set; } 
+            public virtual System.Collections.Generic.IList<string> MetricNames { get; set; }
 
             /// <summary>The list of names of Reach By Frequency metrics the report should include.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("reachByFrequencyMetricNames")]
-            public virtual System.Collections.Generic.IList<string> ReachByFrequencyMetricNames { get; set; } 
+            public virtual System.Collections.Generic.IList<string> ReachByFrequencyMetricNames { get; set; }
 
         }    
 
@@ -26137,35 +26137,35 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         {
             /// <summary>Whether the schedule is active or not. Must be set to either true or false.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("active")]
-            public virtual System.Nullable<bool> Active { get; set; } 
+            public virtual System.Nullable<bool> Active { get; set; }
 
             /// <summary>Defines every how many days, weeks or months the report should be run. Needs to be set when
             /// "repeats" is either "DAILY", "WEEKLY" or "MONTHLY".</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("every")]
-            public virtual System.Nullable<int> Every { get; set; } 
+            public virtual System.Nullable<int> Every { get; set; }
 
             [Newtonsoft.Json.JsonPropertyAttribute("expirationDate")]
-            public virtual string ExpirationDate { get; set; } 
+            public virtual string ExpirationDate { get; set; }
 
             /// <summary>The interval for which the report is repeated. Note: - "DAILY" also requires field "every" to
             /// be set. - "WEEKLY" also requires fields "every" and "repeatsOnWeekDays" to be set. - "MONTHLY" also
             /// requires fields "every" and "runsOnDayOfMonth" to be set. </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("repeats")]
-            public virtual string Repeats { get; set; } 
+            public virtual string Repeats { get; set; }
 
             /// <summary>List of week days "WEEKLY" on which scheduled reports should run.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("repeatsOnWeekDays")]
-            public virtual System.Collections.Generic.IList<string> RepeatsOnWeekDays { get; set; } 
+            public virtual System.Collections.Generic.IList<string> RepeatsOnWeekDays { get; set; }
 
             /// <summary>Enum to define for "MONTHLY" scheduled reports whether reports should be repeated on the same
             /// day of the month as "startDate" or the same day of the week of the month. Example: If 'startDate' is
             /// Monday, April 2nd 2012 (2012-04-02), "DAY_OF_MONTH" would run subsequent reports on the 2nd of every
             /// Month, and "WEEK_OF_MONTH" would run subsequent reports on the first Monday of the month.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("runsOnDayOfMonth")]
-            public virtual string RunsOnDayOfMonth { get; set; } 
+            public virtual string RunsOnDayOfMonth { get; set; }
 
             [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
-            public virtual string StartDate { get; set; } 
+            public virtual string StartDate { get; set; }
 
         }
     }    
@@ -26176,24 +26176,24 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Dimensions which are compatible to be selected in the "dimensionFilters" section of the
         /// report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionFilters")]
-        public virtual System.Collections.Generic.IList<Dimension> DimensionFilters { get; set; } 
+        public virtual System.Collections.Generic.IList<Dimension> DimensionFilters { get; set; }
 
         /// <summary>Dimensions which are compatible to be selected in the "dimensions" section of the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
-        public virtual System.Collections.Generic.IList<Dimension> Dimensions { get; set; } 
+        public virtual System.Collections.Generic.IList<Dimension> Dimensions { get; set; }
 
         /// <summary>The kind of resource this is, in this case dfareporting#reportCompatibleFields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Metrics which are compatible to be selected in the "metricNames" section of the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
-        public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; } 
+        public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; }
 
         /// <summary>Metrics which are compatible to be selected as activity metrics to pivot on in the "activities"
         /// section of the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pivotedActivityMetrics")]
-        public virtual System.Collections.Generic.IList<Metric> PivotedActivityMetrics { get; set; } 
+        public virtual System.Collections.Generic.IList<Metric> PivotedActivityMetrics { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26204,21 +26204,21 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>The eTag of this response for caching purposes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The reports returned in this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Report> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Report> Items { get; set; }
 
         /// <summary>The kind of list this is, in this case dfareporting#reportList.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Continuation token used to page through reports. To retrieve the next page of results, set the next
         /// request's "pageToken" to the value of this field. The page token is only valid for a limited amount of time
         /// and should not be persisted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
     }    
 
@@ -26228,11 +26228,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Whether the exposure to conversion report is enabled. This report shows detailed pathway
         /// information on up to 10 of the most recent ad exposures seen by a user before converting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exposureToConversionEnabled")]
-        public virtual System.Nullable<bool> ExposureToConversionEnabled { get; set; } 
+        public virtual System.Nullable<bool> ExposureToConversionEnabled { get; set; }
 
         /// <summary>Default lookback windows for new advertisers in this account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lookbackConfiguration")]
-        public virtual LookbackConfiguration LookbackConfiguration { get; set; } 
+        public virtual LookbackConfiguration LookbackConfiguration { get; set; }
 
         /// <summary>Report generation time zone ID of this account. This is a required field that can only be changed
         /// by a superuser. Acceptable values are: - "1" for "America/New_York" - "2" for "Europe/London" - "3" for
@@ -26246,7 +26246,7 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// for "Europe/Moscow" - "32" for "Pacific/Kiritimati" - "35" for "Pacific/Norfolk" - "36" for
         /// "Pacific/Tongatapu" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportGenerationTimeZoneId")]
-        public virtual System.Nullable<long> ReportGenerationTimeZoneId { get; set; } 
+        public virtual System.Nullable<long> ReportGenerationTimeZoneId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26258,15 +26258,15 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Click-through URL of this rich media exit override. Applicable if the enabled field is set to
         /// true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickThroughUrl")]
-        public virtual ClickThroughUrl ClickThroughUrl { get; set; } 
+        public virtual ClickThroughUrl ClickThroughUrl { get; set; }
 
         /// <summary>Whether to use the clickThroughUrl. If false, the creative-level exit will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>ID for the override to refer to a specific exit in the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exitId")]
-        public virtual System.Nullable<long> ExitId { get; set; } 
+        public virtual System.Nullable<long> ExitId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26279,16 +26279,16 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>A creativeAssets[].id. This should refer to one of the parent assets in this creative. This is a
         /// required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetId")]
-        public virtual System.Nullable<long> AssetId { get; set; } 
+        public virtual System.Nullable<long> AssetId { get; set; }
 
         /// <summary>A user-friendly name for this rule. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>A targeting template ID. The targeting from the targeting template will be used to determine
         /// whether this asset should be served. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingTemplateId")]
-        public virtual System.Nullable<long> TargetingTemplateId { get; set; } 
+        public virtual System.Nullable<long> TargetingTemplateId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26299,60 +26299,60 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Account ID of this site. This is a read-only field that can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>Whether this site is approved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approved")]
-        public virtual System.Nullable<bool> Approved { get; set; } 
+        public virtual System.Nullable<bool> Approved { get; set; }
 
         /// <summary>Directory site associated with this site. This is a required field that is read-only after
         /// insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directorySiteId")]
-        public virtual System.Nullable<long> DirectorySiteId { get; set; } 
+        public virtual System.Nullable<long> DirectorySiteId { get; set; }
 
         /// <summary>Dimension value for the ID of the directory site. This is a read-only, auto-generated
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directorySiteIdDimensionValue")]
-        public virtual DimensionValue DirectorySiteIdDimensionValue { get; set; } 
+        public virtual DimensionValue DirectorySiteIdDimensionValue { get; set; }
 
         /// <summary>ID of this site. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Dimension value for the ID of this site. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idDimensionValue")]
-        public virtual DimensionValue IdDimensionValue { get; set; } 
+        public virtual DimensionValue IdDimensionValue { get; set; }
 
         /// <summary>Key name of this site. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyName")]
-        public virtual string KeyName { get; set; } 
+        public virtual string KeyName { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "dfareporting#site".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this site.This is a required field. Must be less than 128 characters long. If this site is
         /// under a subaccount, the name must be unique among sites of the same subaccount. Otherwise, this site is a
         /// top-level site, and the name must be unique among top-level sites of the same account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Site contacts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteContacts")]
-        public virtual System.Collections.Generic.IList<SiteContact> SiteContacts { get; set; } 
+        public virtual System.Collections.Generic.IList<SiteContact> SiteContacts { get; set; }
 
         /// <summary>Site-wide settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteSettings")]
-        public virtual SiteSettings SiteSettings { get; set; } 
+        public virtual SiteSettings SiteSettings { get; set; }
 
         /// <summary>Subaccount ID of this site. This is a read-only field that can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subaccountId")]
-        public virtual System.Nullable<long> SubaccountId { get; set; } 
+        public virtual System.Nullable<long> SubaccountId { get; set; }
 
         /// <summary>Default video settings for new placements created under this site. This value will be used to
         /// populate the placements.videoSettings field, when no value is specified for the new placement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoSettings")]
-        public virtual SiteVideoSettings VideoSettings { get; set; } 
+        public virtual SiteVideoSettings VideoSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26363,21 +26363,21 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Whether companions are disabled for this site template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companionsDisabled")]
-        public virtual System.Nullable<bool> CompanionsDisabled { get; set; } 
+        public virtual System.Nullable<bool> CompanionsDisabled { get; set; }
 
         /// <summary>Whitelist of companion sizes to be served via this site template. Set this list to null or empty to
         /// serve all companion sizes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabledSizes")]
-        public virtual System.Collections.Generic.IList<Size> EnabledSizes { get; set; } 
+        public virtual System.Collections.Generic.IList<Size> EnabledSizes { get; set; }
 
         /// <summary>Whether to serve only static images as companions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageOnly")]
-        public virtual System.Nullable<bool> ImageOnly { get; set; } 
+        public virtual System.Nullable<bool> ImageOnly { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#siteCompanionSetting".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26388,35 +26388,35 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Address of this site contact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
-        public virtual string Address { get; set; } 
+        public virtual string Address { get; set; }
 
         /// <summary>Site contact type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactType")]
-        public virtual string ContactType { get; set; } 
+        public virtual string ContactType { get; set; }
 
         /// <summary>Email address of this site contact. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; } 
+        public virtual string Email { get; set; }
 
         /// <summary>First name of this site contact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstName")]
-        public virtual string FirstName { get; set; } 
+        public virtual string FirstName { get; set; }
 
         /// <summary>ID of this site contact. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Last name of this site contact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastName")]
-        public virtual string LastName { get; set; } 
+        public virtual string LastName { get; set; }
 
         /// <summary>Primary phone number of this site contact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phone")]
-        public virtual string Phone { get; set; } 
+        public virtual string Phone { get; set; }
 
         /// <summary>Title or designation of this site contact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26427,27 +26427,27 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Whether active view creatives are disabled for this site.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeViewOptOut")]
-        public virtual System.Nullable<bool> ActiveViewOptOut { get; set; } 
+        public virtual System.Nullable<bool> ActiveViewOptOut { get; set; }
 
         /// <summary>Whether this site opts out of ad blocking. When true, ad blocking is disabled for all placements
         /// under the site, regardless of the individual placement settings. When false, the campaign and placement
         /// settings take effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adBlockingOptOut")]
-        public virtual System.Nullable<bool> AdBlockingOptOut { get; set; } 
+        public virtual System.Nullable<bool> AdBlockingOptOut { get; set; }
 
         /// <summary>Whether new cookies are disabled for this site.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableNewCookie")]
-        public virtual System.Nullable<bool> DisableNewCookie { get; set; } 
+        public virtual System.Nullable<bool> DisableNewCookie { get; set; }
 
         /// <summary>Configuration settings for dynamic and image floodlight tags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagSetting")]
-        public virtual TagSetting TagSetting { get; set; } 
+        public virtual TagSetting TagSetting { get; set; }
 
         /// <summary>Whether Verification and ActiveView for in-stream video creatives are disabled by default for new
         /// placements created under this site. This value will be used to populate the placement.videoActiveViewOptOut
         /// field, when no value is specified for the new placement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoActiveViewOptOutTemplate")]
-        public virtual System.Nullable<bool> VideoActiveViewOptOutTemplate { get; set; } 
+        public virtual System.Nullable<bool> VideoActiveViewOptOutTemplate { get; set; }
 
         /// <summary>Default VPAID adapter setting for new placements created under this site. This value will be used
         /// to populate the placements.vpaidAdapterChoice field, when no value is specified for the new placement.
@@ -26457,7 +26457,7 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// no longer supported. This field now defaults to HTML5 when the following values are provided: FLASH,
         /// BOTH.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpaidAdapterChoiceTemplate")]
-        public virtual string VpaidAdapterChoiceTemplate { get; set; } 
+        public virtual string VpaidAdapterChoiceTemplate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26469,22 +26469,22 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#siteSkippableSetting".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Amount of time to play videos served to this site template before counting a view. Applicable when
         /// skippable is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressOffset")]
-        public virtual VideoOffset ProgressOffset { get; set; } 
+        public virtual VideoOffset ProgressOffset { get; set; }
 
         /// <summary>Amount of time to play videos served to this site before the skip button should appear. Applicable
         /// when skippable is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipOffset")]
-        public virtual VideoOffset SkipOffset { get; set; } 
+        public virtual VideoOffset SkipOffset { get; set; }
 
         /// <summary>Whether the user can skip creatives served to this site. This will act as default for new
         /// placements created under this site.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skippable")]
-        public virtual System.Nullable<bool> Skippable { get; set; } 
+        public virtual System.Nullable<bool> Skippable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26496,12 +26496,12 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Whitelist of video formats to be served to this site template. Set this list to null or empty to
         /// serve all video formats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabledVideoFormats")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> EnabledVideoFormats { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> EnabledVideoFormats { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#siteTranscodeSetting".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26512,27 +26512,27 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Settings for the companion creatives of video creatives served to this site.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companionSettings")]
-        public virtual SiteCompanionSetting CompanionSettings { get; set; } 
+        public virtual SiteCompanionSetting CompanionSettings { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#siteVideoSettings".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Orientation of a site template used for video. This will act as default for new placements created
         /// under this site.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orientation")]
-        public virtual string Orientation { get; set; } 
+        public virtual string Orientation { get; set; }
 
         /// <summary>Settings for the skippability of video creatives served to this site. This will act as default for
         /// new placements created under this site.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skippableSettings")]
-        public virtual SiteSkippableSetting SkippableSettings { get; set; } 
+        public virtual SiteSkippableSetting SkippableSettings { get; set; }
 
         /// <summary>Settings for the transcodes of video creatives served to this site. This will act as default for
         /// new placements created under this site.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transcodeSettings")]
-        public virtual SiteTranscodeSetting TranscodeSettings { get; set; } 
+        public virtual SiteTranscodeSetting TranscodeSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26544,15 +26544,15 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#sitesListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Site collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sites")]
-        public virtual System.Collections.Generic.IList<Site> Sites { get; set; } 
+        public virtual System.Collections.Generic.IList<Site> Sites { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26563,23 +26563,23 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Height of this size. Acceptable values are 0 to 32767, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
-        public virtual System.Nullable<int> Height { get; set; } 
+        public virtual System.Nullable<int> Height { get; set; }
 
         /// <summary>IAB standard size. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iab")]
-        public virtual System.Nullable<bool> Iab { get; set; } 
+        public virtual System.Nullable<bool> Iab { get; set; }
 
         /// <summary>ID of this size. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "dfareporting#size".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Width of this size. Acceptable values are 0 to 32767, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
-        public virtual System.Nullable<int> Width { get; set; } 
+        public virtual System.Nullable<int> Width { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26591,11 +26591,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#sizesListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Size collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizes")]
-        public virtual System.Collections.Generic.IList<Size> Sizes { get; set; } 
+        public virtual System.Collections.Generic.IList<Size> Sizes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26607,21 +26607,21 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#skippableSetting".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Amount of time to play videos served to this placement before counting a view. Applicable when
         /// skippable is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressOffset")]
-        public virtual VideoOffset ProgressOffset { get; set; } 
+        public virtual VideoOffset ProgressOffset { get; set; }
 
         /// <summary>Amount of time to play videos served to this placement before the skip button should appear.
         /// Applicable when skippable is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipOffset")]
-        public virtual VideoOffset SkipOffset { get; set; } 
+        public virtual VideoOffset SkipOffset { get; set; }
 
         /// <summary>Whether the user can skip creatives served to this placement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skippable")]
-        public virtual System.Nullable<bool> Skippable { get; set; } 
+        public virtual System.Nullable<bool> Skippable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26632,15 +26632,15 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>The kind of resource this is, in this case dfareporting#sortedDimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The name of the dimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>An optional sort order for the dimension column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sortOrder")]
-        public virtual string SortOrder { get; set; } 
+        public virtual string SortOrder { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26652,25 +26652,25 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>ID of the account that contains this subaccount. This is a read-only field that can be left
         /// blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>IDs of the available user role permissions for this subaccount.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availablePermissionIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> AvailablePermissionIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> AvailablePermissionIds { get; set; }
 
         /// <summary>ID of this subaccount. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#subaccount".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this subaccount. This is a required field. Must be less than 128 characters long and be
         /// unique among subaccounts of the same account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26682,15 +26682,15 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#subaccountsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Subaccount collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subaccounts")]
-        public virtual System.Collections.Generic.IList<Subaccount> Subaccounts { get; set; } 
+        public virtual System.Collections.Generic.IList<Subaccount> Subaccounts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26702,24 +26702,24 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Ad associated with this placement tag. Applicable only when format is
         /// PLACEMENT_TAG_TRACKING.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adId")]
-        public virtual System.Nullable<long> AdId { get; set; } 
+        public virtual System.Nullable<long> AdId { get; set; }
 
         /// <summary>Tag string to record a click.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickTag")]
-        public virtual string ClickTag { get; set; } 
+        public virtual string ClickTag { get; set; }
 
         /// <summary>Creative associated with this placement tag. Applicable only when format is
         /// PLACEMENT_TAG_TRACKING.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeId")]
-        public virtual System.Nullable<long> CreativeId { get; set; } 
+        public virtual System.Nullable<long> CreativeId { get; set; }
 
         /// <summary>TagData tag format of this tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
-        public virtual string Format { get; set; } 
+        public virtual string Format { get; set; }
 
         /// <summary>Tag string for serving an ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("impressionTag")]
-        public virtual string ImpressionTag { get; set; } 
+        public virtual string ImpressionTag { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26732,22 +26732,22 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// and pairs must be separated by a semicolon (;). Keys and values must not contain commas. For example,
         /// id=2;color=red is a valid value for this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalKeyValues")]
-        public virtual string AdditionalKeyValues { get; set; } 
+        public virtual string AdditionalKeyValues { get; set; }
 
         /// <summary>Whether static landing page URLs should be included in the tags. This setting applies only to
         /// placements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeClickThroughUrls")]
-        public virtual System.Nullable<bool> IncludeClickThroughUrls { get; set; } 
+        public virtual System.Nullable<bool> IncludeClickThroughUrls { get; set; }
 
         /// <summary>Whether click-tracking string should be included in the tags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeClickTracking")]
-        public virtual System.Nullable<bool> IncludeClickTracking { get; set; } 
+        public virtual System.Nullable<bool> IncludeClickTracking { get; set; }
 
         /// <summary>Option specifying how keywords are embedded in ad tags. This setting can be used to specify whether
         /// keyword placeholders are inserted in placement tags for this site. Publishers can then add keywords to those
         /// placeholders.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keywordOption")]
-        public virtual string KeywordOption { get; set; } 
+        public virtual string KeywordOption { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26758,11 +26758,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Whether dynamic floodlight tags are enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dynamicTagEnabled")]
-        public virtual System.Nullable<bool> DynamicTagEnabled { get; set; } 
+        public virtual System.Nullable<bool> DynamicTagEnabled { get; set; }
 
         /// <summary>Whether image tags are enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageTagEnabled")]
-        public virtual System.Nullable<bool> ImageTagEnabled { get; set; } 
+        public virtual System.Nullable<bool> ImageTagEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26773,11 +26773,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>User-entered value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customHtml")]
-        public virtual string CustomHtml { get; set; } 
+        public virtual string CustomHtml { get; set; }
 
         /// <summary>Type of browser window for which the backup image of the flash creative can be displayed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetWindowOption")]
-        public virtual string TargetWindowOption { get; set; } 
+        public virtual string TargetWindowOption { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26794,54 +26794,54 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Account ID of this remarketing list. This is a read-only, auto-generated field that is only
         /// returned in GET requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>Whether this targetable remarketing list is active.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("active")]
-        public virtual System.Nullable<bool> Active { get; set; } 
+        public virtual System.Nullable<bool> Active { get; set; }
 
         /// <summary>Dimension value for the advertiser ID that owns this targetable remarketing list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>Dimension value for the ID of the advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserIdDimensionValue")]
-        public virtual DimensionValue AdvertiserIdDimensionValue { get; set; } 
+        public virtual DimensionValue AdvertiserIdDimensionValue { get; set; }
 
         /// <summary>Targetable remarketing list description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Targetable remarketing list ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#targetableRemarketingList".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Number of days that a user should remain in the targetable remarketing list without an
         /// impression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifeSpan")]
-        public virtual System.Nullable<long> LifeSpan { get; set; } 
+        public virtual System.Nullable<long> LifeSpan { get; set; }
 
         /// <summary>Number of users currently in the list. This is a read-only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listSize")]
-        public virtual System.Nullable<long> ListSize { get; set; } 
+        public virtual System.Nullable<long> ListSize { get; set; }
 
         /// <summary>Product from which this targetable remarketing list was originated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listSource")]
-        public virtual string ListSource { get; set; } 
+        public virtual string ListSource { get; set; }
 
         /// <summary>Name of the targetable remarketing list. Is no greater than 128 characters long.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Subaccount ID of this remarketing list. This is a read-only, auto-generated field that is only
         /// returned in GET requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subaccountId")]
-        public virtual System.Nullable<long> SubaccountId { get; set; } 
+        public virtual System.Nullable<long> SubaccountId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26853,15 +26853,15 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#targetableRemarketingListsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Targetable remarketing list collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetableRemarketingLists")]
-        public virtual System.Collections.Generic.IList<TargetableRemarketingList> TargetableRemarketingLists { get; set; } 
+        public virtual System.Collections.Generic.IList<TargetableRemarketingList> TargetableRemarketingLists { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26874,59 +26874,59 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Account ID of this targeting template. This field, if left unset, will be auto-generated on insert
         /// and is read-only after insert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>Advertiser ID of this targeting template. This is a required field on insert and is read-only after
         /// insert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>Dimension value for the ID of the advertiser. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserIdDimensionValue")]
-        public virtual DimensionValue AdvertiserIdDimensionValue { get; set; } 
+        public virtual DimensionValue AdvertiserIdDimensionValue { get; set; }
 
         /// <summary>Time and day targeting criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dayPartTargeting")]
-        public virtual DayPartTargeting DayPartTargeting { get; set; } 
+        public virtual DayPartTargeting DayPartTargeting { get; set; }
 
         /// <summary>Geographical targeting criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geoTargeting")]
-        public virtual GeoTargeting GeoTargeting { get; set; } 
+        public virtual GeoTargeting GeoTargeting { get; set; }
 
         /// <summary>ID of this targeting template. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Key-value targeting criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyValueTargetingExpression")]
-        public virtual KeyValueTargetingExpression KeyValueTargetingExpression { get; set; } 
+        public virtual KeyValueTargetingExpression KeyValueTargetingExpression { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#targetingTemplate".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Language targeting criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageTargeting")]
-        public virtual LanguageTargeting LanguageTargeting { get; set; } 
+        public virtual LanguageTargeting LanguageTargeting { get; set; }
 
         /// <summary>Remarketing list targeting criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listTargetingExpression")]
-        public virtual ListTargetingExpression ListTargetingExpression { get; set; } 
+        public virtual ListTargetingExpression ListTargetingExpression { get; set; }
 
         /// <summary>Name of this targeting template. This field is required. It must be less than 256 characters long
         /// and unique within an advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Subaccount ID of this targeting template. This field, if left unset, will be auto-generated on
         /// insert and is read-only after insert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subaccountId")]
-        public virtual System.Nullable<long> SubaccountId { get; set; } 
+        public virtual System.Nullable<long> SubaccountId { get; set; }
 
         /// <summary>Technology platform targeting criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("technologyTargeting")]
-        public virtual TechnologyTargeting TechnologyTargeting { get; set; } 
+        public virtual TechnologyTargeting TechnologyTargeting { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26938,15 +26938,15 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#targetingTemplatesListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Targeting template collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingTemplates")]
-        public virtual System.Collections.Generic.IList<TargetingTemplate> TargetingTemplates { get; set; } 
+        public virtual System.Collections.Generic.IList<TargetingTemplate> TargetingTemplates { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26959,38 +26959,38 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// the version numbers. If both are specified, only browserVersionId will be used. The other fields are
         /// populated automatically when the ad is inserted or updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("browsers")]
-        public virtual System.Collections.Generic.IList<Browser> Browsers { get; set; } 
+        public virtual System.Collections.Generic.IList<Browser> Browsers { get; set; }
 
         /// <summary>Connection types that this ad targets. For each connection type only id is required. The other
         /// fields are populated automatically when the ad is inserted or updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionTypes")]
-        public virtual System.Collections.Generic.IList<ConnectionType> ConnectionTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<ConnectionType> ConnectionTypes { get; set; }
 
         /// <summary>Mobile carriers that this ad targets. For each mobile carrier only id is required, and the other
         /// fields are populated automatically when the ad is inserted or updated. If targeting a mobile carrier, do not
         /// set targeting for any zip codes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileCarriers")]
-        public virtual System.Collections.Generic.IList<MobileCarrier> MobileCarriers { get; set; } 
+        public virtual System.Collections.Generic.IList<MobileCarrier> MobileCarriers { get; set; }
 
         /// <summary>Operating system versions that this ad targets. To target all versions, use operatingSystems. For
         /// each operating system version, only id is required. The other fields are populated automatically when the ad
         /// is inserted or updated. If targeting an operating system version, do not set targeting for the corresponding
         /// operating system in operatingSystems.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatingSystemVersions")]
-        public virtual System.Collections.Generic.IList<OperatingSystemVersion> OperatingSystemVersions { get; set; } 
+        public virtual System.Collections.Generic.IList<OperatingSystemVersion> OperatingSystemVersions { get; set; }
 
         /// <summary>Operating systems that this ad targets. To target specific versions, use operatingSystemVersions.
         /// For each operating system only dartId is required. The other fields are populated automatically when the ad
         /// is inserted or updated. If targeting an operating system, do not set targeting for operating system versions
         /// for the same operating system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatingSystems")]
-        public virtual System.Collections.Generic.IList<OperatingSystem> OperatingSystems { get; set; } 
+        public virtual System.Collections.Generic.IList<OperatingSystem> OperatingSystems { get; set; }
 
         /// <summary>Platform types that this ad targets. For example, desktop, mobile, or tablet. For each platform
         /// type, only id is required, and the other fields are populated automatically when the ad is inserted or
         /// updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platformTypes")]
-        public virtual System.Collections.Generic.IList<PlatformType> PlatformTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<PlatformType> PlatformTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27001,11 +27001,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Name of the third-party authentication token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Value of the third-party authentication token. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27016,11 +27016,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Third-party URL type for in-stream video and in-stream audio creatives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyUrlType")]
-        public virtual string ThirdPartyUrlType { get; set; } 
+        public virtual string ThirdPartyUrlType { get; set; }
 
         /// <summary>URL for the specified third-party URL type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27032,12 +27032,12 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Whitelist of video formats to be served to this placement. Set this list to null or empty to serve
         /// all video formats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabledVideoFormats")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> EnabledVideoFormats { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> EnabledVideoFormats { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#transcodeSetting".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27049,12 +27049,12 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Registry used for the Ad ID value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("registry")]
-        public virtual string Registry { get; set; } 
+        public virtual string Registry { get; set; }
 
         /// <summary>ID value for this creative. Only alphanumeric characters and the following symbols are valid:
         /// "_/\-". Maximum length is 64 characters. Read only when registry is DCM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27065,16 +27065,16 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Data type for the variable. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
-        public virtual string DataType { get; set; } 
+        public virtual string DataType { get; set; }
 
         /// <summary>User-friendly name for the variable which will appear in reports. This is a required field, must be
         /// less than 64 characters long, and cannot contain the following characters: ""<>".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportName")]
-        public virtual string ReportName { get; set; } 
+        public virtual string ReportName { get; set; }
 
         /// <summary>Variable name in the tag. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variableType")]
-        public virtual string VariableType { get; set; } 
+        public virtual string VariableType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27086,36 +27086,36 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>The account ID to which this profile belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>The account name this profile belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountName")]
-        public virtual string AccountName { get; set; } 
+        public virtual string AccountName { get; set; }
 
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#userProfile".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The unique ID of the user profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileId")]
-        public virtual System.Nullable<long> ProfileId { get; set; } 
+        public virtual System.Nullable<long> ProfileId { get; set; }
 
         /// <summary>The sub account ID this profile belongs to if applicable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subAccountId")]
-        public virtual System.Nullable<long> SubAccountId { get; set; } 
+        public virtual System.Nullable<long> SubAccountId { get; set; }
 
         /// <summary>The sub account name this profile belongs to if applicable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subAccountName")]
-        public virtual string SubAccountName { get; set; } 
+        public virtual string SubAccountName { get; set; }
 
         /// <summary>The user name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userName")]
-        public virtual string UserName { get; set; } 
+        public virtual string UserName { get; set; }
 
     }    
 
@@ -27124,16 +27124,16 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The user profiles returned in this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<UserProfile> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<UserProfile> Items { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#userProfileList".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
     }    
 
@@ -27142,42 +27142,42 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Account ID of this user role. This is a read-only field that can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>Whether this is a default user role. Default user roles are created by the system for the
         /// account/subaccount and cannot be modified or deleted. Each default user role comes with a basic set of
         /// preassigned permissions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultUserRole")]
-        public virtual System.Nullable<bool> DefaultUserRole { get; set; } 
+        public virtual System.Nullable<bool> DefaultUserRole { get; set; }
 
         /// <summary>ID of this user role. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#userRole".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this user role. This is a required field. Must be less than 256 characters long. If this
         /// user role is under a subaccount, the name must be unique among sites of the same subaccount. Otherwise, this
         /// user role is a top-level user role, and the name must be unique among top-level user roles of the same
         /// account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>ID of the user role that this user role is based on or copied from. This is a required
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentUserRoleId")]
-        public virtual System.Nullable<long> ParentUserRoleId { get; set; } 
+        public virtual System.Nullable<long> ParentUserRoleId { get; set; }
 
         /// <summary>List of permissions associated with this user role.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<UserRolePermission> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<UserRolePermission> Permissions { get; set; }
 
         /// <summary>Subaccount ID of this user role. This is a read-only field that can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subaccountId")]
-        public virtual System.Nullable<long> SubaccountId { get; set; } 
+        public virtual System.Nullable<long> SubaccountId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27188,24 +27188,24 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Levels of availability for a user role permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availability")]
-        public virtual string Availability { get; set; } 
+        public virtual string Availability { get; set; }
 
         /// <summary>ID of this user role permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#userRolePermission".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this user role permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>ID of the permission group that this user role permission belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissionGroupId")]
-        public virtual System.Nullable<long> PermissionGroupId { get; set; } 
+        public virtual System.Nullable<long> PermissionGroupId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27216,16 +27216,16 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>ID of this user role permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#userRolePermissionGroup".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of this user role permission group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27237,11 +27237,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#userRolePermissionGroupsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>User role permission group collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userRolePermissionGroups")]
-        public virtual System.Collections.Generic.IList<UserRolePermissionGroup> UserRolePermissionGroups { get; set; } 
+        public virtual System.Collections.Generic.IList<UserRolePermissionGroup> UserRolePermissionGroups { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27253,11 +27253,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#userRolePermissionsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>User role permission collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userRolePermissions")]
-        public virtual System.Collections.Generic.IList<UserRolePermission> UserRolePermissions { get; set; } 
+        public virtual System.Collections.Generic.IList<UserRolePermission> UserRolePermissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27269,15 +27269,15 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#userRolesListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Pagination token to be used for the next list operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>User role collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userRoles")]
-        public virtual System.Collections.Generic.IList<UserRole> UserRoles { get; set; } 
+        public virtual System.Collections.Generic.IList<UserRole> UserRoles { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27288,24 +27288,24 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>File type of the video format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileType")]
-        public virtual string FileType { get; set; } 
+        public virtual string FileType { get; set; }
 
         /// <summary>ID of the video format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<int> Id { get; set; } 
+        public virtual System.Nullable<int> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#videoFormat".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The resolution of this video format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolution")]
-        public virtual Size Resolution { get; set; } 
+        public virtual Size Resolution { get; set; }
 
         /// <summary>The target bit rate of this video format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetBitRate")]
-        public virtual System.Nullable<int> TargetBitRate { get; set; } 
+        public virtual System.Nullable<int> TargetBitRate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27317,11 +27317,11 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#videoFormatsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Video format collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoFormats")]
-        public virtual System.Collections.Generic.IList<VideoFormat> VideoFormats { get; set; } 
+        public virtual System.Collections.Generic.IList<VideoFormat> VideoFormats { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27333,12 +27333,12 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// <summary>Duration, as a percentage of video duration. Do not set when offsetSeconds is set. Acceptable
         /// values are 0 to 100, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offsetPercentage")]
-        public virtual System.Nullable<int> OffsetPercentage { get; set; } 
+        public virtual System.Nullable<int> OffsetPercentage { get; set; }
 
         /// <summary>Duration, in seconds. Do not set when offsetPercentage is set. Acceptable values are 0 to 86399,
         /// inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offsetSeconds")]
-        public virtual System.Nullable<int> OffsetSeconds { get; set; } 
+        public virtual System.Nullable<int> OffsetSeconds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27349,27 +27349,27 @@ namespace Google.Apis.Dfareporting.v3_3.Data
     {
         /// <summary>Settings for the companion creatives of video creatives served to this placement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companionSettings")]
-        public virtual CompanionSetting CompanionSettings { get; set; } 
+        public virtual CompanionSetting CompanionSettings { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#videoSettings".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Orientation of a video placement. If this value is set, placement will return assets matching the
         /// specified orientation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orientation")]
-        public virtual string Orientation { get; set; } 
+        public virtual string Orientation { get; set; }
 
         /// <summary>Settings for the skippability of video creatives served to this placement. If this object is
         /// provided, the creative-level skippable settings will be overridden.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skippableSettings")]
-        public virtual SkippableSetting SkippableSettings { get; set; } 
+        public virtual SkippableSetting SkippableSettings { get; set; }
 
         /// <summary>Settings for the transcodes of video creatives served to this placement. If this object is
         /// provided, the creative-level transcode settings will be overridden.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transcodeSettings")]
-        public virtual TranscodeSetting TranscodeSettings { get; set; } 
+        public virtual TranscodeSetting TranscodeSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

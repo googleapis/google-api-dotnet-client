@@ -950,11 +950,11 @@ namespace Google.Apis.Storagetransfer.v1.Data
     {
         /// <summary>Required. AWS access key ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessKeyId")]
-        public virtual string AccessKeyId { get; set; } 
+        public virtual string AccessKeyId { get; set; }
 
         /// <summary>Required. AWS secret access key. This field is not returned in RPC responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretAccessKey")]
-        public virtual string SecretAccessKey { get; set; } 
+        public virtual string SecretAccessKey { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -967,12 +967,12 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// <summary>Required. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the
         /// bucket must be granted to the access ID of the AWS access key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsAccessKey")]
-        public virtual AwsAccessKey AwsAccessKey { get; set; } 
+        public virtual AwsAccessKey AwsAccessKey { get; set; }
 
         /// <summary>Required. S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev
         /// /create-bucket-get-location-example.html)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketName")]
-        public virtual string BucketName { get; set; } 
+        public virtual string BucketName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -988,15 +988,15 @@ namespace Google.Apis.Storagetransfer.v1.Data
     {
         /// <summary>Required. Credentials used to authenticate API requests to Azure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("azureCredentials")]
-        public virtual AzureCredentials AzureCredentials { get; set; } 
+        public virtual AzureCredentials AzureCredentials { get; set; }
 
         /// <summary>Required. The container to transfer from the Azure Storage account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("container")]
-        public virtual string Container { get; set; } 
+        public virtual string Container { get; set; }
 
         /// <summary>Required. The name of the Azure Storage account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageAccount")]
-        public virtual string StorageAccount { get; set; } 
+        public virtual string StorageAccount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1009,7 +1009,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-
         /// overview)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sasToken")]
-        public virtual string SasToken { get; set; } 
+        public virtual string SasToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1026,15 +1026,15 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by
         /// itself or a year and month where the day is not significant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
-        public virtual System.Nullable<int> Day { get; set; } 
+        public virtual System.Nullable<int> Day { get; set; }
 
         /// <summary>Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("month")]
-        public virtual System.Nullable<int> Month { get; set; } 
+        public virtual System.Nullable<int> Month { get; set; }
 
         /// <summary>Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("year")]
-        public virtual System.Nullable<int> Year { get; set; } 
+        public virtual System.Nullable<int> Year { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1055,12 +1055,12 @@ namespace Google.Apis.Storagetransfer.v1.Data
     {
         /// <summary>A list of messages that carry the error details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorDetails")]
-        public virtual System.Collections.Generic.IList<string> ErrorDetails { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ErrorDetails { get; set; }
 
         /// <summary>Required. A URL that refers to the target (a data source, a data sink, or an object) with which the
         /// error is associated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1071,16 +1071,16 @@ namespace Google.Apis.Storagetransfer.v1.Data
     {
         /// <summary>Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
-        public virtual string ErrorCode { get; set; } 
+        public virtual string ErrorCode { get; set; }
 
         /// <summary>Required. Count of this type of error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorCount")]
-        public virtual System.Nullable<long> ErrorCount { get; set; } 
+        public virtual System.Nullable<long> ErrorCount { get; set; }
 
         /// <summary>Error samples. At most 5 error log entries will be recorded for a given error code for a single
         /// transfer operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorLogEntries")]
-        public virtual System.Collections.Generic.IList<ErrorLogEntry> ErrorLogEntries { get; set; } 
+        public virtual System.Collections.Generic.IList<ErrorLogEntry> ErrorLogEntries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1094,7 +1094,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// <summary>Required. Cloud Storage bucket name (see [Bucket Name
         /// Requirements](https://cloud.google.com/storage/docs/naming#requirements)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketName")]
-        public virtual string BucketName { get; set; } 
+        public virtual string BucketName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1105,7 +1105,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
     {
         /// <summary>Email address of the service account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountEmail")]
-        public virtual string AccountEmail { get; set; } 
+        public virtual string AccountEmail { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1133,7 +1133,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// <summary>Required. The URL that points to the file that stores the object list entries. This file must allow
         /// public access. Currently, only URLs with HTTP and HTTPS schemes are supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listUrl")]
-        public virtual string ListUrl { get; set; } 
+        public virtual string ListUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1144,11 +1144,11 @@ namespace Google.Apis.Storagetransfer.v1.Data
     {
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1159,11 +1159,11 @@ namespace Google.Apis.Storagetransfer.v1.Data
     {
         /// <summary>The list next page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of transfer jobs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferJobs")]
-        public virtual System.Collections.Generic.IList<TransferJob> TransferJobs { get; set; } 
+        public virtual System.Collections.Generic.IList<TransferJob> TransferJobs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1180,17 +1180,17 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// <summary>Event types for which a notification is desired. If empty, send notifications for all event
         /// types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTypes")]
-        public virtual System.Collections.Generic.IList<string> EventTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> EventTypes { get; set; }
 
         /// <summary>Required. The desired format of the notification message payloads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payloadFormat")]
-        public virtual string PayloadFormat { get; set; } 
+        public virtual string PayloadFormat { get; set; }
 
         /// <summary>Required. The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of
         /// the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT
         /// error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
-        public virtual string PubsubTopic { get; set; } 
+        public virtual string PubsubTopic { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1205,7 +1205,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// <summary>`exclude_prefixes` must follow the requirements described for include_prefixes. The max size of
         /// `exclude_prefixes` is 1000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludePrefixes")]
-        public virtual System.Collections.Generic.IList<string> ExcludePrefixes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExcludePrefixes { get; set; }
 
         /// <summary>If `include_prefixes` is specified, objects that satisfy the object conditions must have names that
         /// start with one of the `include_prefixes` and that do not start with any of the exclude_prefixes. If
@@ -1222,12 +1222,12 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// `include_prefixes` is specified, then each exclude-prefix must start with the value of a path explicitly
         /// included by `include_prefixes`. The max size of `include_prefixes` is 1000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includePrefixes")]
-        public virtual System.Collections.Generic.IList<string> IncludePrefixes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> IncludePrefixes { get; set; }
 
         /// <summary>If specified, only objects with a "last modification time" before this timestamp and objects that
         /// don't have a "last modification time" will be transferred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedBefore")]
-        public virtual object LastModifiedBefore { get; set; } 
+        public virtual object LastModifiedBefore { get; set; }
 
         /// <summary>If specified, only objects with a "last modification time" on or after this timestamp and objects
         /// that don't have a "last modification time" are transferred. The `last_modified_since` and
@@ -1235,21 +1235,21 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// script that processes each day's worth of data at a time. For that you'd set each of the fields as follows:
         /// * `last_modified_since` to the start of the day * `last_modified_before` to the end of the day</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedSince")]
-        public virtual object LastModifiedSince { get; set; } 
+        public virtual object LastModifiedSince { get; set; }
 
         /// <summary>If specified, only objects with a "last modification time" on or after `NOW` -
         /// `max_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are
         /// transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the
         /// `TransferOperation`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxTimeElapsedSinceLastModification")]
-        public virtual object MaxTimeElapsedSinceLastModification { get; set; } 
+        public virtual object MaxTimeElapsedSinceLastModification { get; set; }
 
         /// <summary>If specified, only objects with a "last modification time" before `NOW` -
         /// `min_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are
         /// transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the
         /// `TransferOperation`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minTimeElapsedSinceLastModification")]
-        public virtual object MinTimeElapsedSinceLastModification { get; set; } 
+        public virtual object MinTimeElapsedSinceLastModification { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1261,22 +1261,22 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Represents the transfer operation object. To request a TransferOperation object, use
         /// transferOperations.get.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should have the format of
         /// `transferOperations/some/unique/name`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -1284,7 +1284,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1313,7 +1313,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// later than `schedule_start_date` and `schedule_end_date` is in the future relative to UTC, the job will run
         /// each day at start_time_of_day through `schedule_end_date`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleEndDate")]
-        public virtual Date ScheduleEndDate { get; set; } 
+        public virtual Date ScheduleEndDate { get; set; }
 
         /// <summary>Required. The start date of a transfer. Date boundaries are determined relative to UTC time. If
         /// `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the
@@ -1324,7 +1324,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation will take place on June 3 at
         /// midnight UTC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleStartDate")]
-        public virtual Date ScheduleStartDate { get; set; } 
+        public virtual Date ScheduleStartDate { get; set; }
 
         /// <summary>The time in UTC that a transfer job is scheduled to run. Transfers may start later than this time.
         /// If `start_time_of_day` is not specified: * One-time transfers run immediately. * Recurring transfers run
@@ -1332,7 +1332,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// One-time transfers run at the specified time. * Recurring transfers run at the specified time each day,
         /// through `schedule_end_date`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTimeOfDay")]
-        public virtual TimeOfDay StartTimeOfDay { get; set; } 
+        public virtual TimeOfDay StartTimeOfDay { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1347,17 +1347,17 @@ namespace Google.Apis.Storagetransfer.v1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1371,20 +1371,20 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// <summary>Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value
         /// "24:00:00" for scenarios like business closing time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hours")]
-        public virtual System.Nullable<int> Hours { get; set; } 
+        public virtual System.Nullable<int> Hours { get; set; }
 
         /// <summary>Minutes of hour of day. Must be from 0 to 59.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
-        public virtual System.Nullable<int> Minutes { get; set; } 
+        public virtual System.Nullable<int> Minutes { get; set; }
 
         /// <summary>Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
-        public virtual System.Nullable<int> Nanos { get; set; } 
+        public virtual System.Nullable<int> Nanos { get; set; }
 
         /// <summary>Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it
         /// allows leap-seconds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
-        public virtual System.Nullable<int> Seconds { get; set; } 
+        public virtual System.Nullable<int> Seconds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1395,73 +1395,73 @@ namespace Google.Apis.Storagetransfer.v1.Data
     {
         /// <summary>Bytes that are copied to the data sink.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bytesCopiedToSink")]
-        public virtual System.Nullable<long> BytesCopiedToSink { get; set; } 
+        public virtual System.Nullable<long> BytesCopiedToSink { get; set; }
 
         /// <summary>Bytes that are deleted from the data sink.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bytesDeletedFromSink")]
-        public virtual System.Nullable<long> BytesDeletedFromSink { get; set; } 
+        public virtual System.Nullable<long> BytesDeletedFromSink { get; set; }
 
         /// <summary>Bytes that are deleted from the data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bytesDeletedFromSource")]
-        public virtual System.Nullable<long> BytesDeletedFromSource { get; set; } 
+        public virtual System.Nullable<long> BytesDeletedFromSource { get; set; }
 
         /// <summary>Bytes that failed to be deleted from the data sink.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bytesFailedToDeleteFromSink")]
-        public virtual System.Nullable<long> BytesFailedToDeleteFromSink { get; set; } 
+        public virtual System.Nullable<long> BytesFailedToDeleteFromSink { get; set; }
 
         /// <summary>Bytes found in the data source that are scheduled to be transferred, excluding any that are
         /// filtered based on object conditions or skipped due to sync.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bytesFoundFromSource")]
-        public virtual System.Nullable<long> BytesFoundFromSource { get; set; } 
+        public virtual System.Nullable<long> BytesFoundFromSource { get; set; }
 
         /// <summary>Bytes found only in the data sink that are scheduled to be deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bytesFoundOnlyFromSink")]
-        public virtual System.Nullable<long> BytesFoundOnlyFromSink { get; set; } 
+        public virtual System.Nullable<long> BytesFoundOnlyFromSink { get; set; }
 
         /// <summary>Bytes in the data source that failed to be transferred or that failed to be deleted after being
         /// transferred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bytesFromSourceFailed")]
-        public virtual System.Nullable<long> BytesFromSourceFailed { get; set; } 
+        public virtual System.Nullable<long> BytesFromSourceFailed { get; set; }
 
         /// <summary>Bytes in the data source that are not transferred because they already exist in the data
         /// sink.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bytesFromSourceSkippedBySync")]
-        public virtual System.Nullable<long> BytesFromSourceSkippedBySync { get; set; } 
+        public virtual System.Nullable<long> BytesFromSourceSkippedBySync { get; set; }
 
         /// <summary>Objects that are copied to the data sink.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectsCopiedToSink")]
-        public virtual System.Nullable<long> ObjectsCopiedToSink { get; set; } 
+        public virtual System.Nullable<long> ObjectsCopiedToSink { get; set; }
 
         /// <summary>Objects that are deleted from the data sink.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectsDeletedFromSink")]
-        public virtual System.Nullable<long> ObjectsDeletedFromSink { get; set; } 
+        public virtual System.Nullable<long> ObjectsDeletedFromSink { get; set; }
 
         /// <summary>Objects that are deleted from the data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectsDeletedFromSource")]
-        public virtual System.Nullable<long> ObjectsDeletedFromSource { get; set; } 
+        public virtual System.Nullable<long> ObjectsDeletedFromSource { get; set; }
 
         /// <summary>Objects that failed to be deleted from the data sink.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectsFailedToDeleteFromSink")]
-        public virtual System.Nullable<long> ObjectsFailedToDeleteFromSink { get; set; } 
+        public virtual System.Nullable<long> ObjectsFailedToDeleteFromSink { get; set; }
 
         /// <summary>Objects found in the data source that are scheduled to be transferred, excluding any that are
         /// filtered based on object conditions or skipped due to sync.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectsFoundFromSource")]
-        public virtual System.Nullable<long> ObjectsFoundFromSource { get; set; } 
+        public virtual System.Nullable<long> ObjectsFoundFromSource { get; set; }
 
         /// <summary>Objects found only in the data sink that are scheduled to be deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectsFoundOnlyFromSink")]
-        public virtual System.Nullable<long> ObjectsFoundOnlyFromSink { get; set; } 
+        public virtual System.Nullable<long> ObjectsFoundOnlyFromSink { get; set; }
 
         /// <summary>Objects in the data source that failed to be transferred or that failed to be deleted after being
         /// transferred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectsFromSourceFailed")]
-        public virtual System.Nullable<long> ObjectsFromSourceFailed { get; set; } 
+        public virtual System.Nullable<long> ObjectsFromSourceFailed { get; set; }
 
         /// <summary>Objects in the data source that are not transferred because they already exist in the data
         /// sink.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectsFromSourceSkippedBySync")]
-        public virtual System.Nullable<long> ObjectsFromSourceSkippedBySync { get; set; } 
+        public virtual System.Nullable<long> ObjectsFromSourceSkippedBySync { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1472,20 +1472,20 @@ namespace Google.Apis.Storagetransfer.v1.Data
     {
         /// <summary>Output only. The time that the transfer job was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual object CreationTime { get; set; } 
+        public virtual object CreationTime { get; set; }
 
         /// <summary>Output only. The time that the transfer job was deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletionTime")]
-        public virtual object DeletionTime { get; set; } 
+        public virtual object DeletionTime { get; set; }
 
         /// <summary>A description provided by the user for the job. Its max length is 1024 bytes when Unicode-
         /// encoded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Output only. The time that the transfer job was last modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModificationTime")]
-        public virtual object LastModificationTime { get; set; } 
+        public virtual object LastModificationTime { get; set; }
 
         /// <summary>A unique name (within the transfer project) assigned when the job is created. If this field is
         /// empty in a CreateTransferJobRequest, Storage Transfer Service will assign a unique name. Otherwise, the
@@ -1495,30 +1495,30 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// `"transferJobs/[A-Za-z0-9-._~]*[A-Za-z0-9]$"` Invalid job names will fail with an INVALID_ARGUMENT
         /// error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Notification configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationConfig")]
-        public virtual NotificationConfig NotificationConfig { get; set; } 
+        public virtual NotificationConfig NotificationConfig { get; set; }
 
         /// <summary>The ID of the Google Cloud Platform Project that owns the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Schedule specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
-        public virtual Schedule Schedule { get; set; } 
+        public virtual Schedule Schedule { get; set; }
 
         /// <summary>Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The
         /// effect of the new job status takes place during a subsequent job run. For example, if you change the job
         /// status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change
         /// would not affect the current operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>Transfer specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferSpec")]
-        public virtual TransferSpec TransferSpec { get; set; } 
+        public virtual TransferSpec TransferSpec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1529,43 +1529,43 @@ namespace Google.Apis.Storagetransfer.v1.Data
     {
         /// <summary>Information about the progress of the transfer operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("counters")]
-        public virtual TransferCounters Counters { get; set; } 
+        public virtual TransferCounters Counters { get; set; }
 
         /// <summary>End time of this transfer execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Summarizes errors encountered with sample error log entries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorBreakdowns")]
-        public virtual System.Collections.Generic.IList<ErrorSummary> ErrorBreakdowns { get; set; } 
+        public virtual System.Collections.Generic.IList<ErrorSummary> ErrorBreakdowns { get; set; }
 
         /// <summary>A globally unique ID assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Notification configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationConfig")]
-        public virtual NotificationConfig NotificationConfig { get; set; } 
+        public virtual NotificationConfig NotificationConfig { get; set; }
 
         /// <summary>The ID of the Google Cloud Platform Project that owns the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Start time of this transfer execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>Status of the transfer operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The name of the transfer job that triggers this transfer operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferJobName")]
-        public virtual string TransferJobName { get; set; } 
+        public virtual string TransferJobName { get; set; }
 
         /// <summary>Transfer specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferSpec")]
-        public virtual TransferSpec TransferSpec { get; set; } 
+        public virtual TransferSpec TransferSpec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1577,16 +1577,16 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// <summary>Whether objects should be deleted from the source after they are transferred to the sink. **Note:**
         /// This option and delete_objects_unique_in_sink are mutually exclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteObjectsFromSourceAfterTransfer")]
-        public virtual System.Nullable<bool> DeleteObjectsFromSourceAfterTransfer { get; set; } 
+        public virtual System.Nullable<bool> DeleteObjectsFromSourceAfterTransfer { get; set; }
 
         /// <summary>Whether objects that exist only in the sink should be deleted. **Note:** This option and
         /// delete_objects_from_source_after_transfer are mutually exclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteObjectsUniqueInSink")]
-        public virtual System.Nullable<bool> DeleteObjectsUniqueInSink { get; set; } 
+        public virtual System.Nullable<bool> DeleteObjectsUniqueInSink { get; set; }
 
         /// <summary>Whether overwriting objects that already exist in the sink is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overwriteObjectsAlreadyExistingInSink")]
-        public virtual System.Nullable<bool> OverwriteObjectsAlreadyExistingInSink { get; set; } 
+        public virtual System.Nullable<bool> OverwriteObjectsAlreadyExistingInSink { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1597,34 +1597,34 @@ namespace Google.Apis.Storagetransfer.v1.Data
     {
         /// <summary>An AWS S3 data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsS3DataSource")]
-        public virtual AwsS3Data AwsS3DataSource { get; set; } 
+        public virtual AwsS3Data AwsS3DataSource { get; set; }
 
         /// <summary>An Azure Blob Storage data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("azureBlobStorageDataSource")]
-        public virtual AzureBlobStorageData AzureBlobStorageDataSource { get; set; } 
+        public virtual AzureBlobStorageData AzureBlobStorageDataSource { get; set; }
 
         /// <summary>A Cloud Storage data sink.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDataSink")]
-        public virtual GcsData GcsDataSink { get; set; } 
+        public virtual GcsData GcsDataSink { get; set; }
 
         /// <summary>A Cloud Storage data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDataSource")]
-        public virtual GcsData GcsDataSource { get; set; } 
+        public virtual GcsData GcsDataSource { get; set; }
 
         /// <summary>An HTTP URL data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpDataSource")]
-        public virtual HttpData HttpDataSource { get; set; } 
+        public virtual HttpData HttpDataSource { get; set; }
 
         /// <summary>Only objects that satisfy these object conditions are included in the set of data source and data
         /// sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data
         /// sink.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectConditions")]
-        public virtual ObjectConditions ObjectConditions { get; set; } 
+        public virtual ObjectConditions ObjectConditions { get; set; }
 
         /// <summary>If the option delete_objects_unique_in_sink is `true`, object conditions based on objects' "last
         /// modification time" are ignored and do not exclude objects in a data source or a data sink.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferOptions")]
-        public virtual TransferOptions TransferOptions { get; set; } 
+        public virtual TransferOptions TransferOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1635,20 +1635,20 @@ namespace Google.Apis.Storagetransfer.v1.Data
     {
         /// <summary>Required. The ID of the Google Cloud Platform Console project that owns the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Required. The job to update. `transferJob` is expected to specify only four fields: description,
         /// transfer_spec, notification_config, and status. An `UpdateTransferJobRequest` that specifies other fields
         /// will be rejected with the error INVALID_ARGUMENT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferJob")]
-        public virtual TransferJob TransferJob { get; set; } 
+        public virtual TransferJob TransferJob { get; set; }
 
         /// <summary>The field mask of the fields in `transferJob` that are to be updated in this request. Fields in
         /// `transferJob` that can be updated are: description, transfer_spec, notification_config, and status. To
         /// update the `transfer_spec` of the job, a complete transfer specification must be provided. An incomplete
         /// specification missing any required fields will be rejected with the error INVALID_ARGUMENT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTransferJobFieldMask")]
-        public virtual object UpdateTransferJobFieldMask { get; set; } 
+        public virtual object UpdateTransferJobFieldMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

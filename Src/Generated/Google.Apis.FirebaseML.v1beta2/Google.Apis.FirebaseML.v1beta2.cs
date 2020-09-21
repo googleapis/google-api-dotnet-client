@@ -702,12 +702,12 @@ namespace Google.Apis.FirebaseML.v1beta2.Data
     {
         /// <summary>The list of models</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("models")]
-        public virtual System.Collections.Generic.IList<Model> Models { get; set; } 
+        public virtual System.Collections.Generic.IList<Model> Models { get; set; }
 
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -718,46 +718,46 @@ namespace Google.Apis.FirebaseML.v1beta2.Data
     {
         /// <summary>Output only. Lists operation ids associated with this model whose status is NOT done.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeOperations")]
-        public virtual System.Collections.Generic.IList<Operation> ActiveOperations { get; set; } 
+        public virtual System.Collections.Generic.IList<Operation> ActiveOperations { get; set; }
 
         /// <summary>Output only. Timestamp when this model was created in Firebase ML.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Required. The name of the model to create. The name can be up to 32 characters long and can consist
         /// only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a
         /// letter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Output only. See RFC7232 https://tools.ietf.org/html/rfc7232#section-2.3</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Output only. The model_hash will change if a new file is available for download.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelHash")]
-        public virtual string ModelHash { get; set; } 
+        public virtual string ModelHash { get; set; }
 
         /// <summary>The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}`
         /// The name is ignored when creating a model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>State common to all model types. Includes publishing and validation information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual ModelState State { get; set; } 
+        public virtual ModelState State { get; set; }
 
         /// <summary>User defined tags which can be used to group/filter models during listing</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
-        public virtual System.Collections.Generic.IList<string> Tags { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
         /// <summary>A TFLite Model</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tfliteModel")]
-        public virtual TfLiteModel TfliteModel { get; set; } 
+        public virtual TfLiteModel TfliteModel { get; set; }
 
         /// <summary>Output only. Timestamp when this model was updated in Firebase ML.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
     }    
 
@@ -765,12 +765,12 @@ namespace Google.Apis.FirebaseML.v1beta2.Data
     public class ModelOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("basicOperationStatus")]
-        public virtual string BasicOperationStatus { get; set; } 
+        public virtual string BasicOperationStatus { get; set; }
 
         /// <summary>The name of the model we are creating/updating The name must have the form
         /// `projects/{project_id}/models/{model_id}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -781,13 +781,13 @@ namespace Google.Apis.FirebaseML.v1beta2.Data
     {
         /// <summary>Indicates if this model has been published.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("published")]
-        public virtual System.Nullable<bool> Published { get; set; } 
+        public virtual System.Nullable<bool> Published { get; set; }
 
         /// <summary>Output only. Indicates the latest validation error on the model if any. A model may have validation
         /// errors if there were problems during the model creation/update. e.g. in the case of a TfLiteModel, if a
         /// tflite model file was missing or in the wrong format. This field will be empty for valid models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validationError")]
-        public virtual Status ValidationError { get; set; } 
+        public virtual Status ValidationError { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -799,23 +799,23 @@ namespace Google.Apis.FirebaseML.v1beta2.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -823,7 +823,7 @@ namespace Google.Apis.FirebaseML.v1beta2.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -838,17 +838,17 @@ namespace Google.Apis.FirebaseML.v1beta2.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -861,17 +861,17 @@ namespace Google.Apis.FirebaseML.v1beta2.Data
         /// format 'projects//locations//models/' (This is the model resource name returned from the AutoML
         /// API)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("automlModel")]
-        public virtual string AutomlModel { get; set; } 
+        public virtual string AutomlModel { get; set; }
 
         /// <summary>The TfLite file containing the model. (Stored in Google Cloud). The gcs_tflite_uri should have
         /// form: gs://some-bucket/some-model.tflite Note: If you update the file in the original location, it is
         /// necessary to call UpdateModel for ML to pick up and validate the updated file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsTfliteUri")]
-        public virtual string GcsTfliteUri { get; set; } 
+        public virtual string GcsTfliteUri { get; set; }
 
         /// <summary>Output only. The size of the TFLite model</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeBytes")]
-        public virtual string SizeBytes { get; set; } 
+        public virtual string SizeBytes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -5157,55 +5157,55 @@ namespace Google.Apis.Drive.v3.Data
     {
         /// <summary>Whether the user has installed the requesting app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appInstalled")]
-        public virtual System.Nullable<bool> AppInstalled { get; set; } 
+        public virtual System.Nullable<bool> AppInstalled { get; set; }
 
         /// <summary>Whether the user can create shared drives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canCreateDrives")]
-        public virtual System.Nullable<bool> CanCreateDrives { get; set; } 
+        public virtual System.Nullable<bool> CanCreateDrives { get; set; }
 
         /// <summary>Deprecated - use canCreateDrives instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canCreateTeamDrives")]
-        public virtual System.Nullable<bool> CanCreateTeamDrives { get; set; } 
+        public virtual System.Nullable<bool> CanCreateTeamDrives { get; set; }
 
         /// <summary>A list of themes that are supported for shared drives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveThemes")]
-        public virtual System.Collections.Generic.IList<DriveThemesData> DriveThemes { get; set; } 
+        public virtual System.Collections.Generic.IList<DriveThemesData> DriveThemes { get; set; }
 
         /// <summary>A map of source MIME type to possible targets for all supported exports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportFormats")]
-        public virtual System.Collections.Generic.IDictionary<string,System.Collections.Generic.IList<string>> ExportFormats { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<string>> ExportFormats { get; set; }
 
         /// <summary>The currently supported folder colors as RGB hex strings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("folderColorPalette")]
-        public virtual System.Collections.Generic.IList<string> FolderColorPalette { get; set; } 
+        public virtual System.Collections.Generic.IList<string> FolderColorPalette { get; set; }
 
         /// <summary>A map of source MIME type to possible targets for all supported imports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importFormats")]
-        public virtual System.Collections.Generic.IDictionary<string,System.Collections.Generic.IList<string>> ImportFormats { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<string>> ImportFormats { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#about".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>A map of maximum import sizes by MIME type, in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxImportSizes")]
-        public virtual System.Collections.Generic.IDictionary<string,System.Nullable<long>> MaxImportSizes { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> MaxImportSizes { get; set; }
 
         /// <summary>The maximum upload size in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxUploadSize")]
-        public virtual System.Nullable<long> MaxUploadSize { get; set; } 
+        public virtual System.Nullable<long> MaxUploadSize { get; set; }
 
         /// <summary>The user's storage quota limits and usage. All fields are measured in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageQuota")]
-        public virtual StorageQuotaData StorageQuota { get; set; } 
+        public virtual StorageQuotaData StorageQuota { get; set; }
 
         /// <summary>Deprecated - use driveThemes instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teamDriveThemes")]
-        public virtual System.Collections.Generic.IList<TeamDriveThemesData> TeamDriveThemes { get; set; } 
+        public virtual System.Collections.Generic.IList<TeamDriveThemesData> TeamDriveThemes { get; set; }
 
         /// <summary>The authenticated user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
-        public virtual User User { get; set; } 
+        public virtual User User { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5215,15 +5215,15 @@ namespace Google.Apis.Drive.v3.Data
         {
             /// <summary>A link to this theme's background image.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("backgroundImageLink")]
-            public virtual string BackgroundImageLink { get; set; } 
+            public virtual string BackgroundImageLink { get; set; }
 
             /// <summary>The color of this theme as an RGB hex string.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("colorRgb")]
-            public virtual string ColorRgb { get; set; } 
+            public virtual string ColorRgb { get; set; }
 
             /// <summary>The ID of the theme.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
-            public virtual string Id { get; set; } 
+            public virtual string Id { get; set; }
 
         }    
 
@@ -5233,19 +5233,19 @@ namespace Google.Apis.Drive.v3.Data
             /// <summary>The usage limit, if applicable. This will not be present if the user has unlimited
             /// storage.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("limit")]
-            public virtual System.Nullable<long> Limit { get; set; } 
+            public virtual System.Nullable<long> Limit { get; set; }
 
             /// <summary>The total usage across all services.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("usage")]
-            public virtual System.Nullable<long> Usage { get; set; } 
+            public virtual System.Nullable<long> Usage { get; set; }
 
             /// <summary>The usage by all files in Google Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("usageInDrive")]
-            public virtual System.Nullable<long> UsageInDrive { get; set; } 
+            public virtual System.Nullable<long> UsageInDrive { get; set; }
 
             /// <summary>The usage by trashed files in Google Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("usageInDriveTrash")]
-            public virtual System.Nullable<long> UsageInDriveTrash { get; set; } 
+            public virtual System.Nullable<long> UsageInDriveTrash { get; set; }
 
         }    
 
@@ -5253,15 +5253,15 @@ namespace Google.Apis.Drive.v3.Data
         {
             /// <summary>Deprecated - use driveThemes/backgroundImageLink instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("backgroundImageLink")]
-            public virtual string BackgroundImageLink { get; set; } 
+            public virtual string BackgroundImageLink { get; set; }
 
             /// <summary>Deprecated - use driveThemes/colorRgb instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("colorRgb")]
-            public virtual string ColorRgb { get; set; } 
+            public virtual string ColorRgb { get; set; }
 
             /// <summary>Deprecated - use driveThemes/id instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
-            public virtual string Id { get; set; } 
+            public virtual string Id { get; set; }
 
         }
     }    
@@ -5271,42 +5271,42 @@ namespace Google.Apis.Drive.v3.Data
     {
         /// <summary>The type of the change. Possible values are file and drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("changeType")]
-        public virtual string ChangeType { get; set; } 
+        public virtual string ChangeType { get; set; }
 
         /// <summary>The updated state of the shared drive. Present if the changeType is drive, the user is still a
         /// member of the shared drive, and the shared drive has not been deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("drive")]
-        public virtual Drive Drive { get; set; } 
+        public virtual Drive Drive { get; set; }
 
         /// <summary>The ID of the shared drive associated with this change.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveId")]
-        public virtual string DriveId { get; set; } 
+        public virtual string DriveId { get; set; }
 
         /// <summary>The updated state of the file. Present if the type is file and the file has not been removed from
         /// this list of changes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("file")]
-        public virtual File File { get; set; } 
+        public virtual File File { get; set; }
 
         /// <summary>The ID of the file which has changed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileId")]
-        public virtual string FileId { get; set; } 
+        public virtual string FileId { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#change".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Whether the file or shared drive has been removed from this list of changes, for example by
         /// deletion or loss of access.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removed")]
-        public virtual System.Nullable<bool> Removed { get; set; } 
+        public virtual System.Nullable<bool> Removed { get; set; }
 
         /// <summary>Deprecated - use drive instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teamDrive")]
-        public virtual TeamDrive TeamDrive { get; set; } 
+        public virtual TeamDrive TeamDrive { get; set; }
 
         /// <summary>Deprecated - use driveId instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teamDriveId")]
-        public virtual string TeamDriveId { get; set; } 
+        public virtual string TeamDriveId { get; set; }
 
         /// <summary>The time of this change (RFC 3339 date-time).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("time")]
@@ -5322,7 +5322,7 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>Deprecated - use changeType instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5334,22 +5334,22 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>The list of changes. If nextPageToken is populated, then this list may be incomplete and an
         /// additional page of results should be fetched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("changes")]
-        public virtual System.Collections.Generic.IList<Change> Changes { get; set; } 
+        public virtual System.Collections.Generic.IList<Change> Changes { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#changeList".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The starting page token for future changes. This will be present only if the end of the current
         /// changes list has been reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newStartPageToken")]
-        public virtual string NewStartPageToken { get; set; } 
+        public virtual string NewStartPageToken { get; set; }
 
         /// <summary>The page token for the next page of changes. This will be absent if the end of the changes list has
         /// been reached. If the token is rejected for any reason, it should be discarded, and pagination should be
         /// restarted from the first page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5360,47 +5360,47 @@ namespace Google.Apis.Drive.v3.Data
     {
         /// <summary>The address where notifications are delivered for this channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
-        public virtual string Address { get; set; } 
+        public virtual string Address { get; set; }
 
         /// <summary>Date and time of notification channel expiration, expressed as a Unix timestamp, in milliseconds.
         /// Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expiration")]
-        public virtual System.Nullable<long> Expiration { get; set; } 
+        public virtual System.Nullable<long> Expiration { get; set; }
 
         /// <summary>A UUID or similar unique string that identifies this channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies this as a notification channel used to watch for changes to a resource, which is
         /// "api#channel".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Additional parameters controlling delivery channel behavior. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Params__ { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Params__ { get; set; }
 
         /// <summary>A Boolean value to indicate whether payload is wanted. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual System.Nullable<bool> Payload { get; set; } 
+        public virtual System.Nullable<bool> Payload { get; set; }
 
         /// <summary>An opaque ID that identifies the resource being watched on this channel. Stable across different
         /// API versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual string ResourceId { get; set; } 
+        public virtual string ResourceId { get; set; }
 
         /// <summary>A version-specific identifier for the watched resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
-        public virtual string ResourceUri { get; set; } 
+        public virtual string ResourceUri { get; set; }
 
         /// <summary>An arbitrary string delivered to the target address with each notification delivered over this
         /// channel. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
-        public virtual string Token { get; set; } 
+        public virtual string Token { get; set; }
 
         /// <summary>The type of delivery mechanism used for this channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5412,17 +5412,17 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>A region of the document represented as a JSON string. See anchor documentation for details on how
         /// to define and interpret anchor properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("anchor")]
-        public virtual string Anchor { get; set; } 
+        public virtual string Anchor { get; set; }
 
         /// <summary>The author of the comment. The author's email address and permission ID will not be
         /// populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("author")]
-        public virtual User Author { get; set; } 
+        public virtual User Author { get; set; }
 
         /// <summary>The plain text content of the comment. This field is used for setting the content, while
         /// htmlContent should be displayed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual string Content { get; set; } 
+        public virtual string Content { get; set; }
 
         /// <summary>The time at which the comment was created (RFC 3339 date-time).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdTime")]
@@ -5438,19 +5438,19 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>Whether the comment has been deleted. A deleted comment has no content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
-        public virtual System.Nullable<bool> Deleted { get; set; } 
+        public virtual System.Nullable<bool> Deleted { get; set; }
 
         /// <summary>The content of the comment with HTML formatting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("htmlContent")]
-        public virtual string HtmlContent { get; set; } 
+        public virtual string HtmlContent { get; set; }
 
         /// <summary>The ID of the comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#comment".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The last time the comment or any of its replies was modified (RFC 3339 date-time).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modifiedTime")]
@@ -5467,15 +5467,15 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>The file content to which the comment refers, typically within the anchor region. For a text file,
         /// for example, this would be the text at the location of the comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotedFileContent")]
-        public virtual QuotedFileContentData QuotedFileContent { get; set; } 
+        public virtual QuotedFileContentData QuotedFileContent { get; set; }
 
         /// <summary>The full list of replies to the comment in chronological order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replies")]
-        public virtual System.Collections.Generic.IList<Reply> Replies { get; set; } 
+        public virtual System.Collections.Generic.IList<Reply> Replies { get; set; }
 
         /// <summary>Whether the comment has been resolved by one of its replies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolved")]
-        public virtual System.Nullable<bool> Resolved { get; set; } 
+        public virtual System.Nullable<bool> Resolved { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5487,11 +5487,11 @@ namespace Google.Apis.Drive.v3.Data
         {
             /// <summary>The MIME type of the quoted content.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-            public virtual string MimeType { get; set; } 
+            public virtual string MimeType { get; set; }
 
             /// <summary>The quoted content itself. This is interpreted as plain text if set through the API.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("value")]
-            public virtual string Value { get; set; } 
+            public virtual string Value { get; set; }
 
         }
     }    
@@ -5502,17 +5502,17 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>The list of comments. If nextPageToken is populated, then this list may be incomplete and an
         /// additional page of results should be fetched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comments")]
-        public virtual System.Collections.Generic.IList<Comment> Comments { get; set; } 
+        public virtual System.Collections.Generic.IList<Comment> Comments { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#commentList".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The page token for the next page of comments. This will be absent if the end of the comments list
         /// has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be
         /// restarted from the first page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5525,16 +5525,16 @@ namespace Google.Apis.Drive.v3.Data
         /// may not be added, comments may not be added or modified, and the title of the file may not be
         /// modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
-        public virtual System.Nullable<bool> ReadOnly__ { get; set; } 
+        public virtual System.Nullable<bool> ReadOnly__ { get; set; }
 
         /// <summary>Reason for why the content of the file is restricted. This is only mutable on requests that also
         /// set readOnly=true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>The user who set the content restriction. Only populated if readOnly is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictingUser")]
-        public virtual User RestrictingUser { get; set; } 
+        public virtual User RestrictingUser { get; set; }
 
         /// <summary>The time at which the content restriction was set (formatted RFC 3339 timestamp). Only populated if
         /// readOnly is true.</summary>
@@ -5552,7 +5552,7 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>The type of the content restriction. Currently the only possible value is
         /// globalContentRestriction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5565,20 +5565,20 @@ namespace Google.Apis.Drive.v3.Data
         /// This is a write only field; it can only be set on drive.drives.update requests that don't set themeId. When
         /// specified, all fields of the backgroundImageFile must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundImageFile")]
-        public virtual BackgroundImageFileData BackgroundImageFile { get; set; } 
+        public virtual BackgroundImageFileData BackgroundImageFile { get; set; }
 
         /// <summary>A short-lived link to this shared drive's background image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundImageLink")]
-        public virtual string BackgroundImageLink { get; set; } 
+        public virtual string BackgroundImageLink { get; set; }
 
         /// <summary>Capabilities the current user has on this shared drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capabilities")]
-        public virtual CapabilitiesData Capabilities { get; set; } 
+        public virtual CapabilitiesData Capabilities { get; set; }
 
         /// <summary>The color of this shared drive as an RGB hex string. It can only be set on a drive.drives.update
         /// request that does not set themeId.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("colorRgb")]
-        public virtual string ColorRgb { get; set; } 
+        public virtual string ColorRgb { get; set; }
 
         /// <summary>The time at which the shared drive was created (RFC 3339 date-time).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdTime")]
@@ -5594,31 +5594,31 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>Whether the shared drive is hidden from default view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hidden")]
-        public virtual System.Nullable<bool> Hidden { get; set; } 
+        public virtual System.Nullable<bool> Hidden { get; set; }
 
         /// <summary>The ID of this shared drive which is also the ID of the top level folder of this shared
         /// drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#drive".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The name of this shared drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>A set of restrictions that apply to this shared drive or items inside this shared drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictions")]
-        public virtual RestrictionsData Restrictions { get; set; } 
+        public virtual RestrictionsData Restrictions { get; set; }
 
         /// <summary>The ID of the theme from which the background image and color will be set. The set of possible
         /// driveThemes can be retrieved from a drive.about.get response. When not specified on a drive.drives.create
         /// request, a random theme is chosen from which the background image and color are set. This is a write-only
         /// field; it can only be set on requests that don't set colorRgb or backgroundImageFile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("themeId")]
-        public virtual string ThemeId { get; set; } 
+        public virtual string ThemeId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5631,28 +5631,28 @@ namespace Google.Apis.Drive.v3.Data
         {
             /// <summary>The ID of an image file in Google Drive to use for the background image.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
-            public virtual string Id { get; set; } 
+            public virtual string Id { get; set; }
 
             /// <summary>The width of the cropped image in the closed range of 0 to 1. This value represents the width
             /// of the cropped image divided by the width of the entire image. The height is computed by applying a
             /// width to height aspect ratio of 80 to 9. The resulting image must be at least 1280 pixels wide and 144
             /// pixels high.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("width")]
-            public virtual System.Nullable<float> Width { get; set; } 
+            public virtual System.Nullable<float> Width { get; set; }
 
             /// <summary>The X coordinate of the upper left corner of the cropping area in the background image. This is
             /// a value in the closed range of 0 to 1. This value represents the horizontal distance from the left side
             /// of the entire image to the left side of the cropping area divided by the width of the entire
             /// image.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("xCoordinate")]
-            public virtual System.Nullable<float> XCoordinate { get; set; } 
+            public virtual System.Nullable<float> XCoordinate { get; set; }
 
             /// <summary>The Y coordinate of the upper left corner of the cropping area in the background image. This is
             /// a value in the closed range of 0 to 1. This value represents the vertical distance from the top side of
             /// the entire image to the top side of the cropping area divided by the height of the entire
             /// image.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("yCoordinate")]
-            public virtual System.Nullable<float> YCoordinate { get; set; } 
+            public virtual System.Nullable<float> YCoordinate { get; set; }
 
         }    
 
@@ -5661,81 +5661,81 @@ namespace Google.Apis.Drive.v3.Data
         {
             /// <summary>Whether the current user can add children to folders in this shared drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canAddChildren")]
-            public virtual System.Nullable<bool> CanAddChildren { get; set; } 
+            public virtual System.Nullable<bool> CanAddChildren { get; set; }
 
             /// <summary>Whether the current user can change the copyRequiresWriterPermission restriction of this shared
             /// drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canChangeCopyRequiresWriterPermissionRestriction")]
-            public virtual System.Nullable<bool> CanChangeCopyRequiresWriterPermissionRestriction { get; set; } 
+            public virtual System.Nullable<bool> CanChangeCopyRequiresWriterPermissionRestriction { get; set; }
 
             /// <summary>Whether the current user can change the domainUsersOnly restriction of this shared
             /// drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canChangeDomainUsersOnlyRestriction")]
-            public virtual System.Nullable<bool> CanChangeDomainUsersOnlyRestriction { get; set; } 
+            public virtual System.Nullable<bool> CanChangeDomainUsersOnlyRestriction { get; set; }
 
             /// <summary>Whether the current user can change the background of this shared drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canChangeDriveBackground")]
-            public virtual System.Nullable<bool> CanChangeDriveBackground { get; set; } 
+            public virtual System.Nullable<bool> CanChangeDriveBackground { get; set; }
 
             /// <summary>Whether the current user can change the driveMembersOnly restriction of this shared
             /// drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canChangeDriveMembersOnlyRestriction")]
-            public virtual System.Nullable<bool> CanChangeDriveMembersOnlyRestriction { get; set; } 
+            public virtual System.Nullable<bool> CanChangeDriveMembersOnlyRestriction { get; set; }
 
             /// <summary>Whether the current user can comment on files in this shared drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canComment")]
-            public virtual System.Nullable<bool> CanComment { get; set; } 
+            public virtual System.Nullable<bool> CanComment { get; set; }
 
             /// <summary>Whether the current user can copy files in this shared drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canCopy")]
-            public virtual System.Nullable<bool> CanCopy { get; set; } 
+            public virtual System.Nullable<bool> CanCopy { get; set; }
 
             /// <summary>Whether the current user can delete children from folders in this shared drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canDeleteChildren")]
-            public virtual System.Nullable<bool> CanDeleteChildren { get; set; } 
+            public virtual System.Nullable<bool> CanDeleteChildren { get; set; }
 
             /// <summary>Whether the current user can delete this shared drive. Attempting to delete the shared drive
             /// may still fail if there are untrashed items inside the shared drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canDeleteDrive")]
-            public virtual System.Nullable<bool> CanDeleteDrive { get; set; } 
+            public virtual System.Nullable<bool> CanDeleteDrive { get; set; }
 
             /// <summary>Whether the current user can download files in this shared drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canDownload")]
-            public virtual System.Nullable<bool> CanDownload { get; set; } 
+            public virtual System.Nullable<bool> CanDownload { get; set; }
 
             /// <summary>Whether the current user can edit files in this shared drive</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canEdit")]
-            public virtual System.Nullable<bool> CanEdit { get; set; } 
+            public virtual System.Nullable<bool> CanEdit { get; set; }
 
             /// <summary>Whether the current user can list the children of folders in this shared drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canListChildren")]
-            public virtual System.Nullable<bool> CanListChildren { get; set; } 
+            public virtual System.Nullable<bool> CanListChildren { get; set; }
 
             /// <summary>Whether the current user can add members to this shared drive or remove them or change their
             /// role.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canManageMembers")]
-            public virtual System.Nullable<bool> CanManageMembers { get; set; } 
+            public virtual System.Nullable<bool> CanManageMembers { get; set; }
 
             /// <summary>Whether the current user can read the revisions resource of files in this shared
             /// drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canReadRevisions")]
-            public virtual System.Nullable<bool> CanReadRevisions { get; set; } 
+            public virtual System.Nullable<bool> CanReadRevisions { get; set; }
 
             /// <summary>Whether the current user can rename files or folders in this shared drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canRename")]
-            public virtual System.Nullable<bool> CanRename { get; set; } 
+            public virtual System.Nullable<bool> CanRename { get; set; }
 
             /// <summary>Whether the current user can rename this shared drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canRenameDrive")]
-            public virtual System.Nullable<bool> CanRenameDrive { get; set; } 
+            public virtual System.Nullable<bool> CanRenameDrive { get; set; }
 
             /// <summary>Whether the current user can share files or folders in this shared drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canShare")]
-            public virtual System.Nullable<bool> CanShare { get; set; } 
+            public virtual System.Nullable<bool> CanShare { get; set; }
 
             /// <summary>Whether the current user can trash children from folders in this shared drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canTrashChildren")]
-            public virtual System.Nullable<bool> CanTrashChildren { get; set; } 
+            public virtual System.Nullable<bool> CanTrashChildren { get; set; }
 
         }    
 
@@ -5745,23 +5745,23 @@ namespace Google.Apis.Drive.v3.Data
             /// <summary>Whether administrative privileges on this shared drive are required to modify
             /// restrictions.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("adminManagedRestrictions")]
-            public virtual System.Nullable<bool> AdminManagedRestrictions { get; set; } 
+            public virtual System.Nullable<bool> AdminManagedRestrictions { get; set; }
 
             /// <summary>Whether the options to copy, print, or download files inside this shared drive, should be
             /// disabled for readers and commenters. When this restriction is set to true, it will override the
             /// similarly named field to true for any file inside this shared drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("copyRequiresWriterPermission")]
-            public virtual System.Nullable<bool> CopyRequiresWriterPermission { get; set; } 
+            public virtual System.Nullable<bool> CopyRequiresWriterPermission { get; set; }
 
             /// <summary>Whether access to this shared drive and items inside this shared drive is restricted to users
             /// of the domain to which this shared drive belongs. This restriction may be overridden by other sharing
             /// policies controlled outside of this shared drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("domainUsersOnly")]
-            public virtual System.Nullable<bool> DomainUsersOnly { get; set; } 
+            public virtual System.Nullable<bool> DomainUsersOnly { get; set; }
 
             /// <summary>Whether access to items inside this shared drive is restricted to its members.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("driveMembersOnly")]
-            public virtual System.Nullable<bool> DriveMembersOnly { get; set; } 
+            public virtual System.Nullable<bool> DriveMembersOnly { get; set; }
 
         }
     }    
@@ -5772,17 +5772,17 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>The list of shared drives. If nextPageToken is populated, then this list may be incomplete and an
         /// additional page of results should be fetched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("drives")]
-        public virtual System.Collections.Generic.IList<Drive> Drives { get; set; } 
+        public virtual System.Collections.Generic.IList<Drive> Drives { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#driveList".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The page token for the next page of shared drives. This will be absent if the end of the list has
         /// been reached. If the token is rejected for any reason, it should be discarded, and pagination should be
         /// restarted from the first page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5794,27 +5794,27 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>A collection of arbitrary key-value pairs which are private to the requesting app. Entries with
         /// null values are cleared in update and copy requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appProperties")]
-        public virtual System.Collections.Generic.IDictionary<string,string> AppProperties { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> AppProperties { get; set; }
 
         /// <summary>Capabilities the current user has on this file. Each capability corresponds to a fine-grained
         /// action that a user may take.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capabilities")]
-        public virtual CapabilitiesData Capabilities { get; set; } 
+        public virtual CapabilitiesData Capabilities { get; set; }
 
         /// <summary>Additional information about the content of the file. These fields are never populated in
         /// responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentHints")]
-        public virtual ContentHintsData ContentHints { get; set; } 
+        public virtual ContentHintsData ContentHints { get; set; }
 
         /// <summary>Restrictions for accessing the content of the file. Only populated if such a restriction
         /// exists.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentRestrictions")]
-        public virtual System.Collections.Generic.IList<ContentRestriction> ContentRestrictions { get; set; } 
+        public virtual System.Collections.Generic.IList<ContentRestriction> ContentRestrictions { get; set; }
 
         /// <summary>Whether the options to copy, print, or download this file, should be disabled for readers and
         /// commenters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("copyRequiresWriterPermission")]
-        public virtual System.Nullable<bool> CopyRequiresWriterPermission { get; set; } 
+        public virtual System.Nullable<bool> CopyRequiresWriterPermission { get; set; }
 
         /// <summary>The time at which the file was created (RFC 3339 date-time).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdTime")]
@@ -5830,93 +5830,93 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>A short description of the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>ID of the shared drive the file resides in. Only populated for items in shared drives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveId")]
-        public virtual string DriveId { get; set; } 
+        public virtual string DriveId { get; set; }
 
         /// <summary>Whether the file has been explicitly trashed, as opposed to recursively trashed from a parent
         /// folder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("explicitlyTrashed")]
-        public virtual System.Nullable<bool> ExplicitlyTrashed { get; set; } 
+        public virtual System.Nullable<bool> ExplicitlyTrashed { get; set; }
 
         /// <summary>Links for exporting Google Docs to specific formats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportLinks")]
-        public virtual System.Collections.Generic.IDictionary<string,string> ExportLinks { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> ExportLinks { get; set; }
 
         /// <summary>The final component of fullFileExtension. This is only available for files with binary content in
         /// Google Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileExtension")]
-        public virtual string FileExtension { get; set; } 
+        public virtual string FileExtension { get; set; }
 
         /// <summary>The color for a folder as an RGB hex string. The supported colors are published in the
         /// folderColorPalette field of the About resource. If an unsupported color is specified, the closest color in
         /// the palette will be used instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("folderColorRgb")]
-        public virtual string FolderColorRgb { get; set; } 
+        public virtual string FolderColorRgb { get; set; }
 
         /// <summary>The full file extension extracted from the name field. May contain multiple concatenated
         /// extensions, such as "tar.gz". This is only available for files with binary content in Google Drive. This is
         /// automatically updated when the name field changes, however it is not cleared if the new name does not
         /// contain a valid extension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullFileExtension")]
-        public virtual string FullFileExtension { get; set; } 
+        public virtual string FullFileExtension { get; set; }
 
         /// <summary>Whether there are permissions directly on this file. This field is only populated for items in
         /// shared drives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasAugmentedPermissions")]
-        public virtual System.Nullable<bool> HasAugmentedPermissions { get; set; } 
+        public virtual System.Nullable<bool> HasAugmentedPermissions { get; set; }
 
         /// <summary>Whether this file has a thumbnail. This does not indicate whether the requesting app has access to
         /// the thumbnail. To check access, look for the presence of the thumbnailLink field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasThumbnail")]
-        public virtual System.Nullable<bool> HasThumbnail { get; set; } 
+        public virtual System.Nullable<bool> HasThumbnail { get; set; }
 
         /// <summary>The ID of the file's head revision. This is currently only available for files with binary content
         /// in Google Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headRevisionId")]
-        public virtual string HeadRevisionId { get; set; } 
+        public virtual string HeadRevisionId { get; set; }
 
         /// <summary>A static, unauthenticated link to the file's icon.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iconLink")]
-        public virtual string IconLink { get; set; } 
+        public virtual string IconLink { get; set; }
 
         /// <summary>The ID of the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Additional metadata about image media, if available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageMediaMetadata")]
-        public virtual ImageMediaMetadataData ImageMediaMetadata { get; set; } 
+        public virtual ImageMediaMetadataData ImageMediaMetadata { get; set; }
 
         /// <summary>Whether the file was created or opened by the requesting app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isAppAuthorized")]
-        public virtual System.Nullable<bool> IsAppAuthorized { get; set; } 
+        public virtual System.Nullable<bool> IsAppAuthorized { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#file".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The last user to modify the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifyingUser")]
-        public virtual User LastModifyingUser { get; set; } 
+        public virtual User LastModifyingUser { get; set; }
 
         /// <summary>The MD5 checksum for the content of the file. This is only applicable to files with binary content
         /// in Google Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("md5Checksum")]
-        public virtual string Md5Checksum { get; set; } 
+        public virtual string Md5Checksum { get; set; }
 
         /// <summary>The MIME type of the file. Google Drive will attempt to automatically detect an appropriate value
         /// from uploaded content if no value is provided. The value cannot be changed unless a new revision is
         /// uploaded. If a file is created with a Google Doc MIME type, the uploaded content will be imported if
         /// possible. The supported import formats are published in the About resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-        public virtual string MimeType { get; set; } 
+        public virtual string MimeType { get; set; }
 
         /// <summary>Whether the file has been modified by this user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modifiedByMe")]
-        public virtual System.Nullable<bool> ModifiedByMe { get; set; } 
+        public virtual System.Nullable<bool> ModifiedByMe { get; set; }
 
         /// <summary>The last time the file was modified by the user (RFC 3339 date-time).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modifiedByMeTime")]
@@ -5947,51 +5947,51 @@ namespace Google.Apis.Drive.v3.Data
         /// such as the top level folders of shared drives, My Drive root folder, and Application Data folder the name
         /// is constant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The original filename of the uploaded content if available, or else the original value of the name
         /// field. This is only available for files with binary content in Google Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalFilename")]
-        public virtual string OriginalFilename { get; set; } 
+        public virtual string OriginalFilename { get; set; }
 
         /// <summary>Whether the user owns the file. Not populated for items in shared drives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownedByMe")]
-        public virtual System.Nullable<bool> OwnedByMe { get; set; } 
+        public virtual System.Nullable<bool> OwnedByMe { get; set; }
 
         /// <summary>The owners of the file. Currently, only certain legacy files may have more than one owner. Not
         /// populated for items in shared drives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("owners")]
-        public virtual System.Collections.Generic.IList<User> Owners { get; set; } 
+        public virtual System.Collections.Generic.IList<User> Owners { get; set; }
 
         /// <summary>The IDs of the parent folders which contain the file. If not specified as part of a create request,
         /// the file will be placed directly in the user's My Drive folder. If not specified as part of a copy request,
         /// the file will inherit any discoverable parents of the source file. Update requests must use the addParents
         /// and removeParents parameters to modify the parents list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parents")]
-        public virtual System.Collections.Generic.IList<string> Parents { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Parents { get; set; }
 
         /// <summary>List of permission IDs for users with access to this file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissionIds")]
-        public virtual System.Collections.Generic.IList<string> PermissionIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> PermissionIds { get; set; }
 
         /// <summary>The full list of permissions for the file. This is only available if the requesting user can share
         /// the file. Not populated for items in shared drives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<Permission> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<Permission> Permissions { get; set; }
 
         /// <summary>A collection of arbitrary key-value pairs which are visible to all apps. Entries with null values
         /// are cleared in update and copy requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Properties { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Properties { get; set; }
 
         /// <summary>The number of storage quota bytes used by the file. This includes the head revision as well as
         /// previous revisions with keepForever enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotaBytesUsed")]
-        public virtual System.Nullable<long> QuotaBytesUsed { get; set; } 
+        public virtual System.Nullable<long> QuotaBytesUsed { get; set; }
 
         /// <summary>Whether the file has been shared. Not populated for items in shared drives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shared")]
-        public virtual System.Nullable<bool> Shared { get; set; } 
+        public virtual System.Nullable<bool> Shared { get; set; }
 
         /// <summary>The time at which the file was shared with the user, if applicable (RFC 3339 date-time).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sharedWithMeTime")]
@@ -6007,46 +6007,46 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>The user who shared the file with the requesting user, if applicable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sharingUser")]
-        public virtual User SharingUser { get; set; } 
+        public virtual User SharingUser { get; set; }
 
         /// <summary>Shortcut file details. Only populated for shortcut files, which have the mimeType field set to
         /// application/vnd.google-apps.shortcut.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortcutDetails")]
-        public virtual ShortcutDetailsData ShortcutDetails { get; set; } 
+        public virtual ShortcutDetailsData ShortcutDetails { get; set; }
 
         /// <summary>The size of the file's content in bytes. This is only applicable to files with binary content in
         /// Google Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
-        public virtual System.Nullable<long> Size { get; set; } 
+        public virtual System.Nullable<long> Size { get; set; }
 
         /// <summary>The list of spaces which contain the file. The currently supported values are 'drive',
         /// 'appDataFolder' and 'photos'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spaces")]
-        public virtual System.Collections.Generic.IList<string> Spaces { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Spaces { get; set; }
 
         /// <summary>Whether the user has starred the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("starred")]
-        public virtual System.Nullable<bool> Starred { get; set; } 
+        public virtual System.Nullable<bool> Starred { get; set; }
 
         /// <summary>Deprecated - use driveId instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teamDriveId")]
-        public virtual string TeamDriveId { get; set; } 
+        public virtual string TeamDriveId { get; set; }
 
         /// <summary>A short-lived link to the file's thumbnail, if available. Typically lasts on the order of hours.
         /// Only populated when the requesting app can access the file's content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailLink")]
-        public virtual string ThumbnailLink { get; set; } 
+        public virtual string ThumbnailLink { get; set; }
 
         /// <summary>The thumbnail version for use in thumbnail cache invalidation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailVersion")]
-        public virtual System.Nullable<long> ThumbnailVersion { get; set; } 
+        public virtual System.Nullable<long> ThumbnailVersion { get; set; }
 
         /// <summary>Whether the file has been trashed, either explicitly or from a trashed parent folder. Only the
         /// owner may trash a file. The trashed item is excluded from all files.list responses returned for any user who
         /// does not own the file. However, all users with access to the file can see the trashed item metadata in an
         /// API response. All users with access can copy, download, export, and share the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trashed")]
-        public virtual System.Nullable<bool> Trashed { get; set; } 
+        public virtual System.Nullable<bool> Trashed { get; set; }
 
         /// <summary>The time that the item was trashed (RFC 3339 date-time). Only populated for items in shared
         /// drives.</summary>
@@ -6064,20 +6064,20 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>If the file has been explicitly trashed, the user who trashed it. Only populated for items in
         /// shared drives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trashingUser")]
-        public virtual User TrashingUser { get; set; } 
+        public virtual User TrashingUser { get; set; }
 
         /// <summary>A monotonically increasing version number for the file. This reflects every change made to the file
         /// on the server, even those not visible to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<long> Version { get; set; } 
+        public virtual System.Nullable<long> Version { get; set; }
 
         /// <summary>Additional metadata about video media. This may not be available immediately upon upload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoMediaMetadata")]
-        public virtual VideoMediaMetadataData VideoMediaMetadata { get; set; } 
+        public virtual VideoMediaMetadataData VideoMediaMetadata { get; set; }
 
         /// <summary>Whether the file has been viewed by this user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewedByMe")]
-        public virtual System.Nullable<bool> ViewedByMe { get; set; } 
+        public virtual System.Nullable<bool> ViewedByMe { get; set; }
 
         /// <summary>The last time the file was viewed by the user (RFC 3339 date-time).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewedByMeTime")]
@@ -6093,21 +6093,21 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>Deprecated - use copyRequiresWriterPermission instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewersCanCopyContent")]
-        public virtual System.Nullable<bool> ViewersCanCopyContent { get; set; } 
+        public virtual System.Nullable<bool> ViewersCanCopyContent { get; set; }
 
         /// <summary>A link for downloading the content of the file in a browser. This is only available for files with
         /// binary content in Google Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webContentLink")]
-        public virtual string WebContentLink { get; set; } 
+        public virtual string WebContentLink { get; set; }
 
         /// <summary>A link for opening the file in a relevant Google editor or viewer in a browser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webViewLink")]
-        public virtual string WebViewLink { get; set; } 
+        public virtual string WebViewLink { get; set; }
 
         /// <summary>Whether users with only writer permission can modify the file's permissions. Not populated for
         /// items in shared drives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writersCanShare")]
-        public virtual System.Nullable<bool> WritersCanShare { get; set; } 
+        public virtual System.Nullable<bool> WritersCanShare { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6120,162 +6120,162 @@ namespace Google.Apis.Drive.v3.Data
             /// <summary>Whether the current user can add children to this folder. This is always false when the item is
             /// not a folder.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canAddChildren")]
-            public virtual System.Nullable<bool> CanAddChildren { get; set; } 
+            public virtual System.Nullable<bool> CanAddChildren { get; set; }
 
             /// <summary>Whether the current user can add a folder from another drive (different shared drive or My
             /// Drive) to this folder. This is false when the item is not a folder. Only populated for items in shared
             /// drives.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canAddFolderFromAnotherDrive")]
-            public virtual System.Nullable<bool> CanAddFolderFromAnotherDrive { get; set; } 
+            public virtual System.Nullable<bool> CanAddFolderFromAnotherDrive { get; set; }
 
             /// <summary>Whether the current user can add a parent for the item without removing an existing parent in
             /// the same request. Not populated for shared drive files.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canAddMyDriveParent")]
-            public virtual System.Nullable<bool> CanAddMyDriveParent { get; set; } 
+            public virtual System.Nullable<bool> CanAddMyDriveParent { get; set; }
 
             /// <summary>Whether the current user can change the copyRequiresWriterPermission restriction of this
             /// file.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canChangeCopyRequiresWriterPermission")]
-            public virtual System.Nullable<bool> CanChangeCopyRequiresWriterPermission { get; set; } 
+            public virtual System.Nullable<bool> CanChangeCopyRequiresWriterPermission { get; set; }
 
             /// <summary>Deprecated</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canChangeViewersCanCopyContent")]
-            public virtual System.Nullable<bool> CanChangeViewersCanCopyContent { get; set; } 
+            public virtual System.Nullable<bool> CanChangeViewersCanCopyContent { get; set; }
 
             /// <summary>Whether the current user can comment on this file.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canComment")]
-            public virtual System.Nullable<bool> CanComment { get; set; } 
+            public virtual System.Nullable<bool> CanComment { get; set; }
 
             /// <summary>Whether the current user can copy this file. For an item in a shared drive, whether the current
             /// user can copy non-folder descendants of this item, or this item itself if it is not a folder.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canCopy")]
-            public virtual System.Nullable<bool> CanCopy { get; set; } 
+            public virtual System.Nullable<bool> CanCopy { get; set; }
 
             /// <summary>Whether the current user can delete this file.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canDelete")]
-            public virtual System.Nullable<bool> CanDelete { get; set; } 
+            public virtual System.Nullable<bool> CanDelete { get; set; }
 
             /// <summary>Whether the current user can delete children of this folder. This is false when the item is not
             /// a folder. Only populated for items in shared drives.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canDeleteChildren")]
-            public virtual System.Nullable<bool> CanDeleteChildren { get; set; } 
+            public virtual System.Nullable<bool> CanDeleteChildren { get; set; }
 
             /// <summary>Whether the current user can download this file.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canDownload")]
-            public virtual System.Nullable<bool> CanDownload { get; set; } 
+            public virtual System.Nullable<bool> CanDownload { get; set; }
 
             /// <summary>Whether the current user can edit this file. Other factors may limit the type of changes a user
             /// can make to a file. For example, see canChangeCopyRequiresWriterPermission or
             /// canModifyContent.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canEdit")]
-            public virtual System.Nullable<bool> CanEdit { get; set; } 
+            public virtual System.Nullable<bool> CanEdit { get; set; }
 
             /// <summary>Whether the current user can list the children of this folder. This is always false when the
             /// item is not a folder.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canListChildren")]
-            public virtual System.Nullable<bool> CanListChildren { get; set; } 
+            public virtual System.Nullable<bool> CanListChildren { get; set; }
 
             /// <summary>Whether the current user can modify the content of this file.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canModifyContent")]
-            public virtual System.Nullable<bool> CanModifyContent { get; set; } 
+            public virtual System.Nullable<bool> CanModifyContent { get; set; }
 
             /// <summary>Whether the current user can modify restrictions on content of this file.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canModifyContentRestriction")]
-            public virtual System.Nullable<bool> CanModifyContentRestriction { get; set; } 
+            public virtual System.Nullable<bool> CanModifyContentRestriction { get; set; }
 
             /// <summary>Whether the current user can move children of this folder outside of the shared drive. This is
             /// false when the item is not a folder. Only populated for items in shared drives.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveChildrenOutOfDrive")]
-            public virtual System.Nullable<bool> CanMoveChildrenOutOfDrive { get; set; } 
+            public virtual System.Nullable<bool> CanMoveChildrenOutOfDrive { get; set; }
 
             /// <summary>Deprecated - use canMoveChildrenOutOfDrive instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveChildrenOutOfTeamDrive")]
-            public virtual System.Nullable<bool> CanMoveChildrenOutOfTeamDrive { get; set; } 
+            public virtual System.Nullable<bool> CanMoveChildrenOutOfTeamDrive { get; set; }
 
             /// <summary>Whether the current user can move children of this folder within this drive. This is false when
             /// the item is not a folder. Note that a request to move the child may still fail depending on the current
             /// user's access to the child and to the destination folder.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveChildrenWithinDrive")]
-            public virtual System.Nullable<bool> CanMoveChildrenWithinDrive { get; set; } 
+            public virtual System.Nullable<bool> CanMoveChildrenWithinDrive { get; set; }
 
             /// <summary>Deprecated - use canMoveChildrenWithinDrive instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveChildrenWithinTeamDrive")]
-            public virtual System.Nullable<bool> CanMoveChildrenWithinTeamDrive { get; set; } 
+            public virtual System.Nullable<bool> CanMoveChildrenWithinTeamDrive { get; set; }
 
             /// <summary>Deprecated - use canMoveItemOutOfDrive instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveItemIntoTeamDrive")]
-            public virtual System.Nullable<bool> CanMoveItemIntoTeamDrive { get; set; } 
+            public virtual System.Nullable<bool> CanMoveItemIntoTeamDrive { get; set; }
 
             /// <summary>Whether the current user can move this item outside of this drive by changing its parent. Note
             /// that a request to change the parent of the item may still fail depending on the new parent that is being
             /// added.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveItemOutOfDrive")]
-            public virtual System.Nullable<bool> CanMoveItemOutOfDrive { get; set; } 
+            public virtual System.Nullable<bool> CanMoveItemOutOfDrive { get; set; }
 
             /// <summary>Deprecated - use canMoveItemOutOfDrive instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveItemOutOfTeamDrive")]
-            public virtual System.Nullable<bool> CanMoveItemOutOfTeamDrive { get; set; } 
+            public virtual System.Nullable<bool> CanMoveItemOutOfTeamDrive { get; set; }
 
             /// <summary>Whether the current user can move this item within this drive. Note that a request to change
             /// the parent of the item may still fail depending on the new parent that is being added and the parent
             /// that is being removed.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveItemWithinDrive")]
-            public virtual System.Nullable<bool> CanMoveItemWithinDrive { get; set; } 
+            public virtual System.Nullable<bool> CanMoveItemWithinDrive { get; set; }
 
             /// <summary>Deprecated - use canMoveItemWithinDrive instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveItemWithinTeamDrive")]
-            public virtual System.Nullable<bool> CanMoveItemWithinTeamDrive { get; set; } 
+            public virtual System.Nullable<bool> CanMoveItemWithinTeamDrive { get; set; }
 
             /// <summary>Deprecated - use canMoveItemWithinDrive or canMoveItemOutOfDrive instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveTeamDriveItem")]
-            public virtual System.Nullable<bool> CanMoveTeamDriveItem { get; set; } 
+            public virtual System.Nullable<bool> CanMoveTeamDriveItem { get; set; }
 
             /// <summary>Whether the current user can read the shared drive to which this file belongs. Only populated
             /// for items in shared drives.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canReadDrive")]
-            public virtual System.Nullable<bool> CanReadDrive { get; set; } 
+            public virtual System.Nullable<bool> CanReadDrive { get; set; }
 
             /// <summary>Whether the current user can read the revisions resource of this file. For a shared drive item,
             /// whether revisions of non-folder descendants of this item, or this item itself if it is not a folder, can
             /// be read.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canReadRevisions")]
-            public virtual System.Nullable<bool> CanReadRevisions { get; set; } 
+            public virtual System.Nullable<bool> CanReadRevisions { get; set; }
 
             /// <summary>Deprecated - use canReadDrive instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canReadTeamDrive")]
-            public virtual System.Nullable<bool> CanReadTeamDrive { get; set; } 
+            public virtual System.Nullable<bool> CanReadTeamDrive { get; set; }
 
             /// <summary>Whether the current user can remove children from this folder. This is always false when the
             /// item is not a folder. For a folder in a shared drive, use canDeleteChildren or canTrashChildren
             /// instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canRemoveChildren")]
-            public virtual System.Nullable<bool> CanRemoveChildren { get; set; } 
+            public virtual System.Nullable<bool> CanRemoveChildren { get; set; }
 
             /// <summary>Whether the current user can remove a parent from the item without adding another parent in the
             /// same request. Not populated for shared drive files.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canRemoveMyDriveParent")]
-            public virtual System.Nullable<bool> CanRemoveMyDriveParent { get; set; } 
+            public virtual System.Nullable<bool> CanRemoveMyDriveParent { get; set; }
 
             /// <summary>Whether the current user can rename this file.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canRename")]
-            public virtual System.Nullable<bool> CanRename { get; set; } 
+            public virtual System.Nullable<bool> CanRename { get; set; }
 
             /// <summary>Whether the current user can modify the sharing settings for this file.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canShare")]
-            public virtual System.Nullable<bool> CanShare { get; set; } 
+            public virtual System.Nullable<bool> CanShare { get; set; }
 
             /// <summary>Whether the current user can move this file to trash.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canTrash")]
-            public virtual System.Nullable<bool> CanTrash { get; set; } 
+            public virtual System.Nullable<bool> CanTrash { get; set; }
 
             /// <summary>Whether the current user can trash children of this folder. This is false when the item is not
             /// a folder. Only populated for items in shared drives.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canTrashChildren")]
-            public virtual System.Nullable<bool> CanTrashChildren { get; set; } 
+            public virtual System.Nullable<bool> CanTrashChildren { get; set; }
 
             /// <summary>Whether the current user can restore this file from trash.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canUntrash")]
-            public virtual System.Nullable<bool> CanUntrash { get; set; } 
+            public virtual System.Nullable<bool> CanUntrash { get; set; }
 
         }    
 
@@ -6286,12 +6286,12 @@ namespace Google.Apis.Drive.v3.Data
             /// <summary>Text to be indexed for the file to improve fullText queries. This is limited to 128KB in length
             /// and may contain HTML elements.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("indexableText")]
-            public virtual string IndexableText { get; set; } 
+            public virtual string IndexableText { get; set; }
 
             /// <summary>A thumbnail for the file. This will only be used if Google Drive cannot generate a standard
             /// thumbnail.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("thumbnail")]
-            public virtual ThumbnailData Thumbnail { get; set; } 
+            public virtual ThumbnailData Thumbnail { get; set; }
 
             
 
@@ -6301,11 +6301,11 @@ namespace Google.Apis.Drive.v3.Data
             {
                 /// <summary>The thumbnail data encoded with URL-safe Base64 (RFC 4648 section 5).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("image")]
-                public virtual string Image { get; set; } 
+                public virtual string Image { get; set; }
 
                 /// <summary>The MIME type of the thumbnail.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-                public virtual string MimeType { get; set; } 
+                public virtual string MimeType { get; set; }
 
             }
         }    
@@ -6315,89 +6315,89 @@ namespace Google.Apis.Drive.v3.Data
         {
             /// <summary>The aperture used to create the photo (f-number).</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("aperture")]
-            public virtual System.Nullable<float> Aperture { get; set; } 
+            public virtual System.Nullable<float> Aperture { get; set; }
 
             /// <summary>The make of the camera used to create the photo.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("cameraMake")]
-            public virtual string CameraMake { get; set; } 
+            public virtual string CameraMake { get; set; }
 
             /// <summary>The model of the camera used to create the photo.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("cameraModel")]
-            public virtual string CameraModel { get; set; } 
+            public virtual string CameraModel { get; set; }
 
             /// <summary>The color space of the photo.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("colorSpace")]
-            public virtual string ColorSpace { get; set; } 
+            public virtual string ColorSpace { get; set; }
 
             /// <summary>The exposure bias of the photo (APEX value).</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("exposureBias")]
-            public virtual System.Nullable<float> ExposureBias { get; set; } 
+            public virtual System.Nullable<float> ExposureBias { get; set; }
 
             /// <summary>The exposure mode used to create the photo.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("exposureMode")]
-            public virtual string ExposureMode { get; set; } 
+            public virtual string ExposureMode { get; set; }
 
             /// <summary>The length of the exposure, in seconds.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("exposureTime")]
-            public virtual System.Nullable<float> ExposureTime { get; set; } 
+            public virtual System.Nullable<float> ExposureTime { get; set; }
 
             /// <summary>Whether a flash was used to create the photo.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("flashUsed")]
-            public virtual System.Nullable<bool> FlashUsed { get; set; } 
+            public virtual System.Nullable<bool> FlashUsed { get; set; }
 
             /// <summary>The focal length used to create the photo, in millimeters.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("focalLength")]
-            public virtual System.Nullable<float> FocalLength { get; set; } 
+            public virtual System.Nullable<float> FocalLength { get; set; }
 
             /// <summary>The height of the image in pixels.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("height")]
-            public virtual System.Nullable<int> Height { get; set; } 
+            public virtual System.Nullable<int> Height { get; set; }
 
             /// <summary>The ISO speed used to create the photo.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("isoSpeed")]
-            public virtual System.Nullable<int> IsoSpeed { get; set; } 
+            public virtual System.Nullable<int> IsoSpeed { get; set; }
 
             /// <summary>The lens used to create the photo.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("lens")]
-            public virtual string Lens { get; set; } 
+            public virtual string Lens { get; set; }
 
             /// <summary>Geographic location information stored in the image.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("location")]
-            public virtual LocationData Location { get; set; } 
+            public virtual LocationData Location { get; set; }
 
             /// <summary>The smallest f-number of the lens at the focal length used to create the photo (APEX
             /// value).</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("maxApertureValue")]
-            public virtual System.Nullable<float> MaxApertureValue { get; set; } 
+            public virtual System.Nullable<float> MaxApertureValue { get; set; }
 
             /// <summary>The metering mode used to create the photo.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("meteringMode")]
-            public virtual string MeteringMode { get; set; } 
+            public virtual string MeteringMode { get; set; }
 
             /// <summary>The number of clockwise 90 degree rotations applied from the image's original
             /// orientation.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("rotation")]
-            public virtual System.Nullable<int> Rotation { get; set; } 
+            public virtual System.Nullable<int> Rotation { get; set; }
 
             /// <summary>The type of sensor used to create the photo.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("sensor")]
-            public virtual string Sensor { get; set; } 
+            public virtual string Sensor { get; set; }
 
             /// <summary>The distance to the subject of the photo, in meters.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("subjectDistance")]
-            public virtual System.Nullable<int> SubjectDistance { get; set; } 
+            public virtual System.Nullable<int> SubjectDistance { get; set; }
 
             /// <summary>The date and time the photo was taken (EXIF DateTime).</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("time")]
-            public virtual string Time { get; set; } 
+            public virtual string Time { get; set; }
 
             /// <summary>The white balance mode used to create the photo.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("whiteBalance")]
-            public virtual string WhiteBalance { get; set; } 
+            public virtual string WhiteBalance { get; set; }
 
             /// <summary>The width of the image in pixels.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("width")]
-            public virtual System.Nullable<int> Width { get; set; } 
+            public virtual System.Nullable<int> Width { get; set; }
 
             
 
@@ -6406,15 +6406,15 @@ namespace Google.Apis.Drive.v3.Data
             {
                 /// <summary>The altitude stored in the image.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("altitude")]
-                public virtual System.Nullable<double> Altitude { get; set; } 
+                public virtual System.Nullable<double> Altitude { get; set; }
 
                 /// <summary>The latitude stored in the image.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("latitude")]
-                public virtual System.Nullable<double> Latitude { get; set; } 
+                public virtual System.Nullable<double> Latitude { get; set; }
 
                 /// <summary>The longitude stored in the image.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("longitude")]
-                public virtual System.Nullable<double> Longitude { get; set; } 
+                public virtual System.Nullable<double> Longitude { get; set; }
 
             }
         }    
@@ -6425,12 +6425,12 @@ namespace Google.Apis.Drive.v3.Data
         {
             /// <summary>The ID of the file that this shortcut points to.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
-            public virtual string TargetId { get; set; } 
+            public virtual string TargetId { get; set; }
 
             /// <summary>The MIME type of the file that this shortcut points to. The value of this field is a snapshot
             /// of the target's MIME type, captured when the shortcut is created.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("targetMimeType")]
-            public virtual string TargetMimeType { get; set; } 
+            public virtual string TargetMimeType { get; set; }
 
         }    
 
@@ -6439,15 +6439,15 @@ namespace Google.Apis.Drive.v3.Data
         {
             /// <summary>The duration of the video in milliseconds.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("durationMillis")]
-            public virtual System.Nullable<long> DurationMillis { get; set; } 
+            public virtual System.Nullable<long> DurationMillis { get; set; }
 
             /// <summary>The height of the video in pixels.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("height")]
-            public virtual System.Nullable<int> Height { get; set; } 
+            public virtual System.Nullable<int> Height { get; set; }
 
             /// <summary>The width of the video in pixels.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("width")]
-            public virtual System.Nullable<int> Width { get; set; } 
+            public virtual System.Nullable<int> Width { get; set; }
 
         }
     }    
@@ -6458,24 +6458,24 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>The list of files. If nextPageToken is populated, then this list may be incomplete and an
         /// additional page of results should be fetched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("files")]
-        public virtual System.Collections.Generic.IList<File> Files { get; set; } 
+        public virtual System.Collections.Generic.IList<File> Files { get; set; }
 
         /// <summary>Whether the search process was incomplete. If true, then some search results may be missing, since
         /// all documents were not searched. This may occur when searching multiple drives with the "allDrives" corpora,
         /// but all corpora could not be searched. When this happens, it is suggested that clients narrow their query by
         /// choosing a different corpus such as "user" or "drive".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("incompleteSearch")]
-        public virtual System.Nullable<bool> IncompleteSearch { get; set; } 
+        public virtual System.Nullable<bool> IncompleteSearch { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#fileList".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The page token for the next page of files. This will be absent if the end of the files list has
         /// been reached. If the token is rejected for any reason, it should be discarded, and pagination should be
         /// restarted from the first page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6486,15 +6486,15 @@ namespace Google.Apis.Drive.v3.Data
     {
         /// <summary>The IDs generated for the requesting user in the specified space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ids")]
-        public virtual System.Collections.Generic.IList<string> Ids { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Ids { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#generatedIds".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The type of file that can be created with these IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("space")]
-        public virtual string Space { get; set; } 
+        public virtual string Space { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6507,27 +6507,27 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>Whether the permission allows the file to be discovered through search. This is only applicable for
         /// permissions of type domain or anyone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowFileDiscovery")]
-        public virtual System.Nullable<bool> AllowFileDiscovery { get; set; } 
+        public virtual System.Nullable<bool> AllowFileDiscovery { get; set; }
 
         /// <summary>Whether the account associated with this permission has been deleted. This field only pertains to
         /// user and group permissions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
-        public virtual System.Nullable<bool> Deleted { get; set; } 
+        public virtual System.Nullable<bool> Deleted { get; set; }
 
         /// <summary>The "pretty" name of the value of the permission. The following is a list of examples for each type
         /// of permission: - user - User's full name, as defined for their Google account, such as "Joe Smith." - group
         /// - Name of the Google Group, such as "The Company Administrators." - domain - String domain name, such as
         /// "thecompany.com." - anyone - No displayName is present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The domain to which this permission refers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
-        public virtual string Domain { get; set; } 
+        public virtual string Domain { get; set; }
 
         /// <summary>The email address of the user or group to which this permission refers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
-        public virtual string EmailAddress { get; set; } 
+        public virtual string EmailAddress { get; set; }
 
         /// <summary>The time at which this permission will expire (RFC 3339 date-time). Expiration times have the
         /// following restrictions: - They can only be set on user and group permissions - The time must be in the
@@ -6546,40 +6546,40 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>The ID of this permission. This is a unique identifier for the grantee, and is published in User
         /// resources as permissionId. IDs should be treated as opaque values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#permission".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Details of whether the permissions on this shared drive item are inherited or directly on this
         /// item. This is an output-only field which is present only for shared drive items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissionDetails")]
-        public virtual System.Collections.Generic.IList<PermissionDetailsData> PermissionDetails { get; set; } 
+        public virtual System.Collections.Generic.IList<PermissionDetailsData> PermissionDetails { get; set; }
 
         /// <summary>A link to the user's profile photo, if available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photoLink")]
-        public virtual string PhotoLink { get; set; } 
+        public virtual string PhotoLink { get; set; }
 
         /// <summary>The role granted by this permission. While new values may be supported in the future, the following
         /// are currently allowed: - owner - organizer - fileOrganizer - writer - commenter - reader</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>Deprecated - use permissionDetails instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teamDrivePermissionDetails")]
-        public virtual System.Collections.Generic.IList<TeamDrivePermissionDetailsData> TeamDrivePermissionDetails { get; set; } 
+        public virtual System.Collections.Generic.IList<TeamDrivePermissionDetailsData> TeamDrivePermissionDetails { get; set; }
 
         /// <summary>The type of the grantee. Valid values are: - user - group - domain - anyone  When creating a
         /// permission, if type is user or group, you must provide an emailAddress for the user or group. When type is
         /// domain, you must provide a domain. There isn't extra information required for a anyone type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>Indicates the view for this permission. Only populated for permissions that belong to a view.
         /// published is the only supported value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("view")]
-        public virtual string View { get; set; } 
+        public virtual string View { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6590,22 +6590,22 @@ namespace Google.Apis.Drive.v3.Data
             /// <summary>Whether this permission is inherited. This field is always populated. This is an output-only
             /// field.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("inherited")]
-            public virtual System.Nullable<bool> Inherited { get; set; } 
+            public virtual System.Nullable<bool> Inherited { get; set; }
 
             /// <summary>The ID of the item from which this permission is inherited. This is an output-only
             /// field.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("inheritedFrom")]
-            public virtual string InheritedFrom { get; set; } 
+            public virtual string InheritedFrom { get; set; }
 
             /// <summary>The permission type for this user. While new values may be added in future, the following are
             /// currently possible: - file - member</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("permissionType")]
-            public virtual string PermissionType { get; set; } 
+            public virtual string PermissionType { get; set; }
 
             /// <summary>The primary role for this user. While new values may be added in the future, the following are
             /// currently possible: - organizer - fileOrganizer - writer - commenter - reader</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("role")]
-            public virtual string Role { get; set; } 
+            public virtual string Role { get; set; }
 
         }    
 
@@ -6613,19 +6613,19 @@ namespace Google.Apis.Drive.v3.Data
         {
             /// <summary>Deprecated - use permissionDetails/inherited instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("inherited")]
-            public virtual System.Nullable<bool> Inherited { get; set; } 
+            public virtual System.Nullable<bool> Inherited { get; set; }
 
             /// <summary>Deprecated - use permissionDetails/inheritedFrom instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("inheritedFrom")]
-            public virtual string InheritedFrom { get; set; } 
+            public virtual string InheritedFrom { get; set; }
 
             /// <summary>Deprecated - use permissionDetails/role instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("role")]
-            public virtual string Role { get; set; } 
+            public virtual string Role { get; set; }
 
             /// <summary>Deprecated - use permissionDetails/permissionType instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("teamDrivePermissionType")]
-            public virtual string TeamDrivePermissionType { get; set; } 
+            public virtual string TeamDrivePermissionType { get; set; }
 
         }
     }    
@@ -6635,18 +6635,18 @@ namespace Google.Apis.Drive.v3.Data
     {
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#permissionList".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The page token for the next page of permissions. This field will be absent if the end of the
         /// permissions list has been reached. If the token is rejected for any reason, it should be discarded, and
         /// pagination should be restarted from the first page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of permissions. If nextPageToken is populated, then this list may be incomplete and an
         /// additional page of results should be fetched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<Permission> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<Permission> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6658,17 +6658,17 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>The action the reply performed to the parent comment. Valid values are: - resolve -
         /// reopen</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual string Action { get; set; } 
+        public virtual string Action { get; set; }
 
         /// <summary>The author of the reply. The author's email address and permission ID will not be
         /// populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("author")]
-        public virtual User Author { get; set; } 
+        public virtual User Author { get; set; }
 
         /// <summary>The plain text content of the reply. This field is used for setting the content, while htmlContent
         /// should be displayed. This is required on creates if no action is specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual string Content { get; set; } 
+        public virtual string Content { get; set; }
 
         /// <summary>The time at which the reply was created (RFC 3339 date-time).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdTime")]
@@ -6684,19 +6684,19 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>Whether the reply has been deleted. A deleted reply has no content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
-        public virtual System.Nullable<bool> Deleted { get; set; } 
+        public virtual System.Nullable<bool> Deleted { get; set; }
 
         /// <summary>The content of the reply with HTML formatting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("htmlContent")]
-        public virtual string HtmlContent { get; set; } 
+        public virtual string HtmlContent { get; set; }
 
         /// <summary>The ID of the reply.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#reply".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The last time the reply was modified (RFC 3339 date-time).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modifiedTime")]
@@ -6719,18 +6719,18 @@ namespace Google.Apis.Drive.v3.Data
     {
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#replyList".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The page token for the next page of replies. This will be absent if the end of the replies list has
         /// been reached. If the token is rejected for any reason, it should be discarded, and pagination should be
         /// restarted from the first page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of replies. If nextPageToken is populated, then this list may be incomplete and an
         /// additional page of results should be fetched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replies")]
-        public virtual System.Collections.Generic.IList<Reply> Replies { get; set; } 
+        public virtual System.Collections.Generic.IList<Reply> Replies { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6741,34 +6741,34 @@ namespace Google.Apis.Drive.v3.Data
     {
         /// <summary>Links for exporting Google Docs to specific formats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportLinks")]
-        public virtual System.Collections.Generic.IDictionary<string,string> ExportLinks { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> ExportLinks { get; set; }
 
         /// <summary>The ID of the revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Whether to keep this revision forever, even if it is no longer the head revision. If not set, the
         /// revision will be automatically purged 30 days after newer content is uploaded. This can be set on a maximum
         /// of 200 revisions for a file. This field is only applicable to files with binary content in Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keepForever")]
-        public virtual System.Nullable<bool> KeepForever { get; set; } 
+        public virtual System.Nullable<bool> KeepForever { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#revision".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The last user to modify this revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifyingUser")]
-        public virtual User LastModifyingUser { get; set; } 
+        public virtual User LastModifyingUser { get; set; }
 
         /// <summary>The MD5 checksum of the revision's content. This is only applicable to files with binary content in
         /// Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("md5Checksum")]
-        public virtual string Md5Checksum { get; set; } 
+        public virtual string Md5Checksum { get; set; }
 
         /// <summary>The MIME type of the revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-        public virtual string MimeType { get; set; } 
+        public virtual string MimeType { get; set; }
 
         /// <summary>The last time the revision was modified (RFC 3339 date-time).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modifiedTime")]
@@ -6785,30 +6785,30 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>The original filename used to create this revision. This is only applicable to files with binary
         /// content in Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalFilename")]
-        public virtual string OriginalFilename { get; set; } 
+        public virtual string OriginalFilename { get; set; }
 
         /// <summary>Whether subsequent revisions will be automatically republished. This is only applicable to Google
         /// Docs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishAuto")]
-        public virtual System.Nullable<bool> PublishAuto { get; set; } 
+        public virtual System.Nullable<bool> PublishAuto { get; set; }
 
         /// <summary>Whether this revision is published. This is only applicable to Google Docs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("published")]
-        public virtual System.Nullable<bool> Published { get; set; } 
+        public virtual System.Nullable<bool> Published { get; set; }
 
         /// <summary>A link to the published revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedLink")]
-        public virtual string PublishedLink { get; set; } 
+        public virtual string PublishedLink { get; set; }
 
         /// <summary>Whether this revision is published outside the domain. This is only applicable to Google
         /// Docs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedOutsideDomain")]
-        public virtual System.Nullable<bool> PublishedOutsideDomain { get; set; } 
+        public virtual System.Nullable<bool> PublishedOutsideDomain { get; set; }
 
         /// <summary>The size of the revision's content in bytes. This is only applicable to files with binary content
         /// in Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
-        public virtual System.Nullable<long> Size { get; set; } 
+        public virtual System.Nullable<long> Size { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6819,18 +6819,18 @@ namespace Google.Apis.Drive.v3.Data
     {
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#revisionList".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The page token for the next page of revisions. This will be absent if the end of the revisions list
         /// has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be
         /// restarted from the first page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of revisions. If nextPageToken is populated, then this list may be incomplete and an
         /// additional page of results should be fetched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisions")]
-        public virtual System.Collections.Generic.IList<Revision> Revisions { get; set; } 
+        public virtual System.Collections.Generic.IList<Revision> Revisions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6840,11 +6840,11 @@ namespace Google.Apis.Drive.v3.Data
     {
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#startPageToken".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The starting page token for listing changes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startPageToken")]
-        public virtual string StartPageTokenValue { get; set; } 
+        public virtual string StartPageTokenValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6857,20 +6857,20 @@ namespace Google.Apis.Drive.v3.Data
         /// This is a write only field; it can only be set on drive.teamdrives.update requests that don't set themeId.
         /// When specified, all fields of the backgroundImageFile must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundImageFile")]
-        public virtual BackgroundImageFileData BackgroundImageFile { get; set; } 
+        public virtual BackgroundImageFileData BackgroundImageFile { get; set; }
 
         /// <summary>A short-lived link to this Team Drive's background image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundImageLink")]
-        public virtual string BackgroundImageLink { get; set; } 
+        public virtual string BackgroundImageLink { get; set; }
 
         /// <summary>Capabilities the current user has on this Team Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capabilities")]
-        public virtual CapabilitiesData Capabilities { get; set; } 
+        public virtual CapabilitiesData Capabilities { get; set; }
 
         /// <summary>The color of this Team Drive as an RGB hex string. It can only be set on a drive.teamdrives.update
         /// request that does not set themeId.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("colorRgb")]
-        public virtual string ColorRgb { get; set; } 
+        public virtual string ColorRgb { get; set; }
 
         /// <summary>The time at which the Team Drive was created (RFC 3339 date-time).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdTime")]
@@ -6887,19 +6887,19 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>The ID of this Team Drive which is also the ID of the top level folder of this Team
         /// Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#teamDrive".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The name of this Team Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>A set of restrictions that apply to this Team Drive or items inside this Team Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictions")]
-        public virtual RestrictionsData Restrictions { get; set; } 
+        public virtual RestrictionsData Restrictions { get; set; }
 
         /// <summary>The ID of the theme from which the background image and color will be set. The set of possible
         /// teamDriveThemes can be retrieved from a drive.about.get response. When not specified on a
@@ -6907,7 +6907,7 @@ namespace Google.Apis.Drive.v3.Data
         /// This is a write-only field; it can only be set on requests that don't set colorRgb or
         /// backgroundImageFile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("themeId")]
-        public virtual string ThemeId { get; set; } 
+        public virtual string ThemeId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6920,28 +6920,28 @@ namespace Google.Apis.Drive.v3.Data
         {
             /// <summary>The ID of an image file in Drive to use for the background image.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
-            public virtual string Id { get; set; } 
+            public virtual string Id { get; set; }
 
             /// <summary>The width of the cropped image in the closed range of 0 to 1. This value represents the width
             /// of the cropped image divided by the width of the entire image. The height is computed by applying a
             /// width to height aspect ratio of 80 to 9. The resulting image must be at least 1280 pixels wide and 144
             /// pixels high.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("width")]
-            public virtual System.Nullable<float> Width { get; set; } 
+            public virtual System.Nullable<float> Width { get; set; }
 
             /// <summary>The X coordinate of the upper left corner of the cropping area in the background image. This is
             /// a value in the closed range of 0 to 1. This value represents the horizontal distance from the left side
             /// of the entire image to the left side of the cropping area divided by the width of the entire
             /// image.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("xCoordinate")]
-            public virtual System.Nullable<float> XCoordinate { get; set; } 
+            public virtual System.Nullable<float> XCoordinate { get; set; }
 
             /// <summary>The Y coordinate of the upper left corner of the cropping area in the background image. This is
             /// a value in the closed range of 0 to 1. This value represents the vertical distance from the top side of
             /// the entire image to the top side of the cropping area divided by the height of the entire
             /// image.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("yCoordinate")]
-            public virtual System.Nullable<float> YCoordinate { get; set; } 
+            public virtual System.Nullable<float> YCoordinate { get; set; }
 
         }    
 
@@ -6950,84 +6950,84 @@ namespace Google.Apis.Drive.v3.Data
         {
             /// <summary>Whether the current user can add children to folders in this Team Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canAddChildren")]
-            public virtual System.Nullable<bool> CanAddChildren { get; set; } 
+            public virtual System.Nullable<bool> CanAddChildren { get; set; }
 
             /// <summary>Whether the current user can change the copyRequiresWriterPermission restriction of this Team
             /// Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canChangeCopyRequiresWriterPermissionRestriction")]
-            public virtual System.Nullable<bool> CanChangeCopyRequiresWriterPermissionRestriction { get; set; } 
+            public virtual System.Nullable<bool> CanChangeCopyRequiresWriterPermissionRestriction { get; set; }
 
             /// <summary>Whether the current user can change the domainUsersOnly restriction of this Team
             /// Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canChangeDomainUsersOnlyRestriction")]
-            public virtual System.Nullable<bool> CanChangeDomainUsersOnlyRestriction { get; set; } 
+            public virtual System.Nullable<bool> CanChangeDomainUsersOnlyRestriction { get; set; }
 
             /// <summary>Whether the current user can change the background of this Team Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canChangeTeamDriveBackground")]
-            public virtual System.Nullable<bool> CanChangeTeamDriveBackground { get; set; } 
+            public virtual System.Nullable<bool> CanChangeTeamDriveBackground { get; set; }
 
             /// <summary>Whether the current user can change the teamMembersOnly restriction of this Team
             /// Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canChangeTeamMembersOnlyRestriction")]
-            public virtual System.Nullable<bool> CanChangeTeamMembersOnlyRestriction { get; set; } 
+            public virtual System.Nullable<bool> CanChangeTeamMembersOnlyRestriction { get; set; }
 
             /// <summary>Whether the current user can comment on files in this Team Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canComment")]
-            public virtual System.Nullable<bool> CanComment { get; set; } 
+            public virtual System.Nullable<bool> CanComment { get; set; }
 
             /// <summary>Whether the current user can copy files in this Team Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canCopy")]
-            public virtual System.Nullable<bool> CanCopy { get; set; } 
+            public virtual System.Nullable<bool> CanCopy { get; set; }
 
             /// <summary>Whether the current user can delete children from folders in this Team Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canDeleteChildren")]
-            public virtual System.Nullable<bool> CanDeleteChildren { get; set; } 
+            public virtual System.Nullable<bool> CanDeleteChildren { get; set; }
 
             /// <summary>Whether the current user can delete this Team Drive. Attempting to delete the Team Drive may
             /// still fail if there are untrashed items inside the Team Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canDeleteTeamDrive")]
-            public virtual System.Nullable<bool> CanDeleteTeamDrive { get; set; } 
+            public virtual System.Nullable<bool> CanDeleteTeamDrive { get; set; }
 
             /// <summary>Whether the current user can download files in this Team Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canDownload")]
-            public virtual System.Nullable<bool> CanDownload { get; set; } 
+            public virtual System.Nullable<bool> CanDownload { get; set; }
 
             /// <summary>Whether the current user can edit files in this Team Drive</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canEdit")]
-            public virtual System.Nullable<bool> CanEdit { get; set; } 
+            public virtual System.Nullable<bool> CanEdit { get; set; }
 
             /// <summary>Whether the current user can list the children of folders in this Team Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canListChildren")]
-            public virtual System.Nullable<bool> CanListChildren { get; set; } 
+            public virtual System.Nullable<bool> CanListChildren { get; set; }
 
             /// <summary>Whether the current user can add members to this Team Drive or remove them or change their
             /// role.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canManageMembers")]
-            public virtual System.Nullable<bool> CanManageMembers { get; set; } 
+            public virtual System.Nullable<bool> CanManageMembers { get; set; }
 
             /// <summary>Whether the current user can read the revisions resource of files in this Team Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canReadRevisions")]
-            public virtual System.Nullable<bool> CanReadRevisions { get; set; } 
+            public virtual System.Nullable<bool> CanReadRevisions { get; set; }
 
             /// <summary>Deprecated - use canDeleteChildren or canTrashChildren instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canRemoveChildren")]
-            public virtual System.Nullable<bool> CanRemoveChildren { get; set; } 
+            public virtual System.Nullable<bool> CanRemoveChildren { get; set; }
 
             /// <summary>Whether the current user can rename files or folders in this Team Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canRename")]
-            public virtual System.Nullable<bool> CanRename { get; set; } 
+            public virtual System.Nullable<bool> CanRename { get; set; }
 
             /// <summary>Whether the current user can rename this Team Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canRenameTeamDrive")]
-            public virtual System.Nullable<bool> CanRenameTeamDrive { get; set; } 
+            public virtual System.Nullable<bool> CanRenameTeamDrive { get; set; }
 
             /// <summary>Whether the current user can share files or folders in this Team Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canShare")]
-            public virtual System.Nullable<bool> CanShare { get; set; } 
+            public virtual System.Nullable<bool> CanShare { get; set; }
 
             /// <summary>Whether the current user can trash children from folders in this Team Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canTrashChildren")]
-            public virtual System.Nullable<bool> CanTrashChildren { get; set; } 
+            public virtual System.Nullable<bool> CanTrashChildren { get; set; }
 
         }    
 
@@ -7037,24 +7037,24 @@ namespace Google.Apis.Drive.v3.Data
             /// <summary>Whether administrative privileges on this Team Drive are required to modify
             /// restrictions.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("adminManagedRestrictions")]
-            public virtual System.Nullable<bool> AdminManagedRestrictions { get; set; } 
+            public virtual System.Nullable<bool> AdminManagedRestrictions { get; set; }
 
             /// <summary>Whether the options to copy, print, or download files inside this Team Drive, should be
             /// disabled for readers and commenters. When this restriction is set to true, it will override the
             /// similarly named field to true for any file inside this Team Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("copyRequiresWriterPermission")]
-            public virtual System.Nullable<bool> CopyRequiresWriterPermission { get; set; } 
+            public virtual System.Nullable<bool> CopyRequiresWriterPermission { get; set; }
 
             /// <summary>Whether access to this Team Drive and items inside this Team Drive is restricted to users of
             /// the domain to which this Team Drive belongs. This restriction may be overridden by other sharing
             /// policies controlled outside of this Team Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("domainUsersOnly")]
-            public virtual System.Nullable<bool> DomainUsersOnly { get; set; } 
+            public virtual System.Nullable<bool> DomainUsersOnly { get; set; }
 
             /// <summary>Whether access to items inside this Team Drive is restricted to members of this Team
             /// Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("teamMembersOnly")]
-            public virtual System.Nullable<bool> TeamMembersOnly { get; set; } 
+            public virtual System.Nullable<bool> TeamMembersOnly { get; set; }
 
         }
     }    
@@ -7064,18 +7064,18 @@ namespace Google.Apis.Drive.v3.Data
     {
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#teamDriveList".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The page token for the next page of Team Drives. This will be absent if the end of the Team Drives
         /// list has been reached. If the token is rejected for any reason, it should be discarded, and pagination
         /// should be restarted from the first page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of Team Drives. If nextPageToken is populated, then this list may be incomplete and an
         /// additional page of results should be fetched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teamDrives")]
-        public virtual System.Collections.Generic.IList<TeamDrive> TeamDrives { get; set; } 
+        public virtual System.Collections.Generic.IList<TeamDrive> TeamDrives { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7086,28 +7086,28 @@ namespace Google.Apis.Drive.v3.Data
     {
         /// <summary>A plain text displayable name for this user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The email address of the user. This may not be present in certain contexts if the user has not made
         /// their email address visible to the requester.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
-        public virtual string EmailAddress { get; set; } 
+        public virtual string EmailAddress { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#user".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Whether this user is the requesting user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("me")]
-        public virtual System.Nullable<bool> Me { get; set; } 
+        public virtual System.Nullable<bool> Me { get; set; }
 
         /// <summary>The user's ID as visible in Permission resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissionId")]
-        public virtual string PermissionId { get; set; } 
+        public virtual string PermissionId { get; set; }
 
         /// <summary>A link to the user's profile photo, if available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photoLink")]
-        public virtual string PhotoLink { get; set; } 
+        public virtual string PhotoLink { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

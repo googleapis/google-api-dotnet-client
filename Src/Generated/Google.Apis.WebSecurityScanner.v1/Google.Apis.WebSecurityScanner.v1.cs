@@ -1213,15 +1213,15 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
     {
         /// <summary>Authentication using a custom account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customAccount")]
-        public virtual CustomAccount CustomAccount { get; set; } 
+        public virtual CustomAccount CustomAccount { get; set; }
 
         /// <summary>Authentication using a Google account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleAccount")]
-        public virtual GoogleAccount GoogleAccount { get; set; } 
+        public virtual GoogleAccount GoogleAccount { get; set; }
 
         /// <summary>Authentication using Identity-Aware-Proxy (IAP).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iapCredential")]
-        public virtual IapCredential IapCredential { get; set; } 
+        public virtual IapCredential IapCredential { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1234,15 +1234,15 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
     {
         /// <summary>Output only. The body of the request that was used to visit the URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("body")]
-        public virtual string Body { get; set; } 
+        public virtual string Body { get; set; }
 
         /// <summary>Output only. The http method of the request that was used to visit the URL, in uppercase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpMethod")]
-        public virtual string HttpMethod { get; set; } 
+        public virtual string HttpMethod { get; set; }
 
         /// <summary>Output only. The URL that was crawled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1253,16 +1253,16 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
     {
         /// <summary>Required. The login form URL of the website.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loginUrl")]
-        public virtual string LoginUrl { get; set; } 
+        public virtual string LoginUrl { get; set; }
 
         /// <summary>Required. Input only. The password of the custom account. The credential is stored encrypted and
         /// not returned in any response nor included in audit logs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
-        public virtual string Password { get; set; } 
+        public virtual string Password { get; set; }
 
         /// <summary>Required. The user name of the custom account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; } 
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1283,83 +1283,83 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
     {
         /// <summary>Output only. The body of the request that triggered the vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("body")]
-        public virtual string Body { get; set; } 
+        public virtual string Body { get; set; }
 
         /// <summary>Output only. The description of the vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Output only. The URL where the browser lands when the vulnerability is detected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalUrl")]
-        public virtual string FinalUrl { get; set; } 
+        public virtual string FinalUrl { get; set; }
 
         /// <summary>Output only. The type of the Finding. Detailed and up-to-date information on findings can be found
         /// here: https://cloud.google.com/security-command-center/docs/how-to-remediate-web-security-scanner-
         /// findings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("findingType")]
-        public virtual string FindingType { get; set; } 
+        public virtual string FindingType { get; set; }
 
         /// <summary>Output only. An addon containing information reported for a vulnerability with an HTML form, if
         /// any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("form")]
-        public virtual Form Form { get; set; } 
+        public virtual Form Form { get; set; }
 
         /// <summary>Output only. If the vulnerability was originated from nested IFrame, the immediate parent IFrame is
         /// reported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frameUrl")]
-        public virtual string FrameUrl { get; set; } 
+        public virtual string FrameUrl { get; set; }
 
         /// <summary>Output only. The URL produced by the server-side fuzzer and used in the request that triggered the
         /// vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fuzzedUrl")]
-        public virtual string FuzzedUrl { get; set; } 
+        public virtual string FuzzedUrl { get; set; }
 
         /// <summary>Output only. The http method of the request that triggered the vulnerability, in
         /// uppercase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpMethod")]
-        public virtual string HttpMethod { get; set; } 
+        public virtual string HttpMethod { get; set; }
 
         /// <summary>Output only. The resource name of the Finding. The name follows the format of
         /// 'projects/{projectId}/scanConfigs/{scanConfigId}/scanruns/{scanRunId}/findings/{findingId}'. The finding IDs
         /// are generated by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. An addon containing information about outdated libraries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outdatedLibrary")]
-        public virtual OutdatedLibrary OutdatedLibrary { get; set; } 
+        public virtual OutdatedLibrary OutdatedLibrary { get; set; }
 
         /// <summary>Output only. The URL containing human-readable payload that user can leverage to reproduce the
         /// vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reproductionUrl")]
-        public virtual string ReproductionUrl { get; set; } 
+        public virtual string ReproductionUrl { get; set; }
 
         /// <summary>Output only. The severity level of the reported vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
-        public virtual string Severity { get; set; } 
+        public virtual string Severity { get; set; }
 
         /// <summary>Output only. The tracking ID uniquely identifies a vulnerability instance across multiple
         /// ScanRuns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingId")]
-        public virtual string TrackingId { get; set; } 
+        public virtual string TrackingId { get; set; }
 
         /// <summary>Output only. An addon containing detailed information regarding any resource causing the
         /// vulnerability such as JavaScript sources, image, audio files, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("violatingResource")]
-        public virtual ViolatingResource ViolatingResource { get; set; } 
+        public virtual ViolatingResource ViolatingResource { get; set; }
 
         /// <summary>Output only. An addon containing information about vulnerable or missing HTTP headers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vulnerableHeaders")]
-        public virtual VulnerableHeaders VulnerableHeaders { get; set; } 
+        public virtual VulnerableHeaders VulnerableHeaders { get; set; }
 
         /// <summary>Output only. An addon containing information about request parameters which were found to be
         /// vulnerable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vulnerableParameters")]
-        public virtual VulnerableParameters VulnerableParameters { get; set; } 
+        public virtual VulnerableParameters VulnerableParameters { get; set; }
 
         /// <summary>Output only. An addon containing information reported for an XSS, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xss")]
-        public virtual Xss Xss { get; set; } 
+        public virtual Xss Xss { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1371,11 +1371,11 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
     {
         /// <summary>Output only. The count of findings belonging to this finding type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("findingCount")]
-        public virtual System.Nullable<int> FindingCount { get; set; } 
+        public virtual System.Nullable<int> FindingCount { get; set; }
 
         /// <summary>Output only. The finding type associated with the stats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("findingType")]
-        public virtual string FindingType { get; set; } 
+        public virtual string FindingType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1386,11 +1386,11 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
     {
         /// <summary>! The URI where to send the form when it's submitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionUri")]
-        public virtual string ActionUri { get; set; } 
+        public virtual string ActionUri { get; set; }
 
         /// <summary>! The names of form fields related to the vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual System.Collections.Generic.IList<string> Fields { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Fields { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1402,11 +1402,11 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         /// <summary>Required. Input only. The password of the Google account. The credential is stored encrypted and
         /// not returned in any response nor included in audit logs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
-        public virtual string Password { get; set; } 
+        public virtual string Password { get; set; }
 
         /// <summary>Required. The user name of the Google account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; } 
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1417,11 +1417,11 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
     {
         /// <summary>Header name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Header value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1433,7 +1433,7 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         /// <summary>Authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-
         /// Proxy (IAP) access policies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iapTestServiceAccountInfo")]
-        public virtual IapTestServiceAccountInfo IapTestServiceAccountInfo { get; set; } 
+        public virtual IapTestServiceAccountInfo IapTestServiceAccountInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1446,7 +1446,7 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         /// <summary>Required. Describes OAuth2 client id of resources protected by Identity-Aware-Proxy
         /// (IAP).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetAudienceClientId")]
-        public virtual string TargetAudienceClientId { get; set; } 
+        public virtual string TargetAudienceClientId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1457,12 +1457,12 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
     {
         /// <summary>The list of CrawledUrls returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crawledUrls")]
-        public virtual System.Collections.Generic.IList<CrawledUrl> CrawledUrls { get; set; } 
+        public virtual System.Collections.Generic.IList<CrawledUrl> CrawledUrls { get; set; }
 
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1473,7 +1473,7 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
     {
         /// <summary>The list of FindingTypeStats returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("findingTypeStats")]
-        public virtual System.Collections.Generic.IList<FindingTypeStats> FindingTypeStats { get; set; } 
+        public virtual System.Collections.Generic.IList<FindingTypeStats> FindingTypeStats { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1484,12 +1484,12 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
     {
         /// <summary>The list of Findings returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("findings")]
-        public virtual System.Collections.Generic.IList<Finding> Findings { get; set; } 
+        public virtual System.Collections.Generic.IList<Finding> Findings { get; set; }
 
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1501,11 +1501,11 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of ScanConfigs returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scanConfigs")]
-        public virtual System.Collections.Generic.IList<ScanConfig> ScanConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<ScanConfig> ScanConfigs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1517,11 +1517,11 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of ScanRuns returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scanRuns")]
-        public virtual System.Collections.Generic.IList<ScanRun> ScanRuns { get; set; } 
+        public virtual System.Collections.Generic.IList<ScanRun> ScanRuns { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1532,15 +1532,15 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
     {
         /// <summary>URLs to learn more information about the vulnerabilities in the library.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("learnMoreUrls")]
-        public virtual System.Collections.Generic.IList<string> LearnMoreUrls { get; set; } 
+        public virtual System.Collections.Generic.IList<string> LearnMoreUrls { get; set; }
 
         /// <summary>The name of the outdated library.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("libraryName")]
-        public virtual string LibraryName { get; set; } 
+        public virtual string LibraryName { get; set; }
 
         /// <summary>The version number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1552,56 +1552,56 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         /// <summary>The authentication configuration. If specified, service will use the authentication configuration
         /// during scanning.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authentication")]
-        public virtual Authentication Authentication { get; set; } 
+        public virtual Authentication Authentication { get; set; }
 
         /// <summary>The excluded URL patterns as described in https://cloud.google.com/security-command-center/docs
         /// /how-to-use-web-security-scanner#excluding_urls</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blacklistPatterns")]
-        public virtual System.Collections.Generic.IList<string> BlacklistPatterns { get; set; } 
+        public virtual System.Collections.Generic.IList<string> BlacklistPatterns { get; set; }
 
         /// <summary>Required. The user provided display name of the ScanConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Controls export of scan configurations and results to Security Command Center.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportToSecurityCommandCenter")]
-        public virtual string ExportToSecurityCommandCenter { get; set; } 
+        public virtual string ExportToSecurityCommandCenter { get; set; }
 
         /// <summary>Whether the scan config is managed by Web Security Scanner, output only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedScan")]
-        public virtual System.Nullable<bool> ManagedScan { get; set; } 
+        public virtual System.Nullable<bool> ManagedScan { get; set; }
 
         /// <summary>The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively. If the field is
         /// unspecified or its value is set 0, server will default to 15. Other values outside of [5, 20] range will be
         /// rejected with INVALID_ARGUMENT error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxQps")]
-        public virtual System.Nullable<int> MaxQps { get; set; } 
+        public virtual System.Nullable<int> MaxQps { get; set; }
 
         /// <summary>The resource name of the ScanConfig. The name follows the format of
         /// 'projects/{projectId}/scanConfigs/{scanConfigId}'. The ScanConfig IDs are generated by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The risk level selected for the scan</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("riskLevel")]
-        public virtual string RiskLevel { get; set; } 
+        public virtual string RiskLevel { get; set; }
 
         /// <summary>The schedule of the ScanConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
-        public virtual Schedule Schedule { get; set; } 
+        public virtual Schedule Schedule { get; set; }
 
         /// <summary>Required. The starting URLs from which the scanner finds site pages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startingUrls")]
-        public virtual System.Collections.Generic.IList<string> StartingUrls { get; set; } 
+        public virtual System.Collections.Generic.IList<string> StartingUrls { get; set; }
 
         /// <summary>Whether the scan configuration has enabled static IP address scan feature. If enabled, the scanner
         /// will access applications from static IP addresses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("staticIpScan")]
-        public virtual System.Nullable<bool> StaticIpScan { get; set; } 
+        public virtual System.Nullable<bool> StaticIpScan { get; set; }
 
         /// <summary>The user agent used during scanning.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
-        public virtual string UserAgent { get; set; } 
+        public virtual string UserAgent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1614,13 +1614,13 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
     {
         /// <summary>Output only. Indicates the reason code for a configuration failure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual string Code { get; set; } 
+        public virtual string Code { get; set; }
 
         /// <summary>Output only. Indicates the full name of the ScanConfig field that triggers this error, for example
         /// "scan_config.max_qps". This field is provided for troubleshooting purposes only and its actual value can
         /// change in the future.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
-        public virtual string FieldName { get; set; } 
+        public virtual string FieldName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1632,56 +1632,56 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         /// <summary>Output only. The time at which the ScanRun reached termination state - that the ScanRun is either
         /// finished or stopped by user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Output only. If result_state is an ERROR, this field provides the primary reason for scan's
         /// termination and more details, if such are available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorTrace")]
-        public virtual ScanRunErrorTrace ErrorTrace { get; set; } 
+        public virtual ScanRunErrorTrace ErrorTrace { get; set; }
 
         /// <summary>Output only. The execution state of the ScanRun.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionState")]
-        public virtual string ExecutionState { get; set; } 
+        public virtual string ExecutionState { get; set; }
 
         /// <summary>Output only. Whether the scan run has found any vulnerabilities.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasVulnerabilities")]
-        public virtual System.Nullable<bool> HasVulnerabilities { get; set; } 
+        public virtual System.Nullable<bool> HasVulnerabilities { get; set; }
 
         /// <summary>Output only. The resource name of the ScanRun. The name follows the format of
         /// 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. The ScanRun IDs are generated by the
         /// system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The percentage of total completion ranging from 0 to 100. If the scan is in queue, the
         /// value is 0. If the scan is running, the value ranges from 0 to 100. If the scan is finished, the value is
         /// 100.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressPercent")]
-        public virtual System.Nullable<int> ProgressPercent { get; set; } 
+        public virtual System.Nullable<int> ProgressPercent { get; set; }
 
         /// <summary>Output only. The result state of the ScanRun. This field is only available after the execution
         /// state reaches "FINISHED".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultState")]
-        public virtual string ResultState { get; set; } 
+        public virtual string ResultState { get; set; }
 
         /// <summary>Output only. The time at which the ScanRun started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>Output only. The number of URLs crawled during this ScanRun. If the scan is in progress, the value
         /// represents the number of URLs crawled up to now.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlsCrawledCount")]
-        public virtual System.Nullable<long> UrlsCrawledCount { get; set; } 
+        public virtual System.Nullable<long> UrlsCrawledCount { get; set; }
 
         /// <summary>Output only. The number of URLs tested during this ScanRun. If the scan is in progress, the value
         /// represents the number of URLs tested up to now. The number of URLs tested is usually larger than the number
         /// URLS crawled because typically a crawled URL is tested with multiple test payloads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlsTestedCount")]
-        public virtual System.Nullable<long> UrlsTestedCount { get; set; } 
+        public virtual System.Nullable<long> UrlsTestedCount { get; set; }
 
         /// <summary>Output only. A list of warnings, if such are encountered during this scan run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warningTraces")]
-        public virtual System.Collections.Generic.IList<ScanRunWarningTrace> WarningTraces { get; set; } 
+        public virtual System.Collections.Generic.IList<ScanRunWarningTrace> WarningTraces { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1692,18 +1692,18 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
     {
         /// <summary>Output only. Indicates the error reason code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual string Code { get; set; } 
+        public virtual string Code { get; set; }
 
         /// <summary>Output only. If the scan encounters TOO_MANY_HTTP_ERRORS, this field indicates the most common HTTP
         /// error code, if such is available. For example, if this code is 404, the scan has encountered too many
         /// NOT_FOUND responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mostCommonHttpErrorCode")]
-        public virtual System.Nullable<int> MostCommonHttpErrorCode { get; set; } 
+        public virtual System.Nullable<int> MostCommonHttpErrorCode { get; set; }
 
         /// <summary>Output only. If the scan encounters SCAN_CONFIG_ISSUE error, this field has the error message
         /// encountered during scan configuration validation that is performed before each scan run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scanConfigError")]
-        public virtual ScanConfigError ScanConfigError { get; set; } 
+        public virtual ScanConfigError ScanConfigError { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1715,7 +1715,7 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
     {
         /// <summary>Output only. Indicates the warning code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual string Code { get; set; } 
+        public virtual string Code { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1726,13 +1726,13 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
     {
         /// <summary>Required. The duration of time between executions in days.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intervalDurationDays")]
-        public virtual System.Nullable<int> IntervalDurationDays { get; set; } 
+        public virtual System.Nullable<int> IntervalDurationDays { get; set; }
 
         /// <summary>A timestamp indicates when the next run will be scheduled. The value is refreshed by the server
         /// after each run. If unspecified, it will default to current server time, which means the scan will be
         /// scheduled to start immediately.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]
-        public virtual object ScheduleTime { get; set; } 
+        public virtual object ScheduleTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1758,11 +1758,11 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
     {
         /// <summary>The MIME type of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
-        public virtual string ContentType { get; set; } 
+        public virtual string ContentType { get; set; }
 
         /// <summary>URL of this violating resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUrl")]
-        public virtual string ResourceUrl { get; set; } 
+        public virtual string ResourceUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1773,11 +1773,11 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
     {
         /// <summary>List of vulnerable headers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
-        public virtual System.Collections.Generic.IList<Header> Headers { get; set; } 
+        public virtual System.Collections.Generic.IList<Header> Headers { get; set; }
 
         /// <summary>List of missing headers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("missingHeaders")]
-        public virtual System.Collections.Generic.IList<Header> MissingHeaders { get; set; } 
+        public virtual System.Collections.Generic.IList<Header> MissingHeaders { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1788,7 +1788,7 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
     {
         /// <summary>The vulnerable parameter names.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterNames")]
-        public virtual System.Collections.Generic.IList<string> ParameterNames { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ParameterNames { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1799,19 +1799,19 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
     {
         /// <summary>The attack vector of the payload triggering this XSS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attackVector")]
-        public virtual string AttackVector { get; set; } 
+        public virtual string AttackVector { get; set; }
 
         /// <summary>An error message generated by a javascript breakage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
-        public virtual string ErrorMessage { get; set; } 
+        public virtual string ErrorMessage { get; set; }
 
         /// <summary>Stack traces leading to the point where the XSS occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackTraces")]
-        public virtual System.Collections.Generic.IList<string> StackTraces { get; set; } 
+        public virtual System.Collections.Generic.IList<string> StackTraces { get; set; }
 
         /// <summary>The reproduction url for the seeding POST request of a Stored XSS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storedXssSeedingUrl")]
-        public virtual string StoredXssSeedingUrl { get; set; } 
+        public virtual string StoredXssSeedingUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

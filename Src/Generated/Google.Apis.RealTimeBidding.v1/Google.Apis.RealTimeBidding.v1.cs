@@ -1418,13 +1418,13 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         /// submitted with that creative for an impression that will serve to an EEA user, the bid will be filtered
         /// before the auction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedProviderIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> DetectedProviderIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> DetectedProviderIds { get; set; }
 
         /// <summary>Whether the creative contains an unidentified ad technology provider. If true for a given creative,
         /// any bid submitted with that creative for an impression that will serve to an EEA user will be filtered
         /// before the auction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasUnidentifiedProvider")]
-        public virtual System.Nullable<bool> HasUnidentifiedProvider { get; set; } 
+        public virtual System.Nullable<bool> HasUnidentifiedProvider { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1436,21 +1436,21 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         /// <summary>See https://storage.googleapis.com/adx-rtb-dictionaries/advertisers.txt for the list of possible
         /// values. Can be used to filter the response of the creatives.list method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>Advertiser name. Can be used to filter the response of the creatives.list method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserName")]
-        public virtual string AdvertiserName { get; set; } 
+        public virtual string AdvertiserName { get; set; }
 
         /// <summary>Detected brand ID or zero if no brand has been detected. See https://storage.googleapis.com/adx-
         /// rtb-dictionaries/brands.txt for the list of possible values. Can be used to filter the response of the
         /// creatives.list method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brandId")]
-        public virtual System.Nullable<long> BrandId { get; set; } 
+        public virtual System.Nullable<long> BrandId { get; set; }
 
         /// <summary>Brand name. Can be used to filter the response of the creatives.list method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brandName")]
-        public virtual string BrandName { get; set; } 
+        public virtual string BrandName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1469,46 +1469,46 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         /// <summary>Output only. ID of the buyer account that this creative is owned by. Can be used to filter the
         /// response of the creatives.list method with equality and inequality check.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; } 
+        public virtual System.Nullable<long> AccountId { get; set; }
 
         /// <summary>The link to AdChoices destination page. This is only supported for native ads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adChoicesDestinationUrl")]
-        public virtual string AdChoicesDestinationUrl { get; set; } 
+        public virtual string AdChoicesDestinationUrl { get; set; }
 
         /// <summary>The name of the company being advertised in the creative. Can be used to filter the response of the
         /// creatives.list method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserName")]
-        public virtual string AdvertiserName { get; set; } 
+        public virtual string AdvertiserName { get; set; }
 
         /// <summary>The agency ID for this creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agencyId")]
-        public virtual System.Nullable<long> AgencyId { get; set; } 
+        public virtual System.Nullable<long> AgencyId { get; set; }
 
         /// <summary>Output only. The last update timestamp of the creative via API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiUpdateTime")]
-        public virtual object ApiUpdateTime { get; set; } 
+        public virtual object ApiUpdateTime { get; set; }
 
         /// <summary>Output only. The format of this creative. Can be used to filter the response of the creatives.list
         /// method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeFormat")]
-        public virtual string CreativeFormat { get; set; } 
+        public virtual string CreativeFormat { get; set; }
 
         /// <summary>Buyer-specific creative ID that references this creative in bid responses. This field is Ignored in
         /// update operations. Can be used to filter the response of the creatives.list method. The maximum length of
         /// the creative ID is 128 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeId")]
-        public virtual string CreativeId { get; set; } 
+        public virtual string CreativeId { get; set; }
 
         /// <summary>Output only. Top level status and detected attributes of a creative (for example domain, language,
         /// advertiser, product category, etc.) that affect whether (status) and where (context) a creative will be
         /// allowed to serve.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeServingDecision")]
-        public virtual CreativeServingDecision CreativeServingDecision { get; set; } 
+        public virtual CreativeServingDecision CreativeServingDecision { get; set; }
 
         /// <summary>Output only. IDs of all of the deals with which this creative has been used in bidding. Can be used
         /// to filter the response of the creatives.list method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dealIds")]
-        public virtual System.Collections.Generic.IList<string> DealIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DealIds { get; set; }
 
         /// <summary>All declared attributes for the ads that may be shown from this creative. Can be used to filter the
         /// response of the creatives.list method. If the `excluded_attribute` field of a [bid
@@ -1516,54 +1516,54 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         /// of the attributes that were declared or detected for a given creative, and a bid is submitted with that
         /// creative, the bid will be filtered before the auction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("declaredAttributes")]
-        public virtual System.Collections.Generic.IList<string> DeclaredAttributes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DeclaredAttributes { get; set; }
 
         /// <summary>The set of declared destination URLs for the creative. Can be used to filter the response of the
         /// creatives.list method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("declaredClickThroughUrls")]
-        public virtual System.Collections.Generic.IList<string> DeclaredClickThroughUrls { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DeclaredClickThroughUrls { get; set; }
 
         /// <summary>All declared restricted categories for the ads that may be shown from this creative. Can be used to
         /// filter the response of the creatives.list method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("declaredRestrictedCategories")]
-        public virtual System.Collections.Generic.IList<string> DeclaredRestrictedCategories { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DeclaredRestrictedCategories { get; set; }
 
         /// <summary>IDs for the declared ad technology vendors that may be used by this creative. See
         /// https://storage.googleapis.com/adx-rtb-dictionaries/vendors.txt for possible values. Can be used to filter
         /// the response of the creatives.list method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("declaredVendorIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> DeclaredVendorIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> DeclaredVendorIds { get; set; }
 
         /// <summary>An HTML creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("html")]
-        public virtual HtmlContent Html { get; set; } 
+        public virtual HtmlContent Html { get; set; }
 
         /// <summary>The set of URLs to be called to record an impression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("impressionTrackingUrls")]
-        public virtual System.Collections.Generic.IList<string> ImpressionTrackingUrls { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ImpressionTrackingUrls { get; set; }
 
         /// <summary>Output only. Name of the creative. Follows the pattern `buyers/{buyer}/creatives/{creative}`, where
         /// `{buyer}` represents the account ID of the buyer who owns the creative, and `{creative}` is the buyer-
         /// specific creative ID that references this creative in the bid response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>A native creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("native")]
-        public virtual NativeContent Native { get; set; } 
+        public virtual NativeContent Native { get; set; }
 
         /// <summary>All restricted categories for the ads that may be shown from this creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedCategories")]
-        public virtual System.Collections.Generic.IList<string> RestrictedCategories { get; set; } 
+        public virtual System.Collections.Generic.IList<string> RestrictedCategories { get; set; }
 
         /// <summary>Output only. The version of this creative. Version for a new creative is 1 and it increments during
         /// subsequent creative updates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
         /// <summary>A video creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("video")]
-        public virtual VideoContent Video { get; set; } 
+        public virtual VideoContent Video { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1574,21 +1574,21 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     {
         /// <summary>The detected ad technology providers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adTechnologyProviders")]
-        public virtual AdTechnologyProviders AdTechnologyProviders { get; set; } 
+        public virtual AdTechnologyProviders AdTechnologyProviders { get; set; }
 
         /// <summary>The serving status of this creative in China. When approved or disapproved, this status applies to
         /// both deals and open auction in China. When pending review, this creative is allowed to serve for deals but
         /// not for open auction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chinaServingStatus")]
-        public virtual ServingStatus ChinaServingStatus { get; set; } 
+        public virtual ServingStatus ChinaServingStatus { get; set; }
 
         /// <summary>Status of this creative when bidding on PG and PD deals (outside of Russia and China).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dealsServingStatus")]
-        public virtual ServingStatus DealsServingStatus { get; set; } 
+        public virtual ServingStatus DealsServingStatus { get; set; }
 
         /// <summary>Detected advertisers and brands.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedAdvertisers")]
-        public virtual System.Collections.Generic.IList<AdvertiserAndBrand> DetectedAdvertisers { get; set; } 
+        public virtual System.Collections.Generic.IList<AdvertiserAndBrand> DetectedAdvertisers { get; set; }
 
         /// <summary>Publisher-excludable attributes that were detected for this creative. Can be used to filter the
         /// response of the creatives.list method. If the `excluded_attribute` field of a [bid
@@ -1596,34 +1596,34 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         /// of the attributes that were declared or detected for a given creative, and a bid is submitted with that
         /// creative, the bid will be filtered before the auction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedAttributes")]
-        public virtual System.Collections.Generic.IList<string> DetectedAttributes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DetectedAttributes { get; set; }
 
         /// <summary>The set of detected destination URLs for the creative. Can be used to filter the response of the
         /// creatives.list method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedClickThroughUrls")]
-        public virtual System.Collections.Generic.IList<string> DetectedClickThroughUrls { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DetectedClickThroughUrls { get; set; }
 
         /// <summary>The detected domains for this creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedDomains")]
-        public virtual System.Collections.Generic.IList<string> DetectedDomains { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DetectedDomains { get; set; }
 
         /// <summary>The detected languages for this creative. The order is arbitrary. The codes are 2 or 5 characters
         /// and are documented at https://developers.google.com/adwords/api/docs/appendix/languagecodes. Can be used to
         /// filter the response of the creatives.list method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedLanguages")]
-        public virtual System.Collections.Generic.IList<string> DetectedLanguages { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DetectedLanguages { get; set; }
 
         /// <summary>Detected product categories, if any. See the ad-product-categories.txt file in the technical
         /// documentation for a list of IDs. Can be used to filter the response of the creatives.list method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedProductCategories")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> DetectedProductCategories { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> DetectedProductCategories { get; set; }
 
         /// <summary>Detected sensitive categories, if any. Can be used to filter the response of the creatives.list
         /// method. See the ad-sensitive-categories.txt file in the technical documentation for a list of IDs. You
         /// should use these IDs along with the excluded-sensitive-category field in the bid request to filter your
         /// bids.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedSensitiveCategories")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> DetectedSensitiveCategories { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> DetectedSensitiveCategories { get; set; }
 
         /// <summary>IDs of the ad technology vendors that were detected to be used by this creative. See
         /// https://storage.googleapis.com/adx-rtb-dictionaries/vendors.txt for possible values. Can be used to filter
@@ -1632,23 +1632,23 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         /// contain one of the vendor type IDs that were declared or detected for a given creative, and a bid is
         /// submitted with that creative, the bid will be filtered before the auction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedVendorIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> DetectedVendorIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> DetectedVendorIds { get; set; }
 
         /// <summary>The last time the creative status was updated. Can be used to filter the response of the
         /// creatives.list method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastStatusUpdate")]
-        public virtual object LastStatusUpdate { get; set; } 
+        public virtual object LastStatusUpdate { get; set; }
 
         /// <summary>Status of this creative when bidding in open auction, private auction, or auction packages (outside
         /// of Russia and China).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openAuctionServingStatus")]
-        public virtual ServingStatus OpenAuctionServingStatus { get; set; } 
+        public virtual ServingStatus OpenAuctionServingStatus { get; set; }
 
         /// <summary>The serving status of this creative in Russia. When approved or disapproved, this status applies to
         /// both deals and open auction in Russia. When pending review, this creative is allowed to serve for deals but
         /// not for open auction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("russiaServingStatus")]
-        public virtual ServingStatus RussiaServingStatus { get; set; } 
+        public virtual ServingStatus RussiaServingStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1665,15 +1665,15 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by
         /// itself or a year and month where the day is not significant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
-        public virtual System.Nullable<int> Day { get; set; } 
+        public virtual System.Nullable<int> Day { get; set; }
 
         /// <summary>Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("month")]
-        public virtual System.Nullable<int> Month { get; set; } 
+        public virtual System.Nullable<int> Month { get; set; }
 
         /// <summary>Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("year")]
-        public virtual System.Nullable<int> Year { get; set; } 
+        public virtual System.Nullable<int> Year { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1684,15 +1684,15 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     {
         /// <summary>Approximate time of the crawl.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crawlTime")]
-        public virtual object CrawlTime { get; set; } 
+        public virtual object CrawlTime { get; set; }
 
         /// <summary>Destination URL that was attempted to be crawled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crawledUrl")]
-        public virtual string CrawledUrl { get; set; } 
+        public virtual string CrawledUrl { get; set; }
 
         /// <summary>Reason of destination not crawlable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1704,36 +1704,36 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     {
         /// <summary>DNS lookup errors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dnsError")]
-        public virtual string DnsError { get; set; } 
+        public virtual string DnsError { get; set; }
 
         /// <summary>The full non-working URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expandedUrl")]
-        public virtual string ExpandedUrl { get; set; } 
+        public virtual string ExpandedUrl { get; set; }
 
         /// <summary>HTTP error code (e.g. 404 or 5xx)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpError")]
-        public virtual System.Nullable<int> HttpError { get; set; } 
+        public virtual System.Nullable<int> HttpError { get; set; }
 
         /// <summary>Page was crawled successfully, but was detected as either a page with no content or an error
         /// page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invalidPage")]
-        public virtual string InvalidPage { get; set; } 
+        public virtual string InvalidPage { get; set; }
 
         /// <summary>Approximate time when the ad destination was last checked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastCheckTime")]
-        public virtual object LastCheckTime { get; set; } 
+        public virtual object LastCheckTime { get; set; }
 
         /// <summary>Platform of the non-working URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platform")]
-        public virtual string Platform { get; set; } 
+        public virtual string Platform { get; set; }
 
         /// <summary>HTTP redirect chain error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirectionError")]
-        public virtual string RedirectionError { get; set; } 
+        public virtual string RedirectionError { get; set; }
 
         /// <summary>Rejected because of malformed URLs or invalid requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlRejected")]
-        public virtual string UrlRejected { get; set; } 
+        public virtual string UrlRejected { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1744,7 +1744,7 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     {
         /// <summary>The full landing page URL of the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationUrl")]
-        public virtual string DestinationUrl { get; set; } 
+        public virtual string DestinationUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1755,12 +1755,12 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     {
         /// <summary>Breakdown of the most frequent domains called via HTTP by the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topHttpCallDomains")]
-        public virtual System.Collections.Generic.IList<DomainCalls> TopHttpCallDomains { get; set; } 
+        public virtual System.Collections.Generic.IList<DomainCalls> TopHttpCallDomains { get; set; }
 
         /// <summary>The total number of HTTP calls made by the creative, including but not limited to the number of
         /// calls in the top_http_call_domains.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalHttpCallCount")]
-        public virtual System.Nullable<int> TotalHttpCallCount { get; set; } 
+        public virtual System.Nullable<int> TotalHttpCallCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1771,11 +1771,11 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     {
         /// <summary>The domain name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
-        public virtual string Domain { get; set; } 
+        public virtual string Domain { get; set; }
 
         /// <summary>Number of HTTP calls made to the domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpCallCount")]
-        public virtual System.Nullable<int> HttpCallCount { get; set; } 
+        public virtual System.Nullable<int> HttpCallCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1786,11 +1786,11 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     {
         /// <summary>Download size broken down by URLs with the top download size.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topUrlDownloadSizeBreakdowns")]
-        public virtual System.Collections.Generic.IList<UrlDownloadSize> TopUrlDownloadSizeBreakdowns { get; set; } 
+        public virtual System.Collections.Generic.IList<UrlDownloadSize> TopUrlDownloadSizeBreakdowns { get; set; }
 
         /// <summary>Total download size (in kilobytes) for all the resources in the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalDownloadSizeKb")]
-        public virtual System.Nullable<int> TotalDownloadSizeKb { get; set; } 
+        public virtual System.Nullable<int> TotalDownloadSizeKb { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1803,7 +1803,7 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         /// information and code samples on using snippet on your website refer to [Tag your site for remarketing](
         /// https://support.google.com/google-ads/answer/2476688).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual string Snippet { get; set; } 
+        public virtual string Snippet { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1815,16 +1815,16 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         /// <summary>The height of the HTML snippet in pixels. Can be used to filter the response of the creatives.list
         /// method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
-        public virtual System.Nullable<int> Height { get; set; } 
+        public virtual System.Nullable<int> Height { get; set; }
 
         /// <summary>The HTML snippet that displays the ad when inserted in the web page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual string Snippet { get; set; } 
+        public virtual string Snippet { get; set; }
 
         /// <summary>The width of the HTML snippet in pixels. Can be used to filter the response of the creatives.list
         /// method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
-        public virtual System.Nullable<int> Width { get; set; } 
+        public virtual System.Nullable<int> Width { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1835,7 +1835,7 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     {
         /// <summary>URLs of HTTP calls made by the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urls")]
-        public virtual System.Collections.Generic.IList<string> Urls { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Urls { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1848,13 +1848,13 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         /// names of top domains with the largest number of cookies. For other policies, this will be all the cookie
         /// names that violate the policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cookieNames")]
-        public virtual System.Collections.Generic.IList<string> CookieNames { get; set; } 
+        public virtual System.Collections.Generic.IList<string> CookieNames { get; set; }
 
         /// <summary>The largest number of cookies set by a creative. If this field is set, cookie_names above will be
         /// set to the cookie names of top domains with the largest number of cookies. This field will only be set for
         /// TOO_MANY_COOKIES policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxCookieCount")]
-        public virtual System.Nullable<int> MaxCookieCount { get; set; } 
+        public virtual System.Nullable<int> MaxCookieCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1866,15 +1866,15 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     {
         /// <summary>Image height in pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
-        public virtual System.Nullable<int> Height { get; set; } 
+        public virtual System.Nullable<int> Height { get; set; }
 
         /// <summary>The URL of the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>Image width in pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
-        public virtual System.Nullable<int> Width { get; set; } 
+        public virtual System.Nullable<int> Width { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1885,12 +1885,12 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     {
         /// <summary>The list of creatives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creatives")]
-        public virtual System.Collections.Generic.IList<Creative> Creatives { get; set; } 
+        public virtual System.Collections.Generic.IList<Creative> Creatives { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the ListCreativesRequest.pageToken
         /// field in the subsequent call to the `ListCreatives` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1903,11 +1903,11 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         /// known issue, it is recommended that the caller keep invoking the list method till the time a next page token
         /// is not returned (even if the result set is empty).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>List of user lists from the search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userLists")]
-        public virtual System.Collections.Generic.IList<UserList> UserLists { get; set; } 
+        public virtual System.Collections.Generic.IList<UserList> UserLists { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1919,12 +1919,12 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         /// <summary>Bitrate of the video file, in Kbps. Can be used to filter the response of the creatives.list
         /// method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bitrate")]
-        public virtual System.Nullable<long> Bitrate { get; set; } 
+        public virtual System.Nullable<long> Bitrate { get; set; }
 
         /// <summary>The MIME type of this media file. Can be used to filter the response of the creatives.list
         /// method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-        public virtual string MimeType { get; set; } 
+        public virtual string MimeType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1935,51 +1935,51 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     {
         /// <summary>The name of the advertiser or sponsor, to be displayed in the ad creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserName")]
-        public virtual string AdvertiserName { get; set; } 
+        public virtual string AdvertiserName { get; set; }
 
         /// <summary>The app icon, for app download ads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appIcon")]
-        public virtual Image AppIcon { get; set; } 
+        public virtual Image AppIcon { get; set; }
 
         /// <summary>A long description of the ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("body")]
-        public virtual string Body { get; set; } 
+        public virtual string Body { get; set; }
 
         /// <summary>A label for the button that the user is supposed to click.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("callToAction")]
-        public virtual string CallToAction { get; set; } 
+        public virtual string CallToAction { get; set; }
 
         /// <summary>The URL that the browser/SDK will load when the user clicks the ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickLinkUrl")]
-        public virtual string ClickLinkUrl { get; set; } 
+        public virtual string ClickLinkUrl { get; set; }
 
         /// <summary>The URL to use for click tracking.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickTrackingUrl")]
-        public virtual string ClickTrackingUrl { get; set; } 
+        public virtual string ClickTrackingUrl { get; set; }
 
         /// <summary>A short title for the ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headline")]
-        public virtual string Headline { get; set; } 
+        public virtual string Headline { get; set; }
 
         /// <summary>A large image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual Image Image { get; set; } 
+        public virtual Image Image { get; set; }
 
         /// <summary>A smaller image, for the advertiser's logo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logo")]
-        public virtual Image Logo { get; set; } 
+        public virtual Image Logo { get; set; }
 
         /// <summary>The price of the promoted app including currency info.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceDisplayText")]
-        public virtual string PriceDisplayText { get; set; } 
+        public virtual string PriceDisplayText { get; set; }
 
         /// <summary>The app rating in the app store. Must be in the range [0-5].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("starRating")]
-        public virtual System.Nullable<double> StarRating { get; set; } 
+        public virtual System.Nullable<double> StarRating { get; set; }
 
         /// <summary>The URL to fetch a native video ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoUrl")]
-        public virtual string VideoUrl { get; set; } 
+        public virtual string VideoUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1998,17 +1998,17 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     {
         /// <summary>Pieces of evidence associated with this policy topic entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evidences")]
-        public virtual System.Collections.Generic.IList<PolicyTopicEvidence> Evidences { get; set; } 
+        public virtual System.Collections.Generic.IList<PolicyTopicEvidence> Evidences { get; set; }
 
         /// <summary>URL of the help center article describing this policy topic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("helpCenterUrl")]
-        public virtual string HelpCenterUrl { get; set; } 
+        public virtual string HelpCenterUrl { get; set; }
 
         /// <summary>Policy topic this entry refers to. For example, "ALCOHOL", "TRADEMARKS_IN_AD_TEXT", or
         /// "DESTINATION_NOT_WORKING". The set of possible policy topics is not fixed for a particular API version and
         /// may change at any time. Can be used to filter the response of the creatives.list method</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyTopic")]
-        public virtual string PolicyTopic { get; set; } 
+        public virtual string PolicyTopic { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2019,31 +2019,31 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     {
         /// <summary>The creative's destination URL was not crawlable by Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationNotCrawlable")]
-        public virtual DestinationNotCrawlableEvidence DestinationNotCrawlable { get; set; } 
+        public virtual DestinationNotCrawlableEvidence DestinationNotCrawlable { get; set; }
 
         /// <summary>The creative's destination URL did not function properly or was incorrectly set up.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationNotWorking")]
-        public virtual DestinationNotWorkingEvidence DestinationNotWorking { get; set; } 
+        public virtual DestinationNotWorkingEvidence DestinationNotWorking { get; set; }
 
         /// <summary>URL of the actual landing page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationUrl")]
-        public virtual DestinationUrlEvidence DestinationUrl { get; set; } 
+        public virtual DestinationUrlEvidence DestinationUrl { get; set; }
 
         /// <summary>Number of HTTP calls made by the creative, broken down by domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainCall")]
-        public virtual DomainCallEvidence DomainCall { get; set; } 
+        public virtual DomainCallEvidence DomainCall { get; set; }
 
         /// <summary>Total download size and URL-level download size breakdown for resources in a creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("downloadSize")]
-        public virtual DownloadSizeEvidence DownloadSize { get; set; } 
+        public virtual DownloadSizeEvidence DownloadSize { get; set; }
 
         /// <summary>HTTP calls made by the creative that resulted in policy violations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpCall")]
-        public virtual HttpCallEvidence HttpCall { get; set; } 
+        public virtual HttpCallEvidence HttpCall { get; set; }
 
         /// <summary>Evidence for HTTP cookie-related policy violations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpCookie")]
-        public virtual HttpCookieEvidence HttpCookie { get; set; } 
+        public virtual HttpCookieEvidence HttpCookie { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2055,12 +2055,12 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         /// <summary>Serving status for the given transaction type (e.g., open auction, deals) or region (e.g., China,
         /// Russia). Can be used to filter the response of the creatives.list method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>Policy topics related to the serving decision for this transaction type (e.g., open auction, deals)
         /// or region (e.g., China, Russia). Topics may be present only if status is DISAPPROVED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topics")]
-        public virtual System.Collections.Generic.IList<PolicyTopicEntry> Topics { get; set; } 
+        public virtual System.Collections.Generic.IList<PolicyTopicEntry> Topics { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2071,11 +2071,11 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     {
         /// <summary>Download size of the URL in kilobytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("downloadSizeKb")]
-        public virtual System.Nullable<int> DownloadSizeKb { get; set; } 
+        public virtual System.Nullable<int> DownloadSizeKb { get; set; }
 
         /// <summary>The normalized URL with query parameters and fragment removed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("normalizedUrl")]
-        public virtual string NormalizedUrl { get; set; } 
+        public virtual string NormalizedUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2087,19 +2087,19 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         /// <summary>End date (if specified) of the URL restriction. End date should be later than the start date for
         /// the date range to be valid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
-        public virtual Date EndDate { get; set; } 
+        public virtual Date EndDate { get; set; }
 
         /// <summary>The restriction type for the specified URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictionType")]
-        public virtual string RestrictionType { get; set; } 
+        public virtual string RestrictionType { get; set; }
 
         /// <summary>Start date (if specified) of the URL restriction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
-        public virtual Date StartDate { get; set; } 
+        public virtual Date StartDate { get; set; }
 
         /// <summary>Required. The URL to use for applying the restriction on the user list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2112,17 +2112,17 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     {
         /// <summary>The description for the user list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Required. Display name of the user list. This must be unique across all user lists for a given
         /// account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Required. The number of days a user's cookie stays on the user list. The field must be between 0
         /// and 540 inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membershipDurationDays")]
-        public virtual System.Nullable<long> MembershipDurationDays { get; set; } 
+        public virtual System.Nullable<long> MembershipDurationDays { get; set; }
 
         /// <summary>Output only. Name of the user list that must follow the pattern
         /// `buyers/{buyer}/userLists/{user_list}`, where `{buyer}` represents the account ID of the buyer who owns the
@@ -2130,15 +2130,15 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         /// account ID of the child seat buyer. `{user_list}` is an int64 identifier assigned by Google to uniquely
         /// identify a user list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The status of the user list. A new user list starts out as open.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>Required. The URL restriction for the user list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlRestriction")]
-        public virtual UrlRestriction UrlRestriction { get; set; } 
+        public virtual UrlRestriction UrlRestriction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2149,16 +2149,16 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     {
         /// <summary>Output only. Video metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoMetadata")]
-        public virtual VideoMetadata VideoMetadata { get; set; } 
+        public virtual VideoMetadata VideoMetadata { get; set; }
 
         /// <summary>The URL to fetch a video ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoUrl")]
-        public virtual string VideoUrl { get; set; } 
+        public virtual string VideoUrl { get; set; }
 
         /// <summary>The contents of a VAST document for a video ad. This document should conform to the VAST 2.0 or 3.0
         /// standard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoVastXml")]
-        public virtual string VideoVastXml { get; set; } 
+        public virtual string VideoVastXml { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2169,31 +2169,31 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     {
         /// <summary>The duration of the ad. Can be used to filter the response of the creatives.list method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
-        public virtual object Duration { get; set; } 
+        public virtual object Duration { get; set; }
 
         /// <summary>Is this a valid VAST ad? Can be used to filter the response of the creatives.list method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isValidVast")]
-        public virtual System.Nullable<bool> IsValidVast { get; set; } 
+        public virtual System.Nullable<bool> IsValidVast { get; set; }
 
         /// <summary>Is this a VPAID ad? Can be used to filter the response of the creatives.list method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isVpaid")]
-        public virtual System.Nullable<bool> IsVpaid { get; set; } 
+        public virtual System.Nullable<bool> IsVpaid { get; set; }
 
         /// <summary>The list of all media files declared in the VAST. If there are multiple VASTs in a wrapper chain,
         /// this includes the media files from the deepest one in the chain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaFiles")]
-        public virtual System.Collections.Generic.IList<MediaFile> MediaFiles { get; set; } 
+        public virtual System.Collections.Generic.IList<MediaFile> MediaFiles { get; set; }
 
         /// <summary>The minimum duration that the user has to watch before being able to skip this ad. If the field is
         /// not set, the ad is not skippable. If the field is set, the ad is skippable. Can be used to filter the
         /// response of the creatives.list method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipOffset")]
-        public virtual object SkipOffset { get; set; } 
+        public virtual object SkipOffset { get; set; }
 
         /// <summary>The maximum VAST version across all wrapped VAST documents. Can be used to filter the response of
         /// the creatives.list method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vastVersion")]
-        public virtual string VastVersion { get; set; } 
+        public virtual string VastVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2217,12 +2217,12 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         /// Subscriptions that are inactive for more than 90 days will be disabled. Please use watchCreatives to re-
         /// enable the subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
-        public virtual string Subscription { get; set; } 
+        public virtual string Subscription { get; set; }
 
         /// <summary>The Pub/Sub topic that will be used to publish creative serving status notifications. This would be
         /// of the format `projects/{project_id}/topics/{topic_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topic")]
-        public virtual string Topic { get; set; } 
+        public virtual string Topic { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

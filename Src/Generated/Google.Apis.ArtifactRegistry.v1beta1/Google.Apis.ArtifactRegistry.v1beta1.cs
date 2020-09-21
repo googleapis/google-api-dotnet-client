@@ -2099,7 +2099,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         /// <summary>A client-specified ID for this binding. Expected to be globally unique to support the internal
         /// bindings-by-ID API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; } 
+        public virtual string BindingId { get; set; }
 
         /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
         /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
@@ -2107,7 +2107,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; } 
+        public virtual Expr Condition { get; set; }
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
@@ -2129,12 +2129,12 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
         /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2166,21 +2166,21 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
         /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2191,28 +2191,28 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
     {
         /// <summary>The time when the File was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The hashes of the file content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hashes")]
-        public virtual System.Collections.Generic.IList<Hash> Hashes { get; set; } 
+        public virtual System.Collections.Generic.IList<Hash> Hashes { get; set; }
 
         /// <summary>The name of the file, for example: "projects/p1/locations/us-
         /// central1/repositories/repo1/files/a/b/c.txt".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The name of the Package or Version that owns this file, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("owner")]
-        public virtual string Owner { get; set; } 
+        public virtual string Owner { get; set; }
 
         /// <summary>The size of the File in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeBytes")]
-        public virtual System.Nullable<long> SizeBytes { get; set; } 
+        public virtual System.Nullable<long> SizeBytes { get; set; }
 
         /// <summary>The time when the File was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2223,11 +2223,11 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
     {
         /// <summary>The detailed error status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Google Cloud Storage location requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
-        public virtual GoogleDevtoolsArtifactregistryV1alpha1GcsSource GcsSource { get; set; } 
+        public virtual GoogleDevtoolsArtifactregistryV1alpha1GcsSource GcsSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2238,7 +2238,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
     {
         /// <summary>Cloud Storage paths URI (e.g., gs://my_bucket//my_object).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uris")]
-        public virtual System.Collections.Generic.IList<string> Uris { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Uris { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2249,11 +2249,11 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
     {
         /// <summary>Detailed error info for packages that were not imported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual System.Collections.Generic.IList<GoogleDevtoolsArtifactregistryV1alpha1ErrorInfo> Errors { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsArtifactregistryV1alpha1ErrorInfo> Errors { get; set; }
 
         /// <summary>The packages updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packages")]
-        public virtual System.Collections.Generic.IList<GoogleDevtoolsArtifactregistryV1alpha1Package> Packages { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsArtifactregistryV1alpha1Package> Packages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2264,21 +2264,21 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
     {
         /// <summary>The time when the package was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The display name of the package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The name of the package, for example: "projects/p1/locations/us-
         /// central1/repositories/repo1/packages/pkg1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The time when the package was last updated. This includes publishing a new version of the
         /// package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2289,11 +2289,11 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
     {
         /// <summary>The algorithm used to compute the hash value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The hash value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2304,12 +2304,12 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
     {
         /// <summary>The files returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("files")]
-        public virtual System.Collections.Generic.IList<File> Files { get; set; } 
+        public virtual System.Collections.Generic.IList<File> Files { get; set; }
 
         /// <summary>The token to retrieve the next page of files, or empty if there are no more files to
         /// return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2320,11 +2320,11 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
     {
         /// <summary>A list of locations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
+        public virtual System.Collections.Generic.IList<Location> Locations { get; set; }
 
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2335,11 +2335,11 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
     {
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2351,11 +2351,11 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         /// <summary>The token to retrieve the next page of packages, or empty if there are no more packages to
         /// return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The packages returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packages")]
-        public virtual System.Collections.Generic.IList<Package> Packages { get; set; } 
+        public virtual System.Collections.Generic.IList<Package> Packages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2367,11 +2367,11 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         /// <summary>The token to retrieve the next page of repositories, or empty if there are no more repositories to
         /// return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The repositories returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repositories")]
-        public virtual System.Collections.Generic.IList<Repository> Repositories { get; set; } 
+        public virtual System.Collections.Generic.IList<Repository> Repositories { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2383,11 +2383,11 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         /// <summary>The token to retrieve the next page of tags, or empty if there are no more tags to
         /// return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The tags returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
-        public virtual System.Collections.Generic.IList<Tag> Tags { get; set; } 
+        public virtual System.Collections.Generic.IList<Tag> Tags { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2399,11 +2399,11 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         /// <summary>The token to retrieve the next page of versions, or empty if there are no more versions to
         /// return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The versions returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versions")]
-        public virtual System.Collections.Generic.IList<Version> Versions { get; set; } 
+        public virtual System.Collections.Generic.IList<Version> Versions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2414,25 +2414,25 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-
         /// east1"}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The canonical id for this location. For example: `"us-east1"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>Service-specific metadata. For example the available capacity at the given location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>Resource name for the location, which may vary between implementations. For example: `"projects
         /// /example-project/locations/us-east1"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2444,23 +2444,23 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -2468,7 +2468,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2479,21 +2479,21 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
     {
         /// <summary>The time when the package was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The display name of the package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The name of the package, for example: "projects/p1/locations/us-
         /// central1/repositories/repo1/packages/pkg1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The time when the package was last updated. This includes publishing a new version of the
         /// package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2524,7 +2524,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
         /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
         /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
@@ -2535,7 +2535,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
         /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
         /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
@@ -2549,7 +2549,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
     }    
 
@@ -2558,36 +2558,36 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
     {
         /// <summary>The time when the repository was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The user-provided description of the repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The format of packages that are stored in the repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
-        public virtual string Format { get; set; } 
+        public virtual string Format { get; set; }
 
         /// <summary>The Cloud KMS resource name of the customer managed encryption key that’s used to encrypt the
         /// contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys
         /// /my-key`. This value may not be changed after the Repository has been created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
-        public virtual string KmsKeyName { get; set; } 
+        public virtual string KmsKeyName { get; set; }
 
         /// <summary>Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values
         /// may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain
         /// lowercase letters, numeric characters, underscores, and dashes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The name of the repository, for example: "projects/p1/locations/us-
         /// central1/repositories/repo1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The time when the repository was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2600,7 +2600,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         /// a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
         /// might reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual Policy Policy { get; set; } 
+        public virtual Policy Policy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2615,17 +2615,17 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2638,12 +2638,12 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         /// <summary>The name of the tag, for example: "projects/p1/locations/us-
         /// central1/repositories/repo1/packages/pkg1/tags/tag1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The name of the version the tag refers to, for example: "projects/p1/locations/us-
         /// central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2656,7 +2656,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         /// 'storage.*') are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2667,7 +2667,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
     {
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2679,25 +2679,25 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
     {
         /// <summary>The time when the version was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Optional. Description of the version, as specified in its metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The name of the version, for example: "projects/p1/locations/us-
         /// central1/repositories/repo1/packages/pkg1/versions/art1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. A list of related tags. Will contain up to 100 tags that reference this
         /// version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relatedTags")]
-        public virtual System.Collections.Generic.IList<Tag> RelatedTags { get; set; } 
+        public virtual System.Collections.Generic.IList<Tag> RelatedTags { get; set; }
 
         /// <summary>The time when the version was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

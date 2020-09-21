@@ -632,39 +632,39 @@ namespace Google.Apis.AdExchangeBuyer.v1_2.Data
     {
         /// <summary>Your bidder locations that have distinct URLs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bidderLocation")]
-        public virtual System.Collections.Generic.IList<BidderLocationData> BidderLocation { get; set; } 
+        public virtual System.Collections.Generic.IList<BidderLocationData> BidderLocation { get; set; }
 
         /// <summary>The nid parameter value used in cookie match requests. Please contact your technical account
         /// manager if you need to change this.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cookieMatchingNid")]
-        public virtual string CookieMatchingNid { get; set; } 
+        public virtual string CookieMatchingNid { get; set; }
 
         /// <summary>The base URL used in cookie match requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cookieMatchingUrl")]
-        public virtual string CookieMatchingUrl { get; set; } 
+        public virtual string CookieMatchingUrl { get; set; }
 
         /// <summary>Account id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<int> Id { get; set; } 
+        public virtual System.Nullable<int> Id { get; set; }
 
         /// <summary>Resource type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The maximum number of active creatives that an account can have, where a creative is active if it
         /// was inserted or bid with in the last 30 days. Please contact your technical account manager if you need to
         /// change this.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximumActiveCreatives")]
-        public virtual System.Nullable<int> MaximumActiveCreatives { get; set; } 
+        public virtual System.Nullable<int> MaximumActiveCreatives { get; set; }
 
         /// <summary>The sum of all bidderLocation.maximumQps values cannot exceed this. Please contact your technical
         /// account manager if you need to change this.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximumTotalQps")]
-        public virtual System.Nullable<int> MaximumTotalQps { get; set; } 
+        public virtual System.Nullable<int> MaximumTotalQps { get; set; }
 
         /// <summary>The number of creatives that this account inserted or bid with in the last 30 days.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numberActiveCreatives")]
-        public virtual System.Nullable<int> NumberActiveCreatives { get; set; } 
+        public virtual System.Nullable<int> NumberActiveCreatives { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -674,17 +674,17 @@ namespace Google.Apis.AdExchangeBuyer.v1_2.Data
         {
             /// <summary>The maximum queries per second the Ad Exchange will send.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("maximumQps")]
-            public virtual System.Nullable<int> MaximumQps { get; set; } 
+            public virtual System.Nullable<int> MaximumQps { get; set; }
 
             /// <summary>The geographical region the Ad Exchange should send requests from. Only used by some quota
             /// systems, but always setting the value is recommended. Allowed values: - ASIA - EUROPE - US_EAST -
             /// US_WEST</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("region")]
-            public virtual string Region { get; set; } 
+            public virtual string Region { get; set; }
 
             /// <summary>The URL to which the Ad Exchange will send bid requests.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("url")]
-            public virtual string Url { get; set; } 
+            public virtual string Url { get; set; }
 
         }
     }    
@@ -695,11 +695,11 @@ namespace Google.Apis.AdExchangeBuyer.v1_2.Data
     {
         /// <summary>A list of accounts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Account> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Account> Items { get; set; }
 
         /// <summary>Resource type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -711,23 +711,23 @@ namespace Google.Apis.AdExchangeBuyer.v1_2.Data
         /// <summary>The HTML snippet that displays the ad when inserted in the web page. If set, videoURL should not be
         /// set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("HTMLSnippet")]
-        public virtual string HTMLSnippet { get; set; } 
+        public virtual string HTMLSnippet { get; set; }
 
         /// <summary>Account id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<int> AccountId { get; set; } 
+        public virtual System.Nullable<int> AccountId { get; set; }
 
         /// <summary>Detected advertiser id, if any. Read-only. This field should not be set in requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> AdvertiserId { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> AdvertiserId { get; set; }
 
         /// <summary>The name of the company being advertised in the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserName")]
-        public virtual string AdvertiserName { get; set; } 
+        public virtual string AdvertiserName { get; set; }
 
         /// <summary>The agency id for this creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agencyId")]
-        public virtual System.Nullable<long> AgencyId { get; set; } 
+        public virtual System.Nullable<long> AgencyId { get; set; }
 
         /// <summary>The last upload timestamp of this creative if it was uploaded via API. Read-only. The value of this
         /// field is generated, and will be ignored for uploads. (formatted RFC 3339 timestamp).</summary>
@@ -744,77 +744,77 @@ namespace Google.Apis.AdExchangeBuyer.v1_2.Data
 
         /// <summary>All attributes for the ads that may be shown from this snippet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attribute")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> Attribute { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> Attribute { get; set; }
 
         /// <summary>A buyer-specific id identifying the creative in this ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buyerCreativeId")]
-        public virtual string BuyerCreativeId { get; set; } 
+        public virtual string BuyerCreativeId { get; set; }
 
         /// <summary>The set of destination urls for the snippet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickThroughUrl")]
-        public virtual System.Collections.Generic.IList<string> ClickThroughUrl { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ClickThroughUrl { get; set; }
 
         /// <summary>Shows any corrections that were applied to this creative. Read-only. This field should not be set
         /// in requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("corrections")]
-        public virtual System.Collections.Generic.IList<CorrectionsData> Corrections { get; set; } 
+        public virtual System.Collections.Generic.IList<CorrectionsData> Corrections { get; set; }
 
         /// <summary>The reasons for disapproval, if any. Note that not all disapproval reasons may be categorized, so
         /// it is possible for the creative to have a status of DISAPPROVED with an empty list for disapproval_reasons.
         /// In this case, please reach out to your TAM to help debug the issue. Read-only. This field should not be set
         /// in requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disapprovalReasons")]
-        public virtual System.Collections.Generic.IList<DisapprovalReasonsData> DisapprovalReasons { get; set; } 
+        public virtual System.Collections.Generic.IList<DisapprovalReasonsData> DisapprovalReasons { get; set; }
 
         /// <summary>The filtering reasons for the creative. Read-only. This field should not be set in
         /// requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filteringReasons")]
-        public virtual FilteringReasonsData FilteringReasons { get; set; } 
+        public virtual FilteringReasonsData FilteringReasons { get; set; }
 
         /// <summary>Ad height.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
-        public virtual System.Nullable<int> Height { get; set; } 
+        public virtual System.Nullable<int> Height { get; set; }
 
         /// <summary>The set of urls to be called to record an impression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("impressionTrackingUrl")]
-        public virtual System.Collections.Generic.IList<string> ImpressionTrackingUrl { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ImpressionTrackingUrl { get; set; }
 
         /// <summary>Resource type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Detected product categories, if any. Read-only. This field should not be set in requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productCategories")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> ProductCategories { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> ProductCategories { get; set; }
 
         /// <summary>All restricted categories for the ads that may be shown from this snippet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedCategories")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> RestrictedCategories { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> RestrictedCategories { get; set; }
 
         /// <summary>Detected sensitive categories, if any. Read-only. This field should not be set in
         /// requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitiveCategories")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> SensitiveCategories { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> SensitiveCategories { get; set; }
 
         /// <summary>Creative serving status. Read-only. This field should not be set in requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>All vendor types for the ads that may be shown from this snippet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vendorType")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> VendorType { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> VendorType { get; set; }
 
         /// <summary>The version for this creative. Read-only. This field should not be set in requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
         /// <summary>The url to fetch a video ad. If set, HTMLSnippet should not be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoURL")]
-        public virtual string VideoURL { get; set; } 
+        public virtual string VideoURL { get; set; }
 
         /// <summary>Ad width.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
-        public virtual System.Nullable<int> Width { get; set; } 
+        public virtual System.Nullable<int> Width { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -824,11 +824,11 @@ namespace Google.Apis.AdExchangeBuyer.v1_2.Data
         {
             /// <summary>Additional details about the correction.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("details")]
-            public virtual System.Collections.Generic.IList<string> Details { get; set; } 
+            public virtual System.Collections.Generic.IList<string> Details { get; set; }
 
             /// <summary>The type of correction that was applied to the creative.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-            public virtual string Reason { get; set; } 
+            public virtual string Reason { get; set; }
 
         }    
 
@@ -836,11 +836,11 @@ namespace Google.Apis.AdExchangeBuyer.v1_2.Data
         {
             /// <summary>Additional details about the reason for disapproval.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("details")]
-            public virtual System.Collections.Generic.IList<string> Details { get; set; } 
+            public virtual System.Collections.Generic.IList<string> Details { get; set; }
 
             /// <summary>The categorized reason for disapproval.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-            public virtual string Reason { get; set; } 
+            public virtual string Reason { get; set; }
 
         }    
 
@@ -851,11 +851,11 @@ namespace Google.Apis.AdExchangeBuyer.v1_2.Data
             /// <summary>The date in ISO 8601 format for the data. The data is collected from 00:00:00 to 23:59:59 in
             /// PST.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("date")]
-            public virtual string Date { get; set; } 
+            public virtual string Date { get; set; }
 
             /// <summary>The filtering reasons.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("reasons")]
-            public virtual System.Collections.Generic.IList<ReasonsData> Reasons { get; set; } 
+            public virtual System.Collections.Generic.IList<ReasonsData> Reasons { get; set; }
 
             
 
@@ -864,12 +864,12 @@ namespace Google.Apis.AdExchangeBuyer.v1_2.Data
                 /// <summary>The number of times the creative was filtered for the status. The count is aggregated
                 /// across all publishers on the exchange.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("filteringCount")]
-                public virtual System.Nullable<long> FilteringCount { get; set; } 
+                public virtual System.Nullable<long> FilteringCount { get; set; }
 
                 /// <summary>The filtering status code. Please refer to the creative-status-codes.txt file for different
                 /// statuses.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("filteringStatus")]
-                public virtual System.Nullable<int> FilteringStatus { get; set; } 
+                public virtual System.Nullable<int> FilteringStatus { get; set; }
 
             }
         }
@@ -881,16 +881,16 @@ namespace Google.Apis.AdExchangeBuyer.v1_2.Data
     {
         /// <summary>A list of creatives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Creative> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Creative> Items { get; set; }
 
         /// <summary>Resource type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Continuation token used to page through creatives. To retrieve the next page of results, set the
         /// next request's "pageToken" value to this.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
