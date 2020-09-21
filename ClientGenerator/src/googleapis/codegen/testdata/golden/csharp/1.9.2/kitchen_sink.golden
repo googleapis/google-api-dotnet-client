@@ -332,7 +332,7 @@ namespace Google.Apis.KitchSink.v1.Data
         public virtual System.Collections.Generic.IList<ModeratorTopicsResourcePartial> Topics { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("translations")]
-        public virtual System.Collections.Generic.IDictionary<string,Translation> Translations { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, Translation> Translations { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
