@@ -5313,8 +5313,8 @@ namespace Google.Apis.Appengine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("apiConfig")]
         public virtual ApiConfigHandler ApiConfig { get; set; } 
 
-        /// <summary>Automatic scaling is based on request rate, response latencies, and other application
-        /// metrics.</summary>
+        /// <summary>Automatic scaling is based on request rate, response latencies, and other application metrics.
+        /// Instances are dynamically created and destroyed as needed in order to handle traffic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("automaticScaling")]
         public virtual AutomaticScaling AutomaticScaling { get; set; } 
 
@@ -5421,7 +5421,8 @@ namespace Google.Apis.Appengine.v1beta.Data
         public virtual LivenessCheck LivenessCheck { get; set; } 
 
         /// <summary>A service with manual scaling runs continuously, allowing you to perform complex initialization and
-        /// rely on the state of its memory over time.</summary>
+        /// rely on the state of its memory over time. Manually scaled versions are sometimes referred to as
+        /// "backends".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manualScaling")]
         public virtual ManualScaling ManualScaling { get; set; } 
 

@@ -43,13 +43,13 @@ namespace Google.Apis.Reseller.v1
         /// <summary>Gets the service base URI.</summary>
         public override string BaseUri =>
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://www.googleapis.com/";
+            BaseUriOverride ?? "https://www.googleapis.com/apps/reseller/v1/";
         #else
-            "https://www.googleapis.com/";
+            "https://www.googleapis.com/apps/reseller/v1/";
         #endif
 
         /// <summary>Gets the service base path.</summary>
-        public override string BasePath => "";
+        public override string BasePath => "apps/reseller/v1/";
 
         #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
@@ -101,46 +101,17 @@ namespace Google.Apis.Reseller.v1
         {
         }
 
-        /// <summary>V1 error format.</summary>
-        [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
-
-        /// <summary>V1 error format.</summary>
-        public enum XgafvEnum
-        {
-            /// <summary>v1 error format</summary>
-            [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
-            /// <summary>v2 error format</summary>
-            [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
-        }
-
-        /// <summary>OAuth access token.</summary>
-        [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string AccessToken { get; set; }
-
-        /// <summary>Data format for response.</summary>
+        /// <summary>Data format for the response.</summary>
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
-        /// <summary>Data format for response.</summary>
+        /// <summary>Data format for the response.</summary>
         public enum AltEnum
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
-            /// <summary>Media download with context-dependent Content-Type</summary>
-            [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
-            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
-            [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
         }
-
-        /// <summary>JSONP</summary>
-        [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string Callback { get; set; }
 
         /// <summary>Selector specifying which fields to include in a partial response.</summary>
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
@@ -159,54 +130,26 @@ namespace Google.Apis.Reseller.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
+        /// characters.</summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
-        /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
-        [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string UploadType { get; set; }
-
-        /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
-        [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string UploadProtocol { get; set; }
+        /// <summary>Deprecated. Please use quotaUser instead.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UserIp { get; set; }
 
         /// <summary>Initializes Reseller parameter list.</summary>
         protected override void InitParameters()
         {
             base.InitParameters();
 
-            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
-            {
-                Name = "$.xgafv",
-                IsRequired = false,
-                ParameterType = "query",
-                DefaultValue = null,
-                Pattern = null,
-            });
-            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
-            {
-                Name = "access_token",
-                IsRequired = false,
-                ParameterType = "query",
-                DefaultValue = null,
-                Pattern = null,
-            });
             RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
             {
                 Name = "alt",
                 IsRequired = false,
                 ParameterType = "query",
                 DefaultValue = "json",
-                Pattern = null,
-            });
-            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
-            {
-                Name = "callback",
-                IsRequired = false,
-                ParameterType = "query",
-                DefaultValue = null,
                 Pattern = null,
             });
             RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
@@ -249,17 +192,9 @@ namespace Google.Apis.Reseller.v1
                 DefaultValue = null,
                 Pattern = null,
             });
-            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            RequestParameters.Add("userIp", new Google.Apis.Discovery.Parameter
             {
-                Name = "uploadType",
-                IsRequired = false,
-                ParameterType = "query",
-                DefaultValue = null,
-                Pattern = null,
-            });
-            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
-            {
-                Name = "upload_protocol",
+                Name = "userIp",
                 IsRequired = false,
                 ParameterType = "query",
                 DefaultValue = null,
@@ -318,7 +253,7 @@ namespace Google.Apis.Reseller.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "apps/reseller/v1/customers/{customerId}";
+            public override string RestPath => "customers/{customerId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -376,7 +311,7 @@ namespace Google.Apis.Reseller.v1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "apps/reseller/v1/customers";
+            public override string RestPath => "customers";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -395,7 +330,7 @@ namespace Google.Apis.Reseller.v1
 
         }
 
-        /// <summary>Patch a customer account's settings via Apiary Patch Orchestration</summary>
+        /// <summary>Update a customer account's settings. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customerId">Either the customer's primary domain name or the customer's unique identifier. If using the
         /// domain name, we do not recommend using a customerId as a key for persistent data. If the domain name for a
@@ -405,7 +340,7 @@ namespace Google.Apis.Reseller.v1
             return new PatchRequest(service, body, customerId);
         }
 
-        /// <summary>Patch a customer account's settings via Apiary Patch Orchestration</summary>
+        /// <summary>Update a customer account's settings. This method supports patch semantics.</summary>
         public class PatchRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.Customer>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -437,7 +372,7 @@ namespace Google.Apis.Reseller.v1
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "apps/reseller/v1/customers/{customerId}";
+            public override string RestPath => "customers/{customerId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -498,7 +433,7 @@ namespace Google.Apis.Reseller.v1
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "apps/reseller/v1/customers/{customerId}";
+            public override string RestPath => "customers/{customerId}";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -558,7 +493,7 @@ namespace Google.Apis.Reseller.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "apps/reseller/v1/resellernotify/getwatchdetails";
+            public override string RestPath => "resellernotify/getwatchdetails";
 
             /// <summary>Initializes Getwatchdetails parameter list.</summary>
             protected override void InitParameters()
@@ -597,7 +532,7 @@ namespace Google.Apis.Reseller.v1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "apps/reseller/v1/resellernotify/register";
+            public override string RestPath => "resellernotify/register";
 
             /// <summary>Initializes Register parameter list.</summary>
             protected override void InitParameters()
@@ -644,7 +579,7 @@ namespace Google.Apis.Reseller.v1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "apps/reseller/v1/resellernotify/unregister";
+            public override string RestPath => "resellernotify/unregister";
 
             /// <summary>Initializes Unregister parameter list.</summary>
             protected override void InitParameters()
@@ -726,7 +661,7 @@ namespace Google.Apis.Reseller.v1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/activate";
+            public override string RestPath => "customers/{customerId}/subscriptions/{subscriptionId}/activate";
 
             /// <summary>Initializes Activate parameter list.</summary>
             protected override void InitParameters()
@@ -809,7 +744,7 @@ namespace Google.Apis.Reseller.v1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changePlan";
+            public override string RestPath => "customers/{customerId}/subscriptions/{subscriptionId}/changePlan";
 
             /// <summary>Initializes ChangePlan parameter list.</summary>
             protected override void InitParameters()
@@ -892,7 +827,7 @@ namespace Google.Apis.Reseller.v1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changeRenewalSettings";
+            public override string RestPath => "customers/{customerId}/subscriptions/{subscriptionId}/changeRenewalSettings";
 
             /// <summary>Initializes ChangeRenewalSettings parameter list.</summary>
             protected override void InitParameters()
@@ -973,7 +908,7 @@ namespace Google.Apis.Reseller.v1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changeSeats";
+            public override string RestPath => "customers/{customerId}/subscriptions/{subscriptionId}/changeSeats";
 
             /// <summary>Initializes ChangeSeats parameter list.</summary>
             protected override void InitParameters()
@@ -1051,17 +986,15 @@ namespace Google.Apis.Reseller.v1
             /// subscription.</summary>
             public enum DeletionTypeEnum
             {
-                [Google.Apis.Util.StringValueAttribute("deletionTypeUndefined")]
-                DeletionTypeUndefined,
                 /// <summary>Cancels the subscription immediately. This does not apply to a G Suite
                 /// subscription.</summary>
                 [Google.Apis.Util.StringValueAttribute("cancel")]
                 Cancel,
-                /// <summary>Transfers a subscription directly to Google. The customer is immediately transferred to a
+                /// <summary>Transfers a subscription directly to Google.  The customer is immediately transferred to a
                 /// direct billing relationship with Google and is given a short amount of time with no service
                 /// interruption. The customer can then choose to set up billing directly with Google by using a credit
                 /// card, or they can transfer to another reseller.</summary>
-                [Google.Apis.Util.StringValueAttribute("transferToDirect")]
+                [Google.Apis.Util.StringValueAttribute("transfer_to_direct")]
                 TransferToDirect,
             }
 
@@ -1073,7 +1006,7 @@ namespace Google.Apis.Reseller.v1
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}";
+            public override string RestPath => "customers/{customerId}/subscriptions/{subscriptionId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -1154,7 +1087,7 @@ namespace Google.Apis.Reseller.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}";
+            public override string RestPath => "customers/{customerId}/subscriptions/{subscriptionId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -1230,7 +1163,7 @@ namespace Google.Apis.Reseller.v1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "apps/reseller/v1/customers/{customerId}/subscriptions";
+            public override string RestPath => "customers/{customerId}/subscriptions";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -1292,7 +1225,7 @@ namespace Google.Apis.Reseller.v1
             /// prefix for a customer name. Using an example customer group that includes exam.com, example20.com and
             /// example.com: - exa -- Returns all customer names that start with 'exa' which could include exam.com,
             /// example20.com, and example.com. A name prefix is similar to using a regular expression's asterisk, exa*.
-            /// - example -- Returns example20.com and example.com. </summary>
+            /// - example -- Returns example20.com and example.com.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerNamePrefix", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerNamePrefix { get; set; }
 
@@ -1313,7 +1246,7 @@ namespace Google.Apis.Reseller.v1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "apps/reseller/v1/subscriptions";
+            public override string RestPath => "subscriptions";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -1410,7 +1343,7 @@ namespace Google.Apis.Reseller.v1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/startPaidService";
+            public override string RestPath => "customers/{customerId}/subscriptions/{subscriptionId}/startPaidService";
 
             /// <summary>Initializes StartPaidService parameter list.</summary>
             protected override void InitParameters()
@@ -1483,7 +1416,7 @@ namespace Google.Apis.Reseller.v1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/suspend";
+            public override string RestPath => "customers/{customerId}/subscriptions/{subscriptionId}/suspend";
 
             /// <summary>Initializes Suspend parameter list.</summary>
             protected override void InitParameters()
@@ -1583,10 +1516,11 @@ namespace Google.Apis.Reseller.v1.Data
         public virtual string Kind { get; set; } 
 
         /// <summary>The planName property is required. This is the name of the subscription's payment plan. For more
-        /// information about the Google payment plans, see API concepts. Possible values are: - ANNUAL_MONTHLY_PAY -
-        /// The annual commitment plan with monthly payments *Caution: *ANNUAL_MONTHLY_PAY is returned as ANNUAL in all
-        /// API responses. - ANNUAL_YEARLY_PAY - The annual commitment plan with yearly payments - FLEXIBLE - The
-        /// flexible plan - TRIAL - The 30-day free trial plan </summary>
+        /// information about the Google payment plans, see API concepts.
+        ///
+        /// Possible values are: - ANNUAL_MONTHLY_PAY - The annual commitment plan with monthly payments  Caution:
+        /// ANNUAL_MONTHLY_PAY is returned as ANNUAL in all API responses. - ANNUAL_YEARLY_PAY - The annual commitment
+        /// plan with yearly payments - FLEXIBLE - The flexible plan - TRIAL - The 30-day free trial plan</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("planName")]
         public virtual string PlanName { get; set; } 
 
@@ -1609,7 +1543,7 @@ namespace Google.Apis.Reseller.v1.Data
     {
         /// <summary>Like the "Customer email" in the reseller tools, this email is the secondary contact used if
         /// something happens to the customer's service such as service outage or a security issue. This property is
-        /// required when creating a new customer and should not use the same domain as customerDomain .</summary>
+        /// required when creating a new customer and should not use the same domain as customerDomain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternateEmail")]
         public virtual string AlternateEmail { get; set; } 
 
@@ -1711,7 +1645,7 @@ namespace Google.Apis.Reseller.v1.Data
         /// <summary>This is a required property and is exclusive to subscriptions with FLEXIBLE or TRIAL plans. This
         /// property sets the maximum number of licensed users allowed on a subscription. This quantity can be increased
         /// up to the maximum limit defined in the reseller's contract. The minimum quantity is the current number of
-        /// users in the customer account. *Note: *G Suite subscriptions automatically assign a license to every
+        /// users in the customer account. Note: G Suite subscriptions automatically assign a license to every
         /// user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximumNumberOfSeats")]
         public virtual System.Nullable<int> MaximumNumberOfSeats { get; set; } 
@@ -1720,7 +1654,7 @@ namespace Google.Apis.Reseller.v1.Data
         /// ANNUAL_YEARLY_PAY plans. This property sets the maximum number of licenses assignable to users on a
         /// subscription. The reseller can add more licenses, but once set, the numberOfSeats cannot be reduced until
         /// renewal. The reseller is invoiced based on the numberOfSeats value regardless of how many of these user
-        /// licenses are assigned. *Note: *G Suite subscriptions automatically assign a license to every user.</summary>
+        /// licenses are assigned. Note: G Suite subscriptions automatically assign a license to every user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numberOfSeats")]
         public virtual System.Nullable<int> NumberOfSeats { get; set; } 
 
@@ -1788,14 +1722,14 @@ namespace Google.Apis.Reseller.v1.Data
         public virtual Seats Seats { get; set; } 
 
         /// <summary>A required property. The skuId is a unique system identifier for a product's SKU assigned to a
-        /// customer in the subscription. For products and SKUs available in this version of the API, see Product and
+        /// customer in the subscription. For products and SKUs available in this version of the API, see  Product and
         /// SKU IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skuId")]
         public virtual string SkuId { get; set; } 
 
         /// <summary>Read-only external display name for a product's SKU assigned to a customer in the subscription. SKU
         /// names are subject to change at Google's discretion. For products and SKUs available in this version of the
-        /// API, see Product and SKU IDs.</summary>
+        /// API, see  Product and SKU IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skuName")]
         public virtual string SkuName { get; set; } 
 
@@ -1812,12 +1746,13 @@ namespace Google.Apis.Reseller.v1.Data
 
         /// <summary>Read-only field containing an enumerable of all the current suspension reasons for a subscription.
         /// It is possible for a subscription to have many concurrent, overlapping suspension reasons. A subscription's
-        /// STATUS is SUSPENDED until all pending suspensions are removed. Possible options include: -
-        /// PENDING_TOS_ACCEPTANCE - The customer has not logged in and accepted the G Suite Resold Terms of Services. -
-        /// RENEWAL_WITH_TYPE_CANCEL - The customer's commitment ended and their service was cancelled at the end of
-        /// their term. - RESELLER_INITIATED - A manual suspension invoked by a Reseller. - TRIAL_ENDED - The customer's
-        /// trial expired without a plan selected. - OTHER - The customer is suspended for an internal Google reason
-        /// (e.g. abuse or otherwise). </summary>
+        /// STATUS is SUSPENDED until all pending suspensions are removed.
+        ///
+        /// Possible options include: - PENDING_TOS_ACCEPTANCE - The customer has not logged in and accepted the G Suite
+        /// Resold Terms of Services. - RENEWAL_WITH_TYPE_CANCEL - The customer's commitment ended and their service was
+        /// cancelled at the end of their term. - RESELLER_INITIATED - A manual suspension invoked by a Reseller. -
+        /// TRIAL_ENDED - The customer's trial expired without a plan selected. - OTHER - The customer is suspended for
+        /// an internal Google reason (e.g. abuse or otherwise).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suspensionReasons")]
         public virtual System.Collections.Generic.IList<string> SuspensionReasons { get; set; } 
 
@@ -1840,35 +1775,37 @@ namespace Google.Apis.Reseller.v1.Data
         /// see the API concepts.</summary>
         public class PlanData
         {
-            /// <summary>In this version of the API, annual commitment plan's interval is one year. *Note: *When
+            /// <summary>In this version of the API, annual commitment plan's interval is one year.  Note: When
             /// billingMethod value is OFFLINE, the subscription property object plan.commitmentInterval is omitted in
-            /// all API responses. </summary>
+            /// all API responses.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("commitmentInterval")]
             public virtual CommitmentIntervalData CommitmentInterval { get; set; } 
 
             /// <summary>The isCommitmentPlan property's boolean value identifies the plan as an annual commitment plan:
             /// - true — The subscription's plan is an annual commitment plan. - false — The plan is not an annual
-            /// commitment plan. </summary>
+            /// commitment plan.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("isCommitmentPlan")]
             public virtual System.Nullable<bool> IsCommitmentPlan { get; set; } 
 
             /// <summary>The planName property is required. This is the name of the subscription's plan. For more
-            /// information about the Google payment plans, see the API concepts. Possible values are: -
-            /// ANNUAL_MONTHLY_PAY — The annual commitment plan with monthly payments. *Caution: *ANNUAL_MONTHLY_PAY is
-            /// returned as ANNUAL in all API responses. - ANNUAL_YEARLY_PAY — The annual commitment plan with yearly
-            /// payments - FLEXIBLE — The flexible plan - TRIAL — The 30-day free trial plan. A subscription in trial
-            /// will be suspended after the 30th free day if no payment plan is assigned. Calling changePlan will assign
-            /// a payment plan to a trial but will not activate the plan. A trial will automatically begin its assigned
-            /// payment plan after its 30th free day or immediately after calling startPaidService. - FREE — The free
-            /// plan is exclusive to the Cloud Identity SKU and does not incur any billing. </summary>
+            /// information about the Google payment plans, see the API concepts.
+            ///
+            /// Possible values are: - ANNUAL_MONTHLY_PAY — The annual commitment plan with monthly payments.  Caution:
+            /// ANNUAL_MONTHLY_PAY is returned as ANNUAL in all API responses. - ANNUAL_YEARLY_PAY — The annual
+            /// commitment plan with yearly payments - FLEXIBLE — The flexible plan - TRIAL — The 30-day free trial
+            /// plan. A subscription in trial will be suspended after the 30th free day if no payment plan is assigned.
+            /// Calling changePlan will assign a payment plan to a trial but will not activate the plan. A trial will
+            /// automatically begin its assigned payment plan after its 30th free day or immediately after calling
+            /// startPaidService. - FREE — The free plan is exclusive to the Cloud Identity SKU and does not incur any
+            /// billing.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("planName")]
             public virtual string PlanName { get; set; } 
 
             
 
-            /// <summary>In this version of the API, annual commitment plan's interval is one year. *Note: *When
+            /// <summary>In this version of the API, annual commitment plan's interval is one year.  Note: When
             /// billingMethod value is OFFLINE, the subscription property object plan.commitmentInterval is omitted in
-            /// all API responses. </summary>
+            /// all API responses.</summary>
             public class CommitmentIntervalData
             {
                 /// <summary>An annual commitment plan's interval's endTime in milliseconds using the UNIX Epoch format.
@@ -1906,7 +1843,7 @@ namespace Google.Apis.Reseller.v1.Data
         public class TrialSettingsData
         {
             /// <summary>Determines if a subscription's plan is in a 30-day free trial or not: - true — The plan is in
-            /// trial. - false — The plan is not in trial. </summary>
+            /// trial. - false — The plan is not in trial.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("isInTrial")]
             public virtual System.Nullable<bool> IsInTrial { get; set; } 
 

@@ -31,6 +31,7 @@ namespace Google.Apis.PubsubLite.v1
         {
             Admin = new AdminResource(this);
             Cursor = new CursorResource(this);
+            TopicStats = new TopicStatsResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -81,6 +82,9 @@ namespace Google.Apis.PubsubLite.v1
 
         /// <summary>Gets the Cursor resource.</summary>
         public virtual CursorResource Cursor { get; }
+
+        /// <summary>Gets the TopicStats resource.</summary>
+        public virtual TopicStatsResource TopicStats { get; }
     }
 
     /// <summary>A base abstract class for PubsubLite requests.</summary>
@@ -1313,6 +1317,140 @@ namespace Google.Apis.PubsubLite.v1
             }
         }
     }
+
+    /// <summary>The "topicStats" collection of methods.</summary>
+    public class TopicStatsResource
+    {
+        private const string Resource = "topicStats";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public TopicStatsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Projects = new ProjectsResource(service);
+
+        }
+
+        /// <summary>Gets the Projects resource.</summary>
+        public virtual ProjectsResource Projects { get; }
+
+        /// <summary>The "projects" collection of methods.</summary>
+        public class ProjectsResource
+        {
+            private const string Resource = "projects";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ProjectsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                Locations = new LocationsResource(service);
+
+            }
+
+            /// <summary>Gets the Locations resource.</summary>
+            public virtual LocationsResource Locations { get; }
+
+            /// <summary>The "locations" collection of methods.</summary>
+            public class LocationsResource
+            {
+                private const string Resource = "locations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public LocationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Topics = new TopicsResource(service);
+
+                }
+
+                /// <summary>Gets the Topics resource.</summary>
+                public virtual TopicsResource Topics { get; }
+
+                /// <summary>The "topics" collection of methods.</summary>
+                public class TopicsResource
+                {
+                    private const string Resource = "topics";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public TopicsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>Compute statistics about a range of messages in a given topic and partition.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="topic">Required. The topic for which we should compute message stats.</param>
+                    public virtual ComputeMessageStatsRequest ComputeMessageStats(Google.Apis.PubsubLite.v1.Data.ComputeMessageStatsRequest body, string topic)
+                    {
+                        return new ComputeMessageStatsRequest(service, body, topic);
+                    }
+
+                    /// <summary>Compute statistics about a range of messages in a given topic and partition.</summary>
+                    public class ComputeMessageStatsRequest : PubsubLiteBaseServiceRequest<Google.Apis.PubsubLite.v1.Data.ComputeMessageStatsResponse>
+                    {
+                        /// <summary>Constructs a new ComputeMessageStats request.</summary>
+                        public ComputeMessageStatsRequest(Google.Apis.Services.IClientService service, Google.Apis.PubsubLite.v1.Data.ComputeMessageStatsRequest body, string topic) : base(service)
+                        {
+                            Topic = topic;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The topic for which we should compute message stats.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("topic", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Topic { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.PubsubLite.v1.Data.ComputeMessageStatsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "computeMessageStats";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/topicStats/{+topic}:computeMessageStats";
+
+                        /// <summary>Initializes ComputeMessageStats parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("topic", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "topic",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/topics/[^/]+$",
+                            });
+                        }
+
+                    }
+                }
+            }
+        }
+    }
 }
 
 namespace Google.Apis.PubsubLite.v1.Data
@@ -1328,6 +1466,53 @@ namespace Google.Apis.PubsubLite.v1.Data
         /// <summary>Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 32.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscribeMibPerSec")]
         public virtual System.Nullable<int> SubscribeMibPerSec { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Compute statistics about a range of messages in a given topic and partition.</summary>
+    public class ComputeMessageStatsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The exclusive end of the range. The range is empty if end_cursor <= start_cursor. Specifying a
+        /// start_cursor before the first message and an end_cursor after the last message will retrieve all
+        /// messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endCursor")]
+        public virtual Cursor EndCursor { get; set; } 
+
+        /// <summary>Required. The partition for which we should compute message stats.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partition")]
+        public virtual System.Nullable<long> Partition { get; set; } 
+
+        /// <summary>The inclusive start of the range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startCursor")]
+        public virtual Cursor StartCursor { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response containing stats for messages in the requested topic and partition.</summary>
+    public class ComputeMessageStatsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of quota bytes accounted to these messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageBytes")]
+        public virtual System.Nullable<long> MessageBytes { get; set; } 
+
+        /// <summary>The count of messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageCount")]
+        public virtual System.Nullable<long> MessageCount { get; set; } 
+
+        /// <summary>The minimum event timestamp across these messages. For the purposes of this computation, if a
+        /// message does not have an event time, we use the publish time. The timestamp will be unset if there are no
+        /// messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumEventTime")]
+        public virtual object MinimumEventTime { get; set; } 
+
+        /// <summary>The minimum publish timestamp across these messages. Note that publish timestamps within a
+        /// partition are non-decreasing. The timestamp will be unset if there are no messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumPublishTime")]
+        public virtual object MinimumPublishTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

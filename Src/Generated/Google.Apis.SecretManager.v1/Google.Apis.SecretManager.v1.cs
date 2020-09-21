@@ -1486,8 +1486,9 @@ namespace Google.Apis.SecretManager.v1.Data
     public class Automatic : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The customer-managed encryption configuration of the Secret. If no configuration is
-        /// provided, Google-managed default encryption is used. Updates to the Secret encryption configuration do not
-        /// apply retroactively to existing SecretVersions.</summary>
+        /// provided, Google-managed default encryption is used. Updates to the Secret encryption configuration only
+        /// apply to SecretVersions added afterwards. They do not apply retroactively to existing
+        /// SecretVersions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerManagedEncryption")]
         public virtual CustomerManagedEncryption CustomerManagedEncryption { get; set; } 
 
@@ -1795,7 +1796,8 @@ namespace Google.Apis.SecretManager.v1.Data
     {
         /// <summary>Optional. The customer-managed encryption configuration of the User-Managed Replica. If no
         /// configuration is provided, Google-managed default encryption is used. Updates to the Secret encryption
-        /// configuration do not apply retroactively to existing SecretVersions.</summary>
+        /// configuration only apply to SecretVersions added afterwards. They do not apply retroactively to existing
+        /// SecretVersions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerManagedEncryption")]
         public virtual CustomerManagedEncryption CustomerManagedEncryption { get; set; } 
 
