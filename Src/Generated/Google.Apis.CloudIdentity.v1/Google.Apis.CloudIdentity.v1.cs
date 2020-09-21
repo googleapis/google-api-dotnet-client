@@ -2108,6 +2108,67 @@ namespace Google.Apis.CloudIdentity.v1
                 }
 
             }
+
+            /// <summary>Modifies the `MembershipRole`s of a `Membership`.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+            /// `Membership` whose roles are to be modified. Must be of the form
+            /// `groups/{group_id}/memberships/{membership_id}`.</param>
+            public virtual ModifyMembershipRolesRequest ModifyMembershipRoles(Google.Apis.CloudIdentity.v1.Data.ModifyMembershipRolesRequest body, string name)
+            {
+                return new ModifyMembershipRolesRequest(service, body, name);
+            }
+
+            /// <summary>Modifies the `MembershipRole`s of a `Membership`.</summary>
+            public class ModifyMembershipRolesRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1.Data.ModifyMembershipRolesResponse>
+            {
+                /// <summary>Constructs a new ModifyMembershipRoles request.</summary>
+                public ModifyMembershipRolesRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIdentity.v1.Data.ModifyMembershipRolesRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+                /// `Membership` whose roles are to be modified. Must be of the form
+                /// `groups/{group_id}/memberships/{membership_id}`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudIdentity.v1.Data.ModifyMembershipRolesRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "modifyMembershipRoles";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:modifyMembershipRoles";
+
+                /// <summary>Initializes ModifyMembershipRoles parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^groups/[^/]+/memberships/[^/]+$",
+                    });
+                }
+
+            }
         }
 
         /// <summary>Creates a Group.</summary>
@@ -3298,6 +3359,41 @@ namespace Google.Apis.CloudIdentity.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The request message for MembershipsService.ModifyMembershipRoles.</summary>
+    public class ModifyMembershipRolesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The `MembershipRole`s to be added. Adding or removing roles in the same request as updating roles
+        /// is not supported. Must not be set if `update_roles_params` is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addRoles")]
+        public virtual System.Collections.Generic.IList<MembershipRole> AddRoles { get; set; } 
+
+        /// <summary>The `name`s of the `MembershipRole`s to be removed. Adding or removing roles in the same request as
+        /// updating roles is not supported. It is not possible to remove the `MEMBER` `MembershipRole`. If you wish to
+        /// delete a `Membership`, call MembershipsService.DeleteMembership instead. Must not contain `MEMBER`. Must not
+        /// be set if `update_roles_params` is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removeRoles")]
+        public virtual System.Collections.Generic.IList<string> RemoveRoles { get; set; } 
+
+        /// <summary>The `MembershipRole`s to be updated. Updating roles in the same request as adding or removing roles
+        /// is not supported. Must not be set if either `add_roles` or `remove_roles` is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateRolesParams")]
+        public virtual System.Collections.Generic.IList<UpdateMembershipRolesParams> UpdateRolesParams { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for MembershipsService.ModifyMembershipRoles.</summary>
+    public class ModifyMembershipRolesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The `Membership` resource after modifying its `MembershipRole`s.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membership")]
+        public virtual Membership Membership { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3369,6 +3465,23 @@ namespace Google.Apis.CloudIdentity.v1.Data
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The details of an update to a `MembershipRole`.</summary>
+    public class UpdateMembershipRolesParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fully-qualified names of fields to update. May only contain the field
+        /// `expiry_detail`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldMask")]
+        public virtual object FieldMask { get; set; } 
+
+        /// <summary>The `MembershipRole`s to be updated. Only `MEMBER` `MembershipRole` can currently be
+        /// updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membershipRole")]
+        public virtual MembershipRole MembershipRole { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

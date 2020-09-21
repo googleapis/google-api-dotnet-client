@@ -1164,18 +1164,21 @@ namespace Google.Apis.Dfareporting.v3_3
         /// <summary>Updates an existing account user profile. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.AccountUserProfile body, long profileId)
+        /// <param
+        /// name="id">AccountUserProfile ID.</param>
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.AccountUserProfile body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId);
+            return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing account user profile. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.AccountUserProfile>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.AccountUserProfile body, long profileId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.AccountUserProfile body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
+                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -1187,7 +1190,7 @@ namespace Google.Apis.Dfareporting.v3_3
 
             /// <summary>AccountUserProfile ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> Id { get; set; }
+            public virtual long Id { get; private set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -1221,7 +1224,7 @@ namespace Google.Apis.Dfareporting.v3_3
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -1527,18 +1530,21 @@ namespace Google.Apis.Dfareporting.v3_3
         /// <summary>Updates an existing account. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.Account body, long profileId)
+        /// <param name="id">Account
+        /// ID.</param>
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.Account body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId);
+            return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing account. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Account>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Account body, long profileId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Account body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
+                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -1550,7 +1556,7 @@ namespace Google.Apis.Dfareporting.v3_3
 
             /// <summary>Account ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> Id { get; set; }
+            public virtual long Id { get; private set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -1584,7 +1590,7 @@ namespace Google.Apis.Dfareporting.v3_3
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -1961,6 +1967,8 @@ namespace Google.Apis.Dfareporting.v3_3
                 ADSERVINGCLICKTRACKER,
                 [Google.Apis.Util.StringValueAttribute("AD_SERVING_TRACKING")]
                 ADSERVINGTRACKING,
+                [Google.Apis.Util.StringValueAttribute("AD_SERVING_BRAND_SAFE_AD")]
+                ADSERVINGBRANDSAFEAD,
             }
 
 
@@ -2177,18 +2185,21 @@ namespace Google.Apis.Dfareporting.v3_3
         /// <summary>Updates an existing ad. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.Ad body, long profileId)
+        /// <param name="id">Ad
+        /// ID.</param>
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.Ad body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId);
+            return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing ad. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Ad>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Ad body, long profileId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Ad body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
+                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -2200,7 +2211,7 @@ namespace Google.Apis.Dfareporting.v3_3
 
             /// <summary>Ad ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> Id { get; set; }
+            public virtual long Id { get; private set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -2234,7 +2245,7 @@ namespace Google.Apis.Dfareporting.v3_3
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -2648,18 +2659,21 @@ namespace Google.Apis.Dfareporting.v3_3
         /// <summary>Updates an existing advertiser group. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.AdvertiserGroup body, long profileId)
+        /// <param
+        /// name="id">AdvertiserGroup ID.</param>
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.AdvertiserGroup body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId);
+            return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing advertiser group. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.AdvertiserGroup>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.AdvertiserGroup body, long profileId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.AdvertiserGroup body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
+                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -2671,7 +2685,7 @@ namespace Google.Apis.Dfareporting.v3_3
 
             /// <summary>AdvertiserGroup ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> Id { get; set; }
+            public virtual long Id { get; private set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -2705,7 +2719,7 @@ namespace Google.Apis.Dfareporting.v3_3
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -3104,18 +3118,21 @@ namespace Google.Apis.Dfareporting.v3_3
         /// <summary>Updates an existing advertiser landing page. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.LandingPage body, long profileId)
+        /// <param name="id">LandingPage
+        /// ID.</param>
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.LandingPage body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId);
+            return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing advertiser landing page. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.LandingPage>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.LandingPage body, long profileId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.LandingPage body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
+                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -3127,7 +3144,7 @@ namespace Google.Apis.Dfareporting.v3_3
 
             /// <summary>LandingPage ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> Id { get; set; }
+            public virtual long Id { get; private set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -3161,7 +3178,7 @@ namespace Google.Apis.Dfareporting.v3_3
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -3592,18 +3609,21 @@ namespace Google.Apis.Dfareporting.v3_3
         /// <summary>Updates an existing advertiser. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.Advertiser body, long profileId)
+        /// <param name="id">Advertiser
+        /// ID.</param>
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.Advertiser body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId);
+            return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing advertiser. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Advertiser>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Advertiser body, long profileId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Advertiser body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
+                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -3615,7 +3635,7 @@ namespace Google.Apis.Dfareporting.v3_3
 
             /// <summary>Advertiser ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> Id { get; set; }
+            public virtual long Id { get; private set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -3649,7 +3669,7 @@ namespace Google.Apis.Dfareporting.v3_3
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -4352,18 +4372,21 @@ namespace Google.Apis.Dfareporting.v3_3
         /// <summary>Updates an existing campaign. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.Campaign body, long profileId)
+        /// <param name="id">Campaign
+        /// ID.</param>
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.Campaign body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId);
+            return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing campaign. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Campaign>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Campaign body, long profileId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Campaign body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
+                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -4375,7 +4398,7 @@ namespace Google.Apis.Dfareporting.v3_3
 
             /// <summary>Campaign ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> Id { get; set; }
+            public virtual long Id { get; private set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -4409,7 +4432,7 @@ namespace Google.Apis.Dfareporting.v3_3
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -5450,18 +5473,21 @@ namespace Google.Apis.Dfareporting.v3_3
         /// <summary>Updates an existing content category. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.ContentCategory body, long profileId)
+        /// <param
+        /// name="id">ContentCategory ID.</param>
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.ContentCategory body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId);
+            return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing content category. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.ContentCategory>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.ContentCategory body, long profileId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.ContentCategory body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
+                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -5473,7 +5499,7 @@ namespace Google.Apis.Dfareporting.v3_3
 
             /// <summary>ContentCategory ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> Id { get; set; }
+            public virtual long Id { get; private set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -5507,7 +5533,7 @@ namespace Google.Apis.Dfareporting.v3_3
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -6472,19 +6498,21 @@ namespace Google.Apis.Dfareporting.v3_3
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param
         /// name="creativeFieldId">CreativeField ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.CreativeFieldValue body, long profileId, long creativeFieldId)
+        /// <param name="id">CreativeFieldValue ID.</param>
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.CreativeFieldValue body, long profileId, long creativeFieldId, long id)
         {
-            return new PatchRequest(service, body, profileId, creativeFieldId);
+            return new PatchRequest(service, body, profileId, creativeFieldId, id);
         }
 
         /// <summary>Updates an existing creative field value. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.CreativeFieldValue>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CreativeFieldValue body, long profileId, long creativeFieldId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CreativeFieldValue body, long profileId, long creativeFieldId, long id) : base(service)
             {
                 ProfileId = profileId;
                 CreativeFieldId = creativeFieldId;
+                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -6500,7 +6528,7 @@ namespace Google.Apis.Dfareporting.v3_3
 
             /// <summary>CreativeFieldValue ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> Id { get; set; }
+            public virtual long Id { get; private set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -6542,7 +6570,7 @@ namespace Google.Apis.Dfareporting.v3_3
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -6984,18 +7012,21 @@ namespace Google.Apis.Dfareporting.v3_3
         /// <summary>Updates an existing creative field. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.CreativeField body, long profileId)
+        /// <param name="id">CreativeField
+        /// ID.</param>
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.CreativeField body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId);
+            return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing creative field. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.CreativeField>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CreativeField body, long profileId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CreativeField body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
+                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -7007,7 +7038,7 @@ namespace Google.Apis.Dfareporting.v3_3
 
             /// <summary>CreativeField ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> Id { get; set; }
+            public virtual long Id { get; private set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -7041,7 +7072,7 @@ namespace Google.Apis.Dfareporting.v3_3
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -7416,18 +7447,21 @@ namespace Google.Apis.Dfareporting.v3_3
         /// <summary>Updates an existing creative group. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.CreativeGroup body, long profileId)
+        /// <param name="id">CreativeGroup
+        /// ID.</param>
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.CreativeGroup body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId);
+            return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing creative group. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.CreativeGroup>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CreativeGroup body, long profileId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CreativeGroup body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
+                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -7439,7 +7473,7 @@ namespace Google.Apis.Dfareporting.v3_3
 
             /// <summary>CreativeGroup ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> Id { get; set; }
+            public virtual long Id { get; private set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -7473,7 +7507,7 @@ namespace Google.Apis.Dfareporting.v3_3
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -7999,18 +8033,21 @@ namespace Google.Apis.Dfareporting.v3_3
         /// <summary>Updates an existing creative. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.Creative body, long profileId)
+        /// <param name="id">Creative
+        /// ID.</param>
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.Creative body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId);
+            return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing creative. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Creative>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Creative body, long profileId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Creative body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
+                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -8022,7 +8059,7 @@ namespace Google.Apis.Dfareporting.v3_3
 
             /// <summary>Creative ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> Id { get; set; }
+            public virtual long Id { get; private set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -8056,7 +8093,7 @@ namespace Google.Apis.Dfareporting.v3_3
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -9281,18 +9318,21 @@ namespace Google.Apis.Dfareporting.v3_3
         /// <summary>Updates an existing event tag. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.EventTag body, long profileId)
+        /// <param name="id">EventTag
+        /// ID.</param>
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.EventTag body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId);
+            return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing event tag. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.EventTag>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.EventTag body, long profileId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.EventTag body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
+                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -9304,7 +9344,7 @@ namespace Google.Apis.Dfareporting.v3_3
 
             /// <summary>EventTag ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> Id { get; set; }
+            public virtual long Id { get; private set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -9338,7 +9378,7 @@ namespace Google.Apis.Dfareporting.v3_3
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -10194,18 +10234,21 @@ namespace Google.Apis.Dfareporting.v3_3
         /// <summary>Updates an existing floodlight activity. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.FloodlightActivity body, long profileId)
+        /// <param
+        /// name="id">FloodlightActivity ID.</param>
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.FloodlightActivity body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId);
+            return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing floodlight activity. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.FloodlightActivity>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.FloodlightActivity body, long profileId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.FloodlightActivity body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
+                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -10217,7 +10260,7 @@ namespace Google.Apis.Dfareporting.v3_3
 
             /// <summary>FloodlightActivity ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> Id { get; set; }
+            public virtual long Id { get; private set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -10251,7 +10294,7 @@ namespace Google.Apis.Dfareporting.v3_3
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -10654,18 +10697,21 @@ namespace Google.Apis.Dfareporting.v3_3
         /// <summary>Updates an existing floodlight activity group. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.FloodlightActivityGroup body, long profileId)
+        /// <param
+        /// name="id">FloodlightActivityGroup ID.</param>
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.FloodlightActivityGroup body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId);
+            return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing floodlight activity group. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.FloodlightActivityGroup>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.FloodlightActivityGroup body, long profileId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.FloodlightActivityGroup body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
+                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -10677,7 +10723,7 @@ namespace Google.Apis.Dfareporting.v3_3
 
             /// <summary>FloodlightActivityGroup ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> Id { get; set; }
+            public virtual long Id { get; private set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -10711,7 +10757,7 @@ namespace Google.Apis.Dfareporting.v3_3
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -10923,18 +10969,21 @@ namespace Google.Apis.Dfareporting.v3_3
         /// <summary>Updates an existing floodlight configuration. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.FloodlightConfiguration body, long profileId)
+        /// <param
+        /// name="id">FloodlightConfiguration ID.</param>
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.FloodlightConfiguration body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId);
+            return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing floodlight configuration. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.FloodlightConfiguration>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.FloodlightConfiguration body, long profileId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.FloodlightConfiguration body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
+                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -10946,7 +10995,7 @@ namespace Google.Apis.Dfareporting.v3_3
 
             /// <summary>FloodlightConfiguration ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> Id { get; set; }
+            public virtual long Id { get; private set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -10980,7 +11029,7 @@ namespace Google.Apis.Dfareporting.v3_3
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -13101,18 +13150,21 @@ namespace Google.Apis.Dfareporting.v3_3
         /// <summary>Updates an existing placement group. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.PlacementGroup body, long profileId)
+        /// <param
+        /// name="id">PlacementGroup ID.</param>
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.PlacementGroup body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId);
+            return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing placement group. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.PlacementGroup>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.PlacementGroup body, long profileId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.PlacementGroup body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
+                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -13124,7 +13176,7 @@ namespace Google.Apis.Dfareporting.v3_3
 
             /// <summary>PlacementGroup ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> Id { get; set; }
+            public virtual long Id { get; private set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -13158,7 +13210,7 @@ namespace Google.Apis.Dfareporting.v3_3
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -13573,18 +13625,21 @@ namespace Google.Apis.Dfareporting.v3_3
         /// <summary>Updates an existing placement strategy. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.PlacementStrategy body, long profileId)
+        /// <param
+        /// name="id">PlacementStrategy ID.</param>
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.PlacementStrategy body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId);
+            return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing placement strategy. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.PlacementStrategy>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.PlacementStrategy body, long profileId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.PlacementStrategy body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
+                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -13596,7 +13651,7 @@ namespace Google.Apis.Dfareporting.v3_3
 
             /// <summary>PlacementStrategy ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> Id { get; set; }
+            public virtual long Id { get; private set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -13630,7 +13685,7 @@ namespace Google.Apis.Dfareporting.v3_3
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -14356,18 +14411,21 @@ namespace Google.Apis.Dfareporting.v3_3
         /// <summary>Updates an existing placement. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.Placement body, long profileId)
+        /// <param name="id">Placement
+        /// ID.</param>
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.Placement body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId);
+            return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing placement. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Placement>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Placement body, long profileId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Placement body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
+                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -14379,7 +14437,7 @@ namespace Google.Apis.Dfareporting.v3_3
 
             /// <summary>Placement ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> Id { get; set; }
+            public virtual long Id { get; private set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -14413,7 +14471,7 @@ namespace Google.Apis.Dfareporting.v3_3
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -15126,20 +15184,20 @@ namespace Google.Apis.Dfareporting.v3_3
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param
-        /// name="remarketingListId">RemarketingList ID.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.RemarketingListShare body, long profileId, long remarketingListId)
+        /// name="id">RemarketingList ID.</param>
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.RemarketingListShare body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId, remarketingListId);
+            return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing remarketing list share. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.RemarketingListShare>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.RemarketingListShare body, long profileId, long remarketingListId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.RemarketingListShare body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
-                RemarketingListId = remarketingListId;
+                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -15150,12 +15208,8 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long ProfileId { get; private set; }
 
             /// <summary>RemarketingList ID.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("remarketingListId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual long RemarketingListId { get; private set; }
-
-            /// <summary>RemarketingListShare ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> Id { get; set; }
+            public virtual long Id { get; private set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -15171,7 +15225,7 @@ namespace Google.Apis.Dfareporting.v3_3
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/remarketingLists/{remarketingListId}/remarketingListShares";
+            public override string RestPath => "userprofiles/{profileId}/remarketingListShares";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -15186,18 +15240,10 @@ namespace Google.Apis.Dfareporting.v3_3
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("remarketingListId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "remarketingListId",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -15575,18 +15621,21 @@ namespace Google.Apis.Dfareporting.v3_3
         /// <summary>Updates an existing remarketing list. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.RemarketingList body, long profileId)
+        /// <param
+        /// name="id">RemarketingList ID.</param>
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.RemarketingList body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId);
+            return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing remarketing list. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.RemarketingList>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.RemarketingList body, long profileId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.RemarketingList body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
+                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -15598,7 +15647,7 @@ namespace Google.Apis.Dfareporting.v3_3
 
             /// <summary>RemarketingList ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> Id { get; set; }
+            public virtual long Id { get; private set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -15632,7 +15681,7 @@ namespace Google.Apis.Dfareporting.v3_3
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -17021,18 +17070,21 @@ namespace Google.Apis.Dfareporting.v3_3
         /// <summary>Updates an existing site. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.Site body, long profileId)
+        /// <param name="id">Site
+        /// ID.</param>
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.Site body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId);
+            return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing site. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Site>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Site body, long profileId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Site body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
+                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -17044,7 +17096,7 @@ namespace Google.Apis.Dfareporting.v3_3
 
             /// <summary>Site ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> Id { get; set; }
+            public virtual long Id { get; private set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -17078,7 +17130,7 @@ namespace Google.Apis.Dfareporting.v3_3
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -17667,18 +17719,21 @@ namespace Google.Apis.Dfareporting.v3_3
         /// <summary>Updates an existing subaccount. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.Subaccount body, long profileId)
+        /// <param name="id">Subaccount
+        /// ID.</param>
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.Subaccount body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId);
+            return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing subaccount. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.Subaccount>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Subaccount body, long profileId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.Subaccount body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
+                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -17690,7 +17745,7 @@ namespace Google.Apis.Dfareporting.v3_3
 
             /// <summary>Subaccount ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> Id { get; set; }
+            public virtual long Id { get; private set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -17724,7 +17779,7 @@ namespace Google.Apis.Dfareporting.v3_3
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -18330,18 +18385,21 @@ namespace Google.Apis.Dfareporting.v3_3
         /// <summary>Updates an existing targeting template. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.TargetingTemplate body, long profileId)
+        /// <param
+        /// name="id">TargetingTemplate ID.</param>
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.TargetingTemplate body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId);
+            return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing targeting template. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.TargetingTemplate>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.TargetingTemplate body, long profileId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.TargetingTemplate body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
+                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -18353,7 +18411,7 @@ namespace Google.Apis.Dfareporting.v3_3
 
             /// <summary>TargetingTemplate ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> Id { get; set; }
+            public virtual long Id { get; private set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -18387,7 +18445,7 @@ namespace Google.Apis.Dfareporting.v3_3
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -19198,18 +19256,21 @@ namespace Google.Apis.Dfareporting.v3_3
         /// <summary>Updates an existing user role. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.UserRole body, long profileId)
+        /// <param name="id">UserRole
+        /// ID.</param>
+        public virtual PatchRequest Patch(Google.Apis.Dfareporting.v3_3.Data.UserRole body, long profileId, long id)
         {
-            return new PatchRequest(service, body, profileId);
+            return new PatchRequest(service, body, profileId, id);
         }
 
         /// <summary>Updates an existing user role. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_3.Data.UserRole>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.UserRole body, long profileId) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.UserRole body, long profileId, long id) : base(service)
             {
                 ProfileId = profileId;
+                Id = id;
                 Body = body;
                 InitParameters();
             }
@@ -19221,7 +19282,7 @@ namespace Google.Apis.Dfareporting.v3_3
 
             /// <summary>UserRole ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> Id { get; set; }
+            public virtual long Id { get; private set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -19255,7 +19316,7 @@ namespace Google.Apis.Dfareporting.v3_3
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,

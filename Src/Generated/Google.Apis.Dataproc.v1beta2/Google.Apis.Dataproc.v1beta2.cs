@@ -6245,7 +6245,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         public virtual string InstanceId { get; set; } 
 
         /// <summary>Optional. Map from parameter names to values that should be used for those parameters. Values may
-        /// not exceed 100 characters.</summary>
+        /// not exceed 1000 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string,string> Parameters { get; set; } 
 
@@ -6702,10 +6702,11 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Specifies the metastore configuration.</summary>
+    /// <summary>Specifies a Metastore configuration.</summary>
     public class MetastoreConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Relative resource name of an existing Dataproc Metastore service.</summary>
+        /// <summary>Required. Resource name of an existing Dataproc Metastore service.Example:
+        /// projects/[project_id]/locations/[dataproc_region]/services/[service-name]</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataprocMetastoreService")]
         public virtual string DataprocMetastoreService { get; set; } 
 

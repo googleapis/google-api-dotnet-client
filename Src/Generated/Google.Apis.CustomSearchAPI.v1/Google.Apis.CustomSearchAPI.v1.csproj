@@ -2,8 +2,8 @@
 
   <!-- nupkg information -->
   <PropertyGroup>
-    <Title>Google.Apis.Customsearch.v1 Client Library</Title>
-    <Version>1.49.0.2084</Version>
+    <Title>Google.Apis.CustomSearchAPI.v1 Client Library</Title>
+    <Version>1.49.0.2086</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>

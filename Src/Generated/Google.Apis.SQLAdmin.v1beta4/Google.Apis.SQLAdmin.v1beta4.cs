@@ -44,7 +44,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public override System.Collections.Generic.IList<string> Features => new string[0];
 
         /// <summary>Gets the service name.</summary>
-        public override string Name => "sql";
+        public override string Name => "sqladmin";
 
         /// <summary>Gets the service base URI.</summary>
         public override string BaseUri =>
@@ -2954,7 +2954,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
 
             }
 
-            /// <summary>Start External master migration.</summary>
+            /// <summary>Start External primary instance migration.</summary>
             /// <param name="project">ID of the project that contains the instance.</param>
             /// <param name="instance">Cloud SQL
             /// instance ID. This does not include the project ID.</param>
@@ -2963,7 +2963,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
                 return new StartExternalSyncRequest(service, project, instance);
             }
 
-            /// <summary>Start External master migration.</summary>
+            /// <summary>Start External primary instance migration.</summary>
             public class StartExternalSyncRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
             {
                 /// <summary>Constructs a new StartExternalSync request.</summary>
@@ -2996,8 +2996,8 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     /// <summary>Online external sync will set up replication after initial data external sync</summary>
                     [Google.Apis.Util.StringValueAttribute("ONLINE")]
                     ONLINE,
-                    /// <summary>Offline external sync only dumps and loads a one-time snapshot of master's
-                    /// data</summary>
+                    /// <summary>Offline external sync only dumps and loads a one-time snapshot of the primary
+                    /// instance's data</summary>
                     [Google.Apis.Util.StringValueAttribute("OFFLINE")]
                     OFFLINE,
                 }
@@ -3045,7 +3045,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
 
             }
 
-            /// <summary>Verify External master external sync settings.</summary>
+            /// <summary>Verify External primary instance external sync settings.</summary>
             /// <param name="project">Project ID of the project that contains the instance.</param>
             /// <param
             /// name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
@@ -3054,7 +3054,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
                 return new VerifyExternalSyncSettingsRequest(service, project, instance);
             }
 
-            /// <summary>Verify External master external sync settings.</summary>
+            /// <summary>Verify External primary instance external sync settings.</summary>
             public class VerifyExternalSyncSettingsRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.SqlInstancesVerifyExternalSyncSettingsResponse>
             {
                 /// <summary>Constructs a new VerifyExternalSyncSettings request.</summary>
@@ -3087,8 +3087,8 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     /// <summary>Online external sync will set up replication after initial data external sync</summary>
                     [Google.Apis.Util.StringValueAttribute("ONLINE")]
                     ONLINE,
-                    /// <summary>Offline external sync only dumps and loads a one-time snapshot of master's
-                    /// data</summary>
+                    /// <summary>Offline external sync only dumps and loads a one-time snapshot of the primary
+                    /// instance's data</summary>
                     [Google.Apis.Util.StringValueAttribute("OFFLINE")]
                     OFFLINE,
                 }
@@ -4233,7 +4233,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Cloud SQL instance resource. Next field: 35</summary>
+    /// <summary>A Cloud SQL instance resource. Next field: 36</summary>
     public class DatabaseInstance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary> *SECOND_GEN*: Cloud SQL database instance. *EXTERNAL*: A database server that is not managed by
@@ -4286,8 +4286,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string GceZone { get; set; } 
 
         /// <summary>The instance type. This can be one of the following. *CLOUD_SQL_INSTANCE*: A Cloud SQL instance
-        /// that is not replicating from a master. *ON_PREMISES_INSTANCE*: An instance running on the customer's
-        /// premises. *READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a read-replica.</summary>
+        /// that is not replicating from a primary instance. *ON_PREMISES_INSTANCE*: An instance running on the
+        /// customer's premises. *READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a read-replica.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceType")]
         public virtual string InstanceType { get; set; } 
 
@@ -4304,7 +4304,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The name of the instance which will act as master in the replication setup.</summary>
+        /// <summary>The name of the instance which will act as primary in the replication setup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterInstanceName")]
         public virtual string MasterInstanceName { get; set; } 
 
@@ -4383,8 +4383,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public class FailoverReplicaData
         {
             /// <summary>The availability status of the failover replica. A false status indicates that the failover
-            /// replica is out of sync. The master can only failover to the failover replica when the status is
-            /// true.</summary>
+            /// replica is out of sync. The primary instance can only failover to the failover replica when the status
+            /// is true.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("available")]
             public virtual System.Nullable<bool> Available { get; set; } 
 
@@ -4412,17 +4412,17 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Read-replica configuration for connecting to the on-premises master.</summary>
+    /// <summary>Read-replica configuration for connecting to the on-premises primary instance.</summary>
     public class DemoteMasterConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>This is always *sql#demoteMasterConfiguration*.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>MySQL specific configuration when replicating from a MySQL on-premises master. Replication
-        /// configuration information such as the username, password, certificates, and keys are not stored in the
-        /// instance metadata. The configuration information is used only to set up the replication connection and is
-        /// stored by MySQL in a file named *master.info* in the data directory.</summary>
+        /// <summary>MySQL specific configuration when replicating from a MySQL on-premises primary instance.
+        /// Replication configuration information such as the username, password, certificates, and keys are not stored
+        /// in the instance metadata. The configuration information is used only to set up the replication connection
+        /// and is stored by MySQL in a file named *master.info* in the data directory.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mysqlReplicaConfiguration")]
         public virtual DemoteMasterMySqlReplicaConfiguration MysqlReplicaConfiguration { get; set; } 
 
@@ -4430,26 +4430,28 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Database instance demote master context.</summary>
+    /// <summary>Database instance demote primary instance context.</summary>
     public class DemoteMasterContext : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>This is always *sql#demoteMasterContext*.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The name of the instance which will act as on-premises master in the replication setup.</summary>
+        /// <summary>The name of the instance which will act as on-premises primary instance in the replication
+        /// setup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterInstanceName")]
         public virtual string MasterInstanceName { get; set; } 
 
-        /// <summary>Configuration specific to read-replicas replicating from the on-premises master.</summary>
+        /// <summary>Configuration specific to read-replicas replicating from the on-premises primary
+        /// instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicaConfiguration")]
         public virtual DemoteMasterConfiguration ReplicaConfiguration { get; set; } 
 
         /// <summary>Verify GTID consistency for demote operation. Default value: *True*. Second Generation instances
-        /// only. Setting this flag to false enables you to bypass GTID consistency check between on-premises master and
-        /// Cloud SQL instance during the demotion operation but also exposes you to the risk of future replication
-        /// failures. Change the value only if you know the reason for the GTID divergence and are confident that doing
-        /// so will not cause any replication issues.</summary>
+        /// only. Setting this flag to false enables you to bypass GTID consistency check between on-premises primary
+        /// instance and Cloud SQL instance during the demotion operation but also exposes you to the risk of future
+        /// replication failures. Change the value only if you know the reason for the GTID divergence and are confident
+        /// that doing so will not cause any replication issues.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifyGtidConsistency")]
         public virtual System.Nullable<bool> VerifyGtidConsistency { get; set; } 
 
@@ -4780,7 +4782,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Database demote master request.</summary>
+    /// <summary>Database demote primary instance request.</summary>
     public class InstancesDemoteMasterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Contains details about the demoteMaster operation.</summary>
@@ -4970,6 +4972,31 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Maintenance Deny Periods. This specifies a date range during when all CSA rollout will be
+    /// denied.</summary>
+    public class MaintenanceDenyPeriod : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>"maintenance deny period" end date. If the year of the end date is empty, the year of the start
+        /// date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is
+        /// in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
+        public virtual string EndDate { get; set; } 
+
+        /// <summary>"maintenance deny period" start date. If the year of the start date is empty, the year of the end
+        /// date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is
+        /// in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
+        public virtual string StartDate { get; set; } 
+
+        /// <summary>Time in UTC when the "no maintenance interval" starts on start_date and ends on end_date. The time
+        /// is in format: HH:mm:SS, i.e., 00:00:00</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("time")]
+        public virtual string Time { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Maintenance window. This specifies when a Cloud SQL instance is restarted for system maintenance
     /// purposes.</summary>
     public class MaintenanceWindow : Google.Apis.Requests.IDirectResponseSchema
@@ -5041,8 +5068,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; } 
 
-        /// <summary>Whether or not to check the master's Common Name value in the certificate that it sends during the
-        /// SSL handshake.</summary>
+        /// <summary>Whether or not to check the primary instance's Common Name value in the certificate that it sends
+        /// during the SSL handshake.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifyServerCertificate")]
         public virtual System.Nullable<bool> VerifyServerCertificate { get; set; } 
 
@@ -5217,13 +5244,13 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Read-replica configuration for connecting to the master.</summary>
+    /// <summary>Read-replica configuration for connecting to the primary instance.</summary>
     public class ReplicaConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies if the replica is the failover target. If the field is set to *true* the replica will be
-        /// designated as a failover replica. In case the master instance fails, the replica instance will be promoted
-        /// as the new master instance. Only one replica can be specified as failover target, and the replica has to be
-        /// in different zone with the master instance.</summary>
+        /// designated as a failover replica. In case the primary instance fails, the replica instance will be promoted
+        /// as the new primary instance. Only one replica can be specified as failover target, and the replica has to be
+        /// in different zone with the primary instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failoverTarget")]
         public virtual System.Nullable<bool> FailoverTarget { get; set; } 
 
@@ -5231,10 +5258,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>MySQL specific configuration when replicating from a MySQL on-premises master. Replication
-        /// configuration information such as the username, password, certificates, and keys are not stored in the
-        /// instance metadata. The configuration information is used only to set up the replication connection and is
-        /// stored by MySQL in a file named *master.info* in the data directory.</summary>
+        /// <summary>MySQL specific configuration when replicating from a MySQL on-premises primary instance.
+        /// Replication configuration information such as the username, password, certificates, and keys are not stored
+        /// in the instance metadata. The configuration information is used only to set up the replication connection
+        /// and is stored by MySQL in a file named *master.info* in the data directory.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mysqlReplicaConfiguration")]
         public virtual MySqlReplicaConfiguration MysqlReplicaConfiguration { get; set; } 
 
@@ -5366,6 +5393,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locationPreference")]
         public virtual LocationPreference LocationPreference { get; set; } 
 
+        /// <summary>Maintenance deny periods</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceDenyPeriods")]
+        public virtual System.Collections.Generic.IList<MaintenanceDenyPeriod> MaintenanceDenyPeriods { get; set; } 
+
         /// <summary>The maintenance window for this instance. This specifies when the instance can be restarted for
         /// maintenance purposes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceWindow")]
@@ -5410,7 +5441,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>External master migration setting error.</summary>
+    /// <summary>External primary instance migration setting error.</summary>
     public class SqlExternalSyncSettingError : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Additional information about the error encountered.</summary>

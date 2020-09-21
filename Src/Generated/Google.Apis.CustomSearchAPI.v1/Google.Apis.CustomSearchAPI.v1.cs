@@ -9,10 +9,10 @@
 
 // Generated code. DO NOT EDIT!
 
-namespace Google.Apis.Customsearch.v1
+namespace Google.Apis.CustomSearchAPI.v1
 {
-    /// <summary>The Customsearch Service.</summary>
-    public class CustomsearchService : Google.Apis.Services.BaseClientService
+    /// <summary>The CustomSearchAPI Service.</summary>
+    public class CustomSearchAPIService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
         public const string Version = "v1";
@@ -21,13 +21,13 @@ namespace Google.Apis.Customsearch.v1
         public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public CustomsearchService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        public CustomSearchAPIService() : this(new Google.Apis.Services.BaseClientService.Initializer())
         {
         }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public CustomsearchService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
+        public CustomSearchAPIService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Cse = new CseResource(this);
         }
@@ -65,11 +65,11 @@ namespace Google.Apis.Customsearch.v1
         public virtual CseResource Cse { get; }
     }
 
-    /// <summary>A base abstract class for Customsearch requests.</summary>
-    public abstract class CustomsearchBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
+    /// <summary>A base abstract class for CustomSearchAPI requests.</summary>
+    public abstract class CustomSearchAPIBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        /// <summary>Constructs a new CustomsearchBaseServiceRequest instance.</summary>
-        protected CustomsearchBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
+        /// <summary>Constructs a new CustomSearchAPIBaseServiceRequest instance.</summary>
+        protected CustomSearchAPIBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -144,7 +144,7 @@ namespace Google.Apis.Customsearch.v1
         [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string UploadProtocol { get; set; }
 
-        /// <summary>Initializes Customsearch parameter list.</summary>
+        /// <summary>Initializes CustomSearchAPI parameter list.</summary>
         protected override void InitParameters()
         {
             base.InitParameters();
@@ -284,7 +284,7 @@ namespace Google.Apis.Customsearch.v1
 
             /// <summary>Returns metadata about the search performed, metadata about the engine used for the search, and
             /// the search results. Uses a small set of url patterns.</summary>
-            public class ListRequest : CustomsearchBaseServiceRequest<Google.Apis.Customsearch.v1.Data.Search>
+            public class ListRequest : CustomSearchAPIBaseServiceRequest<Google.Apis.CustomSearchAPI.v1.Data.Search>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service) : base(service)
@@ -933,7 +933,7 @@ namespace Google.Apis.Customsearch.v1
 
         /// <summary>Returns metadata about the search performed, metadata about the engine used for the search, and the
         /// search results.</summary>
-        public class ListRequest : CustomsearchBaseServiceRequest<Google.Apis.Customsearch.v1.Data.Search>
+        public class ListRequest : CustomSearchAPIBaseServiceRequest<Google.Apis.CustomSearchAPI.v1.Data.Search>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service) : base(service)
@@ -1571,7 +1571,7 @@ namespace Google.Apis.Customsearch.v1
     }
 }
 
-namespace Google.Apis.Customsearch.v1.Data
+namespace Google.Apis.CustomSearchAPI.v1.Data
 {    
 
     /// <summary>Promotion result.</summary>

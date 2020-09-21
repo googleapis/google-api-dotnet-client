@@ -11,61 +11,35 @@
    }
   }
  }, 
- "basePath": "", 
- "baseUrl": "https://www.googleapis.com/", 
+ "basePath": "/apps/reseller/v1/", 
+ "baseUrl": "https://www.googleapis.com/apps/reseller/v1/", 
  "batchPath": "batch/reseller/v1", 
- "canonicalName": "Reseller", 
- "description": "Perform common functions that are available on the Google Apps Reseller Console at scale like placing orders and viewing customer information", 
+ "description": "Creates and manages your customers and their subscriptions.", 
  "discoveryVersion": "v1", 
  "documentationLink": "https://developers.google.com/google-apps/reseller/", 
- "fullyEncodeReservedExpansion": true, 
+ "etag": "\"-2NioU2H8y8siEzrBOV_qzRI6kQ/4xq0Bw2LuAbeJZTw0U29AruL5y4\"", 
  "icons": {
-  "x16": "http://www.google.com/images/icons/product/search-16.gif", 
-  "x32": "http://www.google.com/images/icons/product/search-32.gif"
+  "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png", 
+  "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
  }, 
  "id": "reseller:v1", 
  "kind": "discovery#restDescription", 
- "mtlsRootUrl": "https://www.mtls.googleapis.com/", 
+ "labels": [
+  "limited_availability"
+ ], 
  "name": "reseller", 
  "ownerDomain": "google.com", 
  "ownerName": "Google", 
  "parameters": {
-  "$.xgafv": {
-   "description": "V1 error format.", 
-   "enum": [
-    "1", 
-    "2"
-   ], 
-   "enumDescriptions": [
-    "v1 error format", 
-    "v2 error format"
-   ], 
-   "location": "query", 
-   "type": "string"
-  }, 
-  "access_token": {
-   "description": "OAuth access token.", 
-   "location": "query", 
-   "type": "string"
-  }, 
   "alt": {
    "default": "json", 
-   "description": "Data format for response.", 
+   "description": "Data format for the response.", 
    "enum": [
-    "json", 
-    "media", 
-    "proto"
+    "json"
    ], 
    "enumDescriptions": [
-    "Responses with Content-Type of application/json", 
-    "Media download with context-dependent Content-Type", 
-    "Responses with Content-Type of application/x-protobuf"
+    "Responses with Content-Type of application/json"
    ], 
-   "location": "query", 
-   "type": "string"
-  }, 
-  "callback": {
-   "description": "JSONP", 
    "location": "query", 
    "type": "string"
   }, 
@@ -91,17 +65,12 @@
    "type": "boolean"
   }, 
   "quotaUser": {
-   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.", 
+   "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.", 
    "location": "query", 
    "type": "string"
   }, 
-  "uploadType": {
-   "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").", 
-   "location": "query", 
-   "type": "string"
-  }, 
-  "upload_protocol": {
-   "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").", 
+  "userIp": {
+   "description": "Deprecated. Please use quotaUser instead.", 
    "location": "query", 
    "type": "string"
   }
@@ -112,7 +81,6 @@
    "methods": {
     "get": {
      "description": "Get a customer account.", 
-     "flatPath": "apps/reseller/v1/customers/{customerId}", 
      "httpMethod": "GET", 
      "id": "reseller.customers.get", 
      "parameterOrder": [
@@ -126,7 +94,7 @@
        "type": "string"
       }
      }, 
-     "path": "apps/reseller/v1/customers/{customerId}", 
+     "path": "customers/{customerId}", 
      "response": {
       "$ref": "Customer"
      }, 
@@ -137,10 +105,8 @@
     }, 
     "insert": {
      "description": "Order a new customer's account.", 
-     "flatPath": "apps/reseller/v1/customers", 
      "httpMethod": "POST", 
      "id": "reseller.customers.insert", 
-     "parameterOrder": [], 
      "parameters": {
       "customerAuthToken": {
        "description": "The customerAuthToken query string is required when creating a resold account that transfers a direct customer's subscription or transfers another reseller customer's subscription to your reseller management. This is a hexadecimal authentication token needed to complete the subscription transfer. For more information, see the administrator help center.", 
@@ -148,7 +114,7 @@
        "type": "string"
       }
      }, 
-     "path": "apps/reseller/v1/customers", 
+     "path": "customers", 
      "request": {
       "$ref": "Customer"
      }, 
@@ -160,8 +126,7 @@
      ]
     }, 
     "patch": {
-     "description": "Patch a customer account's settings via Apiary Patch Orchestration", 
-     "flatPath": "apps/reseller/v1/customers/{customerId}", 
+     "description": "Update a customer account's settings. This method supports patch semantics.", 
      "httpMethod": "PATCH", 
      "id": "reseller.customers.patch", 
      "parameterOrder": [
@@ -175,7 +140,7 @@
        "type": "string"
       }
      }, 
-     "path": "apps/reseller/v1/customers/{customerId}", 
+     "path": "customers/{customerId}", 
      "request": {
       "$ref": "Customer"
      }, 
@@ -188,7 +153,6 @@
     }, 
     "update": {
      "description": "Update a customer account's settings.", 
-     "flatPath": "apps/reseller/v1/customers/{customerId}", 
      "httpMethod": "PUT", 
      "id": "reseller.customers.update", 
      "parameterOrder": [
@@ -202,7 +166,7 @@
        "type": "string"
       }
      }, 
-     "path": "apps/reseller/v1/customers/{customerId}", 
+     "path": "customers/{customerId}", 
      "request": {
       "$ref": "Customer"
      }, 
@@ -219,12 +183,9 @@
    "methods": {
     "getwatchdetails": {
      "description": "Returns all the details of the watch corresponding to the reseller.", 
-     "flatPath": "apps/reseller/v1/resellernotify/getwatchdetails", 
      "httpMethod": "GET", 
      "id": "reseller.resellernotify.getwatchdetails", 
-     "parameterOrder": [], 
-     "parameters": {}, 
-     "path": "apps/reseller/v1/resellernotify/getwatchdetails", 
+     "path": "resellernotify/getwatchdetails", 
      "response": {
       "$ref": "ResellernotifyGetwatchdetailsResponse"
      }, 
@@ -235,10 +196,8 @@
     }, 
     "register": {
      "description": "Registers a Reseller for receiving notifications.", 
-     "flatPath": "apps/reseller/v1/resellernotify/register", 
      "httpMethod": "POST", 
      "id": "reseller.resellernotify.register", 
-     "parameterOrder": [], 
      "parameters": {
       "serviceAccountEmailAddress": {
        "description": "The service account which will own the created Cloud-PubSub topic.", 
@@ -246,7 +205,7 @@
        "type": "string"
       }
      }, 
-     "path": "apps/reseller/v1/resellernotify/register", 
+     "path": "resellernotify/register", 
      "response": {
       "$ref": "ResellernotifyResource"
      }, 
@@ -256,10 +215,8 @@
     }, 
     "unregister": {
      "description": "Unregisters a Reseller for receiving notifications.", 
-     "flatPath": "apps/reseller/v1/resellernotify/unregister", 
      "httpMethod": "POST", 
      "id": "reseller.resellernotify.unregister", 
-     "parameterOrder": [], 
      "parameters": {
       "serviceAccountEmailAddress": {
        "description": "The service account which owns the Cloud-PubSub topic.", 
@@ -267,7 +224,7 @@
        "type": "string"
       }
      }, 
-     "path": "apps/reseller/v1/resellernotify/unregister", 
+     "path": "resellernotify/unregister", 
      "response": {
       "$ref": "ResellernotifyResource"
      }, 
@@ -281,7 +238,6 @@
    "methods": {
     "activate": {
      "description": "Activates a subscription previously suspended by the reseller", 
-     "flatPath": "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/activate", 
      "httpMethod": "POST", 
      "id": "reseller.subscriptions.activate", 
      "parameterOrder": [
@@ -302,7 +258,7 @@
        "type": "string"
       }
      }, 
-     "path": "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/activate", 
+     "path": "customers/{customerId}/subscriptions/{subscriptionId}/activate", 
      "response": {
       "$ref": "Subscription"
      }, 
@@ -312,7 +268,6 @@
     }, 
     "changePlan": {
      "description": "Update a subscription plan. Use this method to update a plan for a 30-day trial or a flexible plan subscription to an annual commitment plan with monthly or yearly payments.", 
-     "flatPath": "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changePlan", 
      "httpMethod": "POST", 
      "id": "reseller.subscriptions.changePlan", 
      "parameterOrder": [
@@ -333,7 +288,7 @@
        "type": "string"
       }
      }, 
-     "path": "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changePlan", 
+     "path": "customers/{customerId}/subscriptions/{subscriptionId}/changePlan", 
      "request": {
       "$ref": "ChangePlanRequest"
      }, 
@@ -346,7 +301,6 @@
     }, 
     "changeRenewalSettings": {
      "description": "Update a user license's renewal settings. This is applicable for accounts with annual commitment plans only.", 
-     "flatPath": "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changeRenewalSettings", 
      "httpMethod": "POST", 
      "id": "reseller.subscriptions.changeRenewalSettings", 
      "parameterOrder": [
@@ -367,7 +321,7 @@
        "type": "string"
       }
      }, 
-     "path": "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changeRenewalSettings", 
+     "path": "customers/{customerId}/subscriptions/{subscriptionId}/changeRenewalSettings", 
      "request": {
       "$ref": "RenewalSettings"
      }, 
@@ -380,7 +334,6 @@
     }, 
     "changeSeats": {
      "description": "Update a subscription's user license settings.", 
-     "flatPath": "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changeSeats", 
      "httpMethod": "POST", 
      "id": "reseller.subscriptions.changeSeats", 
      "parameterOrder": [
@@ -401,7 +354,7 @@
        "type": "string"
       }
      }, 
-     "path": "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changeSeats", 
+     "path": "customers/{customerId}/subscriptions/{subscriptionId}/changeSeats", 
      "request": {
       "$ref": "Seats"
      }, 
@@ -414,7 +367,6 @@
     }, 
     "delete": {
      "description": "Cancel, suspend, or transfer a subscription to direct.", 
-     "flatPath": "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}", 
      "httpMethod": "DELETE", 
      "id": "reseller.subscriptions.delete", 
      "parameterOrder": [
@@ -432,14 +384,12 @@
       "deletionType": {
        "description": "The deletionType query string enables the cancellation, downgrade, or suspension of a subscription.", 
        "enum": [
-        "deletionTypeUndefined", 
         "cancel", 
-        "transferToDirect"
+        "transfer_to_direct"
        ], 
        "enumDescriptions": [
-        "", 
         "Cancels the subscription immediately. This does not apply to a G Suite subscription.", 
-        "Transfers a subscription directly to Google. The customer is immediately transferred to a direct billing relationship with Google and is given a short amount of time with no service interruption. The customer can then choose to set up billing directly with Google by using a credit card, or they can transfer to another reseller."
+        "Transfers a subscription directly to Google.  The customer is immediately transferred to a direct billing relationship with Google and is given a short amount of time with no service interruption. The customer can then choose to set up billing directly with Google by using a credit card, or they can transfer to another reseller."
        ], 
        "location": "query", 
        "required": true, 
@@ -452,14 +402,13 @@
        "type": "string"
       }
      }, 
-     "path": "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}", 
+     "path": "customers/{customerId}/subscriptions/{subscriptionId}", 
      "scopes": [
       "https://www.googleapis.com/auth/apps.order"
      ]
     }, 
     "get": {
      "description": "Get a specific subscription.", 
-     "flatPath": "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}", 
      "httpMethod": "GET", 
      "id": "reseller.subscriptions.get", 
      "parameterOrder": [
@@ -480,7 +429,7 @@
        "type": "string"
       }
      }, 
-     "path": "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}", 
+     "path": "customers/{customerId}/subscriptions/{subscriptionId}", 
      "response": {
       "$ref": "Subscription"
      }, 
@@ -491,7 +440,6 @@
     }, 
     "insert": {
      "description": "Create or transfer a subscription.", 
-     "flatPath": "apps/reseller/v1/customers/{customerId}/subscriptions", 
      "httpMethod": "POST", 
      "id": "reseller.subscriptions.insert", 
      "parameterOrder": [
@@ -510,7 +458,7 @@
        "type": "string"
       }
      }, 
-     "path": "apps/reseller/v1/customers/{customerId}/subscriptions", 
+     "path": "customers/{customerId}/subscriptions", 
      "request": {
       "$ref": "Subscription"
      }, 
@@ -523,10 +471,8 @@
     }, 
     "list": {
      "description": "List of subscriptions managed by the reseller. The list can be all subscriptions, all of a customer's subscriptions, or all of a customer's transferable subscriptions.", 
-     "flatPath": "apps/reseller/v1/subscriptions", 
      "httpMethod": "GET", 
      "id": "reseller.subscriptions.list", 
-     "parameterOrder": [], 
      "parameters": {
       "customerAuthToken": {
        "description": "The customerAuthToken query string is required when creating a resold account that transfers a direct customer's subscription or transfers another reseller customer's subscription to your reseller management. This is a hexadecimal authentication token needed to complete the subscription transfer. For more information, see the administrator help center.", 
@@ -539,7 +485,7 @@
        "type": "string"
       }, 
       "customerNamePrefix": {
-       "description": "When retrieving all of your subscriptions and filtering for specific customers, you can enter a prefix for a customer name. Using an example customer group that includes exam.com, example20.com and example.com: - exa -- Returns all customer names that start with 'exa' which could include exam.com, example20.com, and example.com. A name prefix is similar to using a regular expression's asterisk, exa*. - example -- Returns example20.com and example.com. ", 
+       "description": "When retrieving all of your subscriptions and filtering for specific customers, you can enter a prefix for a customer name. Using an example customer group that includes exam.com, example20.com and example.com:  \n- exa -- Returns all customer names that start with 'exa' which could include exam.com, example20.com, and example.com. A name prefix is similar to using a regular expression's asterisk, exa*. \n- example -- Returns example20.com and example.com.", 
        "location": "query", 
        "type": "string"
       }, 
@@ -557,7 +503,7 @@
        "type": "string"
       }
      }, 
-     "path": "apps/reseller/v1/subscriptions", 
+     "path": "subscriptions", 
      "response": {
       "$ref": "Subscriptions"
      }, 
@@ -568,7 +514,6 @@
     }, 
     "startPaidService": {
      "description": "Immediately move a 30-day free trial subscription to a paid service subscription.", 
-     "flatPath": "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/startPaidService", 
      "httpMethod": "POST", 
      "id": "reseller.subscriptions.startPaidService", 
      "parameterOrder": [
@@ -589,7 +534,7 @@
        "type": "string"
       }
      }, 
-     "path": "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/startPaidService", 
+     "path": "customers/{customerId}/subscriptions/{subscriptionId}/startPaidService", 
      "response": {
       "$ref": "Subscription"
      }, 
@@ -599,7 +544,6 @@
     }, 
     "suspend": {
      "description": "Suspends an active subscription.", 
-     "flatPath": "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/suspend", 
      "httpMethod": "POST", 
      "id": "reseller.subscriptions.suspend", 
      "parameterOrder": [
@@ -620,7 +564,7 @@
        "type": "string"
       }
      }, 
-     "path": "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/suspend", 
+     "path": "customers/{customerId}/subscriptions/{subscriptionId}/suspend", 
      "response": {
       "$ref": "Subscription"
      }, 
@@ -631,7 +575,7 @@
    }
   }
  }, 
- "revision": "20200911", 
+ "revision": "20191008", 
  "rootUrl": "https://www.googleapis.com/", 
  "schemas": {
   "Address": {
@@ -696,7 +640,7 @@
      "type": "string"
     }, 
     "planName": {
-     "description": "The planName property is required. This is the name of the subscription's payment plan. For more information about the Google payment plans, see API concepts. Possible values are: - ANNUAL_MONTHLY_PAY - The annual commitment plan with monthly payments *Caution: *ANNUAL_MONTHLY_PAY is returned as ANNUAL in all API responses. - ANNUAL_YEARLY_PAY - The annual commitment plan with yearly payments - FLEXIBLE - The flexible plan - TRIAL - The 30-day free trial plan ", 
+     "description": "The planName property is required. This is the name of the subscription's payment plan. For more information about the Google payment plans, see API concepts.\n\nPossible values are:  \n- ANNUAL_MONTHLY_PAY - The annual commitment plan with monthly payments  Caution: ANNUAL_MONTHLY_PAY is returned as ANNUAL in all API responses.  \n- ANNUAL_YEARLY_PAY - The annual commitment plan with yearly payments  \n- FLEXIBLE - The flexible plan  \n- TRIAL - The 30-day free trial plan", 
      "type": "string"
     }, 
     "purchaseOrderId": {
@@ -715,7 +659,7 @@
    "id": "Customer", 
    "properties": {
     "alternateEmail": {
-     "description": "Like the \"Customer email\" in the reseller tools, this email is the secondary contact used if something happens to the customer's service such as service outage or a security issue. This property is required when creating a new customer and should not use the same domain as customerDomain .", 
+     "description": "Like the \"Customer email\" in the reseller tools, this email is the secondary contact used if something happens to the customer's service such as service outage or a security issue. This property is required when creating a new customer and should not use the same domain as customerDomain.", 
      "type": "string"
     }, 
     "customerDomain": {
@@ -810,12 +754,12 @@
      "type": "integer"
     }, 
     "maximumNumberOfSeats": {
-     "description": "This is a required property and is exclusive to subscriptions with FLEXIBLE or TRIAL plans. This property sets the maximum number of licensed users allowed on a subscription. This quantity can be increased up to the maximum limit defined in the reseller's contract. The minimum quantity is the current number of users in the customer account. *Note: *G Suite subscriptions automatically assign a license to every user.", 
+     "description": "This is a required property and is exclusive to subscriptions with FLEXIBLE or TRIAL plans. This property sets the maximum number of licensed users allowed on a subscription. This quantity can be increased up to the maximum limit defined in the reseller's contract. The minimum quantity is the current number of users in the customer account. Note: G Suite subscriptions automatically assign a license to every user.", 
      "format": "int32", 
      "type": "integer"
     }, 
     "numberOfSeats": {
-     "description": "This is a required property and is exclusive to subscriptions with ANNUAL_MONTHLY_PAY and ANNUAL_YEARLY_PAY plans. This property sets the maximum number of licenses assignable to users on a subscription. The reseller can add more licenses, but once set, the numberOfSeats cannot be reduced until renewal. The reseller is invoiced based on the numberOfSeats value regardless of how many of these user licenses are assigned. *Note: *G Suite subscriptions automatically assign a license to every user.", 
+     "description": "This is a required property and is exclusive to subscriptions with ANNUAL_MONTHLY_PAY and ANNUAL_YEARLY_PAY plans. This property sets the maximum number of licenses assignable to users on a subscription. The reseller can add more licenses, but once set, the numberOfSeats cannot be reduced until renewal. The reseller is invoiced based on the numberOfSeats value regardless of how many of these user licenses are assigned. Note: G Suite subscriptions automatically assign a license to every user.", 
      "format": "int32", 
      "type": "integer"
     }
@@ -856,7 +800,7 @@
      "description": "The plan property is required. In this version of the API, the G Suite plans are the flexible plan, annual commitment plan, and the 30-day free trial plan. For more information about the API\"s payment plans, see the API concepts.", 
      "properties": {
       "commitmentInterval": {
-       "description": "In this version of the API, annual commitment plan's interval is one year. *Note: *When billingMethod value is OFFLINE, the subscription property object plan.commitmentInterval is omitted in all API responses. ", 
+       "description": "In this version of the API, annual commitment plan's interval is one year.  Note: When billingMethod value is OFFLINE, the subscription property object plan.commitmentInterval is omitted in all API responses.", 
        "properties": {
         "endTime": {
          "description": "An annual commitment plan's interval's endTime in milliseconds using the UNIX Epoch format. See an example Epoch converter.", 
@@ -872,11 +816,11 @@
        "type": "object"
       }, 
       "isCommitmentPlan": {
-       "description": "The isCommitmentPlan property's boolean value identifies the plan as an annual commitment plan: - true \u2014 The subscription's plan is an annual commitment plan. - false \u2014 The plan is not an annual commitment plan. ", 
+       "description": "The isCommitmentPlan property's boolean value identifies the plan as an annual commitment plan:\n- true \u2014 The subscription's plan is an annual commitment plan.\n- false \u2014 The plan is not an annual commitment plan.", 
        "type": "boolean"
       }, 
       "planName": {
-       "description": "The planName property is required. This is the name of the subscription's plan. For more information about the Google payment plans, see the API concepts. Possible values are: - ANNUAL_MONTHLY_PAY \u2014 The annual commitment plan with monthly payments. *Caution: *ANNUAL_MONTHLY_PAY is returned as ANNUAL in all API responses. - ANNUAL_YEARLY_PAY \u2014 The annual commitment plan with yearly payments - FLEXIBLE \u2014 The flexible plan - TRIAL \u2014 The 30-day free trial plan. A subscription in trial will be suspended after the 30th free day if no payment plan is assigned. Calling changePlan will assign a payment plan to a trial but will not activate the plan. A trial will automatically begin its assigned payment plan after its 30th free day or immediately after calling startPaidService. - FREE \u2014 The free plan is exclusive to the Cloud Identity SKU and does not incur any billing. ", 
+       "description": "The planName property is required. This is the name of the subscription's plan. For more information about the Google payment plans, see the API concepts.\n\nPossible values are:  \n- ANNUAL_MONTHLY_PAY \u2014 The annual commitment plan with monthly payments.  Caution: ANNUAL_MONTHLY_PAY is returned as ANNUAL in all API responses.  \n- ANNUAL_YEARLY_PAY \u2014 The annual commitment plan with yearly payments  \n- FLEXIBLE \u2014 The flexible plan  \n- TRIAL \u2014 The 30-day free trial plan. A subscription in trial will be suspended after the 30th free day if no payment plan is assigned. Calling changePlan will assign a payment plan to a trial but will not activate the plan. A trial will automatically begin its assigned payment plan after its 30th free day or immediately after calling startPaidService.  \n- FREE \u2014 The free plan is exclusive to the Cloud Identity SKU and does not incur any billing.", 
        "type": "string"
       }
      }, 
@@ -899,11 +843,11 @@
      "description": "This is a required property. The number and limit of user seat licenses in the plan."
     }, 
     "skuId": {
-     "description": "A required property. The skuId is a unique system identifier for a product's SKU assigned to a customer in the subscription. For products and SKUs available in this version of the API, see Product and SKU IDs.", 
+     "description": "A required property. The skuId is a unique system identifier for a product's SKU assigned to a customer in the subscription. For products and SKUs available in this version of the API, see  Product and SKU IDs.", 
      "type": "string"
     }, 
     "skuName": {
-     "description": "Read-only external display name for a product's SKU assigned to a customer in the subscription. SKU names are subject to change at Google's discretion. For products and SKUs available in this version of the API, see Product and SKU IDs.", 
+     "description": "Read-only external display name for a product's SKU assigned to a customer in the subscription. SKU names are subject to change at Google's discretion. For products and SKUs available in this version of the API, see  Product and SKU IDs.", 
      "type": "string"
     }, 
     "status": {
@@ -915,7 +859,7 @@
      "type": "string"
     }, 
     "suspensionReasons": {
-     "description": "Read-only field containing an enumerable of all the current suspension reasons for a subscription. It is possible for a subscription to have many concurrent, overlapping suspension reasons. A subscription's STATUS is SUSPENDED until all pending suspensions are removed. Possible options include: - PENDING_TOS_ACCEPTANCE - The customer has not logged in and accepted the G Suite Resold Terms of Services. - RENEWAL_WITH_TYPE_CANCEL - The customer's commitment ended and their service was cancelled at the end of their term. - RESELLER_INITIATED - A manual suspension invoked by a Reseller. - TRIAL_ENDED - The customer's trial expired without a plan selected. - OTHER - The customer is suspended for an internal Google reason (e.g. abuse or otherwise). ", 
+     "description": "Read-only field containing an enumerable of all the current suspension reasons for a subscription. It is possible for a subscription to have many concurrent, overlapping suspension reasons. A subscription's STATUS is SUSPENDED until all pending suspensions are removed.\n\nPossible options include:  \n- PENDING_TOS_ACCEPTANCE - The customer has not logged in and accepted the G Suite Resold Terms of Services.  \n- RENEWAL_WITH_TYPE_CANCEL - The customer's commitment ended and their service was cancelled at the end of their term.  \n- RESELLER_INITIATED - A manual suspension invoked by a Reseller.  \n- TRIAL_ENDED - The customer's trial expired without a plan selected.  \n- OTHER - The customer is suspended for an internal Google reason (e.g. abuse or otherwise).", 
      "items": {
       "type": "string"
      }, 
@@ -941,7 +885,7 @@
      "description": "The G Suite annual commitment and flexible payment plans can be in a 30-day free trial. For more information, see the API concepts.", 
      "properties": {
       "isInTrial": {
-       "description": "Determines if a subscription's plan is in a 30-day free trial or not: - true \u2014 The plan is in trial. - false \u2014 The plan is not in trial. ", 
+       "description": "Determines if a subscription's plan is in a 30-day free trial or not:\n- true \u2014 The plan is in trial.\n- false \u2014 The plan is not in trial.", 
        "type": "boolean"
       }, 
       "trialEndTime": {
@@ -979,7 +923,7 @@
    "type": "object"
   }
  }, 
- "servicePath": "", 
+ "servicePath": "apps/reseller/v1/", 
  "title": "Enterprise Apps Reseller API", 
  "version": "v1"
 }

@@ -116,7 +116,7 @@
    }
   }
  }, 
- "revision": "20200908", 
+ "revision": "20200912", 
  "rootUrl": "https://sts.googleapis.com/", 
  "schemas": {
   "GoogleIdentityStsV1ExchangeTokenRequest": {

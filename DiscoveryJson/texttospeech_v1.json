@@ -153,7 +153,7 @@
    }
   }
  }, 
- "revision": "20200902", 
+ "revision": "20200911", 
  "rootUrl": "https://texttospeech.googleapis.com/", 
  "schemas": {
   "AudioConfig": {

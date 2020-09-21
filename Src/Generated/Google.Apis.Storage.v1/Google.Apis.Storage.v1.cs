@@ -3904,9 +3904,8 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfMetagenerationMatch { get; set; }
 
-            /// <summary>Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings
-            /// /my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's
-            /// kms_key_name value, if any.</summary>
+            /// <summary>Not currently supported. Specifying the parameter causes the request to fail with status code
+            /// 400 - Bad Request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("kmsKeyName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string KmsKeyName { get; set; }
 
@@ -8230,8 +8229,7 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Not currently supported. Specifying the parameter causes the request to fail with status code 400 -
-        /// Bad Request.</summary>
+        /// <summary>Cloud KMS Key used to encrypt this object, if the object is encrypted by such a key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; } 
 

@@ -734,13 +734,14 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual string AuthoritySelector { get; set; } 
 
         /// <summary>The email address of the authenticated user (or service account on behalf of third party principal)
-        /// making the request. For privacy reasons, the principal email address is redacted for all read-only
-        /// operations that fail with a "permission denied" error.</summary>
+        /// making the request. For third party identity callers, the `principal_subject` field is populated instead of
+        /// this field. For privacy reasons, the principal email address is sometimes redacted. For more information,
+        /// see [Caller identities in audit logs](https://cloud.google.com/logging/docs/audit#user-id).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principalEmail")]
         public virtual string PrincipalEmail { get; set; } 
 
         /// <summary>String representation of identity of requesting party. Populated for both first and third party
-        /// identities.</summary>
+        /// identities. Only present for APIs that support third-party identities.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principalSubject")]
         public virtual string PrincipalSubject { get; set; } 
 
@@ -1806,7 +1807,7 @@ namespace Google.Apis.ServiceControl.v1.Data
     public class ResourceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The identifier of the parent of this resource instance. Must be in one of the following formats: -
-        /// “projects/” - “folders/” - “organizations/”</summary>
+        /// `projects/` - `folders/` - `organizations/`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceContainer")]
         public virtual string ResourceContainer { get; set; } 
 

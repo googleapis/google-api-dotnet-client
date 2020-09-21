@@ -5656,7 +5656,7 @@ namespace Google.Apis.Dataproc.v1.Data
     }    
 
     /// <summary>Common config settings for resources of Compute Engine cluster instances, applicable to all instances
-    /// in the cluster. NEXT ID: 13</summary>
+    /// in the cluster. NEXT ID: 14</summary>
     public class GceClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. If true, all instances in the cluster will only have internal IP addresses. By default,
@@ -5966,7 +5966,7 @@ namespace Google.Apis.Dataproc.v1.Data
     public class InstantiateWorkflowTemplateRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Map from parameter names to values that should be used for those parameters. Values may
-        /// not exceed 100 characters.</summary>
+        /// not exceed 1000 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string,string> Parameters { get; set; } 
 
